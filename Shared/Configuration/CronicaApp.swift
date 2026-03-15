@@ -228,23 +228,19 @@ struct CronicaApp: App {
     private func handleAppRefresh(task: BGAppRefreshTask?) {
         if let task {
             scheduleAppRefresh()
-            let queue = OperationQueue()
-            queue.maxConcurrentOperationCount = 1
+            let workItem = Task {
+                await BackgroundManager.shared.handleWatchingContentRefresh()
+                BackgroundManager.shared.lastWatchingRefresh = Date()
+                await BackgroundManager.shared.handleUpcomingContentRefresh()
+                BackgroundManager.shared.lastUpcomingRefresh = Date()
+                await BackgroundManager.shared.handleAppRefreshMaintenance()
+                BackgroundManager.shared.lastMaintenance = Date()
+                task.setTaskCompleted(success: true)
+            }
             task.expirationHandler = {
-                // After all operations are cancelled, the completion block below is called to set the task to complete.
-                queue.cancelAllOperations()
+                workItem.cancel()
+                task.setTaskCompleted(success: false)
             }
-            queue.addOperation {
-                Task {
-                    await BackgroundManager.shared.handleWatchingContentRefresh()
-                    BackgroundManager.shared.lastWatchingRefresh = Date()
-                    await BackgroundManager.shared.handleUpcomingContentRefresh()
-                    BackgroundManager.shared.lastUpcomingRefresh = Date()
-                    await BackgroundManager.shared.handleAppRefreshMaintenance()
-                    BackgroundManager.shared.lastMaintenance = Date()
-                }
-            }
-            task.setTaskCompleted(success: true)
         }
     }
 #elseif os(macOS)

@@ -56,7 +56,8 @@ class ExternalWatchlistManager: ObservableObject {
                 "content-type": contentTypeHeader,
                 "authorization": "Bearer \(userAccessToken)"
             ]
-            var request = URLRequest(url: URL(string: "https://api.themoviedb.org/4/account/\(userAccessId)/\(type.rawValue)/watchlist?page=\(page)&sort_by=created_at.asc")!,
+            guard let watchlistUrl = URL(string: "https://api.themoviedb.org/4/account/\(userAccessId)/\(type.rawValue)/watchlist?page=\(page)&sort_by=created_at.asc") else { return nil }
+            var request = URLRequest(url: watchlistUrl,
                                      cachePolicy: .useProtocolCachePolicy,
                                      timeoutInterval: 10.0)
             request.httpMethod = "GET"

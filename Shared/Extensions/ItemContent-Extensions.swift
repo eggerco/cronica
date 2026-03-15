@@ -101,8 +101,8 @@ extension ItemContent {
         return nil
     }
     var itemInfo: String {
-        if itemTheatricalString != nil && shortItemRuntime != nil {
-            return "\(itemGenre) • \(itemTheatricalString!) • \(shortItemRuntime!)"
+        if let theatricalString = itemTheatricalString, let runtime = shortItemRuntime {
+            return "\(itemGenre) • \(theatricalString) • \(runtime)"
         }
         if let itemTheatricalString {
             return "\(itemGenres) • \(itemTheatricalString)"
@@ -123,8 +123,8 @@ extension ItemContent {
         return ""
     }
     var itemQuickInfo: String {
-        if itemTheatricalString != nil && shortItemRuntime != nil {
-            return "\(itemTheatricalString!) • \(shortItemRuntime!)"
+        if let theatricalString = itemTheatricalString, let runtime = shortItemRuntime {
+            return "\(theatricalString) • \(runtime)"
         }
         if let itemTheatricalString {
             return "\(itemTheatricalString)"
@@ -245,7 +245,10 @@ extension ItemContent {
 #endif
     }
     var itemURL: URL {
-        return URL(string: "https://www.themoviedb.org/\(itemContentMedia.rawValue)/\(id)")!
+        guard let url = URL(string: "https://www.themoviedb.org/\(itemContentMedia.rawValue)/\(id)") else {
+            return URL(string: "https://www.themoviedb.org")!
+        }
+        return url
     }
     
     // MARK: Bool
@@ -279,11 +282,8 @@ extension ItemContent {
         if media == .person {
             return media.title
         }
-        if itemTheatricalString != nil && shortItemRuntime != nil {
-            return "\(itemContentMedia.title) • \(itemTheatricalString!)"
-        }
-        if let itemTheatricalString {
-            return "\(itemContentMedia.title) • \(itemTheatricalString)"
+        if let theatricalString = itemTheatricalString {
+            return "\(itemContentMedia.title) • \(theatricalString)"
         }
         if let date = nextEpisodeDate {
             return "\(itemContentMedia.title) • \(DatesManager.dateString.string(from: date))"
@@ -304,8 +304,8 @@ extension ItemContent {
     }
 	var itemNotificationDescription: String {
 		if itemContentMedia == .movie {
-			if itemTheatricalString != nil && shortItemRuntime != nil {
-				return "\(itemContentMedia.title) • \(itemTheatricalString!)"
+			if let theatricalString = itemTheatricalString {
+				return "\(itemContentMedia.title) • \(theatricalString)"
 			}
 			if let itemTheatricalString {
 				return "\(itemContentMedia.title) • \(itemTheatricalString)"
@@ -401,7 +401,7 @@ extension ItemContent {
     // MARK: Preview
     static var examples: [ItemContent] {
         let data: ItemContentResponse? = try? Bundle.main.decode(from: "content")
-        return data!.results
+        return data?.results ?? []
     }
     static var example: ItemContent {
         examples[0]

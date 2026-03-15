@@ -19,8 +19,22 @@ final class KeychainHelper {
             kSecAttrService: service,
             kSecAttrAccount: account,
         ] as [CFString : Any] as CFDictionary
-        
-        _ = SecItemAdd(query, nil)
+
+        let status = SecItemAdd(query, nil)
+
+        if status == errSecDuplicateItem {
+            let searchQuery = [
+                kSecClass: kSecClassGenericPassword,
+                kSecAttrService: service,
+                kSecAttrAccount: account,
+            ] as [CFString : Any] as CFDictionary
+
+            let attributesToUpdate = [
+                kSecValueData: data
+            ] as [CFString : Any] as CFDictionary
+
+            SecItemUpdate(searchQuery, attributesToUpdate)
+        }
     }
     
     func read(service: String, account: String) -> Data? {

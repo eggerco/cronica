@@ -144,7 +144,8 @@ class AccountManager: ObservableObject {
         do {
             let parameters = ["session_id": "\(self.userSessionId)"]
             let postData = try JSONSerialization.data(withJSONObject: parameters)
-            var request = URLRequest(url: URL(string: "https://api.themoviedb.org/3/authentication/session?api_key=\(Key.tmdbApi)")!,
+            guard let deleteUrl = URL(string: "https://api.themoviedb.org/3/authentication/session?api_key=\(Key.tmdbApi)") else { return }
+            var request = URLRequest(url: deleteUrl,
                                      cachePolicy: .useProtocolCachePolicy,
                                      timeoutInterval: 10.0)
             request.httpMethod = "DELETE"

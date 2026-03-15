@@ -7,10 +7,15 @@
 
 import CoreData
 import CloudKit
+import os
 
 /// An environment singleton responsible for managing Watchlist Core Data stack, including handling saving,
 /// tracking watchlists, and dealing with sample data.
 struct PersistenceController {
+    private static let logger = Logger(
+        subsystem: Bundle.main.bundleIdentifier ?? "com.cronica",
+        category: "PersistenceController"
+    )
     static let shared = PersistenceController()
     // MARK: Preview sample
     static var preview: PersistenceController = {
@@ -64,7 +69,11 @@ struct PersistenceController {
     
     func save() {
         if container.viewContext.hasChanges {
-            try? container.viewContext.save()
+            do {
+                try container.viewContext.save()
+            } catch {
+                Self.logger.error("Core Data save failed: \(error.localizedDescription)")
+            }
         }
     }
 }

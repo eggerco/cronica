@@ -57,7 +57,8 @@ struct WatchlistButton: View {
                 media = .tvShow
             }
             let contentID = identifier.dropLast(2)
-            let content = try? await NetworkService.shared.fetchItem(id: Int(contentID)!, type: media)
+            guard let contentIDNumber = Int(contentID) else { return }
+            let content = try? await NetworkService.shared.fetchItem(id: contentIDNumber, type: media)
             guard let content else { return }
             persistence.save(content)
             registerNotification(content)
