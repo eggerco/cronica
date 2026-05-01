@@ -15,6 +15,7 @@ struct TrailerItemView: View {
     private let trailer: VideoItem
 #if os(iOS)
     private let player: YouTubePlayer
+    private let adCoordinator = AdCoordinator.shared
 #elseif os(tvOS)
     @FocusState var isFocused
 #endif
@@ -132,6 +133,16 @@ struct TrailerItemView: View {
     }
     
     private func openVideo() {
+#if os(iOS)
+        adCoordinator.presentAd {
+            openVideoAfterAd()
+        }
+#else
+        openVideoAfterAd()
+#endif
+    }
+
+    private func openVideoAfterAd() {
 #if os(iOS)
         if UIDevice.isIPhone {
             if openInYouTube {

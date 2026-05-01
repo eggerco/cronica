@@ -19,6 +19,9 @@ struct WatchProvidersList: View {
     @State private var showConfirmation = false
     @StateObject private var settings = SettingsStore.shared
     @AppStorage("alwaysShowConfirmationWatchProvider") private var isConfirmationEnabled = true
+#if os(iOS)
+    private let adCoordinator = AdCoordinator.shared
+#endif
     var body: some View {
         VStack {
             if isProvidersAvailable && settings.isWatchProviderEnabled {
@@ -168,6 +171,16 @@ extension WatchProvidersList {
     }
     
     private func openLink() {
+#if os(iOS)
+        adCoordinator.presentAd {
+            openLinkAfterAd()
+        }
+#else
+        openLinkAfterAd()
+#endif
+    }
+
+    private func openLinkAfterAd() {
         if let link = link {
 #if os(macOS)
             NSWorkspace.shared.open(link)

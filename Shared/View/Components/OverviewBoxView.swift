@@ -6,6 +6,10 @@
 //
 
 import SwiftUI
+#if os(iOS)
+import AdmobSwiftUI
+#endif
+
 #if !os(tvOS)
 /// Displays the overview of a movie, tv show, or episode.
 /// It can also display biography.
@@ -19,91 +23,88 @@ struct OverviewBoxView: View {
     @State private var showTextOptions = true
     @State private var isTruncated = false
     @StateObject private var settings = SettingsStore.shared
+#if os(iOS)
+    @StateObject private var nativeViewModel = NativeAdViewModel(
+        adUnitID: AdConfiguration.AdUnitID.native,
+        requestInterval: AdConfiguration.nativeRefreshInterval
+    )
+
+    private var shouldShowNativeAd: Bool {
+        DetailAdPolicy.shouldShowNativeAd(
+            hasPurchasedTipJar: settings.hasPurchasedTipJar,
+            monetizationDisabled: PreviewVideoRuntime.shouldDisableMonetization()
+        )
+    }
+#endif
+
     var body: some View {
-        if let overview {
-            if !overview.isEmpty {
-                GroupBox {
-                    VStack(alignment: .leading) {
-                        Text(overview)
-                            .font(.callout)
-                            .padding([.top], 2)
-                            .lineLimit(showFullText ? nil : 4)
-                            .multilineTextAlignment(.leading)
+        if let overview, !overview.isEmpty {
+            VStack(spacing: 12) {
+                overviewBox(overview)
 #if os(iOS)
-                            .background(
-                                // Render the limited text and measure its size
-                                Text(overview)
-                                    .lineLimit(4)
-                                    .font(.callout)
-                                    .padding([.top], 2)
-                                    .background(GeometryReader { displayedGeometry in
-                                        // Create a ZStack with unbounded height to allow the inner Text as much
-                                        // height as it likes, but no extra width.
-                                        ZStack {
-                                            // Render the text without restrictions and measure its size
-                                            Text(overview)
-                                                .font(.callout)
-                                                .padding([.top], 2)
-                                                .background(GeometryReader { fullGeometry in
-                                                    // And compare the two
-                                                    Color.clear.onAppear {
-                                                        self.isTruncated = fullGeometry.size.height > displayedGeometry.size.height
-                                                    }
-                                                })
-                                        }
-                                        .frame(height: .greatestFiniteMagnitude)
-                                    })
-                                    .hidden() // Hide the background
-                            )
-#endif
-                        
-#if os(iOS)
-                        if isTruncated {
-                            Text(showFullText ? "Collapse" : "Show More")
-                                .fontDesign(.rounded)
-                                .textCase(.uppercase)
-                                .font(.caption)
-                                .foregroundStyle(settings.appTheme.color)
-                                .padding(.top, 4)
-                            
+                if shouldShowNativeAd {
+                    NativeAdView(nativeViewModel: nativeViewModel, style: .largeBanner)
+                        .frame(height: 320)
+                        .onAppear {
+                            nativeViewModel.refreshAd()
                         }
-#endif
-                    }
-                } label: {
-                    Text(type == .person ? "Biography" : "About")
-                        .unredacted()
                 }
-                .onTapGesture {
-#if os(iOS)
-                    if UIDevice.isIPad {
-                        if showAsPopover {
-                            showSheet.toggle()
-                        } else {
-                            withAnimation { showFullText.toggle() }
-                        }
-                    } else {
-                        withAnimation { showFullText.toggle() }
-                    }
-                    
-#elseif os(macOS)
-                    showSheet.toggle()
-#endif
-                }
-                .accessibilityElement(children: .combine)
-                .contextMenu {  ShareLink(item: overview) }
-                .popover(isPresented: $showSheet) {
-                    ScrollView {
-                        Text(overview )
-                            .unredacted()
-                            .padding()
-                    }
-                    .frame(width: 400, height: 200, alignment: .center)
-                }
-#if os(iOS)
-                .groupBoxStyle(TransparentGroupBox())
 #endif
             }
         }
+    }
+
+    private func overviewBox(_ overview: String) -> some View {
+        GroupBox {
+            VStack(alignment: .leading) {
+                Text(overview)
+                    .font(.callout)
+                    .padding([.top], 2)
+                    .lineLimit(showFullText ? nil : 4)
+                    .multilineTextAlignment(.leading)
+#if os(iOS)
+                if overview.count > 180 {
+                    Text(showFullText ? "Collapse" : "Show More")
+                        .fontDesign(.rounded)
+                        .textCase(.uppercase)
+                        .font(.caption)
+                        .foregroundStyle(settings.appTheme.color)
+                        .padding(.top, 4)
+                }
+#endif
+            }
+        } label: {
+            Text(type == .person ? "Biography" : "About")
+                .unredacted()
+        }
+        .onTapGesture {
+#if os(iOS)
+            if UIDevice.isIPad {
+                if showAsPopover {
+                    showSheet.toggle()
+                } else {
+                    withAnimation { showFullText.toggle() }
+                }
+            } else {
+                withAnimation { showFullText.toggle() }
+            }
+#elseif os(macOS)
+            showSheet.toggle()
+#endif
+        }
+        .accessibilityElement(children: .combine)
+        .contextMenu { ShareLink(item: overview) }
+        .popover(isPresented: $showSheet) {
+            ScrollView {
+                Text(overview)
+                    .unredacted()
+                    .padding()
+            }
+            .frame(width: 400, height: 200, alignment: .center)
+        }
+#if os(iOS)
+        .groupBoxStyle(TransparentGroupBox())
+#endif
     }
 }
 

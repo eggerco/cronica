@@ -6,6 +6,9 @@
 //
 
 import SwiftUI
+#if os(iOS)
+import AdmobSwiftUI
+#endif
 
 /// Renders the Settings UI for each OS, support iOS, macOS, and tvOS.
 struct SettingsView: View {
@@ -14,6 +17,13 @@ struct SettingsView: View {
     @State private var showPolicy = false
     @State private var showWhatsNew = false
     @Environment(\.openURL) private var openURL
+#if os(iOS)
+    @StateObject private var store = SettingsStore.shared
+    @StateObject private var nativeViewModel = NativeAdViewModel(
+        adUnitID: AdConfiguration.AdUnitID.native,
+        requestInterval: AdConfiguration.nativeRefreshInterval
+    )
+#endif
 #elseif os(tvOS)
     @StateObject private var store = SettingsStore.shared
 #endif
@@ -54,6 +64,16 @@ struct SettingsView: View {
                                   icon: "globe", color: .purple)
                 }
             }
+
+#if os(iOS)
+            if !store.hasPurchasedTipJar && !PreviewVideoRuntime.shouldDisableMonetization() {
+                Section {
+                    NativeAdView(nativeViewModel: nativeViewModel, style: .largeBanner)
+                        .frame(height: 320)
+                        .listRowInsets(.init(top: 12, leading: 16, bottom: 12, trailing: 16))
+                }
+            }
+#endif
             
             Section("About") {
                 NavigationLink(value: SettingsScreens.feedback) {
@@ -95,6 +115,12 @@ struct SettingsView: View {
         .navigationTitle("Settings")
         .navigationBarTitleDisplayMode(.inline)
         .scrollBounceBehavior(.basedOnSize, axes: .vertical)
+#if os(iOS)
+        .task {
+            guard !store.hasPurchasedTipJar, !PreviewVideoRuntime.shouldDisableMonetization() else { return }
+            nativeViewModel.refreshAd()
+        }
+#endif
 #elseif os(macOS)
         TabView {
             BehaviorSetting()

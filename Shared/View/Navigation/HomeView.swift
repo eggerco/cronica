@@ -6,6 +6,9 @@
 //
 
 import SwiftUI
+#if os(iOS)
+import AdmobSwiftUI
+#endif
 
 struct HomeView: View {
     static let tag: Screens? = .home
@@ -26,12 +29,27 @@ struct HomeView: View {
     @AppStorage("askedForReview") var askedForReview = false
     @State private var showReviewBanner = false
     @State private var showSettings = false
+    @StateObject private var nativeViewModel = NativeAdViewModel(
+        adUnitID: AdConfiguration.AdUnitID.native,
+        requestInterval: AdConfiguration.nativeRefreshInterval
+    )
 #endif
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
 #if os(iOS)
                 if showReviewBanner { CallToReviewAppView(showView: $showReviewBanner).unredacted() }
+                if HomeAdPolicy.shouldShowNativeAd(
+                    hasPurchasedTipJar: SettingsStore.shared.hasPurchasedTipJar,
+                    monetizationDisabled: PreviewVideoRuntime.shouldDisableMonetization()
+                ) {
+                    NativeAdView(nativeViewModel: nativeViewModel, style: .card)
+                        .frame(height: 320)
+                        .padding(.horizontal)
+                        .onAppear {
+                            nativeViewModel.refreshAd()
+                        }
+                }
 #endif
                 HorizontalUpNextListView(shouldReload: $reloadHome)
                 UpcomingWatchlist(shouldReload: $reloadHome)
@@ -244,5 +262,4 @@ struct HomeView: View {
 #Preview {
     HomeView()
 }
-
 

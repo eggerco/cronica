@@ -7,6 +7,9 @@
 
 import SwiftUI
 import NukeUI
+#if os(iOS)
+import AdmobSwiftUI
+#endif
 #if !os(tvOS)
 import Pow
 #endif
@@ -27,6 +30,19 @@ struct ItemContentDetails: View {
     @State private var animateGesture = false
     @State private var animationImage = ""
     @State private var showConfirmationPopup = false
+#if os(iOS)
+    @StateObject private var nativeViewModel = NativeAdViewModel(
+        adUnitID: AdConfiguration.AdUnitID.native,
+        requestInterval: AdConfiguration.nativeRefreshInterval
+    )
+
+    private var shouldShowNativeAd: Bool {
+        DetailAdPolicy.shouldShowNativeAd(
+            hasPurchasedTipJar: store.hasPurchasedTipJar,
+            monetizationDisabled: PreviewVideoRuntime.shouldDisableMonetization()
+        )
+    }
+#endif
     
     // MARK: View properties for sizeBasedPadMacView
     @State private var isSideInfoPanelShowed = false
@@ -305,6 +321,17 @@ struct ItemContentDetails: View {
                 Spacer()
             }
             .padding(.leading)
+
+#if os(iOS)
+            if shouldShowNativeAd {
+                NativeAdView(nativeViewModel: nativeViewModel, style: .card)
+                    .frame(height: 320)
+                    .padding(.horizontal)
+                    .onAppear {
+                        nativeViewModel.refreshAd()
+                    }
+            }
+#endif
             
             if let season = viewModel.content?.seasons {
                 SeasonListView(

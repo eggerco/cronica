@@ -6,6 +6,9 @@
 //
 
 import SwiftUI
+#if os(iOS)
+import AdmobSwiftUI
+#endif
 
 struct SearchView: View {
     static let tag: Screens? = .search
@@ -20,6 +23,12 @@ struct SearchView: View {
     @State private var scope: SearchItemsScope = .noScope
     @State private var currentlyQuery = String()
     @Binding var shouldFocusOnSearchField: Bool
+#if os(iOS)
+    @StateObject private var nativeViewModel = NativeAdViewModel(
+        adUnitID: AdConfiguration.AdUnitID.native,
+        requestInterval: AdConfiguration.nativeRefreshInterval
+    )
+#endif
     var body: some View {
         VStack {
 #if os(iOS)
@@ -138,33 +147,58 @@ struct SearchView: View {
                                        showPopup: $showPopup,
                                        popupType: $popupType)
                     }
+                    searchNativeAdRow(resultCount: viewModel.items.count)
                     if !viewModel.items.isEmpty {
                         loadableProgressRing
                     }
                 case .movies:
-                    ForEach(viewModel.items.filter { $0.itemContentMedia == .movie }) { item in
+                    let items = viewModel.items.filter { $0.itemContentMedia == .movie }
+                    ForEach(items) { item in
                         SearchItemView(item: item,
                                        showPopup: $showPopup,
                                        popupType: $popupType)
                     }
+                    searchNativeAdRow(resultCount: items.count)
                     loadableProgressRing
                 case .shows:
-                    ForEach(viewModel.items.filter { $0.itemContentMedia == .tvShow && $0.media != .person }) { item in
+                    let items = viewModel.items.filter { $0.itemContentMedia == .tvShow && $0.media != .person }
+                    ForEach(items) { item in
                         SearchItemView(item: item,
                                        showPopup: $showPopup,
                                        popupType: $popupType)
                     }
+                    searchNativeAdRow(resultCount: items.count)
                     loadableProgressRing
                 case .people:
-                    ForEach(viewModel.items.filter { $0.media == .person }) { item in
+                    let items = viewModel.items.filter { $0.media == .person }
+                    ForEach(items) { item in
                         SearchItemView(item: item,
                                        showPopup: $showPopup,
                                        popupType: $popupType)
                     }
+                    searchNativeAdRow(resultCount: items.count)
                     loadableProgressRing
                 }
             }
         }
+    }
+
+    @ViewBuilder
+    private func searchNativeAdRow(resultCount: Int) -> some View {
+#if os(iOS)
+        if SearchAdPolicy.shouldShowNativeAd(
+            hasPurchasedTipJar: SettingsStore.shared.hasPurchasedTipJar,
+            monetizationDisabled: PreviewVideoRuntime.shouldDisableMonetization(),
+            resultCount: resultCount
+        ) {
+            NativeAdView(nativeViewModel: nativeViewModel, style: .largeBanner)
+                .frame(height: 320)
+                .listRowInsets(.init(top: 12, leading: 16, bottom: 12, trailing: 16))
+                .onAppear {
+                    nativeViewModel.refreshAd()
+                }
+        }
+#endif
     }
 #endif
     

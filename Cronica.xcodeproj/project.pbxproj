@@ -364,6 +364,14 @@
 		B8FCAE892AED8C9300F688FE /* WatchlistSearchScope.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8389ED128AB46E3003025BC /* WatchlistSearchScope.swift */; };
 		B8FCAE8A2AED8CA200F688FE /* FilmographyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C781F1287F576100B4C2C2 /* FilmographyListView.swift */; };
 		B8FCAE922AED9CE300F688FE /* CronicaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FCAE912AED9CE300F688FE /* CronicaTests.swift */; };
+		CDAD00010000000000000001 /* AdConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAD00100000000000000001 /* AdConfiguration.swift */; platformFilter = ios; };
+		CDAD00020000000000000001 /* AdConsentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAD00110000000000000001 /* AdConsentManager.swift */; platformFilter = ios; };
+		CDAD00030000000000000001 /* AdCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAD00120000000000000001 /* AdCoordinator.swift */; platformFilter = ios; };
+		CDAD00040000000000000001 /* AdmobSwiftUI in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = CDAD00300000000000000001 /* AdmobSwiftUI */; };
+		CDAD00050000000000000001 /* AdConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAD00200000000000000001 /* AdConfigurationTests.swift */; };
+		CDAD00060000000000000001 /* AdCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAD00210000000000000001 /* AdCoordinatorTests.swift */; };
+		CDAD00070000000000000001 /* AdGatingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAD00220000000000000001 /* AdGatingTests.swift */; };
+		CDAD00080000000000000001 /* AdStartupCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAD00230000000000000001 /* AdStartupCoordinatorTests.swift */; };
 		B8FCAE982AEDA38E00F688FE /* SeasonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FF4DBA27F91A4900C7DE9F /* SeasonListView.swift */; };
 		B8FF4DBB27F91A4900C7DE9F /* SeasonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FF4DBA27F91A4900C7DE9F /* SeasonListView.swift */; };
 		B8FF4DBF27FA511A00C7DE9F /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FF4DBE27FA511A00C7DE9F /* TitleView.swift */; };
@@ -646,6 +654,13 @@
 		B8FB2A8F295263AB006DAC8E /* AboutSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutSettings.swift; sourceTree = "<group>"; };
 		B8FCAE8F2AED9CE300F688FE /* Cronica Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Cronica Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8FCAE912AED9CE300F688FE /* CronicaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaTests.swift; sourceTree = "<group>"; };
+		CDAD00100000000000000001 /* AdConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdConfiguration.swift; sourceTree = "<group>"; };
+		CDAD00110000000000000001 /* AdConsentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdConsentManager.swift; sourceTree = "<group>"; };
+		CDAD00120000000000000001 /* AdCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdCoordinator.swift; sourceTree = "<group>"; };
+		CDAD00200000000000000001 /* AdConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdConfigurationTests.swift; sourceTree = "<group>"; };
+		CDAD00210000000000000001 /* AdCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdCoordinatorTests.swift; sourceTree = "<group>"; };
+		CDAD00220000000000000001 /* AdGatingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdGatingTests.swift; sourceTree = "<group>"; };
+		CDAD00230000000000000001 /* AdStartupCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdStartupCoordinatorTests.swift; sourceTree = "<group>"; };
 		B8FF4DBA27F91A4900C7DE9F /* SeasonListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonListView.swift; sourceTree = "<group>"; };
 		B8FF4DBE27FA511A00C7DE9F /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		B8FF4DC027FB56F500C7DE9F /* SFSafariViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSafariViewWrapper.swift; sourceTree = "<group>"; };
@@ -670,6 +685,7 @@
 				B8F367642AF5CAAA0027CAF9 /* Aptabase in Frameworks */,
 				B86A3A902B509C9B00BDE432 /* Pow in Frameworks */,
 				B8424FB02C7A01500098BFFB /* YouTubePlayerKit in Frameworks */,
+				CDAD00040000000000000001 /* AdmobSwiftUI in Frameworks */,
 				B86A3A8D2B509C8200BDE432 /* NukeUI in Frameworks */,
 				B86A3A8B2B509C8200BDE432 /* Nuke in Frameworks */,
 				B87F74642806592E00E94126 /* CloudKit.framework in Frameworks */,
@@ -1347,6 +1363,9 @@
 			children = (
 				B8110F162792764B00844FEB /* Cronica.entitlements */,
 				B8CC953527D05E4A00B6757C /* Cronica-Info.plist */,
+				CDAD00100000000000000001 /* AdConfiguration.swift */,
+				CDAD00110000000000000001 /* AdConsentManager.swift */,
+				CDAD00120000000000000001 /* AdCoordinator.swift */,
 				B8110ED8279245D000844FEB /* CronicaApp.swift */,
 				B86E587827A48E5A005DBF38 /* Key.swift */,
 				B8E6D64027B6B106002E7A63 /* Watchlist.xcdatamodeld */,
@@ -1415,6 +1434,10 @@
 			isa = PBXGroup;
 			children = (
 				B8FCAE912AED9CE300F688FE /* CronicaTests.swift */,
+				CDAD00200000000000000001 /* AdConfigurationTests.swift */,
+				CDAD00210000000000000001 /* AdCoordinatorTests.swift */,
+				CDAD00220000000000000001 /* AdGatingTests.swift */,
+				CDAD00230000000000000001 /* AdStartupCoordinatorTests.swift */,
 			);
 			path = CronicaTests;
 			sourceTree = "<group>";
@@ -1467,6 +1490,7 @@
 				B86A3A8C2B509C8200BDE432 /* NukeUI */,
 				B86A3A8F2B509C9B00BDE432 /* Pow */,
 				B8424FAF2C7A01500098BFFB /* YouTubePlayerKit */,
+				CDAD00300000000000000001 /* AdmobSwiftUI */,
 			);
 			productName = "Story (iOS)";
 			productReference = B8110EDF279245D100844FEB /* Cronica.app */;
@@ -1555,6 +1579,7 @@
 				B86A3A892B509C8200BDE432 /* XCRemoteSwiftPackageReference "Nuke" */,
 				B86A3A8E2B509C9B00BDE432 /* XCRemoteSwiftPackageReference "Pow" */,
 				B8424FAE2C7A01500098BFFB /* XCRemoteSwiftPackageReference "YouTubePlayerKit" */,
+				CDAD00310000000000000001 /* XCRemoteSwiftPackageReference "AdmobSwiftUI" */,
 			);
 			productRefGroup = B8110EE0279245D100844FEB /* Products */;
 			projectDirPath = "";
@@ -1756,6 +1781,9 @@
 				B82BE4F2299EB3F5005F9990 /* WatchlistTitle.swift in Sources */,
 				B818483729C286C300650763 /* UserDefaults-Extensions.swift in Sources */,
 				B8110EE8279245D100844FEB /* CronicaApp.swift in Sources */,
+				CDAD00010000000000000001 /* AdConfiguration.swift in Sources */,
+				CDAD00020000000000000001 /* AdConsentManager.swift in Sources */,
+				CDAD00030000000000000001 /* AdCoordinator.swift in Sources */,
 				B84F022A299026B7007EA8AE /* DatesManager.swift in Sources */,
 				B8B2F6AA2A85D50A00FF0246 /* SearchItemContent.swift in Sources */,
 				B81941C82A0861C80057DA04 /* ArchiveButton.swift in Sources */,
@@ -1971,6 +1999,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8FCAE922AED9CE300F688FE /* CronicaTests.swift in Sources */,
+				CDAD00050000000000000001 /* AdConfigurationTests.swift in Sources */,
+				CDAD00060000000000000001 /* AdCoordinatorTests.swift in Sources */,
+				CDAD00070000000000000001 /* AdGatingTests.swift in Sources */,
+				CDAD00080000000000000001 /* AdStartupCoordinatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2506,6 +2538,14 @@
 				minimumVersion = 0.3.4;
 			};
 		};
+		CDAD00310000000000000001 /* XCRemoteSwiftPackageReference "AdmobSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dearhui/AdmobSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -2553,6 +2593,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B8F367622AF5CA900027CAF9 /* XCRemoteSwiftPackageReference "aptabase-swift" */;
 			productName = Aptabase;
+		};
+		CDAD00300000000000000001 /* AdmobSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CDAD00310000000000000001 /* XCRemoteSwiftPackageReference "AdmobSwiftUI" */;
+			productName = AdmobSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 

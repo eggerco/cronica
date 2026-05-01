@@ -8,6 +8,157 @@ import SwiftUI
 import BackgroundTasks
 #if os(iOS)
 import NotificationCenter
+import GoogleMobileAds
+import UIKit
+
+enum PreviewVideoRuntime {
+    static let scenarioArgument = "--preview-video-scenario"
+    static let disableMonetizationArgument = "--preview-video-disable-monetization"
+
+    static func scenarioID(arguments: [String]) -> String? {
+        guard let index = arguments.firstIndex(of: scenarioArgument) else { return nil }
+        let nextIndex = arguments.index(after: index)
+        guard nextIndex < arguments.endIndex else { return nil }
+        let scenarioID = arguments[nextIndex].trimmingCharacters(in: .whitespacesAndNewlines)
+        return scenarioID.isEmpty ? nil : scenarioID
+    }
+
+    static func shouldDisableMonetization(arguments: [String]) -> Bool {
+        arguments.contains(disableMonetizationArgument) || scenarioID(arguments: arguments) != nil
+    }
+
+    static func shouldDisableMonetization(processInfo: ProcessInfo = .processInfo) -> Bool {
+        shouldDisableMonetization(arguments: processInfo.arguments)
+    }
+}
+
+protocol MobileAdsStarting {
+    func start() async
+}
+
+protocol AdConsentGathering {
+    func gatherConsentIfPossible(from viewController: UIViewController?) async
+}
+
+protocol AdPreloading {
+    func preloadAds() async
+}
+
+protocol AdPreloadCoordinating {
+    func loadAd()
+    func loadAppOpenAd()
+}
+
+extension AdCoordinator: AdPreloadCoordinating {}
+
+protocol AdForegroundPresenting {
+    func ensureInterstitialLoaded()
+    func presentAppOpenAd()
+}
+
+extension AdCoordinator: AdForegroundPresenting {}
+
+struct MobileAdsStarter: MobileAdsStarting {
+    @MainActor
+    func start() async {
+        await MobileAds.shared.start()
+    }
+}
+
+struct AdConsentGatherer: AdConsentGathering {
+    @MainActor
+    func gatherConsentIfPossible(from viewController: UIViewController?) async {
+        guard let viewController else { return }
+        await AdConsentManager.gatherConsent(from: viewController)
+    }
+}
+
+struct SharedAdPreloader: AdPreloading {
+    let adCoordinator: AdPreloadCoordinating
+
+    init(adCoordinator: AdPreloadCoordinating = AdCoordinator.shared) {
+        self.adCoordinator = adCoordinator
+    }
+
+    @MainActor
+    func preloadAds() async {
+        adCoordinator.loadAd()
+        adCoordinator.loadAppOpenAd()
+    }
+}
+
+struct AdStartupCoordinator {
+    let mobileAdsStarter: MobileAdsStarting
+    let consentGatherer: AdConsentGathering
+    let adPreloader: AdPreloading
+
+    init(
+        mobileAdsStarter: MobileAdsStarting = MobileAdsStarter(),
+        consentGatherer: AdConsentGathering = AdConsentGatherer(),
+        adPreloader: AdPreloading = SharedAdPreloader()
+    ) {
+        self.mobileAdsStarter = mobileAdsStarter
+        self.consentGatherer = consentGatherer
+        self.adPreloader = adPreloader
+    }
+
+    func startAdsIfNeeded(
+        monetizationDisabled: Bool,
+        rootViewController: UIViewController?
+    ) async {
+        guard !monetizationDisabled else { return }
+
+        await mobileAdsStarter.start()
+        await adPreloader.preloadAds()
+        await consentGatherer.gatherConsentIfPossible(from: rootViewController)
+    }
+}
+
+struct AdForegroundPresentationCoordinator {
+    let adPresenter: AdForegroundPresenting
+
+    init(adPresenter: AdForegroundPresenting = AdCoordinator.shared) {
+        self.adPresenter = adPresenter
+    }
+
+    func presentForegroundAdsIfNeeded(monetizationDisabled: Bool) {
+        guard !monetizationDisabled else { return }
+        adPresenter.ensureInterstitialLoaded()
+        adPresenter.presentAppOpenAd()
+    }
+}
+
+final class CronicaAdAppDelegate: NSObject, UIApplicationDelegate {
+    private let adStartupCoordinator = AdStartupCoordinator()
+    private let adForegroundCoordinator = AdForegroundPresentationCoordinator()
+
+    func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
+    ) -> Bool {
+        Task { @MainActor in
+            await adStartupCoordinator.startAdsIfNeeded(
+                monetizationDisabled: PreviewVideoRuntime.shouldDisableMonetization(),
+                rootViewController: launchRootViewController()
+            )
+        }
+        return true
+    }
+
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        adForegroundCoordinator.presentForegroundAdsIfNeeded(
+            monetizationDisabled: PreviewVideoRuntime.shouldDisableMonetization()
+        )
+    }
+
+    private func launchRootViewController() -> UIViewController? {
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
+            return nil
+        }
+        return windowScene.windows.first(where: \.isKeyWindow)?.rootViewController
+            ?? windowScene.windows.first?.rootViewController
+    }
+}
 #endif
 
 @main
@@ -26,6 +177,8 @@ struct CronicaApp: App {
 #if os(iOS)
     @ObservedObject private var notificationDelegate = NotificationDelegate()
     @State private var lastNotificationID = String()
+    @UIApplicationDelegateAdaptor(CronicaAdAppDelegate.self) private var adAppDelegate
+    private let adForegroundCoordinator = AdForegroundPresentationCoordinator()
 #endif
     init() {
         CronicaTelemetry.shared.setup()
@@ -165,6 +318,13 @@ struct CronicaApp: App {
             if phase == .background {
                 scheduleAppRefresh()
             }
+#if os(iOS)
+            if phase == .active {
+                adForegroundCoordinator.presentForegroundAdsIfNeeded(
+                    monetizationDisabled: PreviewVideoRuntime.shouldDisableMonetization()
+                )
+            }
+#endif
         }
 #if os(macOS)
         .commands {

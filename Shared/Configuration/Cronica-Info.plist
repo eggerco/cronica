@@ -21,6 +21,10 @@
 			</array>
 		</dict>
 	</array>
+	<key>GADApplicationIdentifier</key>
+	<string>ca-app-pub-7891478850122465~6704621236</string>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>This allows us to show you more relevant ads and helps support the app.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
