@@ -92,15 +92,21 @@ struct AppearanceSetting: View {
 #endif
     }
     
+    /// Prefer cinematic reds that match the popcorn icons; keep the rest after.
+    private var accentColorOptions: [AppThemeColors] {
+        let preferred: [AppThemeColors] = [.cherry, .rubyRed, .coral, .fireballRed, .burntOrange]
+        return preferred + AppThemeColors.allCases.filter { !preferred.contains($0) }
+    }
+
     private var accentColor: some View {
         VStack(alignment: .leading) {
             ScrollViewReader { proxy in
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
-                        ForEach(AppThemeColors.allCases) { item in
+                        ForEach(accentColorOptions) { item in
                             colorButton(for: item)
-                                .padding(.leading, item == AppThemeColors.allCases.first ? 16 : 0)
-                                .padding(.trailing, item == AppThemeColors.allCases.last ? 16 : 0)
+                                .padding(.leading, item == accentColorOptions.first ? 16 : 0)
+                                .padding(.trailing, item == accentColorOptions.last ? 16 : 0)
                                 .padding(.horizontal, 4)
                         }
                     }

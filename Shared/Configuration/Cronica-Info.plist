@@ -12,7 +12,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 			<key>CFBundleURLName</key>
-			<string></string>
+			<string>dev.alexandremadeira.Story</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>cronica</string>

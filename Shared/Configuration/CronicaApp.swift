@@ -15,8 +15,6 @@ struct CronicaApp: App {
     var persistence = PersistenceController.shared
     private let backgroundIdentifier = "dev.alexandremadeira.cronica.refreshContent"
     @Environment(\.scenePhase) private var scene
-    @State private var widgetItem: ItemContent?
-    @State private var notificationItem: ItemContent?
     @State private var selectedItem: ItemContent?
     @State private var showFeedbackForm = false
     @State private var showAbout = false
@@ -64,16 +62,8 @@ struct CronicaApp: App {
                 }
 #endif
                 .onOpenURL { url in
-                    let urlString = url.absoluteString
-                    if urlString.hasPrefix("cronica://") {
-                        let urlSubstring = urlString.dropFirst("cronica://".count)
-                        Task {
-                            await fetchContent(for: String(urlSubstring))
-                        }
-                    } else {
-                        Task {
-                            await fetchContent(for: url.absoluteString)
-                        }
+                    Task {
+                        await openDeepLink(url)
                     }
                 }
                 .sheet(item: $selectedItem) { item in
@@ -216,6 +206,30 @@ struct CronicaApp: App {
 #endif
     }
     
+    private func openDeepLink(_ url: URL) async {
+        if let contentID = Self.contentID(from: url) {
+            await fetchContent(for: contentID)
+        }
+    }
+
+    /// Accepts `cronica://123@0`, bare `123@0`, or `https://www.oncronica.com/details?id=123@0`.
+    static func contentID(from url: URL) -> String? {
+        let absolute = url.absoluteString
+        if absolute.hasPrefix("cronica://") {
+            let id = String(absolute.dropFirst("cronica://".count))
+            return id.isEmpty ? nil : id.removingPercentEncoding ?? id
+        }
+        if let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
+           let id = components.queryItems?.first(where: { $0.name == "id" })?.value,
+           !id.isEmpty {
+            return id
+        }
+        if absolute.contains("@"), !absolute.contains("://") {
+            return absolute
+        }
+        return nil
+    }
+
     private func fetchContent(for id: String) async {
         if selectedItem != nil { selectedItem = nil }
         let type = id.last ?? "0"
@@ -223,7 +237,7 @@ struct CronicaApp: App {
         if type == "1" {
             media = .tvShow
         }
-        let contentID = id.dropLast(2)
+        let contentID = String(id.dropLast(2))
         guard let contentIDNumber = Int(contentID) else { return }
         let item = try? await NetworkService.shared.fetchItem(id: contentIDNumber, type: media)
         guard let item else { return }
@@ -253,36 +267,27 @@ struct CronicaApp: App {
 #if os(iOS)
     // Fetch the latest updates from api.
     private func handleAppRefresh(task: BGAppRefreshTask?) {
-        if let task {
-            scheduleAppRefresh()
-            let queue = OperationQueue()
-            queue.maxConcurrentOperationCount = 1
-            task.expirationHandler = {
-                // After all operations are cancelled, the completion block below is called to set the task to complete.
-                queue.cancelAllOperations()
-            }
-            queue.addOperation {
-                Task {
-                    await BackgroundManager.shared.handleWatchingContentRefresh()
-                    BackgroundManager.shared.lastWatchingRefresh = Date()
-                    await BackgroundManager.shared.handleUpcomingContentRefresh()
-                    BackgroundManager.shared.lastUpcomingRefresh = Date()
-                    await BackgroundManager.shared.handleAppRefreshMaintenance()
-                    BackgroundManager.shared.lastMaintenance = Date()
-                }
-            }
-            task.setTaskCompleted(success: true)
+        guard let task else { return }
+        scheduleAppRefresh()
+        let refreshTask = Task {
+            await BackgroundManager.shared.handleWatchingContentRefresh()
+            await BackgroundManager.shared.handleUpcomingContentRefresh()
+            await BackgroundManager.shared.handleAppRefreshMaintenance()
+        }
+        task.expirationHandler = {
+            refreshTask.cancel()
+        }
+        Task {
+            await refreshTask.value
+            task.setTaskCompleted(success: !Task.isCancelled)
         }
     }
 #elseif os(macOS)
     private func handleAppRefresh() {
         Task {
             await BackgroundManager.shared.handleWatchingContentRefresh()
-            BackgroundManager.shared.lastWatchingRefresh = Date()
             await BackgroundManager.shared.handleUpcomingContentRefresh()
-            BackgroundManager.shared.lastUpcomingRefresh = Date()
             await BackgroundManager.shared.handleAppRefreshMaintenance()
-            BackgroundManager.shared.lastMaintenance = Date()
         }
     }
 #endif

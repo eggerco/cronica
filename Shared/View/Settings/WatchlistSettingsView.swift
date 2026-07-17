@@ -16,7 +16,9 @@ struct WatchlistSettingsView: View {
     @State private var showFilePicker = false
     @State private var exportUrl: URL?
     @Environment(\.managedObjectContext) private var context
-    @State private var hasImported = false
+    @State private var isImporting = false
+    @State private var importMessage: String?
+    @State private var showImportResult = false
     let background = BackgroundManager.shared
     var body: some View {
         Form {
@@ -79,7 +81,7 @@ struct WatchlistSettingsView: View {
 #endif
             } footer: {
 #if os(iOS)
-                Text("Backup/Restore is in beta, only use it to export your data or to import if you're switching your iCloud account, there's no logic at the moment to avoid duplication.")
+                Text("Exports your watchlist as JSON. Restore skips titles that are already in your library.")
 #endif
             }
             .sheet(isPresented: $showExportShareSheet) {
@@ -91,12 +93,17 @@ struct WatchlistSettingsView: View {
             .fileImporter(isPresented: $showFilePicker, allowedContentTypes: [.json]) { result in
                 switch result {
                 case .success(let success):
-                    if success.startAccessingSecurityScopedResource() {
-                        importJSON(success)
-                    }
+                    importJSON(success)
                 case .failure(let failure):
                     CronicaTelemetry.shared.handleMessage(failure.localizedDescription, for: "SyncSettings.fileImporter")
+                    importMessage = String(localized: "Couldn’t open that file.")
+                    showImportResult = true
                 }
+            }
+            .alert("Restore", isPresented: $showImportResult) {
+                Button("OK", role: .cancel) { }
+            } message: {
+                Text(importMessage ?? "")
             }
 #endif
 #endif
@@ -116,9 +123,13 @@ struct WatchlistSettingsView: View {
         Button {
             showFilePicker.toggle()
         } label: {
-            Text("Restore")
+            if isImporting {
+                ProgressView()
+            } else {
+                Text("Restore")
+            }
         }
-        .disabled(hasImported)
+        .disabled(isImporting)
     }
     
     private var exportButton: some View {
@@ -151,9 +162,9 @@ extension WatchlistSettingsView {
                     self.updatingItems.toggle()
                 }
             }
-            await background.handleWatchingContentRefresh()
-            await background.handleUpcomingContentRefresh()
-            await background.handleAppRefreshMaintenance()
+            await background.handleWatchingContentRefresh(force: true)
+            await background.handleUpcomingContentRefresh(force: true)
+            await background.handleAppRefreshMaintenance(force: true)
             await MainActor.run {
                 withAnimation {
                     self.updatingItems.toggle()
@@ -174,7 +185,10 @@ extension WatchlistSettingsView {
                 let jsonData = try JSONEncoder().encode(items)
                 if let jsonString = String(data: jsonData, encoding: .utf8) {
                     if let tempUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-                        let pathUrl = tempUrl.appending(component: "CronicaExport \(Date().formatted(date: .abbreviated, time: .omitted)).json")
+                        let formatter = DateFormatter()
+                        formatter.locale = Locale(identifier: "en_US_POSIX")
+                        formatter.dateFormat = "yyyy-MM-dd"
+                        let pathUrl = tempUrl.appending(component: "CronicaExport-\(formatter.string(from: Date())).json")
                         try jsonString.write(to: pathUrl, atomically: true, encoding: .utf8)
                         exportUrl = pathUrl
                         showExportShareSheet.toggle()
@@ -189,20 +203,46 @@ extension WatchlistSettingsView {
     }
     
     private func importJSON(_ url: URL) {
+        let accessed = url.startAccessingSecurityScopedResource()
+        defer {
+            if accessed {
+                url.stopAccessingSecurityScopedResource()
+            }
+        }
+        isImporting = true
+        defer { isImporting = false }
         do {
+            let existingRequest = WatchlistItem.fetchRequest()
+            let existingItems = try context.fetch(existingRequest)
+            var existingIDs = Set(existingItems.compactMap(\.contentID))
+
             let jsonData = try Data(contentsOf: url)
             let decoder = JSONDecoder()
-            decoder.userInfo[.context] = PersistenceController.shared.container.viewContext
-            _ = try decoder.decode([WatchlistItem].self, from: jsonData)
-            try context.save()
-            hasImported.toggle()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                withAnimation {
-                    hasImported = false
+            decoder.userInfo[.context] = context
+            let decoded = try decoder.decode([WatchlistItem].self, from: jsonData)
+            var imported = 0
+            var skipped = 0
+            for item in decoded {
+                let id = item.contentID ?? item.itemContentID
+                if existingIDs.contains(id) {
+                    context.delete(item)
+                    skipped += 1
+                } else {
+                    existingIDs.insert(id)
+                    imported += 1
                 }
             }
+            try context.save()
+            importMessage = String(
+                format: String(localized: "Imported %lld titles. Skipped %lld that were already in your watchlist."),
+                imported,
+                skipped
+            )
+            showImportResult = true
         } catch {
             CronicaTelemetry.shared.handleMessage(error.localizedDescription, for: "SyncSettings.importJSON.failed")
+            importMessage = String(localized: "Restore failed. Check that the file is a Cronica backup.")
+            showImportResult = true
         }
     }
 #endif
