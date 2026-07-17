@@ -151,9 +151,9 @@ struct ItemContentDetails: View {
         VStack(spacing: 0) {
             if store.usePostersAsCover || viewModel.showPoster {
                 poster
-                phoneTitleBlock(alignment: .center, light: false)
+                detailTitleBlock(alignment: .center, light: false)
                     .padding(.top, CronicaDesign.Spacing.sm)
-                phoneActionCluster
+                detailActionCluster
                     .padding(.top, CronicaDesign.Spacing.md)
             } else {
                 cinematicHero
@@ -208,15 +208,15 @@ struct ItemContentDetails: View {
             CronicaDesign.Atmosphere.gradient
                 .allowsHitTesting(false)
             VStack(alignment: .leading, spacing: CronicaDesign.Spacing.sm) {
-                phoneTitleBlock(alignment: .leading, light: true)
-                phoneActionCluster
+                detailTitleBlock(alignment: .leading, light: true)
+                detailActionCluster
             }
             .padding(.horizontal, CronicaDesign.Spacing.lg)
             .padding(.bottom, CronicaDesign.Spacing.lg)
             .opacity(heroAppeared ? 1 : 0)
             .offset(y: heroAppeared || reduceMotion ? 0 : 16)
         }
-        .frame(height: CronicaDesign.Atmosphere.detailHeroHeight)
+        .frame(height: CronicaDesign.Atmosphere.detailHeroHeightForPlatform)
         .frame(maxWidth: .infinity)
         .clipped()
         .onAppear {
@@ -229,9 +229,11 @@ struct ItemContentDetails: View {
             }
         }
     }
-
+#endif
+    
+#if !os(tvOS)
     @ViewBuilder
-    private func phoneTitleBlock(alignment: HorizontalAlignment, light: Bool) -> some View {
+    private func detailTitleBlock(alignment: HorizontalAlignment, light: Bool) -> some View {
         VStack(alignment: alignment, spacing: CronicaDesign.Spacing.xxs) {
             Text(title)
                 .multilineTextAlignment(alignment == .leading ? .leading : .center)
@@ -254,7 +256,7 @@ struct ItemContentDetails: View {
         }
     }
 
-    private var phoneActionCluster: some View {
+    private var detailActionCluster: some View {
         HStack(spacing: CronicaDesign.Spacing.sm) {
             if type == .movie {
                 watchButton
@@ -270,83 +272,42 @@ struct ItemContentDetails: View {
         .cronicaGlassSurface()
         .padding(.horizontal, CronicaDesign.Spacing.md)
     }
-#endif
-    
-#if !os(tvOS)
-    private var sizeBasedPadMacView: some View {
-        VStack {
-            
-            // Header
-            HStack {
-                poster
-                
-                VStack(alignment: .leading) {
-                    Text(title)
-                        .fontWeight(.semibold)
-                        .font(.title)
-                        .padding(.bottom)
-                    HStack {
-                        Text(viewModel.content?.itemOverview ?? "")
-                            .lineLimit(10)
-                            .onTapGesture {
-                                showOverview.toggle()
-                            }
-                        Spacer()
-                    }
-                    .frame(maxWidth: 460)
-                    .padding(.bottom)
-                    .popover(isPresented: $showOverview) {
-                        if let overview = viewModel.content?.itemOverview {
-                            VStack {
-                                ScrollView {
-                                    Text(overview)
-                                        .padding()
-                                }
-                            }
-                            .frame(minWidth: 200, maxWidth: 400, minHeight: 200, maxHeight: 300, alignment: .center)
-                        }
-                    }
-                    
-                    // Actions
-                    HStack {
-                        watchlistButton
-                            .padding(.trailing)
-                        
-                        if viewModel.isInWatchlist {
-                            if type == .movie {
-                                watchButton
-                            } else {
-                                favoriteButton
-                            }
-                            
-                            listButton
-                                .padding(.horizontal)
-                        }
-                    }
-                }
-                .frame(width: 360)
-                
-                ViewThatFits {
-                    quickInformationBoxView
-                        .frame(width: 280)
-                        .padding(.horizontal)
-                        .onAppear {
-                            showInfoBox = false
-                            isSideInfoPanelShowed = true
-                        }
-                        .onDisappear {
-                            showInfoBox = true
-                            isSideInfoPanelShowed = false
-                        }
-                    VStack {
-                        Text("")
-                    }
-                }
-                
-                Spacer()
+
+    private var cover: some View {
+        HeroImage(url: viewModel.content?.cardImageLarge,
+                  title: title,
+                  fullBleed: true)
+        .overlay {
+            ZStack {
+                Rectangle().fill(.ultraThinMaterial)
+                Image(systemName: animationImage)
+                    .symbolRenderingMode(.multicolor)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 120, height: 120, alignment: .center)
+                    .scaleEffect(animateGesture ? 1.1 : 1)
             }
-            .padding(.leading)
-            
+            .opacity(animateGesture ? 1 : 0)
+        }
+        .frame(maxWidth: .infinity)
+        .frame(height: CronicaDesign.Atmosphere.detailHeroHeightForPlatform)
+        .clipped()
+        .accessibilityElement(children: .combine)
+        .accessibilityHidden(true)
+        .onTapGesture(count: 2) {
+            animate(for: store.gesture)
+            viewModel.update(store.gesture)
+        }
+    }
+
+    private var sizeBasedPadMacView: some View {
+        VStack(spacing: 0) {
+            if store.usePostersAsCover || viewModel.showPoster {
+                classicPadMacHeader
+            } else {
+                padMacCinematicHero
+            }
+
             if let season = viewModel.content?.seasons {
                 SeasonListView(
                     showID: id,
@@ -378,6 +339,10 @@ struct ItemContentDetails: View {
         }
 #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
+        .toolbarBackground(
+            (store.usePostersAsCover || viewModel.showPoster) ? .automatic : .hidden,
+            for: .navigationBar
+        )
 #elseif os(macOS)
         .navigationTitle(title)
 #endif
@@ -385,31 +350,174 @@ struct ItemContentDetails: View {
             if !isSideInfoPanelShowed && !showInfoBox { showInfoBox = true }
         }
     }
+
+    private var classicPadMacHeader: some View {
+        HStack(alignment: .top) {
+            poster
+
+            VStack(alignment: .leading, spacing: CronicaDesign.Spacing.sm) {
+                Text(title)
+                    .font(CronicaDesign.Typography.display())
+                    .padding(.bottom, CronicaDesign.Spacing.xs)
+                HStack {
+                    Text(viewModel.content?.itemOverview ?? "")
+                        .lineLimit(10)
+                        .onTapGesture {
+                            showOverview.toggle()
+                        }
+                    Spacer()
+                }
+                .frame(maxWidth: 460)
+                .padding(.bottom, CronicaDesign.Spacing.sm)
+                .popover(isPresented: $showOverview) {
+                    if let overview = viewModel.content?.itemOverview {
+                        VStack {
+                            ScrollView {
+                                Text(overview)
+                                    .padding()
+                            }
+                        }
+                        .frame(minWidth: 200, maxWidth: 400, minHeight: 200, maxHeight: 300, alignment: .center)
+                    }
+                }
+
+                HStack {
+                    watchlistButton
+                        .padding(.trailing)
+
+                    if viewModel.isInWatchlist {
+                        if type == .movie {
+                            watchButton
+                        } else {
+                            favoriteButton
+                        }
+
+                        listButton
+                            .padding(.horizontal)
+                    }
+                }
+            }
+            .frame(width: 360)
+
+            ViewThatFits {
+                quickInformationBoxView
+                    .frame(width: 280)
+                    .padding(.horizontal)
+                    .onAppear {
+                        showInfoBox = false
+                        isSideInfoPanelShowed = true
+                    }
+                    .onDisappear {
+                        showInfoBox = true
+                        isSideInfoPanelShowed = false
+                    }
+                VStack {
+                    Text("")
+                }
+            }
+
+            Spacer()
+        }
+        .padding(.leading)
+    }
+
+    private var padMacCinematicHero: some View {
+        ZStack(alignment: .bottomLeading) {
+            cover
+                .scaleEffect(heroAppeared || reduceMotion ? 1 : 1.04)
+            CronicaDesign.Atmosphere.gradient
+                .allowsHitTesting(false)
+            HStack(alignment: .bottom, spacing: CronicaDesign.Spacing.lg) {
+                VStack(alignment: .leading, spacing: CronicaDesign.Spacing.sm) {
+                    detailTitleBlock(alignment: .leading, light: true)
+                    detailActionCluster
+                    Text(viewModel.content?.itemOverview ?? "")
+                        .font(CronicaDesign.Typography.sectionSubtitle())
+                        .foregroundStyle(.white.opacity(0.85))
+                        .lineLimit(4)
+                        .frame(maxWidth: 520, alignment: .leading)
+                        .onTapGesture { showOverview.toggle() }
+                }
+                Spacer(minLength: 0)
+                quickInformationBoxView
+                    .frame(width: 260)
+                    .padding()
+                    .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: CronicaDesign.Radius.media, style: .continuous))
+                    .onAppear {
+                        showInfoBox = false
+                        isSideInfoPanelShowed = true
+                    }
+            }
+            .padding(.horizontal, CronicaDesign.Spacing.xl)
+            .padding(.bottom, CronicaDesign.Spacing.xl)
+            .opacity(heroAppeared ? 1 : 0)
+            .offset(y: heroAppeared || reduceMotion ? 0 : 12)
+        }
+        .frame(height: CronicaDesign.Atmosphere.detailHeroHeightForPlatform)
+        .frame(maxWidth: .infinity)
+        .clipped()
+        .onAppear {
+            if reduceMotion {
+                heroAppeared = true
+            } else {
+                withAnimation(CronicaDesign.Motion.hero) {
+                    heroAppeared = true
+                }
+            }
+        }
+        .popover(isPresented: $showOverview) {
+            if let overview = viewModel.content?.itemOverview {
+                ScrollView {
+                    Text(overview).padding()
+                }
+                .frame(minWidth: 280, maxWidth: 420, minHeight: 200, maxHeight: 320)
+            }
+        }
+    }
 #endif
     
 #if os(tvOS)
     private var sizeBasedTVView: some View {
         VStack {
+            ZStack(alignment: .bottomLeading) {
+                HeroImage(url: viewModel.content?.cardImageLarge, title: title, fullBleed: true)
+                    .frame(maxWidth: .infinity)
+                    .frame(height: CronicaDesign.Atmosphere.detailHeroHeightTV)
+                    .clipped()
+                CronicaDesign.Atmosphere.gradient
+                VStack(alignment: .leading, spacing: CronicaDesign.Spacing.sm) {
+                    Text(title)
+                        .font(CronicaDesign.Typography.brand())
+                        .foregroundStyle(.white)
+                        .lineLimit(2)
+                    if let genres = viewModel.content?.itemGenres, !genres.isEmpty {
+                        Text(genres)
+                            .font(CronicaDesign.Typography.sectionSubtitle())
+                            .foregroundStyle(.white.opacity(0.8))
+                    }
+                    if let info = viewModel.content?.itemQuickInfo, !info.isEmpty {
+                        Text(info)
+                            .font(CronicaDesign.Typography.caption())
+                            .foregroundStyle(.white.opacity(0.7))
+                    }
+                }
+                .padding(.leading, 64)
+                .padding(.bottom, 48)
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.bottom, CronicaDesign.Spacing.md)
+
             HStack {
                 Spacer()
-                poster
                 
                 VStack(alignment: .leading) {
-                    Text(title)
-                        .fontWeight(.semibold)
-                        .font(.title2)
-                        .padding(.bottom)
                     Button {
                         showOverview.toggle()
                     } label: {
                         HStack {
                             Text(viewModel.content?.itemOverview ?? String())
-                                .font(.callout)
-                                .fontDesign(.rounded)
-                                .lineLimit(10)
-                                .onTapGesture {
-                                    showOverview.toggle()
-                                }
+                                .font(CronicaDesign.Typography.sectionSubtitle())
+                                .lineLimit(8)
                             Spacer()
                         }
                         .frame(maxWidth: 700)
@@ -552,35 +660,6 @@ struct ItemContentDetails: View {
         .padding()
         .accessibility(hidden: true)
     }
-    
-#if os(iOS)
-    private var cover: some View {
-        HeroImage(url: viewModel.content?.cardImageLarge,
-                  title: title,
-                  fullBleed: true)
-        .overlay {
-            ZStack {
-                Rectangle().fill(.ultraThinMaterial)
-                Image(systemName: animationImage)
-                    .symbolRenderingMode(.multicolor)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 120, height: 120, alignment: .center)
-                    .scaleEffect(animateGesture ? 1.1 : 1)
-            }
-            .opacity(animateGesture ? 1 : 0)
-        }
-        .frame(maxWidth: .infinity)
-        .frame(height: CronicaDesign.Atmosphere.detailHeroHeight)
-        .clipped()
-        .accessibilityElement(children: .combine)
-        .accessibilityHidden(true)
-        .onTapGesture(count: 2) {
-            animate(for: store.gesture)
-            viewModel.update(store.gesture)
-        }
-    }
-#endif
     
 #if !os(tvOS)
     @ViewBuilder

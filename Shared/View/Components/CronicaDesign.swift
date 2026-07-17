@@ -58,7 +58,7 @@ enum CronicaDesign {
 
         static func sectionSubtitle() -> Font {
 #if os(tvOS)
-            return .caption
+            return .title3
 #else
             return .subheadline
 #endif
@@ -85,8 +85,42 @@ enum CronicaDesign {
 
     enum Atmosphere {
         static let heroHeightPhone: CGFloat = 420
+        static let heroHeightPad: CGFloat = 520
+        static let heroHeightMac: CGFloat = 380
+        static let heroHeightTV: CGFloat = 560
         static let heroHeightCompact: CGFloat = 320
-        static let detailHeroHeight: CGFloat = 460
+        static let detailHeroHeightPhone: CGFloat = 460
+        static let detailHeroHeightPad: CGFloat = 520
+        static let detailHeroHeightMac: CGFloat = 420
+        static let detailHeroHeightTV: CGFloat = 540
+
+        /// Back-compat alias used by phone details.
+        static let detailHeroHeight: CGFloat = detailHeroHeightPhone
+
+        static var homeHeroHeight: CGFloat {
+#if os(tvOS)
+            return heroHeightTV
+#elseif os(macOS)
+            return heroHeightMac
+#elseif os(iOS)
+            return UIDevice.isIPad ? heroHeightPad : heroHeightPhone
+#else
+            return heroHeightPhone
+#endif
+        }
+
+        static var detailHeroHeightForPlatform: CGFloat {
+#if os(tvOS)
+            return detailHeroHeightTV
+#elseif os(macOS)
+            return detailHeroHeightMac
+#elseif os(iOS)
+            return UIDevice.isIPad ? detailHeroHeightPad : detailHeroHeightPhone
+#else
+            return detailHeroHeightPhone
+#endif
+        }
+
         static let gradient = LinearGradient(
             colors: [
                 .black.opacity(0.05),
@@ -112,9 +146,16 @@ extension View {
     }
 
     func cronicaGlassSurface() -> some View {
+#if os(tvOS)
+        self.background(
+            .regularMaterial,
+            in: RoundedRectangle(cornerRadius: CronicaDesign.Radius.media, style: .continuous)
+        )
+#else
         self.background(
             .ultraThinMaterial,
             in: RoundedRectangle(cornerRadius: CronicaDesign.Radius.media, style: .continuous)
         )
+#endif
     }
 }

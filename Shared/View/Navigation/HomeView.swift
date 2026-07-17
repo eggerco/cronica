@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     static let tag: Screens? = .home
-#if os(tvOS) || os(macOS)
+#if os(tvOS)
     @AppStorage("showOnboarding") private var displayOnboard = false
 #else
     @AppStorage("showOnboarding") private var displayOnboard = true
@@ -31,14 +31,16 @@ struct HomeView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: CronicaDesign.Spacing.sm) {
+#if !os(watchOS)
+                HomeBrandHeader(
+                    featuredImage: homeFeaturedImage,
+                    featuredTitle: homeFeaturedTitle,
+                    height: CronicaDesign.Atmosphere.homeHeroHeight,
+                    compactCopy: compactHomeBrandCopy
+                )
+                .padding(.bottom, CronicaDesign.Spacing.xs)
+#endif
 #if os(iOS)
-                if UIDevice.isIPhone {
-                    HomeBrandHeader(
-                        featuredImage: homeFeaturedImage,
-                        featuredTitle: homeFeaturedTitle
-                    )
-                    .padding(.bottom, CronicaDesign.Spacing.xs)
-                }
                 if showReviewBanner { CallToReviewAppView(showView: $showReviewBanner).unredacted() }
 #endif
                 HorizontalUpNextListView(shouldReload: $reloadHome)
@@ -160,8 +162,8 @@ struct HomeView: View {
 #if !os(tvOS)
         .navigationTitle("Home")
 #if os(iOS)
-        .navigationBarTitleDisplayMode(UIDevice.isIPhone ? .inline : .large)
-        .toolbarBackground(UIDevice.isIPhone ? .hidden : .automatic, for: .navigationBar)
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbarBackground(.hidden, for: .navigationBar)
 #endif
 #endif
         .toolbar {
@@ -205,11 +207,12 @@ struct HomeView: View {
             }
 #endif
         }
-#if !os(macOS)
         .sheet(isPresented: $displayOnboard) {
             WelcomeView()
-        }
+#if os(macOS)
+                .frame(width: 520, height: 640)
 #endif
+        }
 #if !os(tvOS)
         .navigationDestination(for: Screens.self) { screen in
             if screen == .notifications {
@@ -224,6 +227,28 @@ struct HomeView: View {
         .task {
             await viewModel.load()
         }
+    }
+
+    private var compactHomeBrandCopy: Bool {
+#if os(macOS)
+        true
+#else
+        false
+#endif
+    }
+
+    private var homeFeaturedImage: URL? {
+        if let episode = upNextViewModel.episodes.first {
+            return episode.episode.itemImageLarge ?? episode.backupImage
+        }
+        return viewModel.trending.first?.cardImageLarge
+    }
+
+    private var homeFeaturedTitle: String? {
+        if let episode = upNextViewModel.episodes.first {
+            return episode.showTitle
+        }
+        return viewModel.trending.first?.itemTitle
     }
     
     private func checkVersion() {
@@ -240,20 +265,6 @@ struct HomeView: View {
     }
     
 #if os(iOS)
-    private var homeFeaturedImage: URL? {
-        if let episode = upNextViewModel.episodes.first {
-            return episode.episode.itemImageLarge ?? episode.backupImage
-        }
-        return viewModel.trending.first?.cardImageLarge
-    }
-
-    private var homeFeaturedTitle: String? {
-        if let episode = upNextViewModel.episodes.first {
-            return episode.showTitle
-        }
-        return viewModel.trending.first?.itemTitle
-    }
-
     private func checkAskForReview() {
         if launchCount < 30 {
             launchCount += 1

@@ -14,15 +14,13 @@ struct AppearanceSetting: View {
 #endif
     var body: some View {
         Form {
-#if os(iOS)
-            if UIDevice.isIPhone {
-                Section {
-                    Toggle("Prefer Poster in Details Page", isOn: $store.usePostersAsCover)
-                } header: {
-                    Text("Details Page")
-                } footer: {
-                    Text("By default, details use a full-bleed cover image. Turn this on to keep the classic poster layout.")
-                }
+#if os(iOS) || os(macOS)
+            Section {
+                Toggle("Prefer Poster in Details Page", isOn: $store.usePostersAsCover)
+            } header: {
+                Text("Details Page")
+            } footer: {
+                Text("By default, details use a full-bleed cover image. Turn this on to keep the classic poster layout.")
             }
 #endif
             

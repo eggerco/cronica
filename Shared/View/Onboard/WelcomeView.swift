@@ -6,13 +6,17 @@
 //
 
 import SwiftUI
-#if !os(macOS)
+#if os(macOS)
+import AppKit
+#endif
+
 /// Onboard experience.
 struct WelcomeView: View {
     @AppStorage("showOnboarding") var displayOnboard = true
     @State private var showPolicy = false
     @State private var appeared = false
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.openURL) private var openURL
     @StateObject private var store = SettingsStore.shared
 
     var body: some View {
@@ -37,8 +41,12 @@ struct WelcomeView: View {
         }
         .interactiveDismissDisabled(true)
         .onAppear {
-            withAnimation(CronicaDesign.Motion.reduced(reduceMotion)) {
+            if reduceMotion {
                 appeared = true
+            } else {
+                withAnimation(CronicaDesign.Motion.standard) {
+                    appeared = true
+                }
             }
         }
 #if os(iOS)
@@ -114,7 +122,7 @@ struct WelcomeView: View {
         }
         .buttonStyle(.borderedProminent)
         .tint(store.appTheme.color)
-#if os(iOS)
+#if os(iOS) || os(macOS)
         .controlSize(.large)
 #endif
         .opacity(appeared ? 1 : 0)
@@ -122,16 +130,22 @@ struct WelcomeView: View {
 
     private var privacyButton: some View {
         Button {
-#if os(macOS)
-            NSWorkspace.shared.open(URL(string: "https://www.oncronica.com/privacy")!)
-#else
+#if os(iOS)
             showPolicy.toggle()
+#else
+            if let url = URL(string: "https://www.oncronica.com/privacy") {
+#if os(macOS)
+                NSWorkspace.shared.open(url)
+#else
+                openURL(url)
+#endif
+            }
 #endif
         } label: {
             Text("Privacy Policy")
                 .font(CronicaDesign.Typography.caption())
         }
-#if os(iOS)
+#if os(iOS) || os(macOS)
         .buttonStyle(.plain)
         .foregroundStyle(.secondary)
 #endif
@@ -142,4 +156,3 @@ struct WelcomeView: View {
 #Preview {
     WelcomeView()
 }
-#endif

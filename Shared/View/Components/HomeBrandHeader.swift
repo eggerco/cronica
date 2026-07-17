@@ -8,10 +8,12 @@
 import SwiftUI
 import NukeUI
 
-#if os(iOS)
+#if !os(watchOS)
 struct HomeBrandHeader: View {
     var featuredImage: URL?
     var featuredTitle: String?
+    var height: CGFloat = CronicaDesign.Atmosphere.homeHeroHeight
+    var compactCopy = false
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var appeared = false
     @StateObject private var store = SettingsStore.shared
@@ -22,12 +24,15 @@ struct HomeBrandHeader: View {
             CronicaDesign.Atmosphere.gradient
                 .allowsHitTesting(false)
             copyBlock
-                .padding(.horizontal, CronicaDesign.Spacing.lg)
+                .padding(.horizontal, horizontalPadding)
                 .padding(.bottom, CronicaDesign.Spacing.lg)
         }
-        .frame(height: CronicaDesign.Atmosphere.heroHeightPhone)
+        .frame(height: height)
         .frame(maxWidth: .infinity)
         .clipped()
+#if os(tvOS)
+        .focusable(false)
+#endif
         .onAppear {
             if reduceMotion {
                 appeared = true
@@ -37,6 +42,14 @@ struct HomeBrandHeader: View {
                 }
             }
         }
+    }
+
+    private var horizontalPadding: CGFloat {
+#if os(tvOS)
+        return 64
+#else
+        return CronicaDesign.Spacing.lg
+#endif
     }
 
     @ViewBuilder
@@ -70,7 +83,7 @@ struct HomeBrandHeader: View {
                 endPoint: .bottomTrailing
             )
             Image(systemName: "popcorn.fill")
-                .font(.system(size: 72, weight: .semibold))
+                .font(.system(size: compactCopy ? 56 : 72, weight: .semibold))
                 .foregroundStyle(.white.opacity(0.12))
                 .offset(x: 80, y: -40)
         }
@@ -88,15 +101,17 @@ struct HomeBrandHeader: View {
             Text(headline)
                 .font(CronicaDesign.Typography.display())
                 .foregroundStyle(.white)
-                .lineLimit(2)
+                .lineLimit(compactCopy ? 1 : 2)
                 .opacity(appeared ? 1 : 0)
                 .offset(y: appeared ? 0 : 12)
 
-            Text(supporting)
-                .font(CronicaDesign.Typography.sectionSubtitle())
-                .foregroundStyle(.white.opacity(0.82))
-                .lineLimit(2)
-                .opacity(appeared ? 1 : 0)
+            if !compactCopy {
+                Text(supporting)
+                    .font(CronicaDesign.Typography.sectionSubtitle())
+                    .foregroundStyle(.white.opacity(0.82))
+                    .lineLimit(2)
+                    .opacity(appeared ? 1 : 0)
+            }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .accessibilityElement(children: .combine)
