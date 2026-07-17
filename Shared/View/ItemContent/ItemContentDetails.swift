@@ -45,6 +45,8 @@ struct ItemContentDetails: View {
     
     // MARK: Animation properties
     @State private var animateFavorite = false
+    @State private var heroAppeared = false
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     var body: some View {
         ScrollView {
             VStack {
@@ -195,12 +197,14 @@ struct ItemContentDetails: View {
         }
         .navigationTitle(title)
         .navigationBarTitleDisplayMode(.inline)
+        .toolbarBackground(.hidden, for: .navigationBar)
         .actionPopup(isShowing: $showPopup, for: popupType)
     }
 
     private var cinematicHero: some View {
         ZStack(alignment: .bottomLeading) {
             cover
+                .scaleEffect(heroAppeared || reduceMotion ? 1 : 1.06)
             CronicaDesign.Atmosphere.gradient
                 .allowsHitTesting(false)
             VStack(alignment: .leading, spacing: CronicaDesign.Spacing.sm) {
@@ -209,10 +213,21 @@ struct ItemContentDetails: View {
             }
             .padding(.horizontal, CronicaDesign.Spacing.lg)
             .padding(.bottom, CronicaDesign.Spacing.lg)
+            .opacity(heroAppeared ? 1 : 0)
+            .offset(y: heroAppeared || reduceMotion ? 0 : 16)
         }
         .frame(height: CronicaDesign.Atmosphere.detailHeroHeight)
         .frame(maxWidth: .infinity)
         .clipped()
+        .onAppear {
+            if reduceMotion {
+                heroAppeared = true
+            } else {
+                withAnimation(CronicaDesign.Motion.hero) {
+                    heroAppeared = true
+                }
+            }
+        }
     }
 
     @ViewBuilder

@@ -38,6 +38,7 @@ struct SearchView: View {
 #endif
 #if os(iOS)
         .navigationBarTitleDisplayMode(.large)
+        .toolbarBackground(.automatic, for: .navigationBar)
 #endif
         .navigationDestination(for: Person.self) { person in
             PersonDetailsView(name: person.name, id: person.id)
@@ -217,17 +218,23 @@ struct SearchView: View {
     @ViewBuilder
     private var emptyView: some View {
         ContentUnavailableView.search(text: viewModel.query)
+            .padding(.horizontal, CronicaDesign.Spacing.md)
     }
     
     private var searchingView: some View {
         ProgressView("Searching")
-            .foregroundColor(.secondary)
-            .padding()
+            .foregroundStyle(.secondary)
+            .padding(CronicaDesign.Spacing.lg)
     }
     
     @ViewBuilder
     private var failureView: some View {
-        ContentUnavailableView("Try again later", systemImage: "magnifyingglass").padding()
+        ContentUnavailableView {
+            Label("Try again later", systemImage: "wifi.exclamationmark")
+        } description: {
+            Text("We couldn’t finish this search. Check your connection and try again.")
+        }
+        .padding(CronicaDesign.Spacing.md)
     }
     
     @ViewBuilder

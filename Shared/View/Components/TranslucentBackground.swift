@@ -13,8 +13,9 @@ struct TranslucentBackground: View {
     var image: URL?
     @AppStorage("disableTranslucentBackground") private var disableTranslucent = false
     var useLighterMaterial = false
+    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
     var body: some View {
-        if !disableTranslucent && image != nil {
+        if !disableTranslucent && !reduceTransparency && image != nil {
             ZStack {
                 LazyImage(url: image) { state in
                     if let image = state.image {

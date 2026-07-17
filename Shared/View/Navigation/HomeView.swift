@@ -161,6 +161,7 @@ struct HomeView: View {
         .navigationTitle("Home")
 #if os(iOS)
         .navigationBarTitleDisplayMode(UIDevice.isIPhone ? .inline : .large)
+        .toolbarBackground(UIDevice.isIPhone ? .hidden : .automatic, for: .navigationBar)
 #endif
 #endif
         .toolbar {

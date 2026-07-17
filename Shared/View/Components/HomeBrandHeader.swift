@@ -8,6 +8,7 @@
 import SwiftUI
 import NukeUI
 
+#if os(iOS)
 struct HomeBrandHeader: View {
     var featuredImage: URL?
     var featuredTitle: String?
@@ -120,3 +121,4 @@ struct HomeBrandHeader: View {
     HomeBrandHeader(featuredImage: ItemContent.example.cardImageLarge,
                     featuredTitle: ItemContent.example.itemTitle)
 }
+#endif

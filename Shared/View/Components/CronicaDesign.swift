@@ -33,7 +33,7 @@ enum CronicaDesign {
 
     enum Typography {
         static func brand() -> Font {
-#if os(tvOS)
+#if os(watchOS) || os(tvOS)
             return .largeTitle.weight(.bold)
 #else
             return .system(.largeTitle, design: .serif).weight(.bold)
@@ -41,7 +41,7 @@ enum CronicaDesign {
         }
 
         static func display() -> Font {
-#if os(tvOS)
+#if os(watchOS) || os(tvOS)
             return .title2.weight(.semibold)
 #else
             return .system(.title2, design: .serif).weight(.semibold)
@@ -49,8 +49,8 @@ enum CronicaDesign {
         }
 
         static func sectionTitle() -> Font {
-#if os(tvOS)
-            return .callout.weight(.semibold)
+#if os(watchOS) || os(tvOS)
+            return .headline.weight(.semibold)
 #else
             return .system(.title3, design: .serif).weight(.semibold)
 #endif

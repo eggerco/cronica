@@ -35,25 +35,19 @@ struct SearchItem: View {
                     .hoverEffect()
 #endif
             }
-            VStack(alignment: .leading) {
-                HStack {
-                    Text(item.itemTitle)
-                        .lineLimit(DrawingConstants.textLimit)
-                }
+            VStack(alignment: .leading, spacing: CronicaDesign.Spacing.xxs) {
+                Text(item.itemTitle)
+                    .font(CronicaDesign.Typography.body())
+                    .fontWeight(.medium)
+                    .lineLimit(DrawingConstants.textLimit)
 #if os(watchOS)
-                HStack {
-                    Text(item.media.title)
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                    Spacer()
-                }
+                Text(item.media.title)
+                    .font(CronicaDesign.Typography.caption())
+                    .foregroundStyle(.secondary)
 #else
-                HStack {
-                    Text(item.itemSearchDescription)
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                    Spacer()
-                }
+                Text(item.itemSearchDescription)
+                    .font(CronicaDesign.Typography.caption())
+                    .foregroundStyle(.secondary)
 #endif
             }
         }

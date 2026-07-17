@@ -73,8 +73,13 @@ struct HorizontalUpNextListView: View {
                                             .environmentObject(viewModel)
                                             .frame(width: settings.isCompactUI ? DrawingConstants.compactImageWidth : DrawingConstants.imageWidth,
                                                    height: settings.isCompactUI ? DrawingConstants.compactImageHeight : DrawingConstants.imageHeight)
-                                            .clipShape(RoundedRectangle(cornerRadius: DrawingConstants.imageRadius, style: .continuous))
-                                            .shadow(color: .black.opacity(0.2), radius: 6, x: 0, y: 5)
+                                            .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.media, style: .continuous))
+                                            .shadow(
+                                                color: .black.opacity(CronicaDesign.Shadow.mediaOpacity),
+                                                radius: CronicaDesign.Shadow.mediaRadius,
+                                                x: 0,
+                                                y: CronicaDesign.Shadow.mediaY
+                                            )
                                             .accessibilityLabel("Episode: \(item.episode.itemEpisodeNumber), of the show: \(item.showTitle).")
                                             .accessibilityAddTraits(.isButton)
                                             .applyHoverEffect()
@@ -244,15 +249,19 @@ private struct UpNextCard: View {
                             }
                             .frame(width: settings.isCompactUI ? DrawingConstants.compactImageWidth : DrawingConstants.imageWidth,
                                    height: settings.isCompactUI ? DrawingConstants.compactImageHeight : DrawingConstants.imageHeight)
-                            .clipShape(RoundedRectangle(cornerRadius: DrawingConstants.imageRadius, style: .continuous))
+                            .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.media, style: .continuous))
                         }
                     }
                     .transition(.opacity)
                     .frame(width: settings.isCompactUI ? DrawingConstants.compactImageWidth : DrawingConstants.imageWidth,
                            height: settings.isCompactUI ? DrawingConstants.compactImageHeight : DrawingConstants.imageHeight)
-                    .clipShape(RoundedRectangle(cornerRadius: DrawingConstants.imageRadius,
-                                                style: .continuous))
-                    .shadow(color: .black.opacity(0.2), radius: 5, x: 0, y: 5)
+                    .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.media, style: .continuous))
+                    .shadow(
+                        color: .black.opacity(CronicaDesign.Shadow.mediaOpacity),
+                        radius: CronicaDesign.Shadow.mediaRadius,
+                        x: 0,
+                        y: CronicaDesign.Shadow.mediaY
+                    )
                     .applyHoverEffect()
 #if !os(tvOS)
                     if !settings.isCompactUI {
@@ -378,7 +387,6 @@ private struct DrawingConstants {
 #endif
     static let compactImageWidth: CGFloat = 160
     static let compactImageHeight: CGFloat = 100
-    static let imageRadius: CGFloat = 12
-    static let titleLineLimit: Int = 1
+        static let titleLineLimit: Int = 1
     static let imageShadow: CGFloat = 2.5
 }
