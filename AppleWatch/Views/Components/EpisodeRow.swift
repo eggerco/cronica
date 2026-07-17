@@ -15,7 +15,7 @@ struct EpisodeRow: View {
     private let persistence = PersistenceController.shared
     @State private var isWatched: Bool = false
     var body: some View {
-        HStack {
+        HStack(spacing: CronicaDesign.Spacing.sm) {
             LazyImage(url: episode.itemImageMedium) { state in
                 if let image = state.image {
                     image
@@ -34,7 +34,7 @@ struct EpisodeRow: View {
             .frame(width: DrawingConstants.imageWidth,
                    height: DrawingConstants.imageHeight)
             .clipShape(
-                RoundedRectangle(cornerRadius: DrawingConstants.imageRadius,
+                RoundedRectangle(cornerRadius: CronicaDesign.Radius.media,
                                  style: .continuous)
             )
             .overlay {
@@ -45,26 +45,25 @@ struct EpisodeRow: View {
                             .foregroundColor(.white)
                     }
                     .clipShape(
-                        RoundedRectangle(cornerRadius: DrawingConstants.imageRadius,
+                        RoundedRectangle(cornerRadius: CronicaDesign.Radius.media,
                                          style: .continuous)
                     )
                     .frame(width: DrawingConstants.imageWidth,
                            height: DrawingConstants.imageHeight)
                 }
             }
-            .padding(.trailing)
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: CronicaDesign.Spacing.xxs) {
                 Text(episode.itemTitle)
                     .lineLimit(DrawingConstants.lineLimit)
-                    .font(.callout)
+                    .font(CronicaDesign.Typography.caption())
                 Text("E\(episode.itemEpisodeNumberDisplay)")
-                    .font(.caption)
+                    .font(CronicaDesign.Typography.caption())
                     .foregroundColor(.secondary)
                     .lineLimit(1)
             }
             Spacer()
         }
-        .padding(.horizontal)
+        .padding(.horizontal, CronicaDesign.Spacing.sm)
         .accessibilityElement(children: .combine)
         .task {
             isWatched = persistence.isEpisodeSaved(show: show, season: season, episode: episode.id)
@@ -73,7 +72,6 @@ struct EpisodeRow: View {
 }
 
 private struct DrawingConstants {
-    static let imageRadius: CGFloat = 12
     static let imageWidth: CGFloat = 70
     static let imageHeight: CGFloat = 45
     static let lineLimit: Int = 1

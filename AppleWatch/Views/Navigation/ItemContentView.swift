@@ -20,22 +20,31 @@ struct ItemContentView: View {
 	@StateObject private var store = SettingsStore.shared
     @State private var showConfirmationPopup = false
     @StateObject private var settings = SettingsStore.shared
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @State private var appeared = false
     var body: some View {
         VStack {
             ScrollView {
                 HeroImage(url: image, title: title)
-				
+                    .opacity(appeared ? 1 : 0)
+
+                Text(title)
+                    .font(CronicaDesign.Typography.display())
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, CronicaDesign.Spacing.sm)
+                    .opacity(appeared ? 1 : 0)
+
 				if let quickInfo = viewModel.content?.itemQuickInfo {
 					Text(type.title)
-						.font(.caption)
+                        .font(CronicaDesign.Typography.caption())
 						.multilineTextAlignment(.center)
-						.padding(.horizontal)
-						.foregroundColor(.secondary)
+                        .padding(.horizontal, CronicaDesign.Spacing.sm)
+						.foregroundStyle(.secondary)
 					Text(quickInfo)
-						.font(.caption)
+                        .font(CronicaDesign.Typography.caption())
 						.multilineTextAlignment(.center)
-						.padding(.horizontal)
-						.foregroundColor(.secondary)
+                        .padding(.horizontal, CronicaDesign.Spacing.sm)
+						.foregroundStyle(.secondary)
 				}
                 
                 Button {
@@ -58,10 +67,11 @@ struct ItemContentView: View {
                         Text(viewModel.isInWatchlist ? "Remove" : "Add")
                             .lineLimit(1)
                             .padding(.top, 2)
-                            .font(.caption)
+                            .font(CronicaDesign.Typography.caption())
                     }
                 }
-                .buttonStyle(.bordered)
+                .buttonStyle(.borderedProminent)
+                .tint(viewModel.isInWatchlist ? .red.opacity(0.9) : settings.appTheme.color)
                 .controlSize(.small)
                 .disabled(viewModel.isLoading)
                 .confirmationDialog("Are You Sure?",
@@ -70,16 +80,15 @@ struct ItemContentView: View {
                     Button("Confirm") { updateWatchlist() }
                     Button("Cancel") {  showConfirmationPopup = false }
                 }
-                .padding()
+                .padding(.vertical, CronicaDesign.Spacing.xs)
                 
                 if let seasons = viewModel.content?.seasons {
                     NavigationLink("Seasons", value: seasons)
-                        .padding([.horizontal, .bottom])
+                        .padding([.horizontal, .bottom], CronicaDesign.Spacing.sm)
                 }
                 
                 HStack {
                     if viewModel.isInWatchlist {
-                        //customListButton
                         Button {
                             showMoreOptions.toggle()
                         } label: {
@@ -90,17 +99,17 @@ struct ItemContentView: View {
                         .sheet(isPresented: $showMoreOptions) {
                             VStack {
                                 ScrollView {
-                                    pinButton.padding(.bottom)
-                                    favoriteButton.padding(.bottom)
-                                    watchButton.padding(.bottom)
-                                    archiveButton.padding(.bottom)
+                                    pinButton.padding(.bottom, CronicaDesign.Spacing.xs)
+                                    favoriteButton.padding(.bottom, CronicaDesign.Spacing.xs)
+                                    watchButton.padding(.bottom, CronicaDesign.Spacing.xs)
+                                    archiveButton.padding(.bottom, CronicaDesign.Spacing.xs)
                                 }
-                                .padding(.horizontal)
+                                .padding(.horizontal, CronicaDesign.Spacing.sm)
                             }
                         }
                     }
                 }
-                .padding([.bottom, .horizontal])
+                .padding([.bottom, .horizontal], CronicaDesign.Spacing.sm)
                 
                 AboutSectionView(about: viewModel.content?.itemOverview)
                 
@@ -110,6 +119,15 @@ struct ItemContentView: View {
             }
         }
         .task { await viewModel.load(id: id, type: type) }
+        .onAppear {
+            if reduceMotion {
+                appeared = true
+            } else {
+                withAnimation(CronicaDesign.Motion.standard) {
+                    appeared = true
+                }
+            }
+        }
         .navigationTitle(title)
         .navigationBarTitleDisplayMode(.inline)
         .redacted(reason: viewModel.isLoading ? .placeholder : [])
@@ -154,19 +172,12 @@ struct ItemContentView: View {
                     .imageScale(.medium)
                 Text("Watched")
                     .padding(.top, 2)
-                    .font(.caption)
+                    .font(CronicaDesign.Typography.caption())
                     .lineLimit(1)
             }
             .padding(.vertical, 2)
         }
         .buttonStyle(.bordered)
-    }
-    
-    private var customListButton: some View {
-        Button("Add To List", systemImage: "rectangle.on.rectangle.angled") {
-            showCustomListSheet.toggle()
-        }
-        .labelStyle(.iconOnly)
     }
     
     private var favoriteButton: some View {
@@ -180,7 +191,7 @@ struct ItemContentView: View {
                     .imageScale(.medium)
                 Text("Favorite")
                     .padding(.top, 2)
-                    .font(.caption)
+                    .font(CronicaDesign.Typography.caption())
                     .lineLimit(1)
             }
             .padding(.vertical, 2)
@@ -199,7 +210,7 @@ struct ItemContentView: View {
                     .imageScale(.medium)
                 Text("Archive")
                     .padding(.top, 2)
-                    .font(.caption)
+                    .font(CronicaDesign.Typography.caption())
                     .lineLimit(1)
             }
             .padding(.vertical, 2)
@@ -218,7 +229,7 @@ struct ItemContentView: View {
                     .imageScale(.medium)
                 Text("Pin")
                     .padding(.top, 2)
-                    .font(.caption)
+                    .font(CronicaDesign.Typography.caption())
                     .lineLimit(1)
             }
             .padding(.vertical, 2)
@@ -251,11 +262,6 @@ struct ItemContentView: View {
             showCustomListSheet.toggle()
         }
     }
-}
-
-private struct DrawingConstants {
-    static let imageRadius: CGFloat = 12
-    static let lineLimit: Int = 1
 }
 
 #Preview {

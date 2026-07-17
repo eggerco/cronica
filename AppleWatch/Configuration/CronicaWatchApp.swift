@@ -11,6 +11,7 @@ import SwiftUI
 struct CronicaWatchApp: App {
     var persistence = PersistenceController.shared
     @AppStorage("selectedView") var selectedView: Screens?
+    @StateObject private var settings = SettingsStore.shared
     init() {
         CronicaTelemetry.shared.setup()
     }
@@ -18,6 +19,12 @@ struct CronicaWatchApp: App {
         WindowGroup {
             NavigationSplitView {
                 List(selection: $selectedView) {
+                    Section {
+                        Text("Cronica")
+                            .font(CronicaDesign.Typography.brand())
+                            .foregroundStyle(settings.appTheme.color)
+                            .listRowBackground(Color.clear)
+                    }
                     ForEach(Screens.allCases) { screen in
                         Label(screen.title, systemImage: screen.toSFSymbols).tag(screen)
                     }
@@ -31,6 +38,7 @@ struct CronicaWatchApp: App {
                 default: WatchlistView().environment(\.managedObjectContext, persistence.container.viewContext)
                 }
             }
+            .tint(settings.appTheme.color)
         }
     }
 }

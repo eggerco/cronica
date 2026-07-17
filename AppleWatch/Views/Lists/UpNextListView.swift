@@ -69,8 +69,6 @@ struct UpNextListView: View {
 private struct DrawingConstants {
     static let imageWidth: CGFloat = 70
     static let imageHeight: CGFloat = 50
-    static let imageRadius: CGFloat = 12
-    static let textLimit: Int = 1
 }
 
 #Preview {
@@ -85,7 +83,7 @@ private struct UpNextRowItemView: View {
         Button {
             askConfirmation.toggle()
         } label: {
-            HStack {
+            HStack(spacing: CronicaDesign.Spacing.sm) {
                 LazyImage(url: item.episode.itemImageMedium ?? item.backupImage) { state in
                     if let image = state.image {
                         image
@@ -105,18 +103,17 @@ private struct UpNextRowItemView: View {
                 .transition(.opacity)
                 .frame(width: DrawingConstants.imageWidth,
                        height: DrawingConstants.imageHeight)
-                .clipShape(RoundedRectangle(cornerRadius: DrawingConstants.imageRadius, style: .continuous))
-                VStack(alignment: .leading) {
+                .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.media, style: .continuous))
+                VStack(alignment: .leading, spacing: CronicaDesign.Spacing.xxs) {
                     Text(item.showTitle)
-                        .font(.caption)
+                        .font(CronicaDesign.Typography.caption())
                         .lineLimit(2)
                     Text(String(format: NSLocalizedString("S%d, E%d", comment: ""), item.episode.itemSeasonNumber, item.episode.itemEpisodeNumber))
-                        .font(.caption)
+                        .font(CronicaDesign.Typography.caption())
                         .textCase(.uppercase)
                         .foregroundColor(.secondary)
                         .lineLimit(1)
                 }
-                .padding(.leading, 2)
                 Spacer()
             }
         }
@@ -133,6 +130,5 @@ private struct UpNextRowItemView: View {
         } message: {
             Text("Mark Episode \(item.episode.itemEpisodeNumber) from season \(item.episode.itemSeasonNumber) of \(item.showTitle) as Watched?")
         }
-        
     }
 }

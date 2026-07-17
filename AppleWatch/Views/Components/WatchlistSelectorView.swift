@@ -20,60 +20,75 @@ struct WatchlistSelectorView: View {
     @Binding var sortOrder: WatchlistSortOrder
     var body: some View {
         NavigationStack {
-            Form {
-                List {
+            List {
+                Section {
+                    ForEach(SmartFiltersTypes.allCases) { list in
+                        Button {
+                            selectedCustomList = nil
+                            selectedList = list
+                            showView = false
+                        } label: {
+                            HStack(spacing: CronicaDesign.Spacing.xs) {
+                                if selectedList == list {
+                                    Image(systemName: "checkmark.circle.fill")
+                                        .foregroundStyle(SettingsStore.shared.appTheme.color)
+                                }
+                                Text(list.title)
+                                    .font(CronicaDesign.Typography.caption())
+                            }
+                        }
+                    }
+                } header: {
+                    Text("Smart List Filters")
+                        .font(CronicaDesign.Typography.caption())
+                        .textCase(.uppercase)
+                        .foregroundStyle(.secondary)
+                }
+
+                if !lists.isEmpty {
                     Section {
-                        ForEach(SmartFiltersTypes.allCases) { list in
+                        ForEach(lists) { list in
                             Button {
-                                selectedCustomList = nil
-                                selectedList = list
+                                selectedList = nil
+                                selectedCustomList = list
                                 showView = false
                             } label: {
-                                HStack {
-                                    if selectedList == list {
-                                        Image(systemName: "checkmark.circle")
+                                HStack(spacing: CronicaDesign.Spacing.xs) {
+                                    if selectedCustomList == list {
+                                        Image(systemName: "checkmark.circle.fill")
+                                            .foregroundStyle(SettingsStore.shared.appTheme.color)
                                     }
-                                    Text(list.title)
+                                    Text(list.itemTitle)
+                                        .font(CronicaDesign.Typography.caption())
                                 }
                             }
                         }
                     } header: {
-                        Text("Smart List Filters")
-                    }
-                    
-                    if !lists.isEmpty {
-                        Section {
-                            ForEach(lists) { list in
-                                Button {
-                                    selectedList = nil
-                                    selectedCustomList = list
-                                    showView = false
-                                } label: {
-                                    HStack {
-                                        if selectedCustomList == list {
-                                            Image(systemName: "checkmark.circle")
-                                        }
-                                        Text(list.itemTitle)
-                                    }
-                                }
-                            }
-                        } header: {
-                            Text("Your Lists")
-                        }
-                    }
-                    
-                    Section("Sort Order") {
-                        Picker(selection: $sortOrder) {
-                            ForEach(WatchlistSortOrder.allCases) { item in
-                                Text(item.localizableName).tag(item)
-                            }
-                        } label: {
-                            EmptyView()
-                        }
-                        .pickerStyle(.inline)
+                        Text("Your Lists")
+                            .font(CronicaDesign.Typography.caption())
+                            .textCase(.uppercase)
+                            .foregroundStyle(.secondary)
                     }
                 }
+
+                Section {
+                    Picker(selection: $sortOrder) {
+                        ForEach(WatchlistSortOrder.allCases) { item in
+                            Text(item.localizableName).tag(item)
+                        }
+                    } label: {
+                        EmptyView()
+                    }
+                    .pickerStyle(.inline)
+                } header: {
+                    Text("Sort Order")
+                        .font(CronicaDesign.Typography.caption())
+                        .textCase(.uppercase)
+                        .foregroundStyle(.secondary)
+                }
             }
+            .navigationTitle("Lists")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
