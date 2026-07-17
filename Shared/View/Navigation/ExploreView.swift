@@ -82,15 +82,17 @@ struct ExploreView: View {
                 } else if !isLoadingRecommendations, recommendations.isEmpty {
                     ContentUnavailableView {
                         Label("Start watching to get recommendations...",
-                              systemImage: "popcorn")
+                              systemImage: "popcorn.fill")
                     } description: {
-                        Text("Watch more titles to receive recommendations.")
+                        Text("Mark titles as watched to unlock a personal For You shelf.")
                     } actions: {
                         Button("Discover Movies & TV Shows") {
                             selectedForYouTab = .explore
                         }
                         .buttonStyle(.borderedProminent)
+                        .tint(settings.appTheme.color)
                     }
+                    .padding(.horizontal, CronicaDesign.Spacing.lg)
                     .unredacted()
                 } else {
                     switch settings.sectionStyleType {
@@ -227,6 +229,7 @@ struct ExploreView: View {
 #endif
 #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
+        .toolbarBackground(.automatic, for: .navigationBar)
 #endif
         .onChange(of: hideAddedItems) { _, value in
             if value {

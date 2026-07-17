@@ -46,6 +46,7 @@ struct WatchlistView: View {
         }
 #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
+        .toolbarBackground(.automatic, for: .navigationBar)
 #elseif os(tvOS)
         .ignoresSafeArea(.all, edges: .horizontal)
 #endif

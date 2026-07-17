@@ -1,6 +1,28 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "We couldn\u2019t finish this search. Check your connection and try again." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We couldn\u2019t finish this search. Check your connection and try again."
+          }
+        }
+      }
+    },
+    "Mark titles as watched to unlock a personal For You shelf." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mark titles as watched to unlock a personal For You shelf."
+          }
+        }
+      }
+    },
     "Translucent artwork behind details helps set a cinematic mood. Disable it for a flatter look." : {
       "extractionState" : "manual",
       "localizations" : {
