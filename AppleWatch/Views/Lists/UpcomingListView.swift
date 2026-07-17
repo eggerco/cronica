@@ -58,7 +58,7 @@ struct UpcomingListView: View {
     }
     
     private func itemRow(_ item: WatchlistItem) -> some View {
-        HStack {
+        HStack(spacing: CronicaDesign.Spacing.sm) {
             LazyImage(url: item.backCompatibleCardImage) { state in
                 if let image = state.image {
                     image
@@ -80,18 +80,17 @@ struct UpcomingListView: View {
             .transition(.opacity)
             .frame(width: DrawingConstants.imageWidth,
                    height: DrawingConstants.imageHeight)
-            .clipShape(RoundedRectangle(cornerRadius: DrawingConstants.imageRadius, style: .continuous))
-            VStack(alignment: .leading) {
+            .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.media, style: .continuous))
+            VStack(alignment: .leading, spacing: CronicaDesign.Spacing.xxs) {
                 Text(item.itemTitle)
-                    .font(.caption)
+                    .font(CronicaDesign.Typography.caption())
                     .lineLimit(2)
                 Text(item.itemGlanceInfo ?? String())
-                    .font(.caption)
+                    .font(CronicaDesign.Typography.caption())
                     .textCase(.uppercase)
                     .foregroundColor(.secondary)
                     .lineLimit(2)
             }
-            .padding(.leading, 2)
             Spacer()
         }
     }
@@ -104,6 +103,4 @@ struct UpcomingListView: View {
 private struct DrawingConstants {
     static let imageWidth: CGFloat = 70
     static let imageHeight: CGFloat = 50
-    static let imageRadius: CGFloat = 12
-    static let textLimit: Int = 1
 }

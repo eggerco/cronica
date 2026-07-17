@@ -50,12 +50,13 @@ struct HeroImage: View {
         }
         .transition(.opacity)
 #if os(watchOS)
-        .frame(height: 90)
+        .frame(height: 100)
         .clipShape(
-            RoundedRectangle(cornerRadius: 8,
+            RoundedRectangle(cornerRadius: CronicaDesign.Radius.media,
                              style: .continuous)
         )
-        .padding()
+        .padding(.horizontal, CronicaDesign.Spacing.sm)
+        .padding(.vertical, CronicaDesign.Spacing.xs)
 #endif
     }
 }

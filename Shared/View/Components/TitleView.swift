@@ -33,9 +33,15 @@ struct TitleView: View {
             }
             Spacer(minLength: 0)
         }
+#if os(watchOS)
+        .padding(.horizontal, CronicaDesign.Spacing.xs)
+        .padding(.top, CronicaDesign.Spacing.xxs)
+        .padding(.bottom, CronicaDesign.Spacing.xxs)
+#else
         .padding(.horizontal, CronicaDesign.Spacing.md)
         .padding(.top, CronicaDesign.Spacing.sm)
         .padding(.bottom, CronicaDesign.Spacing.xxs)
+#endif
         .accessibilityElement(children: .combine)
     }
 }

@@ -19,6 +19,7 @@ struct WatchlistView: View {
     @State private var selectedCustomList: CustomList?
     @State private var query = ""
     @State private var showPicker = false
+    @StateObject private var settings = SettingsStore.shared
     var body: some View {
         NavigationStack {
             VStack {
@@ -34,25 +35,12 @@ struct WatchlistView: View {
             .navigationBarTitleDisplayMode(.inline)
             .disableAutocorrection(true)
             .toolbar {
-                ToolbarItem(placement: .bottomBar) {
-                    HStack {
-                        Spacer()
-                        Button("Sort List", systemImage: "line.3.horizontal.decrease") {
-                            withAnimation { showPicker = true }
-                        }
-                        .controlSize(.small)
-                        .imageScale(.small)
-                        .labelStyle(.iconOnly)
-                        .buttonBorderShape(.circle)
-                        .contentShape(.circle)
-                        .buttonStyle(.borderedProminent)
-                        .foregroundStyle(.white.gradient)
-                        .tint(.blue)
-                        .frame(width: 50, height: 50)
-                        .clipShape(Circle())
-                        .padding(.horizontal)
-                        .shadow(radius: 2.5)
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Sort List", systemImage: "line.3.horizontal.decrease") {
+                        withAnimation { showPicker = true }
                     }
+                    .labelStyle(.iconOnly)
+                    .tint(settings.appTheme.color)
                 }
             }
             .navigationDestination(for: WatchlistItem.self) { item in

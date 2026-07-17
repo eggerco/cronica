@@ -9,34 +9,37 @@ import SwiftUI
 
 struct AboutSectionView: View {
     let about: String?
-	@State private var showAbout = false
+    @State private var showAbout = false
     var body: some View {
         if let about {
             if !about.isEmpty {
                 Section {
-                    VStack(alignment: .leading) {
+                    VStack(alignment: .leading, spacing: CronicaDesign.Spacing.xxs) {
                         Text(about)
-							.lineLimit(showAbout ? nil : 4)
+                            .font(CronicaDesign.Typography.caption())
+                            .lineLimit(showAbout ? nil : 4)
                     }
-					.onTapGesture {
-						withAnimation { showAbout.toggle() }
-					}
-					.padding(.zero)
+                    .onTapGesture {
+                        withAnimation(CronicaDesign.Motion.standard) { showAbout.toggle() }
+                    }
+                    .padding(.zero)
                 } header: {
                     HStack {
                         Text("About")
-							.textCase(.uppercase)
-							.foregroundColor(.secondary)
+                            .font(CronicaDesign.Typography.caption())
+                            .textCase(.uppercase)
+                            .foregroundColor(.secondary)
                         Spacer()
                     }
-					.padding([.horizontal, .top])
+                    .padding(.horizontal, CronicaDesign.Spacing.sm)
+                    .padding(.top, CronicaDesign.Spacing.sm)
                 }
-				.padding([.horizontal, .bottom])
+                .padding(.horizontal, CronicaDesign.Spacing.sm)
+                .padding(.bottom, CronicaDesign.Spacing.sm)
             }
         }
     }
 }
-
 
 #Preview {
     AboutSectionView(about: ItemContent.example.itemOverview)

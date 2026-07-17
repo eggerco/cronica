@@ -40,7 +40,11 @@ struct CustomListView: View {
                         }
                     }
                 } header: {
-                    Text(list.itemTitle).lineLimit(1)
+                    Text(list.itemTitle)
+                        .font(CronicaDesign.Typography.caption())
+                        .textCase(.uppercase)
+                        .foregroundStyle(.secondary)
+                        .lineLimit(1)
                 }
             }
         } else {

@@ -14,19 +14,22 @@ struct TrendingView: View {
     @State private var isLoaded = false
     var body: some View {
         NavigationStack {
-            Form {
+            List {
                 Section {
-                    List {
-                        ForEach(trending) { item in
-                            NavigationLink(value: item) {
-                                ItemContentRow(item: item)
-                            }
+                    ForEach(trending) { item in
+                        NavigationLink(value: item) {
+                            ItemContentRow(item: item)
                         }
                     }
-                    .redacted(reason: isLoaded ? [] : .placeholder)
+                } header: {
+                    Text("Today")
+                        .font(CronicaDesign.Typography.caption())
+                        .textCase(.uppercase)
+                        .foregroundStyle(.secondary)
                 }
             }
-			.overlay { if !isLoaded { CronicaLoadingPopupView() } }
+            .redacted(reason: isLoaded ? [] : .placeholder)
+            .overlay { if !isLoaded { CronicaLoadingPopupView() } }
             .navigationTitle("Trending")
             .navigationBarTitleDisplayMode(.inline)
             .navigationDestination(for: ItemContent.self) { item in
@@ -38,7 +41,7 @@ struct TrendingView: View {
             .onAppear(perform: load)
         }
     }
-    
+
     private func load() {
         Task {
             if !isLoaded {

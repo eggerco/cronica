@@ -20,10 +20,13 @@ struct WatchlistSectionView: View {
                 }
             } header: {
                 Text(NSLocalizedString(title, comment: ""))
+                    .font(CronicaDesign.Typography.caption())
+                    .textCase(.uppercase)
+                    .foregroundStyle(.secondary)
             }
         } else {
             ContentUnavailableView("No results", systemImage: "rectangle.on.rectangle")
-                .padding()
+                .padding(CronicaDesign.Spacing.md)
         }
     }
 }

@@ -10,7 +10,7 @@ import SwiftUI
 struct EmptyListView: View {
     var body: some View {
         ContentUnavailableView("Your list is empty.", systemImage: "rectangle.on.rectangle")
-            .padding()
+            .padding(CronicaDesign.Spacing.md)
     }
 }
 
