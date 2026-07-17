@@ -147,6 +147,7 @@
 		B8C0D5017734A00600RED001 /* HomeBrandHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C0D5017734A00400RED001 /* HomeBrandHeader.swift */; };
 		B8C0D5017734A00200RED001 /* CronicaDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C0D5017734A00100RED001 /* CronicaDesign.swift */; };
 		B8C0D5017734A00300RED001 /* CronicaDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C0D5017734A00100RED001 /* CronicaDesign.swift */; };
+		B8C0D5017734A00700RED001 /* CronicaDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C0D5017734A00100RED001 /* CronicaDesign.swift */; };
 		B84043E7289B417500D5CEBF /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FF4DBE27FA511A00C7DE9F /* TitleView.swift */; };
 		B8409D1B2A81C6240048840F /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8409D1A2A81C6240048840F /* SearchView.swift */; };
 		B8409D1D2A8286130048840F /* IconGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8409D1C2A8286130048840F /* IconGridView.swift */; };
@@ -1931,6 +1932,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8C0D5017734A00700RED001 /* CronicaDesign.swift in Sources */,
 				B824E44A2A05A9AF00E385CE /* AttributionView.swift in Sources */,
 				B84457C9297341B5009CB21F /* WatchProviders.swift in Sources */,
 				B8105257298DC0AD00723E94 /* Locale-Extensions.swift in Sources */,

@@ -142,7 +142,7 @@ private struct TrendingCardView: View {
                 .frame(width: DrawingConstants.width, height: DrawingConstants.height, alignment: .center)
             }
             .frame(width: DrawingConstants.width, height: DrawingConstants.height, alignment: .center)
-            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+            .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.media, style: .continuous))
             .shadow(color: .black.opacity(0.2), radius: 2.5, x: 0, y: 2.5)
             .buttonStyle(.plain)
         }

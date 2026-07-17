@@ -199,7 +199,7 @@ struct ItemContentContextMenu: ViewModifier {
 		case .markFavorite: favoriteButton.tint(isFavorite ? .orange : .purple)
 		case .markPin: pinButton.tint(isPin ? .gray : .teal)
 		case .markArchive: archiveButton.tint(isArchive ? .gray : .indigo)
-		case .delete: watchlistButton.tint(isInWatchlist ? .red :  .blue)
+		case .delete: watchlistButton.tint(isInWatchlist ? .red : settings.appTheme.color)
 		case .share: shareButton
 		}
 	}
@@ -211,7 +211,7 @@ struct ItemContentContextMenu: ViewModifier {
 		case .markFavorite: favoriteButton.tint(isFavorite ? .orange : .purple)
 		case .markPin: pinButton.tint(isPin ? .gray : .teal)
 		case .markArchive: archiveButton.tint(isArchive ? .gray : .indigo)
-		case .delete: watchlistButton.tint(isInWatchlist ? .red :  .blue)
+		case .delete: watchlistButton.tint(isInWatchlist ? .red : settings.appTheme.color)
 		case .share: shareButton
 		}
 	}
@@ -223,7 +223,7 @@ struct ItemContentContextMenu: ViewModifier {
 		case .markFavorite: favoriteButton.tint(isFavorite ? .orange : .purple)
 		case .markPin: pinButton.tint(isPin ? .gray : .teal)
 		case .markArchive: archiveButton.tint(isArchive ? .gray : .indigo)
-		case .delete: watchlistButton.tint(isInWatchlist ? .red :  .blue)
+		case .delete: watchlistButton.tint(isInWatchlist ? .red : settings.appTheme.color)
 		case .share: shareButton
 		}
 	}
@@ -235,7 +235,7 @@ struct ItemContentContextMenu: ViewModifier {
 		case .markFavorite: favoriteButton.tint(isFavorite ? .orange : .purple)
 		case .markPin: pinButton.tint(isPin ? .gray : .teal)
 		case .markArchive: archiveButton.tint(isArchive ? .gray : .indigo)
-		case .delete: watchlistButton.tint(isInWatchlist ? .red :  .blue)
+		case .delete: watchlistButton.tint(isInWatchlist ? .red : settings.appTheme.color)
 		case .share: shareButton
 		}
 	}

@@ -73,7 +73,7 @@ struct SearchContentPosterView: View {
                        height: settings.isCompactUI ? DrawingConstants.compactPosterHeight : DrawingConstants.posterHeight)
                 .clipShape(
                     RoundedRectangle(
-                        cornerRadius: settings.isCompactUI ? DrawingConstants.compactPosterRadius : DrawingConstants.posterRadius,
+                        cornerRadius: settings.isCompactUI ? CronicaDesign.Radius.compact : CronicaDesign.Radius.media,
                         style: .continuous
                     )
                 )
@@ -213,9 +213,7 @@ private struct DrawingConstants {
     static let posterWidth: CGFloat = 160
     static let posterHeight: CGFloat = 240
 #endif
-    static let posterRadius: CGFloat = 12
     static let compactPosterWidth: CGFloat = 80
-    static let compactPosterRadius: CGFloat = 4
     static let compactPosterHeight: CGFloat = 140
     static let shadowRadius: CGFloat = 2
 }

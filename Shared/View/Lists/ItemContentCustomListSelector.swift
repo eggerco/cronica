@@ -46,7 +46,7 @@ struct ItemContentCustomListSelector: View {
                                     }
                                 }
                                 .frame(width: 150, height: 220)
-                                .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                                .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.media, style: .continuous))
                                 .shadow(color: .black.opacity(0.2), radius: 10, x: 0, y: 10)
                             }
                             .frame(maxWidth: .infinity)
@@ -151,7 +151,7 @@ struct ItemContentCustomListSelector: View {
 #endif
         .presentationDetents([.large])
         .presentationDragIndicator(.visible)
-        .presentationCornerRadius(12)
+        .presentationCornerRadius(CronicaDesign.Radius.media)
     }
     
     private func load() {

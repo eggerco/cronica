@@ -42,13 +42,13 @@ struct NewListItemSelectorRow: View {
                     }
                 }
                 .frame(width: 70, height: 50)
-                .cornerRadius(8)
+                .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.compact, style: .continuous))
                 .overlay {
                     if isSelected {
                         ZStack {
                             Rectangle().fill(.black.opacity(0.4))
                         }
-                        .cornerRadius(8)
+                        .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.compact, style: .continuous))
                     }
                 }
                 .padding(.trailing, 4)

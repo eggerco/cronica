@@ -651,7 +651,7 @@ struct ItemContentDetails: View {
         }
         
         .frame(width: DrawingConstants.posterWidth, height: DrawingConstants.posterHeight)
-        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+        .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.media, style: .continuous))
         .onTapGesture(count: 2) {
             animate(for: store.gesture)
             viewModel.update(store.gesture)

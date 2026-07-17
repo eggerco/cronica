@@ -175,7 +175,7 @@ struct ExploreView: View {
             }
             .presentationDetents([.medium])
             .presentationDragIndicator(.visible)
-            .presentationCornerRadius(12)
+            .presentationCornerRadius(CronicaDesign.Radius.media)
             .unredacted()
 #if os(iOS)
             .appTint()

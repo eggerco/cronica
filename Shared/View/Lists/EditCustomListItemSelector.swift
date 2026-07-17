@@ -43,13 +43,13 @@ struct EditCustomListItemSelector: View {
                                         }
                                     }
                                     .frame(width: 70, height: 50)
-                                    .cornerRadius(8)
+                                    .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.compact, style: .continuous))
                                     .overlay {
                                         if itemsToRemove.contains(item) {
                                             ZStack {
                                                 Rectangle().fill(.black.opacity(0.4))
                                             }
-                                            .cornerRadius(8)
+                                            .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.compact, style: .continuous))
                                         }
                                     }
                                     VStack(alignment: .leading) {
@@ -87,13 +87,13 @@ struct EditCustomListItemSelector: View {
                                     }
                                 }
                                 .frame(width: 70, height: 50)
-                                .cornerRadius(8)
+                                .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.compact, style: .continuous))
                                 .overlay {
                                     if itemsToRemove.contains(item) {
                                         ZStack {
                                             Rectangle().fill(.black.opacity(0.4))
                                         }
-                                        .cornerRadius(8)
+                                        .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.compact, style: .continuous))
                                     }
                                 }
                                 VStack(alignment: .leading) {

@@ -41,7 +41,7 @@ struct SeasonDetailView: View {
 #else
                             .frame(width: 338, height: 525)
 #endif
-                            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                            .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.media, style: .continuous))
                             .shadow(color: .black.opacity(0.2), radius: 10, x: 0, y: 10)
                         }
                         .frame(maxWidth: .infinity)
@@ -136,7 +136,7 @@ struct SeasonDetailView: View {
         }
         .presentationDetents([.medium, .large])
         .presentationDragIndicator(.visible)
-        .presentationCornerRadius(12)
+        .presentationCornerRadius(CronicaDesign.Radius.media)
 #if os(macOS)
         .frame(width: 600, height: 400)
 #endif

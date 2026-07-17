@@ -284,7 +284,7 @@ private struct UpComingCardImageView: View {
 #endif
             .frame(width: settings.isCompactUI ? DrawingConstants.compactCardWidth : DrawingConstants.cardWidth,
                    height: settings.isCompactUI ? DrawingConstants.compactCardHeight : DrawingConstants.cardHeight)
-            .clipShape(RoundedRectangle(cornerRadius: DrawingConstants.cardRadius, style: .continuous))
+            .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.media, style: .continuous))
             .shadow(radius: DrawingConstants.shadowRadius)
             .transition(.opacity)
             .applyHoverEffect()
@@ -303,7 +303,6 @@ private struct DrawingConstants {
     static let cardWidth: CGFloat = 280
     static let cardHeight: CGFloat = 160
 #endif
-    static let cardRadius: CGFloat = 12
     static let shadowRadius: CGFloat = 2.5
     static let lineLimits: Int = 1
     static let compactCardWidth: CGFloat = 160

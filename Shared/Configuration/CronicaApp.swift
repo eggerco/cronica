@@ -111,7 +111,7 @@ struct CronicaApp: App {
 #else
                     .presentationDetents([.large])
                     .presentationDragIndicator(.visible)
-                    .presentationCornerRadius(12)
+                    .presentationCornerRadius(CronicaDesign.Radius.media)
                     .appTheme()
                     .appTint()
 #endif

@@ -199,7 +199,7 @@ struct HorizontalUpNextListView: View {
                 .appTint()
                 .presentationDetents([.large])
                 .presentationDragIndicator(.visible)
-                .presentationCornerRadius(12)
+                .presentationCornerRadius(CronicaDesign.Radius.media)
 #if os(tvOS)
                 .ignoresSafeArea()
 #endif

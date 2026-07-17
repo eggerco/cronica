@@ -157,11 +157,11 @@ struct AppearanceSetting: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .overlay(
-                            RoundedRectangle(cornerRadius: 12)
+                            RoundedRectangle(cornerRadius: CronicaDesign.Radius.media)
                                 .stroke(store.appTheme.color, lineWidth: icons.selectedAppIcon == icon ? 6 : 0)
                         )
                         .frame(width: 60, height: 60)
-                        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                        .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.media, style: .continuous))
                         .padding(.trailing)
                 }
                 .buttonStyle(.plain)
