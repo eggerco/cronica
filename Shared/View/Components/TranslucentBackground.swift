@@ -31,6 +31,19 @@ struct TranslucentBackground: View {
                 .ignoresSafeArea()
                 .padding(.zero)
                 .transition(.opacity)
+
+                LinearGradient(
+                    colors: [
+                        .black.opacity(0.15),
+                        .clear,
+                        .black.opacity(0.25)
+                    ],
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+                .ignoresSafeArea()
+                .allowsHitTesting(false)
+
 #if os(watchOS)
                 Rectangle()
                     .fill(.thickMaterial)

@@ -13,47 +13,33 @@ struct TitleView: View {
     var showChevron = false
     var body: some View {
         HStack {
-            VStack(alignment: .leading) {
-                HStack {
+            VStack(alignment: .leading, spacing: CronicaDesign.Spacing.xxs) {
+                HStack(spacing: CronicaDesign.Spacing.xs) {
                     Text(title)
-                        .padding([.top, .leading])
-                        .fontWeight(.semibold)
-                        .fontDesign(.rounded)
-#if os(tvOS)
-                        .font(.callout)
-#else
-                        .font(.title3)
-#endif
+                        .font(CronicaDesign.Typography.sectionTitle())
+                        .foregroundStyle(.primary)
                     if showChevron {
                         Image(systemName: "chevron.right")
-                            .fontDesign(.rounded)
-                            .font(.callout)
-                            .fontWeight(.regular)
-                            .foregroundColor(.secondary)
-                            .padding(.top)
+                            .font(.footnote.weight(.semibold))
+                            .foregroundStyle(.secondary)
                             .accessibilityHidden(true)
                     }
                 }
                 if let subtitle {
-                    HStack {
-                        Text(subtitle)
-                            .fontDesign(.rounded)
-                            .foregroundColor(.secondary)
-                            .padding(.leading)
-#if os(tvOS)
-                            .font(.caption)
-#else
-                            .font(.callout)
-#endif
-                    } 
+                    Text(subtitle)
+                        .font(CronicaDesign.Typography.sectionSubtitle())
+                        .foregroundStyle(.secondary)
                 }
             }
-            Spacer()
+            Spacer(minLength: 0)
         }
+        .padding(.horizontal, CronicaDesign.Spacing.md)
+        .padding(.top, CronicaDesign.Spacing.sm)
+        .padding(.bottom, CronicaDesign.Spacing.xxs)
         .accessibilityElement(children: .combine)
     }
 }
 
 #Preview {
-    TitleView(title: "Coming Soon", subtitle: "From Watchlist")
+    TitleView(title: "Coming Soon", subtitle: "From Watchlist", showChevron: true)
 }

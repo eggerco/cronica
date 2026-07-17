@@ -4,8 +4,6 @@
 <dict>
 	<key>BGTaskSchedulerPermittedIdentifiers</key>
 	<array>
-		<string>dev.alexandremadeira.cronica.backgroundUpcomingRefreshIdentifier</string>
-		<string>dev.alexandremadeira.cronica.backgroundProcessingTask</string>
 		<string>dev.alexandremadeira.cronica.refreshContent</string>
 	</array>
 	<key>CFBundleURLTypes</key>

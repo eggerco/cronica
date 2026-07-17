@@ -21,7 +21,7 @@ struct SideBarView: View {
                 }.tag(HomeView.tag)
                 
                 NavigationLink(value: Screens.explore) {
-                    Label("Explore", systemImage: "popcorn")
+                    Label("Discover", systemImage: "popcorn")
                 }.tag(ExploreView.tag)
                 
                 NavigationLink(value: Screens.watchlist) {

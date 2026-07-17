@@ -13,35 +13,47 @@ struct PosterPlaceholder: View {
     @StateObject private var settings = SettingsStore.shared
     var body: some View {
         ZStack {
-            Rectangle().fill(.gray.gradient)
-            VStack {
+            LinearGradient(
+                colors: [
+                    Color(white: 0.22),
+                    Color(white: 0.1)
+                ],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            VStack(spacing: CronicaDesign.Spacing.xs) {
                 if settings.isCompactUI {
                     Image(systemName: "popcorn.fill")
                         .font(.title3)
                         .fontWidth(.expanded)
-                        .foregroundColor(.white.opacity(0.8))
+                        .foregroundStyle(.white.opacity(0.8))
                         .padding()
                 } else {
                     Image(systemName: "popcorn.fill")
                         .font(.title)
                         .fontWidth(.expanded)
-                        .foregroundColor(.white.opacity(0.8))
-                        .padding()
+                        .foregroundStyle(.white.opacity(0.8))
+                        .padding(.top)
                     Text(title)
-                        .font(.callout)
-                        .foregroundColor(.white.opacity(0.8))
+                        .font(CronicaDesign.Typography.caption())
+                        .foregroundStyle(.white.opacity(0.8))
                         .lineLimit(2)
+                        .multilineTextAlignment(.center)
                         .padding(.bottom)
                         .padding(.horizontal, 4)
                 }
-                
             }
         }
         .frame(width: settings.isCompactUI ? DrawingConstants.compactPosterWidth : DrawingConstants.posterWidth,
                height: settings.isCompactUI ? DrawingConstants.compactPosterHeight : DrawingConstants.posterHeight)
-        .clipShape(RoundedRectangle(cornerRadius: DrawingConstants.posterRadius,
+        .clipShape(RoundedRectangle(cornerRadius: settings.isCompactUI ? CronicaDesign.Radius.compact : CronicaDesign.Radius.media,
                                     style: .continuous))
-        .shadow(radius: DrawingConstants.shadowRadius)
+        .shadow(
+            color: .black.opacity(CronicaDesign.Shadow.mediaOpacity),
+            radius: CronicaDesign.Shadow.mediaRadius,
+            x: 0,
+            y: CronicaDesign.Shadow.mediaY
+        )
     }
 }
 
@@ -53,11 +65,8 @@ private struct DrawingConstants {
     static let posterWidth: CGFloat = 160
     static let posterHeight: CGFloat = 240
 #endif
-    static let posterRadius: CGFloat = 12
     static let compactPosterWidth: CGFloat = 80
-    static let compactPosterRadius: CGFloat = 4
     static let compactPosterHeight: CGFloat = 140
-    static let shadowRadius: CGFloat = 2
 }
 
 #Preview {

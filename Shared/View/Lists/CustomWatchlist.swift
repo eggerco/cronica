@@ -356,8 +356,12 @@ struct CustomWatchlist: View {
 
 struct EmptyListView: View {
     var body: some View {
-        ContentUnavailableView("Empty List", systemImage: "rectangle.on.rectangle")
-            .padding()
+        ContentUnavailableView {
+            Label("Your Watchlist is empty", systemImage: "rectangle.on.rectangle")
+        } description: {
+            Text("Add movies and shows from Discover or Search to build your list.")
+        }
+        .padding()
     }
 }
 

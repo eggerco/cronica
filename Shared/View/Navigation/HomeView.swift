@@ -15,6 +15,7 @@ struct HomeView: View {
     @AppStorage("showOnboarding") private var displayOnboard = true
 #endif
     @StateObject private var viewModel = HomeViewModel()
+    @ObservedObject private var upNextViewModel = UpNextViewModel.shared
     @State private var showNotifications = false
     @State private var showPopup = false
     @State private var reloadHome = false
@@ -29,8 +30,15 @@ struct HomeView: View {
 #endif
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: CronicaDesign.Spacing.sm) {
 #if os(iOS)
+                if UIDevice.isIPhone {
+                    HomeBrandHeader(
+                        featuredImage: homeFeaturedImage,
+                        featuredTitle: homeFeaturedTitle
+                    )
+                    .padding(.bottom, CronicaDesign.Spacing.xs)
+                }
                 if showReviewBanner { CallToReviewAppView(showView: $showReviewBanner).unredacted() }
 #endif
                 HorizontalUpNextListView(shouldReload: $reloadHome)
@@ -151,6 +159,9 @@ struct HomeView: View {
         .redacted(reason: !viewModel.isLoaded ? .placeholder : [] )
 #if !os(tvOS)
         .navigationTitle("Home")
+#if os(iOS)
+        .navigationBarTitleDisplayMode(UIDevice.isIPhone ? .inline : .large)
+#endif
 #endif
         .toolbar {
 #if os(macOS)
@@ -228,6 +239,20 @@ struct HomeView: View {
     }
     
 #if os(iOS)
+    private var homeFeaturedImage: URL? {
+        if let episode = upNextViewModel.episodes.first {
+            return episode.episode.itemImageLarge ?? episode.backupImage
+        }
+        return viewModel.trending.first?.cardImageLarge
+    }
+
+    private var homeFeaturedTitle: String? {
+        if let episode = upNextViewModel.episodes.first {
+            return episode.showTitle
+        }
+        return viewModel.trending.first?.itemTitle
+    }
+
     private func checkAskForReview() {
         if launchCount < 30 {
             launchCount += 1

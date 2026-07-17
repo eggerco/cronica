@@ -53,15 +53,21 @@ struct ItemContentRowView: View {
 				}
 				.frame(width: DrawingConstants.imageWidth,
 					   height: DrawingConstants.imageHeight)
-				.clipShape(RoundedRectangle(cornerRadius: DrawingConstants.imageRadius))
-                .shadow(color: .black.opacity(0.2), radius: 2.5, x: 0, y: 2.5)
+				.clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.media, style: .continuous))
+                .shadow(
+                    color: .black.opacity(CronicaDesign.Shadow.mediaOpacity),
+                    radius: CronicaDesign.Shadow.mediaRadius,
+                    x: 0,
+                    y: CronicaDesign.Shadow.mediaY
+                )
 				VStack(alignment: .leading) {
                     Text(item.itemTitle)
                         .lineLimit(DrawingConstants.textLimit)
+                        .font(CronicaDesign.Typography.body())
                         .fontWeight(.medium)
                     Text(showNotificationDate ? item.itemNotificationDescription : item.itemSearchDescription)
-                        .font(.caption)
-                        .foregroundColor(.secondary)
+                        .font(CronicaDesign.Typography.caption())
+                        .foregroundStyle(.secondary)
 				}
 #if os(iOS) || os(macOS)
 				Spacer()
@@ -110,7 +116,6 @@ private struct DrawingConstants {
     static let textLimit: Int = 1
 #endif
     static let imageHeight: CGFloat = 55
-    static let imageRadius: CGFloat = 12
 }
 
 #Preview {

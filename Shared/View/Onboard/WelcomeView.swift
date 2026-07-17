@@ -11,144 +11,131 @@ import SwiftUI
 struct WelcomeView: View {
     @AppStorage("showOnboarding") var displayOnboard = true
     @State private var showPolicy = false
+    @State private var appeared = false
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @StateObject private var store = SettingsStore.shared
+
     var body: some View {
-        VStack(alignment: .leading) {
-            CenterHorizontalView {
-                HStack {
-                    Image("Cronica")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 90, height: 90, alignment: .center)
-                        .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
-                        .shadow(radius: 5)
-                        .padding(.leading)
-                    VStack(alignment: .leading) {
-                        Text("Cronica")
-                            .font(.title)
-                            .fontWeight(.bold)
-                            .fontDesign(.rounded)
-                        Text("An Egger & Co Product")
-                            .font(.callout)
-                            .foregroundColor(.secondary)
-                            .fontDesign(.rounded)
-                            .padding(.trailing)
-                    }
-                    .padding(.leading, 6)
-                }
-            }
-            .padding([.top, .bottom])
-            ScrollView {
-                informationContainerView
-            }
-            .padding(.horizontal)
-            Spacer()
-            HStack {
+        ZStack {
+            atmosphere
+            VStack(spacing: 0) {
+                Spacer(minLength: CronicaDesign.Spacing.xl)
+                brandBlock
                 Spacer()
-                Button("Continue") {
-                    withAnimation {
-                        displayOnboard.toggle()
-                    }
+                VStack(spacing: CronicaDesign.Spacing.md) {
+                    Text("Never miss a release.")
+                        .font(CronicaDesign.Typography.sectionSubtitle())
+                        .foregroundStyle(.secondary)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, CronicaDesign.Spacing.xl)
+                    continueButton
+                    privacyButton
                 }
-                .buttonStyle(.borderedProminent)
-                .tint(Color.blue.gradient)
-#if os(iOS) || os(macOS)
-                .controlSize(.large)
-#endif
-                .padding([.leading, .vertical])
-                Button {
-#if os(macOS)
-                    NSWorkspace.shared.open(URL(string: "https://www.oncronica.com/privacy")!)
-#else
-                    showPolicy.toggle()
-#endif
-                } label: {
-                    Text("Privacy Policy")
-                        .lineLimit(1)
-                }
-                .padding([.horizontal, .vertical])
-#if os(iOS) || os(macOS)
-                .controlSize(.large)
-#endif
-#if os(macOS)
-                .buttonStyle(.link)
-#else
-                .buttonStyle(.bordered)
-#endif
-                Spacer()
+                .padding(.bottom, CronicaDesign.Spacing.xxl)
             }
-            .padding()
+            .padding(.horizontal, CronicaDesign.Spacing.lg)
         }
         .interactiveDismissDisabled(true)
+        .onAppear {
+            withAnimation(CronicaDesign.Motion.reduced(reduceMotion)) {
+                appeared = true
+            }
+        }
 #if os(iOS)
         .fullScreenCover(isPresented: $showPolicy) {
             SFSafariViewWrapper(url: URL(string: "https://www.oncronica.com/privacy")!)
         }
 #endif
     }
-    
-    private var informationContainerView: some View {
-        VStack(alignment: .leading) {
-            informationItem(
-                title: NSLocalizedString("Your Watchlist", comment: ""),
-                subtitle: NSLocalizedString("Add everything you want, the Watchlist automatically organizes it for you.", comment: ""),
-                imageName: "rectangle.stack.fill",
-                imageTint: .purple
+
+    private var atmosphere: some View {
+        ZStack {
+            LinearGradient(
+                colors: [
+                    store.appTheme.color.opacity(0.35),
+                    Color(white: 0.08),
+                    Color.black
+                ],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
             )
-            
-            informationItem(
-                title: NSLocalizedString("Always Synced", comment: ""),
-                subtitle: NSLocalizedString("Your Watchlist is always in sync with your Apple Watch, iPad, Mac, and Apple TV.", comment: ""),
-                imageName: "icloud.fill"
+            .ignoresSafeArea()
+
+            RadialGradient(
+                colors: [
+                    store.appTheme.color.opacity(0.28),
+                    .clear
+                ],
+                center: .top,
+                startRadius: 20,
+                endRadius: 420
             )
-            
-            informationItem(
-                title: NSLocalizedString("Track your episodes", comment: ""),
-                subtitle: NSLocalizedString("Keep track of every episode you've watched.", comment: ""),
-                imageName: "rectangle.fill.badge.checkmark",
-                imageTint: .green
-            )
-            
-            informationItem(
-                title: NSLocalizedString("Never miss out", comment: ""),
-                subtitle: NSLocalizedString("Get notifications about the newest releases.", comment: ""),
-                imageName: "bell.fill",
-                imageTint: .orange
-            )
-            
+            .ignoresSafeArea()
+            .blendMode(.plusLighter)
         }
     }
-    
-    private func informationItem(
-        title: String,
-        subtitle: String,
-        imageName: String,
-        imageTint: Color = .blue
-    ) -> some View {
-        HStack(alignment: .center) {
-            Image(systemName: imageName)
-                .font(.largeTitle)
-                .frame(width: 60)
-                .accessibility(hidden: true)
-                .foregroundColor(imageTint)
-            
-            VStack(alignment: .leading) {
-                Text(NSLocalizedString(title, comment: ""))
-                    .font(.title3)
-                    .fontWeight(.semibold)
-                    .foregroundColor(.primary)
-                    .accessibility(addTraits: .isHeader)
-                    .fontDesign(.rounded)
-                
-                Text(NSLocalizedString(subtitle, comment: ""))
-                    .font(.callout)
-                    .foregroundColor(.secondary)
-                    .fontDesign(.rounded)
-                    .fixedSize(horizontal: false, vertical: true)
-            }
-            .padding(.leading, 6)
-            .padding([.top, .bottom], 8)
+
+    private var brandBlock: some View {
+        VStack(spacing: CronicaDesign.Spacing.md) {
+            Image("Cronica")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 112, height: 112)
+                .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.large, style: .continuous))
+                .shadow(color: .black.opacity(0.35), radius: 20, x: 0, y: 12)
+                .scaleEffect(appeared ? 1 : 0.92)
+                .opacity(appeared ? 1 : 0)
+
+            Text("Cronica")
+                .font(CronicaDesign.Typography.brand())
+                .foregroundStyle(.white)
+                .opacity(appeared ? 1 : 0)
+                .offset(y: appeared ? 0 : 12)
+
+            Text("Your watchlist for movies and TV — with reminders when something new drops.")
+                .font(CronicaDesign.Typography.sectionSubtitle())
+                .foregroundStyle(.white.opacity(0.78))
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, CronicaDesign.Spacing.md)
+                .opacity(appeared ? 1 : 0)
+                .offset(y: appeared ? 0 : 10)
         }
-        .padding(.top)
+    }
+
+    private var continueButton: some View {
+        Button {
+            withAnimation(CronicaDesign.Motion.gentle) {
+                displayOnboard = false
+            }
+        } label: {
+            Text("Continue")
+                .font(.headline)
+                .frame(maxWidth: .infinity)
+        }
+        .buttonStyle(.borderedProminent)
+        .tint(store.appTheme.color)
+#if os(iOS)
+        .controlSize(.large)
+#endif
+        .opacity(appeared ? 1 : 0)
+    }
+
+    private var privacyButton: some View {
+        Button {
+#if os(macOS)
+            NSWorkspace.shared.open(URL(string: "https://www.oncronica.com/privacy")!)
+#else
+            showPolicy.toggle()
+#endif
+        } label: {
+            Text("Privacy Policy")
+                .font(CronicaDesign.Typography.caption())
+        }
+#if os(iOS)
+        .buttonStyle(.plain)
+        .foregroundStyle(.secondary)
+#endif
+        .opacity(appeared ? 1 : 0)
     }
 }
 
