@@ -20,7 +20,7 @@ struct Provider: TimelineProvider {
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         Task {
-            let nextUpdate = Date().addingTimeInterval(86400) // 24 hours in seconds
+            let nextUpdate = Date().addingTimeInterval(86400) // 24 hours
             do {
                 let result = try await NetworkService.shared.fetchItems(from: "trending/all/day")
                 var content = [ItemContent]()
@@ -35,10 +35,10 @@ struct Provider: TimelineProvider {
                     content.append(itemContent)
                 }
                 let entry = ItemContentEntry(date: .now, item: content)
-                let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
-                completion(timeline)
+                completion(Timeline(entries: [entry], policy: .after(nextUpdate)))
             } catch {
-                print("Error: \(error.localizedDescription)")
+                let entry = ItemContentEntry(date: .now, item: [])
+                completion(Timeline(entries: [entry], policy: .after(Date().addingTimeInterval(60 * 60))))
             }
         }
     }
@@ -77,8 +77,3 @@ struct CronicaWidget: Widget {
         .supportedFamilies([.systemMedium])
     }
 }
-
-//#Preview {
-//    CronicaWidgetEntryView(entry: ItemContentEntry(date: Date(), item: [ItemContent.placeholder]))
-//        .previewContext(WidgetPreviewContext(family: .systemMedium))
-//}

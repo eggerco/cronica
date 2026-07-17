@@ -44,25 +44,39 @@ final class BackgroundManager {
 		}
 	}
 	
-	func handleWatchingContentRefresh() async {
+	private let minimumRefreshInterval: TimeInterval = 6 * 60 * 60
+
+	func handleWatchingContentRefresh(force: Bool = false) async {
+		if !force, let last = lastWatchingRefresh, Date().timeIntervalSince(last) < minimumRefreshInterval {
+			return
+		}
 		let items = self.fetchWatchingItems()
 		await self.fetchUpdates(items: items)
+		lastWatchingRefresh = Date()
 	}
 	
-	func handleUpcomingContentRefresh() async {
+	func handleUpcomingContentRefresh(force: Bool = false) async {
+		if !force, let last = lastUpcomingRefresh, Date().timeIntervalSince(last) < minimumRefreshInterval {
+			return
+		}
 		var items = [WatchlistItem]()
 		let upcomingItems = self.fetchUpcomingItems()
 		items.append(contentsOf: upcomingItems)
 		if items.isEmpty { return }
 		await self.fetchUpdates(items: items)
+		lastUpcomingRefresh = Date()
 	}
 	
-	func handleAppRefreshMaintenance() async {
+	func handleAppRefreshMaintenance(force: Bool = false) async {
+		if !force, let last = lastMaintenance, Date().timeIntervalSince(last) < minimumRefreshInterval {
+			return
+		}
 		var items = [WatchlistItem]()
 		let releasedAndEndedItems = self.fetchReleasedItems()
 		items.append(contentsOf: releasedAndEndedItems)
 		if items.isEmpty { return }
 		await self.fetchUpdates(items: items)
+		lastMaintenance = Date()
 	}
 	
 	private func fetchWatchingItems() -> [WatchlistItem] {
@@ -122,16 +136,12 @@ final class BackgroundManager {
 				// if the item is already released, archive or watched
 				// the need for constant updates are not there.
 				// So, to save resources, they will update less frequently.
-				if item.isMovie {
-					await update(item)
-				} else {
-					if item.isArchive || item.itemSchedule == .ended || item.isWatched {
-						if item.itemLastUpdateDate.hasPassedTwoWeek() {
-							await update(item)
-						}
-					} else {
+				if item.isArchive || item.isWatched || (!item.isMovie && item.itemSchedule == .ended) {
+					if item.itemLastUpdateDate.hasPassedTwoWeek() {
 						await update(item)
 					}
+				} else {
+					await update(item)
 				}
 			}
 		}
@@ -150,9 +160,8 @@ final class BackgroundManager {
 			if content.itemStatus == .cancelled {
 				notifications.removeNotification(identifier: content.itemContentID)
 			}
-			// In order to avoid passing the limit of local notifications,
-			// the app will only register when it's less than two months away
-			// from release date.
+			// Stay under local notification limits by only scheduling
+			// when release is less than two weeks away.
 			if content.itemFallbackDate.isLessThanTwoWeeksAway() {
 				notifications.schedule(content)
 			}

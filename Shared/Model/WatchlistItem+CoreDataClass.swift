@@ -17,40 +17,36 @@ public class WatchlistItem: NSManagedObject, Codable {
         }
         self.init(context: context)
         
-        do {
-            let values = try decoder.container(keyedBy: CodingKeys.self)
-            id = try values.decode(Int64.self, forKey: .id)
-            title = try values.decode(String.self, forKey: .title)
-            contentID = try values.decode(String.self, forKey: .contentID)
-            image = try values.decode(URL?.self, forKey: .image)
-            watchedEpisodes = try values.decode(String.self, forKey: .watchedEpisodes)
-            watched = try values.decode(Bool.self, forKey: .watched)
-            favorite = try values.decode(Bool.self, forKey: .favorite)
-            contentType = try values.decode(Int64.self, forKey: .contentType)
-            schedule = try values.decode(Int16.self, forKey: .schedule)
-            largeCardImage = try values.decode(URL?.self, forKey: .largeCardImage)
-            largePosterImage = try values.decode(URL?.self, forKey: .largePosterImage)
-            mediumPosterImage = try values.decode(URL?.self, forKey: .mediumPosterImage)
-            shouldNotify = try values.decode(Bool.self, forKey: .shouldNotify)
-            isArchive = try values.decode(Bool.self, forKey: .isArchive)
-            nextEpisodeNumber = try values.decode(Int64.self, forKey: .nextEpisodeNumber)
-            nextSeasonNumber = try values.decode(Int64.self, forKey: .nextSeasonNumber)
-            nextEpisodeNumberUpNext = try values.decode(Int64.self, forKey: .nextEpisodeNumberUpNext)
-            seasonNumberUpNext = try values.decode(Int64.self, forKey: .seasonNumberUpNext)
-            displayOnUpNext = try values.decode(Bool.self, forKey: .displayOnUpNext)
-            isPin = try values.decode(Bool.self, forKey: .isPin)
-            lastEpisodeNumber = try values.decode(Int64.self, forKey: .lastEpisodeNumber)
-            lastSelectedSeason = try values.decode(Int64.self, forKey: .lastSelectedSeason)
-            userNotes = try values.decode(String.self, forKey: .userNotes)
-            userRating = try values.decode(Int64.self, forKey: .userRating)
-            isWatching = try values.decode(Bool.self, forKey: .isWatching)
-			posterPath = try values.decode(String?.self, forKey: .posterPath)
-			backdropPath = try values.decode(String?.self, forKey: .backdropPath)
-			firstAirDate = try values.decode(Date?.self, forKey: .firstAirDate)
-			movieReleaseDate = try values.decode(Date?.self, forKey: .movieReleaseDate)
-        } catch {
-            print(error.localizedDescription)
-        }
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        id = try values.decode(Int64.self, forKey: .id)
+        title = try values.decode(String.self, forKey: .title)
+        contentID = try values.decode(String.self, forKey: .contentID)
+        image = try values.decodeIfPresent(URL.self, forKey: .image)
+        watchedEpisodes = try values.decodeIfPresent(String.self, forKey: .watchedEpisodes) ?? ""
+        watched = try values.decodeIfPresent(Bool.self, forKey: .watched) ?? false
+        favorite = try values.decodeIfPresent(Bool.self, forKey: .favorite) ?? false
+        contentType = try values.decode(Int64.self, forKey: .contentType)
+        schedule = try values.decodeIfPresent(Int16.self, forKey: .schedule) ?? 0
+        largeCardImage = try values.decodeIfPresent(URL.self, forKey: .largeCardImage)
+        largePosterImage = try values.decodeIfPresent(URL.self, forKey: .largePosterImage)
+        mediumPosterImage = try values.decodeIfPresent(URL.self, forKey: .mediumPosterImage)
+        shouldNotify = try values.decodeIfPresent(Bool.self, forKey: .shouldNotify) ?? false
+        isArchive = try values.decodeIfPresent(Bool.self, forKey: .isArchive) ?? false
+        nextEpisodeNumber = try values.decodeIfPresent(Int64.self, forKey: .nextEpisodeNumber) ?? 0
+        nextSeasonNumber = try values.decodeIfPresent(Int64.self, forKey: .nextSeasonNumber) ?? 0
+        nextEpisodeNumberUpNext = try values.decodeIfPresent(Int64.self, forKey: .nextEpisodeNumberUpNext) ?? 0
+        seasonNumberUpNext = try values.decodeIfPresent(Int64.self, forKey: .seasonNumberUpNext) ?? 0
+        displayOnUpNext = try values.decodeIfPresent(Bool.self, forKey: .displayOnUpNext) ?? false
+        isPin = try values.decodeIfPresent(Bool.self, forKey: .isPin) ?? false
+        lastEpisodeNumber = try values.decodeIfPresent(Int64.self, forKey: .lastEpisodeNumber) ?? 0
+        lastSelectedSeason = try values.decodeIfPresent(Int64.self, forKey: .lastSelectedSeason) ?? 0
+        userNotes = try values.decodeIfPresent(String.self, forKey: .userNotes) ?? ""
+        userRating = try values.decodeIfPresent(Int64.self, forKey: .userRating) ?? 0
+        isWatching = try values.decodeIfPresent(Bool.self, forKey: .isWatching) ?? false
+        posterPath = try values.decodeIfPresent(String.self, forKey: .posterPath)
+        backdropPath = try values.decodeIfPresent(String.self, forKey: .backdropPath)
+        firstAirDate = try values.decodeIfPresent(Date.self, forKey: .firstAirDate)
+        movieReleaseDate = try values.decodeIfPresent(Date.self, forKey: .movieReleaseDate)
     }
     
     public func encode(to encoder: Encoder) throws {

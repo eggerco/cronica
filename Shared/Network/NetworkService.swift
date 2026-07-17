@@ -145,6 +145,7 @@ final class NetworkService: Sendable {
     }
     
     private func fetch<T: Decodable>(url: URL) async throws -> T {
+        guard Key.hasTMDbKey else { throw NetworkError.invalidApi }
         let (data, response) = try await URLSession.shared.data(from: url)
         guard let httpResponse = response as? HTTPURLResponse else { throw NetworkError.invalidResponse }
         let responseError = handleNetworkResponses(response: httpResponse)

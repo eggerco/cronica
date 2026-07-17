@@ -1,6 +1,50 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "Imported %lld titles. Skipped %lld that were already in your watchlist." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imported %lld titles. Skipped %lld that were already in your watchlist."
+          }
+        }
+      }
+    },
+    "Restore failed. Check that the file is a Cronica backup." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restore failed. Check that the file is a Cronica backup."
+          }
+        }
+      }
+    },
+    "Couldn\u2019t open that file." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couldn\u2019t open that file."
+          }
+        }
+      }
+    },
+    "Exports your watchlist as JSON. Restore skips titles that are already in your library." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exports your watchlist as JSON. Restore skips titles that are already in your library."
+          }
+        }
+      }
+    },
     "We couldn\u2019t finish this search. Check your connection and try again." : {
       "extractionState" : "manual",
       "localizations" : {

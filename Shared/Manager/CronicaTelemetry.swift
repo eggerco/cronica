@@ -19,8 +19,8 @@ struct CronicaTelemetry {
     private init() { }
     
     func setup() {
-#if !targetEnvironment(simulator) || !DEBUG
-        guard let aptabaseKey = Key.aptabaseClientKey else { return }
+#if !DEBUG
+        guard let aptabaseKey = Key.aptabaseKeyIfAvailable else { return }
         Aptabase.shared.initialize(appKey: aptabaseKey)
         Aptabase.shared.trackEvent("app_started")
 #endif
@@ -33,6 +33,7 @@ struct CronicaTelemetry {
 #if targetEnvironment(simulator) || DEBUG
         logger.warning("\(message), for: \(id)")
 #else
+        guard Key.aptabaseKeyIfAvailable != nil else { return }
         Aptabase.shared.trackEvent(id, with: ["Message": message])
 #endif
     }

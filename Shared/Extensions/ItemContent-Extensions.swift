@@ -206,7 +206,8 @@ extension ItemContent {
 #if os(tvOS)
         return NetworkService.urlBuilder(size: .w780, path: posterPath)
 #else
-        return NetworkService.urlBuilder(size: .w500, path: posterPath)
+        // Grid posters are ~160pt wide; w300 is enough and keeps lists light.
+        return NetworkService.urlBuilder(size: .medium, path: posterPath)
 #endif
     }
     var posterImageLarge: URL? {
@@ -219,7 +220,7 @@ extension ItemContent {
 #if os(tvOS)
         return NetworkService.urlBuilder(size: .w780, path: backdropPath)
 #else
-        return NetworkService.urlBuilder(size: .w500, path: backdropPath)
+        return NetworkService.urlBuilder(size: .medium, path: backdropPath)
 #endif
     }
     var cardImageLarge: URL? {
