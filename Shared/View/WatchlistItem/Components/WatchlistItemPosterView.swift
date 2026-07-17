@@ -114,9 +114,14 @@ struct WatchlistItemPosterView: View {
             }
             .frame(width: settings.isCompactUI ? DrawingConstants.compactPosterWidth : DrawingConstants.posterWidth,
                    height: settings.isCompactUI ? DrawingConstants.compactPosterHeight : DrawingConstants.posterHeight)
-            .clipShape(RoundedRectangle(cornerRadius: settings.isCompactUI ? DrawingConstants.compactPosterRadius : DrawingConstants.posterRadius,
+            .clipShape(RoundedRectangle(cornerRadius: settings.isCompactUI ? CronicaDesign.Radius.compact : CronicaDesign.Radius.media,
                                         style: .continuous))
-            .shadow(color: .black.opacity(0.2), radius: 5, x: 0, y: 5)
+            .shadow(
+                color: .black.opacity(CronicaDesign.Shadow.mediaOpacity),
+                radius: CronicaDesign.Shadow.mediaRadius,
+                x: 0,
+                y: CronicaDesign.Shadow.mediaY
+            )
             .padding(.zero)
             .applyHoverEffect()
 #if !os(tvOS)
@@ -185,7 +190,4 @@ private struct DrawingConstants {
 #endif
     static let compactPosterWidth: CGFloat = 80
     static let compactPosterHeight: CGFloat = 140
-    static let compactPosterRadius: CGFloat = 6
-    static let posterRadius: CGFloat = 12
-    static let shadowRadius: CGFloat = 2.5
 }

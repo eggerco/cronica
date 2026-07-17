@@ -88,7 +88,7 @@ struct SearchItem: View {
             }
             .frame(width: DrawingConstants.imageWidth,
                    height: DrawingConstants.imageHeight)
-            .clipShape(RoundedRectangle(cornerRadius: DrawingConstants.imageRadius))
+            .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.media, style: .continuous))
             .transition(.opacity)
     }
     
@@ -171,7 +171,7 @@ struct ItemContentRow: View {
             }
             .frame(width: DrawingConstants.imageWidth,
                    height: DrawingConstants.imageHeight)
-            .clipShape(RoundedRectangle(cornerRadius: DrawingConstants.imageRadius))
+            .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.media, style: .continuous))
             .transition(.opacity)
     }
     
@@ -183,7 +183,6 @@ struct ItemContentRow: View {
 private struct DrawingConstants {
     static let imageWidth: CGFloat = 70
     static let imageHeight: CGFloat = 50
-    static let imageRadius: CGFloat = 4
 #if os(watchOS)
     static let textLimit: Int = 2
 #else
@@ -209,7 +208,7 @@ private struct SearchItemContentImageView: View {
                 }
                 .frame(width: DrawingConstants.imageWidth,
                        height: DrawingConstants.imageHeight)
-                .clipShape(RoundedRectangle(cornerRadius: DrawingConstants.imageRadius))
+                .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.media, style: .continuous))
             }
         }
         

@@ -15,16 +15,11 @@ struct DeveloperView: View {
     @State private var itemIdField = ""
     @State private var itemMediaType: MediaType = .movie
     @State private var isFetching = false
-    @State private var isFetchingAll = false
-    @State private var userAccessId = String()
-    @State private var userAccessToken = String()
-    @State private var v3SessionID = String()
     private let persistence = PersistenceController.shared
     private let service = NetworkService.shared
     @State private var showOnboarding = false
     @AppStorage("launchCount") var launchCount: Int = 0
     @AppStorage("askedForReview") var askedForReview = false
-    @State private var isUserSignedInWithTMDB = false
     var body: some View {
         Form {
             Section("Network") {

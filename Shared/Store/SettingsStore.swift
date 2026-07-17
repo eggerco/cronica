@@ -54,8 +54,6 @@ final class SettingsStore: ObservableObject {
     @AppStorage("preferCompactUI") var isCompactUI = false
     @AppStorage("selectedWatchProviderEnabled") var isSelectedWatchProviderEnabled = false
     @AppStorage("selectedWatchProviders") var selectedWatchProviders = ""
-    @AppStorage("userHasImportedFromTMDB") var userImportedTMDB = false
-    @AppStorage("isUserConnectedWithTMDB") var isUserConnectedWithTMDb = false
 #if os(tvOS) || os(watchOS)
     @AppStorage("showRemoveConfirmation") var showRemoveConfirmation = true
 #else
@@ -69,7 +67,7 @@ final class SettingsStore: ObservableObject {
 #endif
     @AppStorage("removeFromPinOnWatched") var removeFromPinOnWatched = false
     @AppStorage("autoOpenCustomListSelector") var openListSelectorOnAdding = false
-    @AppStorage("alwaysUsePosterAsCover") var usePostersAsCover = true
+    @AppStorage("alwaysUsePosterAsCover") var usePostersAsCover = false
     @AppStorage("shareLinkPreference") var shareLinkPreference: ShareLinkPreference = .tmdb
     @AppStorage("upNextStyle") var upNextStyle: UpNextDetailsPreferredStyle = .card
     @AppStorage("showDateOnWatchlistRow") var showDateOnWatchlist = true

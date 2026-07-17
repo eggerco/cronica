@@ -39,7 +39,7 @@ struct ItemContentCardView: View {
                         }
                         .frame(width: DrawingConstants.imageWidth,
                                height: DrawingConstants.imageHeight)
-                        .clipShape(RoundedRectangle(cornerRadius: DrawingConstants.imageRadius, style: .continuous))
+                        .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.media, style: .continuous))
                     }
                 }
                 .overlay {
@@ -103,9 +103,14 @@ struct ItemContentCardView: View {
                 .transition(.opacity)
                 .frame(width: DrawingConstants.imageWidth,
                        height: DrawingConstants.imageHeight)
-                .clipShape(RoundedRectangle(cornerRadius: DrawingConstants.imageRadius,
+                .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.media,
                                             style: .continuous))
-                .shadow(color: .black.opacity(0.2), radius: 5, x: 0, y: 5)
+                .shadow(
+                    color: .black.opacity(CronicaDesign.Shadow.mediaOpacity),
+                    radius: CronicaDesign.Shadow.mediaRadius,
+                    x: 0,
+                    y: CronicaDesign.Shadow.mediaY
+                )
                 .applyHoverEffect()
                 .itemContentContextMenu(item: item,
                                         isWatched: $isWatched,
@@ -187,7 +192,5 @@ private struct DrawingConstants {
     static let imageHeight: CGFloat = UIDevice.isIPad ? 140 : 100
 #endif
     static let titleLineLimit: Int = 2
-    static let imageRadius: CGFloat = 12
-    static let imageShadow: CGFloat = 2.5
     static let placeholderForegroundColor: Color = .white.opacity(0.8)
 }

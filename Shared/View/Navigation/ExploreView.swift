@@ -86,7 +86,7 @@ struct ExploreView: View {
                     } description: {
                         Text("Watch more titles to receive recommendations.")
                     } actions: {
-                        Button("Explore Movies & TV Shows") {
+                        Button("Discover Movies & TV Shows") {
                             selectedForYouTab = .explore
                         }
                         .buttonStyle(.borderedProminent)
@@ -218,7 +218,7 @@ struct ExploreView: View {
             CompaniesListView(companies: item)
         }
 #if !os(tvOS) && !os(macOS)
-        .navigationTitle(selectedForYouTab == .explore ? "Explore" : "For You")
+        .navigationTitle(selectedForYouTab == .explore ? "Discover" : "For You")
 #elseif os(tvOS)
         .ignoresSafeArea(.all, edges: .horizontal)
 #endif
@@ -304,7 +304,7 @@ struct ExploreView: View {
 #if os(tvOS)
                     HStack {
                         VStack(alignment: .leading) {
-                            Text("Explore")
+                            Text("Discover")
                                 .font(.title3)
                             Text(selectedMedia.title)
                                 .font(.callout)
@@ -756,7 +756,7 @@ enum ForYouTabType: String, Identifiable, Codable, Hashable, CaseIterable {
     var localizedTitle: String {
         switch self {
         case .recommendations: NSLocalizedString("For You", comment: "")
-        case .explore: NSLocalizedString("Explore", comment: "")
+        case .explore: NSLocalizedString("Discover", comment: "")
         }
     }
     

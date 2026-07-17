@@ -18,9 +18,6 @@ struct EditCustomList: View {
     @State private var disableSaveButton = true
     @Binding var showListSelection: Bool
     @State private var itemsToRemove = Set<WatchlistItem>()
-    @State private var showPublishConfirmation = false
-    @State private var canPublish = false
-    @State private var isPublishing = false
     @State private var pinOnHome = false
     @State private var askConfirmationForDeletion = false
     @State private var isDeleted = false
@@ -83,9 +80,6 @@ struct EditCustomList: View {
             title = list.itemTitle
             note = list.notes ?? ""
             pinOnHome = list.isPin
-            if SettingsStore.shared.isUserConnectedWithTMDb && !list.isSyncEnabledTMDB {
-                canPublish = true
-            }
         }
         .onChange(of: title) { _, newValue in
             if newValue != list.itemTitle {

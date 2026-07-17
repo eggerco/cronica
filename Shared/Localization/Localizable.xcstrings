@@ -1,6 +1,116 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "Translucent artwork behind details helps set a cinematic mood. Disable it for a flatter look." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Translucent artwork behind details helps set a cinematic mood. Disable it for a flatter look."
+          }
+        }
+      }
+    },
+    "By default, details use a full-bleed cover image. Turn this on to keep the classic poster layout." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "By default, details use a full-bleed cover image. Turn this on to keep the classic poster layout."
+          }
+        }
+      }
+    },
+    "Add movies and shows from Discover or Search to build your list." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add movies and shows from Discover or Search to build your list."
+          }
+        }
+      }
+    },
+    "Your Watchlist is empty" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your Watchlist is empty"
+          }
+        }
+      }
+    },
+    "Discover Movies & TV Shows" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Discover Movies & TV Shows"
+          }
+        }
+      }
+    },
+    "Track releases and pick up where you left off." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Track releases and pick up where you left off."
+          }
+        }
+      }
+    },
+    "Up next from your list" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Up next from your list"
+          }
+        }
+      }
+    },
+    "Your watchlist, on schedule" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your watchlist, on schedule"
+          }
+        }
+      }
+    },
+    "Your watchlist for movies and TV \u2014 with reminders when something new drops." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your watchlist for movies and TV \u2014 with reminders when something new drops."
+          }
+        }
+      }
+    },
+    "Never miss a release." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Never miss a release."
+          }
+        }
+      }
+    },
     "" : {
       "localizations" : {
         "de" : {

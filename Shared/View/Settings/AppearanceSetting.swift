@@ -16,8 +16,12 @@ struct AppearanceSetting: View {
         Form {
 #if os(iOS)
             if UIDevice.isIPhone {
-                Section("Details Page") {
+                Section {
                     Toggle("Prefer Poster in Details Page", isOn: $store.usePostersAsCover)
+                } header: {
+                    Text("Details Page")
+                } footer: {
+                    Text("By default, details use a full-bleed cover image. Turn this on to keep the classic poster layout.")
                 }
             }
 #endif
@@ -80,6 +84,8 @@ struct AppearanceSetting: View {
                 Toggle(isOn: $store.disableTranslucent) {
                     Text("Disable Translucent Background")
                 }
+            } footer: {
+                Text("Translucent artwork behind details helps set a cinematic mood. Disable it for a flatter look.")
             }
         }
         .navigationTitle("Appearance")

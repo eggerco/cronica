@@ -146,53 +146,22 @@ struct ItemContentDetails: View {
     
 #if os(iOS)
     private var sizedBasedPhoneView: some View {
-        VStack {
-            if viewModel.showPoster || store.usePostersAsCover {
+        VStack(spacing: 0) {
+            if store.usePostersAsCover || viewModel.showPoster {
                 poster
+                phoneTitleBlock(alignment: .center, light: false)
+                    .padding(.top, CronicaDesign.Spacing.sm)
+                phoneActionCluster
+                    .padding(.top, CronicaDesign.Spacing.md)
             } else {
-                cover
+                cinematicHero
             }
-            
-            Text(title)
-                .multilineTextAlignment(.center)
-                .lineLimit(3)
-                .font(.title2)
-                .fontDesign(.rounded)
-                .fontWeight(.semibold)
-                .padding(.horizontal, 8)
-                .padding(.bottom, 4)
-                .unredacted()
-            if let genres = viewModel.content?.itemGenres, !genres.isEmpty {
-                Text(genres)
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-                    .fontDesign(.rounded)
-            }
-            if let info = viewModel.content?.itemQuickInfo, !info.isEmpty {
-                Text(info)
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-                    .fontDesign(.rounded)
-            }
-            
-            HStack {
-                Spacer()
-                if type == .movie {
-                    watchButton
-                } else {
-                    favoriteButton
-                }
-                watchlistButton
-                    .keyboardShortcut("l", modifiers: [.option])
-                    .padding(.horizontal)
-                listButton
-                Spacer()
-            }
-            .padding([.top, .horizontal])
-            
+
             OverviewBoxView(overview: viewModel.content?.itemOverview,
-                            title: title).padding()
-            
+                            title: title)
+                .padding(.horizontal, CronicaDesign.Spacing.md)
+                .padding(.top, CronicaDesign.Spacing.md)
+
             if let season = viewModel.content?.seasons {
                 SeasonListView(
                     showID: id,
@@ -204,21 +173,20 @@ struct ItemContentDetails: View {
                 .padding([.top, .horizontal], .zero)
                 .padding(.bottom)
             }
-            
+
             WatchProvidersList(id: id, type: type)
-            
+
             TrailerListView(trailers: viewModel.trailers)
-            
+
             CastListView(credits: viewModel.credits)
-            
+
             HorizontalItemContentListView(items: viewModel.recommendations,
                                           title: NSLocalizedString("Recommendations", comment: ""),
                                           showPopup: $showPopup,
                                           popupType: $popupType,
                                           displayAsCard: true)
-            
+
             infoBox(item: viewModel.content, type: type).padding()
-            
         }
         .toolbar {
             ToolbarItem(placement: .principal) {
@@ -228,6 +196,64 @@ struct ItemContentDetails: View {
         .navigationTitle(title)
         .navigationBarTitleDisplayMode(.inline)
         .actionPopup(isShowing: $showPopup, for: popupType)
+    }
+
+    private var cinematicHero: some View {
+        ZStack(alignment: .bottomLeading) {
+            cover
+            CronicaDesign.Atmosphere.gradient
+                .allowsHitTesting(false)
+            VStack(alignment: .leading, spacing: CronicaDesign.Spacing.sm) {
+                phoneTitleBlock(alignment: .leading, light: true)
+                phoneActionCluster
+            }
+            .padding(.horizontal, CronicaDesign.Spacing.lg)
+            .padding(.bottom, CronicaDesign.Spacing.lg)
+        }
+        .frame(height: CronicaDesign.Atmosphere.detailHeroHeight)
+        .frame(maxWidth: .infinity)
+        .clipped()
+    }
+
+    @ViewBuilder
+    private func phoneTitleBlock(alignment: HorizontalAlignment, light: Bool) -> some View {
+        VStack(alignment: alignment, spacing: CronicaDesign.Spacing.xxs) {
+            Text(title)
+                .multilineTextAlignment(alignment == .leading ? .leading : .center)
+                .lineLimit(3)
+                .font(CronicaDesign.Typography.display())
+                .foregroundStyle(light ? .white : .primary)
+                .frame(maxWidth: .infinity, alignment: alignment == .leading ? .leading : .center)
+                .padding(.horizontal, alignment == .center ? CronicaDesign.Spacing.sm : 0)
+                .unredacted()
+            if let genres = viewModel.content?.itemGenres, !genres.isEmpty {
+                Text(genres)
+                    .font(CronicaDesign.Typography.caption())
+                    .foregroundStyle(light ? .white.opacity(0.8) : .secondary)
+            }
+            if let info = viewModel.content?.itemQuickInfo, !info.isEmpty {
+                Text(info)
+                    .font(CronicaDesign.Typography.caption())
+                    .foregroundStyle(light ? .white.opacity(0.7) : .secondary)
+            }
+        }
+    }
+
+    private var phoneActionCluster: some View {
+        HStack(spacing: CronicaDesign.Spacing.sm) {
+            if type == .movie {
+                watchButton
+            } else {
+                favoriteButton
+            }
+            watchlistButton
+                .keyboardShortcut("l", modifiers: [.option])
+            listButton
+        }
+        .padding(.vertical, CronicaDesign.Spacing.xs)
+        .padding(.horizontal, CronicaDesign.Spacing.sm)
+        .cronicaGlassSurface()
+        .padding(.horizontal, CronicaDesign.Spacing.md)
     }
 #endif
     
@@ -515,7 +541,8 @@ struct ItemContentDetails: View {
 #if os(iOS)
     private var cover: some View {
         HeroImage(url: viewModel.content?.cardImageLarge,
-                  title: title)
+                  title: title,
+                  fullBleed: true)
         .overlay {
             ZStack {
                 Rectangle().fill(.ultraThinMaterial)
@@ -528,13 +555,11 @@ struct ItemContentDetails: View {
             }
             .opacity(animateGesture ? 1 : 0)
         }
-        .frame(width: DrawingConstants.coverWidth, height: DrawingConstants.coverHeight)
-        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-        .shadow(color: .black.opacity(0.2), radius: 10, x: 0, y: 10)
-        .padding(.top)
-        .padding(.bottom, 8)
+        .frame(maxWidth: .infinity)
+        .frame(height: CronicaDesign.Atmosphere.detailHeroHeight)
+        .clipped()
         .accessibilityElement(children: .combine)
-        .accessibility(hidden: true)
+        .accessibilityHidden(true)
         .onTapGesture(count: 2) {
             animate(for: store.gesture)
             viewModel.update(store.gesture)
@@ -1205,8 +1230,6 @@ private struct DrawingConstants {
 #if os(iOS)
     static let posterWidth: CGFloat = UIDevice.isIPhone ? 200 : 280
     static let posterHeight: CGFloat = UIDevice.isIPhone ? 300 : 440
-    static let coverWidth: CGFloat = 360
-    static let coverHeight: CGFloat = 210
 #elseif os(tvOS)
     static let posterWidth: CGFloat = 450
     static let posterHeight: CGFloat = 700
@@ -1214,10 +1237,9 @@ private struct DrawingConstants {
     static let posterWidth: CGFloat = 280
     static let posterHeight: CGFloat = 440
 #endif
-    static let imageRadius: CGFloat = 12
-    static let buttonWidth: CGFloat = 75
-    static let buttonHeight: CGFloat = 50
-    static let buttonRadius: CGFloat = 12
+    static let buttonWidth: CGFloat = 78
+    static let buttonHeight: CGFloat = 52
+    static let buttonRadius: CGFloat = CronicaDesign.Radius.media
 }
 
 #Preview {

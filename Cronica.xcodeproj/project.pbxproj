@@ -113,7 +113,6 @@
 		B83423EB28BA7CCF00D5E2C4 /* ItemContentContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B886D236284E549C00FFE96A /* ItemContentContextMenu.swift */; };
 		B8370A972A02DF2B00643261 /* NewListItemSelectorRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8370A962A02DF2B00643261 /* NewListItemSelectorRow.swift */; };
 		B8370A982A02DF7200643261 /* NewListItemSelectorRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8370A962A02DF2B00643261 /* NewListItemSelectorRow.swift */; };
-		B8370A9A2A02E65200643261 /* TMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85FD9B029F33A880088B5CC /* TMDB.swift */; };
 		B8389ED028AB46C5003025BC /* SearchItemsScope.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8389ECF28AB46C5003025BC /* SearchItemsScope.swift */; };
 		B8389ED228AB46E3003025BC /* WatchlistSearchScope.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8389ED128AB46E3003025BC /* WatchlistSearchScope.swift */; };
 		B83C630728E642FB00927AE7 /* AboutSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83C630628E642FB00927AE7 /* AboutSectionView.swift */; };
@@ -144,6 +143,10 @@
 		B84043D5289B2ABD00D5CEBF /* ItemContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84043D4289B2ABD00D5CEBF /* ItemContentView.swift */; };
 		B84043D6289B2B0400D5CEBF /* ItemContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CC952C27D02D3900B6757C /* ItemContentViewModel.swift */; };
 		B84043E2289B3DEE00D5CEBF /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D8AF9127D4DB720042AEB6 /* SearchViewModel.swift */; };
+		B8C0D5017734A00500RED001 /* HomeBrandHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C0D5017734A00400RED001 /* HomeBrandHeader.swift */; };
+		B8C0D5017734A00600RED001 /* HomeBrandHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C0D5017734A00400RED001 /* HomeBrandHeader.swift */; };
+		B8C0D5017734A00200RED001 /* CronicaDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C0D5017734A00100RED001 /* CronicaDesign.swift */; };
+		B8C0D5017734A00300RED001 /* CronicaDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C0D5017734A00100RED001 /* CronicaDesign.swift */; };
 		B84043E7289B417500D5CEBF /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FF4DBE27FA511A00C7DE9F /* TitleView.swift */; };
 		B8409D1B2A81C6240048840F /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8409D1A2A81C6240048840F /* SearchView.swift */; };
 		B8409D1D2A8286130048840F /* IconGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8409D1C2A8286130048840F /* IconGridView.swift */; };
@@ -169,7 +172,6 @@
 		B84F022A299026B7007EA8AE /* DatesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84F0229299026B7007EA8AE /* DatesManager.swift */; };
 		B84F022B299026B7007EA8AE /* DatesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84F0229299026B7007EA8AE /* DatesManager.swift */; };
 		B85C65AC27A6307C0080121E /* PersonDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85C65AB27A6307C0080121E /* PersonDetailsView.swift */; };
-		B85FD9B129F33A880088B5CC /* TMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85FD9B029F33A880088B5CC /* TMDB.swift */; };
 		B86670B62B5FF63400CBA595 /* CronicaLoadingPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86670B52B5FF63400CBA595 /* CronicaLoadingPopupView.swift */; };
 		B86670B92B600CAE00CBA595 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B86670B82B600CAE00CBA595 /* Localizable.xcstrings */; };
 		B86A3A8B2B509C8200BDE432 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = B86A3A8A2B509C8200BDE432 /* Nuke */; };
@@ -279,8 +281,6 @@
 		B8B8A4282A6E29C400E5533F /* BackgroundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87F746228064D3800E94126 /* BackgroundManager.swift */; };
 		B8B94CEF28EB8B8200EDEC85 /* CronicaTelemetry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B94CEE28EB8B8200EDEC85 /* CronicaTelemetry.swift */; };
 		B8B94CF028EB8B8200EDEC85 /* CronicaTelemetry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B94CEE28EB8B8200EDEC85 /* CronicaTelemetry.swift */; };
-		B8B981E529F42B060001CF0B /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B981E429F42B060001CF0B /* KeychainHelper.swift */; };
-		B8B981E629F42B090001CF0B /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B981E429F42B060001CF0B /* KeychainHelper.swift */; };
 		B8B981EF29F433340001CF0B /* CustomListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B981EE29F433340001CF0B /* CustomListView.swift */; };
 		B8BF6329291402720051915C /* HoverEffectModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BF63262914013D0051915C /* HoverEffectModifier.swift */; };
 		B8BF632A291402730051915C /* HoverEffectModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BF63262914013D0051915C /* HoverEffectModifier.swift */; };
@@ -513,7 +513,6 @@
 		B84C53FC27B1F1DD00425524 /* WatchlistItemRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistItemRowView.swift; sourceTree = "<group>"; };
 		B84F0229299026B7007EA8AE /* DatesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatesManager.swift; sourceTree = "<group>"; };
 		B85C65AB27A6307C0080121E /* PersonDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailsView.swift; sourceTree = "<group>"; };
-		B85FD9B029F33A880088B5CC /* TMDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDB.swift; sourceTree = "<group>"; };
 		B86670B52B5FF63400CBA595 /* CronicaLoadingPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaLoadingPopupView.swift; sourceTree = "<group>"; };
 		B86670B82B600CAE00CBA595 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		B86AA7FB2A3A4C8C009847FE /* WatchProviderSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchProviderSettings.swift; sourceTree = "<group>"; };
@@ -589,7 +588,6 @@
 		B8B2F6B32A85DBFD00FF0246 /* ItemContentSearchRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemContentSearchRowView.swift; sourceTree = "<group>"; };
 		B8B2F6B62A85E5E700FF0246 /* SearchContentPosterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchContentPosterView.swift; sourceTree = "<group>"; };
 		B8B94CEE28EB8B8200EDEC85 /* CronicaTelemetry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaTelemetry.swift; sourceTree = "<group>"; };
-		B8B981E429F42B060001CF0B /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		B8B981EE29F433340001CF0B /* CustomListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomListView.swift; sourceTree = "<group>"; };
 		B8BF63262914013D0051915C /* HoverEffectModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoverEffectModifier.swift; sourceTree = "<group>"; };
 		B8BF633329146A1F0051915C /* PinItemsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinItemsList.swift; sourceTree = "<group>"; };
@@ -788,7 +786,6 @@
 				B840D2CD279B24C900A07C71 /* Person.swift */,
 				B8D7AEC728B961A20053CE5A /* ReleaseDate.swift */,
 				B876DE63281B36A7005558DD /* Season.swift */,
-				B85FD9B029F33A880088B5CC /* TMDB.swift */,
 				B876DE65281B4040005558DD /* Videos.swift */,
 				B81DD92429BD149D009F73F3 /* WatchlistItem+CoreDataClass.swift */,
 				B81DD92529BD149D009F73F3 /* WatchlistItem+CoreDataProperties.swift */,
@@ -1251,7 +1248,6 @@
 			isa = PBXGroup;
 			children = (
 				B86F7AC02A0941D800AA4855 /* EpisodeHelper.swift */,
-				B8B981E429F42B060001CF0B /* KeychainHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1379,6 +1375,8 @@
 				B8EFB256281720E900F7CBD0 /* OverviewBoxView.swift */,
 				B81941AA2A0835D40057DA04 /* PosterPlaceholder.swift */,
 				B8A36AB42B1D4999004A5687 /* ReviewAppBanner.swift */,
+				B8C0D5017734A00400RED001 /* HomeBrandHeader.swift */,
+				B8C0D5017734A00100RED001 /* CronicaDesign.swift */,
 				B8FF4DBE27FA511A00C7DE9F /* TitleView.swift */,
 				B8733A7729293ABB00CBEF2B /* TranslucentBackground.swift */,
 			);
@@ -1634,7 +1632,6 @@
 				B84043BF289B18CB00D5CEBF /* Videos.swift in Sources */,
 				B883A1E42AEF1DB800793EE2 /* SearchItemContentContextMenu.swift in Sources */,
 				B801070D29F255F3008A4551 /* DefaultListView.swift in Sources */,
-				B8B981E629F42B090001CF0B /* KeychainHelper.swift in Sources */,
 				B84457C8297341B4009CB21F /* WatchProviders.swift in Sources */,
 				B84043C0289B18D500D5CEBF /* Endpoints.swift in Sources */,
 				B8C0215829E0D2B0006E9D82 /* SettingsStore.swift in Sources */,
@@ -1706,6 +1703,8 @@
 				B801070829F24499008A4551 /* ItemContentCustomListSelector.swift in Sources */,
 				B8152EC32B716E400032836A /* ReviewView.swift in Sources */,
 				B87D1B252A65D78900EB6D14 /* UpNextViewModel.swift in Sources */,
+				B8C0D5017734A00500RED001 /* HomeBrandHeader.swift in Sources */,
+				B8C0D5017734A00200RED001 /* CronicaDesign.swift in Sources */,
 				B84043E7289B417500D5CEBF /* TitleView.swift in Sources */,
 				B8B8A4282A6E29C400E5533F /* BackgroundManager.swift in Sources */,
 				B899F21328B0391C00272484 /* DefaultListTypes.swift in Sources */,
@@ -1724,7 +1723,6 @@
 				B801070929F244DE008A4551 /* NewCustomListView.swift in Sources */,
 				B8A4511829F855CD0027E3E2 /* CenterVerticalView.swift in Sources */,
 				B810524F298DBADF00723E94 /* String-Extensions.swift in Sources */,
-				B8370A9A2A02E65200643261 /* TMDB.swift in Sources */,
 				B8F253B62BC864A6003F27E8 /* RoundedCloseButton.swift in Sources */,
 				B84043B3289B188200D5CEBF /* Bundle-Decodable.swift in Sources */,
 				B84043C4289B18E300D5CEBF /* ImageSize.swift in Sources */,
@@ -1785,7 +1783,6 @@
 				B84043CC289B294600D5CEBF /* SearchItem.swift in Sources */,
 				B8779377281E319D00174F32 /* TabBarView.swift in Sources */,
 				B8105265298F58E100723E94 /* CompanyDetails.swift in Sources */,
-				B8B981E529F42B060001CF0B /* KeychainHelper.swift in Sources */,
 				B892EB1429675B5E002E028E /* StoreKitManager.swift in Sources */,
 				B8ADAF6F282C42B3001D72EF /* SettingsStore.swift in Sources */,
 				B82BE4D9299BF35D005F9990 /* PersistenceController-WatchlistItem.swift in Sources */,
@@ -1887,6 +1884,8 @@
 				B840D2CE279B24C900A07C71 /* Person.swift in Sources */,
 				B8A2C88129CA6ED100FDBB33 /* ItemContentCustomListSelector.swift in Sources */,
 				B8AAA6EE296455E2004FDF21 /* AppThemeModifier.swift in Sources */,
+				B8C0D5017734A00600RED001 /* HomeBrandHeader.swift in Sources */,
+				B8C0D5017734A00300RED001 /* CronicaDesign.swift in Sources */,
 				B8FF4DBF27FA511A00C7DE9F /* TitleView.swift in Sources */,
 				B8409D1E2A8286350048840F /* IconGridView.swift in Sources */,
 				B8B94CEF28EB8B8200EDEC85 /* CronicaTelemetry.swift in Sources */,
@@ -1914,7 +1913,6 @@
 				B8152EBF2B71564F0032836A /* VerticalUpNextCardView.swift in Sources */,
 				B8EFB257281720E900F7CBD0 /* OverviewBoxView.swift in Sources */,
 				B824E4442A05A4C500E385CE /* InfoSegmentView.swift in Sources */,
-				B85FD9B129F33A880088B5CC /* TMDB.swift in Sources */,
 				B876DE5C281B2B04005558DD /* Screens.swift in Sources */,
 				B8E6EF672A044E5A000A3617 /* ContextMenuPreviewImage.swift in Sources */,
 				B886D232284D512F00FFE96A /* ConfirmationPopupModifier.swift in Sources */,

@@ -96,7 +96,7 @@ struct TabBarView: View {
             
             NavigationStack { ExploreView() }
                 .tag(ExploreView.tag)
-                .tabItem { Label("Explore", systemImage: "popcorn").labelStyle(.titleOnly) }
+                .tabItem { Label("Discover", systemImage: "popcorn").labelStyle(.titleOnly) }
             
             NavigationStack {
                 WatchlistView()
