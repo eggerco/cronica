@@ -7,7 +7,7 @@
 
 import SwiftUI
 #if !os(macOS)
-/// A TabBar for switching views, only used on iPhone.
+/// Tab bar shell for iPhone, iPad, tvOS, and visionOS.
 struct TabBarView: View {
     @AppStorage("lastTabSelected") private var tabSelection: Screens?
     var persistence = PersistenceController.shared

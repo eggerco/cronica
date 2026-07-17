@@ -225,7 +225,7 @@ struct ExploreView: View {
         .ignoresSafeArea(.all, edges: .horizontal)
 #endif
 #if os(macOS)
-        .navigationTitle(" ")
+        .navigationTitle("Discover")
 #endif
 #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)

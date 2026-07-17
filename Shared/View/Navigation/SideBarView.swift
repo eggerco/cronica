@@ -25,7 +25,7 @@ struct SideBarView: View {
                 }.tag(ExploreView.tag)
                 
                 NavigationLink(value: Screens.watchlist) {
-                    Label("Watchlist", systemImage: "square.stack")
+                    Label("Watchlist", systemImage: "rectangle.on.rectangle")
                 }.tag(WatchlistView.tag)
                 
                 NavigationLink(value: Screens.search) {

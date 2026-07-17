@@ -17,7 +17,7 @@ enum Screens: String, Identifiable, CaseIterable {
     var title: String {
         switch self {
         case .home: NSLocalizedString("Home", comment: "")
-        case .explore: NSLocalizedString("Explore", comment: "")
+        case .explore: NSLocalizedString("Discover", comment: "")
         case .watchlist: NSLocalizedString("Watchlist", comment: "")
         case .search: NSLocalizedString("Search", comment: "")
 #if os(iOS) || os(tvOS) || os(visionOS)
