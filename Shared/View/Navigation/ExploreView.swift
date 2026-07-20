@@ -116,38 +116,56 @@ struct ExploreView: View {
         }
         .sheet(isPresented: $showFilters) {
             NavigationStack {
-                Form {
-                    Section {
-                        Toggle("Hide Added Items", isOn: $hideAddedItems)
-                    }
-                    
-                    Section {
-                        Picker(selection: $selectedMedia) {
-                            ForEach(MediaType.allCases) { type in
-                                if type != .person {
-                                    Text(type.title).tag(type)
+                ScrollView {
+                    VStack(alignment: .leading, spacing: CronicaDesign.Spacing.lg) {
+                        VStack(alignment: .leading, spacing: CronicaDesign.Spacing.sm) {
+                            CronicaFilterSectionTitle(title: String(localized: "Options"))
+                            CronicaFilterToggleRow(title: String(localized: "Hide Added Items"), isOn: $hideAddedItems)
+                        }
+
+                        VStack(alignment: .leading, spacing: CronicaDesign.Spacing.sm) {
+                            CronicaFilterSectionTitle(title: String(localized: "Media"))
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                HStack(spacing: CronicaDesign.Spacing.xs) {
+                                    ForEach(MediaType.allCases) { type in
+                                        if type != .person {
+                                            CronicaFilterChip(
+                                                title: type.title,
+                                                isSelected: selectedMedia == type
+                                            ) {
+                                                withAnimation(CronicaDesign.Motion.standard) {
+                                                    selectedMedia = type
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                .padding(.horizontal, CronicaDesign.Spacing.md)
+                            }
+                        }
+
+                        VStack(alignment: .leading, spacing: CronicaDesign.Spacing.sm) {
+                            CronicaFilterSectionTitle(title: String(localized: "Genres"))
+                            let genres = selectedMedia == .movie ? movies : shows
+                            LazyVGrid(
+                                columns: [GridItem(.adaptive(minimum: 120), spacing: CronicaDesign.Spacing.xs)],
+                                spacing: CronicaDesign.Spacing.xs
+                            ) {
+                                ForEach(genres) { genre in
+                                    CronicaFilterChip(
+                                        title: genre.name ?? genre.itemTitle,
+                                        isSelected: selectedGenre == genre.id
+                                    ) {
+                                        withAnimation(CronicaDesign.Motion.standard) {
+                                            selectedGenre = genre.id
+                                        }
+                                    }
                                 }
                             }
-                        } label: {
-                            Text("Media Type Filter")
-                        }
-                        .pickerStyle(.segmented)
-                    }
-                    .listRowInsets(EdgeInsets())
-                    .listRowBackground(Color.clear)
-                    
-                    Picker("Genres", selection: $selectedGenre) {
-                        if selectedMedia == .movie {
-                            ForEach(movies) { genre in
-                                Text(genre.name!).tag(genre)
-                            }
-                        } else {
-                            ForEach(shows) { genre in
-                                Text(genre.name!).tag(genre)
-                            }
+                            .padding(.horizontal, CronicaDesign.Spacing.md)
                         }
                     }
-                    .pickerStyle(.menu)
+                    .padding(.bottom, CronicaDesign.Spacing.xl)
                 }
                 .navigationTitle("Filters")
 #if os(iOS)
@@ -169,19 +187,15 @@ struct ExploreView: View {
 #endif
                 }
                 .scrollBounceBehavior(.basedOnSize)
-#if os(macOS)
-                .formStyle(.grouped)
-#endif
             }
-            .presentationDetents([.medium])
-            .presentationDragIndicator(.visible)
-            .presentationCornerRadius(CronicaDesign.Radius.media)
+            .presentationDetents([.medium, .large])
+            .cronicaFilterSheet()
             .unredacted()
 #if os(iOS)
             .appTint()
             .appTheme()
 #elseif os(macOS)
-            .frame(width: 400, height: 400, alignment: .center)
+            .frame(width: 420, height: 520, alignment: .center)
 #endif
         }
         .overlay { if !isLoaded { CronicaLoadingPopupView() } }

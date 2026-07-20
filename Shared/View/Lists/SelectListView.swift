@@ -73,8 +73,7 @@ struct SelectListView: View {
         .appTint()
         .appTheme()
         .presentationDetents([lists.count > 4 ? .large : .medium])
-        .presentationDragIndicator(.visible)
-        .presentationCornerRadius(CronicaDesign.Radius.media)
+        .cronicaFilterSheet()
 #endif
     }
     

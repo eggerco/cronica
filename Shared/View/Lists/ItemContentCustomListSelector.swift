@@ -150,8 +150,7 @@ struct ItemContentCustomListSelector: View {
         .frame(width: 500, height: 600, alignment: .center)
 #endif
         .presentationDetents([.large])
-        .presentationDragIndicator(.visible)
-        .presentationCornerRadius(CronicaDesign.Radius.media)
+        .cronicaFilterSheet()
     }
     
     private func load() {

@@ -63,11 +63,11 @@ struct TrendingKeywordsListView: View {
 #if !os(tvOS)
             HStack {
                 Text("Browse by Themes")
-                    .font(.title3)
-                    .fontWeight(.medium)
-                    .padding(.horizontal)
+                    .font(CronicaDesign.Typography.sectionTitle())
+                    .padding(.horizontal, CronicaDesign.Spacing.md)
                 Spacer()
             }
+            .padding(.top, CronicaDesign.Spacing.xs)
 #endif
         }
     }
@@ -129,7 +129,7 @@ private struct TrendingCardView: View {
                         HStack {
                             Text(keyword.name)
                                 .foregroundColor(.white)
-                                .font(.subheadline)
+                                .font(CronicaDesign.Typography.sectionSubtitle())
                                 .fontWeight(.semibold)
                                 .multilineTextAlignment(.leading)
                                 .lineLimit(3)
@@ -143,7 +143,12 @@ private struct TrendingCardView: View {
             }
             .frame(width: DrawingConstants.width, height: DrawingConstants.height, alignment: .center)
             .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.media, style: .continuous))
-            .shadow(color: .black.opacity(0.2), radius: 2.5, x: 0, y: 2.5)
+            .shadow(
+                color: .black.opacity(CronicaDesign.Shadow.mediaOpacity),
+                radius: CronicaDesign.Shadow.mediaRadius,
+                x: 0,
+                y: CronicaDesign.Shadow.mediaY
+            )
             .buttonStyle(.plain)
         }
 #if os(iOS)
@@ -159,16 +164,16 @@ private struct TrendingCardView: View {
 
 private struct DrawingConstants {
 #if os(iOS)
-    static let columns = [GridItem(.adaptive(minimum: UIDevice.isIPad ? 240 : 160))]
-    static let width: CGFloat = UIDevice.isIPad ? 240 : 160
-    static let height: CGFloat = UIDevice.isIPad ? 140 : 100
+    static let columns = [GridItem(.adaptive(minimum: UIDevice.isIPad ? 260 : 180))]
+    static let width: CGFloat = UIDevice.isIPad ? 260 : 180
+    static let height: CGFloat = UIDevice.isIPad ? 150 : 110
 #elseif os(tvOS)
     static let columns = [GridItem(.adaptive(minimum: 400))]
     static let width: CGFloat = 400
     static let height: CGFloat = 240
 #else
-    static let columns = [GridItem(.adaptive(minimum: 240))]
-    static let width: CGFloat = 240
-    static let height: CGFloat = 140
+    static let columns = [GridItem(.adaptive(minimum: 260))]
+    static let width: CGFloat = 260
+    static let height: CGFloat = 150
 #endif
 }

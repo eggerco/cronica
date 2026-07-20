@@ -158,4 +158,72 @@ extension View {
         )
 #endif
     }
+
+    /// Shared presentation chrome for filter / picker sheets.
+    func cronicaFilterSheet() -> some View {
+#if os(tvOS)
+        self
+#else
+        self
+            .presentationDragIndicator(.visible)
+            .presentationCornerRadius(CronicaDesign.Radius.large)
+            .presentationBackground(.ultraThinMaterial)
+#endif
+    }
+}
+
+// MARK: - Filter chrome (Apple TV–inspired)
+
+struct CronicaFilterSectionTitle: View {
+    let title: String
+    var body: some View {
+        Text(title)
+            .font(CronicaDesign.Typography.sectionTitle())
+            .foregroundStyle(.primary)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal, CronicaDesign.Spacing.md)
+            .padding(.top, CronicaDesign.Spacing.sm)
+            .padding(.bottom, CronicaDesign.Spacing.xxs)
+            .accessibilityAddTraits(.isHeader)
+    }
+}
+
+struct CronicaFilterChip: View {
+    let title: String
+    let isSelected: Bool
+    var action: () -> Void
+    @StateObject private var settings = SettingsStore.shared
+
+    var body: some View {
+        Button(action: action) {
+            Text(title)
+                .font(CronicaDesign.Typography.caption())
+                .fontWeight(isSelected ? .semibold : .medium)
+                .foregroundStyle(isSelected ? .white : .primary)
+                .padding(.horizontal, CronicaDesign.Spacing.sm)
+                .padding(.vertical, CronicaDesign.Spacing.xs)
+                .background {
+                    RoundedRectangle(cornerRadius: CronicaDesign.Radius.media, style: .continuous)
+                        .fill(isSelected ? settings.appTheme.color : Color.secondary.opacity(0.16))
+                }
+        }
+        .buttonStyle(.plain)
+        .accessibilityAddTraits(isSelected ? [.isButton, .isSelected] : .isButton)
+    }
+}
+
+struct CronicaFilterToggleRow: View {
+    let title: String
+    @Binding var isOn: Bool
+
+    var body: some View {
+        Toggle(isOn: $isOn) {
+            Text(title)
+                .font(CronicaDesign.Typography.body())
+        }
+        .padding(.horizontal, CronicaDesign.Spacing.md)
+        .padding(.vertical, CronicaDesign.Spacing.sm)
+        .cronicaGlassSurface()
+        .padding(.horizontal, CronicaDesign.Spacing.md)
+    }
 }

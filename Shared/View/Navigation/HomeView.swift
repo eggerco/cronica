@@ -32,13 +32,8 @@ struct HomeView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: CronicaDesign.Spacing.sm) {
 #if !os(watchOS)
-                HomeBrandHeader(
-                    featuredImage: homeFeaturedImage,
-                    featuredTitle: homeFeaturedTitle,
-                    height: CronicaDesign.Atmosphere.homeHeroHeight,
-                    compactCopy: compactHomeBrandCopy
-                )
-                .padding(.bottom, CronicaDesign.Spacing.xs)
+                homeHero
+                    .padding(.bottom, CronicaDesign.Spacing.xs)
 #endif
 #if !os(watchOS)
                 if !Key.hasTMDbKey {
@@ -243,6 +238,35 @@ struct HomeView: View {
     }
 
 #if !os(watchOS)
+    @ViewBuilder
+    private var homeHero: some View {
+        let header = HomeBrandHeader(
+            featuredImage: homeFeaturedImage,
+            featuredTitle: homeFeaturedTitle,
+            height: CronicaDesign.Atmosphere.homeHeroHeight,
+            compactCopy: compactHomeBrandCopy
+        )
+        if let episode = upNextViewModel.episodes.first {
+            NavigationLink {
+                ItemContentDetails(
+                    title: episode.showTitle,
+                    id: episode.showID,
+                    type: .tvShow
+                )
+            } label: {
+                header
+            }
+            .buttonStyle(.plain)
+        } else if let item = viewModel.trending.first {
+            NavigationLink(value: item) {
+                header
+            }
+            .buttonStyle(.plain)
+        } else {
+            header
+        }
+    }
+
     private var missingApiKeyBanner: some View {
         VStack(alignment: .leading, spacing: CronicaDesign.Spacing.xs) {
             Text("TMDb API key required")
