@@ -26,7 +26,7 @@ struct VerticalUpNextCardView: View {
                 selectedEpisode = item
             }
         } label: {
-            LazyImage(url: settings.preferCoverOnUpNext ? item.backupImage : item.episode.itemImageLarge ?? item.backupImage) { state in
+            LazyImage(url: settings.preferCoverOnUpNext ? item.backupImage : item.episode.itemImageMedium ?? item.backupImage) { state in
                 if let image = state.image {
                     image
                         .resizable()
@@ -44,10 +44,11 @@ struct VerticalUpNextCardView: View {
             .frame(width: DrawingConstants.imageWidth,
                    height: DrawingConstants.imageHeight)
             .transition(.opacity)
-            .clipShape(RoundedRectangle(cornerRadius: DrawingConstants.imageRadius, style: .continuous))
-            .shadow(color: .black.opacity(0.2), radius: 5, x: 0, y: 5)
+            .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.media, style: .continuous))
+            .shadow(color: .black.opacity(CronicaDesign.Shadow.mediaOpacity), radius: CronicaDesign.Shadow.mediaRadius, x: 0, y: CronicaDesign.Shadow.mediaY)
         }
         .buttonStyle(.plain)
+        .accessibilityLabel("\(item.showTitle), season \(item.episode.itemSeasonNumber), episode \(item.episode.itemEpisodeNumber)")
         .contextMenu {
             Button("Show Details") {
                 selectedEpisode = item
@@ -79,6 +80,5 @@ private struct DrawingConstants {
     static let imageWidth: CGFloat = 280
     static let imageHeight: CGFloat = 160
 #endif
-    static let imageRadius: CGFloat = 12
     static let titleLineLimit: Int = 1
 }

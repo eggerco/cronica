@@ -116,10 +116,10 @@ struct WatchProvidersList: View {
             .frame(width: DrawingConstants.imageWidth,
                    height: DrawingConstants.imageHeight)
 #if !os(tvOS)
-            .clipShape(RoundedRectangle(cornerRadius: DrawingConstants.imageRadius, style: .continuous))
+            .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.media, style: .continuous))
 #else
-            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-            .contentShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+            .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.media, style: .continuous))
+            .contentShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.media, style: .continuous))
 #endif
             .shadow(radius: 2)
 #if !os(tvOS)
@@ -139,7 +139,6 @@ struct WatchProvidersList: View {
 }
 
 private struct DrawingConstants {
-    static let imageRadius: CGFloat = 12
 #if !os(tvOS)
     static let imageWidth: CGFloat = 60
     static let imageHeight: CGFloat = 60

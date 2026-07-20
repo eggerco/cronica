@@ -148,7 +148,7 @@ private struct WatchProviderItemSelector: View {
                 }
             }
                 .frame(width: 40, height: 40, alignment: .center)
-                .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.compact, style: .continuous))
                 .accessibilityHidden(true)
             Text(item.providerTitle)
         }

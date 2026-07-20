@@ -32,7 +32,7 @@ struct SettingsView: View {
                 }
                 NavigationLink(value: SettingsScreens.appearance) {
                     settingsLabel(title: NSLocalizedString("Appearance", comment: ""),
-                                  icon: "paintbrush", color: .blue)
+                                  icon: "paintbrush", color: SettingsStore.shared.appTheme.color)
                 }
                 NavigationLink(value: SettingsScreens.notifications) {
                     settingsLabel(title: NSLocalizedString("Notification", comment: ""),
@@ -142,7 +142,7 @@ struct SettingsView: View {
             ZStack {
                 Rectangle()
                     .fill(color)
-                    .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
+                    .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.compact, style: .continuous))
                 Image(systemName: icon)
                     .foregroundColor(.white)
             }

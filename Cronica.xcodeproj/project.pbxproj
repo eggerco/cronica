@@ -147,6 +147,7 @@
 		B8C0D5017734A00600RED001 /* HomeBrandHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C0D5017734A00400RED001 /* HomeBrandHeader.swift */; };
 		B8C0D5017734A00200RED001 /* CronicaDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C0D5017734A00100RED001 /* CronicaDesign.swift */; };
 		B8C0D5017734A00300RED001 /* CronicaDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C0D5017734A00100RED001 /* CronicaDesign.swift */; };
+		B8C0D5017734A00700RED001 /* CronicaDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C0D5017734A00100RED001 /* CronicaDesign.swift */; };
 		B84043E7289B417500D5CEBF /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FF4DBE27FA511A00C7DE9F /* TitleView.swift */; };
 		B8409D1B2A81C6240048840F /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8409D1A2A81C6240048840F /* SearchView.swift */; };
 		B8409D1D2A8286130048840F /* IconGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8409D1C2A8286130048840F /* IconGridView.swift */; };
@@ -1931,6 +1932,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8C0D5017734A00700RED001 /* CronicaDesign.swift in Sources */,
 				B824E44A2A05A9AF00E385CE /* AttributionView.swift in Sources */,
 				B84457C9297341B5009CB21F /* WatchProviders.swift in Sources */,
 				B8105257298DC0AD00723E94 /* Locale-Extensions.swift in Sources */,
@@ -2007,7 +2009,7 @@
 				CODE_SIGN_ENTITLEMENTS = "AppleWatch/Configuration/Cronica Watch App.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"AppleWatch/Preview Content\"";
 				DEVELOPMENT_TEAM = S5A7774228;
 				ENABLE_PREVIEWS = YES;
@@ -2021,7 +2023,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.7.8;
+				MARKETING_VERSION = 2.7.9;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.alexandremadeira.Story.watchkitapp;
 				PRODUCT_NAME = Cronica;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2043,7 +2045,7 @@
 				CODE_SIGN_ENTITLEMENTS = "AppleWatch/Configuration/Cronica Watch App.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"AppleWatch/Preview Content\"";
 				DEVELOPMENT_TEAM = S5A7774228;
 				ENABLE_PREVIEWS = YES;
@@ -2057,7 +2059,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.7.8;
+				MARKETING_VERSION = 2.7.9;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.alexandremadeira.Story.watchkitapp;
 				PRODUCT_NAME = Cronica;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2217,7 +2219,7 @@
 				CODE_SIGN_ENTITLEMENTS = Shared/Configuration/Cronica.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = S5A7774228;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
@@ -2236,7 +2238,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
-				MARKETING_VERSION = 2.7.8;
+				MARKETING_VERSION = 2.7.9;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.alexandremadeira.Story;
 				PRODUCT_NAME = Cronica;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2266,7 +2268,7 @@
 				CODE_SIGN_ENTITLEMENTS = Shared/Configuration/Cronica.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = S5A7774228;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
@@ -2285,7 +2287,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
-				MARKETING_VERSION = 2.7.8;
+				MARKETING_VERSION = 2.7.9;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.alexandremadeira.Story;
 				PRODUCT_NAME = Cronica;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2311,20 +2313,20 @@
 				CODE_SIGN_ENTITLEMENTS = CronicaWidget/Configuration/CronicaWidgetExtension.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = S5A7774228;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CronicaWidget/Configuration/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CronicaWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.7.8;
+				MARKETING_VERSION = 2.7.9;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.alexandremadeira.Story.Widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -2347,20 +2349,20 @@
 				CODE_SIGN_ENTITLEMENTS = CronicaWidget/Configuration/CronicaWidgetExtension.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = S5A7774228;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CronicaWidget/Configuration/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CronicaWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.7.8;
+				MARKETING_VERSION = 2.7.9;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.alexandremadeira.Story.Widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;

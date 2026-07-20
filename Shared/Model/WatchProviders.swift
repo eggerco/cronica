@@ -178,7 +178,7 @@ extension WatchProviderContent {
         providerId ?? 100
     }
     var providerImage: URL? {
-        return NetworkService.urlBuilder(size: .original, path: logoPath)
+        return NetworkService.urlBuilder(size: .medium, path: logoPath)
     }
     var listPriority: Int {
         return displayPriority ?? 10

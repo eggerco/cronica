@@ -53,11 +53,9 @@ private struct DrawingConstants {
 #if os(tvOS)
     static let posterWidth: CGFloat = 260
     static let posterHeight: CGFloat = 380
-    static let posterRadius: CGFloat = 12
 #else
     static let posterWidth: CGFloat = 160
     static let posterHeight: CGFloat = 240
-    static let posterRadius: CGFloat = 12
 #endif
     static let shadowRadius: CGFloat = 2.5
 }
@@ -78,7 +76,7 @@ private struct PersonSearchImageView: View {
             .transition(.opacity)
             .frame(width: DrawingConstants.posterWidth,
                    height: DrawingConstants.posterHeight)
-            .clipShape(RoundedRectangle(cornerRadius: DrawingConstants.posterRadius,
+            .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.media,
                                         style: .continuous))
             .shadow(radius: DrawingConstants.shadowRadius)
             .padding(.zero)
@@ -99,7 +97,7 @@ private struct PersonSearchImageView: View {
         }
         .frame(width: DrawingConstants.posterWidth,
                height: DrawingConstants.posterHeight)
-        .clipShape(RoundedRectangle(cornerRadius: DrawingConstants.posterRadius,
+        .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.media,
                                     style: .continuous))
         .shadow(radius: DrawingConstants.shadowRadius)
         .padding(.zero)

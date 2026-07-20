@@ -57,7 +57,7 @@ struct EpisodeDetailsView: View {
                     .frame(width: (horizontalSizeClass == .regular) ? DrawingConstants.padImageWidth : DrawingConstants.imageWidth,
                            height: (horizontalSizeClass == .compact) ? DrawingConstants.imageHeight : DrawingConstants.padImageHeight)
 #endif
-                    .clipShape(RoundedRectangle(cornerRadius: DrawingConstants.imageRadius, style: .continuous))
+                    .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.media, style: .continuous))
                     .shadow(color: .black.opacity(0.2), radius: 10, x: 0, y: 10)
 #if os(macOS)
                     .padding(.top)
@@ -96,13 +96,13 @@ struct EpisodeDetailsView: View {
                                        isWatched: $isWatched)
                     .buttonStyle(.borderedProminent)
 #if os(iOS)
-                    .buttonBorderShape(.roundedRectangle(radius: 12))
+                    .buttonBorderShape(.roundedRectangle(radius: CronicaDesign.Radius.media))
                     .padding(isUpNext ? .leading : .horizontal)
                     .tint(settings.appTheme.color)
 #elseif os(macOS)
                     .padding(.horizontal)
                     .controlSize(.large)
-                    .tint(isWatched ? .red : .blue)
+                    .tint(isWatched ? .red : settings.appTheme.color)
 #endif
                     .keyboardShortcut("e", modifiers: [.control])
                     .shadow(radius: isUpNext ? 0 : 2.5)
@@ -166,10 +166,8 @@ private struct DrawingConstants {
     static let shadowRadius: CGFloat = 12
     static let imageWidth: CGFloat = 360
     static let imageHeight: CGFloat = 210
-    static let imageRadius: CGFloat = 12
     static let padImageWidth: CGFloat = 500
     static let padImageHeight: CGFloat = 300
-    static let padImageRadius: CGFloat = 12
 }
 
 extension EpisodeDetailsView {

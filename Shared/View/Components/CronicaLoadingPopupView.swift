@@ -19,9 +19,9 @@ struct CronicaLoadingPopupView: View {
                     .padding()
             }
             .background(.regularMaterial)
-            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+            .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.large, style: .continuous))
             .overlay(
-                RoundedRectangle(cornerRadius: 20, style: .continuous)
+                RoundedRectangle(cornerRadius: CronicaDesign.Radius.large, style: .continuous)
                     .stroke(Color.black.opacity(0.2), lineWidth: 0.3)
             )
 #if os(watchOS)

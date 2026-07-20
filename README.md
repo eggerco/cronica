@@ -7,7 +7,7 @@ Cronica
 </h1>
 
 <p align="center">
-    Cronica is a minimalist watchlist app that reminds you about upcoming releases.
+    Cronica is a cinematic watchlist for movies and TV — with reminders when something new drops.
 </p>
 
 <p align="center">
@@ -40,11 +40,14 @@ Contribute to the localization efforts of our open-source project by assisting i
 
 ##  Build information
 
-#### This project targets iOS 17, iPadOS 17, watchOS 10,  macOS 14, tvOS 17, visionOS 1 and requires Xcode 15.
+#### This project targets iOS 17, iPadOS 17, watchOS 10, macOS 14, tvOS 17, visionOS 1 and requires Xcode 15+.
+
+Current shipping version in the Xcode project: **2.7.9**.
 
 To get started you'll need to:
 
-- Get an API key to use TMDb API, you can get yours at their [website](https://www.themoviedb.org/documentation/api),  after that, go to Shared/Configuration/Key and replace the value of *tmdbApi* with your own key.
+- Get an API key to use TMDb API, you can get yours at their [website](https://www.themoviedb.org/documentation/api), after that, go to `Shared/Configuration/Key.swift` and replace the value of `tmdbApi` with your own key. Leave Aptabase empty unless you want analytics.
+- Open `Cronica.xcodeproj` in Xcode, select a simulator or device, and run the Cronica scheme.
 
 ## App Store
 

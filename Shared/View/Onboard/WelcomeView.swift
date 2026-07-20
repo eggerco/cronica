@@ -112,8 +112,12 @@ struct WelcomeView: View {
 
     private var continueButton: some View {
         Button {
-            withAnimation(CronicaDesign.Motion.gentle) {
+            if reduceMotion {
                 displayOnboard = false
+            } else {
+                withAnimation(CronicaDesign.Motion.gentle) {
+                    displayOnboard = false
+                }
             }
         } label: {
             Text("Continue")

@@ -58,7 +58,7 @@ struct TrailerItemView: View {
                 .transition(.opacity)
                 .frame(width: DrawingConstants.imageWidth,
                        height: DrawingConstants.imageHeight)
-                .clipShape(RoundedRectangle(cornerRadius: DrawingConstants.imageRadius,
+                .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.media,
                                             style: .continuous))
                 .overlay { overlay }
             }
@@ -99,7 +99,7 @@ struct TrailerItemView: View {
                     .transition(.opacity)
                     .frame(width: DrawingConstants.imageWidth,
                            height: DrawingConstants.imageHeight)
-                    .clipShape(RoundedRectangle(cornerRadius: DrawingConstants.imageRadius,
+                    .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.media,
                                                 style: .continuous))
                     .overlay { overlay }
                     .applyHoverEffect()
@@ -180,7 +180,7 @@ struct TrailerItemView: View {
         .transition(.opacity)
         .frame(width: DrawingConstants.imageWidth,
                height: DrawingConstants.imageHeight)
-        .clipShape(RoundedRectangle(cornerRadius: DrawingConstants.imageRadius,
+        .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.media,
                                     style: .continuous))
     }
     
@@ -227,13 +227,12 @@ struct TrailerItemView: View {
         }
         .frame(width: DrawingConstants.imageWidth,
                height: DrawingConstants.imageHeight)
-        .clipShape(RoundedRectangle(cornerRadius: DrawingConstants.imageRadius,
+        .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.media,
                                     style: .continuous))
     }
 }
 
 private struct DrawingConstants {
-    static let imageRadius: CGFloat = 12
     static let imageShadow: CGFloat = 2.5
 #if !os(tvOS)
     static let imageWidth: CGFloat = 220

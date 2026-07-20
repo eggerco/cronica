@@ -34,7 +34,7 @@ struct ConfirmationPopupModifier: ViewModifier {
 #if !os(watchOS)
                     .background { Rectangle().fill(.thickMaterial) }
 #endif
-                    .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                    .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.large, style: .continuous))
                     .shadow(radius: 1)
                     .padding(.bottom)
                     .animation(.snappy, value: isShowing)

@@ -78,8 +78,7 @@ struct ListFilterView: View {
         }
 #if !os(tvOS)
         .presentationDragIndicator(.visible)
-        .presentationCornerRadius(12)
-        .presentationDragIndicator(.visible)
+        .presentationCornerRadius(CronicaDesign.Radius.media)
         .appTint()
         .appTheme()
 #endif

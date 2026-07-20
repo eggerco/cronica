@@ -146,7 +146,7 @@ struct EpisodeFrameView: View {
                 .frame(width: DrawingConstants.imageWidth,
                        height: DrawingConstants.imageHeight)
                 .clipShape(
-                    RoundedRectangle(cornerRadius: DrawingConstants.imageRadius,
+                    RoundedRectangle(cornerRadius: CronicaDesign.Radius.media,
                                      style: .continuous)
                 )
                 .overlay {
@@ -157,7 +157,7 @@ struct EpisodeFrameView: View {
                                 .font(.title2)
                                 .foregroundColor(.white)
                         }
-                        .clipShape(RoundedRectangle(cornerRadius: DrawingConstants.imageRadius, style: .continuous))
+                        .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.media, style: .continuous))
                         .frame(width: DrawingConstants.imageWidth,
                                height: DrawingConstants.imageHeight)
                         .accessibilityHidden(true)
@@ -194,7 +194,7 @@ struct EpisodeFrameView: View {
             }
             .appTheme()
             .presentationDetents([.large])
-            .presentationCornerRadius(12)
+            .presentationCornerRadius(CronicaDesign.Radius.media)
             .presentationDragIndicator(.visible)
 #if os(macOS)
             .frame(minWidth: 800, idealWidth: 800, minHeight: 600, idealHeight: 600, alignment: .center)
@@ -311,6 +311,5 @@ private struct DrawingConstants {
     static let imageWidth: CGFloat = 200
     static let imageHeight: CGFloat = 120
 #endif
-    static let imageRadius: CGFloat = 12
     static let titleLineLimit: Int = 1
 }

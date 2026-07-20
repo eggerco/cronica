@@ -142,6 +142,7 @@ struct AppearanceSetting: View {
         }
         .buttonStyle(.plain)
         .accessibilityElement(children: .ignore)
+        .accessibilityLabel(Text(String(describing: item).capitalized))
         .accessibilityAddTraits(item == store.appTheme ? [.isButton, .isSelected] : .isButton )
         .padding(.horizontal, 4)
     }
@@ -157,14 +158,16 @@ struct AppearanceSetting: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .overlay(
-                            RoundedRectangle(cornerRadius: 12)
+                            RoundedRectangle(cornerRadius: CronicaDesign.Radius.media)
                                 .stroke(store.appTheme.color, lineWidth: icons.selectedAppIcon == icon ? 6 : 0)
                         )
                         .frame(width: 60, height: 60)
-                        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                        .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.media, style: .continuous))
                         .padding(.trailing)
                 }
                 .buttonStyle(.plain)
+                .accessibilityLabel(icon.description)
+                .accessibilityAddTraits(icons.selectedAppIcon == icon ? [.isButton, .isSelected] : .isButton)
             }
         }
         .padding(.vertical, 4)

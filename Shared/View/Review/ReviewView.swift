@@ -48,7 +48,7 @@ struct ReviewView: View {
                                         }
                                     }
                                     .frame(width: 150, height: 220)
-                                    .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                                    .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.media, style: .continuous))
                                     .shadow(color: .black.opacity(0.2), radius: 10, x: 0, y: 10)
                                 }
                                 .frame(maxWidth: .infinity)
@@ -128,7 +128,7 @@ struct ReviewView: View {
         }
         .presentationDetents([.large])
         .presentationDragIndicator(.visible)
-        .presentationCornerRadius(12)
+        .presentationCornerRadius(CronicaDesign.Radius.media)
 #if os(macOS)
         .frame(width: 400, height: 400, alignment: .center)
 #elseif os(iOS)

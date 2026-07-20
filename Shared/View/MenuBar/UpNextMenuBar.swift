@@ -79,7 +79,7 @@ struct UpNextMenuBar: View {
             }
             .transition(.opacity)
             .frame(width: 95, height: 50)
-            .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+            .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.compact, style: .continuous))
             VStack(alignment: .leading) {
                 Text(item.showTitle)
                     .font(.callout)

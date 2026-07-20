@@ -37,13 +37,13 @@ struct PersonCardView: View {
                         }
                         .frame(width: DrawingConstants.profileWidth,
                                height: DrawingConstants.profileHeight)
-                        .clipShape(RoundedRectangle(cornerRadius: DrawingConstants.profileRadius,
+                        .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.media,
                                                     style: .continuous))
                     }
                 }
                 .frame(width: DrawingConstants.profileWidth,
                        height: DrawingConstants.profileHeight)
-                .clipShape(RoundedRectangle(cornerRadius: DrawingConstants.profileRadius,
+                .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.media,
                                             style: .continuous))
                 .shadow(color: .black.opacity(0.2), radius: 10, x: 0, y: 10)
                 .overlay {
@@ -83,7 +83,7 @@ struct PersonCardView: View {
                     }
                     .frame(width: DrawingConstants.profileWidth,
                            height: DrawingConstants.profileHeight)
-                    .clipShape(RoundedRectangle(cornerRadius: DrawingConstants.profileRadius,
+                    .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.media,
                                                 style: .continuous))
                 }
                 .transition(.opacity)
@@ -174,6 +174,5 @@ private struct DrawingConstants {
     static let profileHeight: CGFloat = 200
 #endif
     static let shadowRadius: CGFloat = 2.5
-    static let profileRadius: CGFloat = 12
     static let lineLimit: Int = 1
 }

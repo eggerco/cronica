@@ -31,8 +31,8 @@ struct ItemContentList: View {
                     PosterImage(item: item)
                         .frame(width: DrawingConstants.imageWidth,
                                height: DrawingConstants.imageHeight)
-                        .shadow(radius: 1)
-                        .clipShape(RoundedRectangle(cornerRadius: DrawingConstants.imageRadius, style: .continuous))
+                        .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.compact, style: .continuous))
+                        .shadow(color: .black.opacity(CronicaDesign.Shadow.mediaOpacity), radius: CronicaDesign.Shadow.mediaRadius, x: 0, y: CronicaDesign.Shadow.mediaY)
                         .padding(.leading, item.id == items.first?.id ? 0 : 6)
                 }
             }
@@ -42,7 +42,7 @@ struct ItemContentList: View {
                     PosterImage(item: item)
                         .frame(width: DrawingConstants.smallImageWidth,
                                height: DrawingConstants.smallImageHeight)
-                        .clipShape(RoundedRectangle(cornerRadius: DrawingConstants.imageRadius, style: .continuous))
+                        .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.compact, style: .continuous))
                         .padding(.leading, item.id == items.first?.id ? 0 : 4)
                 }
             }
@@ -101,5 +101,4 @@ private struct DrawingConstants {
     static let imageHeight: CGFloat = 130
     static let smallImageWidth: CGFloat = 68
     static let smallImageHeight: CGFloat = 110
-    static let imageRadius: CGFloat = 6
 }
