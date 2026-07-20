@@ -1,6 +1,6 @@
 //
 //  HomeView.swift
-//  Story
+//  Cronica
 //
 //  Created by Alexandre Madeira on 10/02/22.
 //
@@ -39,6 +39,11 @@ struct HomeView: View {
                     compactCopy: compactHomeBrandCopy
                 )
                 .padding(.bottom, CronicaDesign.Spacing.xs)
+#endif
+#if !os(watchOS)
+                if !Key.hasTMDbKey {
+                    missingApiKeyBanner
+                }
 #endif
 #if os(iOS)
                 if showReviewBanner { CallToReviewAppView(showView: $showReviewBanner).unredacted() }
@@ -236,6 +241,23 @@ struct HomeView: View {
         false
 #endif
     }
+
+#if !os(watchOS)
+    private var missingApiKeyBanner: some View {
+        VStack(alignment: .leading, spacing: CronicaDesign.Spacing.xs) {
+            Text("TMDb API key required")
+                .font(CronicaDesign.Typography.sectionTitle())
+            Text("Add your key in Shared/Configuration/Key.swift to load trending titles and details.")
+                .font(CronicaDesign.Typography.caption())
+                .foregroundStyle(.secondary)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(CronicaDesign.Spacing.md)
+        .cronicaGlassSurface()
+        .padding(.horizontal, CronicaDesign.Spacing.md)
+        .accessibilityElement(children: .combine)
+    }
+#endif
 
     private var homeFeaturedImage: URL? {
         if let episode = upNextViewModel.episodes.first {

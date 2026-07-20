@@ -232,7 +232,7 @@ private struct UpNextCard: View {
                 }
             } label: {
                 ZStack {
-                    LazyImage(url: settings.preferCoverOnUpNext ? item.backupImage : item.episode.itemImageLarge ?? item.backupImage) { state in
+                    LazyImage(url: settings.preferCoverOnUpNext ? item.backupImage : item.episode.itemImageMedium ?? item.backupImage) { state in
                         if let image = state.image {
                             image
                                 .resizable()

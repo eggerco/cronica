@@ -19,7 +19,7 @@ struct VerticalUpNextListRowView: View {
             askConfirmation.toggle()
         } label: {
             HStack {
-                LazyImage(url: settings.preferCoverOnUpNext ? item.backupImage : item.episode.itemImageLarge ?? item.backupImage) { state in
+                LazyImage(url: settings.preferCoverOnUpNext ? item.backupImage : item.episode.itemImageMedium ?? item.backupImage) { state in
                     if let image = state.image {
                         image
                             .resizable()
@@ -51,6 +51,7 @@ struct VerticalUpNextListRowView: View {
             }
         }
         .buttonStyle(.plain)
+        .accessibilityLabel("\(item.showTitle), season \(item.episode.itemSeasonNumber), episode \(item.episode.itemEpisodeNumber)")
 #if !os(tvOS)
         .swipeActions(edge: .leading, allowsFullSwipe: true) {
             Button("Watched", systemImage: "rectangle.badge.checkmark") {

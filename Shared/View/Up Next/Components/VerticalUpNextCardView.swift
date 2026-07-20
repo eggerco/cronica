@@ -26,7 +26,7 @@ struct VerticalUpNextCardView: View {
                 selectedEpisode = item
             }
         } label: {
-            LazyImage(url: settings.preferCoverOnUpNext ? item.backupImage : item.episode.itemImageLarge ?? item.backupImage) { state in
+            LazyImage(url: settings.preferCoverOnUpNext ? item.backupImage : item.episode.itemImageMedium ?? item.backupImage) { state in
                 if let image = state.image {
                     image
                         .resizable()
@@ -45,9 +45,10 @@ struct VerticalUpNextCardView: View {
                    height: DrawingConstants.imageHeight)
             .transition(.opacity)
             .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.media, style: .continuous))
-            .shadow(color: .black.opacity(0.2), radius: 5, x: 0, y: 5)
+            .shadow(color: .black.opacity(CronicaDesign.Shadow.mediaOpacity), radius: CronicaDesign.Shadow.mediaRadius, x: 0, y: CronicaDesign.Shadow.mediaY)
         }
         .buttonStyle(.plain)
+        .accessibilityLabel("\(item.showTitle), season \(item.episode.itemSeasonNumber), episode \(item.episode.itemEpisodeNumber)")
         .contextMenu {
             Button("Show Details") {
                 selectedEpisode = item

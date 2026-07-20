@@ -142,6 +142,7 @@ struct AppearanceSetting: View {
         }
         .buttonStyle(.plain)
         .accessibilityElement(children: .ignore)
+        .accessibilityLabel(Text(String(describing: item).capitalized))
         .accessibilityAddTraits(item == store.appTheme ? [.isButton, .isSelected] : .isButton )
         .padding(.horizontal, 4)
     }
@@ -165,6 +166,8 @@ struct AppearanceSetting: View {
                         .padding(.trailing)
                 }
                 .buttonStyle(.plain)
+                .accessibilityLabel(icon.description)
+                .accessibilityAddTraits(icons.selectedAppIcon == icon ? [.isButton, .isSelected] : .isButton)
             }
         }
         .padding(.vertical, 4)

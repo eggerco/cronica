@@ -31,8 +31,8 @@ struct ItemContentList: View {
                     PosterImage(item: item)
                         .frame(width: DrawingConstants.imageWidth,
                                height: DrawingConstants.imageHeight)
-                        .shadow(color: .black.opacity(CronicaDesign.Shadow.mediaOpacity), radius: CronicaDesign.Shadow.mediaRadius, x: 0, y: CronicaDesign.Shadow.mediaY)
                         .clipShape(RoundedRectangle(cornerRadius: CronicaDesign.Radius.compact, style: .continuous))
+                        .shadow(color: .black.opacity(CronicaDesign.Shadow.mediaOpacity), radius: CronicaDesign.Shadow.mediaRadius, x: 0, y: CronicaDesign.Shadow.mediaY)
                         .padding(.leading, item.id == items.first?.id ? 0 : 6)
                 }
             }
