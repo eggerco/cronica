@@ -14,19 +14,8 @@ class HomeViewModel: ObservableObject {
     @Published var trending = [ItemContent]()
     @Published var sections = [ItemContentSection]()
     @Published var isLoaded = false
-   
     
-    // new feature test
-    @Published var nextYearMovies: [[ItemContent]:YearEndpoint]?
-    @Published var yearMovies = [ItemContent]()
-    
-    func fetchYearMovies() async {
-        let year = try? await service.fetchYearContent(year: "2024", type: .movie)
-        guard let year else { return }
-        yearMovies.append(contentsOf: year)
-    }
-    
-    /// Loads data for the home screen asynchronously, including trending items, sections, and recommendations.
+    /// Loads data for the home screen asynchronously, including trending items and sections.
     func load() async {
         if trending.isEmpty {
             do {
@@ -44,20 +33,14 @@ class HomeViewModel: ObservableObject {
         await MainActor.run {
             withAnimation { self.isLoaded = true }
         }
-        
-        if yearMovies.isEmpty {
-            await fetchYearMovies()
-        }
     }
     
     func reload() {
         withAnimation {
             isLoaded = false
-            //isLoadingRecommendations = true
         }
         trending.removeAll()
         sections.removeAll()
-       // recommendations.removeAll()
         Task { await load() }
     }
     
@@ -86,16 +69,8 @@ class HomeViewModel: ObservableObject {
             return nil
         }
     }
-    
-    
 }
 
 /// Theses keywords are used in some NSFW titles, this should be only used
 /// for avoiding displaying such titles in recommendations lists, explore and search.
 let nsfwKeywords = [155477, 230416, 190370, 158254, 159551, 301766]
-
-
-struct YearEndpoint: Identifiable, Hashable, Codable {
-    let id: UUID
-    let year: String
-}

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1500"
+   LastUpgradeVersion = "2600"
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -36,6 +36,17 @@
                BlueprintIdentifier = "B8FCAE8E2AED9CE300F688FE"
                BuildableName = "Cronica Tests.xctest"
                BlueprintName = "Cronica Tests"
+               ReferencedContainer = "container:Cronica.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C0UITESTTARGET00000000001"
+               BuildableName = "CronicaUITests.xctest"
+               BlueprintName = "CronicaUITests"
                ReferencedContainer = "container:Cronica.xcodeproj">
             </BuildableReference>
          </TestableReference>

@@ -28,12 +28,9 @@ final class NotificationManager: ObservableObject {
         }
     }
     
-    func isNotificationAllowed() -> Bool {
-        var isAllowed = false
-        UNUserNotificationCenter.current().getNotificationSettings { settings in
-            if settings.authorizationStatus == .authorized { isAllowed.toggle() }
-        }
-        return isAllowed
+    func isNotificationAllowed() async -> Bool {
+        let settings = await UNUserNotificationCenter.current().notificationSettings()
+        return settings.authorizationStatus == .authorized
     }
     
     func schedule(_ content: ItemContent) {
@@ -196,11 +193,12 @@ final class NotificationManager: ObservableObject {
                 media = .tvShow
             }
             let id = identifier.dropLast(2)
+            guard let itemId = Int(id) else { continue }
             do {
-                let item = try await service.fetchItem(id: Int(id)!, type: media)
+                let item = try await service.fetchItem(id: itemId, type: media)
                 items.append(item)
             } catch {
-                return nil
+                continue
             }
         }
         return items

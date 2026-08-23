@@ -1,0 +1,62 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-test:
+    runs-on: macos-15
+    env:
+      TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+      APTABASE_CLIENT_KEY: ${{ secrets.APTABASE_CLIENT_KEY }}
+      SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Select Xcode
+        run: |
+          if [ -d "/Applications/Xcode_16.4.app" ]; then
+            sudo xcode-select -s /Applications/Xcode_16.4.app/Contents/Developer
+          elif [ -d "/Applications/Xcode.app" ]; then
+            sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+          fi
+          xcodebuild -version
+
+      - name: Prepare secrets config
+        run: |
+          cp Config/Secrets.xcconfig.example Config/Secrets.xcconfig
+          if [ -n "$TMDB_API_KEY" ]; then
+            sed -i '' "s/YOUR_TMDB_API_KEY/$TMDB_API_KEY/" Config/Secrets.xcconfig
+          fi
+
+      - name: Build CronicaCore package
+        run: swift test --package-path Packages/CronicaCore
+
+      - name: Build Cronica (iOS Simulator)
+        run: |
+          set -o pipefail
+          xcodebuild build \
+            -project Cronica.xcodeproj \
+            -scheme "Cronica (EN-US)" \
+            -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest' \
+            -configuration Debug \
+            CODE_SIGNING_ALLOWED=NO
+
+      - name: Test Cronica
+        run: |
+          set -o pipefail
+          xcodebuild test \
+            -project Cronica.xcodeproj \
+            -scheme "Cronica (EN-US)" \
+            -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest' \
+            -configuration Debug \
+            CODE_SIGNING_ALLOWED=NO

@@ -38,13 +38,22 @@ If you want to contribute with code, here are some important details about the p
 
 Contribute to the localization efforts of our open-source project by assisting in the translation of the application into your native language. Utilize the provided [xcstrings file](https://github.com/egger/cronica/blob/main/Shared/Localization/Localizable.xcstrings), which contains all the strings requiring translation. Simply send your completed translations via email, and I will ensure their incorporation in the upcoming update. Your contributions play a crucial role in making Cronica accessible to everyone. Thank you for your support!
 
-##  Build information
+## Build information
 
-#### This project targets iOS 17, iPadOS 17, watchOS 10,  macOS 14, tvOS 17, visionOS 1 and requires Xcode 15.
+#### Targets iOS 17+, iPadOS 17+, watchOS 10+, macOS 14+, tvOS 17+, visionOS 1+. Requires **Xcode 26** (iOS 26 SDK) for App Store submissions.
 
-To get started you'll need to:
+To get started:
 
-- Get an API key to use TMDb API, you can get yours at their [website](https://www.themoviedb.org/documentation/api),  after that, go to Shared/Configuration/Key and replace the value of *tmdbApi* with your own key.
+1. Install [Xcode 26](https://developer.apple.com/xcode/) or later.
+2. Copy `Config/Secrets.xcconfig.example` to `Config/Secrets.xcconfig`.
+3. Add your TMDb API key to `Config/Secrets.xcconfig` (get one at [TMDb](https://www.themoviedb.org/documentation/api)).
+4. Open `Cronica.xcodeproj` and build with the **Cronica (EN-US)** scheme.
+
+For CI, set repository secrets `TMDB_API_KEY`, optionally `APTABASE_CLIENT_KEY`, and `SENTRY_DSN`. See [SECURITY.md](SECURITY.md) for the full security policy.
+
+### Architecture
+
+Shared TMDb models and networking live in the local Swift package `Packages/CronicaCore`, used by the app, widget, watch app, and tests.
 
 ## App Store
 

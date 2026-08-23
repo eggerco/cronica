@@ -44,12 +44,14 @@ struct DeveloperView: View {
                                 withAnimation { isFetching = false }
                             }
                             if itemMediaType != .person {
-                                let item = try? await service.fetchItem(id: Int(itemIdField)!, type: itemMediaType)
+                                guard let itemId = Int(itemIdField) else { return }
+                                let item = try? await service.fetchItem(id: itemId, type: itemMediaType)
                                 if let item {
                                     self.item = item
                                 }
                             } else {
-                                let person = try? await service.fetchPerson(id: Int(itemIdField)!)
+                                guard let personId = Int(itemIdField) else { return }
+                                let person = try? await service.fetchPerson(id: personId)
                                 guard let person else { return }
                                 self.person = person
                             }

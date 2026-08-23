@@ -48,41 +48,31 @@ struct TabBarView: View {
     @State private var shouldOpenOnSearchField = false
     var body: some View {
 #if os(iOS)
-        if UIDevice.isIPad {
+        Group {
             if #available(iOS 18, *) {
                 newTabView
-                    .onAppear {
-                        let settings = SettingsStore.shared
-                        if settings.isPreferredLaunchScreenEnabled {
-                            tabSelection = settings.preferredLaunchScreen
-                        }
-                    }
-                    .appTint()
-                    .appTheme()
             } else {
                 details
-                    .onAppear {
-                        let settings = SettingsStore.shared
-                        if settings.isPreferredLaunchScreenEnabled {
-                            tabSelection = settings.preferredLaunchScreen
-                        }
-                    }
-                    .appTint()
-                    .appTheme()
             }
-        } else {
-            details
-                .onAppear {
-                    let settings = SettingsStore.shared
-                    if settings.isPreferredLaunchScreenEnabled {
-                        tabSelection = settings.preferredLaunchScreen
-                    }
-                }
-                .appTint()
-                .appTheme()
         }
+        .onAppear {
+            let settings = SettingsStore.shared
+            if settings.isPreferredLaunchScreenEnabled {
+                tabSelection = settings.preferredLaunchScreen
+            }
+        }
+        .appTint()
+        .appTheme()
 #else
         details
+            .onAppear {
+                let settings = SettingsStore.shared
+                if settings.isPreferredLaunchScreenEnabled {
+                    tabSelection = settings.preferredLaunchScreen
+                }
+            }
+            .appTint()
+            .appTheme()
 #endif
     }
     

@@ -137,11 +137,11 @@ struct ExploreView: View {
                     Picker("Genres", selection: $selectedGenre) {
                         if selectedMedia == .movie {
                             ForEach(movies) { genre in
-                                Text(genre.name!).tag(genre)
+                                Text(genre.name ?? "").tag(genre)
                             }
                         } else {
                             ForEach(shows) { genre in
-                                Text(genre.name!).tag(genre)
+                                Text(genre.name ?? "").tag(genre)
                             }
                         }
                     }
@@ -362,11 +362,11 @@ struct ExploreView: View {
         Picker("Genres", selection: $selectedGenre) {
             if selectedMedia == .movie {
                 ForEach(movies) { genre in
-                    Text(genre.name!).tag(genre)
+                    Text(genre.name ?? "").tag(genre)
                 }
             } else {
                 ForEach(shows) { genre in
-                    Text(genre.name!).tag(genre)
+                    Text(genre.name ?? "").tag(genre)
                 }
             }
         }

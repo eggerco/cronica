@@ -15,8 +15,6 @@ struct CronicaApp: App {
     var persistence = PersistenceController.shared
     private let backgroundIdentifier = "dev.alexandremadeira.cronica.refreshContent"
     @Environment(\.scenePhase) private var scene
-    @State private var widgetItem: ItemContent?
-    @State private var notificationItem: ItemContent?
     @State private var selectedItem: ItemContent?
     @State private var showFeedbackForm = false
     @State private var showAbout = false
@@ -29,6 +27,7 @@ struct CronicaApp: App {
 #endif
     init() {
         CronicaTelemetry.shared.setup()
+        SentryManager.setup()
         registerRefreshBGTask()
 #if os(iOS)
         UNUserNotificationCenter.current().delegate = notificationDelegate
@@ -262,7 +261,10 @@ struct CronicaApp: App {
                 queue.cancelAllOperations()
             }
             queue.addOperation {
+                let group = DispatchGroup()
+                group.enter()
                 Task {
+                    defer { group.leave() }
                     await BackgroundManager.shared.handleWatchingContentRefresh()
                     BackgroundManager.shared.lastWatchingRefresh = Date()
                     await BackgroundManager.shared.handleUpcomingContentRefresh()
@@ -270,8 +272,9 @@ struct CronicaApp: App {
                     await BackgroundManager.shared.handleAppRefreshMaintenance()
                     BackgroundManager.shared.lastMaintenance = Date()
                 }
+                group.wait()
+                task.setTaskCompleted(success: true)
             }
-            task.setTaskCompleted(success: true)
         }
     }
 #elseif os(macOS)

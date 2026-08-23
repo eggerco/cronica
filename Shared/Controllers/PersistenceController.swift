@@ -40,6 +40,8 @@ struct PersistenceController {
             if let error = error as NSError? {
 #if DEBUG
                 fatalError("Unresolved error \(error), \(error.userInfo)")
+#else
+                AppLogger.persistence.fault("Unresolved error loading persistent store: \(error), \(error.userInfo)")
 #endif
             }
             storeDescription.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
@@ -64,7 +66,12 @@ struct PersistenceController {
     
     func save() {
         if container.viewContext.hasChanges {
-            try? container.viewContext.save()
+            do {
+                try container.viewContext.save()
+            } catch {
+                AppLogger.persistence.error("Failed to save Core Data context: \(error.localizedDescription)")
+                SentryManager.capture(error, context: ["source": "PersistenceController.save"])
+            }
         }
     }
 }

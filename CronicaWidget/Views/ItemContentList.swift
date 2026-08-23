@@ -1,21 +1,21 @@
 //
 //  ItemContentList.swift
-//  Cronica (iOS)
-//
-//  Created by Alexandre Madeira on 26/08/22.
+//  CronicaWidget
 //
 
 import SwiftUI
+import CronicaCore
 
 struct ItemContentList: View {
     let rows: [GridItem] = [
-        GridItem(.adaptive(minimum: 60 ))
+        GridItem(.adaptive(minimum: 60))
     ]
     let items: [ItemContent]
+
     var body: some View {
         VStack {
             if items.isEmpty {
-                Text("Trending service ins't available right now.")
+                Text("Trending service isn't available right now.")
                     .font(.callout)
                     .foregroundColor(.secondary)
             } else {
@@ -23,11 +23,11 @@ struct ItemContentList: View {
             }
         }
     }
+
     private var list: some View {
         ViewThatFits {
             HStack(spacing: .zero) {
                 ForEach(items) { item in
-                    // Normal size for regular/Pro models.
                     PosterImage(item: item)
                         .frame(width: DrawingConstants.imageWidth,
                                height: DrawingConstants.imageHeight)
@@ -38,7 +38,6 @@ struct ItemContentList: View {
             }
             HStack {
                 ForEach(items) { item in
-                    // Small size for SE
                     PosterImage(item: item)
                         .frame(width: DrawingConstants.smallImageWidth,
                                height: DrawingConstants.smallImageHeight)
@@ -52,46 +51,50 @@ struct ItemContentList: View {
 
 private struct PosterImage: View {
     let item: ItemContent
-    @State private var showPlaceholder = false
+
     var body: some View {
-        Link(destination: URL(string: item.itemContentID)!) {
-            if let placeholder = item.placeholderImagePath {
-                Image(placeholder)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-            } else if let image = item.data {
-#if os(iOS)
-                Image(uiImage: UIImage(data: image) ?? UIImage(systemName: "popcorn")!)
-                    .resizable()
-#elseif os(macOS)
-                if let nsImage = NSImage(data: image) {
-                    Image(nsImage: nsImage)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                } else {
-                    Image(systemName: "popcorn")
+        Group {
+            if let destination = URL(string: item.itemContentID) {
+                Link(destination: destination) {
+                    posterContent
                 }
-#endif
             } else {
-                PlaceholderImage()
+                posterContent
             }
         }
-        .task {
-            if item.data == nil {
-                showPlaceholder = true
+    }
+
+    @ViewBuilder
+    private var posterContent: some View {
+        if let placeholder = item.placeholderImagePath {
+            Image(placeholder)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+        } else if let image = item.widgetImageData {
+#if os(iOS)
+            Image(uiImage: UIImage(data: image) ?? UIImage(systemName: "popcorn") ?? UIImage())
+                .resizable()
+#elseif os(macOS)
+            if let nsImage = NSImage(data: image) {
+                Image(nsImage: nsImage)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+            } else {
+                Image(systemName: "popcorn")
             }
+#endif
+        } else {
+            PlaceholderImage()
         }
     }
 }
 
 private struct PlaceholderImage: View {
     var body: some View {
-        VStack {
-            ZStack {
-                Rectangle().fill(Color.gray.gradient)
-                Image(systemName: "popcorn")
-                    .foregroundColor(.white.opacity(0.8))
-            }
+        ZStack {
+            Rectangle().fill(Color.gray.gradient)
+            Image(systemName: "popcorn")
+                .foregroundColor(.white.opacity(0.8))
         }
     }
 }

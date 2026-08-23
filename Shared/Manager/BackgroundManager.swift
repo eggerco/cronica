@@ -90,14 +90,17 @@ final class BackgroundManager {
 		let soonPredicate = NSPredicate(format: "schedule == %d", ItemSchedule.soon.toInt)
 		let renewedPredicate = NSPredicate(format: "schedule == %d", ItemSchedule.renewed.toInt)
 		let productionPredicate = NSPredicate(format: "schedule == %d", ItemSchedule.production.toInt)
-		let orPredicate = NSCompoundPredicate(
+		let archivePredicate = NSPredicate(format: "isArchive == %d", false)
+		let watchedPredicate = NSPredicate(format: "watched == %d", false)
+		let schedulePredicate = NSCompoundPredicate(
 			type: .or,
-			subpredicates: [productionPredicate,
-							soonPredicate,
-							renewedPredicate]
+			subpredicates: [productionPredicate, soonPredicate, renewedPredicate]
 		)
-		let andPredicate = NSCompoundPredicate(type: .and, subpredicates: [orPredicate])
-		request.predicate = andPredicate
+		let filterPredicate = NSCompoundPredicate(
+			type: .and,
+			subpredicates: [schedulePredicate, archivePredicate, watchedPredicate]
+		)
+		request.predicate = filterPredicate
 		guard let list = try? context.fetch(request) else { return [] }
 		return list
 	}
@@ -108,8 +111,7 @@ final class BackgroundManager {
 		let archivePredicate = NSPredicate(format: "isArchive == %d", true)
 		request.predicate = NSCompoundPredicate(
 			type: .or,
-			subpredicates: [endedPredicate,
-							archivePredicate]
+			subpredicates: [endedPredicate, archivePredicate]
 		)
 		guard let list = try? self.context.fetch(request) else { return [] }
 		return list
@@ -139,24 +141,22 @@ final class BackgroundManager {
 	
 	private func update(_ item: WatchlistItem) async {
 		if item.id == 0 { return }
-		let content = try? await self.network.fetchItem(id: item.itemId, type: item.itemMedia)
-		guard let content else { return }
-		if content.itemCanNotify && item.shouldNotify {
-			// If fetched item release date is different than the scheduled one,
-			// then remove the old date and register the new one.
-			if item.itemDate.areDifferentDates(with: content.itemFallbackDate) {
-				notifications.removeNotification(identifier: content.itemContentID)
+		do {
+			let content = try await self.network.fetchItem(id: item.itemId, type: item.itemMedia)
+			if content.itemCanNotify && item.shouldNotify {
+				if item.itemDate.areDifferentDates(with: content.itemFallbackDate) {
+					notifications.removeNotification(identifier: content.itemContentID)
+				}
+				if content.itemStatus == .cancelled {
+					notifications.removeNotification(identifier: content.itemContentID)
+				}
+				if content.itemFallbackDate.isLessThanTwoWeeksAway() {
+					notifications.schedule(content)
+				}
 			}
-			if content.itemStatus == .cancelled {
-				notifications.removeNotification(identifier: content.itemContentID)
-			}
-			// In order to avoid passing the limit of local notifications,
-			// the app will only register when it's less than two months away
-			// from release date.
-			if content.itemFallbackDate.isLessThanTwoWeeksAway() {
-				notifications.schedule(content)
-			}
+			PersistenceController.shared.update(item: content)
+		} catch {
+			AppLogger.background.error("Failed to refresh item \(item.itemContentID): \(error.localizedDescription)")
 		}
-		PersistenceController.shared.update(item: content)
 	}
 }

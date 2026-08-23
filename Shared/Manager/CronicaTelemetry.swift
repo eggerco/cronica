@@ -6,21 +6,16 @@
 //
 
 import Foundation
-import os
 import Aptabase
 
 struct CronicaTelemetry {
-    private let logger = Logger(
-        subsystem: Bundle.main.bundleIdentifier!,
-        category: String(describing: CronicaTelemetry.self)
-    )
     static let shared = CronicaTelemetry()
     
     private init() { }
     
     func setup() {
-#if !targetEnvironment(simulator) || !DEBUG
-        guard let aptabaseKey = Key.aptabaseClientKey else { return }
+#if !targetEnvironment(simulator) && !DEBUG
+        guard let aptabaseKey = Key.aptabaseClientKey, !aptabaseKey.isEmpty else { return }
         Aptabase.shared.initialize(appKey: aptabaseKey)
         Aptabase.shared.trackEvent("app_started")
 #endif
@@ -31,7 +26,7 @@ struct CronicaTelemetry {
     /// If it is running in Simulator or Debug, it will send a warning on logger.
     func handleMessage(_ message: String, for id: String) {
 #if targetEnvironment(simulator) || DEBUG
-        logger.warning("\(message), for: \(id)")
+        AppLogger.lifecycle.warning("\(message), for: \(id)")
 #else
         Aptabase.shared.trackEvent(id, with: ["Message": message])
 #endif

@@ -92,7 +92,7 @@ class UpNextViewModel: ObservableObject {
     
     func skipEpisode(for item: UpNextEpisode) async {
         let nextEpisode = await helper.fetchNextEpisode(for: item.episode, show: item.showID)
-        let persistence = PersistenceController()
+        let persistence = PersistenceController.shared
         guard let nextEpisode, let show = persistence.fetch(for: "\(item.showID)@\(MediaType.tvShow.toInt)") else {
             return
         }

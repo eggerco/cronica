@@ -2,11 +2,10 @@
 //  CronicaWidget.swift
 //  CronicaWidget
 //
-//  Created by Alexandre Madeira on 26/08/22.
-//
 
 import WidgetKit
 import SwiftUI
+import CronicaCore
 
 struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> ItemContentEntry {
@@ -20,33 +19,26 @@ struct Provider: TimelineProvider {
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         Task {
-            let nextUpdate = Date().addingTimeInterval(86400) // 24 hours in seconds
+            let nextUpdate = Date().addingTimeInterval(86400)
             do {
                 let result = try await NetworkService.shared.fetchItems(from: "trending/all/day")
                 var content = [ItemContent]()
                 for item in result.shuffled().prefix(4) {
-                    let image = await NetworkService.shared.downloadImageData(from: item.posterImage)
-                    let itemContent = ItemContent(id: item.id,
-                                                  title: item.title,
-                                                  name: item.name,
-                                                  posterPath: item.posterPath,
-                                                  backdropPath: item.backdropPath,
-                                                  data: image)
+                    let image = await NetworkService.shared.downloadImageData(from: item.posterImageMedium)
+                    var itemContent = item
+                    itemContent.widgetImageData = image
                     content.append(itemContent)
                 }
                 let entry = ItemContentEntry(date: .now, item: content)
                 let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
                 completion(timeline)
             } catch {
-                print("Error: \(error.localizedDescription)")
+                let entry = ItemContentEntry(date: .now, item: ItemContent.widgetExamples)
+                let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
+                completion(timeline)
             }
         }
     }
-}
-
-struct ItemPosterImage: Codable, Identifiable {
-    var id: Int
-    var image: Data?
 }
 
 struct ItemContentEntry: TimelineEntry {
@@ -54,7 +46,7 @@ struct ItemContentEntry: TimelineEntry {
     let item: [ItemContent]
 }
 
-struct CronicaWidgetEntryView : View {
+struct CronicaWidgetEntryView: View {
     var entry: Provider.Entry
     var body: some View {
         VStack(alignment: .leading) {
@@ -77,8 +69,3 @@ struct CronicaWidget: Widget {
         .supportedFamilies([.systemMedium])
     }
 }
-
-//#Preview {
-//    CronicaWidgetEntryView(entry: ItemContentEntry(date: Date(), item: [ItemContent.placeholder]))
-//        .previewContext(WidgetPreviewContext(family: .systemMedium))
-//}
