@@ -12,21 +12,32 @@ struct TrendingView: View {
     private let service: NetworkService = NetworkService.shared
     @State private var trending = [ItemContent]()
     @State private var isLoaded = false
+    @State private var showError = false
     var body: some View {
         NavigationStack {
             Form {
                 Section {
-                    List {
-                        ForEach(trending) { item in
-                            NavigationLink(value: item) {
-                                ItemContentRow(item: item)
+                    if showError && trending.isEmpty {
+                        ContentUnavailableView {
+                            Label("Couldn't Load", systemImage: "wifi.exclamationmark")
+                        } description: {
+                            Text("Check your connection and try again.")
+                        } actions: {
+                            Button("Retry") { load(force: true) }
+                        }
+                    } else {
+                        List {
+                            ForEach(trending) { item in
+                                NavigationLink(value: item) {
+                                    ItemContentRow(item: item)
+                                }
                             }
                         }
+                        .redacted(reason: isLoaded ? [] : .placeholder)
                     }
-                    .redacted(reason: isLoaded ? [] : .placeholder)
                 }
             }
-			.cronicaLoadingOverlay(!isLoaded)
+            .cronicaLoadingOverlay(!isLoaded && !showError)
             .navigationTitle("Trending")
             .navigationBarTitleDisplayMode(.inline)
             .navigationDestination(for: ItemContent.self) { item in
@@ -35,23 +46,26 @@ struct TrendingView: View {
                                 type: item.itemContentMedia,
                                 image: item.cardImageMedium)
             }
-            .onAppear(perform: load)
+            .onAppear { load() }
         }
     }
     
-    private func load() {
+    private func load(force: Bool = false) {
         Task {
-            if !isLoaded {
-                if trending.isEmpty {
-                    do {
-                        let result = try await service.fetchItems(from: "trending/all/day")
-                        let filtered = result.filter { $0.itemContentMedia != .person }
-                        trending = filtered
-                        isLoaded = true
-                    } catch {
-                        if Task.isCancelled { return }
-                    }
-                }
+            if isLoaded && !force { return }
+            showError = false
+            if force {
+                isLoaded = false
+            }
+            do {
+                let result = try await service.fetchItems(from: "trending/all/day")
+                let filtered = result.filter { $0.itemContentMedia != .person }
+                trending = filtered
+                isLoaded = true
+            } catch {
+                if Task.isCancelled { return }
+                showError = trending.isEmpty
+                isLoaded = true
             }
         }
     }

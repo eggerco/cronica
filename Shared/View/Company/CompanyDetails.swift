@@ -17,6 +17,8 @@ struct CompanyDetails: View {
     @State private var startPagination = false
     @State private var endPagination = false
     @State private var isLoaded = false
+    @State private var isLoadingMore = false
+    @State private var showError = false
     private let network = NetworkService.shared
     var body: some View {
         VStack {
@@ -39,6 +41,25 @@ struct CompanyDetails: View {
 #endif
         }
         .cronicaLoadingOverlay(!isLoaded)
+        .overlay {
+            if isLoaded && items.isEmpty {
+                ContentUnavailableView {
+                    Label(showError ? "Couldn't Load" : "Try again later",
+                          systemImage: showError ? "wifi.exclamationmark" : "popcorn")
+                } description: {
+                    Text(showError ? "Check your connection and try again." : "Nothing available for this company right now.")
+                } actions: {
+                    Button("Retry") {
+                        showError = false
+                        isLoaded = false
+                        page = 1
+                        endPagination = false
+                        Task { await load() }
+                    }
+                    .buttonStyle(.borderedProminent)
+                }
+            }
+        }
         .scrollBounceBehavior(.basedOnSize)
         .redacted(reason: isLoaded ? [] : .placeholder)
 #if !os(tvOS)
@@ -71,12 +92,12 @@ struct CompanyDetails: View {
                             ItemContentRowView(item: item, showPopup: $showPopup, popupType: $popupType)
                         }
                         if isLoaded && !endPagination {
-                            PaginationFooter(label: "Loading") {
+                            PaginationFooter(label: "Loading", isLoadingMore: isLoadingMore) {
                                 Task { await load() }
                             }
                         }
                     } else if items.isEmpty, isLoaded {
-                        ContentUnavailableView("Try again later", systemImage: "popcorn")
+                        EmptyView()
                     }
                 }
             }
@@ -94,13 +115,13 @@ struct CompanyDetails: View {
                         .buttonStyle(.plain)
                 }
                 if isLoaded && !endPagination {
-                    PaginationFooter {
+                    PaginationFooter(isLoadingMore: isLoadingMore) {
                         Task { await load() }
                     }
                 }
             } else {
                 if isLoaded {
-                    SimpleUnavailableView()
+                    EmptyView()
                 }
             }
         }
@@ -117,13 +138,13 @@ struct CompanyDetails: View {
                         .buttonStyle(.plain)
                 }
                 if isLoaded && !endPagination {
-                    PaginationFooter {
+                    PaginationFooter(isLoadingMore: isLoadingMore) {
                         Task { await load() }
                     }
                 }
             } else {
                 if isLoaded {
-                    SimpleUnavailableView()
+                    EmptyView()
                 }
             }
         }.padding(.all, settings.isCompactUI ? 10 : nil)
@@ -154,6 +175,9 @@ private struct DrawingConstants {
 private extension CompanyDetails {
     @MainActor
     func load() async {
+        guard !isLoadingMore else { return }
+        isLoadingMore = true
+        defer { isLoadingMore = false }
         let id = company.id
         do {
             let movies = try await network.fetchCompanyFilmography(type: .movie,
@@ -165,19 +189,19 @@ private extension CompanyDetails {
             let result = movies + shows
             if result.isEmpty {
                 endPagination = true
+                isLoaded = true
                 return
             } else {
                 page += 1
             }
             items.append(contentsOf: result.sorted { $0.itemPopularity > $1.itemPopularity })
             if !startPagination { startPagination = true }
-            if !isLoaded {
-                await MainActor.run {
-                    self.isLoaded = true
-                }
-            }
+            showError = false
+            isLoaded = true
         } catch {
             if Task.isCancelled { return }
+            showError = items.isEmpty
+            isLoaded = true
             let message = "Company ID: \(id), error: \(error.localizedDescription)"
             CronicaTelemetry.shared.handleMessage(message, for: "CompanyDetails.load()")
         }

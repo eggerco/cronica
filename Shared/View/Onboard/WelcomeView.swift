@@ -7,148 +7,138 @@
 
 import SwiftUI
 #if !os(macOS)
-/// Onboard experience.
+/// First-run onboarding aligned with Cronica brand chrome (About-style logo + accent tint).
 struct WelcomeView: View {
     @AppStorage("showOnboarding") var displayOnboard = true
+    @StateObject private var settings = SettingsStore.shared
     @State private var showPolicy = false
+
     var body: some View {
-        VStack(alignment: .leading) {
-            CenterHorizontalView {
-                HStack {
-                    Image("Cronica")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 90, height: 90, alignment: .center)
-                        .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
-                        .shadow(radius: 5)
-                        .padding(.leading)
-                    VStack(alignment: .leading) {
-                        Text("Cronica")
-                            .font(.title)
-                            .fontWeight(.bold)
-                            .fontDesign(.rounded)
-                        Text("An Egger & Co Product")
-                            .font(.callout)
-                            .foregroundColor(.secondary)
-                            .fontDesign(.rounded)
-                            .padding(.trailing)
-                    }
-                    .padding(.leading, 6)
-                }
-            }
-            .padding([.top, .bottom])
-            ScrollView {
-                informationContainerView
-            }
-            .padding(.horizontal)
-            Spacer()
-            HStack {
-                Spacer()
-                Button("Continue") {
-                    withAnimation {
-                        displayOnboard.toggle()
+        NavigationStack {
+            VStack(spacing: 0) {
+                ScrollView {
+                    VStack(spacing: 28) {
+                        brandHeader
+                            .padding(.top, 24)
+
+                        VStack(alignment: .leading, spacing: 20) {
+                            featureRow(
+                                title: "Your Watchlist",
+                                subtitle: "Save movies and shows — Cronica keeps them organized for you.",
+                                systemImage: "rectangle.stack.fill"
+                            )
+                            featureRow(
+                                title: "Always Synced",
+                                subtitle: "Your list stays in sync across iPhone, iPad, Mac, Apple Watch, and Apple TV.",
+                                systemImage: "icloud.fill"
+                            )
+                            featureRow(
+                                title: "Track Episodes",
+                                subtitle: "Mark what you’ve watched and pick up right where you left off.",
+                                systemImage: "rectangle.fill.badge.checkmark"
+                            )
+                            featureRow(
+                                title: "Never Miss a Release",
+                                subtitle: "Get notified when new movies and episodes arrive.",
+                                systemImage: "bell.fill"
+                            )
+                        }
+                        .padding(.horizontal, 24)
+                        .padding(.bottom, 12)
                     }
                 }
-                .buttonStyle(.borderedProminent)
-                .tint(Color.blue.gradient)
-#if os(iOS) || os(macOS)
-                .controlSize(.large)
-#endif
-                .padding([.leading, .vertical])
-                Button {
+
+                VStack(spacing: 12) {
+                    Button {
+                        withAnimation {
+                            displayOnboard = false
+                        }
+                    } label: {
+                        Text("Continue")
+                            .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .controlSize(.large)
+                    .tint(settings.appTheme.color)
+
+                    Button("Privacy Policy") {
 #if os(macOS)
-                    NSWorkspace.shared.open(AppWebsite.privacyPolicy)
+                        NSWorkspace.shared.open(AppWebsite.privacyPolicy)
 #else
-                    showPolicy.toggle()
+                        showPolicy = true
 #endif
-                } label: {
-                    Text("Privacy Policy")
-                        .lineLimit(1)
+                    }
+                    .buttonStyle(.borderless)
+                    .controlSize(.regular)
+                    .foregroundStyle(.secondary)
                 }
-                .padding([.horizontal, .vertical])
-#if os(iOS) || os(macOS)
-                .controlSize(.large)
-#endif
-#if os(macOS)
-                .buttonStyle(.link)
-#else
-                .buttonStyle(.bordered)
-#endif
-                Spacer()
+                .padding(.horizontal, 24)
+                .padding(.vertical, 20)
             }
-            .padding()
+            .background()
+            .interactiveDismissDisabled(true)
+            .toolbar(.hidden, for: .navigationBar)
         }
-        .interactiveDismissDisabled(true)
 #if os(iOS)
         .fullScreenCover(isPresented: $showPolicy) {
             SFSafariViewWrapper(url: AppWebsite.privacyPolicy)
         }
 #endif
+        .appTint()
+        .appTheme()
     }
-    
-    private var informationContainerView: some View {
-        VStack(alignment: .leading) {
-            informationItem(
-                title: NSLocalizedString("Your Watchlist", comment: ""),
-                subtitle: NSLocalizedString("Add everything you want, the Watchlist automatically organizes it for you.", comment: ""),
-                imageName: "rectangle.stack.fill",
-                imageTint: .purple
-            )
-            
-            informationItem(
-                title: NSLocalizedString("Always Synced", comment: ""),
-                subtitle: NSLocalizedString("Your Watchlist is always in sync with your Apple Watch, iPad, Mac, and Apple TV.", comment: ""),
-                imageName: "icloud.fill"
-            )
-            
-            informationItem(
-                title: NSLocalizedString("Track your episodes", comment: ""),
-                subtitle: NSLocalizedString("Keep track of every episode you've watched.", comment: ""),
-                imageName: "rectangle.fill.badge.checkmark",
-                imageTint: .green
-            )
-            
-            informationItem(
-                title: NSLocalizedString("Never miss out", comment: ""),
-                subtitle: NSLocalizedString("Get notifications about the newest releases.", comment: ""),
-                imageName: "bell.fill",
-                imageTint: .orange
-            )
-            
+
+    private var brandHeader: some View {
+        VStack(spacing: 12) {
+            Image("Cronica")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 96, height: 96)
+                .clipShape(RoundedRectangle(cornerRadius: 22.4, style: .continuous))
+                .shadow(color: .black.opacity(0.18), radius: 8, x: 0, y: 4)
+                .accessibilityHidden(true)
+
+            Text("Cronica")
+                .font(.largeTitle.weight(.bold))
+                .fontDesign(.rounded)
+
+            Text("An Egger & Co Product")
+                .font(.caption2.weight(.semibold))
+                .fontDesign(.monospaced)
+                .foregroundStyle(.secondary)
+                .textCase(.uppercase)
+
+            Text("Track what you watch. Never lose your place.")
+                .font(.body)
+                .foregroundStyle(.secondary)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 32)
+                .padding(.top, 4)
         }
+        .frame(maxWidth: .infinity)
+        .accessibilityElement(children: .combine)
+        .accessibilityAddTraits(.isHeader)
     }
-    
-    private func informationItem(
-        title: String,
-        subtitle: String,
-        imageName: String,
-        imageTint: Color = .blue
-    ) -> some View {
-        HStack(alignment: .center) {
-            Image(systemName: imageName)
-                .font(.largeTitle)
-                .frame(width: 60)
-                .accessibility(hidden: true)
-                .foregroundColor(imageTint)
-            
-            VStack(alignment: .leading) {
-                Text(NSLocalizedString(title, comment: ""))
-                    .font(.title3)
-                    .fontWeight(.semibold)
-                    .foregroundColor(.primary)
-                    .accessibility(addTraits: .isHeader)
+
+    private func featureRow(title: LocalizedStringKey, subtitle: LocalizedStringKey, systemImage: String) -> some View {
+        HStack(alignment: .top, spacing: 16) {
+            Image(systemName: systemImage)
+                .font(.title2)
+                .foregroundStyle(settings.appTheme.color)
+                .frame(width: 36, alignment: .center)
+                .accessibilityHidden(true)
+
+            VStack(alignment: .leading, spacing: 4) {
+                Text(title)
+                    .font(.headline)
                     .fontDesign(.rounded)
-                
-                Text(NSLocalizedString(subtitle, comment: ""))
-                    .font(.callout)
-                    .foregroundColor(.secondary)
-                    .fontDesign(.rounded)
+                Text(subtitle)
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
             }
-            .padding(.leading, 6)
-            .padding([.top, .bottom], 8)
         }
-        .padding(.top)
+        .accessibilityElement(children: .combine)
     }
 }
 

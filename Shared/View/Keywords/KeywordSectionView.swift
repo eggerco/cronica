@@ -17,6 +17,7 @@ struct KeywordSectionView: View {
     @State private var page = 1
     @State private var items = [ItemContent]()
     @State private var isLoaded = false
+    @State private var isLoadingMore = false
     @State private var startPagination = false
     @State private var endPagination = false
     // Network service
@@ -168,17 +169,22 @@ private struct DrawingConstants {
 
 extension KeywordSectionView {
     private func loadMoreOnAppear() {
+        guard !isLoadingMore else { return }
         Task {
             await load(keyword.id, sortBy: sortBy, reload: false)
         }
     }
     private func load(_ id: Int, sortBy: TMDBSortBy, reload: Bool) async {
+        guard !isLoadingMore || reload else { return }
+        isLoadingMore = true
+        defer { isLoadingMore = false }
         do {
             if reload {
                 withAnimation {
                     items.removeAll()
                     isLoaded = false
                     page = 1
+                    endPagination = false
                 }
             }
             let movies = try await network.fetchKeyword(type: .movie,
@@ -192,6 +198,7 @@ extension KeywordSectionView {
             let result = movies + shows
             if result.isEmpty {
                 endPagination = true
+                isLoaded = true
                 return
             } else {
                 page += 1
@@ -200,13 +207,10 @@ extension KeywordSectionView {
                 items.append(contentsOf: result.sorted { $0.itemPopularity > $1.itemPopularity })
             }
             if !startPagination { startPagination = true }
-            if !isLoaded {
-                await MainActor.run {
-                    self.isLoaded = true
-                }
-            }
+            isLoaded = true
         } catch {
             if Task.isCancelled { return }
+            isLoaded = true
             let message = "Keyword ID: \(id), error: \(error.localizedDescription)"
             CronicaTelemetry.shared.handleMessage(message, for: "KeywordSection.load()")
         }

@@ -18,7 +18,7 @@ struct SelectListView: View {
     @Binding var navigationTitle: String
     @Binding var showListSelection: Bool
     @State private var showAllItems = true
-    @State private var showDeleteConfirmation = true
+    @State private var listToDelete: CustomList?
 #if os(macOS)
     @State private var isCreateNewListPresented = false
 #endif
@@ -46,6 +46,30 @@ struct SelectListView: View {
                 }
 #endif
                 .scrollBounceBehavior(.basedOnSize)
+                .confirmationDialog(
+                    "Are You Sure?",
+                    isPresented: Binding(
+                        get: { listToDelete != nil },
+                        set: { if !$0 { listToDelete = nil } }
+                    ),
+                    titleVisibility: .visible
+                ) {
+                    Button("Delete List", role: .destructive) {
+                        if let listToDelete {
+                            if selectedList == listToDelete {
+                                selectedList = nil
+                                navigationTitle = NSLocalizedString("Watchlist", comment: "")
+                            }
+                            PersistenceController.shared.delete(listToDelete)
+                        }
+                        listToDelete = nil
+                    }
+                    Button("Cancel", role: .cancel) { listToDelete = nil }
+                } message: {
+                    if let listToDelete {
+                        Text("Delete \(listToDelete.itemTitle)? This cannot be undone.")
+                    }
+                }
 #else
             form
                 .formStyle(.grouped)
@@ -141,7 +165,7 @@ struct SelectListView: View {
                                 .buttonStyle(.plain)
                                 .contextMenu {
                                     Button("Delete", role: .destructive) {
-                                        PersistenceController.shared.delete(item)
+                                        listToDelete = item
                                     }
                                     NavigationLink {
 #if os(iOS)

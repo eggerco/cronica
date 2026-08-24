@@ -23,6 +23,7 @@ struct ExploreView: View {
     @State private var selectedSortBy: TMDBSortBy = .popularity
     @State private var selectedWatchProviders = [String]()
     @State private var isLoaded: Bool = false
+    @State private var isLoadingMore = false
     @State private var showErrorDialog: Bool = false
     @AppStorage("exploreViewHideAddedItems") private var hideAddedItems = false
     // MARK: Pagination Properties
@@ -544,8 +545,10 @@ extension ExploreView {
                 isLoaded = false
                 currentPage = 0
                 selectedSortBy = sortBy
+                isLoadingMore = false
             }
         }
+        guard !isLoadingMore else { return }
         if restartFetch {
             currentPage = 0
             startPagination = true
@@ -554,8 +557,10 @@ extension ExploreView {
             withAnimation { isLoaded = true }
         }
         currentPage += 1
+        isLoadingMore = true
         Task {
             await fetch()
+            isLoadingMore = false
         }
     }
     

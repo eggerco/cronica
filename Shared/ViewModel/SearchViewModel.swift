@@ -18,6 +18,7 @@ import SwiftUI
     @Published var items = [SearchItemContent]()
     @Published var startPagination: Bool = false
     @Published var endPagination: Bool = false
+    private var isLoadingMore = false
     @Published var stage: SearchStage = .none
     
     func search(_ query: String) async {
@@ -72,8 +73,10 @@ import SwiftUI
         if Task.isCancelled { return }
         if items.isEmpty { return }
         if endPagination { return }
-        if Task.isCancelled { return }
+        if isLoadingMore { return }
+        isLoadingMore = true
         Task {
+            defer { isLoadingMore = false }
             let result = try? await service.search(query: trimmedQuery, page: "\(page)")
             guard let result else { return }
             if result.isEmpty { endPagination.toggle() }

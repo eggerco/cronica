@@ -5,9 +5,10 @@
 
 import SwiftUI
 
-/// Shared infinite-scroll footer that loads the next page as soon as it appears.
+/// Shared infinite-scroll footer. Skips firing while a page request is already in flight.
 struct PaginationFooter: View {
     var label: String? = nil
+    var isLoadingMore: Bool = false
     let onAppear: () -> Void
 
     var body: some View {
@@ -20,7 +21,11 @@ struct PaginationFooter: View {
                 }
             }
             .padding()
-            .onAppear(perform: onAppear)
+            .onAppear {
+                guard !isLoadingMore else { return }
+                onAppear()
+            }
         }
+        .accessibilityLabel(String(localized: "Loading more"))
     }
 }

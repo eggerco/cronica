@@ -9,8 +9,12 @@ import SwiftUI
 
 struct EmptyListView: View {
     var body: some View {
-        ContentUnavailableView("Your list is empty.", systemImage: "rectangle.on.rectangle")
-            .padding()
+        ContentUnavailableView {
+            Label("Your Watchlist Is Empty", systemImage: "rectangle.stack.badge.plus")
+        } description: {
+            Text("Add titles on iPhone, then they appear here.")
+        }
+        .padding()
     }
 }
 

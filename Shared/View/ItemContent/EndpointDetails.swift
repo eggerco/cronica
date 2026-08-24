@@ -19,6 +19,8 @@ struct EndpointDetails: View {
     @State private var startPagination: Bool = false
     @State private var endPagination: Bool = false
     @State private var isLoading = true
+    @State private var isLoadingMore = false
+    @State private var showError = false
     var body: some View {
         VStack {
 #if os(tvOS)
@@ -34,8 +36,19 @@ struct EndpointDetails: View {
         .cronicaLoadingOverlay(isLoading)
         .overlay {
             if !isLoading && items.isEmpty {
-                ContentUnavailableView("Nothing here, try again later.",
-                                       systemImage: "popcorn")
+                ContentUnavailableView {
+                    Label(showError ? "Couldn't Load" : "Nothing Here",
+                          systemImage: showError ? "wifi.exclamationmark" : "popcorn")
+                } description: {
+                    Text(showError ? "Check your connection and try again." : "Try again later.")
+                } actions: {
+                    Button("Retry") {
+                        showError = false
+                        isLoading = true
+                        Task { await loadMoreItems(for: endpoint) }
+                    }
+                    .buttonStyle(.borderedProminent)
+                }
             }
         }
         .actionPopup(isShowing: $showPopup, for: popupType)
@@ -57,7 +70,7 @@ struct EndpointDetails: View {
                         ItemContentRowView(item: item, showPopup: $showPopup, popupType: $popupType)
                     }
                     if endpoint != nil && !endPagination && !isLoading {
-                        PaginationFooter(label: "Loading") {
+                        PaginationFooter(label: "Loading", isLoadingMore: isLoadingMore) {
                             Task { await loadMoreItems(for: endpoint) }
                         }
                     }
@@ -74,7 +87,7 @@ struct EndpointDetails: View {
                         .buttonStyle(.plain)
                 }
                 if endpoint != nil && !endPagination && !isLoading {
-                    PaginationFooter {
+                    PaginationFooter(isLoadingMore: isLoadingMore) {
                         Task { await loadMoreItems(for: endpoint) }
                     }
                 }
@@ -91,7 +104,7 @@ struct EndpointDetails: View {
                     .buttonStyle(.plain)
             }
             if endpoint != nil && !endPagination && !isLoading {
-                PaginationFooter {
+                PaginationFooter(isLoadingMore: isLoadingMore) {
                     Task { await loadMoreItems(for: endpoint) }
                 }
             }
@@ -122,6 +135,9 @@ private struct DrawingConstants {
 extension EndpointDetails {
     private func loadMoreItems(for endpoint: Endpoints?) async {
         guard let endpoint else { return }
+        guard !isLoadingMore else { return }
+        isLoadingMore = true
+        defer { isLoadingMore = false }
         do {
             let result = try await NetworkService.shared.fetchItems(from: "\(endpoint.type.rawValue)/\(endpoint.rawValue)", page: String(page))
             let filtered = result.filter { $0.backdropPath != nil && $0.posterPath != nil }
@@ -135,9 +151,12 @@ extension EndpointDetails {
                 startPagination = false
             }
             if result.isEmpty { endPagination = true }
+            showError = false
             withAnimation { isLoading = false }
         } catch {
             if Task.isCancelled { return }
+            showError = items.isEmpty
+            withAnimation { isLoading = false }
         }
     }
 }

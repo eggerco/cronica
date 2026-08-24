@@ -16,6 +16,7 @@ struct EmptyListView: View {
             Text(description)
         }
         .padding()
+        .accessibilityElement(children: .combine)
     }
 
     private var title: String {
@@ -34,17 +35,17 @@ struct EmptyListView: View {
             case .archive: return String(localized: "Nothing Archived")
             }
         }
-        return String(localized: "Watchlist Empty")
+        return String(localized: "Your Watchlist Is Empty")
     }
 
     private var description: String {
         if let listTitle {
-            return String(localized: "Add titles to \(listTitle) from search or details.")
+            return String(localized: "Add titles to \(listTitle) from Search or any title’s details screen.")
         }
         if filter != nil {
-            return String(localized: "Try another filter or add more titles to your watchlist.")
+            return String(localized: "Try another filter, or add more titles from Search.")
         }
-        return String(localized: "Search for movies and shows to start building your watchlist.")
+        return String(localized: "Open Search, find a movie or show, then tap Add to start tracking.")
     }
 
     private var systemImage: String {
@@ -58,6 +59,6 @@ struct EmptyListView: View {
             default: return "rectangle.on.rectangle"
             }
         }
-        return "rectangle.on.rectangle"
+        return "rectangle.stack.badge.plus"
     }
 }
