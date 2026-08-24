@@ -17,6 +17,7 @@ struct PersonDetailsView: View {
     @State private var popupType: ActionPopupItems?
     @State private var showPopup = false
     @State private var isLoaded: Bool = false
+    @State private var showLoadError = false
     @State private var person: Person?
     @State private var credits = [ItemContent]()
     @State private var query: String = ""
@@ -66,6 +67,18 @@ struct PersonDetailsView: View {
             }
         }
         .actionPopup(isShowing: $showPopup, for: popupType)
+        .overlay {
+            if showLoadError {
+                ContentUnavailableView {
+                    Label("Couldn't Load Person", systemImage: "person.crop.circle.badge.exclamationmark")
+                } description: {
+                    Text("Check your connection and try again.")
+                } actions: {
+                    Button("Retry") { load() }
+                        .buttonStyle(.borderedProminent)
+                }
+            }
+        }
         .task { load() }
         .redacted(reason: isLoaded ? [] : .placeholder)
 #if os(iOS)
@@ -215,6 +228,8 @@ private extension PersonDetailsView {
         Task {
             if Task.isCancelled { return }
             if person == nil {
+                showLoadError = false
+                isLoaded = false
                 do {
                     person = try await self.service.fetchPerson(id: self.id)
                     if let person {
@@ -229,11 +244,18 @@ private extension PersonDetailsView {
                     await MainActor.run {
                         withAnimation {
                             self.isLoaded = true
+                            self.showLoadError = false
                         }
                     }
                 } catch {
                     if Task.isCancelled { return }
                     person = nil
+                    await MainActor.run {
+                        withAnimation {
+                            self.isLoaded = true
+                            self.showLoadError = true
+                        }
+                    }
                     let message = "Can't load the id \(id), with error message: \(error.localizedDescription)"
                     CronicaTelemetry.shared.handleMessage(message, for: "PersonDetailsViewModel.load()")
                 }

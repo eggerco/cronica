@@ -133,7 +133,7 @@ struct CustomWatchlist: View {
                             .padding(.horizontal, 64)
                         }
                         if items.isEmpty {
-                            EmptyListView()
+                            EmptyListView(listTitle: selectedList?.itemTitle)
                         } else {
                             if !filteredItems.isEmpty {
                                 switch settings.watchlistStyle {
@@ -168,15 +168,18 @@ struct CustomWatchlist: View {
                                     case .list:
                                         WatchListSection(items: smartFiltersItems,
                                                          title: selectedOrder.title,
+                                                         emptyFilter: selectedOrder,
                                                          showPopup: $showPopup, popupType: $popupType)
                                     case .card:
                                         WatchlistCardSection(items: smartFiltersItems,
                                                              title: selectedOrder.title,
+                                                             emptyFilter: selectedOrder,
                                                              showPopup: $showPopup,
                                                              popupType: $popupType)
                                     case .poster:
                                         WatchlistPosterSection(items: smartFiltersItems,
                                                                title: selectedOrder.title,
+                                                               emptyFilter: selectedOrder,
                                                                showPopup: $showPopup, popupType: $popupType)
                                     }
                                 }
@@ -186,7 +189,7 @@ struct CustomWatchlist: View {
                 }
                 #else
                 if items.isEmpty {
-                    EmptyListView()
+                    EmptyListView(listTitle: selectedList?.itemTitle)
                 } else {
                     if !filteredItems.isEmpty {
                         switch settings.watchlistStyle {
@@ -223,15 +226,18 @@ struct CustomWatchlist: View {
                             case .list:
                                 WatchListSection(items: smartFiltersItems,
                                                  title: selectedOrder.title,
+                                                 emptyFilter: selectedOrder,
                                                  showPopup: $showPopup, popupType: $popupType)
                             case .card:
                                 WatchlistCardSection(items: smartFiltersItems,
                                                      title: selectedOrder.title,
+                                                     emptyFilter: selectedOrder,
                                                      showPopup: $showPopup,
                                                      popupType: $popupType)
                             case .poster:
                                 WatchlistPosterSection(items: smartFiltersItems,
                                                        title: selectedOrder.title,
+                                                       emptyFilter: selectedOrder,
                                                        showPopup: $showPopup, popupType: $popupType)
                             }
                         }
@@ -351,13 +357,6 @@ struct CustomWatchlist: View {
     @ViewBuilder
     private var noResults: some View {
         SearchContentUnavailableView(query: query)
-    }
-}
-
-struct EmptyListView: View {
-    var body: some View {
-        ContentUnavailableView("Empty List", systemImage: "rectangle.on.rectangle")
-            .padding()
     }
 }
 

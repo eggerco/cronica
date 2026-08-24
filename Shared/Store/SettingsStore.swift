@@ -23,7 +23,7 @@ final class SettingsStore: ObservableObject {
     @AppStorage("user_theme") var currentTheme: AppTheme = .system
     @AppStorage("openInYouTube") var openInYouTube = false
     @AppStorage("markEpisodeWatchedTap") var markEpisodeWatchedOnTap = false
-    @AppStorage("enableHapticFeedback") var hapticFeedback = false
+    @AppStorage("enableHapticFeedback") var hapticFeedback = true
     @AppStorage("enableWatchProviders") var isWatchProviderEnabled = true
     @AppStorage("selectedWatchProviderRegion") var watchRegion: AppContentRegion = .us
     @AppStorage("primaryLeftSwipe") var primaryLeftSwipe: SwipeGestureOptions = .markWatch

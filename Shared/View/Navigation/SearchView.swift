@@ -39,53 +39,7 @@ struct SearchView: View {
 #if os(iOS)
         .navigationBarTitleDisplayMode(.large)
 #endif
-        .navigationDestination(for: Person.self) { person in
-            PersonDetailsView(name: person.name, id: person.id)
-#if os(tvOS)
-                .ignoresSafeArea(.all, edges: .horizontal)
-#endif
-        }
-        .navigationDestination(for: ItemContent.self) { item in
-            ItemContentDetails(title: item.itemTitle, id: item.id, type: item.itemContentMedia)
-#if os(tvOS)
-                .ignoresSafeArea(.all, edges: .horizontal)
-#endif
-        }
-        .navigationDestination(for: ProductionCompany.self) { item in
-            CompanyDetails(company: item)
-        }
-        .navigationDestination(for: [ProductionCompany].self) { item in
-            CompaniesListView(companies: item)
-        }
-        .navigationDestination(for: SearchItemContent.self) { item in
-            if item.media == .person {
-                PersonDetailsView(name: item.itemTitle, id: item.id)
-#if os(tvOS)
-                .ignoresSafeArea(.all, edges: .horizontal)
-#endif
-            } else {
-                ItemContentDetails(title: item.itemTitle, id: item.id, type: item.media)
-#if os(tvOS)
-                .ignoresSafeArea(.all, edges: .horizontal)
-#endif
-            }
-        }
-        .navigationDestination(for: [String:[ItemContent]].self) { item in
-            let title = item.map { (key, _) in key }.first
-            let items = item.map { (_, value) in value }.first
-            if let title, let items {
-                ItemContentSectionDetails(title: title, items: items)
-            }
-        }
-        .navigationDestination(for: [Person].self) { items in
-            DetailedPeopleList(items: items)
-        }
-        .navigationDestination(for: CombinedKeywords.self) { keyword in
-            KeywordSectionView(keyword: keyword)
-#if os(tvOS)
-                .ignoresSafeArea(.all, edges: .horizontal)
-#endif
-        }
+        .cronicaSearchNavigationDestinations()
 #if os(iOS) || os(visionOS)
         .searchable(text: $viewModel.query,
                     isPresented: $shouldFocusOnSearchField,

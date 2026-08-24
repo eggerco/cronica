@@ -12,7 +12,7 @@ struct CompaniesListView: View {
     var body: some View {
         Form {
             if companies.isEmpty {
-                CronicaLoadingPopupView()
+                ContentUnavailableView("No Companies", systemImage: "building.2")
             } else {
                 Section {
                     List(companies, id: \.self) { item in

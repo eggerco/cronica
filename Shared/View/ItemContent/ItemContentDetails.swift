@@ -99,7 +99,8 @@ struct ItemContentDetails: View {
 #endif
         }
 #endif
-        .overlay { if viewModel.isLoading { ProgressView().padding().unredacted() } }
+        .redacted(reason: viewModel.isLoading ? .placeholder : [])
+        .cronicaLoadingOverlay(viewModel.isLoading)
 #if !os(visionOS)
         .background {
             TranslucentBackground(image: viewModel.showPoster ? viewModel.content?.posterImageMedium : viewModel.content?.cardImageLarge)
@@ -111,12 +112,8 @@ struct ItemContentDetails: View {
             viewModel.checkIfAdded()
         }
         .actionPopup(isShowing: $showPopup, for: popupType)
-        .redacted(reason: viewModel.isLoading ? .placeholder : [])
-        .alert("Error", isPresented: $viewModel.showErrorAlert) {
-            Button("Cancel") { }
-            Button("Retry") { Task { await viewModel.load(id: id, type: type) } }
-        } message: {
-            Text(viewModel.errorMessage)
+        .cronicaErrorAlert(isPresented: $viewModel.showErrorAlert, message: viewModel.errorMessage) {
+            Task { await viewModel.load(id: id, type: type) }
         }
         .sheet(isPresented: $showCustomList) {
             if let contentID = viewModel.content?.itemContentID {
@@ -987,7 +984,7 @@ extension ItemContentDetails {
     
 #if !os(macOS)
     private var moreMenu: some View {
-        Menu("More Options", systemImage: "ellipsis.circle") {
+        Menu {
 #if os(visionOS)
             if viewModel.isInWatchlist {
                 if type == .movie {
@@ -1016,10 +1013,13 @@ extension ItemContentDetails {
             openInMenu
 #endif
             
+        } label: {
+            Image(systemName: "ellipsis.circle")
+                .cronicaToolbarIconStyle()
+                .accessibilityLabel("More Options")
         }
         .labelStyle(.iconOnly)
     }
-#endif
     
 #endif
     

@@ -49,46 +49,18 @@ struct WatchlistView: View {
 #elseif os(tvOS)
         .ignoresSafeArea(.all, edges: .horizontal)
 #endif
-        .navigationDestination(for: WatchlistItem.self) { item in
-            ItemContentDetails(title: item.itemTitle, id: item.itemId, type: item.itemMedia)
-#if os(tvOS)
-                .ignoresSafeArea(.all, edges: .horizontal)
-#endif
-        }
-        .navigationDestination(for: ItemContent.self) { item in
-            ItemContentDetails(title: item.itemTitle, id: item.id, type: item.itemContentMedia)
-#if os(tvOS)
-                .ignoresSafeArea(.all, edges: .horizontal)
-#endif
-        }
-        .navigationDestination(for: Person.self) { person in
-            PersonDetailsView(name: person.name, id: person.id)
-#if os(tvOS)
-                .ignoresSafeArea(.all, edges: .horizontal)
-#endif
-        }
-        .navigationDestination(for: [String:[ItemContent]].self) { item in
-            let title = item.map { (key, _) in key }.first
-            let items = item.map { (_, value) in value }.first
-            if let title, let items {
-                ItemContentSectionDetails(title: title, items: items)
-            }
-        }
-        .navigationDestination(for: [Person].self) { items in
-            DetailedPeopleList(items: items)
-        }
-        .navigationDestination(for: ProductionCompany.self) { item in
-            CompanyDetails(company: item)
-        }
-        .navigationDestination(for: [ProductionCompany].self) { item in
-            CompaniesListView(companies: item)
-        }
+        .cronicaWatchlistNavigationDestinations()
         .sheet(isPresented: $showListSelection) {
             SelectListView(selectedList: $selectedList,
                            navigationTitle: $navigationTitle,
                            showListSelection: $showListSelection)
 #if os(macOS)
             .frame(width: 480, height: 400, alignment: .center)
+#else
+            .presentationDetents([.medium, .large])
+            .presentationDragIndicator(.visible)
+            .appTheme()
+            .appTint()
 #endif
         }
         .toolbar {

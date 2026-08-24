@@ -86,6 +86,46 @@ extension View {
         modifier(AppTintModifier())
     }
 
+    /// Standard toolbar icon sizing used across navigation bars.
+    func cronicaToolbarIconStyle() -> some View {
+        self
+            .imageScale(.medium)
+            .fontWeight(.semibold)
+    }
+
+    /// Standard loading overlay used across primary screens.
+    func cronicaLoadingOverlay(_ isLoading: Bool) -> some View {
+        overlay {
+            if isLoading {
+                ZStack {
+                    Color.black.opacity(0.06)
+                        .ignoresSafeArea()
+                    ProgressView()
+                        .controlSize(.large)
+                        .padding(20)
+                        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+                }
+                .transition(.opacity)
+            }
+        }
+        .animation(.easeInOut(duration: 0.2), value: isLoading)
+    }
+
+    /// Standard retry alert for recoverable network errors.
+    func cronicaErrorAlert(
+        isPresented: Binding<Bool>,
+        title: String = String(localized: "Something Went Wrong"),
+        message: String = String(localized: "Check your connection and try again."),
+        retry: @escaping () -> Void
+    ) -> some View {
+        alert(title, isPresented: isPresented) {
+            Button(String(localized: "Retry"), action: retry)
+            Button(String(localized: "Cancel"), role: .cancel) { }
+        } message: {
+            Text(message)
+        }
+    }
+
     /// Adds the system-standard Done button for modal sheets.
     func nativeSheetDismissToolbar(action: @escaping () -> Void) -> some View {
         toolbar {

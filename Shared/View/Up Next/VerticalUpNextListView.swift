@@ -39,10 +39,9 @@ struct VerticalUpNextListView: View {
         .overlay {
             if queryResult.isEmpty, !query.isEmpty {
                 SearchContentUnavailableView(query: query)
-            } else if !viewModel.isLoaded {
-                CronicaLoadingPopupView()
             }
         }
+        .cronicaLoadingOverlay(!viewModel.isLoaded && query.isEmpty)
 #if os(iOS)
         .searchable(text: $query,
                     placement: UIDevice.isIPhone ? .navigationBarDrawer(displayMode: .always) : .toolbar)
@@ -58,26 +57,7 @@ struct VerticalUpNextListView: View {
                                    isWatched: $viewModel.isWatched,
                                    isUpNext: true)
                 .nativeSheetDismissToolbar { self.selectedEpisode = nil }
-                .navigationDestination(for: ItemContent.self) { item in
-                    ItemContentDetails(title: item.itemTitle, id: item.id, type: item.itemContentMedia)
-                }
-                .navigationDestination(for: [String:[ItemContent]].self) { item in
-                    let keys = item.map { (key, _) in key }
-                    let value = item.map { (_, value) in value }
-                    ItemContentSectionDetails(title: keys[0], items: value[0])
-                }
-                .navigationDestination(for: [Person].self) { items in
-                    DetailedPeopleList(items: items)
-                }
-                .navigationDestination(for: ProductionCompany.self) { item in
-                    CompanyDetails(company: item)
-                }
-                .navigationDestination(for: [ProductionCompany].self) { item in
-                    CompaniesListView(companies: item)
-                }
-                .navigationDestination(for: Person.self) { person in
-                    PersonDetailsView(name: person.name, id: person.id)
-                }
+                .cronicaStandardNavigationDestinations()
             }
 #if os(macOS)
             .frame(minWidth: 800, idealWidth: 800, minHeight: 600, idealHeight: 600, alignment: .center)

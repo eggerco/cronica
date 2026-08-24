@@ -84,7 +84,7 @@ struct WatchlistButton: View {
     
     private func displayConfirmation() {
         withAnimation {
-            showPopup.toggle()
+            showPopup = true
             isInWatchlist.toggle()
             popupType = isInWatchlist ? .addedWatchlist : .removedWatchlist
         }

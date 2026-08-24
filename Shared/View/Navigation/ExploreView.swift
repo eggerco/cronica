@@ -78,7 +78,8 @@ struct ExploreView: View {
             switch selectedForYouTab {
             case .recommendations:
                 if isLoadingRecommendations {
-                    CronicaLoadingPopupView()
+                    Color.clear
+                        .cronicaLoadingOverlay(true)
                 } else if !isLoadingRecommendations, recommendations.isEmpty {
                     ContentUnavailableView {
                         Label("Start watching to get recommendations...",
@@ -152,6 +153,9 @@ struct ExploreView: View {
                 .navigationBarTitleDisplayMode(.inline)
 #endif
                 .nativeSheetDismissToolbar { showFilters = false }
+                .sensoryFeedback(.selection, trigger: selectedMedia)
+                .sensoryFeedback(.selection, trigger: selectedGenre)
+                .sensoryFeedback(.selection, trigger: hideAddedItems)
                 .scrollBounceBehavior(.basedOnSize)
 #if os(macOS)
                 .formStyle(.grouped)
@@ -167,43 +171,15 @@ struct ExploreView: View {
             .frame(width: 400, height: 400, alignment: .center)
 #endif
         }
-        .overlay { if !isLoaded { CronicaLoadingPopupView() } }
+        .cronicaLoadingOverlay(!isLoaded)
+        .cronicaErrorAlert(isPresented: $showErrorDialog) {
+            Task { await load() }
+        }
         .actionPopup(isShowing: $showPopup, for: popupType)
         .task { await load() }
-        .navigationDestination(for: ItemContent.self) { item in
-            ItemContentDetails(title: item.itemTitle, id: item.id, type: item.itemContentMedia, handleToolbar: false)
-#if os(tvOS)
-                .ignoresSafeArea(.all, edges: .horizontal)
-#endif
-        }
-        .navigationDestination(for: Person.self) { person in
-            PersonDetailsView(name: person.name, id: person.id)
-#if os(tvOS)
-                .ignoresSafeArea(.all, edges: .horizontal)
-#endif
-        }
-        .navigationDestination(for: [String:[ItemContent]].self) { item in
-            let keys = item.map { (key, _) in key }
-            let value = item.map { (_, value) in value }
-#if os(tvOS)
-#else
-            ItemContentSectionDetails(title: keys[0], items: value[0])
-#endif
-        }
-        .navigationDestination(for: [Person].self) { items in
-#if os(tvOS)
-#else
-            DetailedPeopleList(items: items)
-#endif
-        }
-        .navigationDestination(for: ProductionCompany.self) { item in
-            CompanyDetails(company: item)
-        }
-        .navigationDestination(for: [ProductionCompany].self) { item in
-            CompaniesListView(companies: item)
-        }
+        .cronicaStandardNavigationDestinations()
 #if !os(tvOS) && !os(macOS)
-        .navigationTitle(selectedForYouTab == .explore ? "Explore" : "For You")
+        .navigationTitle(selectedForYouTab == .explore ? "Discover" : "For You")
 #elseif os(tvOS)
         .ignoresSafeArea(.all, edges: .horizontal)
 #endif
@@ -224,6 +200,7 @@ struct ExploreView: View {
             }
         }
         .redacted(reason: !isLoaded ? .placeholder : [] )
+        .animation(.easeInOut(duration: 0.2), value: isLoaded)
         .toolbar {
 #if !os(tvOS)
             ToolbarItem(placement: .principal) {
@@ -240,6 +217,7 @@ struct ExploreView: View {
                 }
                 .frame(width: 200)
                 .pickerStyle(.segmented)
+                .sensoryFeedback(.selection, trigger: selectedForYouTab)
             }
             if selectedForYouTab != .recommendations {
 #if !os(macOS)
@@ -388,11 +366,7 @@ struct ExploreView: View {
                                 .progressViewStyle(.circular)
                                 .tint(settings.appTheme.color)
                                 .padding(.horizontal)
-                                .onAppear {
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                                        loadMoreItems()
-                                    }
-                                }
+                                .onAppear { loadMoreItems() }
                         }
                     }
                 }
@@ -431,11 +405,7 @@ struct ExploreView: View {
                 CenterHorizontalView {
                     ProgressView()
                         .padding()
-                        .onAppear {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                                loadMoreItems()
-                            }
-                        }
+                        .onAppear { loadMoreItems() }
                 }
             }
         }
@@ -482,11 +452,7 @@ struct ExploreView: View {
                 CenterHorizontalView {
                     ProgressView()
                         .padding()
-                        .onAppear {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                                loadMoreItems()
-                            }
-                        }
+                        .onAppear { loadMoreItems() }
                 }
             }
         }.padding(.all, settings.isCompactUI ? 10 : nil)
@@ -585,11 +551,7 @@ extension ExploreView {
             startPagination = true
             clearItems()
             restartFetch = false
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                withAnimation {
-                    self.isLoaded = true
-                }
-            }
+            withAnimation { isLoaded = true }
         }
         currentPage += 1
         Task {
@@ -614,11 +576,7 @@ extension ExploreView {
                 }
             }
             if currentPage == 1 {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                    withAnimation {
-                        self.isLoaded = true
-                    }
-                }
+                withAnimation { isLoaded = true }
             }
             if result.isEmpty { endPagination = true }
             startPagination = false
@@ -626,7 +584,8 @@ extension ExploreView {
             if Task.isCancelled { return }
             CronicaTelemetry.shared.handleMessage(error.localizedDescription,
                                                   for: "ExploreView.fetch()")
-            showErrorDialog.toggle()
+            withAnimation { isLoaded = true }
+            showErrorDialog = true
         }
     }
     

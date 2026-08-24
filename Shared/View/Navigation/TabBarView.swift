@@ -135,6 +135,7 @@ struct TabBarView: View {
         }
         .tabViewStyle(.sidebarAdaptable)
         .appTheme()
+        .appTint()
     }
     
 #if os(iOS) || os(visionOS)
@@ -166,6 +167,7 @@ struct TabBarView: View {
             .tabItem { Label("Search", systemImage: "magnifyingglass") }
         }
         .appTheme()
+        .appTint()
     }
 #endif
 }

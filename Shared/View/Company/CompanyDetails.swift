@@ -38,9 +38,7 @@ struct CompanyDetails: View {
             }
 #endif
         }
-        .overlay {
-            if !isLoaded { CronicaLoadingPopupView() }
-        }
+        .cronicaLoadingOverlay(!isLoaded)
         .scrollBounceBehavior(.basedOnSize)
         .redacted(reason: isLoaded ? [] : .placeholder)
 #if !os(tvOS)

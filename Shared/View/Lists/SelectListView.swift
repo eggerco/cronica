@@ -178,30 +178,7 @@ struct SelectListView: View {
                 }
             }
         }
-        .navigationDestination(for: ItemContent.self) { item in
-            ItemContentDetails(title: item.itemTitle,
-                               id: item.id,
-                               type: item.itemContentMedia)
-        }
-        .navigationDestination(for: Person.self) { person in
-            PersonDetailsView(name: person.name, id: person.id)
-        }
-        .navigationDestination(for: [String:[ItemContent]].self) { item in
-            let keys = item.map { (key, _) in key }.first
-            let value = item.map { (_, value) in value }.first
-            if let keys, let value {
-                ItemContentSectionDetails(title: keys, items: value)
-            }
-        }
-        .navigationDestination(for: [Person].self) { items in
-            DetailedPeopleList(items: items)
-        }
-        .navigationDestination(for: ProductionCompany.self) { item in
-            CompanyDetails(company: item)
-        }
-        .navigationDestination(for: [ProductionCompany].self) { item in
-            CompaniesListView(companies: item)
-        }
+        .cronicaStandardNavigationDestinations()
     }
     
     private func search() async {

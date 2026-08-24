@@ -62,11 +62,25 @@ struct HomeView: View {
             checkAskForReview()
         }
 #endif
-        .overlay { if !viewModel.isLoaded { CronicaLoadingPopupView() } }
+        .cronicaLoadingOverlay(!viewModel.isLoaded)
+        .overlay {
+            if viewModel.isLoaded && viewModel.trending.isEmpty && viewModel.sections.isEmpty {
+                ContentUnavailableView {
+                    Label("Couldn't Load Home", systemImage: "wifi.exclamationmark")
+                } description: {
+                    Text("Pull to refresh or try again.")
+                } actions: {
+                    Button("Retry") { viewModel.reload() }
+                        .buttonStyle(.borderedProminent)
+                }
+            }
+        }
         .actionPopup(isShowing: $showPopup, for: popupType)
 #if os(tvOS)
         .ignoresSafeArea(.all, edges: .horizontal)
 #endif
+        .cronicaHomeNavigationDestinations(showNotifications: $showNotifications)
+        .redacted(reason: !viewModel.isLoaded ? .placeholder : [] )
         .onAppear {
             checkVersion()
 #if os(iOS) || os(macOS)
@@ -76,79 +90,6 @@ struct HomeView: View {
             }
 #endif
         }
-        .navigationDestination(for: ItemContent.self) { item in
-            ItemContentDetails(title: item.itemTitle,
-                               id: item.id,
-                               type: item.itemContentMedia)
-#if os(tvOS)
-            .ignoresSafeArea(.all, edges: .horizontal)
-#endif
-        }
-        .navigationDestination(for: Person.self) { person in
-            PersonDetailsView(name: person.name, id: person.id)
-#if os(tvOS)
-                .ignoresSafeArea(.all, edges: .horizontal)
-#endif
-        }
-        .navigationDestination(for: WatchlistItem.self) { item in
-            ItemContentDetails(title: item.itemTitle,
-                               id: item.itemId,
-                               type: item.itemMedia)
-#if os(tvOS)
-            .ignoresSafeArea(.all, edges: .horizontal)
-#endif
-        }
-        .navigationDestination(for: Endpoints.self) { endpoint in
-            EndpointDetails(title: endpoint.title,
-                            endpoint: endpoint)
-        }
-#if !os(tvOS)
-        .navigationDestination(for: [WatchlistItem].self) { item in
-            WatchlistSectionDetails(items: item)
-        }
-        .navigationDestination(for: [String:[WatchlistItem]].self) { item in
-            let title = item.map { (key, _) in key }.first
-            let items = item.map { (_, value) in value }.first
-            if let title, let items {
-                WatchlistSectionDetails(title: title, items: items)
-            }
-        }
-#endif
-        .navigationDestination(for: [String:[ItemContent]].self) { item in
-            let keys = item.map { (key, _) in key }
-            let value = item.map { (_, value) in value }
-            ItemContentSectionDetails(title: keys[0], items: value[0])
-        }
-        .navigationDestination(for: [Person].self) { items in
-            DetailedPeopleList(items: items)
-        }
-        .navigationDestination(for: ProductionCompany.self) { item in
-            CompanyDetails(company: item)
-        }
-        .navigationDestination(for: [ProductionCompany].self) { item in
-            CompaniesListView(companies: item)
-        }
-        .navigationDestination(for: SettingsScreens.self) { settings in
-            switch settings {
-            case .about: AboutSettings()
-            case .appearance: AppearanceSetting()
-            case .behavior: BehaviorSetting()
-            case .developer:
-#if os(tvOS)
-                EmptyView()
-#else
-                DeveloperView()
-#endif
-            case .notifications: NotificationsSettingsView()
-            case .tipJar: TipJarSetting()
-            case .feedback: FeedbackComposerView()
-            case .region: WatchProviderSettings()
-            case .settings: SettingsView()
-            case .watchlist: WatchlistSettingsView()
-            case .season: SeasonUpNextSettingsView()
-            }
-        }
-        .redacted(reason: !viewModel.isLoaded ? .placeholder : [] )
 #if !os(tvOS)
         .navigationTitle("Home")
 #endif
@@ -175,17 +116,13 @@ struct HomeView: View {
                 HStack {
                     NavigationLink(value: Screens.notifications) {
                         Image(systemName: hasNotifications ? "bell.badge.fill" : "bell")
-                            .fontDesign(.rounded)
-                            .fontWeight(.semibold)
-                            .imageScale(.medium)
+                            .cronicaToolbarIconStyle()
                             .accessibilityLabel("Notifications")
                             .applyHoverEffect()
                     }
                     NavigationLink(value: SettingsScreens.settings) {
                         Image(systemName: "gearshape")
-                            .fontDesign(.rounded)
-                            .fontWeight(.semibold)
-                            .imageScale(.medium)
+                            .cronicaToolbarIconStyle()
                             .accessibilityLabel("Settings")
                             .applyHoverEffect()
                     }
@@ -196,13 +133,6 @@ struct HomeView: View {
 #if !os(macOS)
         .sheet(isPresented: $displayOnboard) {
             WelcomeView()
-        }
-#endif
-#if !os(tvOS)
-        .navigationDestination(for: Screens.self) { screen in
-            if screen == .notifications {
-                NotificationListView(showNotification: $showNotifications)
-            }
         }
 #endif
         .task {

@@ -10,6 +10,7 @@ import SwiftUI
 struct WatchListSection: View {
     let items: [WatchlistItem]
     var title: String
+    var emptyFilter: SmartFiltersTypes? = nil
     private let context = PersistenceController.shared
     @Binding var showPopup: Bool
     @Binding var popupType: ActionPopupItems?
@@ -51,7 +52,7 @@ struct WatchListSection: View {
     
     @ViewBuilder
     private var empty: some View {
-        EmptyListView()
+        EmptyListView(filter: emptyFilter)
     }
     
     private func fetchDroppedItems(_ items: [ItemContent]) {

@@ -13,7 +13,9 @@ struct ContentView: View {
         TabBarView()
 #elseif os(macOS)
         SideBarView()
-#endif   
+#endif
+        .appTheme()
+        .appTint()
     }
 }
 

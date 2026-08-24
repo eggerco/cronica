@@ -81,28 +81,7 @@ struct CronicaApp: App {
                                            id: item.id,
                                            type: item.itemContentMedia, handleToolbar: true)
                         .nativeSheetDismissToolbar { selectedItem = nil }
-                        .navigationDestination(for: ItemContent.self) { item in
-                            ItemContentDetails(title: item.itemTitle,
-                                               id: item.id,
-                                               type: item.itemContentMedia)
-                        }
-                        .navigationDestination(for: Person.self) { person in
-                            PersonDetailsView(name: person.name, id: person.id)
-                        }
-                        .navigationDestination(for: [String:[ItemContent]].self) { item in
-                            let keys = item.map { (key, _) in key }
-                            let value = item.map { (_, value) in value }
-                            ItemContentSectionDetails(title: keys[0], items: value[0])
-                        }
-                        .navigationDestination(for: [Person].self) { items in
-                            DetailedPeopleList(items: items)
-                        }
-                        .navigationDestination(for: ProductionCompany.self) { item in
-                            CompanyDetails(company: item)
-                        }
-                        .navigationDestination(for: [ProductionCompany].self) { item in
-                            CompaniesListView(companies: item)
-                        }
+                        .cronicaStandardNavigationDestinations(itemContentHandleToolbar: true)
                     }
                     .onDisappear { selectedItem = nil }
 #if os(macOS)

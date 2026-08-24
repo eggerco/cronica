@@ -183,15 +183,18 @@ struct DefaultWatchlist: View {
                         case .list:
                             WatchListSection(items: smartFiltersItems,
                                              title: smartFilter.title,
+                                             emptyFilter: smartFilter,
                                              showPopup: $showPopup, popupType: $popupType)
                         case .card:
                             WatchlistCardSection(items: smartFiltersItems,
                                                  title: smartFilter.title,
+                                                 emptyFilter: smartFilter,
                                                  showPopup: $showPopup,
                                                  popupType: $popupType)
                         case .poster:
                             WatchlistPosterSection(items: smartFiltersItems,
                                                    title: smartFilter.title,
+                                                   emptyFilter: smartFilter,
                                                    showPopup: $showPopup, popupType: $popupType)
                         }
                     }
@@ -332,7 +335,7 @@ struct DefaultWatchlist: View {
     
     @ViewBuilder
     private var empty: some View {
-        EmptyListView()
+        EmptyListView(filter: showAllItems ? nil : smartFilter)
     }
     
     @ViewBuilder

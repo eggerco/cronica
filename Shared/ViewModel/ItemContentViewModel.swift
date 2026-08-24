@@ -34,6 +34,7 @@ class ItemContentViewModel: ObservableObject {
     func load(id: ItemContent.ID, type: MediaType) async {
         if Task.isCancelled { return }
         if content == nil {
+            withAnimation { isLoading = true }
             do {
                 content = try await self.service.fetchItem(id: id, type: type)
                 guard let content else { return }
@@ -83,6 +84,7 @@ class ItemContentViewModel: ObservableObject {
 #endif
             } catch {
                 if Task.isCancelled { return }
+                withAnimation { isLoading = false }
                 showErrorAlert = true
                 content = nil
                 let message = "ID: \(id), type: \(type.title), error: \(error.localizedDescription)"

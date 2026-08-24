@@ -131,6 +131,8 @@
 		B845133427ECE2B500F0D4A4 /* UIDevice-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B845133327ECE2B500F0D4A4 /* UIDevice-Extension.swift */; };
 		B845149328E0C96A00963399 /* NotificationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B845149228E0C96A00963399 /* NotificationListView.swift */; };
 		B8469DB52B712CA700196364 /* ListFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8469DB42B712CA700196364 /* ListFilterView.swift */; };
+		C1A1NAV128A9BD31003025B /* CronicaNavigationDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A1NAV028A9BD31003025B /* CronicaNavigationDestinations.swift */; };
+		C1EMP00228A9BD31003025C /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EMP00128A9BD31003025C /* EmptyListView.swift */; };
 		B84C53FD27B1F1DD00425524 /* WatchlistItemRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84C53FC27B1F1DD00425524 /* WatchlistItemRowView.swift */; };
 		B85C65AC27A6307C0080121E /* PersonDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85C65AB27A6307C0080121E /* PersonDetailsView.swift */; };
 		B85FD9B129F33A880088B5CC /* TMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85FD9B029F33A880088B5CC /* TMDB.swift */; };
@@ -439,6 +441,8 @@
 		B845133327ECE2B500F0D4A4 /* UIDevice-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice-Extension.swift"; sourceTree = "<group>"; };
 		B845149228E0C96A00963399 /* NotificationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListView.swift; sourceTree = "<group>"; };
 		B8469DB42B712CA700196364 /* ListFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFilterView.swift; sourceTree = "<group>"; };
+		C1A1NAV028A9BD31003025B /* CronicaNavigationDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaNavigationDestinations.swift; sourceTree = "<group>"; };
+		C1EMP00128A9BD31003025C /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
 		B84C53FC27B1F1DD00425524 /* WatchlistItemRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistItemRowView.swift; sourceTree = "<group>"; };
 		B85C65AB27A6307C0080121E /* PersonDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailsView.swift; sourceTree = "<group>"; };
 		B85FD9B029F33A880088B5CC /* TMDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDB.swift; sourceTree = "<group>"; };
@@ -923,6 +927,7 @@
 			children = (
 				B8AAA6ED296455E2004FDF21 /* AppThemeModifier.swift */,
 				B886D231284D512F00FFE96A /* ConfirmationPopupModifier.swift */,
+				C1A1NAV028A9BD31003025B /* CronicaNavigationDestinations.swift */,
 				B8E6EF662A044E5A000A3617 /* ContextMenuPreviewImage.swift */,
 				B8BF63262914013D0051915C /* HoverEffectModifier.swift */,
 				B886D236284E549C00FFE96A /* ItemContentContextMenu.swift */,
@@ -1001,6 +1006,7 @@
 		B8469DB32B712C9C00196364 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				C1EMP00128A9BD31003025C /* EmptyListView.swift */,
 				B8469DB42B712CA700196364 /* ListFilterView.swift */,
 			);
 			path = Components;
@@ -1729,6 +1735,8 @@
 				B83F1E9928BAD24C008E151D /* SideBarView.swift in Sources */,
 				B80BBE582949665A00958876 /* AppearanceSetting.swift in Sources */,
 				B8469DB52B712CA700196364 /* ListFilterView.swift in Sources */,
+				C1A1NAV128A9BD31003025B /* CronicaNavigationDestinations.swift in Sources */,
+				C1EMP00228A9BD31003025C /* EmptyListView.swift in Sources */,
 				B84043CC289B294600D5CEBF /* SearchItem.swift in Sources */,
 				B8779377281E319D00174F32 /* TabBarView.swift in Sources */,
 				B8105265298F58E100723E94 /* CompanyDetails.swift in Sources */,

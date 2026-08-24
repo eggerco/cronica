@@ -7,42 +7,41 @@
 
 import SwiftUI
 
-/// A dialog that displays a message inside a container of the top of the view.
-///
-/// The user can tap it to dismiss it faster.
+/// Lightweight confirmation banner for watchlist and action feedback.
 struct ConfirmationPopupModifier: ViewModifier {
     @Binding var isShowing: Bool
     var item: ActionPopupItems?
+
+    private static let bannerAnimation = Animation.easeInOut(duration: 0.25)
+
     func body(content: Content) -> some View {
         content
-            .overlay {
+            .overlay(alignment: .bottom) {
                 if isShowing, let item {
-                    HStack {
-                        Label(item.localizedString, systemImage: item.toSfSymbol)
-                            .font(.body)
-                            .fontDesign(.rounded)
-                            .padding()
-                            
-                    }
-                    .onAppear {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                            withAnimation(.snappy) {
-                                isShowing = false
+                    Label(item.localizedString, systemImage: item.toSfSymbol)
+                        .font(.subheadline.weight(.medium))
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 12)
+#if !os(watchOS)
+                        .background(.regularMaterial, in: Capsule())
+#endif
+                        .shadow(color: .black.opacity(0.08), radius: 8, y: 4)
+                        .padding(.bottom, 12)
+                        .transition(.move(edge: .bottom).combined(with: .opacity))
+                        .onTapGesture {
+                            withAnimation(Self.bannerAnimation) { isShowing = false }
+                        }
+                        .onAppear {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+                                withAnimation(Self.bannerAnimation) { isShowing = false }
                             }
                         }
-                    }
-#if !os(watchOS)
-                    .background { Rectangle().fill(.thickMaterial) }
+#if os(iOS)
+                        .sensoryFeedback(.success, trigger: item.id)
 #endif
-                    .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-                    .shadow(radius: 1)
-                    .padding(.bottom)
-                    .animation(.snappy, value: isShowing)
-                    .onTapGesture { withAnimation { isShowing = false } }
-                    .transition(.move(edge: .bottom))
-                    .frame (maxHeight: .infinity, alignment: .bottom)
                 }
             }
+            .animation(Self.bannerAnimation, value: isShowing)
     }
 }
 

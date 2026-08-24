@@ -11,6 +11,7 @@ struct WatchlistCardSection: View {
     private let context = PersistenceController.shared
     let items: [WatchlistItem]
     let title: String
+    var emptyFilter: SmartFiltersTypes? = nil
     @Binding var showPopup: Bool
     @Binding var popupType: ActionPopupItems?
     var body: some View {
@@ -49,7 +50,7 @@ struct WatchlistCardSection: View {
                 }.padding()
             }
         } else {
-            EmptyListView()
+            EmptyListView(filter: emptyFilter)
         }
     }
     

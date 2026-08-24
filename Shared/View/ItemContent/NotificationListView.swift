@@ -26,11 +26,7 @@ struct NotificationListView: View {
                 EmptyView()
             }
         }
-        .overlay {
-            if !hasLoaded {
-                CronicaLoadingPopupView()
-            }
-        }
+        .cronicaLoadingOverlay(!hasLoaded)
         .actionPopup(isShowing: $showPopup, for: popupType)
         .navigationTitle("Notifications")
 #if os(macOS)
@@ -52,6 +48,8 @@ struct NotificationListView: View {
     private var configButton: some View {
         NavigationLink(destination: NotificationsSettingsView()) {
             Label("Settings", systemImage: "gearshape")
+                .labelStyle(.iconOnly)
+                .cronicaToolbarIconStyle()
         }
     }
     

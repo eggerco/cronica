@@ -31,9 +31,9 @@ struct EndpointDetails: View {
             }
 #endif
         }
+        .cronicaLoadingOverlay(isLoading)
         .overlay {
-            if isLoading { CronicaLoadingPopupView() }
-            else if !isLoading && items.isEmpty {
+            if !isLoading && items.isEmpty {
                 ContentUnavailableView("Nothing here, try again later.",
                                        systemImage: "popcorn")
             }
