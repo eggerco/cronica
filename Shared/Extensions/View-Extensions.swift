@@ -150,7 +150,11 @@ struct CronicaFormSectionHeader: View {
     let title: String
 
     var body: some View {
-        CronicaFormText(title)
+        Text(verbatim: title)
+            .font(.footnote)
+            .foregroundStyle(.secondary)
+            .textCase(nil)
+            .environment(\.textCase, nil)
     }
 }
 
@@ -170,6 +174,23 @@ struct CronicaFormText: View {
         Text(verbatim: text)
             .font(font)
             .foregroundStyle(color ?? .primary)
+            .textCase(nil)
+            .environment(\.textCase, nil)
+    }
+}
+
+/// Footer copy below a settings section — matches the system footnote style.
+struct CronicaFormFooterText: View {
+    let text: String
+
+    init(_ text: String) {
+        self.text = text
+    }
+
+    var body: some View {
+        Text(verbatim: text)
+            .font(.footnote)
+            .foregroundStyle(.secondary)
             .textCase(nil)
             .environment(\.textCase, nil)
     }
