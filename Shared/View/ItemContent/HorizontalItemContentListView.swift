@@ -58,6 +58,7 @@ struct HorizontalItemContentListView: View {
                         cardStyle
 #endif
                     }
+                    .accessibilityIdentifier("\(title) Horizontal List")
                 }
             }
         }

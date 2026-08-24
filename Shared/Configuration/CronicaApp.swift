@@ -35,6 +35,7 @@ struct CronicaApp: App {
 #if DEBUG
         if ProcessInfo.processInfo.arguments.contains("-ui-testing") {
             UserDefaults.standard.set(false, forKey: "showOnboarding")
+            UserDefaults.standard.set(false, forKey: "showRemoveConfirmation")
         }
 #endif
 #if os(iOS)

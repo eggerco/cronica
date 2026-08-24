@@ -36,6 +36,7 @@ struct OverviewBoxView: View {
                             .lineLimit(showFullText ? nil : 4)
                             .multilineTextAlignment(.leading)
                             .animation(expandAnimation, value: showFullText)
+                            .accessibilityIdentifier("Overview Text")
 #if os(iOS)
                             .background(
                                 Text(overview)
@@ -75,6 +76,7 @@ struct OverviewBoxView: View {
                 } label: {
                     Text(type == .person ? "Biography" : "About")
                         .unredacted()
+                        .accessibilityIdentifier("About Text")
                 }
                 .onTapGesture {
 #if os(iOS)

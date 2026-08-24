@@ -63,6 +63,7 @@ struct ItemContentDetails: View {
 #endif
             }
         }
+        .accessibilityIdentifier("Item Content Details View")
 #if !os(tvOS)
         .toolbar {
 #if os(iOS)
@@ -161,6 +162,7 @@ struct ItemContentDetails: View {
                 .padding(.horizontal, 8)
                 .padding(.bottom, 4)
                 .unredacted()
+                .accessibilityIdentifier("Item Title")
             if let genres = viewModel.content?.itemGenres, !genres.isEmpty {
                 Text(genres)
                     .font(.caption)
@@ -708,6 +710,7 @@ extension ItemContentDetails {
         .confirmationDialog("Are You Sure?", isPresented: $showConfirmationPopup, titleVisibility: .visible) {
             Button("Confirm") { updateWatchlist() }
         }
+        .accessibilityIdentifier("Watchlist Button")
     }
     
     private var watchButton: some View {

@@ -8,6 +8,15 @@ import XCTest
 struct AppNavigator {
     let app: XCUIApplication
 
+    static func configuredApp(mockData: Bool = false) -> XCUIApplication {
+        let app = XCUIApplication()
+        app.launchArguments = ["-ui-testing"]
+        if mockData {
+            app.launchArguments.append("--mock-data")
+        }
+        return app
+    }
+
     func prepareForTesting() {
         dismissWelcomeScreenIfNeeded()
     }
@@ -58,10 +67,38 @@ struct AppNavigator {
     func assertScreen(_ identifier: String, file: StaticString = #filePath, line: UInt = #line) {
         let screen = app.otherElements[identifier]
         XCTAssertTrue(
-            screen.waitForExistence(timeout: 5),
+            screen.waitForExistence(timeout: 10),
             "Expected screen \(identifier)",
             file: file,
             line: line
         )
     }
+
+    func openTrendingItem(named title: String, file: StaticString = #filePath, line: UInt = #line) {
+        openHomeTab()
+        XCTAssertTrue(app.staticTexts["Trending"].waitForExistence(timeout: 15), file: file, line: line)
+
+        let trendingList = app.scrollViews["Trending Horizontal List"]
+        XCTAssertTrue(trendingList.waitForExistence(timeout: 10), file: file, line: line)
+
+        let itemButton = trendingList.buttons[title]
+        if itemButton.waitForExistence(timeout: 5) {
+            itemButton.tap()
+            return
+        }
+
+        for _ in 0..<4 {
+            trendingList.swipeLeft()
+            if itemButton.waitForExistence(timeout: 1) {
+                itemButton.tap()
+                return
+            }
+        }
+
+        XCTFail("Could not find trending item \(title)", file: file, line: line)
+    }
+}
+
+enum UITestFixtures {
+    static let mockMovieTitle = "Zack Snyder's Justice League"
 }

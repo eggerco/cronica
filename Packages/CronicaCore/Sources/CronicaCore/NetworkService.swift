@@ -22,6 +22,9 @@ public final class NetworkService: Sendable {
     }
     
     public func fetchItem(id: ItemContent.ID, type: MediaType) async throws -> ItemContent {
+        if UITestingConfiguration.usesMockData {
+            return try mockItem(id: id, type: type)
+        }
         if id == 0 {
             throw NetworkError.contentRemoved
         }
@@ -46,6 +49,9 @@ public final class NetworkService: Sendable {
     }
     
     public func fetchItems(from path: String, page: String = "1") async throws -> [ItemContent] {
+        if UITestingConfiguration.usesMockData {
+            return UITestingConfiguration.mockItems
+        }
         guard let url = urlBuilder(path: path, page: page) else {
             throw NetworkError.invalidEndpoint
         }
@@ -144,6 +150,40 @@ public final class NetworkService: Sendable {
     }
 
     public func search(query: String, page: String) async throws -> [SearchItemContent] {
+        if UITestingConfiguration.usesMockData {
+            guard !query.isEmpty else { return [] }
+            return UITestingConfiguration.mockItems
+                .filter { $0.itemTitle.localizedCaseInsensitiveContains(query) }
+                .map { item in
+                    SearchItemContent(
+                        adult: item.adult,
+                        id: item.id,
+                        title: item.title,
+                        name: item.name,
+                        overview: item.overview,
+                        originalTitle: item.originalTitle,
+                        posterPath: item.posterPath,
+                        backdropPath: item.backdropPath,
+                        profilePath: item.profilePath,
+                        releaseDate: item.releaseDate,
+                        status: item.status,
+                        imdbId: item.imdbId,
+                        runtime: item.runtime,
+                        numberOfEpisodes: item.numberOfEpisodes,
+                        numberOfSeasons: item.numberOfSeasons,
+                        voteCount: item.voteCount,
+                        popularity: item.popularity,
+                        voteAverage: item.voteAverage,
+                        releaseDates: item.releaseDates,
+                        mediaType: item.mediaType,
+                        nextEpisodeToAir: item.nextEpisodeToAir,
+                        lastEpisodeToAir: item.lastEpisodeToAir,
+                        originalName: item.originalName,
+                        firstAirDate: item.firstAirDate,
+                        homepage: item.homepage
+                    )
+                }
+        }
         guard let url = urlBuilder(path: "search/multi", query: query, page: page) else {
             throw NetworkError.invalidEndpoint
         }
@@ -355,5 +395,19 @@ public final class NetworkService: Sendable {
         urlComponents.host = "img.youtube.com"
         urlComponents.path = "/vi/\(id)/mqdefault.jpg"
         return urlComponents.url
+    }
+
+    private func mockItem(id: ItemContent.ID, type: MediaType) throws -> ItemContent {
+        let items = UITestingConfiguration.mockItems
+        if let match = items.first(where: { $0.id == id && $0.itemContentMedia == type }) {
+            return match
+        }
+        if let match = items.first(where: { $0.id == id }) {
+            return match
+        }
+        if let first = items.first {
+            return first
+        }
+        throw NetworkError.contentRemoved
     }
 }

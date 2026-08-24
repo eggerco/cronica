@@ -11,8 +11,7 @@ final class CronicaUITests: XCTestCase {
 
     override func setUpWithError() throws {
         continueAfterFailure = false
-        app = XCUIApplication()
-        app.launchArguments.append("-ui-testing")
+        app = AppNavigator.configuredApp()
         app.launch()
         navigator = AppNavigator(app: app)
         navigator.prepareForTesting()

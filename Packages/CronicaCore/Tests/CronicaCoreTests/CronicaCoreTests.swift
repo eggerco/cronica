@@ -30,6 +30,10 @@ final class CronicaCoreTests: XCTestCase {
         XCTAssertNil(NetworkService.urlBuilder(size: .w500, path: nil))
     }
 
+    func testUITestingMockItemsDoesNotCrash() {
+        XCTAssertNotNil(UITestingConfiguration.mockItems)
+    }
+
     func testItemCalendarReleaseDateUsesTheatricalDateForMovies() {
         let releaseDate = Self.sampleDate(year: 2026, month: 8, day: 15)
         let item = Self.makeItem(
