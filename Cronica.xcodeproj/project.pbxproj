@@ -289,8 +289,8 @@
 		C0UITESTBUILD00000000000002 /* CronicaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0UITESTFILE00000000000001 /* CronicaUITests.swift */; };
 		C1A1NAV128A9BD31003025B /* CronicaNavigationDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A1NAV028A9BD31003025B /* CronicaNavigationDestinations.swift */; };
 		C1EMP00228A9BD31003025C /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EMP00128A9BD31003025C /* EmptyListView.swift */; };
-		C1PAGE00228A9BD31003025D /* (null) in Sources */ = {isa = PBXBuildFile; };
-		C1SRCH00228A9BD31003025E /* (null) in Sources */ = {isa = PBXBuildFile; };
+		C1PAGE00228A9BD31003025D /* PaginationFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1PAGE00128A9BD31003025D /* PaginationFooter.swift */; };
+		C1SRCH00228A9BD31003025E /* SearchContentUnavailableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1SRCH00128A9BD31003025E /* SearchContentUnavailableView.swift */; };
 		CF267C97303C3C65001DB342 /* CronicaCore in Frameworks */ = {isa = PBXBuildFile; productRef = C0CRONICACORE00000000001 /* CronicaCore */; };
 		CF267C98303C3C65001DB342 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = C0SENTRYPROD000000000001 /* Sentry */; };
 		CF267C99303C3C65001DB342 /* CronicaCore in Frameworks */ = {isa = PBXBuildFile; productRef = C0CRONICACORE00000000004 /* CronicaCore */; };
@@ -562,6 +562,8 @@
 		C0UITESTPRODUCT000000001 /* CronicaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CronicaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1A1NAV028A9BD31003025B /* CronicaNavigationDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaNavigationDestinations.swift; sourceTree = "<group>"; };
 		C1EMP00128A9BD31003025C /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
+		C1PAGE00128A9BD31003025D /* PaginationFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationFooter.swift; sourceTree = "<group>"; };
+		C1SRCH00128A9BD31003025E /* SearchContentUnavailableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchContentUnavailableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1268,6 +1270,8 @@
 				B8409D1C2A8286130048840F /* IconGridView.swift */,
 				B824E4432A05A4C500E385CE /* InfoSegmentView.swift */,
 				B8EFB256281720E900F7CBD0 /* OverviewBoxView.swift */,
+				C1PAGE00128A9BD31003025D /* PaginationFooter.swift */,
+				C1SRCH00128A9BD31003025E /* SearchContentUnavailableView.swift */,
 				B81941AA2A0835D40057DA04 /* PosterPlaceholder.swift */,
 				B8A36AB42B1D4999004A5687 /* ReviewAppBanner.swift */,
 				B8FF4DBE27FA511A00C7DE9F /* TitleView.swift */,
@@ -1698,8 +1702,8 @@
 				B8469DB52B712CA700196364 /* ListFilterView.swift in Sources */,
 				C1A1NAV128A9BD31003025B /* CronicaNavigationDestinations.swift in Sources */,
 				C1EMP00228A9BD31003025C /* EmptyListView.swift in Sources */,
-				C1PAGE00228A9BD31003025D /* (null) in Sources */,
-				C1SRCH00228A9BD31003025E /* (null) in Sources */,
+				C1PAGE00228A9BD31003025D /* PaginationFooter.swift in Sources */,
+				C1SRCH00228A9BD31003025E /* SearchContentUnavailableView.swift in Sources */,
 				B84043CC289B294600D5CEBF /* SearchItem.swift in Sources */,
 				B8779377281E319D00174F32 /* TabBarView.swift in Sources */,
 				B8105265298F58E100723E94 /* CompanyDetails.swift in Sources */,
