@@ -8,7 +8,7 @@
 import Foundation
 
 /// Endpoints represents a default list that can be fetched from TMDb.
-public enum Endpoints: String, CaseIterable, Identifiable {
+public enum Endpoints: String, CaseIterable, Identifiable, Sendable {
     public var id: String { rawValue }
     case upcoming
     case nowPlaying = "now_playing"

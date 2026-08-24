@@ -1020,7 +1020,7 @@ extension ItemContentDetails {
         }
         .labelStyle(.iconOnly)
     }
-    
+#endif
 #endif
     
     // MARK: Information box

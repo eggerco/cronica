@@ -167,9 +167,7 @@ extension WatchlistSettingsView {
         do {
             isGeneratingExport = true
             let request = WatchlistItem.fetchRequest()
-            let items = try context.fetch(request).compactMap {
-                $0 as? WatchlistItem
-            }
+            let items = try context.fetch(request)
             let jsonData = try JSONEncoder().encode(items)
             if let jsonString = String(data: jsonData, encoding: .utf8) {
                 if let tempUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
