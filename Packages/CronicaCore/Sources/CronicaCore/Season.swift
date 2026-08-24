@@ -21,6 +21,24 @@ public struct Episode: Identifiable, Codable, Hashable {
     public let id: Int
     public let episodeNumber, seasonNumber: Int?
     public let name, overview, stillPath, airDate: String?
+
+    public init(
+        id: Int,
+        episodeNumber: Int? = nil,
+        seasonNumber: Int? = nil,
+        name: String? = nil,
+        overview: String? = nil,
+        stillPath: String? = nil,
+        airDate: String? = nil
+    ) {
+        self.id = id
+        self.episodeNumber = episodeNumber
+        self.seasonNumber = seasonNumber
+        self.name = name
+        self.overview = overview
+        self.stillPath = stillPath
+        self.airDate = airDate
+    }
 }
 
 public extension Season {
