@@ -147,10 +147,10 @@ extension View {
 }
 
 struct CronicaFormSectionHeader: View {
-    let title: LocalizedStringKey
+    let title: String
 
     var body: some View {
-        Text(title)
+        Text(verbatim: title)
             .textCase(nil)
             .environment(\.textCase, nil)
     }
@@ -158,10 +158,10 @@ struct CronicaFormSectionHeader: View {
 
 /// Form section with sentence-case title. Uses `Section("Title")` on iOS/macOS/tvOS and an explicit header on watchOS.
 struct CronicaFormSection<Content: View>: View {
-    let title: LocalizedStringKey
+    let title: String
     @ViewBuilder var content: () -> Content
 
-    init(_ title: LocalizedStringKey, @ViewBuilder content: @escaping () -> Content) {
+    init(_ title: String, @ViewBuilder content: @escaping () -> Content) {
         self.title = title
         self.content = content
     }
@@ -183,12 +183,12 @@ struct CronicaFormSection<Content: View>: View {
 
 /// Form section with sentence-case title and footer.
 struct CronicaFormSectionWithFooter<Content: View, Footer: View>: View {
-    let title: LocalizedStringKey
+    let title: String
     @ViewBuilder var content: () -> Content
     @ViewBuilder var footer: () -> Footer
 
     init(
-        _ title: LocalizedStringKey,
+        _ title: String,
         @ViewBuilder content: @escaping () -> Content,
         @ViewBuilder footer: @escaping () -> Footer
     ) {
