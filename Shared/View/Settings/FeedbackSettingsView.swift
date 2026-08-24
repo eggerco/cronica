@@ -37,7 +37,7 @@ struct FeedbackComposerView: View {
                 .buttonStyle(.link)
 #endif
             } header: {
-                Text("Social Media")
+                CronicaFormSectionHeader(title: "Social Media")
             } footer: {
                 Text("Follow Cronica on X (Twitter) to stay updated about new features.")
             }

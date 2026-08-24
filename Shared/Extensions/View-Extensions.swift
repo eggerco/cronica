@@ -94,6 +94,11 @@ extension View {
 #endif
     }
 
+    /// Use for explicit `Section` header closures; string-based `Section("Title")` is preferred.
+    func cronicaFormSectionHeader(_ title: LocalizedStringKey) -> some View {
+        CronicaFormSectionHeader(title: title)
+    }
+
     func appTheme() -> some View {
         modifier(AppThemeModifier())
     }
@@ -143,5 +148,14 @@ extension View {
             }
 #endif
         }
+    }
+}
+
+struct CronicaFormSectionHeader: View {
+    let title: LocalizedStringKey
+
+    var body: some View {
+        Text(title)
+            .environment(\.textCase, nil)
     }
 }

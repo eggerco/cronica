@@ -156,7 +156,7 @@ struct AboutSettings: View {
             }
             .buttonStyle(.link)
         } header: {
-            Text("Privacy")
+            CronicaFormSectionHeader(title: "Privacy")
         }
     }
 #endif

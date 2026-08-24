@@ -81,7 +81,7 @@ struct WatchlistSettingsView: View {
 #endif
             } header: {
 #if !os(macOS)
-                Text("Backup & Restore")
+                CronicaFormSectionHeader(title: "Backup & Restore")
 #endif
             } footer: {
 #if os(iOS)
