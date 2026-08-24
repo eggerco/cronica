@@ -205,17 +205,11 @@ struct SelectListView: View {
             NewCustomListView(isPresentingNewList: $isCreateNewListPresented, presentView: $showListSelection, newSelectedList: $selectedList)
 #endif
         } label: {
-#if os(macOS)
             Label("New List", systemImage: "plus.rectangle.on.rectangle")
-#else
-            Image(systemName: "plus.rectangle.on.rectangle")
-                .imageScale(.medium)
-                .accessibilityLabel("New List")
-                .font(.system(size: 18, weight: .semibold, design: .rounded))
-                .foregroundStyle(.tint)
+#if !os(macOS)
+                .labelStyle(.iconOnly)
 #endif
         }
-        .buttonStyle(.plain)
     }
     
     private func delete(offsets: IndexSet) {

@@ -164,9 +164,7 @@ struct HorizontalUpNextListView: View {
                                        showTitle: item.showTitle,
                                        isWatched: $viewModel.isWatched,
                                        isUpNext: true)
-#if os(macOS)
-                    .toolbar { ToolbarItem { Button("Done") { self.selectedEpisode = nil } } }
-#elseif os(iOS) || os(visionOS)
+#if os(macOS) || os(iOS) || os(visionOS)
                     .nativeSheetDismissToolbar { self.selectedEpisode = nil }
 #endif
                     .cronicaStandardNavigationDestinations()

@@ -119,9 +119,7 @@ struct SeasonListView: View {
                                                    show: showID)
                                     }
                                 }
-                                .redacted(reason: isLoading ? .placeholder : [])
                             }
-                            .overlay { if isLoading { ProgressView("Loading") } }
                             .onAppear {
                                 guard let lastWatched = PersistenceController.shared.fetchLastWatchedEpisode(for: showID) else { return }
                                 withAnimation { proxy.scrollTo(lastWatched, anchor: .topLeading) }

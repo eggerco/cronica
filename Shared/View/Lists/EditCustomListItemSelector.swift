@@ -118,7 +118,11 @@ struct EditCustomListItemSelector: View {
             }
             
         }
-        .overlay { if list.itemsArray.isEmpty { Text("Empty") } }
+        .overlay {
+            if list.itemsArray.isEmpty {
+                ContentUnavailableView("No Titles", systemImage: "rectangle.stack")
+            }
+        }
         .task(id: query) {
             await search()
         }

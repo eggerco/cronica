@@ -41,8 +41,7 @@ struct CallToReviewAppView: View {
                     Label("Dismiss", systemImage: "xmark")
                         .labelStyle(.iconOnly)
                 }
-                .clipShape(Circle())
-                .buttonStyle(.bordered)
+                .buttonStyle(.borderless)
                 Spacer()
             }
             .padding(.trailing)

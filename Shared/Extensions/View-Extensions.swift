@@ -86,25 +86,17 @@ extension View {
         modifier(AppTintModifier())
     }
 
-    /// Standard loading overlay used across primary screens.
+    /// System loading indicator used across primary screens.
     func cronicaLoadingOverlay(_ isLoading: Bool) -> some View {
         overlay {
             if isLoading {
-                ZStack {
-                    Color.black.opacity(0.06)
-                        .ignoresSafeArea()
-                    ProgressView()
+                ProgressView()
 #if !os(watchOS)
-                        .controlSize(.large)
-                        .padding(20)
-                        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+                    .controlSize(.large)
 #endif
-                }
-                .transition(.opacity)
-                .accessibilityLabel(String(localized: "Loading"))
+                    .accessibilityLabel(String(localized: "Loading"))
             }
         }
-        .animation(.easeInOut(duration: 0.2), value: isLoading)
     }
 
     /// Standard retry alert for recoverable network errors.

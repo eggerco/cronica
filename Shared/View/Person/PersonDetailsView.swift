@@ -137,18 +137,10 @@ struct PersonDetailsView: View {
                     }
                 }
                 .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Button {
-                            showImageFullscreen.toggle()
-                        } label: {
-                            Label("Back", systemImage: "chevron.left")
-                                .imageScale(.large)
-                                .foregroundColor(.black)
-                                .labelStyle(.iconOnly)
+                    ToolbarItem(placement: .cancellationAction) {
+                        Button("Done") {
+                            showImageFullscreen = false
                         }
-                        .tint(.white)
-                        .buttonStyle(.borderedProminent)
-                        .padding()
                     }
                 }
             }

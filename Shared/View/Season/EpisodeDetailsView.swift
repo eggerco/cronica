@@ -133,23 +133,11 @@ struct EpisodeDetailsView: View {
 #if os(iOS)
         .toolbar {
             if UIDevice.isIPhone {
-                ToolbarItem(placement: .topBarTrailing){
+                ToolbarItem(placement: .topBarTrailing) {
                     if let showItem {
                         NavigationLink(value: showItem) {
-                            Image(systemName: "info")
-                                .imageScale(.medium)
-                                .accessibilityLabel("More Info")
-                                .fontDesign(.rounded)
-                                .fontWeight(.semibold)
-                                .foregroundStyle(.white)
-                                .padding(.horizontal, 4)
-                                .padding(.vertical, 2)
+                            Label("More Info", systemImage: "info.circle")
                         }
-                        .buttonStyle(.borderedProminent)
-                        .contentShape(Circle())
-                        .clipShape(Circle())
-                        .buttonBorderShape(.circle)
-                        .shadow(radius: 2.5)
                     }
                 }
             }

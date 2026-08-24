@@ -122,7 +122,11 @@ struct NewCustomListItemSelector: View {
                 itemsToAdd.insert(preSelectedItem)
             }
         }
-        .overlay { if items.isEmpty { Text("Empty") } }
+        .overlay {
+            if items.isEmpty {
+                ContentUnavailableView("No Titles", systemImage: "rectangle.stack")
+            }
+        }
         .task(id: query) {
             await search()
         }
