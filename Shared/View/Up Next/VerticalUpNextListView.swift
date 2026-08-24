@@ -57,15 +57,7 @@ struct VerticalUpNextListView: View {
                                    showTitle: item.showTitle,
                                    isWatched: $viewModel.isWatched,
                                    isUpNext: true)
-                .toolbar {
-#if !os(macOS)
-                    ToolbarItem(placement: .topBarLeading) {
-                        RoundedCloseButton {
-                            self.selectedEpisode = nil
-                        }
-                    }
-#endif
-                }
+                .nativeSheetDismissToolbar { self.selectedEpisode = nil }
                 .navigationDestination(for: ItemContent.self) { item in
                     ItemContentDetails(title: item.itemTitle, id: item.id, type: item.itemContentMedia)
                 }
@@ -93,7 +85,7 @@ struct VerticalUpNextListView: View {
             .appTheme()
             .appTint()
             .presentationDragIndicator(.visible)
-            .presentationCornerRadius(12)
+            .presentationDetents([.large])
 #endif
         }
         .task(id: viewModel.isWatched) {

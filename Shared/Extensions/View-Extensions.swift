@@ -85,4 +85,19 @@ extension View {
     func appTint() -> some View {
         modifier(AppTintModifier())
     }
+
+    /// Adds the system-standard Done button for modal sheets.
+    func nativeSheetDismissToolbar(action: @escaping () -> Void) -> some View {
+        toolbar {
+#if os(macOS)
+            ToolbarItem(placement: .cancellationAction) {
+                Button("Done", action: action)
+            }
+#else
+            ToolbarItem(placement: .confirmationAction) {
+                Button("Done", action: action)
+            }
+#endif
+        }
+    }
 }

@@ -115,30 +115,15 @@ struct ItemContentCustomListSelector: View {
 #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
 #endif
+            .nativeSheetDismissToolbar { showView.toggle() }
             .toolbar {
 #if os(iOS) || os(visionOS)
                 ToolbarItem(placement: .topBarLeading) {
-                    RoundedCloseButton { showView.toggle() }
-                }
-                ToolbarItem(placement: .topBarTrailing) {
                     if !lists.isEmpty { newList }
                 }
 #elseif os(macOS)
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Done") { showView.toggle() }
-                }
                 ToolbarItem(placement: .automatic) {
                     if !lists.isEmpty { newList }
-                }
-#elseif os(watchOS)
-                ToolbarItem(placement: .cancellationAction) {
-                    Button {
-                        showView.toggle()
-                    } label: {
-                        Label("Dismiss", systemImage: "xmark")
-                            .labelStyle(.iconOnly)
-                    }
-                    
                 }
 #endif
             }
@@ -151,7 +136,6 @@ struct ItemContentCustomListSelector: View {
 #endif
         .presentationDetents([.large])
         .presentationDragIndicator(.visible)
-        .presentationCornerRadius(12)
     }
     
     private func load() {
@@ -170,20 +154,8 @@ struct ItemContentCustomListSelector: View {
                               newSelectedList: $selectedList)
 #endif
         } label: {
-            Image(systemName: "plus.rectangle.on.rectangle")
-                .imageScale(.medium)
-                .accessibilityLabel("New List")
-                .fontDesign(.rounded)
-                .fontWeight(.semibold)
-                .foregroundStyle(.white)
-                .padding(.horizontal, 4)
-                .padding(.vertical, 2)
+            Label("New List", systemImage: "plus.rectangle.on.rectangle")
         }
-        .buttonStyle(.borderedProminent)
-        .contentShape(Circle())
-        .clipShape(Circle())
-        .buttonBorderShape(.circle)
-        .shadow(radius: 2.5)
     }
 }
 

@@ -176,25 +176,10 @@ struct EpisodeFrameView: View {
 #else
             NavigationStack {
                 EpisodeDetailsView(episode: episode, season: season, show: show, showTitle: showTitle, isWatched: $isWatched)
-                    .toolbar {
-#if os(macOS)
-                        ToolbarItem {
-                            Button("Close") {
-                                showDetails = false
-                            }
-                        }
-#else
-                        ToolbarItem(placement: .topBarLeading) {
-                            RoundedCloseButton {
-                                showDetails = false
-                            }
-                        }
-#endif
-                    }
+                    .nativeSheetDismissToolbar { showDetails = false }
             }
             .appTheme()
             .presentationDetents([.large])
-            .presentationCornerRadius(12)
             .presentationDragIndicator(.visible)
 #if os(macOS)
             .frame(minWidth: 800, idealWidth: 800, minHeight: 600, idealHeight: 600, alignment: .center)

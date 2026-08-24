@@ -112,7 +112,7 @@ struct ExploreView: View {
             }
 #endif
         }
-        .sheet(isPresented: $showFilters) {
+                .sheet(isPresented: $showFilters) {
             NavigationStack {
                 Form {
                     Section {
@@ -151,29 +151,14 @@ struct ExploreView: View {
 #if os(iOS)
                 .navigationBarTitleDisplayMode(.inline)
 #endif
-                .toolbar {
-#if !os(macOS)
-                    ToolbarItem(placement: .topBarLeading) {
-                        RoundedCloseButton {
-                            showFilters = false
-                        }
-                    }
-#else
-                    ToolbarItem(placement: .cancellationAction) {
-                        Button("Done") {
-                            showFilters = false
-                        }
-                    }
-#endif
-                }
+                .nativeSheetDismissToolbar { showFilters = false }
                 .scrollBounceBehavior(.basedOnSize)
 #if os(macOS)
                 .formStyle(.grouped)
 #endif
             }
-            .presentationDetents([.medium])
+            .presentationDetents([.medium, .large])
             .presentationDragIndicator(.visible)
-            .presentationCornerRadius(12)
             .unredacted()
 #if os(iOS)
             .appTint()

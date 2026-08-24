@@ -58,13 +58,7 @@ struct ListFilterView: View {
 #if !os(tvOS) && !os(macOS)
             .navigationBarTitleDisplayMode(.inline)
 #endif
-            .toolbar {
-#if !os(macOS)
-                ToolbarItem(placement: .topBarLeading) {
-                    RoundedCloseButton { showView = false  }
-                }
-#endif
-            }
+            .nativeSheetDismissToolbar { showView = false }
             .scrollBounceBehavior(.basedOnSize)
             .onChange(of: filter) {
                 showView = false
@@ -77,8 +71,7 @@ struct ListFilterView: View {
             }
         }
 #if !os(tvOS)
-        .presentationDragIndicator(.visible)
-        .presentationCornerRadius(12)
+        .presentationDetents([.medium, .large])
         .presentationDragIndicator(.visible)
         .appTint()
         .appTheme()

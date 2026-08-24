@@ -80,17 +80,7 @@ struct CronicaApp: App {
                         ItemContentDetails(title: item.itemTitle,
                                            id: item.id,
                                            type: item.itemContentMedia, handleToolbar: true)
-                        .toolbar {
-#if os(iOS)
-                            ToolbarItem(placement: .topBarLeading) {
-                                RoundedCloseButton {
-                                    selectedItem = nil
-                                }
-                            }
-#else
-                            Button("Done") { selectedItem = nil }
-#endif
-                        }
+                        .nativeSheetDismissToolbar { selectedItem = nil }
                         .navigationDestination(for: ItemContent.self) { item in
                             ItemContentDetails(title: item.itemTitle,
                                                id: item.id,
@@ -120,7 +110,6 @@ struct CronicaApp: App {
 #else
                     .presentationDetents([.large])
                     .presentationDragIndicator(.visible)
-                    .presentationCornerRadius(12)
                     .appTheme()
                     .appTint()
 #endif

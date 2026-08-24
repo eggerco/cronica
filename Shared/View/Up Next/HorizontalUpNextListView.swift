@@ -167,7 +167,7 @@ struct HorizontalUpNextListView: View {
 #if os(macOS)
                     .toolbar { ToolbarItem { Button("Done") { self.selectedEpisode = nil } } }
 #elseif os(iOS) || os(visionOS)
-                    .toolbar { ToolbarItem(placement: .topBarLeading) { RoundedCloseButton { self.selectedEpisode = nil } } }
+                    .nativeSheetDismissToolbar { self.selectedEpisode = nil }
 #endif
                     .navigationDestination(for: ItemContent.self) { item in
                         ItemContentDetails(title: item.itemTitle, id: item.id, type: item.itemContentMedia)
@@ -194,7 +194,6 @@ struct HorizontalUpNextListView: View {
                 .appTint()
                 .presentationDetents([.large])
                 .presentationDragIndicator(.visible)
-                .presentationCornerRadius(12)
 #if os(tvOS)
                 .ignoresSafeArea()
 #endif

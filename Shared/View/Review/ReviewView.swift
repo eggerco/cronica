@@ -110,13 +110,8 @@ struct ReviewView: View {
                 }
             }
             .toolbar {
-#if os(iOS)
-                ToolbarItem(placement: .topBarLeading) { doneButton }
-                ToolbarItem(placement: .topBarTrailing) { saveButton }
-#else
                 ToolbarItem(placement: .confirmationAction) { saveButton }
                 ToolbarItem(placement: .cancellationAction) { doneButton }
-#endif
             }
 #if os(macOS)
             .formStyle(.grouped)
@@ -128,7 +123,6 @@ struct ReviewView: View {
         }
         .presentationDetents([.large])
         .presentationDragIndicator(.visible)
-        .presentationCornerRadius(12)
 #if os(macOS)
         .frame(width: 400, height: 400, alignment: .center)
 #elseif os(iOS)
@@ -150,11 +144,7 @@ struct ReviewView: View {
     
     @ViewBuilder
     private var doneButton: some View {
-#if os(macOS)
         Button("Done", action: dismiss)
-#else
-        RoundedCloseButton(action: dismiss)
-#endif
     }
     
     private var saveButton: some View {

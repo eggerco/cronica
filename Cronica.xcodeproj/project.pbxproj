@@ -258,8 +258,6 @@
 		B8EC462F27D7AA99009389FC /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EC462E27D7AA99009389FC /* NotificationManager.swift */; };
 		B8ED4C3D27B4B9680045C68F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8ED4C3C27B4B9680045C68F /* HomeView.swift */; };
 		B8EFB257281720E900F7CBD0 /* OverviewBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EFB256281720E900F7CBD0 /* OverviewBoxView.swift */; };
-		B8F253B52BC86497003F27E8 /* RoundedCloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F253B42BC86497003F27E8 /* RoundedCloseButton.swift */; };
-		B8F253B62BC864A6003F27E8 /* RoundedCloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F253B42BC86497003F27E8 /* RoundedCloseButton.swift */; };
 		B8F253BB2BC8688A003F27E8 /* SeasonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F253BA2BC8688A003F27E8 /* SeasonDetailView.swift */; };
 		B8F253BC2BC868D2003F27E8 /* SeasonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F253BA2BC8688A003F27E8 /* SeasonDetailView.swift */; };
 		B8F253BE2BC9CBDB003F27E8 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = B8F253BD2BC9CBDB003F27E8 /* PrivacyInfo.xcprivacy */; };
@@ -543,7 +541,6 @@
 		B8EC462E27D7AA99009389FC /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		B8ED4C3C27B4B9680045C68F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		B8EFB256281720E900F7CBD0 /* OverviewBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewBoxView.swift; sourceTree = "<group>"; };
-		B8F253B42BC86497003F27E8 /* RoundedCloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCloseButton.swift; sourceTree = "<group>"; };
 		B8F253BA2BC8688A003F27E8 /* SeasonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonDetailView.swift; sourceTree = "<group>"; };
 		B8F253BD2BC9CBDB003F27E8 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		B8F6DE5629329AE5005D1A50 /* EndpointDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointDetails.swift; sourceTree = "<group>"; };
@@ -1302,7 +1299,6 @@
 		B8EC463E27D84C62009389FC /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				B8F253B42BC86497003F27E8 /* RoundedCloseButton.swift */,
 				B86670B52B5FF63400CBA595 /* CronicaLoadingPopupView.swift */,
 				B8CBBF1B2A4B7C3E0052A59B /* DetailedReleaseDateView.swift */,
 				B890C57827FC999F006BE5E1 /* HeroImage.swift */,
@@ -1680,7 +1676,6 @@
 				B801070929F244DE008A4551 /* NewCustomListView.swift in Sources */,
 				B8A4511829F855CD0027E3E2 /* CenterVerticalView.swift in Sources */,
 				B8370A9A2A02E65200643261 /* TMDB.swift in Sources */,
-				B8F253B62BC864A6003F27E8 /* RoundedCloseButton.swift in Sources */,
 				B8E6EF5B2A043A61000A3617 /* HomeViewModel.swift in Sources */,
 				B88529B128E371350026D33A /* EpisodeRow.swift in Sources */,
 				B8FCAE892AED8C9300F688FE /* WatchlistSearchScope.swift in Sources */,
@@ -1852,7 +1847,6 @@
 				B8E6EF672A044E5A000A3617 /* ContextMenuPreviewImage.swift in Sources */,
 				B886D232284D512F00FFE96A /* ConfirmationPopupModifier.swift in Sources */,
 				B8389ED028AB46C5003025BC /* SearchItemsScope.swift in Sources */,
-				B8F253B52BC86497003F27E8 /* RoundedCloseButton.swift in Sources */,
 				B81DD94129BE226E009F73F3 /* NotificationsSettingsView.swift in Sources */,
 				B8ADAF6A282AFC1B001D72EF /* EpisodeFrameView.swift in Sources */,
 				B86670B62B5FF63400CBA595 /* CronicaLoadingPopupView.swift in Sources */,

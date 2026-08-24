@@ -31,7 +31,7 @@ struct SelectListView: View {
 #if os(iOS) || os(tvOS)
             form
                 .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
+                    ToolbarItem(placement: .confirmationAction) {
                         doneButton
                     }
                     ToolbarItem {
@@ -74,7 +74,6 @@ struct SelectListView: View {
         .appTheme()
         .presentationDetents([lists.count > 4 ? .large : .medium])
         .presentationDragIndicator(.visible)
-        .presentationCornerRadius(12)
 #endif
     }
     
@@ -218,7 +217,7 @@ struct SelectListView: View {
     }
     
     private var doneButton: some View {
-        RoundedCloseButton { showListSelection.toggle() }
+        Button("Done") { showListSelection.toggle() }
     }
     
     private var newList: some View {

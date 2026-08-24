@@ -16,7 +16,6 @@ struct SeasonDetailView: View {
     var body: some View {
         NavigationStack {
             Form {
-                // header section for the season details
                 Section {
                     VStack(alignment: .center) {
                         HStack(alignment: .center) {
@@ -97,38 +96,12 @@ struct SeasonDetailView: View {
             }
 #endif
             .scrollBounceBehavior(.basedOnSize)
+            .nativeSheetDismissToolbar { selectedSeasonDetails = nil }
             .toolbar {
-#if os(macOS)
-                ToolbarItem {
-                    Button("Close") {
-                        selectedSeasonDetails = nil
-                    }
-                }
-#else
-                ToolbarItem(placement: .topBarLeading) {
-                    RoundedCloseButton {
-                        selectedSeasonDetails = nil
-                    }
-                }
-#endif
 #if !os(tvOS) && !os(macOS)
-                ToolbarItem(placement: .topBarTrailing) {
+                ToolbarItem(placement: .topBarLeading) {
                     if let url = URL(string: "https://www.themoviedb.org/tv/\(showID)/season/\(item.seasonNumber)") {
-                        ShareLink(item: url) {
-                            Image(systemName: "square.and.arrow.up")
-                                .imageScale(.medium)
-                                .accessibilityLabel("Share")
-                                .fontDesign(.rounded)
-                                .fontWeight(.semibold)
-                                .foregroundStyle(.white)
-                                .padding(.horizontal, 4)
-                                .padding(.vertical, 2)
-                        }
-                        .buttonStyle(.borderedProminent)
-                        .contentShape(Circle())
-                        .clipShape(Circle())
-                        .buttonBorderShape(.circle)
-                        .shadow(radius: 2.5)
+                        ShareLink(item: url)
                     }
                 }
 #endif
@@ -136,7 +109,6 @@ struct SeasonDetailView: View {
         }
         .presentationDetents([.medium, .large])
         .presentationDragIndicator(.visible)
-        .presentationCornerRadius(12)
 #if os(macOS)
         .frame(width: 600, height: 400)
 #endif

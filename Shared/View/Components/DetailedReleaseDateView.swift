@@ -32,17 +32,7 @@ struct DetailedReleaseDateView: View {
                 }
             }
             .scrollBounceBehavior(.basedOnSize)
-            .toolbar {
-#if !os(macOS)
-                ToolbarItem(placement: .topBarLeading) {
-                    RoundedCloseButton { dismiss.toggle() }
-                }
-#else
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Done") { dismiss.toggle() }
-                }
-#endif
-            }
+            .nativeSheetDismissToolbar { dismiss.toggle() }
             .onAppear(perform: load)
             .navigationTitle("Release Dates")
 #if os(macOS)
@@ -51,9 +41,8 @@ struct DetailedReleaseDateView: View {
             .navigationBarTitleDisplayMode(.inline)
 #endif
         }
-        .presentationDetents([.medium])
+        .presentationDetents([.medium, .large])
         .presentationDragIndicator(.visible)
-        .presentationCornerRadius(12)
         .appTheme()
         .appTint()
     }
