@@ -69,7 +69,6 @@ struct CronicaWidgetEntryView: View {
 
     var body: some View {
         ItemContentList(items: entry.items)
-            .padding(12)
             .containerBackground(for: .widget) {
 #if os(iOS)
                 Color(uiColor: .systemBackground)
@@ -78,6 +77,18 @@ struct CronicaWidgetEntryView: View {
 #endif
             }
     }
+}
+
+private enum CronicaWidgetFamilies {
+    static let homeScreen: [WidgetFamily] = {
+#if os(iOS)
+        [.systemSmall, .systemMedium, .systemLarge, .systemExtraLarge]
+#elseif os(macOS)
+        [.systemSmall, .systemMedium, .systemLarge, .systemExtraLarge]
+#else
+        [.systemSmall, .systemMedium, .systemLarge]
+#endif
+    }()
 }
 
 @main
@@ -89,12 +100,8 @@ struct CronicaWidget: Widget {
             CronicaWidgetEntryView(entry: entry)
         }
         .configurationDisplayName("Trending")
-        .description("Shows movies and TV Shows trending from TMDb.")
-        .supportedFamilies([
-            .systemSmall,
-            .systemMedium,
-            .systemLarge,
-            .systemExtraLarge
-        ])
+        .description("Shows trending movies and TV shows from TMDb. On iPhone, the large size matches the iPad extra-large layout.")
+        .contentMarginsDisabled()
+        .supportedFamilies(CronicaWidgetFamilies.homeScreen)
     }
 }
