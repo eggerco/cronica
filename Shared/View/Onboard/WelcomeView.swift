@@ -60,6 +60,7 @@ struct WelcomeView: View {
                         }
                     } label: {
                         Text("Continue")
+                            .textCase(.none)
                             .frame(maxWidth: .infinity)
                     }
                     .buttonStyle(.borderedProminent)
@@ -103,12 +104,6 @@ struct WelcomeView: View {
                 .font(.largeTitle.weight(.bold))
                 .fontDesign(.rounded)
 
-            Text("An Egger & Co Product")
-                .font(.caption2.weight(.semibold))
-                .fontDesign(.monospaced)
-                .foregroundStyle(.secondary)
-                .textCase(.uppercase)
-
             Text("Track what you watch. Never lose your place.")
                 .font(.body)
                 .foregroundStyle(.secondary)
@@ -133,9 +128,11 @@ struct WelcomeView: View {
                 Text(title)
                     .font(.headline)
                     .fontDesign(.rounded)
+                    .textCase(.none)
                 Text(subtitle)
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
+                    .textCase(.none)
                     .fixedSize(horizontal: false, vertical: true)
             }
         }
