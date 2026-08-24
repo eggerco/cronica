@@ -82,6 +82,12 @@ struct VerticalUpNextListView: View {
             }
         }
         .task { await viewModel.checkForNewEpisodes(items) }
+        .onChange(of: settings.upNextSortOrder) { _, _ in
+            Task { await viewModel.reload(items) }
+        }
+        .onChange(of: settings.hideUnstartedUpNext) { _, _ in
+            Task { await viewModel.reload(items) }
+        }
         .autocorrectionDisabled()
         .task(id: query) { search() }
         .navigationTitle("Up Next")

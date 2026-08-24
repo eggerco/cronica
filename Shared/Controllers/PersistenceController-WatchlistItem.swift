@@ -50,6 +50,9 @@ extension PersistenceController {
                 }
                 item.upcomingSeason = content.hasUpcomingSeason
                 item.nextSeasonNumber = Int64(content.nextEpisodeToAir?.seasonNumber ?? 0)
+                if let total = content.numberOfEpisodes, total > 0 {
+                    item.numberOfEpisodes = Int64(total)
+                }
 			}
             item.formattedDate = content.itemTheatricalString
             save()
@@ -123,6 +126,9 @@ extension PersistenceController {
                     if item.nextSeasonNumber != season {
                         item.nextSeasonNumber = season
                     }
+                }
+                if let total = content.numberOfEpisodes, total > 0, item.numberOfEpisodes != Int64(total) {
+                    item.numberOfEpisodes = Int64(total)
                 }
 				if let firstAirDate = content.firstAirDate {
 					if !firstAirDate.isEmpty {
@@ -359,5 +365,11 @@ extension PersistenceController {
         let item = fetch(for: id)
         guard let hasItemAddedToAnyList = item?.hasItemBeenAddedToList else { return false }
         return hasItemAddedToAnyList
+    }
+
+    func updateEpisodeCount(for item: WatchlistItem, total: Int) {
+        guard total > 0, item.numberOfEpisodes != Int64(total) else { return }
+        item.numberOfEpisodes = Int64(total)
+        save()
     }
 }

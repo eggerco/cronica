@@ -38,6 +38,7 @@
         <attribute name="nextEpisodeNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="nextEpisodeNumberUpNext" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="nextSeasonNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="numberOfEpisodes" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="notify" attributeType="Boolean" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="originalTitle" optional="YES" attributeType="String"/>
         <attribute name="posterPath" optional="YES" attributeType="String"/>

@@ -151,6 +151,36 @@ final class CronicaTests: XCTestCase {
         XCTAssertEqual(count, 1)
     }
 
+    func testWatchProgressUsesCachedEpisodeTotal() {
+        let item = WatchlistItem(context: managedContext)
+        item.title = "Progress Show"
+        item.id = 99
+        item.contentID = "99@1"
+        item.contentType = MediaType.tvShow.toInt
+        item.numberOfEpisodes = 10
+        item.watchedEpisodes = "-1@1-2@1-3@1"
+        item.firstAirDate = Date()
+
+        XCTAssertEqual(item.watchedEpisodeCount, 3)
+        XCTAssertEqual(item.watchProgress, 0.3, accuracy: 0.001)
+        XCTAssertTrue(item.hasStartedWatching)
+    }
+
+    func testHideUnstartedUsesWatchedEpisodeCount() {
+        let item = WatchlistItem(context: managedContext)
+        item.title = "Unstarted Show"
+        item.id = 100
+        item.contentID = "100@1"
+        item.contentType = MediaType.tvShow.toInt
+        item.numberOfEpisodes = 12
+        item.watchedEpisodes = ""
+        item.isWatching = false
+        item.firstAirDate = Date()
+
+        XCTAssertFalse(item.hasStartedWatching)
+        XCTAssertEqual(item.watchProgress, 0)
+    }
+
     private func requireItem(for contentID: String,
                              file: StaticString = #filePath,
                              line: UInt = #line) -> WatchlistItem {

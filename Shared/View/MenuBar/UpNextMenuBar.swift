@@ -10,6 +10,7 @@ import NukeUI
 
 struct UpNextMenuBar: View {
     @StateObject private var viewModel: UpNextViewModel = .shared
+    @StateObject private var settings = SettingsStore.shared
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \WatchlistItem.title, ascending: true)],
         predicate: NSCompoundPredicate(type: .and, subpredicates: [ NSPredicate(format: "displayOnUpNext == %d", true),
@@ -52,6 +53,12 @@ struct UpNextMenuBar: View {
             await viewModel.load(items)
             await viewModel.checkForNewEpisodes(items)
         }
+        .onChange(of: settings.upNextSortOrder) { _, _ in
+            Task { await viewModel.reload(items) }
+        }
+        .onChange(of: settings.hideUnstartedUpNext) { _, _ in
+            Task { await viewModel.reload(items) }
+        }
 #if os(macOS)
         .formStyle(.grouped)
 #endif
@@ -85,6 +92,12 @@ struct UpNextMenuBar: View {
                     .textCase(.uppercase)
                     .foregroundColor(.secondary)
                     .lineLimit(1)
+                if settings.upNextSortOrder == .watchProgress, let progress = item.watchProgressLabel {
+                    Text(progress)
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                        .lineLimit(1)
+                }
             }
             .padding(.leading, 2)
             Spacer()

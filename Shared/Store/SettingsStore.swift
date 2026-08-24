@@ -68,6 +68,8 @@ final class SettingsStore: ObservableObject {
     @AppStorage("alwaysUsePosterAsCover") var usePostersAsCover = true
     @AppStorage("shareLinkPreference") var shareLinkPreference: ShareLinkPreference = .tmdb
     @AppStorage("upNextStyle") var upNextStyle: UpNextDetailsPreferredStyle = .card
+    @AppStorage("upNextSortOrder") var upNextSortOrder: UpNextSortOrder = .recentActivity
+    @AppStorage("hideUnstartedUpNext") var hideUnstartedUpNext = false
     @AppStorage("showDateOnWatchlistRow") var showDateOnWatchlist = true
     @AppStorage("disableSearchFilter") var disableSearchFilter = false
     @AppStorage("removeFromWatchingOnRenew") var removeFromWatchOnRenew = false

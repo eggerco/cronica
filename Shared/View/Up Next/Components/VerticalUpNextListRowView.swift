@@ -45,6 +45,12 @@ struct VerticalUpNextListRowView: View {
                         .textCase(.uppercase)
                         .foregroundColor(.secondary)
                         .lineLimit(1)
+                    if settings.upNextSortOrder == .watchProgress, let progress = item.watchProgressLabel {
+                        Text(progress)
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
+                            .lineLimit(1)
+                    }
                 }
                 .padding(.leading, 2)
                 Spacer()

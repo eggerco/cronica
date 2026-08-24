@@ -149,6 +149,12 @@ struct HorizontalUpNextListView: View {
                 await viewModel.load(items)
                 await viewModel.checkForNewEpisodes(items)
             }
+            .onChange(of: settings.upNextSortOrder) { _, _ in
+                Task { await viewModel.reload(items) }
+            }
+            .onChange(of: settings.hideUnstartedUpNext) { _, _ in
+                Task { await viewModel.reload(items) }
+            }
             .onChange(of: scene) { _, value in
                 if scene == .active {
                     Task {

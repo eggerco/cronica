@@ -37,6 +37,7 @@ extension WatchlistItem {
     @NSManaged public var mediumPosterImage: URL?
     @NSManaged public var nextEpisodeNumber: Int64
     @NSManaged public var nextSeasonNumber: Int64
+    @NSManaged public var numberOfEpisodes: Int64
     @NSManaged public var notify: Bool
     @NSManaged public var originalTitle: String?
     @NSManaged public var schedule: Int16

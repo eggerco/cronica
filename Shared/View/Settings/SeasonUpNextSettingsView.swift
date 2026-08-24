@@ -20,6 +20,10 @@ struct SeasonUpNextSettingsView: View {
                 Toggle(isOn: $store.preferCoverOnUpNext) {
                     Text("Prefer Series Cover instead of Episode Thumbnail on Up Next")
                 }
+                Toggle(isOn: $store.hideUnstartedUpNext) {
+                    Text("Hide Unstarted Series")
+                    Text("Only show series in Up Next after you've watched at least one episode.")
+                }
                 Toggle(isOn: $store.hideEpisodesTitles) {
                     Text("Hide Titles from Unwatched Episodes")
                     Text("To avoid potential spoilers, you can hide titles and synopsis from unwatched episodes.")
@@ -31,6 +35,13 @@ struct SeasonUpNextSettingsView: View {
             }
             
             Section("Appearance") {
+                Picker(selection: $store.upNextSortOrder) {
+                    ForEach(UpNextSortOrder.allCases) { item in
+                        Text(item.localizableName).tag(item)
+                    }
+                } label: {
+                    Text("Up Next Sort Order")
+                }
                 Picker(selection: $store.upNextStyle) {
                     ForEach(UpNextDetailsPreferredStyle.allCases) { item in
                         Text(item.title).tag(item)

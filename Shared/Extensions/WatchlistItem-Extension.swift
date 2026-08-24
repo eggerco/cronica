@@ -18,6 +18,30 @@ extension WatchlistItem {
 	var itemLastUpdateDate: Date {
 		lastValuesUpdated ?? Date.distantPast
 	}
+	var watchedEpisodeCount: Int {
+		guard let watchedEpisodes, !watchedEpisodes.isEmpty else { return 0 }
+		return watchedEpisodes
+			.split(separator: "-", omittingEmptySubsequences: true)
+			.filter { $0.contains("@") }
+			.count
+	}
+	var hasStartedWatching: Bool {
+		isTvShow && (watchedEpisodeCount > 0 || isWatching)
+	}
+	/// Progress from 0...1 based on watched episodes vs total episodes reported by TMDb.
+	var watchProgress: Double {
+		guard isTvShow else { return 0 }
+		let watched = watchedEpisodeCount
+		guard watched > 0 else { return 0 }
+		let total = Int(numberOfEpisodes)
+		guard total > 0 else { return 0 }
+		return min(1, Double(watched) / Double(total))
+	}
+	var watchProgressLabel: String? {
+		guard watchProgress > 0 else { return nil }
+		let percent = Int((watchProgress * 100).rounded())
+		return String(format: NSLocalizedString("%d%% watched", comment: "TV show watch progress in Up Next"), percent)
+	}
 	var itemReleaseDate: Date {
 		itemDate ?? Date.distantPast
 	}
