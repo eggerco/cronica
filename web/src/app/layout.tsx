@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 
-import { SiteHeader } from "@/components/site-header";
+import { Nav } from "@/components/nav";
 import { siteConfig } from "@/lib/content";
 
 import "./globals.css";
@@ -45,7 +45,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body className={`${nunito.variable} min-h-screen font-sans antialiased`}>
-        <SiteHeader />
+        <Nav />
         {children}
       </body>
     </html>

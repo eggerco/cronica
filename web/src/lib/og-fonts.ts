@@ -41,9 +41,9 @@ export async function getAppIconDataUrl(): Promise<string> {
 export const ogSize = { width: 1200, height: 630 } as const;
 
 export const ogColors = {
-  background: "#f5f5f7",
-  foreground: "#1d1d1f",
-  muted: "#6e6e73",
-  subtle: "#86868b",
-  accent: "#0071e3",
+  background: "#080808",
+  foreground: "#ffffff",
+  muted: "rgba(255,255,255,0.55)",
+  subtle: "rgba(255,255,255,0.35)",
+  accent: "#e85d3a",
 } as const;

@@ -1,15 +1,14 @@
 import Link from "next/link";
 
-import { Button } from "@/components/ui/button";
-
 export default function NotFound() {
   return (
-    <section className="mx-auto flex min-h-[50vh] max-w-lg flex-col items-center justify-center px-4 py-24 text-center">
-      <h1 className="text-3xl font-semibold tracking-tight">Page not found</h1>
-      <p className="mt-3 text-muted-foreground">The page you’re looking for doesn’t exist.</p>
-      <Button asChild className="mt-6">
-        <Link href="/">Back to home</Link>
-      </Button>
+    <section data-nav-theme="dark" className="grain hero-glow flex min-h-screen flex-col items-center justify-center px-6 text-center">
+      <p className="text-xs font-bold uppercase tracking-[0.2em] text-coral">404</p>
+      <h1 className="mt-4 text-4xl font-extrabold tracking-tight">Page not found</h1>
+      <p className="mt-4 text-white/50">The page you&apos;re looking for doesn&apos;t exist.</p>
+      <Link href="/" className="btn btn-primary mt-10">
+        Back to home
+      </Link>
     </section>
   );
 }

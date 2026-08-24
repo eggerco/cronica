@@ -2,7 +2,7 @@
 
 Marketing site and universal link handler for [Cronica](https://apps.apple.com/app/cronica/id1614950275).
 
-Part of the [eggerco/cronica](https://github.com/eggerco/cronica) monorepo. Built with **Next.js**, **shadcn/ui**, **Radix UI**, and **Tailwind CSS**.
+Part of the [eggerco/cronica](https://github.com/eggerco/cronica) monorepo. Built with **Next.js** and **Tailwind CSS**.
 
 **Live:** [cronica.eggerco.com](https://cronica.eggerco.com)
 
