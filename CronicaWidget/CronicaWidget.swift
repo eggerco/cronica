@@ -22,13 +22,7 @@ struct Provider: TimelineProvider {
             let nextUpdate = Date().addingTimeInterval(86400)
             do {
                 let result = try await NetworkService.shared.fetchItems(from: "trending/all/day")
-                var content = [ItemContent]()
-                for item in result.shuffled().prefix(4) {
-                    let image = await NetworkService.shared.downloadImageData(from: item.posterImageMedium)
-                    var itemContent = item
-                    itemContent.widgetImageData = image
-                    content.append(itemContent)
-                }
+                let content = Array(result.shuffled().prefix(4))
                 let entry = ItemContentEntry(date: .now, item: content)
                 let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
                 completion(timeline)

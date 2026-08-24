@@ -70,19 +70,22 @@ private struct PosterImage: View {
             Image(placeholder)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-        } else if let image = item.widgetImageData {
-#if os(iOS)
-            Image(uiImage: UIImage(data: image) ?? UIImage(systemName: "popcorn") ?? UIImage())
-                .resizable()
-#elseif os(macOS)
-            if let nsImage = NSImage(data: image) {
-                Image(nsImage: nsImage)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-            } else {
-                Image(systemName: "popcorn")
+        } else if let url = item.posterImageMedium {
+            AsyncImage(url: url) { phase in
+                switch phase {
+                case .success(let image):
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                case .failure:
+                    PlaceholderImage()
+                case .empty:
+                    PlaceholderImage()
+                        .overlay { ProgressView().controlSize(.mini) }
+                @unknown default:
+                    PlaceholderImage()
+                }
             }
-#endif
         } else {
             PlaceholderImage()
         }

@@ -30,8 +30,6 @@ public struct ItemContent: Identifiable, Codable, Hashable, Sendable {
     public var nextEpisodeToAir, lastEpisodeToAir: Episode?
     public let originalName, firstAirDate, homepage: String?
     public let episodeRunTime: [Int]?
-    /// Cached image bytes used by the widget extension.
-    public var widgetImageData: Data?
     /// Asset catalog placeholder key used by the widget extension.
     public var placeholderImagePath: String?
 
@@ -43,7 +41,7 @@ public struct ItemContent: Identifiable, Codable, Hashable, Sendable {
         seasons: [Season]?, genres: [Genre]?, credits: Credits?, recommendations: ItemContentResponse?, releaseDates: ReleaseDates?,
         mediaType: String?, videos: Videos?, nextEpisodeToAir: Episode?, lastEpisodeToAir: Episode?,
         originalName: String?, firstAirDate: String?, homepage: String?, episodeRunTime: [Int]?,
-        widgetImageData: Data?, placeholderImagePath: String?
+        placeholderImagePath: String?
     ) {
         self.adult = adult
         self.id = id
@@ -78,7 +76,6 @@ public struct ItemContent: Identifiable, Codable, Hashable, Sendable {
         self.firstAirDate = firstAirDate
         self.homepage = homepage
         self.episodeRunTime = episodeRunTime
-        self.widgetImageData = widgetImageData
         self.placeholderImagePath = placeholderImagePath
     }
 

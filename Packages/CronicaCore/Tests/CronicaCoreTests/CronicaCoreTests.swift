@@ -20,7 +20,7 @@ final class CronicaCoreTests: XCTestCase {
             seasons: nil, genres: nil, credits: nil, recommendations: nil, releaseDates: nil,
             mediaType: "movie", videos: nil, nextEpisodeToAir: nil, lastEpisodeToAir: nil,
             originalName: nil, firstAirDate: nil, homepage: nil, episodeRunTime: nil,
-            widgetImageData: nil, placeholderImagePath: nil
+            placeholderImagePath: nil
         )
         XCTAssertEqual(item.itemContentID, "42@0")
     }

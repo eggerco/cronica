@@ -195,16 +195,6 @@ public final class NetworkService: Sendable {
         }
     }
     
-    public func downloadImageData(from url: URL?) async -> Data? {
-        guard let url else { return nil}
-        do {
-            let (data, _) = try await URLSession.shared.data(from: url)
-            return data
-        } catch {
-            return nil
-        }
-    }
-    
 	public func urlBuilder(type: MediaType, company: Int? = nil, page: Int, keywords: Int? = nil, sortBy: String) -> URL? {
         var component = URLComponents()
         component.scheme = "https"

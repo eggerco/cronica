@@ -411,7 +411,7 @@ public extension ItemContent {
             seasons: nil, genres: nil, credits: nil, recommendations: nil, releaseDates: nil,
             mediaType: nil, videos: nil, nextEpisodeToAir: nil, lastEpisodeToAir: nil,
             originalName: nil, firstAirDate: nil, homepage: nil, episodeRunTime: nil,
-            widgetImageData: nil, placeholderImagePath: nil
+            placeholderImagePath: nil
         )
     }
 
