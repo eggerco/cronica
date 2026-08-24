@@ -10,11 +10,14 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
-      <h1 className="text-3xl font-semibold tracking-tight">Privacy Policy</h1>
-      <p className="mt-2 text-sm text-muted-foreground">Last updated: August 24, 2026</p>
+    <div className="site-gradient min-h-[calc(100vh-5rem)]">
+      <article className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-24">
+        <div className="glass rounded-[2rem] px-6 py-10 sm:px-10 sm:py-12">
+          <p className="section-label mb-3">Legal</p>
+          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">Privacy Policy</h1>
+          <p className="mt-2 text-sm text-muted-foreground">Last updated: August 24, 2026</p>
 
-      <div className="mt-8 space-y-8 text-muted-foreground">
+          <div className="mt-10 space-y-8 text-muted-foreground">
         <p>
           Welcome to Cronica. This Privacy Policy explains how we collect, use, and safeguard your
           information when you use our privacy-focused watchlist app.
@@ -75,7 +78,9 @@ export default function PrivacyPage() {
             .
           </p>
         </section>
-      </div>
-    </article>
+          </div>
+        </div>
+      </article>
+    </div>
   );
 }
