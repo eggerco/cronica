@@ -25,6 +25,7 @@ struct DeveloperView: View {
     @AppStorage("launchCount") var launchCount: Int = 0
     @AppStorage("askedForReview") var askedForReview = false
     @State private var isUserSignedInWithTMDB = false
+    @State private var cloudKitSchemaMessage = ""
     var body: some View {
         Form {
             Section("Network") {
@@ -102,6 +103,17 @@ struct DeveloperView: View {
                 Text("Last upcoming refresh: \(BackgroundManager.shared.lastUpcomingRefresh?.convertDateToString() ?? "Nil")")
                 Text("Asked for review: \(askedForReview.description)")
                 Button("Reset asked for review") { askedForReview = false }
+            }
+
+            Section("CloudKit") {
+                Button("Initialize CloudKit Schema") {
+                    cloudKitSchemaMessage = persistence.initializeCloudKitDevelopmentSchema()
+                }
+                if !cloudKitSchemaMessage.isEmpty {
+                    Text(cloudKitSchemaMessage)
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                }
             }
             
         }
