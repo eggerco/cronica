@@ -148,6 +148,32 @@ public struct ItemContentKeyword: Identifiable, Codable, Hashable {
 	public let name: String?
 }
 
+/// TMDb movie keywords use `keywords`; TV keywords use `results`.
 public struct Keywords: Hashable, Codable {
     public let keywords: [ItemContentKeyword]
+
+    public init(keywords: [ItemContentKeyword]) {
+        self.keywords = keywords
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        if let keywords = try container.decodeIfPresent([ItemContentKeyword].self, forKey: .keywords) {
+            self.keywords = keywords
+        } else if let results = try container.decodeIfPresent([ItemContentKeyword].self, forKey: .results) {
+            self.keywords = results
+        } else {
+            self.keywords = []
+        }
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(keywords, forKey: .keywords)
+    }
+
+    private enum CodingKeys: String, CodingKey {
+        case keywords
+        case results
+    }
 }

@@ -148,15 +148,26 @@ public final class NetworkService: Sendable {
         guard let httpResponse = response as? HTTPURLResponse else { throw NetworkError.invalidResponse }
         let responseError = handleNetworkResponses(response: httpResponse)
         if let responseError {
-            AppLogger.network.error("Network request failed with status \(httpResponse.statusCode): \(url.absoluteString)")
+            AppLogger.network.error("Network request failed with status \(httpResponse.statusCode): \(Self.redactedURL(url))")
             throw responseError
         }
         do {
             return try decoder.decode(T.self, from: data)
         } catch {
-            AppLogger.network.error("Failed to decode response from \(url.absoluteString): \(error.localizedDescription)")
+            AppLogger.network.error("Failed to decode response from \(Self.redactedURL(url)): \(error.localizedDescription)")
             throw NetworkError.decodingError
         }
+    }
+
+    /// Avoid leaking the TMDb API key into console / crash logs.
+    private static func redactedURL(_ url: URL) -> String {
+        guard var components = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
+            return "<invalid-url>"
+        }
+        components.queryItems = components.queryItems?.map { item in
+            item.name == "api_key" ? URLQueryItem(name: "api_key", value: "…") : item
+        }
+        return components.string ?? url.absoluteString
     }
     
     private func handleNetworkResponses(response: HTTPURLResponse) -> NetworkError? {
