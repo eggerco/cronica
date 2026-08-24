@@ -37,15 +37,21 @@ struct NotificationsSettingsView: View {
     var body: some View {
         Form {
             Section {
-                Toggle("Allow Notifications", isOn: $settings.allowNotifications)
+                Toggle(isOn: $settings.allowNotifications) {
+                    CronicaFormText("Allow Notifications")
+                }
                 Toggle(isOn: $settings.notifyMovieRelease) {
-                    Text("Notify Movies Releases")
-                    Text("Notify when a movie on your watchlist is released.")
+                    CronicaFormToggleLabel(
+                        title: "Notify Movies Releases",
+                        subtitle: "Notify when a movie on your watchlist is released."
+                    )
                 }
                 .disabled(!settings.allowNotifications)
                 Toggle(isOn: $settings.notifyNewEpisodes) {
-                    Text("Notify New Episodes")
-                    Text("Notify when a new episode from a TV Show on your watchlist is released.")
+                    CronicaFormToggleLabel(
+                        title: "Notify New Episodes",
+                        subtitle: "Notify when a new episode from a TV Show on your watchlist is released."
+                    )
                 }
                 .disabled(!settings.allowNotifications)
                 
@@ -74,29 +80,37 @@ struct NotificationsSettingsView: View {
 #endif
             
 #if os(iOS)
-            Button("Edit Notifications in Settings app") {
+            Button {
                 openURL.openNotificationSettings()
+            } label: {
+                CronicaFormText("Edit Notifications in Settings app")
             }
 #endif
 
 #if os(iOS) || os(macOS) || os(visionOS)
             CronicaFormSectionWithFooter("Calendar Sync") {
-                Toggle("Sync to Calendar", isOn: $settings.allowCalendarSync)
+                Toggle(isOn: $settings.allowCalendarSync) {
+                    CronicaFormText("Sync to Calendar")
+                }
                 Toggle(isOn: $settings.syncCalendarMovies) {
-                    Text("Sync Movie Releases")
-                    Text("Add upcoming movie releases from your watchlist to the Cronica calendar.")
+                    CronicaFormToggleLabel(
+                        title: "Sync Movie Releases",
+                        subtitle: "Add upcoming movie releases from your watchlist to the Cronica calendar."
+                    )
                 }
                 .disabled(!settings.allowCalendarSync)
                 Toggle(isOn: $settings.syncCalendarTVShows) {
-                    Text("Sync TV Episodes")
-                    Text("Add upcoming TV episodes and season premieres to the Cronica calendar.")
+                    CronicaFormToggleLabel(
+                        title: "Sync TV Episodes",
+                        subtitle: "Add upcoming TV episodes and season premieres to the Cronica calendar."
+                    )
                 }
                 .disabled(!settings.allowCalendarSync)
                 NavigationLink(value: ReleaseCalendarRoute.watchlist) {
-                    Text("View Release Calendar")
+                    CronicaFormText("View Release Calendar")
                 }
             } footer: {
-                Text("Events are saved to a dedicated Cronica calendar in the Calendar app.")
+                CronicaFormText("Events are saved to a dedicated Cronica calendar in the Calendar app.", color: .secondary)
             }
             .onChange(of: settings.allowCalendarSync) { _, enabled in
                 Task {

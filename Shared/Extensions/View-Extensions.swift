@@ -150,9 +150,43 @@ struct CronicaFormSectionHeader: View {
     let title: String
 
     var body: some View {
-        Text(verbatim: title)
+        CronicaFormText(title)
+    }
+}
+
+/// Form row label that keeps sentence case inside SwiftUI Forms.
+struct CronicaFormText: View {
+    let text: String
+    var font: Font = .body
+    var color: Color?
+
+    init(_ text: String, font: Font = .body, color: Color? = nil) {
+        self.text = text
+        self.font = font
+        self.color = color
+    }
+
+    var body: some View {
+        Text(verbatim: text)
+            .font(font)
+            .foregroundStyle(color ?? .primary)
             .textCase(nil)
             .environment(\.textCase, nil)
+    }
+}
+
+/// Primary and optional subtitle label for Toggle rows in settings forms.
+struct CronicaFormToggleLabel: View {
+    let title: String
+    var subtitle: String?
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 2) {
+            CronicaFormText(title)
+            if let subtitle {
+                CronicaFormText(subtitle, font: .caption, color: .secondary)
+            }
+        }
     }
 }
 

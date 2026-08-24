@@ -5,6 +5,9 @@
 
 import SwiftUI
 import CoreData
+#if canImport(UIKit)
+import UIKit
+#endif
 
 #if !os(watchOS)
 struct ReleaseCalendarView: View {
@@ -32,6 +35,10 @@ struct ReleaseCalendarView: View {
         }
     }
 
+    private var releaseDays: Set<Date> {
+        Set(itemsByDay.keys.filter { $0 != Date.distantPast })
+    }
+
     private var selectedDay: Date {
         calendar.startOfDay(for: selectedDate)
     }
@@ -45,25 +52,23 @@ struct ReleaseCalendarView: View {
     var body: some View {
         List {
             Section {
-                DatePicker(
-                    "Release Date",
-                    selection: $selectedDate,
-                    displayedComponents: [.date]
-                )
-                .datePickerStyle(.graphical)
-                .labelsHidden()
-                .onChange(of: selectedDate) { _, newValue in
-                    let day = calendar.startOfDay(for: newValue)
-                    if day != selectedDate {
-                        selectedDate = day
-                    }
-                }
+                calendarPicker
             }
             .listRowInsets(EdgeInsets())
+            .listRowBackground(Color.clear)
 
-            CronicaFormSection("Releases") {
-                if selectedDayItems.isEmpty {
-                    Text("No watchlist releases on this date.")
+            CronicaFormSection(releasesSectionTitle) {
+                if upcomingItems.isEmpty {
+                    ContentUnavailableView {
+                        Label("No Upcoming Releases", systemImage: "calendar")
+                    } description: {
+                        CronicaFormText(
+                            "Add items with future release dates to your watchlist to see them here.",
+                            color: .secondary
+                        )
+                    }
+                } else if selectedDayItems.isEmpty {
+                    CronicaFormText("No watchlist releases on this date.")
                         .foregroundStyle(.secondary)
                 } else {
                     ForEach(selectedDayItems) { item in
@@ -82,6 +87,29 @@ struct ReleaseCalendarView: View {
         .cronicaWatchlistNavigationDestinations()
     }
 
+    private var releasesSectionTitle: String {
+        if selectedDayItems.isEmpty {
+            return "Releases"
+        }
+        return "Releases (\(selectedDayItems.count))"
+    }
+
+    @ViewBuilder
+    private var calendarPicker: some View {
+#if canImport(UIKit) && !os(tvOS)
+        NativeReleaseCalendarPicker(selectedDate: $selectedDate, releaseDays: releaseDays)
+            .frame(minHeight: 320)
+#else
+        DatePicker(
+            "Release Date",
+            selection: $selectedDate,
+            displayedComponents: [.date]
+        )
+        .datePickerStyle(.graphical)
+        .labelsHidden()
+#endif
+    }
+
     private func calendarDay(for item: WatchlistItem) -> Date? {
         let date = item.itemUpcomingReleaseDate
         guard date != Date.distantPast else { return nil }
@@ -89,17 +117,83 @@ struct ReleaseCalendarView: View {
     }
 }
 
+#if canImport(UIKit) && !os(tvOS)
+private struct NativeReleaseCalendarPicker: UIViewRepresentable {
+    @Binding var selectedDate: Date
+    var releaseDays: Set<Date>
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(selectedDate: $selectedDate, releaseDays: releaseDays)
+    }
+
+    func makeUIView(context: Context) -> UICalendarView {
+        let calendarView = UICalendarView()
+        calendarView.calendar = Calendar.current
+        calendarView.locale = Locale.current
+        calendarView.delegate = context.coordinator
+
+        let selection = UICalendarSelectionSingleDate(delegate: context.coordinator)
+        calendarView.selectionBehavior = selection
+        context.coordinator.selection = selection
+        selection.selectedDate = Calendar.current.dateComponents([.year, .month, .day], from: selectedDate)
+
+        return calendarView
+    }
+
+    func updateUIView(_ calendarView: UICalendarView, context: Context) {
+        context.coordinator.releaseDays = releaseDays
+
+        let selectedComponents = Calendar.current.dateComponents([.year, .month, .day], from: selectedDate)
+        if context.coordinator.selection?.selectedDate != selectedComponents {
+            context.coordinator.selection?.selectedDate = selectedComponents
+        }
+
+        let decorationComponents = releaseDays.map {
+            Calendar.current.dateComponents([.year, .month, .day], from: $0)
+        }
+        calendarView.reloadDecorations(forDateComponents: decorationComponents, animated: false)
+    }
+
+    final class Coordinator: NSObject, UICalendarViewDelegate, UICalendarSelectionSingleDateDelegate {
+        @Binding var selectedDate: Date
+        var releaseDays: Set<Date>
+        weak var selection: UICalendarSelectionSingleDate?
+
+        init(selectedDate: Binding<Date>, releaseDays: Set<Date>) {
+            _selectedDate = selectedDate
+            self.releaseDays = releaseDays
+        }
+
+        func dateSelection(
+            _ selection: UICalendarSelectionSingleDate,
+            didSelectDate dateComponents: DateComponents?
+        ) {
+            guard let dateComponents,
+                  let date = Calendar.current.date(from: dateComponents) else { return }
+            selectedDate = Calendar.current.startOfDay(for: date)
+        }
+
+        func calendarView(
+            _ calendarView: UICalendarView,
+            decorationFor dateComponents: DateComponents
+        ) -> UICalendarView.Decoration? {
+            guard let date = Calendar.current.date(from: dateComponents) else { return nil }
+            let day = Calendar.current.startOfDay(for: date)
+            guard releaseDays.contains(day) else { return nil }
+            return .default(color: UIColor.tintColor, size: .small)
+        }
+    }
+}
+#endif
+
 private struct ReleaseCalendarRow: View {
     let item: WatchlistItem
 
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text(item.itemTitle)
-                .font(.body)
+            CronicaFormText(item.itemTitle)
             if let info = item.itemGlanceInfo {
-                Text(info)
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+                CronicaFormText(info, font: .caption, color: .secondary)
             }
         }
         .padding(.vertical, 2)
