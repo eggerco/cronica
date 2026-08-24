@@ -80,9 +80,7 @@ struct NotificationsSettingsView: View {
 #endif
         }
         .navigationTitle(NSLocalizedString(navigationTitle, comment: ""))
-#if os(macOS)
-        .formStyle(.grouped)
-#endif
+        .cronicaSettingsForm()
     }
     
     private func setDefaultNotificationTime() {

@@ -112,7 +112,6 @@ private struct UpNextRowItemView: View {
                         .lineLimit(2)
                     Text(String(format: NSLocalizedString("S%d, E%d", comment: ""), item.episode.itemSeasonNumber, item.episode.itemEpisodeNumber))
                         .font(.caption)
-                        .textCase(.uppercase)
                         .foregroundColor(.secondary)
                         .lineLimit(1)
                 }

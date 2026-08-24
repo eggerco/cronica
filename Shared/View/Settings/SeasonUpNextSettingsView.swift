@@ -60,11 +60,8 @@ struct SeasonUpNextSettingsView: View {
         .navigationTitle("Season & Up Next Settings")
 #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
-        .scrollBounceBehavior(.basedOnSize, axes: .vertical)
 #endif
-#if os(macOS)
-        .formStyle(.grouped)
-#endif
+        .cronicaSettingsForm()
     }
 }
 

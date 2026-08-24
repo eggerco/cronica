@@ -59,9 +59,7 @@ struct UpNextMenuBar: View {
         .onChange(of: settings.hideUnstartedUpNext) { _, _ in
             Task { await viewModel.reload(items) }
         }
-#if os(macOS)
-        .formStyle(.grouped)
-#endif
+        .cronicaSettingsForm()
     }
     
     private func upNextRowItem(_ item: UpNextEpisode) -> some View {
@@ -89,7 +87,6 @@ struct UpNextMenuBar: View {
                     .lineLimit(1)
                 Text(String(format: NSLocalizedString("S%d, E%d", comment: ""), item.episode.itemSeasonNumber, item.episode.itemEpisodeNumber))
                     .font(.caption)
-                    .textCase(.uppercase)
                     .foregroundColor(.secondary)
                     .lineLimit(1)
                 if settings.upNextSortOrder == .watchProgress, let progress = item.watchProgressLabel {

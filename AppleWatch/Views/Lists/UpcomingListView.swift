@@ -86,7 +86,6 @@ struct UpcomingListView: View {
                     .lineLimit(2)
                 Text(item.itemGlanceInfo ?? String())
                     .font(.caption)
-                    .textCase(.uppercase)
                     .foregroundColor(.secondary)
                     .lineLimit(2)
             }

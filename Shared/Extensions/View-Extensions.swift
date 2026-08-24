@@ -78,6 +78,22 @@ extension View {
         modifier(HoverEffectModifier())
     }
 
+    /// Prevents SwiftUI Form/navigation from force-uppercasing labels (`.textCase(.none)` is a no-op).
+    func cronicaNormalTextCase() -> some View {
+        environment(\.textCase, nil)
+    }
+
+    /// Standard settings form styling with normal-casing labels and section headers.
+    func cronicaSettingsForm() -> some View {
+        cronicaNormalTextCase()
+#if os(iOS)
+            .scrollBounceBehavior(.basedOnSize, axes: .vertical)
+#endif
+#if os(macOS)
+            .formStyle(.grouped)
+#endif
+    }
+
     func appTheme() -> some View {
         modifier(AppThemeModifier())
     }

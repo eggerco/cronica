@@ -44,10 +44,7 @@ struct FeedbackComposerView: View {
 #endif
         }
         .navigationTitle("Feedback")
-        .scrollBounceBehavior(.basedOnSize)
-#if os(macOS)
-        .formStyle(.grouped)
-#endif
+        .cronicaSettingsForm()
     }
 }
 

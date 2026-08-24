@@ -75,9 +75,7 @@ struct AppearanceSetting: View {
             }
         }
         .navigationTitle("Appearance")
-#if os(macOS)
-        .formStyle(.grouped)
-#endif
+        .cronicaSettingsForm()
     }
     
     private var accentColor: some View {

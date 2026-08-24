@@ -27,12 +27,11 @@ struct AboutSettings: View {
                             .onTapGesture(count: 3) {
                                 settings.displayDeveloperSettings.toggle()
                             }
-                        Text("An Egger & Co Product")
+                        Text(verbatim: "An Egger & Co Product")
                             .fontWeight(.semibold)
                             .fontDesign(.monospaced)
                             .font(.caption2)
                             .foregroundColor(.secondary)
-                            .textCase(.uppercase)
                             .padding(.top)
                     }
                     .padding(.zero)
@@ -117,15 +116,12 @@ struct AboutSettings: View {
                 CenterHorizontalView {
                     Text("Version \(appVersion ?? "") • \(buildNumber)")
                         .foregroundColor(.secondary)
-                        .textCase(.uppercase)
                 }
             }
             .listRowBackground(Color.clear)
         }
         .navigationTitle("About")
-#if os(macOS)
-        .formStyle(.grouped)
-#endif
+        .cronicaSettingsForm()
     }
     
     private func aboutButton(title: String, subtitle: String? = nil, url: String) -> some View {

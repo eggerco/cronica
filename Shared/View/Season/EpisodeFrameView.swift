@@ -95,7 +95,6 @@ struct EpisodeFrameView: View {
         VStack {
             HStack {
                 Text("Episode \(episode.itemEpisodeNumber)")
-                    .textCase(.uppercase)
                     .font(.caption2)
                     .lineLimit(1)
 #if !os(tvOS)

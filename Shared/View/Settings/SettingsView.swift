@@ -78,7 +78,7 @@ struct SettingsView: View {
         }
         .navigationTitle("Settings")
         .navigationBarTitleDisplayMode(.inline)
-        .scrollBounceBehavior(.basedOnSize, axes: .vertical)
+        .cronicaSettingsForm()
 #elseif os(macOS)
         TabView {
             AppearanceSetting()
@@ -117,6 +117,7 @@ struct SettingsView: View {
                 }
             }
             .navigationTitle("Settings")
+            .cronicaSettingsForm()
         }
 #endif
     }

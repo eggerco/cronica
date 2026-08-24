@@ -105,11 +105,8 @@ struct WatchlistSettingsView: View {
         .navigationTitle("Watchlist Settings")
 #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
-        .scrollBounceBehavior(.basedOnSize, axes: .vertical)
 #endif
-#if os(macOS)
-        .formStyle(.grouped)
-#endif
+        .cronicaSettingsForm()
     }
     
 #if os(iOS)

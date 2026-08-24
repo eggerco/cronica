@@ -175,9 +175,7 @@ struct DeveloperView: View {
                     }
             }
         }
-#if os(macOS)
-        .formStyle(.grouped)
-#endif
+        .cronicaSettingsForm()
         .scrollBounceBehavior(.basedOnSize)
     }
 }

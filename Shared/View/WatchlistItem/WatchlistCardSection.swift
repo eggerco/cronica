@@ -37,12 +37,10 @@ struct WatchlistCardSection: View {
                             Text(NSLocalizedString(title, comment: ""))
                                 .foregroundColor(.secondary)
                                 .font(.footnote)
-                                .textCase(.uppercase)
                             Spacer()
                             Text("\(items.count) items")
                                 .foregroundColor(.secondary)
                                 .font(.footnote)
-                                .textCase(.uppercase)
                         }
                         .padding(.horizontal)
                     }

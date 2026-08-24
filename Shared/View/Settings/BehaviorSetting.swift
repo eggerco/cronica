@@ -126,9 +126,7 @@ struct BehaviorSetting: View {
             }
         }
         .navigationTitle("Behavior")
-#if os(macOS)
-        .formStyle(.grouped)
-#endif
+        .cronicaSettingsForm()
         .onAppear {
             updateCacheSize()
         }

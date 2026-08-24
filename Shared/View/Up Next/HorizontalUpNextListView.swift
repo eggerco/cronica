@@ -91,7 +91,6 @@ struct HorizontalUpNextListView: View {
                                                         .lineLimit(1)
                                                     Text(String(format: NSLocalizedString("S%d, E%d", comment: ""), item.episode.itemSeasonNumber, item.episode.itemEpisodeNumber))
                                                         .font(.caption)
-                                                        .textCase(.uppercase)
                                                         .foregroundColor(.secondary)
                                                         .lineLimit(1)
                                                     Spacer()
@@ -280,7 +279,6 @@ private struct UpNextCard: View {
                                             .lineLimit(1)
                                         Text(String(format: NSLocalizedString("S%d, E%d", comment: ""), item.episode.itemSeasonNumber, item.episode.itemEpisodeNumber))
                                             .font(.caption)
-                                            .textCase(.uppercase)
                                             .fontWeight(.medium)
                                             .foregroundColor(.white.opacity(0.8))
                                             .lineLimit(1)
@@ -322,7 +320,6 @@ private struct UpNextCard: View {
             HStack {
                 Text(String(format: NSLocalizedString("S%d, E%d", comment: ""), item.episode.itemSeasonNumber, item.episode.itemEpisodeNumber))
                     .font(.caption)
-                    .textCase(.uppercase)
                     .foregroundColor(.secondary)
                     .lineLimit(1)
                 Spacer()

@@ -32,5 +32,6 @@ struct CronicaWatchApp: App {
                 }
             }
         }
+        .cronicaNormalTextCase()
     }
 }

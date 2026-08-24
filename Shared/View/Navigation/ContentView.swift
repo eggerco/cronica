@@ -12,6 +12,7 @@ struct ContentView: View {
         rootView
             .appTheme()
             .appTint()
+            .cronicaNormalTextCase()
     }
 
     @ViewBuilder

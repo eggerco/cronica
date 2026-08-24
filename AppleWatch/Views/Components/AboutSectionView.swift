@@ -25,7 +25,6 @@ struct AboutSectionView: View {
                 } header: {
                     HStack {
                         Text("About")
-							.textCase(.uppercase)
 							.foregroundColor(.secondary)
                         Spacer()
                     }
