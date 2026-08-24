@@ -9,9 +9,6 @@ import SwiftUI
 
 struct AppearanceSetting: View {
     @StateObject private var store = SettingsStore.shared
-#if os(iOS)
-    @StateObject private var icons = IconModel()
-#endif
     var body: some View {
         Form {
 #if os(iOS)
@@ -68,12 +65,6 @@ struct AppearanceSetting: View {
                 accentColor
             }
             .listRowInsets(EdgeInsets())
-            
-            if UIDevice.isIPhone {
-                Section("App Icon") {
-                    iconsGrid
-                }
-            }
 #endif
             
             Section {
@@ -135,31 +126,6 @@ struct AppearanceSetting: View {
         .accessibilityAddTraits(item == store.appTheme ? [.isButton, .isSelected] : .isButton )
         .padding(.horizontal, 4)
     }
-    
-#if os(iOS)
-    private var iconsGrid: some View {
-        HStack {
-            ForEach(Icon.allCases) { icon in
-                Button {
-                    withAnimation { icons.updateAppIcon(to: icon) }
-                } label: {
-                    Image(uiImage: icon.preview)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 12)
-                                .stroke(store.appTheme.color, lineWidth: icons.selectedAppIcon == icon ? 6 : 0)
-                        )
-                        .frame(width: 60, height: 60)
-                        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-                        .padding(.trailing)
-                }
-                .buttonStyle(.plain)
-            }
-        }
-        .padding(.vertical, 4)
-    }
-#endif
 }
 
 #Preview {
