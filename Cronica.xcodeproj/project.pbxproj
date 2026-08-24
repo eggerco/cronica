@@ -292,6 +292,13 @@
 		C0COREIMPORTWATCH000000002 /* CronicaCoreImport.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0COREIMPORT000000000001 /* CronicaCoreImport.swift */; };
 		C0INTTEST00000000000002 /* CronicaIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0INTTEST00000000000001 /* CronicaIntegrationTests.swift */; };
 		C0ITEMSECTION00000000002 /* ItemContentSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ITEMSECTION00000000001 /* ItemContentSection.swift */; };
+		C0ITEMSECTIONWATCH000002 /* ItemContentSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ITEMSECTION00000000001 /* ItemContentSection.swift */; };
+		C0APPCONTENTREGION00002 /* AppContentRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84457D22973987E009CB21F /* AppContentRegion.swift */; };
+		C0APPCONTENTREGIONW0002 /* AppContentRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84457D22973987E009CB21F /* AppContentRegion.swift */; };
+		C0SEARCHITEMEXT00000002 /* SearchItemContent-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B2F6AB2A85D57400FF0246 /* SearchItemContent-Extension.swift */; };
+		C0SEARCHITEMEXTWATCH0002 /* SearchItemContent-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B2F6AB2A85D57400FF0246 /* SearchItemContent-Extension.swift */; };
+		C0ATTRIBUTIONVIEW000002 /* AttributionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D8AF8E27D4D0550042AEB6 /* AttributionView.swift */; };
+		C0ATTRIBUTIONVIEWW00002 /* AttributionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D8AF8E27D4D0550042AEB6 /* AttributionView.swift */; };
 		C0SENTRYMGR000000000002 /* SentryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SENTRYMGR000000000001 /* SentryManager.swift */; };
 		C0UITESTBUILD00000000000002 /* CronicaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0UITESTFILE00000000000001 /* CronicaUITests.swift */; };
 /* End PBXBuildFile section */
@@ -1645,6 +1652,10 @@
 				B8FCAE8A2AED8CA200F688FE /* FilmographyListView.swift in Sources */,
 				B806C4E12899BE2800A5330E /* CronicaWatchApp.swift in Sources */,
 				C0COREIMPORTWATCH000000002 /* CronicaCoreImport.swift in Sources */,
+				C0ITEMSECTIONWATCH000002 /* ItemContentSection.swift in Sources */,
+				C0APPCONTENTREGIONW0002 /* AppContentRegion.swift in Sources */,
+				C0SEARCHITEMEXTWATCH0002 /* SearchItemContent-Extension.swift in Sources */,
+				C0ATTRIBUTIONVIEWW00002 /* AttributionView.swift in Sources */,
 				B8C0215B29E0D56C006E9D82 /* ItemContentListPreferredDisplayType.swift in Sources */,
 				B81941B22A0839A50057DA04 /* TipJarSetting.swift in Sources */,
 				B819418E2A0822C30057DA04 /* UpNextEpisode.swift in Sources */,
@@ -1694,6 +1705,9 @@
 			files = (
 				C0COREIMPORT000000000002 /* CronicaCoreImport.swift in Sources */,
 				C0ITEMSECTION00000000002 /* ItemContentSection.swift in Sources */,
+				C0APPCONTENTREGION00002 /* AppContentRegion.swift in Sources */,
+				C0SEARCHITEMEXT00000002 /* SearchItemContent-Extension.swift in Sources */,
+				C0ATTRIBUTIONVIEW000002 /* AttributionView.swift in Sources */,
 				C0SENTRYMGR000000000002 /* SentryManager.swift in Sources */,
 				B8389ED228AB46E3003025BC /* WatchlistSearchScope.swift in Sources */,
 				B8B2F6B72A85E5E700FF0246 /* SearchContentPosterView.swift in Sources */,
@@ -2057,6 +2071,7 @@
 			baseConfigurationReference = C0NF1G000000000000000002 /* Secrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				APS_ENVIRONMENT = production;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -2456,7 +2471,7 @@
 			repositoryURL = "https://github.com/EmergeTools/Pow";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.3;
+				minimumVersion = 1.0.6;
 			};
 		};
 		B8F367622AF5CA900027CAF9 /* XCRemoteSwiftPackageReference "aptabase-swift" */ = {

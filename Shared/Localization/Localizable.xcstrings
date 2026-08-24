@@ -2886,6 +2886,7 @@
     },
     "Cancelled" : {
       "comment" : "Schedule Type",
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -3347,6 +3348,7 @@
     },
     "Coming Soon" : {
       "comment" : "Schedule Type",
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -3393,6 +3395,7 @@
       }
     },
     "Coming Soon To Theaters" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -4687,6 +4690,7 @@
       }
     },
     "Digital" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -5436,6 +5440,7 @@
     },
     "Ended Series" : {
       "comment" : "Schedule Type",
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -5712,6 +5717,7 @@
       }
     },
     "Error reading this title" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -7975,6 +7981,7 @@
       }
     },
     "Internal error: Something went wrong, contact TMDB." : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -8021,6 +8028,7 @@
       }
     },
     "Invalid API key: You must be granted a valid key." : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -8067,6 +8075,7 @@
       }
     },
     "Invalid Endpoint" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -8113,6 +8122,7 @@
       }
     },
     "Invalid Request" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -8159,6 +8169,7 @@
       }
     },
     "Invalid Response" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -8715,6 +8726,7 @@
       }
     },
     "Latest Movies" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -9591,6 +9603,7 @@
       }
     },
     "Movie" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -10099,6 +10112,7 @@
       }
     },
     "No biography available." : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -11435,6 +11449,7 @@
       }
     },
     "Physical" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -11758,6 +11773,7 @@
       }
     },
     "Popularity" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -12081,6 +12097,7 @@
       }
     },
     "Premiere" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -12404,6 +12421,7 @@
     },
     "Production" : {
       "comment" : "Schedule Type",
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -12864,6 +12882,7 @@
       }
     },
     "Recently Released" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -13232,6 +13251,7 @@
       }
     },
     "Release Date (Ascending)" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -13278,6 +13298,7 @@
       }
     },
     "Release Date (Descending)" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -13740,6 +13761,7 @@
     },
     "Renewed Series" : {
       "comment" : "Schedule Type",
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -17611,6 +17633,7 @@
       }
     },
     "The API is undergoing maintenance. Try again later." : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -17795,6 +17818,7 @@
       }
     },
     "Theatrical" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -17841,6 +17865,7 @@
       }
     },
     "Theatrical Limited" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -17933,6 +17958,7 @@
       }
     },
     "This content has been removed from TMDB, you can delete it." : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -18715,6 +18741,7 @@
       }
     },
     "Trending service ins't available right now." : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -18759,6 +18786,10 @@
           }
         }
       }
+    },
+    "Trending service isn't available right now." : {
+      "comment" : "A message displayed when the trending service is unavailable.",
+      "isCommentAutoGenerated" : true
     },
     "Try again later" : {
       "localizations" : {
@@ -18854,6 +18885,7 @@
       }
     },
     "TV" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -18900,6 +18932,7 @@
       }
     },
     "TV Show" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -19548,6 +19581,7 @@
       }
     },
     "Up Coming" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -21158,5 +21192,5 @@
       }
     }
   },
-  "version" : "1.0"
+  "version" : "1.1"
 }

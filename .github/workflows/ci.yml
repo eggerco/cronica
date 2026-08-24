@@ -47,7 +47,7 @@ jobs:
           xcodebuild build \
             -project Cronica.xcodeproj \
             -scheme "Cronica (EN-US)" \
-            -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest' \
+            -destination 'platform=iOS Simulator,name=iPhone 17,OS=latest' \
             -configuration Debug \
             CODE_SIGNING_ALLOWED=NO
 
@@ -57,6 +57,6 @@ jobs:
           xcodebuild test \
             -project Cronica.xcodeproj \
             -scheme "Cronica (EN-US)" \
-            -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest' \
+            -destination 'platform=iOS Simulator,name=iPhone 17,OS=latest' \
             -configuration Debug \
             CODE_SIGNING_ALLOWED=NO

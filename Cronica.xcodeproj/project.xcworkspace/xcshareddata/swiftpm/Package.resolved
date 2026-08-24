@@ -1,5 +1,5 @@
 {
-  "originHash" : "10227c8d0a04035986b0d85032e6dc32e07b443a112f640008888465d5bdb5d1",
+  "originHash" : "741633222ed534f54646d118389387f1879241b266cdbcc0d4d37991bfbdd141",
   "pins" : [
     {
       "identity" : "aptabase-swift",
@@ -24,8 +24,17 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/EmergeTools/Pow",
       "state" : {
-        "revision" : "f0d0f3e72d42beaf2b01f1cb798e1b55902814eb",
-        "version" : "1.0.4"
+        "revision" : "1b4b1dda28c50b95f0872927ee2226fe8b58950e",
+        "version" : "1.0.6"
+      }
+    },
+    {
+      "identity" : "sentry-cocoa",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/getsentry/sentry-cocoa",
+      "state" : {
+        "revision" : "f196cbb98e0388381d57908f2f5a9bdc385cde68",
+        "version" : "8.58.4"
       }
     },
     {

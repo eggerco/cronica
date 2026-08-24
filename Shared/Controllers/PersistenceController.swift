@@ -70,7 +70,9 @@ struct PersistenceController {
                 try container.viewContext.save()
             } catch {
                 AppLogger.persistence.error("Failed to save Core Data context: \(error.localizedDescription)")
+#if !os(watchOS)
                 SentryManager.capture(error, context: ["source": "PersistenceController.save"])
+#endif
             }
         }
     }

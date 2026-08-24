@@ -14,19 +14,18 @@ final class KeychainHelper {
 
     @discardableResult
     func save(_ data: Data, service: String, account: String) -> Bool {
-        let query = [
+        let query: [CFString: Any] = [
             kSecClass: kSecClassGenericPassword,
             kSecAttrService: service,
             kSecAttrAccount: account
-        ] as [CFString: Any] as CFDictionary
+        ]
 
-        SecItemDelete(query)
+        SecItemDelete(query as CFDictionary)
 
-        let attributes = query.merging([
-            kSecValueData: data
-        ] as [CFString: Any]) { _, new in new } as CFDictionary
+        var attributes = query
+        attributes[kSecValueData] = data
 
-        let status = SecItemAdd(attributes, nil)
+        let status = SecItemAdd(attributes as CFDictionary, nil)
         return status == errSecSuccess
     }
 
