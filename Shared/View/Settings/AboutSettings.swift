@@ -71,14 +71,14 @@ struct AboutSettings: View {
             privacy
 #endif
             
-            Section("Content Provider") {
+            CronicaFormSection("Content Provider") {
                 aboutButton(
                     title: "The Movie Database",
                     url: "https://www.themoviedb.org"
                 )
             }
             
-            Section("Design") {
+            CronicaFormSection("Design") {
                 aboutButton(
                     title: NSLocalizedString("Icon Designer", comment: ""),
                     subtitle: "Akhmad",
@@ -86,7 +86,7 @@ struct AboutSettings: View {
                 )
             }
             
-            Section("Translation") {
+            CronicaFormSection("Translation") {
                 aboutButton(title: String(localized: "German"),
                             subtitle: "Simon Boer",
                             url: "https://twitter.com/SimonBoer29")
@@ -101,7 +101,7 @@ struct AboutSettings: View {
                             subtitle: "Kevin Manca", url: "http://github.com/kevinm6")
             }
             
-            Section("Libraries") {
+            CronicaFormSection("Libraries") {
                 aboutButton(
                     title: "Nuke",
                     url: "https://github.com/kean/Nuke"
@@ -150,13 +150,11 @@ struct AboutSettings: View {
     
 #if os(macOS)
     private var privacy: some View {
-        Section {
+        CronicaFormSection("Privacy") {
             Button("Privacy Policy") {
                 openURL(AppWebsite.privacyPolicy)
             }
             .buttonStyle(.link)
-        } header: {
-            CronicaFormSectionHeader(title: "Privacy")
         }
     }
 #endif

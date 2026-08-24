@@ -14,14 +14,14 @@ struct AppearanceSetting: View {
         Form {
 #if os(iOS)
             if horizontalSizeClass == .compact {
-                Section("Details Page") {
+                CronicaFormSection("Details Page") {
                     Toggle("Prefer Poster in Details Page", isOn: $store.usePostersAsCover)
                 }
             }
 #endif
             
 #if !os(tvOS)
-            Section("Style Preferences") {
+            CronicaFormSection("Style Preferences") {
                 Picker(selection: $store.sectionStyleType) {
                     ForEach(SectionDetailsPreferredStyle.allCases) { item in
                         Text(item.title).tag(item)
@@ -51,7 +51,7 @@ struct AppearanceSetting: View {
 #endif
             
 #if os(iOS)
-            Section("App Theme") {
+            CronicaFormSection("App Theme") {
                 Picker(selection: $store.currentTheme) {
                     ForEach(AppTheme.allCases) { item in
                         Text(item.localizableName).tag(item)
@@ -62,7 +62,7 @@ struct AppearanceSetting: View {
                 .pickerStyle(.menu)
             }
             
-            Section("Accent Color") {
+            CronicaFormSection("Accent Color") {
                 accentColor
             }
             .listRowInsets(EdgeInsets())

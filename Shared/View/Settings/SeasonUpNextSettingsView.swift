@@ -11,7 +11,7 @@ struct SeasonUpNextSettingsView: View {
     @StateObject private var store = SettingsStore.shared
     var body: some View {
         Form {
-            Section("Behavior") {
+            CronicaFormSection("Behavior") {
                 Toggle(isOn: $store.markEpisodeWatchedOnTap) {
                     Text("Tap To Mark Episode as Watched")
                 }
@@ -34,7 +34,7 @@ struct SeasonUpNextSettingsView: View {
                 }
             }
             
-            Section("Appearance") {
+            CronicaFormSection("Appearance") {
                 Picker(selection: $store.upNextSortOrder) {
                     ForEach(UpNextSortOrder.allCases) { item in
                         Text(item.localizableName).tag(item)

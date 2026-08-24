@@ -16,7 +16,7 @@ struct BehaviorSetting: View {
     var body: some View {
         Form {
 #if !os(tvOS)
-            Section {
+            CronicaFormSectionWithFooter("Gestures") {
                 Picker(selection: $store.gesture) {
                     ForEach(UpdateItemProperties.allCases) { item in
                         Text(item.title).tag(item)
@@ -24,15 +24,13 @@ struct BehaviorSetting: View {
                 } label: {
                     Text("Double Tap On Cover/Poster")
                 }
-            } header: {
-                CronicaFormSectionHeader(title: "Gestures")
             } footer: {
                 Text("Choose what function to perform when double tap the cover/poster image.")
             }
 #endif
 
 #if os(iOS)
-            Section {
+            CronicaFormSectionWithFooter("Swipe Gestures") {
                 Picker("Primary Left Gesture", selection: $store.primaryLeftSwipe) {
                     ForEach(SwipeGestureOptions.allCases) {
                         Text($0.localizableName).tag($0)
@@ -61,19 +59,17 @@ struct BehaviorSetting: View {
                     store.secondaryRightSwipe = .markArchive
                     store.allowFullSwipe = false
                 }
-            } header: {
-                CronicaFormSectionHeader(title: "Swipe Gestures")
             } footer: {
                 Text("Full Swipe will activate the primary action")
             }
 
-            Section("Feedback") {
+            CronicaFormSection("Feedback") {
                 Toggle("Open Trailers in YouTube", isOn: $store.openInYouTube)
                 Toggle("Haptic Feedback", isOn: $store.hapticFeedback)
             }
 
             if horizontalSizeClass == .compact {
-                Section("Launch") {
+                CronicaFormSection("Launch") {
                     Toggle("Enable Preferred Launch Screen", isOn: $store.isPreferredLaunchScreenEnabled)
                     Picker("Preferred Launch Screen", selection: $store.preferredLaunchScreen) {
                         ForEach(Screens.allCases) { item in
@@ -88,7 +84,7 @@ struct BehaviorSetting: View {
 #endif
 
 #if !os(tvOS)
-            Section {
+            CronicaFormSectionWithFooter("Sharing") {
                 Picker(selection: $store.shareLinkPreference) {
                     ForEach(ShareLinkPreference.allCases) { item in
                         Text(item.title).tag(item)
@@ -96,8 +92,6 @@ struct BehaviorSetting: View {
                 } label: {
                     Text("Sharable Link")
                 }
-            } header: {
-                CronicaFormSectionHeader(title: "Sharing")
             } footer: {
                 Text("You can choose to share using a Cronica link that will allow you to open the application.\nPlease note that not all content can be shared with a Cronica link, the application will always use TMDB links if necessary.")
             }
@@ -111,12 +105,10 @@ struct BehaviorSetting: View {
             }
 #endif
 
-            Section {
+            CronicaFormSection("Storage") {
                 Button("Clear Cache (\(String(format: "%.1f", cacheSizeMB)) MB)", role: .destructive) {
                     showClearCacheConfirmation = true
                 }
-            } header: {
-                CronicaFormSectionHeader(title: "Storage")
             }
         }
         .navigationTitle("Behavior")

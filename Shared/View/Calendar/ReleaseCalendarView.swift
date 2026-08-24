@@ -15,7 +15,6 @@ struct ReleaseCalendarView: View {
     )
     private var items: FetchedResults<WatchlistItem>
 
-    @State private var displayedMonth = Date()
     @State private var selectedDate = Calendar.current.startOfDay(for: Date())
 
     private var calendar: Calendar { Calendar.current }
@@ -33,30 +32,36 @@ struct ReleaseCalendarView: View {
         }
     }
 
-    private var daysInMonth: [Date] {
-        guard let monthInterval = calendar.dateInterval(of: .month, for: displayedMonth),
-              let gridStart = calendar.dateInterval(of: .weekOfMonth, for: monthInterval.start)?.start
-        else { return [] }
-
-        return (0..<42).compactMap { offset in
-            calendar.date(byAdding: .day, value: offset, to: gridStart)
-                .map { calendar.startOfDay(for: $0) }
-        }
+    private var selectedDay: Date {
+        calendar.startOfDay(for: selectedDate)
     }
 
     private var selectedDayItems: [WatchlistItem] {
-        (itemsByDay[selectedDate] ?? []).sorted { $0.itemTitle.localizedCaseInsensitiveCompare($1.itemTitle) == .orderedAscending }
+        (itemsByDay[selectedDay] ?? []).sorted {
+            $0.itemTitle.localizedCaseInsensitiveCompare($1.itemTitle) == .orderedAscending
+        }
     }
 
     var body: some View {
         List {
             Section {
-                monthHeader
-                weekdayHeader
-                calendarGrid
+                DatePicker(
+                    "Release Date",
+                    selection: $selectedDate,
+                    displayedComponents: [.date]
+                )
+                .datePickerStyle(.graphical)
+                .labelsHidden()
+                .onChange(of: selectedDate) { _, newValue in
+                    let day = calendar.startOfDay(for: newValue)
+                    if day != selectedDate {
+                        selectedDate = day
+                    }
+                }
             }
+            .listRowInsets(EdgeInsets())
 
-            Section("Releases") {
+            CronicaFormSection("Releases") {
                 if selectedDayItems.isEmpty {
                     Text("No watchlist releases on this date.")
                         .foregroundStyle(.secondary)
@@ -75,79 +80,6 @@ struct ReleaseCalendarView: View {
 #endif
         .cronicaSettingsForm()
         .cronicaWatchlistNavigationDestinations()
-    }
-
-    private var monthHeader: some View {
-        HStack {
-            Button {
-                displayedMonth = calendar.date(byAdding: .month, value: -1, to: displayedMonth) ?? displayedMonth
-            } label: {
-                Image(systemName: "chevron.left")
-            }
-            .buttonStyle(.plain)
-
-            Spacer()
-
-            Text(displayedMonth, format: .dateTime.month(.wide).year())
-                .font(.headline)
-
-            Spacer()
-
-            Button {
-                displayedMonth = calendar.date(byAdding: .month, value: 1, to: displayedMonth) ?? displayedMonth
-            } label: {
-                Image(systemName: "chevron.right")
-            }
-            .buttonStyle(.plain)
-        }
-        .padding(.vertical, 4)
-    }
-
-    private var weekdayHeader: some View {
-        let symbols = calendar.shortWeekdaySymbols
-        return LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7), spacing: 8) {
-            ForEach(symbols, id: \.self) { symbol in
-                Text(symbol)
-                    .font(.caption2)
-                    .foregroundStyle(.secondary)
-                    .frame(maxWidth: .infinity)
-            }
-        }
-    }
-
-    private var calendarGrid: some View {
-        LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7), spacing: 8) {
-            ForEach(daysInMonth, id: \.self) { day in
-                dayCell(for: day)
-            }
-        }
-    }
-
-    private func dayCell(for day: Date) -> some View {
-        let isInDisplayedMonth = calendar.isDate(day, equalTo: displayedMonth, toGranularity: .month)
-        let isSelected = calendar.isDate(day, inSameDayAs: selectedDate)
-        let hasRelease = itemsByDay[day] != nil
-
-        return Button {
-            selectedDate = day
-        } label: {
-            VStack(spacing: 4) {
-                Text(day, format: .dateTime.day())
-                    .font(.body)
-                    .foregroundStyle(isInDisplayedMonth ? Color.primary : Color.secondary.opacity(0.4))
-                Circle()
-                    .fill(hasRelease ? Color.accentColor : Color.clear)
-                    .frame(width: 5, height: 5)
-            }
-            .frame(maxWidth: .infinity, minHeight: 36)
-            .background {
-                if isSelected {
-                    RoundedRectangle(cornerRadius: 8, style: .continuous)
-                        .fill(Color.accentColor.opacity(0.15))
-                }
-            }
-        }
-        .buttonStyle(.plain)
     }
 
     private func calendarDay(for item: WatchlistItem) -> Date? {

@@ -29,9 +29,8 @@ struct NotificationListView: View {
         .cronicaLoadingOverlay(!hasLoaded)
         .actionPopup(isShowing: $showPopup, for: popupType)
         .navigationTitle("Notifications")
-#if os(macOS)
-        .formStyle(.grouped)
-#elseif os(iOS)
+        .cronicaSettingsForm()
+#if os(iOS)
         .navigationBarTitleDisplayMode(.large)
 #endif
         .toolbar {
@@ -72,7 +71,7 @@ struct NotificationListView: View {
     @ViewBuilder
     private var deliveredItemsView: some View {
         if !deliveredItems.isEmpty {
-            Section("Recent Notifications") {
+            CronicaFormSection("Recent Notifications") {
                 ForEach(deliveredItems.sorted(by: { $0.itemTitle < $1.itemTitle })) { item in
                     ItemContentRowView(item: item, showPopup: $showPopup, popupType: $popupType, showNotificationDate: true)
                         .swipeActions(edge: .trailing, allowsFullSwipe: true) {
@@ -97,7 +96,7 @@ struct NotificationListView: View {
                     .foregroundColor(.secondary)
             }
         } else {
-            Section("Upcoming Notifications") {
+            CronicaFormSection("Upcoming Notifications") {
                 ForEach(items) { item in
                     ItemContentRowView(item: item, showPopup: $showPopup, popupType: $popupType, showNotificationDate: true)
                         .onAppear {

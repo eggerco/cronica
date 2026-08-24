@@ -22,7 +22,7 @@ struct SettingsView: View {
     private var settings: some View {
 #if os(iOS) || os(visionOS)
         Form {
-            Section("General") {
+            CronicaFormSection("General") {
                 NavigationLink(value: SettingsScreens.appearance) {
                     settingsLabel(title: NSLocalizedString("Appearance", comment: ""),
                                   icon: "paintbrush", color: .blue)
@@ -37,7 +37,7 @@ struct SettingsView: View {
                 }
             }
             
-            Section("Features") {
+            CronicaFormSection("Features") {
                 NavigationLink(value: SettingsScreens.watchlist) {
                     settingsLabel(title: NSLocalizedString("Watchlist", comment: ""),
                                   icon: "rectangle.on.rectangle", color: AppThemeColors.goldenrod.color)
@@ -52,7 +52,7 @@ struct SettingsView: View {
                 }
             }
             
-            Section("About") {
+            CronicaFormSection("About") {
                 NavigationLink(value: SettingsScreens.about) {
                     settingsLabel(title: NSLocalizedString("About", comment: ""),
                                   icon: "info.circle", color: .black)

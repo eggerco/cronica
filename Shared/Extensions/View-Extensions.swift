@@ -94,11 +94,6 @@ extension View {
 #endif
     }
 
-    /// Use for explicit `Section` header closures; string-based `Section("Title")` is preferred.
-    func cronicaFormSectionHeader(_ title: LocalizedStringKey) -> some View {
-        CronicaFormSectionHeader(title: title)
-    }
-
     func appTheme() -> some View {
         modifier(AppThemeModifier())
     }
@@ -156,6 +151,52 @@ struct CronicaFormSectionHeader: View {
 
     var body: some View {
         Text(title)
+            .textCase(nil)
             .environment(\.textCase, nil)
+    }
+}
+
+/// Form section with sentence-case title. Uses `Section("Title")` on iOS/macOS/tvOS and an explicit header on watchOS.
+struct CronicaFormSection<Content: View>: View {
+    let title: LocalizedStringKey
+    @ViewBuilder var content: () -> Content
+
+    var body: some View {
+#if os(watchOS)
+        Section {
+            content()
+        } header: {
+            CronicaFormSectionHeader(title: title)
+        }
+#else
+        Section(title) {
+            content()
+        }
+#endif
+    }
+}
+
+/// Form section with sentence-case title and footer.
+struct CronicaFormSectionWithFooter<Content: View, Footer: View>: View {
+    let title: LocalizedStringKey
+    @ViewBuilder var content: () -> Content
+    @ViewBuilder var footer: () -> Footer
+
+    var body: some View {
+#if os(watchOS)
+        Section {
+            content()
+        } header: {
+            CronicaFormSectionHeader(title: title)
+        } footer: {
+            footer()
+        }
+#else
+        Section(title) {
+            content()
+        } footer: {
+            footer()
+        }
+#endif
     }
 }

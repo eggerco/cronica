@@ -15,6 +15,9 @@ struct CronicaApp: App {
     var persistence = PersistenceController.shared
     private let backgroundIdentifier = "dev.alexandremadeira.cronica.refreshContent"
     @Environment(\.scenePhase) private var scene
+#if !os(watchOS) && !os(tvOS)
+    private static var hasSyncedCalendarThisLaunch = false
+#endif
     @State private var selectedItem: ItemContent?
     @State private var showFeedbackForm = false
     @State private var showAbout = false
@@ -112,6 +115,12 @@ struct CronicaApp: App {
             if phase == .background {
                 scheduleAppRefresh()
             }
+#if !os(watchOS) && !os(tvOS)
+            if phase == .active, !Self.hasSyncedCalendarThisLaunch, settings.allowCalendarSync {
+                Self.hasSyncedCalendarThisLaunch = true
+                Task { await CalendarManager.shared.syncAll() }
+            }
+#endif
 #if os(iOS)
             if phase == .active {
                 Task {

@@ -59,7 +59,7 @@ struct NotificationsSettingsView: View {
             
 #if !os(tvOS)
             if settings.allowNotifications {
-                Section("Notification Time") {
+                CronicaFormSection("Notification Time") {
                     DatePicker("Select the hour and minute for notification delivery",
                                selection: notificationTimeBinding,
                                displayedComponents: .hourAndMinute)
@@ -79,8 +79,8 @@ struct NotificationsSettingsView: View {
             }
 #endif
 
-#if !os(watchOS)
-            Section {
+#if os(iOS) || os(macOS) || os(visionOS)
+            CronicaFormSectionWithFooter("Calendar Sync") {
                 Toggle("Sync to Calendar", isOn: $settings.allowCalendarSync)
                 Toggle(isOn: $settings.syncCalendarMovies) {
                     Text("Sync Movie Releases")
@@ -95,8 +95,6 @@ struct NotificationsSettingsView: View {
                 NavigationLink(value: ReleaseCalendarRoute.watchlist) {
                     Text("View Release Calendar")
                 }
-            } header: {
-                CronicaFormSectionHeader(title: "Calendar Sync")
             } footer: {
                 Text("Events are saved to a dedicated Cronica calendar in the Calendar app.")
             }

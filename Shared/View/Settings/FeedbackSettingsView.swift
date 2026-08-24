@@ -28,7 +28,7 @@ struct FeedbackComposerView: View {
             .buttonStyle(.link)
 #endif
             
-            Section {
+            CronicaFormSectionWithFooter("Social Media") {
                 Button("X (Twitter)") {
                     guard let url = URL(string: "https://x.com/CronicaApp") else { return }
                     openURL(url)
@@ -36,8 +36,6 @@ struct FeedbackComposerView: View {
 #if os(macOS)
                 .buttonStyle(.link)
 #endif
-            } header: {
-                CronicaFormSectionHeader(title: "Social Media")
             } footer: {
                 Text("Follow Cronica on X (Twitter) to stay updated about new features.")
             }
