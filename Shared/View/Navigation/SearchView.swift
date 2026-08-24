@@ -198,9 +198,7 @@ struct SearchView: View {
 
 extension SearchView {
     private func loadMoreOnAppear() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            viewModel.loadMoreItems()
-        }
+        viewModel.loadMoreItems()
     }
 }
 

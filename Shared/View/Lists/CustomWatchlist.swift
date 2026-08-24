@@ -359,10 +359,3 @@ struct CustomWatchlist: View {
         SearchContentUnavailableView(query: query)
     }
 }
-
-struct SearchContentUnavailableView: View {
-    let query: String
-    var body: some View {
-        ContentUnavailableView.search(text: query)
-    }
-}

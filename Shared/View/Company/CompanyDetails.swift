@@ -71,16 +71,8 @@ struct CompanyDetails: View {
                             ItemContentRowView(item: item, showPopup: $showPopup, popupType: $popupType)
                         }
                         if isLoaded && !endPagination {
-                            CenterHorizontalView {
-                                ProgressView("Loading")
-                                    .padding(.horizontal)
-                                    .onAppear {
-                                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
-                                            Task {
-                                                await load()
-                                            }
-                                        }
-                                    }
+                            PaginationFooter(label: "Loading") {
+                                Task { await load() }
                             }
                         }
                     } else if items.isEmpty, isLoaded {
@@ -102,16 +94,8 @@ struct CompanyDetails: View {
                         .buttonStyle(.plain)
                 }
                 if isLoaded && !endPagination {
-                    CenterHorizontalView {
-                        ProgressView()
-                            .padding()
-                            .onAppear {
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
-                                    Task {
-                                        await load()
-                                    }
-                                }
-                            }
+                    PaginationFooter {
+                        Task { await load() }
                     }
                 }
             } else {
@@ -133,16 +117,8 @@ struct CompanyDetails: View {
                         .buttonStyle(.plain)
                 }
                 if isLoaded && !endPagination {
-                    CenterHorizontalView {
-                        ProgressView()
-                            .padding()
-                            .onAppear {
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
-                                    Task {
-                                        await load()
-                                    }
-                                }
-                            }
+                    PaginationFooter {
+                        Task { await load() }
                     }
                 }
             } else {
@@ -208,8 +184,7 @@ private extension CompanyDetails {
     }
 }
 
-struct SimpleUnavailableView: View {
-    var body: some View {
-        ContentUnavailableView("Try again later", systemImage: "rectangle.on.rectangle")
-    }
+#Preview {
+    CompanyDetails(company: .init(name: "PlayStation Productions",
+                                  id: 125281, logoPath: nil, originCountry: nil, description: nil))
 }

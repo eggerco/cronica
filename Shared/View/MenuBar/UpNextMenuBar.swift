@@ -32,11 +32,7 @@ struct UpNextMenuBar: View {
                         .padding(.top, item == viewModel.episodes.last ? 8 : 0)
                     }
                 }
-                .overlay {
-                    if !viewModel.isLoaded {
-                        CronicaLoadingPopupView()
-                    }
-                }
+                .cronicaLoadingOverlay(!viewModel.isLoaded)
                 .redacted(reason: viewModel.isLoaded ? [] : .placeholder)
             } header: {
                 HStack {

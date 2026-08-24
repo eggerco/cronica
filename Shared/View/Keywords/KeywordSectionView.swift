@@ -168,10 +168,8 @@ private struct DrawingConstants {
 
 extension KeywordSectionView {
     private func loadMoreOnAppear() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-            Task {
-                await load(keyword.id, sortBy: sortBy, reload: false)
-            }
+        Task {
+            await load(keyword.id, sortBy: sortBy, reload: false)
         }
     }
     private func load(_ id: Int, sortBy: TMDBSortBy, reload: Bool) async {

@@ -11,8 +11,11 @@ import SwiftUI
 struct ConfirmationPopupModifier: ViewModifier {
     @Binding var isShowing: Bool
     var item: ActionPopupItems?
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
-    private static let bannerAnimation = Animation.easeInOut(duration: 0.25)
+    private var bannerAnimation: Animation? {
+        reduceMotion ? nil : .easeInOut(duration: 0.25)
+    }
 
     func body(content: Content) -> some View {
         content
@@ -27,13 +30,15 @@ struct ConfirmationPopupModifier: ViewModifier {
 #endif
                         .shadow(color: .black.opacity(0.08), radius: 8, y: 4)
                         .padding(.bottom, 12)
-                        .transition(.move(edge: .bottom).combined(with: .opacity))
+                        .transition(reduceMotion ? .opacity : .move(edge: .bottom).combined(with: .opacity))
+                        .accessibilityAddTraits(.isStaticText)
+                        .accessibilityLabel(item.localizedString)
                         .onTapGesture {
-                            withAnimation(Self.bannerAnimation) { isShowing = false }
+                            dismissBanner()
                         }
                         .onAppear {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
-                                withAnimation(Self.bannerAnimation) { isShowing = false }
+                                dismissBanner()
                             }
                         }
 #if os(iOS)
@@ -41,7 +46,15 @@ struct ConfirmationPopupModifier: ViewModifier {
 #endif
                 }
             }
-            .animation(Self.bannerAnimation, value: isShowing)
+            .animation(bannerAnimation, value: isShowing)
+    }
+
+    private func dismissBanner() {
+        if let bannerAnimation {
+            withAnimation(bannerAnimation) { isShowing = false }
+        } else {
+            isShowing = false
+        }
     }
 }
 

@@ -26,7 +26,7 @@ struct TrendingView: View {
                     .redacted(reason: isLoaded ? [] : .placeholder)
                 }
             }
-			.overlay { if !isLoaded { CronicaLoadingPopupView() } }
+			.cronicaLoadingOverlay(!isLoaded)
             .navigationTitle("Trending")
             .navigationBarTitleDisplayMode(.inline)
             .navigationDestination(for: ItemContent.self) { item in

@@ -238,8 +238,3 @@ struct SelectListView: View {
         )
     )
 }
-
-enum CustomNavigationMac: String, Identifiable, CaseIterable {
-    var id: String { rawValue }
-    case newList
-}

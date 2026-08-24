@@ -94,11 +94,14 @@ extension View {
                     Color.black.opacity(0.06)
                         .ignoresSafeArea()
                     ProgressView()
+#if !os(watchOS)
                         .controlSize(.large)
                         .padding(20)
                         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+#endif
                 }
                 .transition(.opacity)
+                .accessibilityLabel(String(localized: "Loading"))
             }
         }
         .animation(.easeInOut(duration: 0.2), value: isLoading)

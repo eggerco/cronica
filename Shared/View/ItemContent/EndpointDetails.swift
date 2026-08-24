@@ -57,16 +57,8 @@ struct EndpointDetails: View {
                         ItemContentRowView(item: item, showPopup: $showPopup, popupType: $popupType)
                     }
                     if endpoint != nil && !endPagination && !isLoading {
-                        CenterHorizontalView {
-                            ProgressView("Loading")
-                                .padding()
-                                .onAppear {
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                                        Task {
-                                            await loadMoreItems(for: endpoint)
-                                        }
-                                    }
-                                }
+                        PaginationFooter(label: "Loading") {
+                            Task { await loadMoreItems(for: endpoint) }
                         }
                     }
                 }
@@ -82,16 +74,8 @@ struct EndpointDetails: View {
                         .buttonStyle(.plain)
                 }
                 if endpoint != nil && !endPagination && !isLoading {
-                    CenterHorizontalView {
-                        ProgressView()
-                            .padding()
-                            .onAppear {
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                                    Task {
-                                        await loadMoreItems(for: endpoint)
-                                    }
-                                }
-                            }
+                    PaginationFooter {
+                        Task { await loadMoreItems(for: endpoint) }
                     }
                 }
             }
@@ -107,16 +91,8 @@ struct EndpointDetails: View {
                     .buttonStyle(.plain)
             }
             if endpoint != nil && !endPagination && !isLoading {
-                CenterHorizontalView {
-                    ProgressView()
-                        .padding()
-                        .onAppear {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                                Task {
-                                    await loadMoreItems(for: endpoint)
-                                }
-                            }
-                        }
+                PaginationFooter {
+                    Task { await loadMoreItems(for: endpoint) }
                 }
             }
         }
