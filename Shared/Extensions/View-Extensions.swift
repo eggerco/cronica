@@ -159,19 +159,15 @@ private struct CronicaNavigationTitleModifier: ViewModifier {
     let displayMode: NavigationBarItem.TitleDisplayMode
 
     func body(content: Content) -> some View {
-        let titleText = Text(verbatim: title)
-            .textCase(nil)
-            .environment(\.textCase, nil)
-
 #if os(iOS)
         content
             .environment(\.textCase, nil)
-            .navigationTitle(titleText)
+            .navigationTitle(Text(verbatim: title))
             .navigationBarTitleDisplayMode(displayMode)
 #else
         content
             .environment(\.textCase, nil)
-            .navigationTitle(titleText)
+            .navigationTitle(title)
 #endif
     }
 }
