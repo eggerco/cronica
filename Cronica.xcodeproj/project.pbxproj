@@ -250,8 +250,6 @@
 		B8D7AEE328BA64DF0053CE5A /* DataPlaceholder.json in Resources */ = {isa = PBXBuildFile; fileRef = B8D7AEE228BA64DF0053CE5A /* DataPlaceholder.json */; };
 		B8D8AF9227D4DB720042AEB6 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D8AF9127D4DB720042AEB6 /* SearchViewModel.swift */; };
 		B8DA5CC62B0E432200678592 /* UpNextMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DA5CC52B0E432200678592 /* UpNextMenuBar.swift */; };
-		B8DA5CC82B0E496600678592 /* Aptabase in Frameworks */ = {isa = PBXBuildFile; productRef = B8DA5CC72B0E496600678592 /* Aptabase */; };
-		B8DA5CCA2B0E5DC800678592 /* Aptabase in Frameworks */ = {isa = PBXBuildFile; platformFilters = (macos, ); productRef = B8DA5CC92B0E5DC800678592 /* Aptabase */; };
 		B8DD56A1290DE2FD002CAAFD /* CenterHorizontalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DD569F290DE2D7002CAAFD /* CenterHorizontalView.swift */; };
 		B8DD56A2290DE2FE002CAAFD /* CenterHorizontalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DD569F290DE2D7002CAAFD /* CenterHorizontalView.swift */; };
 		B8E3ABF62955361C00CA0945 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8E3ABF52955361C00CA0945 /* CloudKit.framework */; };
@@ -267,7 +265,6 @@
 		B8F253BC2BC868D2003F27E8 /* SeasonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F253BA2BC8688A003F27E8 /* SeasonDetailView.swift */; };
 		B8F253BE2BC9CBDB003F27E8 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = B8F253BD2BC9CBDB003F27E8 /* PrivacyInfo.xcprivacy */; };
 		B8F253BF2BC9CBDB003F27E8 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = B8F253BD2BC9CBDB003F27E8 /* PrivacyInfo.xcprivacy */; };
-		B8F367642AF5CAAA0027CAF9 /* Aptabase in Frameworks */ = {isa = PBXBuildFile; productRef = B8F367632AF5CAAA0027CAF9 /* Aptabase */; };
 		B8F6D6CA29DB27F000B9190B /* PersonSearchImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80982BC292AA6B00020716F /* PersonSearchImage.swift */; };
 		B8F6DE5829329AE8005D1A50 /* EndpointDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F6DE5629329AE5005D1A50 /* EndpointDetails.swift */; };
 		B8F6DE6329379F70005D1A50 /* ItemContentSectionDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F6DE6129379F58005D1A50 /* ItemContentSectionDetails.swift */; };
@@ -585,7 +582,6 @@
 			files = (
 				B86A3A922B509CB000BDE432 /* NukeUI in Frameworks */,
 				B8E3ABF62955361C00CA0945 /* CloudKit.framework in Frameworks */,
-				B8DA5CC82B0E496600678592 /* Aptabase in Frameworks */,
 				B86A3A942B509CB400BDE432 /* Nuke in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -594,7 +590,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8F367642AF5CAAA0027CAF9 /* Aptabase in Frameworks */,
 				B86A3A902B509C9B00BDE432 /* Pow in Frameworks */,
 				B8424FB02C7A01500098BFFB /* YouTubePlayerKit in Frameworks */,
 				B86A3A8D2B509C8200BDE432 /* NukeUI in Frameworks */,
@@ -607,7 +602,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8DA5CCA2B0E5DC800678592 /* Aptabase in Frameworks */,
 				B8D7AEA928B95F5E0053CE5A /* SwiftUI.framework in Frameworks */,
 				B8D7AEA828B95F5E0053CE5A /* WidgetKit.framework in Frameworks */,
 			);
@@ -1387,7 +1381,6 @@
 			name = "Cronica Watch App";
 			packageProductDependencies = (
 				C0CRONICACORE00000000004 /* CronicaCore */,
-				B8DA5CC72B0E496600678592 /* Aptabase */,
 				B86A3A912B509CB000BDE432 /* NukeUI */,
 				B86A3A932B509CB400BDE432 /* Nuke */,
 			);
@@ -1415,7 +1408,6 @@
 			packageProductDependencies = (
 				C0CRONICACORE00000000001 /* CronicaCore */,
 				C0SENTRYPROD000000000001 /* Sentry */,
-				B8F367632AF5CAAA0027CAF9 /* Aptabase */,
 				B86A3A8A2B509C8200BDE432 /* Nuke */,
 				B86A3A8C2B509C8200BDE432 /* NukeUI */,
 				B86A3A8F2B509C9B00BDE432 /* Pow */,
@@ -1440,7 +1432,6 @@
 			name = "Cronica Widget Extension";
 			packageProductDependencies = (
 				C0CRONICACORE00000000002 /* CronicaCore */,
-				B8DA5CC92B0E5DC800678592 /* Aptabase */,
 			);
 			productName = CronicaWidgetExtension;
 			productReference = B8D7AEA728B95F5D0053CE5A /* Cronica Widget Extension.appex */;
@@ -1527,7 +1518,6 @@
 			mainGroup = B8110ED2279245D000844FEB;
 			packageReferences = (
 				C0LOCALPKG00000000000001 /* XCLocalSwiftPackageReference "CronicaCore" */,
-				B8F367622AF5CA900027CAF9 /* XCRemoteSwiftPackageReference "aptabase-swift" */,
 				B86A3A892B509C8200BDE432 /* XCRemoteSwiftPackageReference "Nuke" */,
 				B86A3A8E2B509C9B00BDE432 /* XCRemoteSwiftPackageReference "Pow" */,
 				B8424FAE2C7A01500098BFFB /* XCRemoteSwiftPackageReference "YouTubePlayerKit" */,
@@ -2482,13 +2472,6 @@
 				minimumVersion = 1.0.6;
 			};
 		};
-		B8F367622AF5CA900027CAF9 /* XCRemoteSwiftPackageReference "aptabase-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/aptabase/aptabase-swift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.3.4;
-			};
 		};
 		C0SENTRYPKG0000000000001 /* XCRemoteSwiftPackageReference "sentry-cocoa" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -2530,21 +2513,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B86A3A892B509C8200BDE432 /* XCRemoteSwiftPackageReference "Nuke" */;
 			productName = Nuke;
-		};
-		B8DA5CC72B0E496600678592 /* Aptabase */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B8F367622AF5CA900027CAF9 /* XCRemoteSwiftPackageReference "aptabase-swift" */;
-			productName = Aptabase;
-		};
-		B8DA5CC92B0E5DC800678592 /* Aptabase */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B8F367622AF5CA900027CAF9 /* XCRemoteSwiftPackageReference "aptabase-swift" */;
-			productName = Aptabase;
-		};
-		B8F367632AF5CAAA0027CAF9 /* Aptabase */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B8F367622AF5CA900027CAF9 /* XCRemoteSwiftPackageReference "aptabase-swift" */;
-			productName = Aptabase;
 		};
 		C0CRONICACORE00000000001 /* CronicaCore */ = {
 			isa = XCSwiftPackageProductDependency;

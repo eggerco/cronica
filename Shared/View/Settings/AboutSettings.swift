@@ -109,10 +109,6 @@ struct AboutSettings: View {
                     title: "Nuke",
                     url: "https://github.com/kean/Nuke"
                 )
-                aboutButton(
-                    title: "Aptabase",
-                    url: "https://aptabase.com"
-                )
                 aboutButton(title: "YouTubePlayerKit",
                             url: "https://github.com/SvenTiigi/YouTubePlayerKit")
             }

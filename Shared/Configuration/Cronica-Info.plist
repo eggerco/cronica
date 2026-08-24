@@ -34,8 +34,6 @@
 	</array>
 	<key>TMDB_API_KEY</key>
 	<string>$(TMDB_API_KEY)</string>
-	<key>APTABASE_CLIENT_KEY</key>
-	<string>$(APTABASE_CLIENT_KEY)</string>
 	<key>SENTRY_DSN</key>
 	<string>$(SENTRY_DSN)</string>
 	<key>UILaunchScreen</key>

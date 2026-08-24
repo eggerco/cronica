@@ -49,7 +49,7 @@ To get started:
 3. Add your TMDb API key to `Config/Secrets.xcconfig` (get one at [TMDb](https://www.themoviedb.org/documentation/api)).
 4. Open `Cronica.xcodeproj` and build with the **Cronica (EN-US)** scheme.
 
-For CI, set repository secrets `TMDB_API_KEY`, optionally `APTABASE_CLIENT_KEY`, and `SENTRY_DSN`. See [SECURITY.md](SECURITY.md) for the full security policy.
+For CI, set repository secrets `TMDB_API_KEY` and optionally `SENTRY_DSN`. See [SECURITY.md](SECURITY.md) for the full security policy.
 
 ### Architecture
 

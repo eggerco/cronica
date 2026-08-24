@@ -1,51 +1,41 @@
 {
-  "originHash" : "741633222ed534f54646d118389387f1879241b266cdbcc0d4d37991bfbdd141",
-  "pins" : [
+  "pins": [
     {
-      "identity" : "aptabase-swift",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/aptabase/aptabase-swift",
-      "state" : {
-        "revision" : "62e47dad9b6900042a801eafdabb2023d259938e",
-        "version" : "0.3.8"
+      "identity": "nuke",
+      "kind": "remoteSourceControl",
+      "location": "https://github.com/kean/Nuke",
+      "state": {
+        "revision": "7395c7a9dcd390bbcfad17a731d8d529602702c6",
+        "version": "12.7.0"
       }
     },
     {
-      "identity" : "nuke",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/kean/Nuke",
-      "state" : {
-        "revision" : "7395c7a9dcd390bbcfad17a731d8d529602702c6",
-        "version" : "12.7.0"
+      "identity": "pow",
+      "kind": "remoteSourceControl",
+      "location": "https://github.com/EmergeTools/Pow",
+      "state": {
+        "revision": "1b4b1dda28c50b95f0872927ee2226fe8b58950e",
+        "version": "1.0.6"
       }
     },
     {
-      "identity" : "pow",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/EmergeTools/Pow",
-      "state" : {
-        "revision" : "1b4b1dda28c50b95f0872927ee2226fe8b58950e",
-        "version" : "1.0.6"
+      "identity": "sentry-cocoa",
+      "kind": "remoteSourceControl",
+      "location": "https://github.com/getsentry/sentry-cocoa",
+      "state": {
+        "revision": "f196cbb98e0388381d57908f2f5a9bdc385cde68",
+        "version": "8.58.4"
       }
     },
     {
-      "identity" : "sentry-cocoa",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/getsentry/sentry-cocoa",
-      "state" : {
-        "revision" : "f196cbb98e0388381d57908f2f5a9bdc385cde68",
-        "version" : "8.58.4"
-      }
-    },
-    {
-      "identity" : "youtubeplayerkit",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/SvenTiigi/YouTubePlayerKit",
-      "state" : {
-        "revision" : "fe1c1ec340f6d79866131432ecaa190fd6bbc4cb",
-        "version" : "1.9.0"
+      "identity": "youtubeplayerkit",
+      "kind": "remoteSourceControl",
+      "location": "https://github.com/SvenTiigi/YouTubePlayerKit",
+      "state": {
+        "revision": "fe1c1ec340f6d79866131432ecaa190fd6bbc4cb",
+        "version": "1.9.0"
       }
     }
   ],
-  "version" : 3
+  "version": 3
 }

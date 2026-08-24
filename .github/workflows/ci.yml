@@ -15,7 +15,6 @@ jobs:
     runs-on: macos-15
     env:
       TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
-      APTABASE_CLIENT_KEY: ${{ secrets.APTABASE_CLIENT_KEY }}
       SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
 
     steps:

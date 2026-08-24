@@ -20,10 +20,6 @@ public struct Key {
     }
 
     public static let tmdbApi = configurationValue(for: "TMDB_API_KEY")
-    public static let aptabaseClientKey: String? = {
-        let key = configurationValue(for: "APTABASE_CLIENT_KEY")
-        return key.isEmpty ? nil : key
-    }()
     public static let sentryDSN: String? = {
         let dsn = configurationValue(for: "SENTRY_DSN")
         return dsn.isEmpty ? nil : dsn

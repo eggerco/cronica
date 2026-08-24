@@ -6,29 +6,19 @@
 //
 
 import Foundation
-import Aptabase
 
+/// Lightweight diagnostic helper. Crash reporting is handled by Sentry.
 struct CronicaTelemetry {
     static let shared = CronicaTelemetry()
-    
+
     private init() { }
-    
-    func setup() {
-#if !targetEnvironment(simulator) && !DEBUG
-        guard let aptabaseKey = Key.aptabaseClientKey, !aptabaseKey.isEmpty else { return }
-        Aptabase.shared.initialize(appKey: aptabaseKey)
-        Aptabase.shared.trackEvent("app_started")
-#endif
-    }
-    
-    /// Send a signal using Aptabase service (on iOS/iPadOS) or in Aptabase (macOS, watchOS, tvOS).
-    ///
-    /// If it is running in Simulator or Debug, it will send a warning on logger.
+
+    func setup() { }
+
+    /// Logs diagnostic messages in Debug / Simulator only.
     func handleMessage(_ message: String, for id: String) {
 #if targetEnvironment(simulator) || DEBUG
         AppLogger.lifecycle.warning("\(message), for: \(id)")
-#else
-        Aptabase.shared.trackEvent(id, with: ["Message": message])
 #endif
     }
 }

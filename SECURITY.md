@@ -8,7 +8,7 @@ If you discover a security issue, please email **support@eggerco.com** rather th
 
 - **Never commit API keys.** Use `Config/Secrets.xcconfig` (gitignored) for local development.
 - Copy `Config/Secrets.xcconfig.example` to `Config/Secrets.xcconfig` and add your TMDb key.
-- CI injects secrets via GitHub Actions repository secrets (`TMDB_API_KEY`, `APTABASE_CLIENT_KEY`, `SENTRY_DSN`).
+- CI injects secrets via GitHub Actions repository secrets (`TMDB_API_KEY`, `SENTRY_DSN`).
 - Keys are read at runtime from build settings / environment — not hardcoded in source.
 - Crash reports are sent to Sentry in release builds when `SENTRY_DSN` is configured.
 
@@ -16,7 +16,6 @@ If you discover a security issue, please email **support@eggerco.com** rather th
 
 - Watchlist data is stored locally via Core Data and synced through the user's iCloud account (CloudKit).
 - TMDb API keys are sent only to `api.themoviedb.org` over HTTPS.
-- Aptabase telemetry is disabled in Debug builds and on the Simulator.
 
 ## Supported Platforms
 
