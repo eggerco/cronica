@@ -4,7 +4,7 @@
 //
 
 import Foundation
-import CoreData
+@preconcurrency import CoreData
 import CronicaCore
 #if canImport(EventKit) && !os(tvOS) && !os(watchOS)
 import EventKit
@@ -105,30 +105,31 @@ final class CalendarManager {
         }
         guard await requestAuthorization() else { return }
 
-        let request: NSFetchRequest<WatchlistItem> = WatchlistItem.fetchRequest()
-        request.predicate = NSPredicate(format: "isArchive == NO")
+        await MainActor.run {
+            let context = PersistenceController.shared.container.viewContext
+            let request = WatchlistItem.fetchRequest()
+            request.predicate = NSPredicate(format: "isArchive == NO")
+            guard let items = try? context.fetch(request) else { return }
 
-        let context = PersistenceController.shared.container.viewContext
-        guard let items = await MainActor.run(body: { try? context.fetch(request) }) else { return }
+            var activeIDs = Set<String>()
+            let startOfToday = Calendar.current.startOfDay(for: Date())
 
-        var activeIDs = Set<String>()
-        let startOfToday = Calendar.current.startOfDay(for: Date())
+            for item in items {
+                guard shouldSync(item) else { continue }
+                guard let releaseDate = releaseDate(for: item), releaseDate >= startOfToday else { continue }
+                activeIDs.insert(item.itemContentID)
+                upsertEvent(
+                    identifier: item.itemContentID,
+                    title: item.itemTitle,
+                    notes: item.itemGlanceInfo,
+                    url: URL(string: "cronica://\(item.itemContentID)"),
+                    releaseDate: releaseDate
+                )
+            }
 
-        for item in items {
-            guard shouldSync(item) else { continue }
-            guard let releaseDate = releaseDate(for: item), releaseDate >= startOfToday else { continue }
-            activeIDs.insert(item.itemContentID)
-            upsertEvent(
-                identifier: item.itemContentID,
-                title: item.itemTitle,
-                notes: item.itemGlanceInfo,
-                url: URL(string: "cronica://\(item.itemContentID)"),
-                releaseDate: releaseDate
-            )
-        }
-
-        for identifier in storedEventIDs.keys where !activeIDs.contains(identifier) {
-            removeEvent(identifier: identifier)
+            for identifier in storedEventIDs.keys where !activeIDs.contains(identifier) {
+                removeEvent(identifier: identifier)
+            }
         }
     }
 

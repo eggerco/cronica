@@ -488,16 +488,18 @@ struct ItemContentDetails: View {
             }
         }
         .overlay {
-            ZStack {
-                Rectangle().fill(.thinMaterial)
-                Image(systemName: animationImage)
-                    .symbolRenderingMode(.multicolor)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 120, height: 120, alignment: .center)
-                    .scaleEffect(animateGesture ? 1.1 : 1)
+            if !animationImage.isEmpty {
+                ZStack {
+                    Rectangle().fill(.thinMaterial)
+                    Image(systemName: animationImage)
+                        .symbolRenderingMode(.multicolor)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 120, height: 120, alignment: .center)
+                        .scaleEffect(animateGesture ? 1.1 : 1)
+                }
+                .opacity(animateGesture ? 1 : 0)
             }
-            .opacity(animateGesture ? 1 : 0)
         }
         
         .frame(width: DrawingConstants.posterWidth, height: DrawingConstants.posterHeight)
@@ -516,16 +518,18 @@ struct ItemContentDetails: View {
         HeroImage(url: viewModel.content?.cardImageLarge,
                   title: title)
         .overlay {
-            ZStack {
-                Rectangle().fill(.ultraThinMaterial)
-                Image(systemName: animationImage)
-                    .symbolRenderingMode(.multicolor)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 120, height: 120, alignment: .center)
-                    .scaleEffect(animateGesture ? 1.1 : 1)
+            if !animationImage.isEmpty {
+                ZStack {
+                    Rectangle().fill(.ultraThinMaterial)
+                    Image(systemName: animationImage)
+                        .symbolRenderingMode(.multicolor)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 120, height: 120, alignment: .center)
+                        .scaleEffect(animateGesture ? 1.1 : 1)
+                }
+                .opacity(animateGesture ? 1 : 0)
             }
-            .opacity(animateGesture ? 1 : 0)
         }
         .frame(width: DrawingConstants.coverWidth, height: DrawingConstants.coverHeight)
         .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
@@ -1071,13 +1075,15 @@ extension ItemContentDetails {
 
     @ViewBuilder
     private func infoTitleWithChevron(_ title: String) -> some View {
-        HStack(spacing: 0) {
+        HStack(spacing: 2) {
             Text(title)
                 .font(.caption)
 #if !os(tvOS)
             Image(systemName: "chevron.right")
                 .font(.caption)
+                .fontWeight(.semibold)
                 .foregroundStyle(.secondary)
+                .accessibilityHidden(true)
 #endif
         }
     }
