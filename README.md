@@ -1,119 +1,110 @@
 <p align="center">
-    <img src="https://cronica.eggerco.com/resources/img/cronica/icon.webp" alt="Cronica Icon" width="150" height="150" />
+  <img src="https://cronica.eggerco.com/resources/img/cronica/icon.webp" alt="Cronica" width="128" height="128" />
 </p>
 
-<h1 align="center">
-Cronica
-</h1>
+<h1 align="center">Cronica</h1>
 
 <p align="center">
-    Cronica is a minimalist watchlist app that reminds you about upcoming releases.
+  Track what you watch. Never lose your place.<br />
+  A SwiftUI watchlist for movies and TV — with release reminders and iCloud sync across Apple devices.
 </p>
 
 <p align="center">
-    <a href="https://www.x.com/CronicaApp">
-        <img src="https://img.shields.io/badge/X-@CronicaApp-blue.svg?style=flat" alt="X: @CronicaApp" />
-    </a>
-    <img src="https://img.shields.io/github/license/egger/cronica" alt="GitHub License MIT Badge" />
+  <a href="https://apps.apple.com/app/cronica/id1614950275"><img src="https://img.shields.io/badge/App%20Store-Download-0D96F6?style=flat-square&logo=apple&logoColor=white" alt="Download on the App Store" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/eggerco/cronica?style=flat-square" alt="MIT License" /></a>
+  <img src="https://img.shields.io/badge/Swift-6-F05138?style=flat-square&logo=swift&logoColor=white" alt="Swift" />
+  <img src="https://img.shields.io/badge/platforms-iOS%20%7C%20iPadOS%20%7C%20macOS%20%7C%20watchOS%20%7C%20tvOS%20%7C%20visionOS-lightgrey?style=flat-square" alt="Platforms" />
 </p>
 
-## About
+<p align="center">
+  <a href="https://cronica.eggerco.com">Website</a> ·
+  <a href="https://cronica.eggerco.com/privacy">Privacy</a> ·
+  <a href="https://x.com/CronicaApp">X</a> ·
+  <a href="mailto:support@eggerco.com">Support</a>
+</p>
 
-Cronica is built using Swift and SwiftUI, it uses Core Data to persist the user's watchlist, and CloudKit to sync the list effortlessly between the user's device. 
+---
 
-To provide release notifications, the app takes advantage of local notifications to notify users about new episodes or a movie release. To keep notifications useful, there's a background task that updates item values with new information using TMDb API, if needed.
+## Features
 
-Thanks to CloudKit and SwiftUI, Cronica also can run on every Apple device, and the information will automatically sync.
+- **Watchlist** — Save movies and shows; organize with lists, favorites, pins, and archives
+- **Episode tracking** — Mark what you’ve watched and pick up where you left off
+- **Release reminders** — Local notifications for new episodes and movie releases
+- **iCloud sync** — Core Data + CloudKit keeps your list in sync across devices
+- **Discover** — Explore, search, and browse with TMDb data
+- **Everywhere Apple** — iPhone, iPad, Mac, Apple Watch, Apple TV, and Vision Pro
 
-## Project Organization
+## Download
 
-If you want to contribute with code, here are some important details about the project's organization:
+| iPhone | iPad | Mac |
+|:---:|:---:|:---:|
+| <img src="Screenshots/iPhone.webp" alt="Cronica on iPhone" width="220" /> | <img src="Screenshots/iPad.webp" alt="Cronica on iPad" width="280" /> | <img src="Screenshots/Mac.webp" alt="Cronica on Mac" width="320" /> |
 
-- The code-base for the Mac, iPhone, iPad, and Apple TV versions is shared and resides within the "Shared" folder.
-- While the Apple Watch also utilizes the same networking as the other platforms, it has a different user interface (UI) design. The Apple Watch-specific UI components are located in the "Apple Watch" folder. However, certain UI components are shared among all platforms and can be found in the "Shared" folder.
-- The views are organized based on their relationship with models or functionality. For instance, the "ItemContent" struct represents data fetched from the TMDb service, which can refer to a movie or a TV show. The UI elements associated with this struct are grouped under the "ItemContent" group in the "Views" folder. An example of such a UI element is the details page that users see when they open a movie.
-- The logic for most of the views is separated using extensions, primarily to help maintain the project in the long run.
+| Apple Watch | Apple TV | Vision Pro |
+|:---:|:---:|:---:|
+| <img src="Screenshots/Apple%20Watch.webp" alt="Cronica on Apple Watch" width="160" /> | <img src="Screenshots/TV.webp" alt="Cronica on Apple TV" width="320" /> | <img src="Screenshots/Vision.webp" alt="Cronica on Vision Pro" width="280" /> |
 
-## Help Translate Cronica
+<p align="center">
+  <a href="https://apps.apple.com/app/cronica/id1614950275">
+    <img src="https://cronica.eggerco.com/resources/img/cronica/AppStoreBadge.svg" alt="Download on the App Store" width="160" />
+  </a>
+</p>
 
-Contribute to the localization efforts of our open-source project by assisting in the translation of the application into your native language. Utilize the provided [xcstrings file](https://github.com/egger/cronica/blob/main/Shared/Localization/Localizable.xcstrings), which contains all the strings requiring translation. Simply send your completed translations via email, and I will ensure their incorporation in the upcoming update. Your contributions play a crucial role in making Cronica accessible to everyone. Thank you for your support!
+## Requirements
 
-## Build information
+| | |
+|---|---|
+| **Xcode** | 26+ (iOS 26 SDK for App Store submissions) |
+| **Deployment** | iOS / iPadOS / tvOS 17+, watchOS 10+, macOS 14+, visionOS 1+ |
+| **Accounts** | [TMDb API](https://www.themoviedb.org/documentation/api) key (required to build) |
 
-#### Targets iOS 17+, iPadOS 17+, watchOS 10+, macOS 14+, tvOS 17+, visionOS 1+. Requires **Xcode 26** (iOS 26 SDK) for App Store submissions.
-
-To get started:
+## Getting started
 
 1. Install [Xcode 26](https://developer.apple.com/xcode/) or later.
-2. Copy `Config/Secrets.xcconfig.example` to `Config/Secrets.xcconfig`.
-3. Add your TMDb API key to `Config/Secrets.xcconfig` (get one at [TMDb](https://www.themoviedb.org/documentation/api)).
-4. Open `Cronica.xcodeproj` and build with the **Cronica (EN-US)** scheme.
+2. Clone this repository and open `Cronica.xcodeproj`.
+3. Copy `Config/Secrets.xcconfig.example` → `Config/Secrets.xcconfig`.
+4. Add your TMDb API key (and optionally `SENTRY_DSN`) in `Secrets.xcconfig`.
+5. Build the **Cronica (EN-US)** scheme.
 
-For CI, set repository secrets `TMDB_API_KEY` and optionally `SENTRY_DSN`. See [SECURITY.md](SECURITY.md) for the full security policy.
+For CI, set repository secrets `TMDB_API_KEY` and optionally `SENTRY_DSN`. See [SECURITY.md](SECURITY.md).
 
-### Architecture
+## Architecture
 
-Shared TMDb models and networking live in the local Swift package `Packages/CronicaCore`, used by the app, widget, watch app, and tests.
+```
+Cronica/
+├── Shared/                 # SwiftUI app (iOS, iPadOS, macOS, tvOS, visionOS)
+├── AppleWatch/             # Watch-specific UI
+├── CronicaWidget/          # Widgets
+├── Packages/CronicaCore/   # Shared models & TMDb networking
+└── Config/                 # Secrets.xcconfig (gitignored) + example
+```
 
-## App Store
+- **Persistence** — Core Data (`NSPersistentCloudKitContainer`); syncs when the user is signed into iCloud
+- **Networking** — TMDb via `CronicaCore`
+- **Notifications** — Local notifications + background refresh for upcoming releases
 
-### iOS & iPadOS
+## Contributing
 
-<p align="center">
-	<img src="https://raw.githubusercontent.com/egger/cronica/main/Screenshots/iPad.webp" alt="Cronica running on iPad displaying the details page for the TV Show Kaguya-sama: Love Is War." minWidth="220" maxWidth="440" maxHeight="340">
-</p>
-<p align="center">
-<a href="https://apple.co/38SXpVJ">
-	<img src="https://cronica.eggerco.com/resources/img/cronica/AppStoreBadge.svg" alt="Badge for download Cronica on App Store" width="160" height="80">
-</a>
-</p>
+Issues and pull requests are welcome.
 
-### Apple Watch
+**Translations** — Edit [`Shared/Localization/Localizable.xcstrings`](Shared/Localization/Localizable.xcstrings) and open a PR, or email completed strings to [support@eggerco.com](mailto:support@eggerco.com).
 
-<p align="center">
-	<img src="https://raw.githubusercontent.com/egger/cronica/main/Screenshots/Apple%20Watch.webp" alt="Cronica running on Apple Watch S7." minWidth="220" maxWidth="440" height="240">
-</p>
-<p align="center"> 
-<a href="https://apps.apple.com/app/cronica/id1614950275">
-	<img src="https://cronica.eggerco.com/resources/img/cronica/AppStoreBadge.svg" alt="Badge for download Cronica on Apple Watch App Store" width="160" height="80">
-</a>
-</p>
+Before a release, run through [`docs/QA-SMOKE-TEST.md`](docs/QA-SMOKE-TEST.md).
 
-### Mac
+## Security & privacy
 
-<p align="center">
-	<img src="https://raw.githubusercontent.com/egger/cronica/main/Screenshots/Mac.webp" alt="Cronica running on MacBook Air displaying details for Top Gun: Maverick." width="440">
-</p>
-<p align="center">
-<a href="https://apple.co/38SXpVJ">
-	<img src="https://raw.githubusercontent.com/egger/cronica/main/Screenshots/Badges/Mac.svg" alt="Badge for download Cronica on Mac App Store" width="160" height="80">
-</a>
-</p>
+- Never commit API keys — use `Config/Secrets.xcconfig` (see [SECURITY.md](SECURITY.md))
+- Privacy policy: [cronica.eggerco.com/privacy](https://cronica.eggerco.com/privacy)
+- Report vulnerabilities privately to [support@eggerco.com](mailto:support@eggerco.com)
 
-### Apple TV
+## Acknowledgments
 
-<p align="center">
-	<img src="https://raw.githubusercontent.com/egger/cronica/main/Screenshots/TV.webp" alt="Cronica running on Apple TV displaying details for Top Gun: Maverick." width="560">
-</p>
-<p align="center">
-<a href="https://apps.apple.com/app/cronica/id1614950275">
-	<img src="https://raw.githubusercontent.com/egger/cronica/main/Screenshots/Badges/AppleTV.svg" alt="Badge for download Cronica on Apple TV App Store" width="160" height="80"> 
-</a>
-</p>
+Movie and TV data from [TMDb](https://www.themoviedb.org). This product uses the TMDb API but is not endorsed or certified by TMDb.
 
-### Apple Vision Pro
+## License
 
-<p align="center">
-	<img src="https://raw.githubusercontent.com/egger/cronica/main/Screenshots/Vision.webp" alt="Cronica running on Apple Vision Pro displaying details for Top Gun: Maverick." width="440">
-</p>
-<p align="center"> 
-<a href="https://apps.apple.com/app/cronica/id1614950275">
-	<img src="https://cronica.eggerco.com/resources/img/cronica/AppStoreBadge.svg" alt="Badge for download Cronica on Apple Vision Pro App Store" width="160" height="80">
-</a>
-</p>
+Cronica is released under the [MIT License](LICENSE) — copyright © 2022–2026 [Egger & Co](https://eggerco.com).
 
-
-## Contact
-
-- If you have any questions, you can send us an email at <a href = "mailto:support@eggerco.com">support@eggerco.com</a><br>
-- Follow Cronica on X: [@CronicaApp](https://www.x.com/CronicaApp)
+```
+SPDX-License-Identifier: MIT
+```
