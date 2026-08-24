@@ -52,10 +52,6 @@ struct NotificationListView: View {
         }
         .task { await load() }
         .scrollBounceBehavior(.basedOnSize)
-        .navigationDestination(for: ReleaseCalendarRoute.self) { _ in
-            ReleaseCalendarView()
-        }
-        .cronicaStandardNavigationDestinations()
     }
     
     private var configButton: some View {

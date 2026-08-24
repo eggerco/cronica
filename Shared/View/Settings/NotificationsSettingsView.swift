@@ -131,11 +131,6 @@ struct NotificationsSettingsView: View {
         }
         .navigationTitle(NSLocalizedString(navigationTitle, comment: ""))
         .cronicaSettingsForm()
-#if os(macOS)
-        .navigationDestination(for: ReleaseCalendarRoute.self) { _ in
-            ReleaseCalendarView()
-        }
-#endif
     }
     
     private func setDefaultNotificationTime() {

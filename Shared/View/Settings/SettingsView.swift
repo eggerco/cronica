@@ -89,6 +89,7 @@ struct SettingsView: View {
             
             NavigationStack {
                 NotificationsSettingsView()
+                    .cronicaWatchlistNavigationDestinations()
             }
                 .tabItem { Label("Notifications", systemImage: "bell") }
             

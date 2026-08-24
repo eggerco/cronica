@@ -57,6 +57,7 @@ struct SideBarView: View {
         .sheet(isPresented: $showNotifications) {
             NavigationStack {
                 NotificationListView(showNotification: $showNotifications)
+                    .cronicaWatchlistNavigationDestinations()
             }
         }
     }

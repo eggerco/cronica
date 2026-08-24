@@ -88,7 +88,6 @@ struct ReleaseCalendarView: View {
 #else
         .cronicaNavigationTitle("Release Calendar")
 #endif
-        .cronicaWatchlistNavigationDestinations()
     }
 
     private var releasesSectionTitle: String {
