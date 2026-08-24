@@ -157,7 +157,8 @@ final class BackgroundManager {
             if item.itemDate.areDifferentDates(with: content.itemFallbackDate) || content.itemStatus == .cancelled {
                 CalendarManager.shared.removeEvent(identifier: content.itemContentID)
             }
-            if content.itemFallbackDate >= Calendar.current.startOfDay(for: Date()),
+            if let releaseDate = content.itemFallbackDate,
+               releaseDate >= Calendar.current.startOfDay(for: Date()),
                content.itemStatus != .cancelled {
                 CalendarManager.shared.schedule(content)
             }
