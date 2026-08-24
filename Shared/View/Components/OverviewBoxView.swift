@@ -29,6 +29,7 @@ struct OverviewBoxView: View {
                             .padding([.top], 2)
                             .lineLimit(showFullText ? nil : 4)
                             .multilineTextAlignment(.leading)
+                            .animation(.none, value: showFullText)
 #if os(iOS)
                             .background(
                                 // Render the limited text and measure its size
@@ -79,10 +80,10 @@ struct OverviewBoxView: View {
                         if showAsPopover {
                             showSheet.toggle()
                         } else {
-                            withAnimation { showFullText.toggle() }
+                            showFullText.toggle()
                         }
                     } else {
-                        withAnimation { showFullText.toggle() }
+                        showFullText.toggle()
                     }
                     
 #elseif os(macOS)
