@@ -63,15 +63,11 @@ struct EditCustomList: View {
                                     titleVisibility: .visible) {
                     Button("Confirm", role: .destructive) {
                         isDeleted = true
-                        PersistenceController.shared.delete(list)
+                        PersistenceController.shared.deleteList(list, includingWatchlistItems: false)
                     }
                     Button("Confirm and Delete Items", role: .destructive) {
                         isDeleted = true
-                        let itemsToDelete = list.itemsArray
-                        PersistenceController.shared.delete(list)
-                        for item in itemsToDelete {
-                            PersistenceController.shared.delete(item)
-                        }
+                        PersistenceController.shared.deleteList(list, includingWatchlistItems: true)
                     }
                 }
             }

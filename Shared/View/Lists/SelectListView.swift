@@ -77,20 +77,20 @@ struct SelectListView: View {
             ),
             titleVisibility: .visible
         ) {
-            Button("Delete List", role: .destructive) {
+            Button("Confirm", role: .destructive) {
                 if let listToDelete {
-                    if selectedList == listToDelete {
-                        selectedList = nil
-                        navigationTitle = NSLocalizedString("Watchlist", comment: "")
-                    }
-                    PersistenceController.shared.delete(listToDelete)
+                    deleteList(listToDelete, includingWatchlistItems: false)
                 }
-                listToDelete = nil
+            }
+            Button("Confirm and Delete Items", role: .destructive) {
+                if let listToDelete {
+                    deleteList(listToDelete, includingWatchlistItems: true)
+                }
             }
             Button("Cancel", role: .cancel) { listToDelete = nil }
         } message: {
             if let listToDelete {
-                Text("Delete \(listToDelete.itemTitle)? This cannot be undone.")
+                Text("Delete \(listToDelete.itemTitle)? Items can stay on your watchlist or be removed with the list.")
             }
         }
 #if os(iOS)
@@ -230,6 +230,15 @@ struct SelectListView: View {
                 .labelStyle(.iconOnly)
 #endif
         }
+    }
+    
+    private func deleteList(_ list: CustomList, includingWatchlistItems: Bool) {
+        if selectedList == list {
+            selectedList = nil
+            navigationTitle = NSLocalizedString("Watchlist", comment: "")
+        }
+        PersistenceController.shared.deleteList(list, includingWatchlistItems: includingWatchlistItems)
+        listToDelete = nil
     }
     
     private func delete(offsets: IndexSet) {

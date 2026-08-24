@@ -29,6 +29,18 @@ extension PersistenceController {
         viewContext.delete(item)
         save()
     }
+
+    func deleteList(_ list: CustomList, includingWatchlistItems: Bool) {
+        if includingWatchlistItems {
+            let itemsToDelete = list.itemsArray
+            delete(list)
+            for item in itemsToDelete {
+                delete(item)
+            }
+        } else {
+            delete(list)
+        }
+    }
     
     func isItemOnList(id: String, list: CustomList) -> Bool {
         return list.itemsSet.contains(where:  { $0.itemContentID == id })
