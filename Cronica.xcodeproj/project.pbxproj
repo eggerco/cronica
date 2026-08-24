@@ -2472,7 +2472,6 @@
 				minimumVersion = 1.0.6;
 			};
 		};
-		};
 		C0SENTRYPKG0000000000001 /* XCRemoteSwiftPackageReference "sentry-cocoa" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/getsentry/sentry-cocoa";
