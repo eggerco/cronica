@@ -146,11 +146,43 @@ extension View {
     }
 }
 
+/// List section header that keeps sentence case (non-settings screens).
+struct CronicaListSectionHeader: View {
+    let title: String
+
+    var body: some View {
+        Text(verbatim: title)
+            .textCase(nil)
+            .environment(\.textCase, nil)
+    }
+}
+
+/// List section with sentence-case title for feature screens outside Settings.
+struct CronicaListSection<Content: View>: View {
+    let title: String
+    @ViewBuilder var content: () -> Content
+
+    init(_ title: String, @ViewBuilder content: @escaping () -> Content) {
+        self.title = title
+        self.content = content
+    }
+
+    var body: some View {
+        Section {
+            content()
+        } header: {
+            CronicaListSectionHeader(title: title)
+        }
+    }
+}
+
 struct CronicaFormSectionHeader: View {
     let title: String
 
     var body: some View {
         Text(verbatim: title)
+            .font(.footnote)
+            .foregroundStyle(.secondary)
             .textCase(.uppercase)
             .environment(\.textCase, .uppercase)
     }

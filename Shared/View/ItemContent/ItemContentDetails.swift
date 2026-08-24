@@ -567,26 +567,10 @@ struct ItemContentDetails: View {
                          content: item?.itemRuntime)
                 if type == .movie {
                     if let theatricalStringDate = item?.itemTheatricalString {
-                        HStack {
-                            VStack(alignment: .leading) {
-                                HStack {
-                                    Text("Release Date")
-                                        .font(.caption)
-                                    Image(systemName: "chevron.right")
-                                        .font(.caption)
-                                        .foregroundColor(.secondary)
-                                }
-                                Text(theatricalStringDate)
-                                    .lineLimit(1)
-                                    .font(.caption2)
-                                    .foregroundColor(.secondary)
-                                Spacer()
-                            }
-                            .accessibilityElement(children: .combine)
-                            Spacer()
-                        }
-                        .padding([.horizontal, .top], 2)
-                        .onTapGesture {
+                        tappableInfoDisclosureRow(
+                            title: String(localized: "Release Date"),
+                            value: theatricalStringDate
+                        ) {
                             showReleaseDateInfo.toggle()
                         }
                     }
@@ -609,25 +593,7 @@ struct ItemContentDetails: View {
                 if let companies = item?.itemCompanies, let company = item?.itemCompany {
                     if !companies.isEmpty {
                         NavigationLink(value: companies) {
-                            HStack {
-                                VStack(alignment: .leading) {
-                                    HStack {
-                                        Text("Production Companies")
-                                            .font(.caption)
-                                        Image(systemName: "chevron.right")
-                                            .font(.caption)
-                                            .foregroundColor(.secondary)
-                                    }
-                                    Text(company)
-                                        .multilineTextAlignment(.leading)
-                                        .font(.caption2)
-                                        .foregroundColor(.secondary)
-                                    Spacer()
-                                }
-                                .accessibilityElement(children: .combine)
-                                Spacer()
-                            }
-                            .padding([.horizontal, .top], 2)
+                            infoRow(title: String(localized: "Production Companies"), value: company)
                         }
 #if os(macOS)
                         .buttonStyle(.link)
@@ -1035,26 +1001,10 @@ extension ItemContentDetails {
             }
             if viewModel.content?.itemContentMedia == .movie {
                 if let theatricalStringDate = viewModel.content?.itemTheatricalString {
-                    HStack {
-                        VStack(alignment: .leading) {
-                            HStack {
-                                Text("Release Date")
-                                    .font(.caption)
-#if !os(tvOS)
-                                Image(systemName: "chevron.right")
-                                    .font(.caption)
-                                    .foregroundColor(.secondary)
-#endif
-                            }
-                            Text(theatricalStringDate)
-                                .lineLimit(1)
-                                .font(.caption2)
-                                .foregroundColor(.secondary)
-                        }
-                        .accessibilityElement(children: .combine)
-                    }
-                    .padding([.horizontal, .top], 2)
-                    .onTapGesture {
+                    tappableInfoDisclosureRow(
+                        title: String(localized: "Release Date"),
+                        value: theatricalStringDate
+                    ) {
                         showReleaseDateInfo.toggle()
                     }
                 }
@@ -1072,7 +1022,7 @@ extension ItemContentDetails {
             if let companies = viewModel.content?.itemCompanies,
                let company = viewModel.content?.itemCompany, !companies.isEmpty {
                 NavigationLink(value: companies) {
-                    companiesLabel(company: company)
+                    infoRow(title: String(localized: "Production Companies"), value: company)
                 }
                 .buttonStyle(.plain)
             } else {
@@ -1097,26 +1047,45 @@ extension ItemContentDetails {
         }
     }
     
-    private func companiesLabel(company: String) -> some View {
-        HStack {
-            VStack(alignment: .leading) {
-                HStack {
-                    Text("Production Companies")
-                        .font(.caption)
+    private func infoRow(title: String, value: String) -> some View {
+        infoRowContent(title: title, value: value)
+            .padding([.horizontal, .top], 2)
+    }
+
+    private func infoDisclosureRow(title: String, value: String) -> some View {
+        HStack(alignment: .center, spacing: 8) {
+            infoRowContent(title: title, value: value)
+            Spacer(minLength: 0)
 #if !os(tvOS)
-                    Image(systemName: "chevron.right")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
+            Image(systemName: "chevron.right")
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(.tertiary)
 #endif
-                }
-                Text(company)
-                    .font(.caption2)
-                    .foregroundColor(.secondary)
-            }
-            .accessibilityElement(children: .combine)
-            Spacer()
         }
         .padding([.horizontal, .top], 2)
+    }
+
+    private func infoRowContent(title: String, value: String) -> some View {
+        VStack(alignment: .leading, spacing: 2) {
+            Text(title)
+                .font(.caption)
+            Text(value)
+                .multilineTextAlignment(.leading)
+                .lineLimit(2)
+                .font(.caption2)
+                .foregroundStyle(.secondary)
+        }
+        .accessibilityElement(children: .combine)
+    }
+
+    private func tappableInfoDisclosureRow(
+        title: String,
+        value: String,
+        action: @escaping () -> Void
+    ) -> some View {
+        infoDisclosureRow(title: title, value: value)
+            .contentShape(Rectangle())
+            .onTapGesture(perform: action)
     }
     
     @ViewBuilder

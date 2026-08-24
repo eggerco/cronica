@@ -57,7 +57,7 @@ struct ReleaseCalendarView: View {
             .listRowInsets(EdgeInsets(top: 0, leading: 4, bottom: 0, trailing: 4))
             .listRowBackground(Color.clear)
 
-            CronicaFormSection(releasesSectionTitle) {
+            CronicaListSection(releasesSectionTitle) {
                 if upcomingItems.isEmpty {
                     ContentUnavailableView {
                         Label {
@@ -87,7 +87,7 @@ struct ReleaseCalendarView: View {
 #if os(iOS)
         .navigationBarTitleDisplayMode(.large)
 #endif
-        .cronicaSettingsForm()
+        .cronicaNormalTextCase()
         .cronicaWatchlistNavigationDestinations()
     }
 

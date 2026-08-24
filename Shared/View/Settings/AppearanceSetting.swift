@@ -15,7 +15,9 @@ struct AppearanceSetting: View {
 #if os(iOS)
             if horizontalSizeClass == .compact {
                 CronicaFormSection("Details Page") {
-                    Toggle("Prefer Poster in Details Page", isOn: $store.usePostersAsCover)
+                    Toggle(isOn: $store.usePostersAsCover) {
+                        CronicaFormText("Prefer Poster in Details Page")
+                    }
                 }
             }
 #endif
@@ -27,14 +29,14 @@ struct AppearanceSetting: View {
                         Text(item.title).tag(item)
                     }
                 } label: {
-                    Text("Section's Details Style")
+                    CronicaFormText("Section's Details Style")
                 }
                 Picker(selection: $store.listsDisplayType) {
                     ForEach(ItemContentListPreferredDisplayType.allCases) { item in
                         Text(item.title).tag(item)
                     }
                 } label: {
-                    Text("Horizontal List Style")
+                    CronicaFormText("Horizontal List Style")
                 }
 
             }
@@ -43,8 +45,10 @@ struct AppearanceSetting: View {
             if horizontalSizeClass == .compact {
                 Section {
                     Toggle(isOn: $store.isCompactUI) {
-                        Text("Compact UI")
-                        Text("Reduce some UI elements size to accommodate more items on the screen")
+                        CronicaFormToggleLabel(
+                            title: "Compact UI",
+                            subtitle: "Reduce some UI elements size to accommodate more items on the screen"
+                        )
                     }
                 }
             }
@@ -57,20 +61,21 @@ struct AppearanceSetting: View {
                         Text(item.localizableName).tag(item)
                     }
                 } label: {
-                    Text("Theme")
+                    CronicaFormText("Theme")
                 }
                 .pickerStyle(.menu)
             }
             
             CronicaFormSection("Accent Color") {
                 accentColor
+                    .listRowInsets(EdgeInsets())
+                    .listRowBackground(Color.clear)
             }
-            .listRowInsets(EdgeInsets())
 #endif
             
             Section {
                 Toggle(isOn: $store.disableTranslucent) {
-                    Text("Disable Translucent Background")
+                    CronicaFormText("Disable Translucent Background")
                 }
             }
         }
