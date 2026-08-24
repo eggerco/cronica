@@ -34,6 +34,7 @@ struct WatchlistView: View {
             }
         }
         .actionPopup(isShowing: $showPopup, for: popupType)
+        .accessibilityIdentifier("Watchlist View")
 #if !os(tvOS)
         .navigationTitle(navigationTitle)
 #endif

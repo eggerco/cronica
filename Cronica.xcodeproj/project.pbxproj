@@ -291,6 +291,7 @@
 		C0SEARCHITEMEXTWATCH0002 /* SearchItemContent-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B2F6AB2A85D57400FF0246 /* SearchItemContent-Extension.swift */; };
 		C0SENTRYMGR000000000002 /* SentryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SENTRYMGR000000000001 /* SentryManager.swift */; };
 		C0UITESTBUILD00000000000002 /* CronicaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0UITESTFILE00000000000001 /* CronicaUITests.swift */; };
+		C0UITESTBUILD00000000000003 /* AppNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0UITESTFILE00000000000002 /* AppNavigator.swift */; };
 		C1A1NAV128A9BD31003025B /* CronicaNavigationDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A1NAV028A9BD31003025B /* CronicaNavigationDestinations.swift */; };
 		C1EMP00228A9BD31003025C /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EMP00128A9BD31003025C /* EmptyListView.swift */; };
 		C1PAGE00228A9BD31003025D /* PaginationFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1PAGE00128A9BD31003025D /* PaginationFooter.swift */; };
@@ -565,6 +566,7 @@
 		C0NF1G000000000000000003 /* Secrets.xcconfig.example */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig.example; sourceTree = "<group>"; };
 		C0SENTRYMGR000000000001 /* SentryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentryManager.swift; sourceTree = "<group>"; };
 		C0UITESTFILE00000000000001 /* CronicaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaUITests.swift; sourceTree = "<group>"; };
+		C0UITESTFILE00000000000002 /* AppNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigator.swift; sourceTree = "<group>"; };
 		C0UITESTPRODUCT000000001 /* CronicaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CronicaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1A1NAV028A9BD31003025B /* CronicaNavigationDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaNavigationDestinations.swift; sourceTree = "<group>"; };
 		C1EMP00128A9BD31003025C /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
@@ -1343,6 +1345,7 @@
 			isa = PBXGroup;
 			children = (
 				C0UITESTFILE00000000000001 /* CronicaUITests.swift */,
+				C0UITESTFILE00000000000002 /* AppNavigator.swift */,
 			);
 			path = CronicaUITests;
 			sourceTree = "<group>";
@@ -1867,6 +1870,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0UITESTBUILD00000000000002 /* CronicaUITests.swift in Sources */,
+				C0UITESTBUILD00000000000003 /* AppNavigator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

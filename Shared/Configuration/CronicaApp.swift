@@ -32,6 +32,11 @@ struct CronicaApp: App {
         CronicaTelemetry.shared.setup()
         SentryManager.setup()
         registerRefreshBGTask()
+#if DEBUG
+        if ProcessInfo.processInfo.arguments.contains("-ui-testing") {
+            UserDefaults.standard.set(false, forKey: "showOnboarding")
+        }
+#endif
 #if os(iOS)
         UNUserNotificationCenter.current().delegate = notificationDelegate
 #endif
@@ -220,29 +225,22 @@ struct CronicaApp: App {
 #if os(iOS)
     // Fetch the latest updates from api.
     private func handleAppRefresh(task: BGAppRefreshTask?) {
-        if let task {
-            scheduleAppRefresh()
-            let queue = OperationQueue()
-            queue.maxConcurrentOperationCount = 1
-            task.expirationHandler = {
-                // After all operations are cancelled, the completion block below is called to set the task to complete.
-                queue.cancelAllOperations()
-            }
-            queue.addOperation {
-                let group = DispatchGroup()
-                group.enter()
-                Task {
-                    defer { group.leave() }
-                    await BackgroundManager.shared.handleWatchingContentRefresh()
-                    BackgroundManager.shared.lastWatchingRefresh = Date()
-                    await BackgroundManager.shared.handleUpcomingContentRefresh()
-                    BackgroundManager.shared.lastUpcomingRefresh = Date()
-                    await BackgroundManager.shared.handleAppRefreshMaintenance()
-                    BackgroundManager.shared.lastMaintenance = Date()
-                }
-                group.wait()
-                task.setTaskCompleted(success: true)
-            }
+        guard let task else { return }
+        scheduleAppRefresh()
+
+        let workItem = Task {
+            await BackgroundManager.shared.handleWatchingContentRefresh()
+            BackgroundManager.shared.lastWatchingRefresh = Date()
+            await BackgroundManager.shared.handleUpcomingContentRefresh()
+            BackgroundManager.shared.lastUpcomingRefresh = Date()
+            await BackgroundManager.shared.handleAppRefreshMaintenance()
+            BackgroundManager.shared.lastMaintenance = Date()
+            guard !Task.isCancelled else { return }
+            task.setTaskCompleted(success: true)
+        }
+        task.expirationHandler = {
+            workItem.cancel()
+            task.setTaskCompleted(success: false)
         }
     }
 #elseif os(macOS)

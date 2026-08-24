@@ -136,10 +136,12 @@ extension SearchItemContent {
 #endif
 	}
 	var itemSearchURL: URL {
-		return URL(string: "https://www.themoviedb.org/\(media.rawValue)/\(id)")!
+		URL(string: "https://www.themoviedb.org/\(media.rawValue)/\(id)")
+			?? URL(string: "https://www.themoviedb.org")!
 	}
 	var itemURL: URL {
-		return URL(string: "https://www.themoviedb.org/\(itemContentMedia.rawValue)/\(id)")!
+		URL(string: "https://www.themoviedb.org/\(itemContentMedia.rawValue)/\(id)")
+			?? URL(string: "https://www.themoviedb.org")!
 	}
 	
 	// MARK: Bool

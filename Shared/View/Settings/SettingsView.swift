@@ -79,6 +79,7 @@ struct SettingsView: View {
         .navigationTitle("Settings")
         .navigationBarTitleDisplayMode(.inline)
         .cronicaSettingsForm()
+        .accessibilityIdentifier("Settings View")
 #elseif os(macOS)
         TabView {
             AppearanceSetting()

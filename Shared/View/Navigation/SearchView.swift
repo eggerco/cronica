@@ -29,6 +29,7 @@ struct SearchView: View {
             posterView
 #endif
         }
+        .accessibilityIdentifier("Search View")
         .task {
             if !viewModel.items.isEmpty, viewModel.query.isEmpty {
                 viewModel.items.removeAll()

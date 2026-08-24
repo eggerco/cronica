@@ -82,7 +82,8 @@ extension WatchlistItem {
 		}
 	}
 	var itemLink: URL {
-		return URL(string: "https://www.themoviedb.org/\(itemMedia.rawValue)/\(itemId)")!
+		URL(string: "https://www.themoviedb.org/\(itemMedia.rawValue)/\(itemId)")
+			?? URL(string: "https://www.themoviedb.org")!
 	}
 	var itemDateForNextSeason: String {
 		guard let date else { return String() }

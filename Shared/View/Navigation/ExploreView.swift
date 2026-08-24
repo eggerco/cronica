@@ -179,6 +179,7 @@ struct ExploreView: View {
         .actionPopup(isShowing: $showPopup, for: popupType)
         .task { await load() }
         .cronicaStandardNavigationDestinations()
+        .accessibilityIdentifier("Discover View")
 #if !os(tvOS) && !os(macOS)
         .navigationTitle(selectedForYouTab == .explore ? "Discover" : "For You")
 #elseif os(tvOS)

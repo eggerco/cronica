@@ -66,6 +66,7 @@ struct WelcomeView: View {
                     .buttonStyle(.borderedProminent)
                     .controlSize(.large)
                     .tint(settings.appTheme.color)
+                    .accessibilityIdentifier("Continue")
 
                     Button {
                         openURL(AppWebsite.privacyPolicy)
@@ -84,6 +85,7 @@ struct WelcomeView: View {
             .interactiveDismissDisabled(true)
             .toolbar(.hidden, for: .navigationBar)
         }
+        .accessibilityIdentifier("Welcome View")
         .appTint()
         .appTheme()
     }

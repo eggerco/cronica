@@ -52,6 +52,7 @@ struct NotificationListView: View {
         }
         .task { await load() }
         .scrollBounceBehavior(.basedOnSize)
+        .accessibilityIdentifier("Notification List View")
     }
     
     private var configButton: some View {

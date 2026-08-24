@@ -53,6 +53,7 @@ struct HomeView: View {
                 AttributionView()
             }
         }
+        .accessibilityIdentifier("Home View")
 #if os(iOS)
         .refreshable {
             reloadHome = true
