@@ -84,6 +84,9 @@ public extension ItemContent {
     var itemContentID: String {
         return "\(id)@\(itemContentMedia.toInt)"
     }
+    var cronicaDeepLinkURL: URL? {
+        URL(string: "cronica://\(itemContentID)")
+    }
     var itemTheatricalString: String? {
         if let dates = releaseDates?.results {
 			var productionRegion = "US"

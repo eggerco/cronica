@@ -23,6 +23,7 @@ final class CronicaCoreTests: XCTestCase {
             placeholderImagePath: nil
         )
         XCTAssertEqual(item.itemContentID, "42@0")
+        XCTAssertEqual(item.cronicaDeepLinkURL?.absoluteString, "cronica://42@0")
     }
 
     func testURLBuilderReturnsNilForMissingPath() {

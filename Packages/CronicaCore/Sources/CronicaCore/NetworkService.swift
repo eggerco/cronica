@@ -134,6 +134,15 @@ public final class NetworkService: Sendable {
         return try await self.fetch(url: url)
     }
     
+    public func downloadData(from url: URL) async throws -> Data {
+        let (data, response) = try await URLSession.shared.data(from: url)
+        guard let httpResponse = response as? HTTPURLResponse,
+              (200...299).contains(httpResponse.statusCode) else {
+            throw NetworkError.invalidResponse
+        }
+        return data
+    }
+
     public func search(query: String, page: String) async throws -> [SearchItemContent] {
         guard let url = urlBuilder(path: "search/multi", query: query, page: page) else {
             throw NetworkError.invalidEndpoint

@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import CronicaCore
 
 @objc(WatchlistItem)
 public class WatchlistItem: NSManagedObject, Codable {
@@ -49,7 +50,8 @@ public class WatchlistItem: NSManagedObject, Codable {
 			firstAirDate = try values.decode(Date?.self, forKey: .firstAirDate)
 			movieReleaseDate = try values.decode(Date?.self, forKey: .movieReleaseDate)
         } catch {
-            print(error.localizedDescription)
+            AppLogger.persistence.error("Failed to decode WatchlistItem: \(error.localizedDescription)")
+            throw error
         }
     }
     

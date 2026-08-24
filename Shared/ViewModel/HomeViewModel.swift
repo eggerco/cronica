@@ -24,6 +24,7 @@ class HomeViewModel: ObservableObject {
                 trending = filtered
             } catch {
                 if Task.isCancelled { return }
+                CronicaTelemetry.shared.handleMessage(error.localizedDescription, for: "HomeViewModel.load.trending")
             }
         }
         if sections.isEmpty {
@@ -66,6 +67,7 @@ class HomeViewModel: ObservableObject {
             return .init(results: filtered, endpoint: endpoint)
         } catch {
             if Task.isCancelled { return nil }
+            CronicaTelemetry.shared.handleMessage(error.localizedDescription, for: "HomeViewModel.fetchSection.\(endpoint)")
             return nil
         }
     }

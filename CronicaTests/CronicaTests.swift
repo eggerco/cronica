@@ -31,8 +31,8 @@ final class CronicaTests: XCTestCase {
     }
     
     func testMarkAsWatched() {
-        for item in ItemContent.examples {
-            guard let item = persistence.fetch(for: item.itemContentID) else { return }
+        for example in ItemContent.examples {
+            let item = requireItem(for: example.itemContentID)
             persistence.updateWatched(for: item)
         }
         for item in ItemContent.examples {
@@ -41,8 +41,8 @@ final class CronicaTests: XCTestCase {
     }
     
     func testRemoveFromWatched() {
-        for item in ItemContent.examples {
-            guard let item = persistence.fetch(for: item.itemContentID) else { return }
+        for example in ItemContent.examples {
+            let item = requireItem(for: example.itemContentID)
             persistence.updateWatched(for: item)
             persistence.updateWatched(for: item)
         }
@@ -52,8 +52,8 @@ final class CronicaTests: XCTestCase {
     }
     
     func testMarkAsFavorite() {
-        for item in ItemContent.examples {
-            guard let item = persistence.fetch(for: item.itemContentID) else { return }
+        for example in ItemContent.examples {
+            let item = requireItem(for: example.itemContentID)
             persistence.updateFavorite(for: item)
         }
         for item in ItemContent.examples {
@@ -62,8 +62,8 @@ final class CronicaTests: XCTestCase {
     }
     
     func testRemoveFromFavorite() {
-        for item in ItemContent.examples {
-            guard let item = persistence.fetch(for: item.itemContentID) else { return }
+        for example in ItemContent.examples {
+            let item = requireItem(for: example.itemContentID)
             persistence.updateFavorite(for: item)
             persistence.updateFavorite(for: item)
         }
@@ -73,8 +73,8 @@ final class CronicaTests: XCTestCase {
     }
     
     func testMarkAsArchive() {
-        for item in ItemContent.examples {
-            guard let item = persistence.fetch(for: item.itemContentID) else { return }
+        for example in ItemContent.examples {
+            let item = requireItem(for: example.itemContentID)
             persistence.updateArchive(for: item)
         }
         for item in ItemContent.examples {
@@ -83,8 +83,8 @@ final class CronicaTests: XCTestCase {
     }
     
     func testRemoveFromArchive() {
-        for item in ItemContent.examples {
-            guard let item = persistence.fetch(for: item.itemContentID) else { return }
+        for example in ItemContent.examples {
+            let item = requireItem(for: example.itemContentID)
             persistence.updateArchive(for: item)
             persistence.updateArchive(for: item)
         }
@@ -94,8 +94,8 @@ final class CronicaTests: XCTestCase {
     }
     
     func testMarkAsPin() {
-        for item in ItemContent.examples {
-            guard let item = persistence.fetch(for: item.itemContentID) else { return }
+        for example in ItemContent.examples {
+            let item = requireItem(for: example.itemContentID)
             persistence.updatePin(for: item)
         }
         for item in ItemContent.examples {
@@ -104,8 +104,8 @@ final class CronicaTests: XCTestCase {
     }
     
     func testRemoveFromPins() {
-        for item in ItemContent.examples {
-            guard let item = persistence.fetch(for: item.itemContentID) else { return }
+        for example in ItemContent.examples {
+            let item = requireItem(for: example.itemContentID)
             persistence.updatePin(for: item)
             persistence.updatePin(for: item)
         }
@@ -115,8 +115,8 @@ final class CronicaTests: XCTestCase {
     }
     
     func testRemoveItemsFromWatchlist() {
-        for item in ItemContent.examples {
-            guard let item = persistence.fetch(for: item.itemContentID) else { return }
+        for example in ItemContent.examples {
+            let item = requireItem(for: example.itemContentID)
             persistence.delete(item)
         }
         for item in ItemContent.examples {
@@ -150,5 +150,14 @@ final class CronicaTests: XCTestCase {
         let count = try? managedContext.count(for: request)
         XCTAssertEqual(count, 1)
     }
-    
+
+    private func requireItem(for contentID: String,
+                             file: StaticString = #filePath,
+                             line: UInt = #line) -> WatchlistItem {
+        guard let item = persistence.fetch(for: contentID) else {
+            XCTFail("Expected watchlist item for \(contentID)", file: file, line: line)
+            fatalError("Missing watchlist item for \(contentID)")
+        }
+        return item
+    }
 }

@@ -59,3 +59,13 @@ jobs:
             -destination 'platform=iOS Simulator,name=iPhone 17,OS=latest' \
             -configuration Debug \
             CODE_SIGNING_ALLOWED=NO
+
+      - name: Build Cronica Widget Extension
+        run: |
+          set -o pipefail
+          xcodebuild build \
+            -project Cronica.xcodeproj \
+            -scheme CronicaWidgetExtension \
+            -destination 'platform=iOS Simulator,name=iPhone 17,OS=latest' \
+            -configuration Debug \
+            CODE_SIGNING_ALLOWED=NO

@@ -99,7 +99,6 @@ extension UpcomingWatchlist {
         if items.isEmpty { return }
         Task {
             for item in items {
-                print(item.itemTitle)
                 if item.itemReleaseDate < Date() {
                     let content = try? await NetworkService.shared.fetchItem(id: item.itemId, type: item.itemMedia)
                     if let content {

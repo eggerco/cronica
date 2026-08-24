@@ -15,10 +15,12 @@ struct CronicaTelemetry {
 
     func setup() { }
 
-    /// Logs diagnostic messages in Debug / Simulator only.
+    /// Logs diagnostic messages in Debug / Simulator and reports warnings in Release.
     func handleMessage(_ message: String, for id: String) {
 #if targetEnvironment(simulator) || DEBUG
         AppLogger.lifecycle.warning("\(message), for: \(id)")
+#else
+        SentryManager.captureMessage("\(message) [\(id)]", level: .warning)
 #endif
     }
 }
