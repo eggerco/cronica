@@ -19,6 +19,8 @@ struct OverviewBoxView: View {
     @State private var showTextOptions = true
     @State private var isTruncated = false
     @StateObject private var settings = SettingsStore.shared
+    
+    private static let expandAnimation = Animation.easeInOut(duration: 0.22)
     var body: some View {
         if let overview {
             if !overview.isEmpty {
@@ -29,7 +31,7 @@ struct OverviewBoxView: View {
                             .padding([.top], 2)
                             .lineLimit(showFullText ? nil : 4)
                             .multilineTextAlignment(.leading)
-                            .animation(.none, value: showFullText)
+                            .animation(Self.expandAnimation, value: showFullText)
 #if os(iOS)
                             .background(
                                 // Render the limited text and measure its size
@@ -66,7 +68,7 @@ struct OverviewBoxView: View {
                                 .font(.caption)
                                 .foregroundStyle(settings.appTheme.color)
                                 .padding(.top, 4)
-                            
+                                .animation(Self.expandAnimation, value: showFullText)
                         }
 #endif
                     }
@@ -80,10 +82,14 @@ struct OverviewBoxView: View {
                         if showAsPopover {
                             showSheet.toggle()
                         } else {
-                            showFullText.toggle()
+                            withAnimation(Self.expandAnimation) {
+                                showFullText.toggle()
+                            }
                         }
                     } else {
-                        showFullText.toggle()
+                        withAnimation(Self.expandAnimation) {
+                            showFullText.toggle()
+                        }
                     }
                     
 #elseif os(macOS)
