@@ -34,12 +34,12 @@ struct WelcomeView: View {
                                 systemImage: "icloud.fill"
                             )
                             featureRow(
-                                title: "Track Episodes",
+                                title: "Track episodes",
                                 subtitle: "Mark what you’ve watched and pick up right where you left off.",
                                 systemImage: "rectangle.fill.badge.checkmark"
                             )
                             featureRow(
-                                title: "Never Miss a Release",
+                                title: "Never miss a release",
                                 subtitle: "Get notified when new movies and episodes arrive.",
                                 systemImage: "bell.fill"
                             )
@@ -59,16 +59,18 @@ struct WelcomeView: View {
                             }
                         }
                     } label: {
-                        Text("Continue")
-                            .textCase(.none)
+                        Text(verbatim: "Continue")
+                            .font(.body.weight(.semibold))
                             .frame(maxWidth: .infinity)
                     }
                     .buttonStyle(.borderedProminent)
                     .controlSize(.large)
                     .tint(settings.appTheme.color)
 
-                    Button("Privacy Policy") {
+                    Button {
                         showPolicy = true
+                    } label: {
+                        Text(verbatim: "Privacy Policy")
                     }
                     .buttonStyle(.borderless)
                     .controlSize(.regular)
@@ -77,6 +79,7 @@ struct WelcomeView: View {
                 .padding(.horizontal, 24)
                 .padding(.vertical, 20)
             }
+            .environment(\.textCase, nil)
             .background()
             .interactiveDismissDisabled(true)
             .toolbar(.hidden, for: .navigationBar)
@@ -100,7 +103,7 @@ struct WelcomeView: View {
                 .shadow(color: .black.opacity(0.18), radius: 8, x: 0, y: 4)
                 .accessibilityHidden(true)
 
-            Text("Cronica")
+            Text(verbatim: "Cronica")
                 .font(.largeTitle.weight(.bold))
                 .fontDesign(.rounded)
 
@@ -116,7 +119,7 @@ struct WelcomeView: View {
         .accessibilityAddTraits(.isHeader)
     }
 
-    private func featureRow(title: LocalizedStringKey, subtitle: LocalizedStringKey, systemImage: String) -> some View {
+    private func featureRow(title: String, subtitle: LocalizedStringKey, systemImage: String) -> some View {
         HStack(alignment: .top, spacing: 16) {
             Image(systemName: systemImage)
                 .font(.title2)
@@ -125,14 +128,12 @@ struct WelcomeView: View {
                 .accessibilityHidden(true)
 
             VStack(alignment: .leading, spacing: 4) {
-                Text(title)
+                Text(verbatim: title)
                     .font(.headline)
                     .fontDesign(.rounded)
-                    .textCase(.none)
                 Text(subtitle)
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
-                    .textCase(.none)
                     .fixedSize(horizontal: false, vertical: true)
             }
         }
