@@ -4,9 +4,9 @@
 //
 
 import Foundation
+@preconcurrency import CoreData
 import CronicaCore
 #if canImport(EventKit) && !os(tvOS) && !os(watchOS)
-@preconcurrency import CoreData
 import EventKit
 #if canImport(UIKit)
 import UIKit
@@ -24,6 +24,30 @@ private struct WatchlistCalendarSyncItem: Sendable {
     let releaseDate: Date
     let isMovie: Bool
     let isTvShow: Bool
+}
+
+@MainActor
+private enum CalendarWatchlistSyncFetcher {
+    static func activeItems() -> [WatchlistCalendarSyncItem] {
+        let context = PersistenceController.shared.container.viewContext
+        let request = WatchlistItem.fetchRequest()
+        request.predicate = NSPredicate(format: "isArchive == NO")
+        guard let items = try? context.fetch(request) else { return [] }
+
+        return items.compactMap { item in
+            let date = item.itemUpcomingReleaseDate
+            guard date != Date.distantPast else { return nil }
+            return WatchlistCalendarSyncItem(
+                identifier: item.itemContentID,
+                title: item.itemTitle,
+                notes: item.itemGlanceInfo,
+                url: URL(string: "cronica://\(item.itemContentID)"),
+                releaseDate: date,
+                isMovie: item.isMovie,
+                isTvShow: item.isTvShow
+            )
+        }
+    }
 }
 
 final class CalendarManager {
@@ -80,13 +104,18 @@ final class CalendarManager {
         guard let releaseDate = releaseDate(for: item) else { return }
         guard releaseDate >= Calendar.current.startOfDay(for: Date()) else { return }
 
+        let identifier = item.itemContentID
+        let title = item.itemTitle
+        let notes = item.itemGlanceInfo
+        let url = URL(string: "cronica://\(identifier)")
+
         Task {
             guard await requestAuthorization() else { return }
             upsertEvent(
-                identifier: item.itemContentID,
-                title: item.itemTitle,
-                notes: item.itemGlanceInfo,
-                url: URL(string: "cronica://\(item.itemContentID)"),
+                identifier: identifier,
+                title: title,
+                notes: notes,
+                url: url,
                 releaseDate: releaseDate
             )
         }
@@ -115,7 +144,7 @@ final class CalendarManager {
         }
         guard await requestAuthorization() else { return }
 
-        let items = await Self.fetchActiveWatchlistItems()
+        let items = await CalendarWatchlistSyncFetcher.activeItems()
         let settings = SettingsStore.shared
         let startOfToday = Calendar.current.startOfDay(for: Date())
 
@@ -135,28 +164,6 @@ final class CalendarManager {
 
         for identifier in storedEventIDs.keys where !activeIDs.contains(identifier) {
             removeEvent(identifier: identifier)
-        }
-    }
-
-    @MainActor
-    private static func fetchActiveWatchlistItems() -> [WatchlistCalendarSyncItem] {
-        let context = PersistenceController.shared.container.viewContext
-        let request = WatchlistItem.fetchRequest()
-        request.predicate = NSPredicate(format: "isArchive == NO")
-        guard let items = try? context.fetch(request) else { return [] }
-
-        return items.compactMap { item in
-            let date = item.itemUpcomingReleaseDate
-            guard date != Date.distantPast else { return nil }
-            return WatchlistCalendarSyncItem(
-                identifier: item.itemContentID,
-                title: item.itemTitle,
-                notes: item.itemGlanceInfo,
-                url: URL(string: "cronica://\(item.itemContentID)"),
-                releaseDate: date,
-                isMovie: item.isMovie,
-                isTvShow: item.isTvShow
-            )
         }
     }
 
