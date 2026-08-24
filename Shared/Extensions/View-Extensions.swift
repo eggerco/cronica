@@ -156,7 +156,7 @@ struct CronicaFormSectionHeader: View {
     }
 }
 
-/// Form section with sentence-case title. Uses `Section("Title")` on iOS/macOS/tvOS and an explicit header on watchOS.
+/// Form section with sentence-case title.
 struct CronicaFormSection<Content: View>: View {
     let title: String
     @ViewBuilder var content: () -> Content
@@ -167,17 +167,11 @@ struct CronicaFormSection<Content: View>: View {
     }
 
     var body: some View {
-#if os(watchOS)
         Section {
             content()
         } header: {
             CronicaFormSectionHeader(title: title)
         }
-#else
-        Section(title) {
-            content()
-        }
-#endif
     }
 }
 
@@ -198,7 +192,6 @@ struct CronicaFormSectionWithFooter<Content: View, Footer: View>: View {
     }
 
     var body: some View {
-#if os(watchOS)
         Section {
             content()
         } header: {
@@ -206,12 +199,5 @@ struct CronicaFormSectionWithFooter<Content: View, Footer: View>: View {
         } footer: {
             footer()
         }
-#else
-        Section(title) {
-            content()
-        } footer: {
-            footer()
-        }
-#endif
     }
 }
