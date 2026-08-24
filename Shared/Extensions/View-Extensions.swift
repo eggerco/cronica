@@ -161,6 +161,11 @@ struct CronicaFormSection<Content: View>: View {
     let title: LocalizedStringKey
     @ViewBuilder var content: () -> Content
 
+    init(_ title: LocalizedStringKey, @ViewBuilder content: @escaping () -> Content) {
+        self.title = title
+        self.content = content
+    }
+
     var body: some View {
 #if os(watchOS)
         Section {
@@ -181,6 +186,16 @@ struct CronicaFormSectionWithFooter<Content: View, Footer: View>: View {
     let title: LocalizedStringKey
     @ViewBuilder var content: () -> Content
     @ViewBuilder var footer: () -> Footer
+
+    init(
+        _ title: LocalizedStringKey,
+        @ViewBuilder content: @escaping () -> Content,
+        @ViewBuilder footer: @escaping () -> Footer
+    ) {
+        self.title = title
+        self.content = content
+        self.footer = footer
+    }
 
     var body: some View {
 #if os(watchOS)

@@ -166,12 +166,14 @@ final class CalendarManager {
 
     private func eventNotes(for content: ItemContent) -> String? {
         if content.itemContentMedia == .tvShow, let episode = content.nextEpisodeToAir {
-            if let season = episode.seasonNumber, let number = episode.episodeNumber {
-                if let name = episode.name, !name.isEmpty {
-                    return "S\(season) E\(number) • \(name)"
-                }
-                return "S\(season) E\(number)"
+            guard let season = episode.seasonNumber, let number = episode.episodeNumber else {
+                return nil
             }
+            let label = "S\(season) E\(number)"
+            if let name = episode.name, !name.isEmpty {
+                return "\(label) • \(name)"
+            }
+            return label
         }
         if let overview = content.overview, !overview.isEmpty {
             return overview
