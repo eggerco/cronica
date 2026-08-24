@@ -593,7 +593,10 @@ struct ItemContentDetails: View {
                 if let companies = item?.itemCompanies, let company = item?.itemCompany {
                     if !companies.isEmpty {
                         NavigationLink(value: companies) {
-                            infoRow(title: String(localized: "Production Companies"), value: company)
+                            infoDisclosureRow(
+                                title: String(localized: "Production Companies"),
+                                value: company
+                            )
                         }
 #if os(macOS)
                         .buttonStyle(.link)
@@ -1022,7 +1025,10 @@ extension ItemContentDetails {
             if let companies = viewModel.content?.itemCompanies,
                let company = viewModel.content?.itemCompany, !companies.isEmpty {
                 NavigationLink(value: companies) {
-                    infoRow(title: String(localized: "Production Companies"), value: company)
+                    infoDisclosureRow(
+                        title: String(localized: "Production Companies"),
+                        value: company
+                    )
                 }
                 .buttonStyle(.plain)
             } else {
@@ -1047,35 +1053,33 @@ extension ItemContentDetails {
         }
     }
     
-    private func infoRow(title: String, value: String) -> some View {
-        infoRowContent(title: title, value: value)
-            .padding([.horizontal, .top], 2)
-    }
-
     private func infoDisclosureRow(title: String, value: String) -> some View {
-        HStack(alignment: .center, spacing: 8) {
-            infoRowContent(title: title, value: value)
-            Spacer(minLength: 0)
-#if !os(tvOS)
-            Image(systemName: "chevron.right")
-                .font(.caption.weight(.semibold))
-                .foregroundStyle(.tertiary)
-#endif
+        HStack {
+            VStack(alignment: .leading, spacing: 2) {
+                infoTitleWithChevron(title)
+                Text(value)
+                    .multilineTextAlignment(.leading)
+                    .lineLimit(2)
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+            }
+            .accessibilityElement(children: .combine)
+            Spacer()
         }
         .padding([.horizontal, .top], 2)
     }
 
-    private func infoRowContent(title: String, value: String) -> some View {
-        VStack(alignment: .leading, spacing: 2) {
+    @ViewBuilder
+    private func infoTitleWithChevron(_ title: String) -> some View {
+        HStack(spacing: 0) {
             Text(title)
                 .font(.caption)
-            Text(value)
-                .multilineTextAlignment(.leading)
-                .lineLimit(2)
-                .font(.caption2)
+#if !os(tvOS)
+            Image(systemName: "chevron.right")
+                .font(.caption)
                 .foregroundStyle(.secondary)
+#endif
         }
-        .accessibilityElement(children: .combine)
     }
 
     private func tappableInfoDisclosureRow(

@@ -72,8 +72,7 @@ struct ReleaseCalendarView: View {
                         )
                     }
                 } else if selectedDayItems.isEmpty {
-                    Text("No watchlist releases on this date.")
-                        .foregroundStyle(.secondary)
+                    CronicaFormText("No watchlist releases on this date.", color: .secondary)
                 } else {
                     ForEach(selectedDayItems) { item in
                         NavigationLink(value: item) {

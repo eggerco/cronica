@@ -98,10 +98,10 @@ struct BehaviorSetting: View {
 
             Section {
                 Toggle(isOn: $store.disableSearchFilter) {
-                    Text("Disable Search Filter")
+                    CronicaFormText("Disable Search Filter")
                 }
             } footer: {
-                Text("Search filter improves the search results, but has the downside of taking longer to load.")
+                CronicaFormFooter("Search filter improves the search results, but has the downside of taking longer to load.")
             }
 #endif
 
