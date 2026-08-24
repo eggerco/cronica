@@ -86,13 +86,6 @@ extension View {
         modifier(AppTintModifier())
     }
 
-    /// Standard toolbar icon sizing used across navigation bars.
-    func cronicaToolbarIconStyle() -> some View {
-        self
-            .imageScale(.medium)
-            .fontWeight(.semibold)
-    }
-
     /// Standard loading overlay used across primary screens.
     func cronicaLoadingOverlay(_ isLoading: Bool) -> some View {
         overlay {

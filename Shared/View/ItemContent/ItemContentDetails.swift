@@ -984,7 +984,7 @@ extension ItemContentDetails {
     
 #if !os(macOS)
     private var moreMenu: some View {
-        Menu {
+        Menu("More Options", systemImage: "ellipsis.circle") {
 #if os(visionOS)
             if viewModel.isInWatchlist {
                 if type == .movie {
@@ -1013,10 +1013,6 @@ extension ItemContentDetails {
             openInMenu
 #endif
             
-        } label: {
-            Image(systemName: "ellipsis.circle")
-                .cronicaToolbarIconStyle()
-                .accessibilityLabel("More Options")
         }
         .labelStyle(.iconOnly)
     }

@@ -116,15 +116,11 @@ struct HomeView: View {
                 HStack {
                     NavigationLink(value: Screens.notifications) {
                         Image(systemName: hasNotifications ? "bell.badge.fill" : "bell")
-                            .cronicaToolbarIconStyle()
                             .accessibilityLabel("Notifications")
-                            .applyHoverEffect()
                     }
                     NavigationLink(value: SettingsScreens.settings) {
                         Image(systemName: "gearshape")
-                            .cronicaToolbarIconStyle()
                             .accessibilityLabel("Settings")
-                            .applyHoverEffect()
                     }
                 }
             }

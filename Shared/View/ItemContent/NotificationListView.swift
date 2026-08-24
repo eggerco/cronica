@@ -48,8 +48,6 @@ struct NotificationListView: View {
     private var configButton: some View {
         NavigationLink(destination: NotificationsSettingsView()) {
             Label("Settings", systemImage: "gearshape")
-                .labelStyle(.iconOnly)
-                .cronicaToolbarIconStyle()
         }
     }
     
