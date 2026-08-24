@@ -1272,7 +1272,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Allow Full Swipe"
+            "value": "Allow full swipe"
           }
         },
         "es-MX": {
@@ -1318,7 +1318,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Allow Notifications"
+            "value": "Allow notifications"
           }
         },
         "es-MX": {
@@ -1825,7 +1825,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ask Confirmation To Mark as Watched"
+            "value": "Ask confirmation to mark as watched"
           }
         },
         "es-MX": {
@@ -3076,7 +3076,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Choose what function to perform when double tap the cover/poster image."
+            "value": "Choose what happens when you double-tap a cover or poster."
           }
         },
         "es-MX": {
@@ -4833,7 +4833,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Disable Search Filter"
+            "value": "Disable search filter"
           }
         },
         "es-MX": {
@@ -4879,7 +4879,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Disable Translucent Background"
+            "value": "Disable translucent background"
           }
         },
         "es-MX": {
@@ -5155,7 +5155,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Double Tap On Cover/Poster"
+            "value": "Double tap on cover/poster"
           }
         },
         "es-MX": {
@@ -5351,7 +5351,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Edit Notifications in Settings app"
+            "value": "Edit notifications in Settings app"
           }
         },
         "es-MX": {
@@ -5491,7 +5491,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Enable Preferred Launch Screen"
+            "value": "Preferred launch screen"
           }
         },
         "es-MX": {
@@ -6878,7 +6878,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Full Swipe will activate the primary action"
+            "value": "Full swipe activates the primary action."
           }
         },
         "es-MX": {
@@ -7341,7 +7341,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Haptic Feedback"
+            "value": "Haptic feedback"
           }
         },
         "es-MX": {
@@ -7473,7 +7473,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hide Thumbnails from Unwatched Episodes"
+            "value": "Hide thumbnails from unwatched episodes"
           }
         },
         "es-MX": {
@@ -7519,7 +7519,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hide Titles from Unwatched Episodes"
+            "value": "Hide titles from unwatched episodes"
           }
         },
         "es-MX": {
@@ -7704,7 +7704,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Horizontal List Style"
+            "value": "Horizontal list style"
           }
         },
         "es-MX": {
@@ -11338,7 +11338,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Notify Movies Releases"
+            "value": "Notify movie releases"
           }
         },
         "es-MX": {
@@ -11384,7 +11384,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Notify New Episodes"
+            "value": "Notify new episodes"
           }
         },
         "es-MX": {
@@ -11476,7 +11476,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Notify when a new episode from a TV Show on your watchlist is released."
+            "value": "Notify when a new episode from a TV show on your watchlist is released."
           }
         },
         "es-MX": {
@@ -11752,7 +11752,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Open List Selector when adding an item"
+            "value": "Open list selector when adding an item"
           }
         },
         "es-MX": {
@@ -11798,7 +11798,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Open Trailers in YouTube"
+            "value": "Open trailers in YouTube"
           }
         },
         "es-MX": {
@@ -12493,7 +12493,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Prefer Poster in Details Page"
+            "value": "Prefer poster in details page"
           }
         },
         "es-MX": {
@@ -12539,7 +12539,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Prefer Series Cover instead of Episode Thumbnail on Up Next"
+            "value": "Prefer series cover instead of episode thumbnail on Up Next"
           }
         },
         "es-MX": {
@@ -12585,7 +12585,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Preferred Launch Screen"
+            "value": "Launch screen"
           }
         },
         "es-MX": {
@@ -12631,7 +12631,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Preferred Streaming Services"
+            "value": "Preferred streaming services"
           }
         },
         "es-MX": {
@@ -12816,7 +12816,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Primary Left Gesture"
+            "value": "Primary left"
           }
         },
         "es-MX": {
@@ -12862,7 +12862,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Primary Right Gesture"
+            "value": "Primary right"
           }
         },
         "es-MX": {
@@ -13601,7 +13601,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Reduce some UI elements size to accommodate more items on the screen"
+            "value": "Reduce the size of some UI elements to fit more items on screen."
           }
         },
         "es-MX": {
@@ -14202,7 +14202,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Remove From Pin when item is  marked as watched"
+            "value": "Remove from pin when item is marked as watched"
           }
         },
         "es-MX": {
@@ -14480,7 +14480,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Reset to Default"
+            "value": "Reset to default"
           }
         },
         "es-MX": {
@@ -14572,7 +14572,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Restore Purchase"
+            "value": "Restore purchase"
           }
         },
         "es-MX": {
@@ -15216,7 +15216,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Search filter improve the search results, but has the downside of taking longer to load."
+            "value": "The filter improves results but can make search take longer."
           }
         },
         "es-MX": {
@@ -15670,7 +15670,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Secondary Left Gesture"
+            "value": "Secondary left"
           }
         },
         "es-MX": {
@@ -15716,7 +15716,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Secondary Right Gesture"
+            "value": "Secondary right"
           }
         },
         "es-MX": {
@@ -15808,7 +15808,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Section's Details Style"
+            "value": "Section details style"
           }
         },
         "es-MX": {
@@ -15854,7 +15854,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "See in what platforms the content is available on."
+            "value": "See which platforms the content is available on."
           }
         },
         "es-MX": {
@@ -16315,7 +16315,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sharable Link"
+            "value": "Shareable link"
           }
         },
         "es-MX": {
@@ -16499,7 +16499,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Show Date in Watchlist"
+            "value": "Show date in watchlist"
           }
         },
         "es-MX": {
@@ -16591,7 +16591,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Show Menu Bar App"
+            "value": "Show menu bar app"
           }
         },
         "es-MX": {
@@ -16729,7 +16729,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Show Remove Confirmation"
+            "value": "Show remove confirmation"
           }
         },
         "es-MX": {
@@ -18294,7 +18294,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tap To Mark Episode as Watched"
+            "value": "Tap to mark episode as watched"
           }
         },
         "es-MX": {
@@ -20468,7 +20468,7 @@
     "Hide Unstarted Series": {
       "localizations": {
         "de": { "stringUnit": { "state": "translated", "value": "Nicht begonnene Serien ausblenden" } },
-        "en": { "stringUnit": { "state": "translated", "value": "Hide Unstarted Series" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Hide unstarted series" } },
         "es-MX": { "stringUnit": { "state": "translated", "value": "Ocultar series sin empezar" } },
         "fr": { "stringUnit": { "state": "translated", "value": "Masquer les séries non commencées" } },
         "it": { "stringUnit": { "state": "translated", "value": "Nascondi serie non iniziate" } },
@@ -20491,7 +20491,7 @@
       "comment": "Up Next sort order",
       "localizations": {
         "de": { "stringUnit": { "state": "translated", "value": "Kürzliche Aktivität" } },
-        "en": { "stringUnit": { "state": "translated", "value": "Recent Activity" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Recent activity" } },
         "es-MX": { "stringUnit": { "state": "translated", "value": "Actividad reciente" } },
         "fr": { "stringUnit": { "state": "translated", "value": "Activité récente" } },
         "it": { "stringUnit": { "state": "translated", "value": "Attività recente" } },
@@ -20502,7 +20502,7 @@
     "Up Next Sort Order": {
       "localizations": {
         "de": { "stringUnit": { "state": "translated", "value": "Sortierung für Als Nächstes" } },
-        "en": { "stringUnit": { "state": "translated", "value": "Up Next Sort Order" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Up Next sort order" } },
         "es-MX": { "stringUnit": { "state": "translated", "value": "Orden de Siguiente" } },
         "fr": { "stringUnit": { "state": "translated", "value": "Ordre de À suivre" } },
         "it": { "stringUnit": { "state": "translated", "value": "Ordine Prossimo episodio" } },
@@ -20514,7 +20514,7 @@
       "comment": "Up Next sort order",
       "localizations": {
         "de": { "stringUnit": { "state": "translated", "value": "Wiedergabefortschritt" } },
-        "en": { "stringUnit": { "state": "translated", "value": "Watch Progress" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Watch progress" } },
         "es-MX": { "stringUnit": { "state": "translated", "value": "Progreso de visualización" } },
         "fr": { "stringUnit": { "state": "translated", "value": "Progression de visionnage" } },
         "it": { "stringUnit": { "state": "translated", "value": "Progresso visione" } },
@@ -20625,7 +20625,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Up Next Details Style"
+            "value": "Up Next details style"
           }
         },
         "es-MX": {
@@ -20763,7 +20763,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Update Items"
+            "value": "Update items"
           }
         },
         "es-MX": {
@@ -21223,7 +21223,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Watch Providers"
+            "value": "Watch providers"
           }
         },
         "es-MX": {
@@ -21539,7 +21539,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Watchlist's Item Style"
+            "value": "Watchlist item style"
           }
         },
         "es-MX": {
@@ -21723,7 +21723,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "You can choose to share using a Cronica link that will allow you to open the application.\nPlease note that not all content can be shared with a Cronica link, the application will always use TMDB links if necessary."
+            "value": "Cronica links open in the app when possible. TMDB links are used when a Cronica link isn't available."
           }
         },
         "es-MX": {

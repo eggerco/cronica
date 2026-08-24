@@ -27,28 +27,28 @@ struct BehaviorSetting: View {
             } header: {
                 Text("Gestures")
             } footer: {
-                Text("Choose what happens when you double-tap a cover or poster.")
+                Text("Choose what function to perform when double tap the cover/poster image.")
             }
 #endif
 
 #if os(iOS)
             Section {
-                Picker("Primary Left", selection: $store.primaryLeftSwipe) {
+                Picker("Primary Left Gesture", selection: $store.primaryLeftSwipe) {
                     ForEach(SwipeGestureOptions.allCases) {
                         Text($0.localizableName).tag($0)
                     }
                 }
-                Picker("Secondary Left", selection: $store.secondaryLeftSwipe) {
+                Picker("Secondary Left Gesture", selection: $store.secondaryLeftSwipe) {
                     ForEach(SwipeGestureOptions.allCases) {
                         Text($0.localizableName).tag($0)
                     }
                 }
-                Picker("Primary Right", selection: $store.primaryRightSwipe) {
+                Picker("Primary Right Gesture", selection: $store.primaryRightSwipe) {
                     ForEach(SwipeGestureOptions.allCases) {
                         Text($0.localizableName).tag($0)
                     }
                 }
-                Picker("Secondary Right", selection: $store.secondaryRightSwipe) {
+                Picker("Secondary Right Gesture", selection: $store.secondaryRightSwipe) {
                     ForEach(SwipeGestureOptions.allCases) {
                         Text($0.localizableName).tag($0)
                     }
@@ -64,7 +64,7 @@ struct BehaviorSetting: View {
             } header: {
                 Text("Swipe Gestures")
             } footer: {
-                Text("Full swipe activates the primary action for that edge.")
+                Text("Full Swipe will activate the primary action")
             }
 
             Section {
@@ -78,8 +78,8 @@ struct BehaviorSetting: View {
 #if os(iOS)
             if horizontalSizeClass == .compact {
                 Section {
-                    Toggle("Preferred Launch Screen", isOn: $store.isPreferredLaunchScreenEnabled)
-                    Picker("Launch Screen", selection: $store.preferredLaunchScreen) {
+                    Toggle("Enable Preferred Launch Screen", isOn: $store.isPreferredLaunchScreenEnabled)
+                    Picker("Preferred Launch Screen", selection: $store.preferredLaunchScreen) {
                         ForEach(Screens.allCases) { item in
                             if item != .notifications, item != .settings {
                                 Text(item.title).tag(item)
@@ -105,7 +105,7 @@ struct BehaviorSetting: View {
             } header: {
                 Text("Sharing")
             } footer: {
-                Text("Cronica links open in the app when possible. TMDB links are used when a Cronica link isn’t available.")
+                Text("You can choose to share using a Cronica link that will allow you to open the application.\nPlease note that not all content can be shared with a Cronica link, the application will always use TMDB links if necessary.")
             }
 
             Section {
@@ -113,7 +113,7 @@ struct BehaviorSetting: View {
                     Text("Disable Search Filter")
                 }
             } footer: {
-                Text("The filter improves results but can make search take longer.")
+                Text("Search filter improve the search results, but has the downside of taking longer to load.")
             }
 #endif
 
