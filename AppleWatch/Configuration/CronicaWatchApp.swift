@@ -31,7 +31,7 @@ struct CronicaWatchApp: App {
                 default: WatchlistView().environment(\.managedObjectContext, persistence.container.viewContext)
                 }
             }
+            .cronicaNormalTextCase()
         }
-        .cronicaNormalTextCase()
     }
 }
