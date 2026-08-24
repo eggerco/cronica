@@ -54,7 +54,7 @@ struct ReleaseCalendarView: View {
             Section {
                 calendarPicker
             }
-            .listRowInsets(EdgeInsets())
+            .listRowInsets(EdgeInsets(top: 0, leading: 4, bottom: 0, trailing: 4))
             .listRowBackground(Color.clear)
 
             CronicaFormSection(releasesSectionTitle) {
@@ -131,6 +131,8 @@ private struct NativeReleaseCalendarPicker: UIViewRepresentable {
         calendarView.calendar = Calendar.current
         calendarView.locale = Locale.current
         calendarView.delegate = context.coordinator
+        calendarView.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        calendarView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
 
         let selection = UICalendarSelectionSingleDate(delegate: context.coordinator)
         calendarView.selectionBehavior = selection
@@ -152,6 +154,16 @@ private struct NativeReleaseCalendarPicker: UIViewRepresentable {
             Calendar.current.dateComponents([.year, .month, .day], from: $0)
         }
         calendarView.reloadDecorations(forDateComponents: decorationComponents, animated: false)
+    }
+
+    func sizeThatFits(_ proposal: ProposedViewSize, uiView: UICalendarView, context: Context) -> CGSize? {
+        guard let width = proposal.width else { return nil }
+        let size = uiView.systemLayoutSizeFitting(
+            CGSize(width: width, height: UIView.layoutFittingCompressedSize.height),
+            withHorizontalFittingPriority: .required,
+            verticalFittingPriority: .fittingSizeLevel
+        )
+        return size
     }
 
     final class Coordinator: NSObject, UICalendarViewDelegate, UICalendarSelectionSingleDateDelegate {
