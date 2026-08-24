@@ -27,11 +27,12 @@ struct AboutSettings: View {
                             .onTapGesture(count: 3) {
                                 settings.displayDeveloperSettings.toggle()
                             }
-                        Text(verbatim: "An Egger & Co Product")
+                        Text("An Egger & Co Product")
                             .fontWeight(.semibold)
                             .fontDesign(.monospaced)
                             .font(.caption2)
                             .foregroundColor(.secondary)
+                            .textCase(.uppercase)
                             .padding(.top)
                     }
                     .padding(.zero)
