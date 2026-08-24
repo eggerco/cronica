@@ -1,6 +1,10 @@
 {
   "name": "cronica-web",
   "private": true,
+  "allowScripts": {
+    "sharp": true,
+    "unrs-resolver": true
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -26,7 +30,7 @@
     "@types/node": "^22.15.0",
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.0",
-    "eslint": "^9.39.5",
+    "eslint": "^9.39.0",
     "eslint-config-next": "^15.5.23",
     "tailwindcss": "^4.1.8",
     "typescript": "^5.8.0"

@@ -34,6 +34,10 @@ npm run preview  # build + next start locally
 
 Dynamic `/details` share previews require a Next.js host like Vercel. Clean URLs are enabled in `vercel.json`.
 
+## Universal links
+
+`/.well-known/apple-app-site-association` is served for iOS Universal Links to open `/details` in the app. The app also needs the Associated Domains entitlement (`applinks:cronica.eggerco.com`) in `Shared/Configuration/Cronica.entitlements`.
+
 ## Pages
 
 | Path | Description |

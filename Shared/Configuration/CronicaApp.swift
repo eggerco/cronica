@@ -51,16 +51,9 @@ struct CronicaApp: App {
 #endif
                 .environment(\.managedObjectContext, persistence.container.viewContext)
                 .onOpenURL { url in
-                    let urlString = url.absoluteString
-                    if urlString.hasPrefix("cronica://") {
-                        let urlSubstring = urlString.dropFirst("cronica://".count)
-                        Task {
-                            await fetchContent(for: String(urlSubstring))
-                        }
-                    } else {
-                        Task {
-                            await fetchContent(for: url.absoluteString)
-                        }
+                    guard let contentID = Self.contentID(from: url) else { return }
+                    Task {
+                        await fetchContent(for: contentID)
                     }
                 }
                 .sheet(item: $selectedItem) { item in
@@ -188,6 +181,23 @@ struct CronicaApp: App {
 #endif
     }
     
+    static func contentID(from url: URL) -> String? {
+        if url.scheme?.lowercased() == "cronica" {
+            let raw = url.absoluteString.dropFirst("cronica://".count)
+            let id = String(raw.split(separator: "?").first ?? Substring(raw))
+            return id.isEmpty ? nil : id
+        }
+
+        guard url.host()?.lowercased() == "cronica.eggerco.com" else { return nil }
+        let path = url.path()
+        guard path == "/details" || path == "details" else { return nil }
+
+        return URLComponents(url: url, resolvingAgainstBaseURL: false)?
+            .queryItems?
+            .first(where: { $0.name == "id" })?
+            .value
+    }
+
     private func fetchContent(for id: String) async {
         if selectedItem != nil { selectedItem = nil }
         let type = id.last ?? "0"

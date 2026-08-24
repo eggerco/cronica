@@ -41,7 +41,7 @@ export function parseDetailsSearchParams(
 
   const posterUrl = img ? `https://image.tmdb.org/t/p/w780/${img}` : null;
 
-  const deepLinkUrl = id ? `cronica://${id}` : siteConfig.appStoreUrl;
+  const deepLinkUrl = id ? buildDetailsPageUrl({ id, title, img }) : siteConfig.appStoreUrl;
 
   return {
     id,

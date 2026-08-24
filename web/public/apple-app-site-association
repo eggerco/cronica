@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "S5A7774228.dev.alexandremadeira.Story",
+        "paths": ["/details", "/details/*"]
+      }
+    ]
+  }
+}
