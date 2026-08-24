@@ -30,16 +30,12 @@ extension PersistenceController {
 			if content.itemContentMedia == .movie {
 				item.date = content.itemFallbackDate
 			} else {
-				if let nextEpisode = content.nextEpisodeToAir {
-					if nextEpisode.episodeNumber == 1 {
-						let date = nextEpisode.airDate?.toDate()
-						if let date {
-							if date != item.date {
-								item.date = date
-							}
-						}
-					}
-				}
+				if let nextEpisode = content.nextEpisodeToAir,
+                   let date = nextEpisode.airDate?.toDate() {
+                    if item.date != date {
+                        item.date = date
+                    }
+                }
                 if let episode = content.lastEpisodeToAir?.episodeNumber {
                     item.nextEpisodeNumber = Int64(episode)
                 }
@@ -97,16 +93,11 @@ extension PersistenceController {
                 item.formattedDate = content.itemTheatricalString
             }
             if content.itemContentMedia == .tvShow {
-				if let nextEpisode = content.nextEpisodeToAir {
-					if nextEpisode.episodeNumber == 1 {
-						let date = nextEpisode.airDate?.toDate()
-						if let date {
-							if date != item.date {
-								item.date = date
-							}
-						}
-					}
-				}
+				if let nextEpisode = content.nextEpisodeToAir,
+                   let date = nextEpisode.airDate?.toDate(),
+                   item.date != date {
+                    item.date = date
+                }
                 if let episode = content.lastEpisodeToAir {
                     let episodeNumber = Int64(episode.itemEpisodeNumber)
                     if item.lastEpisodeNumber != episodeNumber {

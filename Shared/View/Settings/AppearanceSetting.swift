@@ -68,9 +68,8 @@ struct AppearanceSetting: View {
             
             CronicaFormSection("Accent Color") {
                 accentColor
-                    .listRowInsets(EdgeInsets())
-                    .listRowBackground(Color.clear)
             }
+            .listRowInsets(EdgeInsets())
 #endif
             
             Section {

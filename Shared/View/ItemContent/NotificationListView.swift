@@ -16,14 +16,10 @@ struct NotificationListView: View {
     @State private var showPopup = false
     @State private var popupType: ActionPopupItems?
     var body: some View {
-        Form {
+        List {
             if hasLoaded {
-                List {
-                    deliveredItemsView
-                    upcomingItemsView
-                }
-            } else {
-                EmptyView()
+                deliveredItemsView
+                upcomingItemsView
             }
         }
         .cronicaLoadingOverlay(!hasLoaded)
@@ -115,13 +111,16 @@ struct NotificationListView: View {
     private func load() async {
         if hasLoaded { return }
         let upcomingContent = await NotificationManager.shared.fetchUpcomingNotifications() ?? []
-        if !upcomingContent.isEmpty {
-            let orderedContent = upcomingContent.sorted(by: { $0.itemNotificationSortDate ?? Date.distantPast < $1.itemNotificationSortDate ?? Date.distantPast})
-            items = orderedContent
+        let delivered = await NotificationManager.shared.fetchDeliveredNotifications()
+        await MainActor.run {
+            if !upcomingContent.isEmpty {
+                items = upcomingContent.sorted {
+                    ($0.itemNotificationSortDate ?? .distantPast) < ($1.itemNotificationSortDate ?? .distantPast)
+                }
+            }
+            deliveredItems = delivered
+            withAnimation { hasLoaded = true }
         }
-        deliveredItems = await NotificationManager.shared.fetchDeliveredNotifications()
-        withAnimation { hasLoaded = true }
-        //await MainActor.run { withAnimation { self.hasLoaded = true } }
     }
     
     private func removeDelivered(id: String, for content: Int) {

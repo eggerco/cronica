@@ -109,7 +109,7 @@ final class CalendarManager {
         request.predicate = NSPredicate(format: "isArchive == NO")
 
         let context = PersistenceController.shared.container.viewContext
-        guard let items = try? context.fetch(request) else { return }
+        guard let items = await MainActor.run(body: { try? context.fetch(request) }) else { return }
 
         var activeIDs = Set<String>()
         let startOfToday = Calendar.current.startOfDay(for: Date())
@@ -160,7 +160,7 @@ final class CalendarManager {
 
     private func releaseDate(for item: WatchlistItem) -> Date? {
         let date = item.itemUpcomingReleaseDate
-        if date == Date.distantPast { return item.itemDate }
+        guard date != Date.distantPast else { return nil }
         return date
     }
 

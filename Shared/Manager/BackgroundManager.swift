@@ -157,10 +157,7 @@ final class BackgroundManager {
             if item.itemDate.areDifferentDates(with: content.itemFallbackDate) || content.itemStatus == .cancelled {
                 CalendarManager.shared.removeEvent(identifier: content.itemContentID)
             }
-            if !item.isArchive,
-               let releaseDate = content.itemFallbackDate,
-               releaseDate >= Calendar.current.startOfDay(for: Date()),
-               content.itemStatus != .cancelled {
+            if !item.isArchive, content.itemStatus != .cancelled {
                 CalendarManager.shared.schedule(content)
             }
 			PersistenceController.shared.update(item: content)

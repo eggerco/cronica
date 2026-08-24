@@ -32,7 +32,7 @@ struct SettingsView: View {
                                   icon: "hand.tap", color: .gray)
                 }
                 NavigationLink(value: SettingsScreens.notifications) {
-                    settingsLabel(title: NSLocalizedString("Notification", comment: ""),
+                    settingsLabel(title: NSLocalizedString("Notifications", comment: ""),
                                   icon: "bell", color: .red)
                 }
             }

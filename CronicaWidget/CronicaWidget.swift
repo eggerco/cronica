@@ -33,7 +33,7 @@ struct Provider: TimelineProvider {
             let nextUpdate = Date().addingTimeInterval(86400)
             do {
                 let result = try await NetworkService.shared.fetchItems(from: "trending/all/day")
-                let content = Array(result.shuffled().prefix(8))
+                let content = Array(result.prefix(8))
                 let items = await Self.buildDisplayItems(from: content)
                 let entry = ItemContentEntry(date: .now, items: items)
                 completion(Timeline(entries: [entry], policy: .after(nextUpdate)))
@@ -50,18 +50,23 @@ struct Provider: TimelineProvider {
     }
 
     private static func buildDisplayItems(from content: [ItemContent]) async -> [WidgetDisplayItem] {
-        let network = NetworkService.shared
-        var items: [WidgetDisplayItem] = []
-        items.reserveCapacity(content.count)
-
-        for item in content {
-            var posterData: Data?
-            if let url = item.posterImageMedium {
-                posterData = try? await network.downloadData(from: url)
+        await withTaskGroup(of: (Int, WidgetDisplayItem).self) { group in
+            for (index, item) in content.enumerated() {
+                group.addTask {
+                    var posterData: Data?
+                    if let url = item.posterImageMedium {
+                        posterData = try? await NetworkService.shared.downloadData(from: url)
+                    }
+                    return (index, WidgetDisplayItem(item: item, posterData: posterData))
+                }
             }
-            items.append(WidgetDisplayItem(item: item, posterData: posterData))
+
+            var ordered = [WidgetDisplayItem?](repeating: nil, count: content.count)
+            for await (index, item) in group {
+                ordered[index] = item
+            }
+            return ordered.compactMap { $0 }
         }
-        return items
     }
 }
 

@@ -101,7 +101,7 @@ struct BehaviorSetting: View {
                     Text("Disable Search Filter")
                 }
             } footer: {
-                Text("Search filter improve the search results, but has the downside of taking longer to load.")
+                Text("Search filter improves the search results, but has the downside of taking longer to load.")
             }
 #endif
 

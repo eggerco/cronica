@@ -42,7 +42,7 @@ struct NotificationsSettingsView: View {
                 }
                 Toggle(isOn: $settings.notifyMovieRelease) {
                     CronicaFormToggleLabel(
-                        title: "Notify Movies Releases",
+                        title: "Notify Movie Releases",
                         subtitle: "Notify when a movie on your watchlist is released."
                     )
                 }

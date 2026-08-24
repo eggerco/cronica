@@ -46,10 +46,11 @@ extension WatchlistItem {
 		itemDate ?? Date.distantPast
 	}
 	var itemUpcomingReleaseDate: Date {
-		if upcomingSeason {
-			if let date {
-				return date
-			}
+		if let date, date != Date.distantPast {
+			return date
+		}
+		if let movieReleaseDate {
+			return movieReleaseDate
 		}
 		return itemDate ?? Date.distantPast
 	}
