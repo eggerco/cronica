@@ -82,7 +82,11 @@ struct CronicaWidgetEntryView: View {
 private enum CronicaWidgetFamilies {
     static let homeScreen: [WidgetFamily] = {
 #if os(iOS)
-        [.systemSmall, .systemMedium, .systemLarge, .systemExtraLarge]
+        var families: [WidgetFamily] = [.systemSmall, .systemMedium, .systemLarge]
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            families.append(.systemExtraLarge)
+        }
+        return families
 #elseif os(macOS)
         [.systemSmall, .systemMedium, .systemLarge, .systemExtraLarge]
 #else
@@ -100,7 +104,7 @@ struct CronicaWidget: Widget {
             CronicaWidgetEntryView(entry: entry)
         }
         .configurationDisplayName("Trending")
-        .description("Shows trending movies and TV shows from TMDb. On iPhone, the large size matches the iPad extra-large layout.")
+        .description("Shows trending movies and TV shows from TMDb.")
         .contentMarginsDisabled()
         .supportedFamilies(CronicaWidgetFamilies.homeScreen)
     }
