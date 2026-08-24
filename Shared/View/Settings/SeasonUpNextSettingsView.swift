@@ -13,24 +13,32 @@ struct SeasonUpNextSettingsView: View {
         Form {
             CronicaFormSection("Behavior") {
                 Toggle(isOn: $store.markEpisodeWatchedOnTap) {
-                    Text("Tap To Mark Episode as Watched")
+                    CronicaFormText("Tap to mark episode as watched")
                 }
-                Toggle("Ask Confirmation To Mark as Watched", isOn: $store.askConfirmationToMarkEpisodeWatched)
-                    .disabled(!store.markEpisodeWatchedOnTap)
+                Toggle(isOn: $store.askConfirmationToMarkEpisodeWatched) {
+                    CronicaFormText("Ask confirmation to mark as watched")
+                }
+                .disabled(!store.markEpisodeWatchedOnTap)
                 Toggle(isOn: $store.preferCoverOnUpNext) {
-                    Text("Prefer Series Cover instead of Episode Thumbnail on Up Next")
+                    CronicaFormText("Prefer series cover instead of episode thumbnail on Up Next")
                 }
                 Toggle(isOn: $store.hideUnstartedUpNext) {
-                    Text("Hide Unstarted Series")
-                    Text("Only show series in Up Next after you've watched at least one episode.")
+                    CronicaFormToggleLabel(
+                        title: "Hide unstarted series",
+                        subtitle: "Only show series in Up Next after you've watched at least one episode."
+                    )
                 }
                 Toggle(isOn: $store.hideEpisodesTitles) {
-                    Text("Hide Titles from Unwatched Episodes")
-                    Text("To avoid potential spoilers, you can hide titles and synopsis from unwatched episodes.")
+                    CronicaFormToggleLabel(
+                        title: "Hide titles from unwatched episodes",
+                        subtitle: "To avoid potential spoilers, you can hide titles and synopsis from unwatched episodes."
+                    )
                 }
                 Toggle(isOn: $store.hideEpisodesThumbnails) {
-                    Text("Hide Thumbnails from Unwatched Episodes")
-                    Text("To avoid potential spoilers, you can hide thumbnails from unwatched episodes.")
+                    CronicaFormToggleLabel(
+                        title: "Hide thumbnails from unwatched episodes",
+                        subtitle: "To avoid potential spoilers, you can hide thumbnails from unwatched episodes."
+                    )
                 }
             }
             
@@ -40,20 +48,22 @@ struct SeasonUpNextSettingsView: View {
                         Text(item.localizableName).tag(item)
                     }
                 } label: {
-                    Text("Up Next Sort Order")
+                    CronicaFormText("Up Next sort order")
                 }
                 Picker(selection: $store.upNextStyle) {
                     ForEach(UpNextDetailsPreferredStyle.allCases) { item in
                         Text(item.title).tag(item)
                     }
                 } label: {
-                    Text("Up Next Details Style")
+                    CronicaFormText("Up Next details style")
                 }
             }
             
 #if os(macOS)
             Section {
-                Toggle("Show Menu Bar App", isOn: $store.showMenuBarApp)
+                Toggle(isOn: $store.showMenuBarApp) {
+                    CronicaFormText("Show menu bar app")
+                }
             }
 #endif
         }

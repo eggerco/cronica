@@ -181,6 +181,86 @@ final class CronicaTests: XCTestCase {
         XCTAssertEqual(item.watchProgress, 0)
     }
 
+    func testItemUpcomingReleaseDatePrefersStoredEpisodeDate() {
+        let episodeDate = Calendar.current.date(from: DateComponents(year: 2026, month: 9, day: 12))!
+        let item = WatchlistItem(context: managedContext)
+        item.contentType = MediaType.tvShow.toInt
+        item.date = episodeDate
+
+        XCTAssertEqual(item.itemUpcomingReleaseDate, episodeDate)
+    }
+
+    func testItemUpcomingReleaseDateUsesMovieReleaseDate() {
+        let movieDate = Calendar.current.date(from: DateComponents(year: 2026, month: 12, day: 1))!
+        let item = WatchlistItem(context: managedContext)
+        item.contentType = MediaType.movie.toInt
+        item.movieReleaseDate = movieDate
+
+        XCTAssertEqual(item.itemUpcomingReleaseDate, movieDate)
+    }
+
+    func testSavingTVShowStoresMidSeasonEpisodeDate() {
+        let episodeDate = Calendar.current.date(from: DateComponents(year: 2026, month: 10, day: 5))!
+        let content = SelfHelper.makeTVContent(id: 501, episodeNumber: 5, seasonNumber: 2, airDate: episodeDate)
+
+        persistence.save(content)
+        let saved = requireItem(for: content.itemContentID)
+
+        XCTAssertEqual(saved.date, episodeDate)
+        XCTAssertEqual(saved.itemUpcomingReleaseDate, episodeDate)
+    }
+
+    private enum SelfHelper {
+        static func makeTVContent(id: Int, episodeNumber: Int, seasonNumber: Int, airDate: Date) -> ItemContent {
+            let airDateString = DatesManager.dateFormatter.string(from: airDate)
+            let episode = Episode(
+                id: id * 10,
+                episodeNumber: episodeNumber,
+                seasonNumber: seasonNumber,
+                name: "Episode \(episodeNumber)",
+                overview: nil,
+                stillPath: nil,
+                airDate: airDateString
+            )
+            return ItemContent(
+                adult: nil,
+                id: id,
+                title: nil,
+                name: "Series \(id)",
+                overview: nil,
+                originalTitle: nil,
+                posterPath: nil,
+                backdropPath: nil,
+                profilePath: nil,
+                releaseDate: nil,
+                status: nil,
+                imdbId: nil,
+                runtime: nil,
+                numberOfEpisodes: 12,
+                numberOfSeasons: Int(seasonNumber),
+                voteCount: nil,
+                popularity: nil,
+                voteAverage: nil,
+                productionCompanies: nil,
+                productionCountries: nil,
+                seasons: nil,
+                genres: nil,
+                credits: nil,
+                recommendations: nil,
+                releaseDates: nil,
+                mediaType: "tv",
+                videos: nil,
+                nextEpisodeToAir: episode,
+                lastEpisodeToAir: nil,
+                originalName: nil,
+                firstAirDate: nil,
+                homepage: nil,
+                episodeRunTime: nil,
+                placeholderImagePath: nil
+            )
+        }
+    }
+
     private func requireItem(for contentID: String,
                              file: StaticString = #filePath,
                              line: UInt = #line) -> WatchlistItem {

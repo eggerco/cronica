@@ -149,13 +149,7 @@ final class CalendarManager {
     }
 
     private func releaseDate(for content: ItemContent) -> Date? {
-        if content.itemContentMedia == .movie {
-            return content.itemTheatricalDate ?? content.itemFallbackDate
-        }
-        if content.itemContentMedia == .tvShow {
-            return content.nextEpisodeDate ?? content.itemFallbackDate
-        }
-        return content.itemFallbackDate
+        content.itemCalendarReleaseDate
     }
 
     private func releaseDate(for item: WatchlistItem) -> Date? {

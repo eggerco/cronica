@@ -381,6 +381,18 @@ public extension ItemContent {
         }
         return nil
     }
+
+    /// Upcoming release date used for calendar sync and release calendar views.
+    var itemCalendarReleaseDate: Date? {
+        switch itemContentMedia {
+        case .movie:
+            return itemTheatricalDate ?? itemFallbackDate
+        case .tvShow:
+            return nextEpisodeDate ?? itemFallbackDate
+        default:
+            return itemFallbackDate
+        }
+    }
 	var itemNotificationSortDate: Date? {
 		if itemContentMedia == .movie {
 			if let itemTheatricalDate {
