@@ -108,6 +108,7 @@
 		B83E3EDA299AB9FB00A3A28B /* CustomList-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83E3ED9299AB9FB00A3A28B /* CustomList-Extensions.swift */; };
 		B83E3EDB299AB9FB00A3A28B /* CustomList-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83E3ED9299AB9FB00A3A28B /* CustomList-Extensions.swift */; };
 		B83F1E9928BAD24C008E151D /* SideBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83F1E9828BAD24C008E151D /* SideBarView.swift */; };
+		B84043B0289B187000D5CEBF /* Watchlist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B8E6D64027B6B106002E7A63 /* Watchlist.xcdatamodeld */; };
 		B84043B2289B187900D5CEBF /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B271A527A5A18C00F6463F /* PersistenceController.swift */; };
 		B84043B8289B18AA00D5CEBF /* WatchlistItem-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B878E83427BC85BC0021A981 /* WatchlistItem-Extension.swift */; };
 		B84043BB289B18BF00D5CEBF /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EC462E27D7AA99009389FC /* NotificationManager.swift */; };
@@ -254,6 +255,7 @@
 		B8DD56A1290DE2FD002CAAFD /* CenterHorizontalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DD569F290DE2D7002CAAFD /* CenterHorizontalView.swift */; };
 		B8DD56A2290DE2FE002CAAFD /* CenterHorizontalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DD569F290DE2D7002CAAFD /* CenterHorizontalView.swift */; };
 		B8E3ABF62955361C00CA0945 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8E3ABF52955361C00CA0945 /* CloudKit.framework */; };
+		B8E6D64227B6B106002E7A63 /* Watchlist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B8E6D64027B6B106002E7A63 /* Watchlist.xcdatamodeld */; };
 		B8E6EF5B2A043A61000A3617 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CC953227D05D1000B6757C /* HomeViewModel.swift */; };
 		B8E6EF672A044E5A000A3617 /* ContextMenuPreviewImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E6EF662A044E5A000A3617 /* ContextMenuPreviewImage.swift */; };
 		B8EC462F27D7AA99009389FC /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EC462E27D7AA99009389FC /* NotificationManager.swift */; };
