@@ -945,6 +945,9 @@
         }
       }
     },
+    "Add titles to %@ from search or details." : {
+
+    },
     "Add To List" : {
       "localizations" : {
         "de" : {
@@ -2978,6 +2981,9 @@
         }
       }
     },
+    "Check your connection and try again." : {
+
+    },
     "Choose what function to perform when double tap the cover/poster image." : {
       "localizations" : {
         "de" : {
@@ -3627,6 +3633,12 @@
       }
     },
     "Continue" : {
+
+    },
+    "Couldn't Load Home" : {
+
+    },
+    "Couldn't Load Person" : {
 
     },
     "Create" : {
@@ -5211,6 +5223,7 @@
       }
     },
     "Empty List" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -5535,6 +5548,7 @@
       }
     },
     "Error" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -9977,6 +9991,9 @@
         }
       }
     },
+    "No Companies" : {
+
+    },
     "No Episode Available" : {
       "localizations" : {
         "de" : {
@@ -10022,6 +10039,9 @@
           }
         }
       }
+    },
+    "No Favorites" : {
+
     },
     "No information available." : {
       "localizations" : {
@@ -10114,6 +10134,9 @@
           }
         }
       }
+    },
+    "No Pinned Items" : {
+
     },
     "No results" : {
       "localizations" : {
@@ -10392,6 +10415,12 @@
         }
       }
     },
+    "Nothing Archived" : {
+
+    },
+    "Nothing Here" : {
+
+    },
     "Nothing here, try again later." : {
       "localizations" : {
         "de" : {
@@ -10437,6 +10466,21 @@
           }
         }
       }
+    },
+    "Nothing Released Yet" : {
+
+    },
+    "Nothing Unwatched" : {
+
+    },
+    "Nothing Upcoming" : {
+
+    },
+    "Nothing Watched" : {
+
+    },
+    "Nothing Watching" : {
+
     },
     "Notification" : {
       "localizations" : {
@@ -12423,6 +12467,9 @@
           }
         }
       }
+    },
+    "Pull to refresh or try again." : {
+
     },
     "Rating" : {
       "localizations" : {
@@ -14454,6 +14501,9 @@
         }
       }
     },
+    "Search for movies and shows to start building your watchlist." : {
+
+    },
     "Search results" : {
       "localizations" : {
         "de" : {
@@ -16341,6 +16391,9 @@
           }
         }
       }
+    },
+    "Something Went Wrong" : {
+
     },
     "Sort By" : {
       "localizations" : {
@@ -18657,6 +18710,9 @@
         }
       }
     },
+    "Try another filter or add more titles to your watchlist." : {
+
+    },
     "Turkey" : {
       "comment" : "Country",
       "localizations" : {
@@ -20320,6 +20376,9 @@
           }
         }
       }
+    },
+    "Watchlist Empty" : {
+
     },
     "Watchlist Settings" : {
       "localizations" : {
