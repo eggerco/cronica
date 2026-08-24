@@ -9,9 +9,9 @@ import SwiftUI
 
 struct PinItemsList: View {
     @FetchRequest(
-        entity: WatchlistItem.entity(),
         sortDescriptors: [ NSSortDescriptor(keyPath: \WatchlistItem.title, ascending: true) ],
-        predicate: NSPredicate(format: "isPin == %d", true)
+        predicate: NSPredicate(format: "isPin == %d", true),
+        animation: .default
     ) private var items: FetchedResults<WatchlistItem>
     @Binding var showPopup: Bool
     @Binding var popupType: ActionPopupItems?

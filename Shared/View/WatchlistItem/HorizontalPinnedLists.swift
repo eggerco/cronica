@@ -9,9 +9,9 @@ import SwiftUI
 
 struct HorizontalPinnedList: View {
     @FetchRequest(
-        entity: CustomList.entity(),
         sortDescriptors: [NSSortDescriptor(keyPath: \CustomList.title, ascending: true)],
-        predicate: NSPredicate(format: "isPin == %d", true)
+        predicate: NSPredicate(format: "isPin == %d", true),
+        animation: .default
     ) private var lists: FetchedResults<CustomList>
     @Binding var showPopup: Bool
     @Binding var popupType: ActionPopupItems?

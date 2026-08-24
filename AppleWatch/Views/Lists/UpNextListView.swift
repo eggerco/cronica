@@ -12,11 +12,11 @@ struct UpNextListView: View {
     static let tag: Screens? = .upNext
     @StateObject private var viewModel = UpNextViewModel.shared
     @FetchRequest(
-        entity: WatchlistItem.entity(),
         sortDescriptors: [NSSortDescriptor(keyPath: \WatchlistItem.title, ascending: true)],
         predicate: NSCompoundPredicate(type: .and, subpredicates: [ NSPredicate(format: "displayOnUpNext == %d", true),
                                                                     NSPredicate(format: "isArchive == %d", false),
-                                                                    NSPredicate(format: "watched == %d", false)])
+                                                                    NSPredicate(format: "watched == %d", false)]),
+        animation: .default
     ) private var items: FetchedResults<WatchlistItem>
     @Environment(\.scenePhase) private var scene
     var body: some View {

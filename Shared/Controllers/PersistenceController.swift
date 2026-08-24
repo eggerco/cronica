@@ -12,6 +12,15 @@ import CloudKit
 /// tracking watchlists, and dealing with sample data.
 struct PersistenceController {
     static let shared = PersistenceController()
+
+    private static let managedObjectModel: NSManagedObjectModel = {
+        guard let modelURL = Bundle.main.url(forResource: "Watchlist", withExtension: "momd"),
+              let model = NSManagedObjectModel(contentsOf: modelURL) else {
+            fatalError("Failed to load Watchlist Core Data model from the app bundle.")
+        }
+        return model
+    }()
+
     // MARK: Preview sample
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
@@ -33,7 +42,7 @@ struct PersistenceController {
     }()
     
     let container: NSPersistentCloudKitContainer = {
-        let container = NSPersistentCloudKitContainer(name: "Watchlist")
+        let container = NSPersistentCloudKitContainer(name: "Watchlist", managedObjectModel: PersistenceController.managedObjectModel)
         container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         container.viewContext.automaticallyMergesChangesFromParent = true
         container.loadPersistentStores { storeDescription, error in

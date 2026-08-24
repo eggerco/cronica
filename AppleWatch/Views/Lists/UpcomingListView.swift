@@ -11,7 +11,6 @@ import NukeUI
 struct UpcomingListView: View {
     static let tag: Screens? = .upcoming
     @FetchRequest(
-        entity: WatchlistItem.entity(),
         sortDescriptors: [
             NSSortDescriptor(keyPath: \WatchlistItem.date, ascending: true),
         ],

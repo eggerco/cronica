@@ -166,19 +166,17 @@ extension WatchlistSettingsView {
     private func export() {
         do {
             isGeneratingExport = true
-            if let entityName = WatchlistItem.entity().name {
-                let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
-                let items = try context.fetch(request).compactMap {
-                    $0 as? WatchlistItem
-                }
-                let jsonData = try JSONEncoder().encode(items)
-                if let jsonString = String(data: jsonData, encoding: .utf8) {
-                    if let tempUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-                        let pathUrl = tempUrl.appending(component: "CronicaExport \(Date().formatted(date: .abbreviated, time: .omitted)).json")
-                        try jsonString.write(to: pathUrl, atomically: true, encoding: .utf8)
-                        exportUrl = pathUrl
-                        showExportShareSheet.toggle()
-                    }
+            let request = WatchlistItem.fetchRequest()
+            let items = try context.fetch(request).compactMap {
+                $0 as? WatchlistItem
+            }
+            let jsonData = try JSONEncoder().encode(items)
+            if let jsonString = String(data: jsonData, encoding: .utf8) {
+                if let tempUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+                    let pathUrl = tempUrl.appending(component: "CronicaExport \(Date().formatted(date: .abbreviated, time: .omitted)).json")
+                    try jsonString.write(to: pathUrl, atomically: true, encoding: .utf8)
+                    exportUrl = pathUrl
+                    showExportShareSheet.toggle()
                 }
             }
             isGeneratingExport = false

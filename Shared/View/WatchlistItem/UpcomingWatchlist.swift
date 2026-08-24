@@ -10,7 +10,6 @@ import NukeUI
 
 struct UpcomingWatchlist: View {
     @FetchRequest(
-        entity: WatchlistItem.entity(),
         sortDescriptors: [
             NSSortDescriptor(keyPath: \WatchlistItem.date, ascending: true),
         ],
