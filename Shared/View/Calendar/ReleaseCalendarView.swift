@@ -60,7 +60,11 @@ struct ReleaseCalendarView: View {
             CronicaFormSection(releasesSectionTitle) {
                 if upcomingItems.isEmpty {
                     ContentUnavailableView {
-                        Label("No Upcoming Releases", systemImage: "calendar")
+                        Label {
+                            CronicaFormText("No Upcoming Releases")
+                        } icon: {
+                            Image(systemName: "calendar")
+                        }
                     } description: {
                         CronicaFormText(
                             "Add items with future release dates to your watchlist to see them here.",

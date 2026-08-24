@@ -23,6 +23,12 @@ struct Provider: TimelineProvider {
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+        if context.isPreview {
+            let entry = ItemContentEntry(date: .now, items: Self.placeholderItems())
+            completion(Timeline(entries: [entry], policy: .never))
+            return
+        }
+
         Task {
             let nextUpdate = Date().addingTimeInterval(86400)
             do {
@@ -40,7 +46,7 @@ struct Provider: TimelineProvider {
     }
 
     private static func placeholderItems() -> [WidgetDisplayItem] {
-        ItemContent.examples.prefix(4).map { WidgetDisplayItem(item: $0, posterData: nil) }
+        ItemContent.widgetExamples.prefix(4).map { WidgetDisplayItem(item: $0, posterData: nil) }
     }
 
     private static func buildDisplayItems(from content: [ItemContent]) async -> [WidgetDisplayItem] {
@@ -69,6 +75,7 @@ struct CronicaWidgetEntryView: View {
 
     var body: some View {
         ItemContentList(items: entry.items)
+            .padding(12)
             .containerBackground(for: .widget) {
 #if os(iOS)
                 Color(uiColor: .systemBackground)
@@ -104,8 +111,7 @@ struct CronicaWidget: Widget {
             CronicaWidgetEntryView(entry: entry)
         }
         .configurationDisplayName("Trending")
-        .description("Shows trending movies and TV shows from TMDb.")
-        .contentMarginsDisabled()
+        .description("Shows movies and TV Shows trending from TMDb.")
         .supportedFamilies(CronicaWidgetFamilies.homeScreen)
     }
 }

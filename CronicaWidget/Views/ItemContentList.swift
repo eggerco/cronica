@@ -31,94 +31,77 @@ struct ItemContentList: View {
 #endif
     }
 
-    /// iPhone has no systemExtraLarge slot; large uses the same 8-item grid for consistency.
-    private var usesExpandedGrid: Bool {
-        family == .systemExtraLarge || (family == .systemLarge && isPhone)
-    }
-
     private var visibleItems: [WidgetDisplayItem] {
         Array(items.prefix(family.displayLimit(isPhone: isPhone)))
     }
 
     var body: some View {
-        GeometryReader { geometry in
-            Group {
-                if visibleItems.isEmpty {
-                    Text("Trending service isn't available right now.")
-                        .font(family == .systemSmall ? .caption : .callout)
-                        .foregroundStyle(.secondary)
-                        .multilineTextAlignment(.center)
-                        .frame(width: geometry.size.width, height: geometry.size.height)
-                } else {
-                    layout(in: geometry.size)
-                        .frame(width: geometry.size.width, height: geometry.size.height)
-                }
+        Group {
+            if visibleItems.isEmpty {
+                Text("Trending service isn't available right now.")
+                    .font(family == .systemSmall ? .caption : .callout)
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            } else {
+                layout
             }
         }
     }
 
     @ViewBuilder
-    private func layout(in size: CGSize) -> some View {
-        if usesExpandedGrid {
-            gridLayout(
-                items: visibleItems,
-                in: size,
-                columns: WidgetLayout.expandedGridColumns,
-                spacing: 8
-            )
-        } else {
-            switch family {
-            case .systemSmall, .systemMedium:
-                rowLayout(items: visibleItems, in: size, spacing: 6)
-            case .systemLarge:
-                gridLayout(
-                    items: visibleItems,
-                    in: size,
-                    columns: WidgetLayout.standardLargeColumns,
-                    spacing: 8
-                )
-            default:
-                rowLayout(items: visibleItems, in: size, spacing: 6)
+    private var layout: some View {
+        switch family {
+        case .systemSmall:
+            rowLayout(width: 68, height: 102, spacing: 8)
+        case .systemMedium:
+            rowLayout(width: 74, height: 112, spacing: 6)
+        case .systemLarge:
+            if isPhone {
+                gridLayout(columns: 4, posterHeight: 118)
+            } else {
+                gridLayout(columns: 3, posterHeight: 130)
             }
+        case .systemExtraLarge:
+            gridLayout(columns: 4, posterHeight: 150)
+        default:
+            rowLayout(width: 74, height: 112, spacing: 6)
         }
     }
 
-    private func rowLayout(items: [WidgetDisplayItem], in size: CGSize, spacing: CGFloat) -> some View {
-        let count = CGFloat(max(items.count, 1))
-        let totalSpacing = spacing * max(count - 1, 0)
-        let posterWidth = (size.width - totalSpacing) / count
-        let posterHeight = min(size.height, posterWidth * 1.5)
-
-        return HStack(spacing: spacing) {
-            ForEach(items) { entry in
-                posterLink(for: entry, width: posterWidth, height: posterHeight)
+    private func rowLayout(width: CGFloat, height: CGFloat, spacing: CGFloat) -> some View {
+        HStack(spacing: spacing) {
+            ForEach(visibleItems) { entry in
+                posterLink(for: entry, width: width, height: height)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
     }
 
-    private func gridLayout(items: [WidgetDisplayItem], in size: CGSize, columns: Int, spacing: CGFloat) -> some View {
-        let columnCount = CGFloat(max(columns, 1))
-        let rowCount = CGFloat(max(Int(ceil(Double(items.count) / Double(columns))), 1))
-        let totalHorizontalSpacing = spacing * max(columnCount - 1, 0)
-        let totalVerticalSpacing = spacing * max(rowCount - 1, 0)
-        let posterWidth = (size.width - totalHorizontalSpacing) / columnCount
-        let rowHeight = (size.height - totalVerticalSpacing) / rowCount
-        let posterHeight = min(rowHeight, posterWidth * 1.5)
-
-        let gridItems = Array(repeating: GridItem(.flexible(), spacing: spacing), count: columns)
-
-        return LazyVGrid(columns: gridItems, spacing: spacing) {
-            ForEach(items) { entry in
-                posterLink(for: entry, width: posterWidth, height: posterHeight)
+    private func gridLayout(columns: Int, posterHeight: CGFloat) -> some View {
+        let rows = visibleItems.chunked(into: columns)
+        return VStack(spacing: 8) {
+            ForEach(Array(rows.enumerated()), id: \.offset) { _, row in
+                HStack(spacing: 8) {
+                    ForEach(row) { entry in
+                        posterLink(for: entry, width: nil, height: posterHeight)
+                            .frame(maxWidth: .infinity)
+                    }
+                    if row.count < columns {
+                        ForEach(0..<(columns - row.count), id: \.self) { _ in
+                            Color.clear.frame(maxWidth: .infinity)
+                        }
+                    }
+                }
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
     }
 
     @ViewBuilder
-    private func posterLink(for entry: WidgetDisplayItem, width: CGFloat, height: CGFloat) -> some View {
+    private func posterLink(for entry: WidgetDisplayItem, width: CGFloat?, height: CGFloat) -> some View {
         let poster = WidgetPosterView(posterData: entry.posterData, placeholderName: entry.item.placeholderImagePath)
+            .frame(maxWidth: width == nil ? .infinity : width)
             .frame(width: width, height: height)
             .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
             .shadow(radius: 1)
@@ -131,13 +114,6 @@ struct ItemContentList: View {
             poster
         }
     }
-}
-
-private enum WidgetLayout {
-    static let expandedItemCount = 8
-    static let expandedGridColumns = 4
-    static let standardLargeItemCount = 6
-    static let standardLargeColumns = 3
 }
 
 private struct WidgetPosterView: View {
@@ -183,15 +159,22 @@ private struct PlaceholderImage: View {
     }
 }
 
+private extension Array {
+    func chunked(into size: Int) -> [[Element]] {
+        guard size > 0 else { return isEmpty ? [] : [self] }
+        return stride(from: 0, to: count, by: size).map {
+            Array(self[$0..<Swift.min($0 + size, count)])
+        }
+    }
+}
+
 private extension WidgetFamily {
     func displayLimit(isPhone: Bool) -> Int {
         switch self {
         case .systemSmall: 2
         case .systemMedium: 4
-        case .systemLarge:
-            isPhone ? WidgetLayout.expandedItemCount : WidgetLayout.standardLargeItemCount
-        case .systemExtraLarge:
-            WidgetLayout.expandedItemCount
+        case .systemLarge: isPhone ? 8 : 6
+        case .systemExtraLarge: 8
         default: 4
         }
     }

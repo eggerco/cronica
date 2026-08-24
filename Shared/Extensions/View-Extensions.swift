@@ -78,12 +78,12 @@ extension View {
         modifier(HoverEffectModifier())
     }
 
-    /// Prevents SwiftUI Form/navigation from force-uppercasing labels (`.textCase(.none)` is a no-op).
+    /// Prevents SwiftUI Form/navigation from force-uppercasing row labels (`.textCase(.none)` is a no-op).
     func cronicaNormalTextCase() -> some View {
         environment(\.textCase, nil)
     }
 
-    /// Standard settings form styling with normal-casing labels and section headers.
+    /// Standard settings form styling: sentence-case rows/footers, uppercase section headers via `CronicaFormSection`.
     func cronicaSettingsForm() -> some View {
         cronicaNormalTextCase()
 #if os(iOS)
@@ -151,6 +151,21 @@ struct CronicaFormSectionHeader: View {
 
     var body: some View {
         Text(verbatim: title)
+            .textCase(.uppercase)
+            .environment(\.textCase, .uppercase)
+    }
+}
+
+/// Footer copy below a settings section — keeps sentence case inside Forms.
+struct CronicaFormFooter: View {
+    let text: String
+
+    init(_ text: String) {
+        self.text = text
+    }
+
+    var body: some View {
+        Text(verbatim: text)
             .textCase(nil)
             .environment(\.textCase, nil)
     }
@@ -203,17 +218,11 @@ struct CronicaFormSection<Content: View>: View {
     }
 
     var body: some View {
-#if os(watchOS)
         Section {
             content()
         } header: {
             CronicaFormSectionHeader(title: title)
         }
-#else
-        Section(LocalizedStringKey(title)) {
-            content()
-        }
-#endif
     }
 }
 
@@ -240,6 +249,7 @@ struct CronicaFormSectionWithFooter<Content: View, Footer: View>: View {
             CronicaFormSectionHeader(title: title)
         } footer: {
             footer()
+                .environment(\.textCase, nil)
         }
     }
 }

@@ -110,7 +110,7 @@ struct NotificationsSettingsView: View {
                     CronicaFormText("View Release Calendar")
                 }
             } footer: {
-                Text("Events are saved to a dedicated Cronica calendar in the Calendar app.")
+                CronicaFormFooter("Events are saved to a dedicated Cronica calendar in the Calendar app.")
             }
             .onChange(of: settings.allowCalendarSync) { _, enabled in
                 Task {
