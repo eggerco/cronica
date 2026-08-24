@@ -108,7 +108,6 @@ struct SelectListView: View {
                     // default list selector
                     if queryResult.isEmpty && query.isEmpty {
                         Button {
-                            HapticManager.shared.selectionHaptic()
                             selectedList = nil
                             showListSelection.toggle()
                         } label: {
@@ -122,7 +121,6 @@ struct SelectListView: View {
 #if os(iOS)
                             ForEach(queryResult) { item in
                                 Button {
-                                    HapticManager.shared.selectionHaptic()
                                     selectedList = item
                                     showListSelection = false
                                 } label: {
@@ -148,7 +146,6 @@ struct SelectListView: View {
                             ForEach(lists) { item in
 #if os(tvOS)
                                 Button {
-                                    HapticManager.shared.selectionHaptic()
                                     selectedList = item
                                     showListSelection.toggle()
                                 } label: {
@@ -156,7 +153,6 @@ struct SelectListView: View {
                                 }
 #else
                                 Button {
-                                    HapticManager.shared.selectionHaptic()
                                     selectedList = item
                                     showListSelection = false
                                 } label: {

@@ -89,7 +89,6 @@ struct SearchItemContentContextMenu: ViewModifier {
             let content = context.fetch(for: item.itemContentID)
             guard let content else { return }
             context.updateWatched(for: content)
-            HapticManager.shared.successHaptic()
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 withAnimation {
                     isInWatchlist.toggle()

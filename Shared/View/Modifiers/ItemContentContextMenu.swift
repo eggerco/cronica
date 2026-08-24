@@ -96,7 +96,6 @@ struct ItemContentContextMenu: ViewModifier {
 			let item = try? await NetworkService.shared.fetchItem(id: self.item.id, type: self.item.itemContentMedia)
 			guard let item else {
 				context.save(self.item)
-				HapticManager.shared.successHaptic()
 				DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
 					withAnimation {
 						isInWatchlist.toggle()
@@ -109,7 +108,6 @@ struct ItemContentContextMenu: ViewModifier {
 			let content = context.fetch(for: item.itemContentID)
 			guard let content else { return }
 			context.updateWatched(for: content)
-			HapticManager.shared.successHaptic()
 			DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
 				withAnimation {
 					isInWatchlist.toggle()

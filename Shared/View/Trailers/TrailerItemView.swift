@@ -19,8 +19,8 @@ struct TrailerItemView: View {
     @FocusState var isFocused
 #endif
     @State private var isLoading = false
-    @State private var showWebPlayer = false
     @AppStorage("openInYouTube") private var openInYouTube = false
+    @Environment(\.openURL) private var openURL
     init(trailer: VideoItem) {
         self.trailer = trailer
 #if os(iOS)
@@ -121,51 +121,27 @@ struct TrailerItemView: View {
         }
         .accessibilityLabel(trailer.title)
         .buttonStyle(.plain)
-#if os(iOS)
-        .fullScreenCover(isPresented: $showWebPlayer) {
-            if let url = trailer.url {
-                SFSafariViewWrapper(url: url)
-            }
-        }
-#endif
 #endif
     }
     
     private func openVideo() {
 #if os(iOS)
-        if UIDevice.isIPhone {
-            if openInYouTube {
-                if let url = trailer.url {
-                    UIApplication.shared.open(url)
-                }
-            } else {
-                self.isLoading = true
-                player.play()
-            }
+        if openInYouTube, let url = trailer.url {
+            openURL(url)
         } else {
-            if openInYouTube {
-                if let url = trailer.url {
-                    UIApplication.shared.open(url)
-                }
-            } else {
-                showWebPlayer = true
-            }
+            self.isLoading = true
+            player.play()
         }
-#elseif os(visionOS)
+#elseif os(visionOS) || os(macOS)
         if let url = trailer.url {
-            UIApplication.shared.open(url)
-        }
-#elseif os(macOS)
-        if let url = trailer.url {
-            NSWorkspace.shared.open(url)
+            openURL(url)
         }
 #elseif os(tvOS)
         if let videoUrl = trailer.url {
             let cleanUrl = "youtube://\(videoUrl)".replacingOccurrences(of: "youtube://https://", with: "youtube://")
             let cleanYouTubeUrl = cleanUrl.replacingOccurrences(of: "embed/", with: "watch?v=")
             guard let url = URL(string: cleanYouTubeUrl) else { return }
-            print(url)
-            UIApplication.shared.open(url)
+            openURL(url)
         }
 #endif
     }

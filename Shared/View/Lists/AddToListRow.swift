@@ -12,12 +12,13 @@ struct AddToListRow: View {
     var list: CustomList
     @Binding var item: WatchlistItem?
     @Binding var showView: Bool
+    @State private var selectionTrigger = 0
     var body: some View {
         Button {
             guard let item else { return }
             PersistenceController.shared.updateList(for: item.itemContentID, to: list)
-            HapticManager.shared.selectionHaptic()
             withAnimation { isItemAdded.toggle() }
+            selectionTrigger &+= 1
         } label: {
             HStack {
                 Image(systemName: isItemAdded ? "checkmark.circle.fill" : "circle")
@@ -41,6 +42,11 @@ struct AddToListRow: View {
             }
         }
         .buttonStyle(.plain)
+#if os(iOS)
+        .sensoryFeedback(.selection, trigger: selectionTrigger) { _, _ in
+            SettingsStore.shared.hapticFeedback
+        }
+#endif
         .onAppear { isItemInList() }
     }
     

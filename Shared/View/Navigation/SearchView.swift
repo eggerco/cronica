@@ -20,6 +20,7 @@ struct SearchView: View {
     @State private var scope: SearchItemsScope = .noScope
     @State private var currentlyQuery = String()
     @Binding var shouldFocusOnSearchField: Bool
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     var body: some View {
         VStack {
 #if os(iOS)
@@ -43,7 +44,7 @@ struct SearchView: View {
 #if os(iOS) || os(visionOS)
         .searchable(text: $viewModel.query,
                     isPresented: $shouldFocusOnSearchField,
-                    placement: UIDevice.isIPad ? .toolbar : .navigationBarDrawer(displayMode: .always),
+                    placement: horizontalSizeClass == .regular ? .toolbar : .navigationBarDrawer(displayMode: .always),
                     prompt: Text("Movies, Shows, People"))
         .safeAreaInset(edge: .top, spacing: 0) {
             if viewModel.stage == .success {

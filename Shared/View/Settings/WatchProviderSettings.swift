@@ -11,6 +11,7 @@ import NukeUI
 struct WatchProviderSettings: View {
     @StateObject private var store = SettingsStore.shared
     @StateObject private var settings = SettingsStore.shared
+    @Environment(\.openURL) private var openURL
     @State private var providers = [WatchProviderContent]()
     @State private var isLoading = true
     var body: some View {
@@ -77,12 +78,8 @@ struct WatchProviderSettings: View {
 #if os(iOS)
     private var languageButton: some View {
         Button("Change app language") {
-            Task {
-                // Create the URL that deep links to your app's custom settings.
-                if let url = URL(string: UIApplication.openSettingsURLString) {
-                    // Ask the system to open that URL.
-                    await UIApplication.shared.open(url)
-                }
+            if let url = URL(string: UIApplication.openSettingsURLString) {
+                openURL(url)
             }
         }
     }
@@ -159,7 +156,6 @@ private struct WatchProviderItemSelector: View {
             } else {
                 settings.selectedWatchProviders.append(item.itemID)
             }
-            HapticManager.shared.selectionHaptic()
         }
         .task(id: settings.selectedWatchProviders) {
             if settings.selectedWatchProviders.contains(item.itemID)  {

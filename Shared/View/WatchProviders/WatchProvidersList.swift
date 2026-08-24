@@ -18,6 +18,7 @@ struct WatchProvidersList: View {
     @AppStorage("firstLocaleCheck") private var firstCheck = false
     @State private var showConfirmation = false
     @StateObject private var settings = SettingsStore.shared
+    @Environment(\.openURL) private var openURL
     @AppStorage("alwaysShowConfirmationWatchProvider") private var isConfirmationEnabled = true
     var body: some View {
         VStack {
@@ -169,11 +170,7 @@ extension WatchProvidersList {
     
     private func openLink() {
         if let link = link {
-#if os(macOS)
-            NSWorkspace.shared.open(link)
-#else
-            UIApplication.shared.open(link)
-#endif
+            openURL(link)
             CronicaTelemetry.shared.handleMessage("link_opened", for: "watch_provider_link")
         }
     }

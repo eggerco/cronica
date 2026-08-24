@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DefaultWatchlist: View {
     @Environment(\.managedObjectContext) var viewContext
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \WatchlistItem.title, ascending: true)],
         animation: .default) private var items: FetchedResults<WatchlistItem>
@@ -221,7 +222,7 @@ struct DefaultWatchlist: View {
         }
 #if os(iOS)
         .searchable(text: $query,
-                    placement: UIDevice.isIPad ? .automatic : .navigationBarDrawer(displayMode: .always),
+                    placement: horizontalSizeClass == .regular ? .automatic : .navigationBarDrawer(displayMode: .always),
                     prompt: "Search Watchlist")
         .safeAreaInset(edge: .top, spacing: 0) {
             if !query.isEmpty {

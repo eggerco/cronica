@@ -132,7 +132,7 @@ struct EpisodeDetailsView: View {
         }
 #if os(iOS)
         .toolbar {
-            if UIDevice.isIPhone {
+            if horizontalSizeClass == .compact {
                 ToolbarItem(placement: .topBarTrailing) {
                     if let showItem {
                         NavigationLink(value: showItem) {

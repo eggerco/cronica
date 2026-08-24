@@ -26,7 +26,6 @@ struct ArchiveButton: View {
         if isArchive {
             NotificationManager.shared.removeNotification(identifier: id)
         }
-        HapticManager.shared.successHaptic()
 #if !os(watchOS)
         popupType = isArchive ? .markedArchive : .removedArchive
         withAnimation { showPopup = true }

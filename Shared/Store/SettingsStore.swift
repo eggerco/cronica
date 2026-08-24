@@ -15,7 +15,7 @@ final class SettingsStore: ObservableObject {
     @AppStorage("gesture") var gesture: UpdateItemProperties = .favorite
     @AppStorage("appThemeColor") var appTheme: AppThemeColors = .blue
 #if os(iOS)
-    @AppStorage("watchlistStyle") var watchlistStyle: SectionDetailsPreferredStyle = UIDevice.isIPhone ? .list : .poster
+    @AppStorage("watchlistStyle") var watchlistStyle: SectionDetailsPreferredStyle = .list
 #else
     @AppStorage("watchlistStyle") var watchlistStyle: SectionDetailsPreferredStyle = .card
 #endif
@@ -47,7 +47,7 @@ final class SettingsStore: ObservableObject {
     @AppStorage("itemContentListDisplayType") var listsDisplayType: ItemContentListPreferredDisplayType = .standard
 #endif
 #if os(iOS)
-    @AppStorage("exploreDisplayType") var sectionStyleType: SectionDetailsPreferredStyle = UIDevice.isIPhone ? .card : .poster
+    @AppStorage("exploreDisplayType") var sectionStyleType: SectionDetailsPreferredStyle = .card
 #else
     @AppStorage("exploreDisplayType") var sectionStyleType: SectionDetailsPreferredStyle = .card
 #endif

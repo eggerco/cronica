@@ -183,8 +183,8 @@ private struct DrawingConstants {
     static let imageWidth: CGFloat = 420
     static let imageHeight: CGFloat = 240
 #elseif os(iOS)
-    static let imageWidth: CGFloat = UIDevice.isIPad ? 240 : 160
-    static let imageHeight: CGFloat = UIDevice.isIPad ? 140 : 100
+    static let imageWidth: CGFloat = 160
+    static let imageHeight: CGFloat = 100
 #endif
     static let titleLineLimit: Int = 2
     static let imageRadius: CGFloat = 12

@@ -9,10 +9,11 @@ import SwiftUI
 
 struct AppearanceSetting: View {
     @StateObject private var store = SettingsStore.shared
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     var body: some View {
         Form {
 #if os(iOS)
-            if UIDevice.isIPhone {
+            if horizontalSizeClass == .compact {
                 Section("Details Page") {
                     Toggle("Prefer Poster in Details Page", isOn: $store.usePostersAsCover)
                 }
@@ -39,7 +40,7 @@ struct AppearanceSetting: View {
             }
 #endif
 #if os(iOS)
-            if UIDevice.isIPhone {
+            if horizontalSizeClass == .compact {
                 Section {
                     Toggle(isOn: $store.isCompactUI) {
                         Text("Compact UI")

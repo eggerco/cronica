@@ -10,6 +10,7 @@ import SwiftUI
 struct NotificationsSettingsView: View {
     var navigationTitle = "Notifications"
     @StateObject private var settings = SettingsStore.shared
+    @Environment(\.openURL) private var openURL
     @State private var currentDate = Date()
     // Computed property to convert stored hour and minute into a Date object
     var notificationTimeBinding: Binding<Date> {
@@ -74,12 +75,8 @@ struct NotificationsSettingsView: View {
             
 #if os(iOS)
             Button("Edit Notifications in Settings app") {
-                Task {
-                    // Create the URL that deep links to your app's notification settings.
-                    if let url = URL(string: UIApplication.openNotificationSettingsURLString) {
-                        // Ask the system to open that URL.
-                        await UIApplication.shared.open(url)
-                    }
+                if let url = URL(string: UIApplication.openNotificationSettingsURLString) {
+                    openURL(url)
                 }
             }
 #endif

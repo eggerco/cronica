@@ -21,6 +21,7 @@ struct PersonDetailsView: View {
     @State private var person: Person?
     @State private var credits = [ItemContent]()
     @State private var query: String = ""
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     var body: some View {
         VStack {
             ScrollView {
@@ -120,7 +121,7 @@ struct PersonDetailsView: View {
 #endif
 #if os(iOS)
         .searchable(text: $query,
-                    placement: UIDevice.isIPhone ? .navigationBarDrawer(displayMode: .always) : .toolbar)
+                    placement: horizontalSizeClass == .compact ? .navigationBarDrawer(displayMode: .always) : .toolbar)
         .fullScreenCover(isPresented: $showImageFullscreen) {
             NavigationStack {
                 ZStack {
@@ -215,8 +216,8 @@ private struct DrawingConstants {
     static let imageWidth: CGFloat = 250
     static let imageHeight: CGFloat = 250
 #elseif os(iOS)
-    static let imageWidth: CGFloat = UIDevice.isIPad ? 250 : 150
-    static let imageHeight: CGFloat = UIDevice.isIPad ? 250 : 150
+    static let imageWidth: CGFloat = 150
+    static let imageHeight: CGFloat = 150
 #else
     static let imageWidth: CGFloat = 100
     static let imageHeight: CGFloat = 100

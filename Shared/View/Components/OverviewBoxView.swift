@@ -19,6 +19,7 @@ struct OverviewBoxView: View {
     @State private var isTruncated = false
     @StateObject private var settings = SettingsStore.shared
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
     private var expandAnimation: Animation? {
         reduceMotion ? nil : .easeInOut(duration: 0.22)
@@ -77,7 +78,7 @@ struct OverviewBoxView: View {
                 }
                 .onTapGesture {
 #if os(iOS)
-                    if UIDevice.isIPad, showAsPopover {
+                    if horizontalSizeClass == .regular, showAsPopover {
                         showSheet.toggle()
                     } else if let expandAnimation {
                         withAnimation(expandAnimation) { showFullText.toggle() }

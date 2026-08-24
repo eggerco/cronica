@@ -11,8 +11,8 @@ import SwiftUI
 struct WelcomeView: View {
     @AppStorage("showOnboarding") var displayOnboard = true
     @StateObject private var settings = SettingsStore.shared
-    @State private var showPolicy = false
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.openURL) private var openURL
 
     var body: some View {
         NavigationStack {
@@ -68,7 +68,7 @@ struct WelcomeView: View {
                     .tint(settings.appTheme.color)
 
                     Button {
-                        showPolicy = true
+                        openURL(AppWebsite.privacyPolicy)
                     } label: {
                         Text(verbatim: "Privacy Policy")
                     }
@@ -84,11 +84,6 @@ struct WelcomeView: View {
             .interactiveDismissDisabled(true)
             .toolbar(.hidden, for: .navigationBar)
         }
-#if os(iOS)
-        .fullScreenCover(isPresented: $showPolicy) {
-            SFSafariViewWrapper(url: AppWebsite.privacyPolicy)
-        }
-#endif
         .appTint()
         .appTheme()
     }

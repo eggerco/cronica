@@ -101,7 +101,7 @@ private struct DrawingConstants {
 #elseif os(iOS)
     static let posterColumns: CGFloat = 160
     static let spacing: CGFloat = 20
-    static let columns: CGFloat = UIDevice.isIPad ? 240 : 160
+    static let columns: CGFloat = 160
 #endif
     static let compactPosterColumns = [GridItem(.adaptive(minimum: 80))]
     static let compactSpacing: CGFloat = 10

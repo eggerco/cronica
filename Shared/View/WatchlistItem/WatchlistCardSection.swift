@@ -73,7 +73,7 @@ private struct DrawingConstants {
     static let columns: CGFloat = 420
     static let spacing: CGFloat = 40
 #elseif os(iOS)
-    static let columns: CGFloat = UIDevice.isIPad ? 240 : 160
+    static let columns: CGFloat = 160
     static let spacing: CGFloat = 20
 #elseif os(visionOS)
     static let columns: CGFloat = 240

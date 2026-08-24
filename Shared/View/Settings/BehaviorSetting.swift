@@ -12,6 +12,7 @@ struct BehaviorSetting: View {
     @StateObject private var store = SettingsStore.shared
     @State private var cacheSizeMB: Double = 0.0
     @State private var showClearCacheConfirmation = false
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     var body: some View {
         Form {
 #if !os(tvOS)
@@ -75,7 +76,7 @@ struct BehaviorSetting: View {
 #endif
 
 #if os(iOS)
-            if UIDevice.isIPhone {
+            if horizontalSizeClass == .compact {
                 Section {
                     Toggle("Preferred Launch Screen", isOn: $store.isPreferredLaunchScreenEnabled)
                     Picker("Launch Screen", selection: $store.preferredLaunchScreen) {

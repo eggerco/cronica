@@ -77,7 +77,6 @@ struct NewCustomListView: View {
                                                            description: note,
                                                            items: itemsToAdd,
                                                            isPin: pinOnHome)
-        HapticManager.shared.successHaptic()
         newSelectedList = list
         title = ""
         presentView = false

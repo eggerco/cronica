@@ -29,7 +29,6 @@ extension FavoriteButton {
             popupType = isFavorite ? .markedFavorite : .removedFavorite
             showPopup = true
         }
-        HapticManager.shared.successHaptic()
     }
 }
 

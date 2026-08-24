@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AboutSettings: View {
     @StateObject private var settings = SettingsStore.shared
+    @Environment(\.openURL) private var openURL
     let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     let buildNumber: String = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "Unknown"
     var body: some View {
@@ -47,11 +48,7 @@ struct AboutSettings: View {
                 
                 Button("Review on the App Store") {
                     guard let writeReviewURL = URL(string: "https://apps.apple.com/app/1614950275?action=write-review") else { return }
-#if os(macOS)
-                    NSWorkspace.shared.open(writeReviewURL)
-#else
-                    UIApplication.shared.open(writeReviewURL, options: [:], completionHandler: nil)
-#endif
+                    openURL(writeReviewURL)
                 }
 #if os(macOS)
                 .buttonStyle(.link)
@@ -134,11 +131,7 @@ struct AboutSettings: View {
     private func aboutButton(title: String, subtitle: String? = nil, url: String) -> some View {
         Button {
             guard let url = URL(string: url) else { return }
-#if os(macOS)
-            NSWorkspace.shared.open(url)
-#else
-            UIApplication.shared.open(url)
-#endif
+            openURL(url)
         } label: {
             buttonLabels(title: title, subtitle: subtitle)
         }
@@ -162,7 +155,7 @@ struct AboutSettings: View {
     private var privacy: some View {
         Section {
             Button("Privacy Policy") {
-                NSWorkspace.shared.open(AppWebsite.privacyPolicy)
+                openURL(AppWebsite.privacyPolicy)
             }
             .buttonStyle(.link)
         } header: {

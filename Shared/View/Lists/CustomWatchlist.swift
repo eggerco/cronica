@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CustomWatchlist: View {
     @Binding var selectedList: CustomList?
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @State private var filteredItems = [WatchlistItem]()
     @State private var query = ""
     @State private var scope: WatchlistSearchScope = .noScope
@@ -264,7 +265,7 @@ struct CustomWatchlist: View {
         }
 #if os(iOS)
         .searchable(text: $query,
-                    placement: UIDevice.isIPad ? .automatic : .navigationBarDrawer(displayMode: .always),
+                    placement: horizontalSizeClass == .regular ? .automatic : .navigationBarDrawer(displayMode: .always),
                     prompt: "Search \(selectedList?.itemTitle ?? "List")")
         .safeAreaInset(edge: .top, spacing: 0) {
             if !query.isEmpty {

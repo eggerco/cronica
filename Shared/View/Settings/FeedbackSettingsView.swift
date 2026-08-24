@@ -31,11 +31,7 @@ struct FeedbackComposerView: View {
             Section {
                 Button("X (Twitter)") {
                     guard let url = URL(string: "https://x.com/CronicaApp") else { return }
-#if os(iOS)
-                    UIApplication.shared.open(url)
-#elseif os(macOS)
-                    NSWorkspace.shared.open(url)
-#endif
+                    openURL(url)
                 }
 #if os(macOS)
                 .buttonStyle(.link)

@@ -120,11 +120,8 @@
 		B8423E2C2793B4C10012259B /* WatchlistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8423E2B2793B4C10012259B /* WatchlistView.swift */; };
 		B8424FB02C7A01500098BFFB /* YouTubePlayerKit in Frameworks */ = {isa = PBXBuildFile; productRef = B8424FAF2C7A01500098BFFB /* YouTubePlayerKit */; };
 		B84403542A673C7A00D0AACF /* UpcomingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84403532A673C7A00D0AACF /* UpcomingListView.swift */; };
-		B84457C22970D599009CB21F /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84457C12970D599009CB21F /* HapticManager.swift */; };
-		B84457C52970D59E009CB21F /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84457C12970D599009CB21F /* HapticManager.swift */; };
 		B84457CE29734F90009CB21F /* WatchProvidersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84457CD29734F90009CB21F /* WatchProvidersList.swift */; };
 		B845132A27EA514C00F0D4A4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B845132927EA514C00F0D4A4 /* SettingsView.swift */; };
-		B845133427ECE2B500F0D4A4 /* UIDevice-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B845133327ECE2B500F0D4A4 /* UIDevice-Extension.swift */; };
 		B845149328E0C96A00963399 /* NotificationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B845149228E0C96A00963399 /* NotificationListView.swift */; };
 		B8469DB52B712CA700196364 /* ListFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8469DB42B712CA700196364 /* ListFilterView.swift */; };
 		B84C53FD27B1F1DD00425524 /* WatchlistItemRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84C53FC27B1F1DD00425524 /* WatchlistItemRowView.swift */; };
@@ -271,7 +268,6 @@
 		B8FCAE982AEDA38E00F688FE /* SeasonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FF4DBA27F91A4900C7DE9F /* SeasonListView.swift */; };
 		B8FF4DBB27F91A4900C7DE9F /* SeasonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FF4DBA27F91A4900C7DE9F /* SeasonListView.swift */; };
 		B8FF4DBF27FA511A00C7DE9F /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FF4DBE27FA511A00C7DE9F /* TitleView.swift */; };
-		B8FF4DC127FB56F500C7DE9F /* SFSafariViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FF4DC027FB56F500C7DE9F /* SFSafariViewWrapper.swift */; };
 		C0APPCONTENTREGION00002 /* AppContentRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84457D22973987E009CB21F /* AppContentRegion.swift */; };
 		C0APPCONTENTREGIONW0002 /* AppContentRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84457D22973987E009CB21F /* AppContentRegion.swift */; };
 		C0APPWEBSITE000000000002 /* AppWebsite.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0APPWEBSITE000000000001 /* AppWebsite.swift */; };
@@ -429,11 +425,9 @@
 		B8409D1C2A8286130048840F /* IconGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconGridView.swift; sourceTree = "<group>"; };
 		B8423E2B2793B4C10012259B /* WatchlistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistView.swift; sourceTree = "<group>"; };
 		B84403532A673C7A00D0AACF /* UpcomingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingListView.swift; sourceTree = "<group>"; };
-		B84457C12970D599009CB21F /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		B84457CD29734F90009CB21F /* WatchProvidersList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchProvidersList.swift; sourceTree = "<group>"; };
 		B84457D22973987E009CB21F /* AppContentRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContentRegion.swift; sourceTree = "<group>"; };
 		B845132927EA514C00F0D4A4 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		B845133327ECE2B500F0D4A4 /* UIDevice-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice-Extension.swift"; sourceTree = "<group>"; };
 		B845149228E0C96A00963399 /* NotificationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListView.swift; sourceTree = "<group>"; };
 		B8469DB42B712CA700196364 /* ListFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFilterView.swift; sourceTree = "<group>"; };
 		B84C53FC27B1F1DD00425524 /* WatchlistItemRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistItemRowView.swift; sourceTree = "<group>"; };
@@ -550,7 +544,6 @@
 		B8FCAE912AED9CE300F688FE /* CronicaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaTests.swift; sourceTree = "<group>"; };
 		B8FF4DBA27F91A4900C7DE9F /* SeasonListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonListView.swift; sourceTree = "<group>"; };
 		B8FF4DBE27FA511A00C7DE9F /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
-		B8FF4DC027FB56F500C7DE9F /* SFSafariViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSafariViewWrapper.swift; sourceTree = "<group>"; };
 		C0APPWEBSITE000000000001 /* AppWebsite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppWebsite.swift; sourceTree = "<group>"; };
 		C0COREIMPORT000000000001 /* CronicaCoreImport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaCoreImport.swift; sourceTree = "<group>"; };
 		C0INTTEST00000000000001 /* CronicaIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaIntegrationTests.swift; sourceTree = "<group>"; };
@@ -954,7 +947,6 @@
 				B890C58427FE4442006BE5E1 /* Episode-Extension.swift */,
 				B8105258298DC2EF00723E94 /* ReleaseDatesResult-Extensions.swift */,
 				B8B2F6AB2A85D57400FF0246 /* SearchItemContent-Extension.swift */,
-				B845133327ECE2B500F0D4A4 /* UIDevice-Extension.swift */,
 				B818483629C286C300650763 /* UserDefaults-Extensions.swift */,
 				B8FB2A8329524D6E006DAC8E /* View-Extensions.swift */,
 				B878E83427BC85BC0021A981 /* WatchlistItem-Extension.swift */,
@@ -1254,7 +1246,6 @@
 			children = (
 				B87F746228064D3800E94126 /* BackgroundManager.swift */,
 				B8B94CEE28EB8B8200EDEC85 /* CronicaTelemetry.swift */,
-				B84457C12970D599009CB21F /* HapticManager.swift */,
 				B8EC462E27D7AA99009389FC /* NotificationManager.swift */,
 				C0SENTRYMGR000000000001 /* SentryManager.swift */,
 				B892EB1329675B5E002E028E /* StoreKitManager.swift */,
@@ -1284,7 +1275,6 @@
 			isa = PBXGroup;
 			children = (
 				B8DD569F290DE2D7002CAAFD /* CenterHorizontalView.swift */,
-				B8FF4DC027FB56F500C7DE9F /* SFSafariViewWrapper.swift */,
 			);
 			path = Containers;
 			sourceTree = "<group>";
@@ -1597,7 +1587,6 @@
 				B81941D02A0861D70057DA04 /* CustomListButton.swift in Sources */,
 				B8C0215629E0D29C006E9D82 /* ExplorePreferredDisplayType.swift in Sources */,
 				B87036342AB2062C005721BB /* TranslucentBackground.swift in Sources */,
-				B84457C52970D59E009CB21F /* HapticManager.swift in Sources */,
 				B84043CD289B296200D5CEBF /* SearchItem.swift in Sources */,
 				B81941CF2A0861D70057DA04 /* FavoriteButton.swift in Sources */,
 				B801071329F2566B008A4551 /* WatchlistSelectorView.swift in Sources */,
@@ -1675,7 +1664,6 @@
 				B86AA7FC2A3A4C8C009847FE /* WatchProviderSettings.swift in Sources */,
 				B87D1B242A65CF6000EB6D14 /* UpNextViewModel.swift in Sources */,
 				B8110EEA279245D100844FEB /* ContentView.swift in Sources */,
-				B84457C22970D599009CB21F /* HapticManager.swift in Sources */,
 				B82BE4F2299EB3F5005F9990 /* WatchlistTitle.swift in Sources */,
 				B818483729C286C300650763 /* UserDefaults-Extensions.swift in Sources */,
 				B8110EE8279245D100844FEB /* CronicaApp.swift in Sources */,
@@ -1685,7 +1673,6 @@
 				B81941C62A0861C80057DA04 /* PinButton.swift in Sources */,
 				B86F7AC12A0941D800AA4855 /* EpisodeHelper.swift in Sources */,
 				B85C65AC27A6307C0080121E /* PersonDetailsView.swift in Sources */,
-				B845133427ECE2B500F0D4A4 /* UIDevice-Extension.swift in Sources */,
 				B82BE4E3299BFBC5005F9990 /* CustomWatchlist.swift in Sources */,
 				B8FB2A90295263AB006DAC8E /* AboutSettings.swift in Sources */,
 				B81DD92629BD149D009F73F3 /* WatchlistItem+CoreDataClass.swift in Sources */,
@@ -1770,7 +1757,6 @@
 				B8FB2A8929524FAD006DAC8E /* WatchlistPosterSection.swift in Sources */,
 				B892EB0C29675582002E028E /* TipJarSetting.swift in Sources */,
 				B890C58527FE4442006BE5E1 /* Episode-Extension.swift in Sources */,
-				B8FF4DC127FB56F500C7DE9F /* SFSafariViewWrapper.swift in Sources */,
 				B8F6DE5829329AE8005D1A50 /* EndpointDetails.swift in Sources */,
 				B8DA5CC62B0E432200678592 /* UpNextMenuBar.swift in Sources */,
 				B86F7ABD2A087FF900AA4855 /* HorizontalUpNextListView.swift in Sources */,

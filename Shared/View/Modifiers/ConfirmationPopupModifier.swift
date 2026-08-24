@@ -17,7 +17,9 @@ struct ConfirmationPopupModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
 #if os(iOS)
-            .sensoryFeedback(.success, trigger: feedbackToken)
+            .sensoryFeedback(.success, trigger: feedbackToken) { _, _ in
+                SettingsStore.shared.hapticFeedback
+            }
 #endif
             .onChange(of: isShowing) { _, showing in
                 guard showing else { return }

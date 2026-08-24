@@ -42,26 +42,6 @@ struct CronicaApp: App {
                 .frame(minWidth: 800)
 #endif
                 .environment(\.managedObjectContext, persistence.container.viewContext)
-#if os(iOS)
-                .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
-                    Task {
-                        guard let id = notificationDelegate.notificationID else { return }
-                        if lastNotificationID != id {
-                            await fetchContent(for: id)
-                        }
-                        lastNotificationID = id
-                    }
-                }
-                .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
-                    Task {
-                        guard let id = notificationDelegate.notificationID else { return }
-                        if lastNotificationID != id {
-                            await fetchContent(for: id)
-                        }
-                        lastNotificationID = id
-                    }
-                }
-#endif
                 .onOpenURL { url in
                     let urlString = url.absoluteString
                     if urlString.hasPrefix("cronica://") {
@@ -132,6 +112,17 @@ struct CronicaApp: App {
             if phase == .background {
                 scheduleAppRefresh()
             }
+#if os(iOS)
+            if phase == .active {
+                Task {
+                    guard let id = notificationDelegate.notificationID else { return }
+                    if lastNotificationID != id {
+                        await fetchContent(for: id)
+                    }
+                    lastNotificationID = id
+                }
+            }
+#endif
         }
 #if os(macOS)
         .commands {

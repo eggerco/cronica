@@ -42,6 +42,8 @@ struct ItemContentDetails: View {
     @FocusState var isMoreInFocus: Bool
     @Namespace var tvOSActionNamespace
     @FocusState var isWatchlistButtonFocused: Bool
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+    @Environment(\.openURL) private var openURL
     
     // MARK: Animation properties
     @State private var animateFavorite = false
@@ -51,7 +53,7 @@ struct ItemContentDetails: View {
 #if os(macOS) || os(visionOS)
                 sizeBasedPadMacView
 #elseif os(iOS)
-                if UIDevice.isIPad {
+                if horizontalSizeClass == .regular {
                     sizeBasedPadMacView
                 } else {
                     sizedBasedPhoneView
@@ -64,7 +66,7 @@ struct ItemContentDetails: View {
 #if !os(tvOS)
         .toolbar {
 #if os(iOS)
-            if UIDevice.isIPad {
+            if horizontalSizeClass == .regular {
                 ToolbarItem {
                     HStack {
                         if viewModel.isInWatchlist {
@@ -687,7 +689,6 @@ extension ItemContentDetails {
                     updateWatchlist()
                 }
             } else {
-                HapticManager.shared.successHaptic()
                 updateWatchlist()
             }
         } label: {
@@ -998,7 +999,7 @@ extension ItemContentDetails {
             }
             openInMenu
 #else
-            if UIDevice.isIPhone {
+            if horizontalSizeClass == .compact {
                 if viewModel.isInWatchlist {
                     if type == .movie {
                         favoriteButtonToolbar
@@ -1180,7 +1181,6 @@ extension ItemContentDetails {
         case .archive: animationImage = viewModel.isArchive ? "archivebox.fill" : "archivebox"
         }
         withAnimation(.bouncy) { animateGesture.toggle() }
-        HapticManager.shared.successHaptic()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             withAnimation(.bouncy) { animateGesture = false }
         }
@@ -1188,11 +1188,7 @@ extension ItemContentDetails {
     
 #if !os(tvOS)
     private func openUrl(for url: URL) {
-#if os(iOS) || os(visionOS)
-        UIApplication.shared.open(url)
-#else
-        NSWorkspace.shared.open(url)
-#endif
+        openURL(url)
     }
 #endif
 }
@@ -1200,8 +1196,8 @@ extension ItemContentDetails {
 private struct DrawingConstants {
     static let shadowRadius: CGFloat = 12
 #if os(iOS)
-    static let posterWidth: CGFloat = UIDevice.isIPhone ? 200 : 280
-    static let posterHeight: CGFloat = UIDevice.isIPhone ? 300 : 440
+    static let posterWidth: CGFloat = 200
+    static let posterHeight: CGFloat = 300
     static let coverWidth: CGFloat = 360
     static let coverHeight: CGFloat = 210
 #elseif os(tvOS)

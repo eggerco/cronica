@@ -12,17 +12,17 @@ struct NewListItemSelectorRow: View {
     let item: WatchlistItem
     @State private var isSelected = false
     @Binding var selectedItems: Set<WatchlistItem>
+    @State private var selectionTrigger = 0
     var body: some View {
         Button {
             if selectedItems.contains(item) {
                 selectedItems.remove(item)
                 withAnimation { isSelected = false }
-                HapticManager.shared.selectionHaptic()
             } else {
                 selectedItems.insert(item)
                 withAnimation { isSelected = true }
-                HapticManager.shared.selectionHaptic()
             }
+            selectionTrigger &+= 1
         } label: {
             HStack {
                 Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
@@ -63,6 +63,11 @@ struct NewListItemSelectorRow: View {
             }
         }
         .buttonStyle(.plain)
+#if os(iOS)
+        .sensoryFeedback(.selection, trigger: selectionTrigger) { _, _ in
+            SettingsStore.shared.hapticFeedback
+        }
+#endif
         .task {
             if !isSelected && selectedItems.contains(item) {
                 withAnimation { isSelected = true }

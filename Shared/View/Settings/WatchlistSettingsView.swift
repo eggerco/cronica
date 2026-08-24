@@ -12,7 +12,6 @@ struct WatchlistSettingsView: View {
     @StateObject private var store = SettingsStore.shared
     @State private var updatingItems = false
     @State private var isGeneratingExport = false
-    @State private var showExportShareSheet = false
     @State private var showFilePicker = false
     @State private var exportUrl: URL?
     @Environment(\.managedObjectContext) private var context
@@ -71,7 +70,14 @@ struct WatchlistSettingsView: View {
             Section {
 #if os(iOS)
                 importButton
-                exportButton
+                if let exportUrl {
+                    ShareLink(item: exportUrl) {
+                        Text("Backup")
+                    }
+                    .disabled(isGeneratingExport)
+                } else {
+                    exportButton
+                }
 #endif
             } header: {
 #if !os(macOS)
@@ -80,11 +86,6 @@ struct WatchlistSettingsView: View {
             } footer: {
 #if os(iOS)
                 Text("Backup/Restore is in beta, only use it to export your data or to import if you're switching your iCloud account, there's no logic at the moment to avoid duplication.")
-#endif
-            }
-            .sheet(isPresented: $showExportShareSheet) {
-#if os(iOS)
-                CustomShareSheet(url: $exportUrl)
 #endif
             }
 #if os(iOS)
@@ -174,7 +175,6 @@ extension WatchlistSettingsView {
                     let pathUrl = tempUrl.appending(component: "CronicaExport \(Date().formatted(date: .abbreviated, time: .omitted)).json")
                     try jsonString.write(to: pathUrl, atomically: true, encoding: .utf8)
                     exportUrl = pathUrl
-                    showExportShareSheet.toggle()
                 }
             }
             isGeneratingExport = false
@@ -203,18 +203,3 @@ extension WatchlistSettingsView {
     }
 #endif
 }
-
-#if os(iOS)
-private struct CustomShareSheet: UIViewControllerRepresentable {
-    @Binding var url: URL?
-    func makeUIViewController(context: Context) -> some UIViewController {
-        if let url {
-            return UIActivityViewController(activityItems: [url], applicationActivities: nil)
-        }
-        return UIActivityViewController(activityItems: [], applicationActivities: nil)
-    }
-    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-        
-    }
-}
-#endif

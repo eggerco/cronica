@@ -18,7 +18,6 @@ struct WatchlistButton: View {
     @Binding var showRemoveConfirmation: Bool
     var body: some View {
         Button(role: isInWatchlist ? .destructive : nil) {
-            if !isInWatchlist { HapticManager.shared.successHaptic() }
             if isInWatchlist, SettingsStore.shared.showRemoveConfirmation {
                 showRemoveConfirmation = true
             } else {

@@ -182,7 +182,7 @@ private struct DrawingConstants {
 #elseif os(tvOS)
     static let columns: [GridItem] = [GridItem(.adaptive(minimum: 420))]
 #else
-    static let columns: [GridItem] = [GridItem(.adaptive(minimum: UIDevice.isIPad ? 240 : 160 ))]
+    static let columns: [GridItem] = [GridItem(.adaptive(minimum: 160))]
 #endif
     static let compactColumns: [GridItem] = [GridItem(.adaptive(minimum: 80))]
     static let posterColumns = [GridItem(.adaptive(minimum: 160))]

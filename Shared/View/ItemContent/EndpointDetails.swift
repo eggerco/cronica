@@ -123,7 +123,7 @@ struct EndpointDetails: View {
 
 private struct DrawingConstants {
 #if os(iOS)
-    static let cardColumns = [GridItem(.adaptive(minimum: UIDevice.isIPad ? 240 : 160))]
+    static let cardColumns = [GridItem(.adaptive(minimum: 160))]
     static let posterColumns = [GridItem(.adaptive(minimum: 160))]
 #else
     static let cardColumns = [GridItem(.adaptive(minimum: 240))]

@@ -29,7 +29,6 @@ extension PinButton {
             popupType = isPin ? .markedPin : .removedPin
             showPopup = true
         }
-        HapticManager.shared.successHaptic()
     }
 }
 

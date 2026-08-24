@@ -159,9 +159,9 @@ private struct TrendingCardView: View {
 
 private struct DrawingConstants {
 #if os(iOS)
-    static let columns = [GridItem(.adaptive(minimum: UIDevice.isIPad ? 240 : 160))]
-    static let width: CGFloat = UIDevice.isIPad ? 240 : 160
-    static let height: CGFloat = UIDevice.isIPad ? 140 : 100
+    static let columns = [GridItem(.adaptive(minimum: 160))]
+    static let width: CGFloat = 160
+    static let height: CGFloat = 100
 #elseif os(tvOS)
     static let columns = [GridItem(.adaptive(minimum: 400))]
     static let width: CGFloat = 400

@@ -196,7 +196,6 @@ class UpNextViewModel: ObservableObject {
                 self.episodes.removeAll(where: { $0.episode.id == content.episode.id })
             }
         }
-        HapticManager.shared.successHaptic()
         let nextEpisode = await EpisodeHelper().fetchNextEpisode(for: content.episode, show: content.showID)
         guard let nextEpisode else { return }
         persistence.updateUpNext(item, episode: nextEpisode)

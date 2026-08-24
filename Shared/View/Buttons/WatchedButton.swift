@@ -29,7 +29,6 @@ extension WatchedButton {
             popupType = isWatched ? .markedWatched : .removedWatched
             showPopup = true
         }
-        HapticManager.shared.successHaptic()
         if item.itemMedia == .tvShow { updateSeasons() }
     }
     

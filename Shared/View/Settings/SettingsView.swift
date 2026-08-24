@@ -11,8 +11,6 @@ import SwiftUI
 struct SettingsView: View {
 #if os(iOS) || os(visionOS)
     static let tag: Screens? = .settings
-    @State private var showPolicy = false
-    @State private var showWhatsNew = false
     @Environment(\.openURL) private var openURL
 #elseif os(tvOS)
     @StateObject private var store = SettingsStore.shared
@@ -60,21 +58,12 @@ struct SettingsView: View {
                                   icon: "info.circle", color: .black)
                 }
                 Button {
-#if os(visionOS)
                     openURL(AppWebsite.privacyPolicy)
-#else
-                    showPolicy.toggle()
-#endif
                 } label: {
                     settingsLabel(title: NSLocalizedString("Privacy Policy", comment: ""),
                                   icon: "hand.raised", color: .indigo)
                 }
                 .buttonStyle(.plain)
-                .sheet(isPresented: $showPolicy) {
-                    SFSafariViewWrapper(url: AppWebsite.privacyPolicy)
-                        .appTint()
-                        .appTheme()
-                }
                 NavigationLink(value: SettingsScreens.feedback) {
                     settingsLabel(title: NSLocalizedString("Feedback", comment: ""),
                                   icon: "envelope.fill", color: AppThemeColors.steel.color)

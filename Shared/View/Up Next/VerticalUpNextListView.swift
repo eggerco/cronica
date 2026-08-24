@@ -21,6 +21,7 @@ struct VerticalUpNextListView: View {
     @State private var query = String()
     @State private var queryResult = [UpNextEpisode]()
     @StateObject private var settings = SettingsStore.shared
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @Environment(\.scenePhase) private var scene
     var body: some View {
         ZStack {
@@ -44,7 +45,7 @@ struct VerticalUpNextListView: View {
         .cronicaLoadingOverlay(!viewModel.isLoaded && query.isEmpty)
 #if os(iOS)
         .searchable(text: $query,
-                    placement: UIDevice.isIPhone ? .navigationBarDrawer(displayMode: .always) : .toolbar)
+                    placement: horizontalSizeClass == .compact ? .navigationBarDrawer(displayMode: .always) : .toolbar)
 #elseif os(macOS)
         .searchable(text: $query, placement: .toolbar)
 #endif

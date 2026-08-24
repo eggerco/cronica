@@ -46,7 +46,6 @@ struct ItemContentView: View {
                             updateWatchlist()
                         }
                     } else {
-                        HapticManager.shared.successHaptic()
                         updateWatchlist()
                     }
                 } label: {

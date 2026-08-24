@@ -76,7 +76,6 @@ extension WatchEpisodeButton {
         await MainActor.run {
             withAnimation { self.isWatched.toggle() }
         }
-        HapticManager.shared.successHaptic()
         let nextEpisode = await EpisodeHelper().fetchNextEpisode(for: self.episode, show: show)
         guard let nextEpisode else { return }
         persistence.updateUpNext(item, episode: nextEpisode)
