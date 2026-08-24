@@ -72,7 +72,7 @@ struct ReleaseCalendarView: View {
                         )
                     }
                 } else if selectedDayItems.isEmpty {
-                    CronicaFormText("No watchlist releases on this date.")
+                    Text("No watchlist releases on this date.")
                         .foregroundStyle(.secondary)
                 } else {
                     ForEach(selectedDayItems) { item in
@@ -83,11 +83,12 @@ struct ReleaseCalendarView: View {
                 }
             }
         }
-        .navigationTitle("Release Calendar")
-#if os(iOS)
-        .navigationBarTitleDisplayMode(.large)
-#endif
         .cronicaNormalTextCase()
+#if os(iOS)
+        .cronicaNavigationTitle("Release Calendar", displayMode: .large)
+#else
+        .cronicaNavigationTitle("Release Calendar")
+#endif
         .cronicaWatchlistNavigationDestinations()
     }
 

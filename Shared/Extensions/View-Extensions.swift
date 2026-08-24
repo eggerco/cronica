@@ -94,6 +94,14 @@ extension View {
 #endif
     }
 
+    /// Keeps authored casing on navigation titles (Lists can force uppercase large titles).
+    func cronicaNavigationTitle(
+        _ title: String,
+        displayMode: NavigationBarItem.TitleDisplayMode = .automatic
+    ) -> some View {
+        modifier(CronicaNavigationTitleModifier(title: title, displayMode: displayMode))
+    }
+
     func appTheme() -> some View {
         modifier(AppThemeModifier())
     }
@@ -146,7 +154,28 @@ extension View {
     }
 }
 
-/// List section header that keeps sentence case (non-settings screens).
+private struct CronicaNavigationTitleModifier: ViewModifier {
+    let title: String
+    let displayMode: NavigationBarItem.TitleDisplayMode
+
+    func body(content: Content) -> some View {
+        let titleText = Text(verbatim: title)
+            .textCase(nil)
+            .environment(\.textCase, nil)
+
+#if os(iOS)
+        content
+            .environment(\.textCase, nil)
+            .navigationTitle(titleText)
+            .navigationBarTitleDisplayMode(displayMode)
+#else
+        content
+            .environment(\.textCase, nil)
+            .navigationTitle(titleText)
+#endif
+    }
+}
+
 struct CronicaListSectionHeader: View {
     let title: String
 
