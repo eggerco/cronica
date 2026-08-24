@@ -17,3 +17,23 @@ Config/Secrets.xcconfig
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
+
+### Web (Next.js) ###
+web/node_modules/
+web/.next/
+web/out/
+web/.vercel/
+web/.env
+web/.env*.local
+web/next-env.d.ts
+web/*.tsbuildinfo
+
+### Web (Next.js) ###
+web/node_modules/
+web/.next/
+web/out/
+web/.vercel/
+web/.env
+web/.env*.local
+web/next-env.d.ts
+web/*.tsbuildinfo

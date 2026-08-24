@@ -76,6 +76,7 @@ Cronica/
 ├── AppleWatch/             # Watch-specific UI
 ├── CronicaWidget/          # Widgets
 ├── Packages/CronicaCore/   # Shared models & TMDb networking
+├── web/                    # Marketing site (Next.js) → cronica.eggerco.com
 └── Config/                 # Secrets.xcconfig (gitignored) + example
 ```
 
