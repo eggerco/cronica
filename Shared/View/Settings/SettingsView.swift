@@ -25,14 +25,13 @@ struct SettingsView: View {
 #if os(iOS) || os(visionOS)
         Form {
             Section("General") {
-                
-                NavigationLink(value: SettingsScreens.behavior) {
-                    settingsLabel(title: NSLocalizedString("Behavior", comment: ""),
-                                  icon: "hand.tap", color: .gray)
-                }
                 NavigationLink(value: SettingsScreens.appearance) {
                     settingsLabel(title: NSLocalizedString("Appearance", comment: ""),
                                   icon: "paintbrush", color: .blue)
+                }
+                NavigationLink(value: SettingsScreens.behavior) {
+                    settingsLabel(title: NSLocalizedString("Behavior", comment: ""),
+                                  icon: "hand.tap", color: .gray)
                 }
                 NavigationLink(value: SettingsScreens.notifications) {
                     settingsLabel(title: NSLocalizedString("Notification", comment: ""),
@@ -56,16 +55,6 @@ struct SettingsView: View {
             }
             
             Section("About") {
-                NavigationLink(value: SettingsScreens.feedback) {
-                    settingsLabel(title: NSLocalizedString("Feedback", comment: ""),
-                                  icon: "envelope.fill", color: AppThemeColors.steel.color)
-                }
-#if !os(visionOS)
-                NavigationLink(value: SettingsScreens.tipJar) {
-                    settingsLabel(title: NSLocalizedString("Tip Jar", comment: ""),
-                                  icon: "heart", color: .red)
-                }
-#endif
                 NavigationLink(value: SettingsScreens.about) {
                     settingsLabel(title: NSLocalizedString("About", comment: ""),
                                   icon: "info.circle", color: .black)
@@ -86,6 +75,16 @@ struct SettingsView: View {
                         .appTint()
                         .appTheme()
                 }
+                NavigationLink(value: SettingsScreens.feedback) {
+                    settingsLabel(title: NSLocalizedString("Feedback", comment: ""),
+                                  icon: "envelope.fill", color: AppThemeColors.steel.color)
+                }
+#if !os(visionOS)
+                NavigationLink(value: SettingsScreens.tipJar) {
+                    settingsLabel(title: NSLocalizedString("Tip Jar", comment: ""),
+                                  icon: "heart", color: .red)
+                }
+#endif
             }
         }
         .navigationTitle("Settings")
@@ -93,20 +92,20 @@ struct SettingsView: View {
         .scrollBounceBehavior(.basedOnSize, axes: .vertical)
 #elseif os(macOS)
         TabView {
+            AppearanceSetting()
+                .tabItem { Label("Appearance", systemImage: "moon.stars") }
+            
             BehaviorSetting()
                 .tabItem { Label("Behavior", systemImage: "cursorarrow.click") }
             
-            AppearanceSetting()
-                .tabItem { Label("Appearance", systemImage: "moon.stars") }
+            NotificationsSettingsView()
+                .tabItem { Label("Notifications", systemImage: "bell") }
             
             WatchlistSettingsView()
                 .tabItem { Label("Watchlist", systemImage: "rectangle.on.rectangle") }
             
             SeasonUpNextSettingsView()
                 .tabItem { Label("Season & Up Next", systemImage: "tv") }
-            
-            NotificationsSettingsView()
-                .tabItem { Label("Notifications", systemImage: "bell") }
             
             WatchProviderSettings()
                 .tabItem { Label("Region", systemImage: "globe")  }

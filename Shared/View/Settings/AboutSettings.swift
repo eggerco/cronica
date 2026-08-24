@@ -118,17 +118,6 @@ struct AboutSettings: View {
             }
             
             Section {
-                aboutButton(
-                    title: "GitHub",
-                    url: "https://github.com/egger/cronica"
-                )
-            } header: {
-                Text("Source Code")
-            } footer: {
-                Text("Cronica is open-source, you can contribute to the project.")
-            }
-            
-            Section {
                 if settings.displayDeveloperSettings {
                     NavigationLink("🛠️", value: SettingsScreens.developer)
                 }
