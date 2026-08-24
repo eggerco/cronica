@@ -672,10 +672,11 @@ extension ItemContentDetails {
 #if !os(tvOS)
     private var cronicaUrl: URL? {
         guard let item = viewModel.content else { return nil }
-        let encodedTitle = item.itemTitle.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        let posterPath = item.posterPath ?? String()
-        let encodedPoster = posterPath.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        return URL(string: "https://www.oncronica.com/details?id=\(item.itemContentID)&img=\(encodedPoster ?? String())&title=\(encodedTitle ?? String())")
+        return AppWebsite.detailsURL(
+            contentID: item.itemContentID,
+            posterPath: item.posterPath,
+            title: item.itemTitle
+        )
     }
 #endif
     

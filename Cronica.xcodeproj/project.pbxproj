@@ -292,6 +292,8 @@
 		B8FF4DC127FB56F500C7DE9F /* SFSafariViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FF4DC027FB56F500C7DE9F /* SFSafariViewWrapper.swift */; };
 		C0COREIMPORT000000000002 /* CronicaCoreImport.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0COREIMPORT000000000001 /* CronicaCoreImport.swift */; };
 		C0COREIMPORTWATCH000000002 /* CronicaCoreImport.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0COREIMPORT000000000001 /* CronicaCoreImport.swift */; };
+		C0APPWEBSITE000000000002 /* AppWebsite.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0APPWEBSITE000000000001 /* AppWebsite.swift */; };
+		C0APPWEBSITEWATCH00000002 /* AppWebsite.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0APPWEBSITE000000000001 /* AppWebsite.swift */; };
 		C0INTTEST00000000000002 /* CronicaIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0INTTEST00000000000001 /* CronicaIntegrationTests.swift */; };
 		C0ITEMSECTION00000000002 /* ItemContentSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ITEMSECTION00000000001 /* ItemContentSection.swift */; };
 		C0ITEMSECTIONWATCH000002 /* ItemContentSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ITEMSECTION00000000001 /* ItemContentSection.swift */; };
@@ -563,6 +565,7 @@
 		B8FCAE912AED9CE300F688FE /* CronicaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaTests.swift; sourceTree = "<group>"; };
 		C0APPL0G00000000000000001 /* AppLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogger.swift; sourceTree = "<group>"; };
 		C0COREIMPORT000000000001 /* CronicaCoreImport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaCoreImport.swift; sourceTree = "<group>"; };
+		C0APPWEBSITE000000000001 /* AppWebsite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppWebsite.swift; sourceTree = "<group>"; };
 		C0INTTEST00000000000001 /* CronicaIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaIntegrationTests.swift; sourceTree = "<group>"; };
 		C0ITEMSECTION00000000001 /* ItemContentSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemContentSection.swift; sourceTree = "<group>"; };
 		C0NF1G000000000000000002 /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
@@ -1286,6 +1289,7 @@
 				B8CC953527D05E4A00B6757C /* Cronica-Info.plist */,
 				B8110ED8279245D000844FEB /* CronicaApp.swift */,
 				C0COREIMPORT000000000001 /* CronicaCoreImport.swift */,
+				C0APPWEBSITE000000000001 /* AppWebsite.swift */,
 				B8E6D64027B6B106002E7A63 /* Watchlist.xcdatamodeld */,
 			);
 			path = Configuration;
@@ -1654,6 +1658,7 @@
 				B8FCAE8A2AED8CA200F688FE /* FilmographyListView.swift in Sources */,
 				B806C4E12899BE2800A5330E /* CronicaWatchApp.swift in Sources */,
 				C0COREIMPORTWATCH000000002 /* CronicaCoreImport.swift in Sources */,
+				C0APPWEBSITEWATCH00000002 /* AppWebsite.swift in Sources */,
 				C0ITEMSECTIONWATCH000002 /* ItemContentSection.swift in Sources */,
 				C0APPCONTENTREGIONW0002 /* AppContentRegion.swift in Sources */,
 				C0SEARCHITEMEXTWATCH0002 /* SearchItemContent-Extension.swift in Sources */,
@@ -1706,6 +1711,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0COREIMPORT000000000002 /* CronicaCoreImport.swift in Sources */,
+				C0APPWEBSITE000000000002 /* AppWebsite.swift in Sources */,
 				C0ITEMSECTION00000000002 /* ItemContentSection.swift in Sources */,
 				C0APPCONTENTREGION00002 /* AppContentRegion.swift in Sources */,
 				C0SEARCHITEMEXT00000002 /* SearchItemContent-Extension.swift in Sources */,

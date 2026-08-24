@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://www.oncronica.com/resources/img/cronica/icon.webp" alt="Cronica Icon" width="150" height="150" />
+    <img src="https://cronica.eggerco.com/resources/img/cronica/icon.webp" alt="Cronica Icon" width="150" height="150" />
 </p>
 
 <h1 align="center">
@@ -64,7 +64,7 @@ Shared TMDb models and networking live in the local Swift package `Packages/Cron
 </p>
 <p align="center">
 <a href="https://apple.co/38SXpVJ">
-	<img src="https://www.oncronica.com/resources/img/cronica/AppStoreBadge.svg" alt="Badge for download Cronica on App Store" width="160" height="80">
+	<img src="https://cronica.eggerco.com/resources/img/cronica/AppStoreBadge.svg" alt="Badge for download Cronica on App Store" width="160" height="80">
 </a>
 </p>
 
@@ -75,7 +75,7 @@ Shared TMDb models and networking live in the local Swift package `Packages/Cron
 </p>
 <p align="center"> 
 <a href="https://apps.apple.com/app/cronica/id1614950275">
-	<img src="https://www.oncronica.com/resources/img/cronica/AppStoreBadge.svg" alt="Badge for download Cronica on Apple Watch App Store" width="160" height="80">
+	<img src="https://cronica.eggerco.com/resources/img/cronica/AppStoreBadge.svg" alt="Badge for download Cronica on Apple Watch App Store" width="160" height="80">
 </a>
 </p>
 
@@ -108,7 +108,7 @@ Shared TMDb models and networking live in the local Swift package `Packages/Cron
 </p>
 <p align="center"> 
 <a href="https://apps.apple.com/app/cronica/id1614950275">
-	<img src="https://www.oncronica.com/resources/img/cronica/AppStoreBadge.svg" alt="Badge for download Cronica on Apple Vision Pro App Store" width="160" height="80">
+	<img src="https://cronica.eggerco.com/resources/img/cronica/AppStoreBadge.svg" alt="Badge for download Cronica on Apple Vision Pro App Store" width="160" height="80">
 </a>
 </p>
 

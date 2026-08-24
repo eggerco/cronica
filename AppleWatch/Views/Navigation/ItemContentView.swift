@@ -235,13 +235,12 @@ struct ItemContentView: View {
 	}
 	
 	private var cronicaUrl: URL? {
-		if let item = viewModel.content {
-			let encodedTitle = item.itemTitle.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-			let posterPath = item.posterPath ?? String()
-			let encodedPoster = posterPath.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-			return URL(string: "https://www.oncronica.com/details?id=\(item.itemContentID)&img=\(encodedPoster ?? String())&title=\(encodedTitle ?? String())")
-		}
-		return nil
+		guard let item = viewModel.content else { return nil }
+		return AppWebsite.detailsURL(
+			contentID: item.itemContentID,
+			posterPath: item.posterPath,
+			title: item.itemTitle
+		)
 	}
     
     private func updateWatchlist() {

@@ -7,10 +7,6 @@
 
 import SwiftUI
 #if !os(macOS)
-private enum WelcomeURLs {
-    static let privacyPolicy = URL(string: "https://www.oncronica.com/privacy")
-}
-
 /// Onboard experience.
 struct WelcomeView: View {
     @AppStorage("showOnboarding") var displayOnboard = true
@@ -61,9 +57,7 @@ struct WelcomeView: View {
                 .padding([.leading, .vertical])
                 Button {
 #if os(macOS)
-                    if let privacyPolicy = WelcomeURLs.privacyPolicy {
-                        NSWorkspace.shared.open(privacyPolicy)
-                    }
+                    NSWorkspace.shared.open(AppWebsite.privacyPolicy)
 #else
                     showPolicy.toggle()
 #endif
@@ -87,9 +81,7 @@ struct WelcomeView: View {
         .interactiveDismissDisabled(true)
 #if os(iOS)
         .fullScreenCover(isPresented: $showPolicy) {
-            if let privacyPolicy = WelcomeURLs.privacyPolicy {
-                SFSafariViewWrapper(url: privacyPolicy)
-            }
+            SFSafariViewWrapper(url: AppWebsite.privacyPolicy)
         }
 #endif
     }

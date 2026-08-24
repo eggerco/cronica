@@ -20,6 +20,8 @@ struct AboutSettings: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 100, height: 100, alignment: .center)
+                            .clipShape(RoundedRectangle(cornerRadius: 22.4, style: .continuous))
+                            .shadow(color: .black.opacity(0.18), radius: 8, x: 0, y: 4)
                             .accessibilityHidden(true)
                             .onTapGesture(count: 3) {
                                 settings.displayDeveloperSettings.toggle()
@@ -175,8 +177,7 @@ struct AboutSettings: View {
     private var privacy: some View {
         Section {
             Button("Privacy Policy") {
-                guard let url = URL(string: "https://www.oncronica.com/privacy") else { return }
-                NSWorkspace.shared.open(url)
+                NSWorkspace.shared.open(AppWebsite.privacyPolicy)
             }
             .buttonStyle(.link)
         } header: {

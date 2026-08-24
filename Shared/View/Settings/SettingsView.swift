@@ -72,9 +72,7 @@ struct SettingsView: View {
                 }
                 Button {
 #if os(visionOS)
-                    if let url = URL(string: "https://www.oncronica.com/privacy") {
-                        openURL(url)
-                    }
+                    openURL(AppWebsite.privacyPolicy)
 #else
                     showPolicy.toggle()
 #endif
@@ -84,11 +82,9 @@ struct SettingsView: View {
                 }
                 .buttonStyle(.plain)
                 .sheet(isPresented: $showPolicy) {
-                    if let url = URL(string: "https://www.oncronica.com/privacy") {
-                        SFSafariViewWrapper(url: url)
-                            .appTint()
-                            .appTheme()
-                    }
+                    SFSafariViewWrapper(url: AppWebsite.privacyPolicy)
+                        .appTint()
+                        .appTheme()
                 }
             }
         }

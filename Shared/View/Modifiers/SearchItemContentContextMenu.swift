@@ -79,10 +79,11 @@ struct SearchItemContentContextMenu: ViewModifier {
     }
     
     private var cronicaUrl: URL? {
-        let encodedTitle = item.itemTitle.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        let posterPath = item.posterPath ?? String()
-        let encodedPoster = posterPath.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        return URL(string: "https://www.oncronica.com/details?id=\(item.itemContentID)&img=\(encodedPoster ?? String())&title=\(encodedTitle ?? String())")
+        AppWebsite.detailsURL(
+            contentID: item.itemContentID,
+            posterPath: item.posterPath,
+            title: item.itemTitle
+        )
     }
     
     private var watchedButton: some View {
