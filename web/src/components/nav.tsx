@@ -107,6 +107,7 @@ export function Nav() {
 
         <AppStoreButton
           label="Download"
+          showIcon={false}
           variant={isLight ? "ghost-dark" : "outline"}
           className="px-5 py-2.5 text-sm"
         />

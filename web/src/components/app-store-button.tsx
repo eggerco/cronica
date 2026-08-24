@@ -5,12 +5,14 @@ type AppStoreButtonProps = {
   variant?: "outline" | "ghost-dark" | "primary";
   className?: string;
   label?: string;
+  showIcon?: boolean;
 };
 
 export function AppStoreButton({
   variant = "outline",
   className = "",
   label = "Download on the App Store",
+  showIcon = true,
 }: AppStoreButtonProps) {
   const variantClass =
     variant === "primary" ? "btn-primary" : variant === "ghost-dark" ? "btn-ghost-dark" : "btn-outline";
@@ -21,7 +23,7 @@ export function AppStoreButton({
       aria-label="Download on the App Store"
       className={["btn", variantClass, className].filter(Boolean).join(" ")}
     >
-      <AppleLogo className="size-4" />
+      {showIcon && <AppleLogo className="size-4" />}
       {label}
     </a>
   );
