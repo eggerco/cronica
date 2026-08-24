@@ -78,9 +78,7 @@ struct WatchProviderSettings: View {
 #if os(iOS)
     private var languageButton: some View {
         Button("Change app language") {
-            if let url = URL(string: UIApplication.openSettingsURLString) {
-                openURL(url)
-            }
+            openURL.openAppSettings()
         }
     }
 #endif

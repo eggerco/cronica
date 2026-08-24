@@ -75,9 +75,7 @@ struct NotificationsSettingsView: View {
             
 #if os(iOS)
             Button("Edit Notifications in Settings app") {
-                if let url = URL(string: UIApplication.openNotificationSettingsURLString) {
-                    openURL(url)
-                }
+                openURL.openNotificationSettings()
             }
 #endif
         }

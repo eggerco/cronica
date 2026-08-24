@@ -256,6 +256,8 @@
 		B8FB2A8229524C37006DAC8E /* WatchlistItemPosterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FB2A8129524C37006DAC8E /* WatchlistItemPosterView.swift */; };
 		B8FB2A8429524D6E006DAC8E /* View-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FB2A8329524D6E006DAC8E /* View-Extensions.swift */; };
 		B8FB2A8629524D9A006DAC8E /* View-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FB2A8329524D6E006DAC8E /* View-Extensions.swift */; };
+		C0OPENURLSYS000000000002 /* OpenURLAction+SystemSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0OPENURLSYS000000000001 /* OpenURLAction+SystemSettings.swift */; };
+		C0OPENURLSYS000000000003 /* OpenURLAction+SystemSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0OPENURLSYS000000000001 /* OpenURLAction+SystemSettings.swift */; };
 		B8FB2A8929524FAD006DAC8E /* WatchlistPosterSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FB2A8829524FAD006DAC8E /* WatchlistPosterSection.swift */; };
 		B8FB2A8B2952606A006DAC8E /* AppThemeColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89446BE294FDACA008974BA /* AppThemeColors.swift */; };
 		B8FB2A8E29526341006DAC8E /* BehaviorSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FB2A8D29526341006DAC8E /* BehaviorSetting.swift */; };
@@ -537,6 +539,7 @@
 		B8FB2A7F295235E2006DAC8E /* WatchlistCardSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistCardSection.swift; sourceTree = "<group>"; };
 		B8FB2A8129524C37006DAC8E /* WatchlistItemPosterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistItemPosterView.swift; sourceTree = "<group>"; };
 		B8FB2A8329524D6E006DAC8E /* View-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View-Extensions.swift"; sourceTree = "<group>"; };
+		C0OPENURLSYS000000000001 /* OpenURLAction+SystemSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OpenURLAction+SystemSettings.swift"; sourceTree = "<group>"; };
 		B8FB2A8829524FAD006DAC8E /* WatchlistPosterSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistPosterSection.swift; sourceTree = "<group>"; };
 		B8FB2A8D29526341006DAC8E /* BehaviorSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BehaviorSetting.swift; sourceTree = "<group>"; };
 		B8FB2A8F295263AB006DAC8E /* AboutSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutSettings.swift; sourceTree = "<group>"; };
@@ -949,6 +952,7 @@
 				B8B2F6AB2A85D57400FF0246 /* SearchItemContent-Extension.swift */,
 				B818483629C286C300650763 /* UserDefaults-Extensions.swift */,
 				B8FB2A8329524D6E006DAC8E /* View-Extensions.swift */,
+				C0OPENURLSYS000000000001 /* OpenURLAction+SystemSettings.swift */,
 				B878E83427BC85BC0021A981 /* WatchlistItem-Extension.swift */,
 			);
 			path = Extensions;
@@ -1633,6 +1637,7 @@
 				B8FCAE982AEDA38E00F688FE /* SeasonListView.swift in Sources */,
 				B81DD93629BD14EE009F73F3 /* CustomList+CoreDataClass.swift in Sources */,
 				B8FB2A8629524D9A006DAC8E /* View-Extensions.swift in Sources */,
+				C0OPENURLSYS000000000003 /* OpenURLAction+SystemSettings.swift in Sources */,
 				B82BE4E9299BFEF4005F9990 /* PersistenceController-CustomList.swift in Sources */,
 				B8152EC72B718FA60032836A /* WatchlistSortOrder.swift in Sources */,
 				B801070929F244DE008A4551 /* NewCustomListView.swift in Sources */,
@@ -1701,6 +1706,7 @@
 				B8CC952127CFEBEC00B6757C /* SearchView.swift in Sources */,
 				B8C0215529E0D027006E9D82 /* ExplorePreferredDisplayType.swift in Sources */,
 				B8FB2A8429524D6E006DAC8E /* View-Extensions.swift in Sources */,
+				C0OPENURLSYS000000000002 /* OpenURLAction+SystemSettings.swift in Sources */,
 				B8D8AF9227D4DB720042AEB6 /* SearchViewModel.swift in Sources */,
 				B81941A52A0833450057DA04 /* AddToListRow.swift in Sources */,
 				B84C53FD27B1F1DD00425524 /* WatchlistItemRowView.swift in Sources */,
