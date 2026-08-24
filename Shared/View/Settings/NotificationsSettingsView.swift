@@ -80,7 +80,7 @@ struct NotificationsSettingsView: View {
 #endif
 
 #if !os(watchOS)
-            Section("Calendar Sync") {
+            Section {
                 Toggle("Sync to Calendar", isOn: $settings.allowCalendarSync)
                 Toggle(isOn: $settings.syncCalendarMovies) {
                     Text("Sync Movie Releases")
@@ -95,6 +95,8 @@ struct NotificationsSettingsView: View {
                 NavigationLink(value: ReleaseCalendarRoute.watchlist) {
                     Text("View Release Calendar")
                 }
+            } header: {
+                CronicaFormSectionHeader(title: "Calendar Sync")
             } footer: {
                 Text("Events are saved to a dedicated Cronica calendar in the Calendar app.")
             }
