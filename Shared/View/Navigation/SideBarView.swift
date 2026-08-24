@@ -55,7 +55,9 @@ struct SideBarView: View {
         }
         .navigationSplitViewStyle(.balanced)
         .sheet(isPresented: $showNotifications) {
-            NotificationListView(showNotification: $showNotifications)
+            NavigationStack {
+                NotificationListView(showNotification: $showNotifications)
+            }
         }
     }
 }

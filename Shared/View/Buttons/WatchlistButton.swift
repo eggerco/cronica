@@ -79,6 +79,7 @@ struct WatchlistButton: View {
         if item.itemCanNotify && item.itemFallbackDate.isLessThanTwoWeeksAway() {
             notification.schedule(item)
         }
+        CalendarManager.shared.schedule(item)
     }
     
     private func displayConfirmation() {

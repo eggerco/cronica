@@ -25,6 +25,7 @@ struct ArchiveButton: View {
         withAnimation { isArchive.toggle() }
         if isArchive {
             NotificationManager.shared.removeNotification(identifier: id)
+            CalendarManager.shared.removeEvent(identifier: id)
         }
 #if !os(watchOS)
         popupType = isArchive ? .markedArchive : .removedArchive

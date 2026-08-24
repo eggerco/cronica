@@ -46,12 +46,25 @@ struct UpcomingWatchlist: View {
         if !items.isEmpty {
             VStack {
 #if !os(tvOS) && !os(visionOS)
-                NavigationLink(value: items) {
-                    TitleView(title: NSLocalizedString("Upcoming", comment: ""),
-                              subtitle: NSLocalizedString("From Watchlist", comment: ""),
-                              showChevron: items.count > 4 ? true : false)
+                HStack(alignment: .center) {
+                    NavigationLink(value: items) {
+                        TitleView(title: NSLocalizedString("Upcoming", comment: ""),
+                                  subtitle: NSLocalizedString("From Watchlist", comment: ""),
+                                  showChevron: items.count > 4 ? true : false)
+                    }
+                    .buttonStyle(.plain)
+#if !os(watchOS)
+                    Spacer()
+                    NavigationLink(value: ReleaseCalendarRoute.watchlist) {
+                        Image(systemName: "calendar")
+                            .font(.body)
+                            .foregroundStyle(.secondary)
+                            .padding(.trailing, 16)
+                            .accessibilityLabel("Release Calendar")
+                    }
+                    .buttonStyle(.plain)
+#endif
                 }
-                .buttonStyle(.plain)
 #else
                 TitleView(title: NSLocalizedString("Upcoming", comment: ""),
                           subtitle: NSLocalizedString("From Watchlist", comment: ""),

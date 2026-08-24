@@ -120,6 +120,7 @@ class ItemContentViewModel: ObservableObject {
             if item.itemCanNotify && item.itemFallbackDate.isLessThanTwoWeeksAway() {
                 notification.schedule(item)
             }
+            CalendarManager.shared.schedule(item)
             if item.itemContentMedia == .tvShow {
                 Task {
                     let firstSeason = try? await service.fetchSeason(id: item.id, season: 1)
@@ -173,6 +174,7 @@ class ItemContentViewModel: ObservableObject {
 					notification.schedule(content)
 				}
 			}
+            CalendarManager.shared.schedule(content)
 		}
     }
     

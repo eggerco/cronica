@@ -35,10 +35,16 @@ final class SettingsStore: ObservableObject {
     @AppStorage("allowNotifications") var allowNotifications = false
     @AppStorage("notifyMovies") var notifyMovieRelease = false
     @AppStorage("notifyTVShows") var notifyNewEpisodes = false
+    @AppStorage("allowCalendarSync") var allowCalendarSync = false
+    @AppStorage("syncCalendarMovies") var syncCalendarMovies = true
+    @AppStorage("syncCalendarTVShows") var syncCalendarTVShows = true
 #else
     @AppStorage("allowNotifications") var allowNotifications = true
     @AppStorage("notifyMovies") var notifyMovieRelease = true
     @AppStorage("notifyTVShows") var notifyNewEpisodes = true
+    @AppStorage("allowCalendarSync") var allowCalendarSync = false
+    @AppStorage("syncCalendarMovies") var syncCalendarMovies = true
+    @AppStorage("syncCalendarTVShows") var syncCalendarTVShows = true
 #endif
     @AppStorage("userHasPurchasedTipJar") var hasPurchasedTipJar = false
 #if os(tvOS)

@@ -88,6 +88,7 @@ extension WatchEpisodeButton {
         if content.itemCanNotify && content.itemFallbackDate.isLessThanTwoWeeksAway() {
             NotificationManager.shared.schedule(content)
         }
+        CalendarManager.shared.schedule(content)
         isItemSaved = true
     }
 }

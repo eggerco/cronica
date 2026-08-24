@@ -165,6 +165,7 @@ extension PersistenceController {
         guard let item else { return }
         let notification = NotificationManager.shared
         notification.removeNotification(identifier: content.itemContentID)
+        CalendarManager.shared.removeEvent(identifier: content.itemContentID)
         viewContext.delete(item)
         save()
     }
@@ -193,7 +194,10 @@ extension PersistenceController {
     
     func updateArchive(for item: WatchlistItem) {
         item.isArchive.toggle()
-        NotificationManager.shared.removeNotification(identifier: item.itemContentID)
+        if item.isArchive {
+            NotificationManager.shared.removeNotification(identifier: item.itemContentID)
+            CalendarManager.shared.removeEvent(identifier: item.itemContentID)
+        }
         item.shouldNotify.toggle()
         if item.isTvShow {
             item.isWatching.toggle()
@@ -206,6 +210,7 @@ extension PersistenceController {
                                                                      type: item.itemMedia)
                 guard let newValues else { return }
                 self.update(item: newValues)
+                CalendarManager.shared.schedule(newValues)
             }
         }
     }

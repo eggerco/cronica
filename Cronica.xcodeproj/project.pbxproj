@@ -260,6 +260,10 @@
 		B8FB2A8629524D9A006DAC8E /* View-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FB2A8329524D6E006DAC8E /* View-Extensions.swift */; };
 		C0OPENURLSYS000000000002 /* OpenURLAction+SystemSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0OPENURLSYS000000000001 /* OpenURLAction+SystemSettings.swift */; };
 		C0OPENURLSYS000000000003 /* OpenURLAction+SystemSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0OPENURLSYS000000000001 /* OpenURLAction+SystemSettings.swift */; };
+		C0CALMGR000000000002 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CALMGR000000000001 /* CalendarManager.swift */; };
+		C0CALMGR000000000003 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CALMGR000000000001 /* CalendarManager.swift */; };
+		C0RELCV000000000002 /* ReleaseCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0RELCV000000000001 /* ReleaseCalendarView.swift */; };
+		C0RELCROUTE000000002 /* ReleaseCalendarRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0RELCROUTE000000001 /* ReleaseCalendarRoute.swift */; };
 		B8FB2A8929524FAD006DAC8E /* WatchlistPosterSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FB2A8829524FAD006DAC8E /* WatchlistPosterSection.swift */; };
 		B8FB2A8B2952606A006DAC8E /* AppThemeColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89446BE294FDACA008974BA /* AppThemeColors.swift */; };
 		B8FB2A8E29526341006DAC8E /* BehaviorSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FB2A8D29526341006DAC8E /* BehaviorSetting.swift */; };
@@ -543,6 +547,9 @@
 		B8FB2A8129524C37006DAC8E /* WatchlistItemPosterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistItemPosterView.swift; sourceTree = "<group>"; };
 		B8FB2A8329524D6E006DAC8E /* View-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View-Extensions.swift"; sourceTree = "<group>"; };
 		C0OPENURLSYS000000000001 /* OpenURLAction+SystemSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OpenURLAction+SystemSettings.swift"; sourceTree = "<group>"; };
+		C0CALMGR000000000001 /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
+		C0RELCV000000000001 /* ReleaseCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseCalendarView.swift; sourceTree = "<group>"; };
+		C0RELCROUTE000000001 /* ReleaseCalendarRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseCalendarRoute.swift; sourceTree = "<group>"; };
 		B8FB2A8829524FAD006DAC8E /* WatchlistPosterSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistPosterSection.swift; sourceTree = "<group>"; };
 		B8FB2A8D29526341006DAC8E /* BehaviorSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BehaviorSetting.swift; sourceTree = "<group>"; };
 		B8FB2A8F295263AB006DAC8E /* AboutSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutSettings.swift; sourceTree = "<group>"; };
@@ -715,6 +722,7 @@
 			isa = PBXGroup;
 			children = (
 				B81941B92A0861B00057DA04 /* Buttons */,
+				C0CALVIEWGRP00000000001 /* Calendar */,
 				B824E4482A05A87600E385CE /* Company */,
 				B8EC463E27D84C62009389FC /* Components */,
 				B8F6DE682937F92A005D1A50 /* Containers */,
@@ -961,10 +969,19 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		C0CALVIEWGRP00000000001 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				C0RELCV000000000001 /* ReleaseCalendarView.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
 		B845132C27ECB33E00F0D4A4 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
 				B810525D298DD04300723E94 /* API */,
+				C0RELCROUTE000000001 /* ReleaseCalendarRoute.swift */,
 				B84457CF2973739F009CB21F /* Screens */,
 				B89446B7294FDA94008974BA /* Settings */,
 				B8389ED128AB46E3003025BC /* WatchlistSearchScope.swift */,
@@ -1253,6 +1270,7 @@
 			isa = PBXGroup;
 			children = (
 				B87F746228064D3800E94126 /* BackgroundManager.swift */,
+				C0CALMGR000000000001 /* CalendarManager.swift */,
 				B8B94CEE28EB8B8200EDEC85 /* CronicaTelemetry.swift */,
 				B8EC462E27D7AA99009389FC /* NotificationManager.swift */,
 				C0SENTRYMGR000000000001 /* SentryManager.swift */,
@@ -1635,6 +1653,7 @@
 				B87D1B252A65D78900EB6D14 /* UpNextViewModel.swift in Sources */,
 				B84043E7289B417500D5CEBF /* TitleView.swift in Sources */,
 				B8B8A4282A6E29C400E5533F /* BackgroundManager.swift in Sources */,
+				C0CALMGR000000000003 /* CalendarManager.swift in Sources */,
 				B899F21328B0391C00272484 /* DefaultListTypes.swift in Sources */,
 				B81941CC2A0861D70057DA04 /* WatchEpisodeButton.swift in Sources */,
 				B818483829C286C300650763 /* UserDefaults-Extensions.swift in Sources */,
@@ -1698,6 +1717,8 @@
 				B80BBE582949665A00958876 /* AppearanceSetting.swift in Sources */,
 				B8469DB52B712CA700196364 /* ListFilterView.swift in Sources */,
 				C1A1NAV128A9BD31003025B /* CronicaNavigationDestinations.swift in Sources */,
+				C0RELCROUTE000000002 /* ReleaseCalendarRoute.swift in Sources */,
+				C0RELCV000000000002 /* ReleaseCalendarView.swift in Sources */,
 				C1EMP00228A9BD31003025C /* EmptyListView.swift in Sources */,
 				C1PAGE00228A9BD31003025D /* PaginationFooter.swift in Sources */,
 				C1SRCH00228A9BD31003025E /* SearchContentUnavailableView.swift in Sources */,
@@ -1756,6 +1777,7 @@
 				B8105244298D2E7700723E94 /* SwipeGestureOptions.swift in Sources */,
 				B8C0215A29E0D527006E9D82 /* ItemContentListPreferredDisplayType.swift in Sources */,
 				B87F746328064D3800E94126 /* BackgroundManager.swift in Sources */,
+				C0CALMGR000000000002 /* CalendarManager.swift in Sources */,
 				B883A1E32AEF1DB800793EE2 /* SearchItemContentContextMenu.swift in Sources */,
 				B89429CC297E076E0029646F /* SupportEmail.swift in Sources */,
 				B89429C9297C94CD0029646F /* DetailedPeopleList.swift in Sources */,
@@ -2110,6 +2132,8 @@
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Save image to Photos?";
+				INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription = "Cronica adds upcoming releases from your watchlist to a dedicated calendar.";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "Cronica adds upcoming releases from your watchlist to a dedicated calendar.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -2156,6 +2180,8 @@
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Save image to Photos?";
+				INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription = "Cronica adds upcoming releases from your watchlist to a dedicated calendar.";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "Cronica adds upcoming releases from your watchlist to a dedicated calendar.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";

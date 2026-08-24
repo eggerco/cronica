@@ -37,12 +37,30 @@ struct NotificationListView: View {
         .toolbar {
 #if os(iOS)
             ToolbarItem(placement: .topBarTrailing) {
+                HStack {
+                    NavigationLink(value: ReleaseCalendarRoute.watchlist) {
+                        Label("Release Calendar", systemImage: "calendar")
+                    }
+                    configButton
+                }
+            }
+#elseif os(macOS)
+            ToolbarItem(placement: .automatic) {
+                NavigationLink(value: ReleaseCalendarRoute.watchlist) {
+                    Label("Release Calendar", systemImage: "calendar")
+                }
+            }
+            ToolbarItem(placement: .automatic) {
                 configButton
             }
 #endif
         }
         .task { await load() }
         .scrollBounceBehavior(.basedOnSize)
+        .navigationDestination(for: ReleaseCalendarRoute.self) { _ in
+            ReleaseCalendarView()
+        }
+        .cronicaStandardNavigationDestinations()
     }
     
     private var configButton: some View {

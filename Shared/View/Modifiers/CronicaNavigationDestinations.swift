@@ -60,6 +60,9 @@ extension View {
                 .ignoresSafeArea(.all, edges: .horizontal)
 #endif
             }
+            .navigationDestination(for: ReleaseCalendarRoute.self) { _ in
+                ReleaseCalendarView()
+            }
     }
 
     func cronicaHomeNavigationDestinations(showNotifications: Binding<Bool>) -> some View {

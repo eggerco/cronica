@@ -78,9 +78,50 @@ struct NotificationsSettingsView: View {
                 openURL.openNotificationSettings()
             }
 #endif
+
+#if !os(watchOS)
+            Section("Calendar Sync") {
+                Toggle("Sync to Calendar", isOn: $settings.allowCalendarSync)
+                Toggle(isOn: $settings.syncCalendarMovies) {
+                    Text("Sync Movie Releases")
+                    Text("Add upcoming movie releases from your watchlist to the Cronica calendar.")
+                }
+                .disabled(!settings.allowCalendarSync)
+                Toggle(isOn: $settings.syncCalendarTVShows) {
+                    Text("Sync TV Episodes")
+                    Text("Add upcoming TV episodes and season premieres to the Cronica calendar.")
+                }
+                .disabled(!settings.allowCalendarSync)
+                NavigationLink(value: ReleaseCalendarRoute.watchlist) {
+                    Text("View Release Calendar")
+                }
+            } footer: {
+                Text("Events are saved to a dedicated Cronica calendar in the Calendar app.")
+            }
+            .onChange(of: settings.allowCalendarSync) { _, enabled in
+                Task {
+                    if enabled {
+                        await CalendarManager.shared.syncAll()
+                    } else {
+                        CalendarManager.shared.removeAllEvents()
+                    }
+                }
+            }
+            .onChange(of: settings.syncCalendarMovies) { _, _ in
+                Task { await CalendarManager.shared.syncAll() }
+            }
+            .onChange(of: settings.syncCalendarTVShows) { _, _ in
+                Task { await CalendarManager.shared.syncAll() }
+            }
+#endif
         }
         .navigationTitle(NSLocalizedString(navigationTitle, comment: ""))
         .cronicaSettingsForm()
+#if os(macOS)
+        .navigationDestination(for: ReleaseCalendarRoute.self) { _ in
+            ReleaseCalendarView()
+        }
+#endif
     }
     
     private func setDefaultNotificationTime() {

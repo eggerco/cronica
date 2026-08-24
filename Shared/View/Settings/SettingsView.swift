@@ -87,7 +87,9 @@ struct SettingsView: View {
             BehaviorSetting()
                 .tabItem { Label("Behavior", systemImage: "cursorarrow.click") }
             
-            NotificationsSettingsView()
+            NavigationStack {
+                NotificationsSettingsView()
+            }
                 .tabItem { Label("Notifications", systemImage: "bell") }
             
             WatchlistSettingsView()

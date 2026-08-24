@@ -144,16 +144,23 @@ final class BackgroundManager {
 		do {
 			let content = try await self.network.fetchItem(id: item.itemId, type: item.itemMedia)
 			if content.itemCanNotify && item.shouldNotify {
-				if item.itemDate.areDifferentDates(with: content.itemFallbackDate) {
-					notifications.removeNotification(identifier: content.itemContentID)
-				}
-				if content.itemStatus == .cancelled {
-					notifications.removeNotification(identifier: content.itemContentID)
-				}
-				if content.itemFallbackDate.isLessThanTwoWeeksAway() {
-					notifications.schedule(content)
-				}
+                if item.itemDate.areDifferentDates(with: content.itemFallbackDate) {
+                    notifications.removeNotification(identifier: content.itemContentID)
+                }
+                if content.itemStatus == .cancelled {
+                    notifications.removeNotification(identifier: content.itemContentID)
+                }
+                if content.itemFallbackDate.isLessThanTwoWeeksAway() {
+                    notifications.schedule(content)
+                }
 			}
+            if item.itemDate.areDifferentDates(with: content.itemFallbackDate) || content.itemStatus == .cancelled {
+                CalendarManager.shared.removeEvent(identifier: content.itemContentID)
+            }
+            if content.itemFallbackDate >= Calendar.current.startOfDay(for: Date()),
+               content.itemStatus != .cancelled {
+                CalendarManager.shared.schedule(content)
+            }
 			PersistenceController.shared.update(item: content)
 		} catch {
 			AppLogger.background.error("Failed to refresh item \(item.itemContentID): \(error.localizedDescription)")
