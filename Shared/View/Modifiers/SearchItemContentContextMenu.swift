@@ -49,7 +49,28 @@ struct SearchItemContentContextMenu: ViewModifier {
                                         image: item.cardImageLarge,
                                         overview: item.itemOverview)
             }
+            .confirmationDialog("Are You Sure?", isPresented: $showRemoveConfirmation, titleVisibility: .visible) {
+                Button("Confirm", role: .destructive, action: removeFromWatchlist)
+            } message: {
+                Text("Remove \(item.itemTitle) from your Watchlist?")
+            }
 #endif
+    }
+
+    private func removeFromWatchlist() {
+        let persistence = PersistenceController.shared
+        let notification = NotificationManager.shared
+        if let watchlistItem = persistence.fetch(for: item.itemContentID) {
+            if watchlistItem.notify {
+                notification.removeNotification(identifier: item.itemContentID)
+            }
+            persistence.delete(watchlistItem)
+        }
+        withAnimation {
+            isInWatchlist = false
+            popupType = .removedWatchlist
+            showPopup = true
+        }
     }
     
     private var addAndMarkWatchedButton: some View {

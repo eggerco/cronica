@@ -12,6 +12,7 @@ struct WelcomeView: View {
     @AppStorage("showOnboarding") var displayOnboard = true
     @StateObject private var settings = SettingsStore.shared
     @State private var showPolicy = false
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
         NavigationStack {
@@ -50,8 +51,12 @@ struct WelcomeView: View {
 
                 VStack(spacing: 12) {
                     Button {
-                        withAnimation {
+                        if reduceMotion {
                             displayOnboard = false
+                        } else {
+                            withAnimation {
+                                displayOnboard = false
+                            }
                         }
                     } label: {
                         Text("Continue")
@@ -62,11 +67,7 @@ struct WelcomeView: View {
                     .tint(settings.appTheme.color)
 
                     Button("Privacy Policy") {
-#if os(macOS)
-                        NSWorkspace.shared.open(AppWebsite.privacyPolicy)
-#else
                         showPolicy = true
-#endif
                     }
                     .buttonStyle(.borderless)
                     .controlSize(.regular)

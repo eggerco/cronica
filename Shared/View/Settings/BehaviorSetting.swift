@@ -11,6 +11,7 @@ import Nuke
 struct BehaviorSetting: View {
     @StateObject private var store = SettingsStore.shared
     @State private var cacheSizeMB: Double = 0.0
+    @State private var showClearCacheConfirmation = false
     var body: some View {
         Form {
 #if !os(tvOS)
@@ -116,10 +117,8 @@ struct BehaviorSetting: View {
 #endif
 
             Section {
-                Button(role: .destructive) {
-                    clearCache()
-                } label: {
-                    Text("Clear Cache (\(String(format: "%.1f", cacheSizeMB)) MB)")
+                Button("Clear Cache (\(String(format: "%.1f", cacheSizeMB)) MB)", role: .destructive) {
+                    showClearCacheConfirmation = true
                 }
             } header: {
                 Text("Storage")
@@ -131,6 +130,12 @@ struct BehaviorSetting: View {
 #endif
         .onAppear {
             updateCacheSize()
+        }
+        .confirmationDialog("Clear Cache?", isPresented: $showClearCacheConfirmation, titleVisibility: .visible) {
+            Button("Clear Cache", role: .destructive, action: clearCache)
+            Button("Cancel", role: .cancel) { }
+        } message: {
+            Text("Cached images and network responses will be removed. This cannot be undone.")
         }
     }
     

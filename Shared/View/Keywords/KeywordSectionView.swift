@@ -20,6 +20,7 @@ struct KeywordSectionView: View {
     @State private var isLoadingMore = false
     @State private var startPagination = false
     @State private var endPagination = false
+    @State private var showError = false
     // Network service
     private let network = NetworkService.shared
     var body: some View {
@@ -47,7 +48,27 @@ struct KeywordSectionView: View {
 #if !os(tvOS)
         .navigationTitle(keyword.name)
 #endif
-        .overlay { if !isLoaded { ProgressView().unredacted() } }
+        .overlay {
+            if !isLoaded {
+                ProgressView().unredacted()
+            } else if items.isEmpty {
+                ContentUnavailableView {
+                    Label(showError ? "Couldn't Load" : "Nothing Here",
+                          systemImage: showError ? "wifi.exclamationmark" : "popcorn")
+                } description: {
+                    Text(showError ? "Check your connection and try again." : "Try again later.")
+                } actions: {
+                    Button("Retry") {
+                        showError = false
+                        isLoaded = false
+                        page = 1
+                        endPagination = false
+                        Task { await load(keyword.id, sortBy: sortBy, reload: true) }
+                    }
+                    .buttonStyle(.borderedProminent)
+                }
+            }
+        }
         .onAppear {
             Task {
                 await load(keyword.id, sortBy: sortBy, reload: false)
@@ -210,6 +231,7 @@ extension KeywordSectionView {
             isLoaded = true
         } catch {
             if Task.isCancelled { return }
+            showError = items.isEmpty
             isLoaded = true
             let message = "Keyword ID: \(id), error: \(error.localizedDescription)"
             CronicaTelemetry.shared.handleMessage(message, for: "KeywordSection.load()")

@@ -196,7 +196,17 @@ struct SearchView: View {
     
     @ViewBuilder
     private var failureView: some View {
-        ContentUnavailableView("Try again later", systemImage: "magnifyingglass").padding()
+        ContentUnavailableView {
+            Label("Couldn't Load", systemImage: "wifi.exclamationmark")
+        } description: {
+            Text("Check your connection and try again.")
+        } actions: {
+            Button("Retry") {
+                Task { await viewModel.search(viewModel.query) }
+            }
+            .buttonStyle(.borderedProminent)
+        }
+        .padding()
     }
     
     @ViewBuilder

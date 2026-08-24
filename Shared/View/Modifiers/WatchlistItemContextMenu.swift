@@ -20,12 +20,14 @@ struct WatchlistItemContextMenu: ViewModifier {
     private let context = PersistenceController.shared
     private let notification = NotificationManager.shared
     @State private var settings = SettingsStore.shared
+    @State private var showDeleteConfirmation = false
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \CustomList.title, ascending: true)],
                   animation: .default) private var lists: FetchedResults<CustomList>
     func body(content: Content) -> some View {
 #if os(watchOS)
+        content
 #elseif os(tvOS)
-        return content
+        content
             .contextMenu {
                 watchedButton
                 favoriteButton
@@ -35,8 +37,13 @@ struct WatchlistItemContextMenu: ViewModifier {
                 Divider()
                 deleteButton
             }
+            .confirmationDialog("Are You Sure?", isPresented: $showDeleteConfirmation, titleVisibility: .visible) {
+                Button("Confirm", role: .destructive, action: remove)
+            } message: {
+                Text("Remove \(item.itemTitle) from your Watchlist?")
+            }
 #elseif os(visionOS)
-        return content
+        content
             .swipeActions(edge: .leading, allowsFullSwipe: settings.allowFullSwipe) {
                 primaryLeftSwipeActions
                 secondaryLeftSwipeActions
@@ -56,8 +63,13 @@ struct WatchlistItemContextMenu: ViewModifier {
                 Divider()
                 deleteButton
             }
+            .confirmationDialog("Are You Sure?", isPresented: $showDeleteConfirmation, titleVisibility: .visible) {
+                Button("Confirm", role: .destructive, action: remove)
+            } message: {
+                Text("Remove \(item.itemTitle) from your Watchlist?")
+            }
 #else
-        return content
+        content
             .swipeActions(edge: .leading, allowsFullSwipe: settings.allowFullSwipe) {
                 primaryLeftSwipeActions
                 secondaryLeftSwipeActions
@@ -80,6 +92,11 @@ struct WatchlistItemContextMenu: ViewModifier {
                 ContextMenuPreviewImage(title: item.itemTitle,
                                         image: item.backCompatibleCardImage,
                                         overview: String())
+            }
+            .confirmationDialog("Are You Sure?", isPresented: $showDeleteConfirmation, titleVisibility: .visible) {
+                Button("Confirm", role: .destructive, action: remove)
+            } message: {
+                Text("Remove \(item.itemTitle) from your Watchlist?")
             }
 #endif
     }
@@ -218,7 +235,13 @@ struct WatchlistItemContextMenu: ViewModifier {
     }
     
     private var deleteButton: some View {
-        Button(role: .destructive, action: remove) {
+        Button(role: .destructive) {
+            if settings.showRemoveConfirmation {
+                showDeleteConfirmation = true
+            } else {
+                remove()
+            }
+        } label: {
             Label("Remove", systemImage: "minus.circle.fill")
 #if os(macOS)
                 .labelStyle(.titleOnly)

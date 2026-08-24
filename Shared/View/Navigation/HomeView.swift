@@ -68,7 +68,11 @@ struct HomeView: View {
                 ContentUnavailableView {
                     Label("Couldn't Load Home", systemImage: "wifi.exclamationmark")
                 } description: {
+#if os(iOS)
                     Text("Pull to refresh or try again.")
+#else
+                    Text("Check your connection and try again.")
+#endif
                 } actions: {
                     Button("Retry") { viewModel.reload() }
                         .buttonStyle(.borderedProminent)
