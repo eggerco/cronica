@@ -46,7 +46,7 @@ struct SearchView: View {
                     placement: UIDevice.isIPad ? .toolbar : .navigationBarDrawer(displayMode: .always),
                     prompt: Text("Movies, Shows, People"))
         .safeAreaInset(edge: .top, spacing: 0) {
-            if !viewModel.query.isEmpty {
+            if viewModel.stage == .success {
                 searchScopePicker
             }
         }
