@@ -102,7 +102,10 @@ public final class NetworkService: Sendable {
         else {
             throw NetworkError.invalidRequest
         }
-        let response: Keywords = try await self.fetch(url: url)
+        // Some titles have no keywords resource (404) — treat as empty, don't error-log.
+        guard let response: Keywords = try await self.fetch(url: url, ignoreStatusCodes: [404]) else {
+            return []
+        }
         return response.keywords
     }
     
@@ -139,13 +142,16 @@ public final class NetworkService: Sendable {
         return results.results
     }
     
-    private func fetch<T: Decodable>(url: URL) async throws -> T {
+    private func fetch<T: Decodable>(url: URL, ignoreStatusCodes: Set<Int> = []) async throws -> T? {
         guard Key.isConfigured else {
             AppLogger.network.error("TMDb API key is not configured")
             throw NetworkError.invalidApi
         }
         let (data, response) = try await URLSession.shared.data(from: url)
         guard let httpResponse = response as? HTTPURLResponse else { throw NetworkError.invalidResponse }
+        if ignoreStatusCodes.contains(httpResponse.statusCode) {
+            return nil
+        }
         let responseError = handleNetworkResponses(response: httpResponse)
         if let responseError {
             AppLogger.network.error("Network request failed with status \(httpResponse.statusCode): \(Self.redactedURL(url))")
@@ -157,6 +163,13 @@ public final class NetworkService: Sendable {
             AppLogger.network.error("Failed to decode response from \(Self.redactedURL(url)): \(error.localizedDescription)")
             throw NetworkError.decodingError
         }
+    }
+
+    private func fetch<T: Decodable>(url: URL) async throws -> T {
+        guard let value: T = try await fetch(url: url, ignoreStatusCodes: []) else {
+            throw NetworkError.invalidResponse
+        }
+        return value
     }
 
     /// Avoid leaking the TMDb API key into console / crash logs.
