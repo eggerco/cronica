@@ -266,9 +266,18 @@ struct CustomWatchlist: View {
         .searchable(text: $query,
                     placement: UIDevice.isIPad ? .automatic : .navigationBarDrawer(displayMode: .always),
                     prompt: "Search \(selectedList?.itemTitle ?? "List")")
-        .searchScopes($scope) {
-            ForEach(WatchlistSearchScope.allCases) { scope in
-                Text(scope.localizableTitle).tag(scope)
+        .safeAreaInset(edge: .top, spacing: 0) {
+            if !query.isEmpty {
+                Picker("Filter", selection: $scope) {
+                    ForEach(WatchlistSearchScope.allCases) { item in
+                        Text(item.localizableTitle).tag(item)
+                    }
+                }
+                .pickerStyle(.segmented)
+                .labelsHidden()
+                .padding(.horizontal)
+                .padding(.vertical, 8)
+                .sensoryFeedback(.selection, trigger: scope)
             }
         }
 #elseif os(macOS)

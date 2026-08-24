@@ -83,9 +83,18 @@ struct PersonDetailsView: View {
         .redacted(reason: isLoaded ? [] : .placeholder)
 #if os(iOS)
         .overlay(search)
-        .searchScopes($scope) {
-            ForEach(WatchlistSearchScope.allCases) { scope in
-                Text(scope.localizableTitle).tag(scope)
+        .safeAreaInset(edge: .top, spacing: 0) {
+            if !query.isEmpty {
+                Picker("Filter", selection: $scope) {
+                    ForEach(WatchlistSearchScope.allCases) { item in
+                        Text(item.localizableTitle).tag(item)
+                    }
+                }
+                .pickerStyle(.segmented)
+                .labelsHidden()
+                .padding(.horizontal)
+                .padding(.vertical, 8)
+                .sensoryFeedback(.selection, trigger: scope)
             }
         }
 #endif

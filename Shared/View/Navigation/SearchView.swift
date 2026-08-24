@@ -45,9 +45,9 @@ struct SearchView: View {
                     isPresented: $shouldFocusOnSearchField,
                     placement: UIDevice.isIPad ? .toolbar : .navigationBarDrawer(displayMode: .always),
                     prompt: Text("Movies, Shows, People"))
-        .searchScopes($scope) {
-            ForEach(SearchItemsScope.allCases) { scope in
-                Text(scope.localizableTitle).tag(scope)
+        .safeAreaInset(edge: .top, spacing: 0) {
+            if !viewModel.query.isEmpty {
+                searchScopePicker
             }
         }
 #elseif os(tvOS)
@@ -67,6 +67,21 @@ struct SearchView: View {
         .ignoresSafeArea(.all, edges: .horizontal)
 #endif
     }
+
+#if os(iOS) || os(visionOS)
+    private var searchScopePicker: some View {
+        Picker("Filter", selection: $scope) {
+            ForEach(SearchItemsScope.allCases) { item in
+                Text(item.localizableTitle).tag(item)
+            }
+        }
+        .pickerStyle(.segmented)
+        .labelsHidden()
+        .padding(.horizontal)
+        .padding(.vertical, 8)
+        .sensoryFeedback(.selection, trigger: scope)
+    }
+#endif
     
 #if os(iOS) || os(macOS) || os(visionOS)
     @ViewBuilder
