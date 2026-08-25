@@ -132,7 +132,7 @@ struct BehaviorSetting: View {
         .onAppear {
             updateCacheSize()
         }
-        .confirmationDialog("Clear Cache?", isPresented: $showClearCacheConfirmation, titleVisibility: .visible) {
+        .alert("Clear Cache?", isPresented: $showClearCacheConfirmation) {
             Button("Clear Cache", role: .destructive, action: clearCache)
             Button("Cancel", role: .cancel) { }
         } message: {

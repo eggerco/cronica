@@ -45,6 +45,13 @@ struct WatchlistView: View {
                 navigationTitle = NSLocalizedString("Watchlist", comment: "")
             }
         }
+#if os(iOS) || os(visionOS)
+        .onReceive(NotificationCenter.default.publisher(for: .cronicaTabDidReselect)) { notification in
+            guard let tab = notification.object as? Screens, tab == .watchlist else { return }
+            selectedList = nil
+            navigationTitle = NSLocalizedString("Watchlist", comment: "")
+        }
+#endif
 #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
 #elseif os(tvOS)

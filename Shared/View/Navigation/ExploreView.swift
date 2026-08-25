@@ -177,6 +177,12 @@ struct ExploreView: View {
             Task { await load() }
         }
         .actionPopup(isShowing: $showPopup, for: popupType)
+#if os(iOS) || os(visionOS)
+        .onReceive(NotificationCenter.default.publisher(for: .cronicaTabDidReselect)) { notification in
+            guard let tab = notification.object as? Screens, tab == .explore else { return }
+            showFilters = false
+        }
+#endif
         .task { await load() }
         .cronicaStandardNavigationDestinations()
         .accessibilityIdentifier("Discover View")
