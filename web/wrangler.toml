@@ -1,6 +1,15 @@
 name = "cronica"
 main = "src/worker.ts"
 compatibility_date = "2025-02-24"
+workers_dev = false
+preview_urls = false
+
+[observability]
+[observability.logs]
+enabled = true
+head_sampling_rate = 1
+invocation_logs = true
+persist = true
 
 [assets]
 directory = "./public"
