@@ -63,4 +63,5 @@ enum SimklTokenStore {
         ]
         SecItemDelete(query as CFDictionary)
     }
+}
 
