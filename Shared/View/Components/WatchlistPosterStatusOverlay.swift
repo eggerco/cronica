@@ -8,13 +8,13 @@
 import SwiftUI
 
 /// Subtle SF Symbol status for posters outside the Watchlist tab.
-/// Prefer a single symbol with a light shadow — no capsules or stacked icons.
+/// Prefer a single symbol in a padded material circle — no capsules or stacked icons.
 struct WatchlistPosterStatusOverlay: View {
     let isWatched: Bool
     var compact: Bool = false
 
     private var symbolName: String {
-        isWatched ? "checkmark.circle.fill" : "square.stack.fill"
+        isWatched ? "checkmark" : "square.stack.fill"
     }
 
     private var accessibilityLabel: String {
@@ -29,10 +29,10 @@ struct WatchlistPosterStatusOverlay: View {
             HStack {
                 Spacer(minLength: 0)
                 Image(systemName: symbolName)
-                    .font(compact ? .caption.weight(.semibold) : .body.weight(.semibold))
-                    .symbolRenderingMode(.palette)
-                    .foregroundStyle(.white, .black.opacity(0.55))
-                    .shadow(color: .black.opacity(0.45), radius: 2, y: 1)
+                    .font(compact ? .caption2.weight(.bold) : .caption.weight(.bold))
+                    .foregroundStyle(.white)
+                    .padding(compact ? 5 : 6)
+                    .background(.ultraThinMaterial, in: Circle())
                     .accessibilityLabel(accessibilityLabel)
                     .padding(compact ? 6 : 8)
             }
