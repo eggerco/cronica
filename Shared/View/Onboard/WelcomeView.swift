@@ -59,7 +59,7 @@ struct WelcomeView: View {
                             }
                         }
                     } label: {
-                        Text(verbatim: "Continue")
+                        Text("Continue")
                             .font(.body.weight(.semibold))
                             .frame(maxWidth: .infinity)
                     }
@@ -71,7 +71,7 @@ struct WelcomeView: View {
                     Button {
                         openURL(AppWebsite.privacyPolicy)
                     } label: {
-                        Text(verbatim: "Privacy Policy")
+                        Text("Privacy Policy")
                     }
                     .buttonStyle(.borderless)
                     .controlSize(.regular)
@@ -100,7 +100,7 @@ struct WelcomeView: View {
                 .shadow(color: .black.opacity(0.18), radius: 8, x: 0, y: 4)
                 .accessibilityHidden(true)
 
-            Text(verbatim: "Cronica")
+            Text("Cronica")
                 .font(.largeTitle.weight(.bold))
                 .fontDesign(.rounded)
 
@@ -116,7 +116,7 @@ struct WelcomeView: View {
         .accessibilityAddTraits(.isHeader)
     }
 
-    private func featureRow(title: String, subtitle: LocalizedStringKey, systemImage: String) -> some View {
+    private func featureRow(title: LocalizedStringKey, subtitle: LocalizedStringKey, systemImage: String) -> some View {
         HStack(alignment: .top, spacing: 16) {
             Image(systemName: systemImage)
                 .font(.title2)
@@ -125,7 +125,7 @@ struct WelcomeView: View {
                 .accessibilityHidden(true)
 
             VStack(alignment: .leading, spacing: 4) {
-                Text(verbatim: title)
+                Text(title)
                     .font(.headline)
                     .fontDesign(.rounded)
                 Text(subtitle)

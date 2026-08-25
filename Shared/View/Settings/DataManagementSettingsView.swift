@@ -42,7 +42,7 @@ struct DataManagementSettingsView: View {
             }
 
             Section("iCloud Sync") {
-                Text("If iCloud sync is enabled, deletions will sync to your other Apple devices signed into the same iCloud account. You can also remove Cronica data from Settings → Apple ID → iCloud on any device.")
+                Text("If iCloud sync is enabled, deletions sync to your other Apple devices signed into the same iCloud account. Sync can take a short time to finish. You can also remove Cronica data from Settings → Apple ID → iCloud on any device.")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             }

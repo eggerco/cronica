@@ -219,8 +219,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "%@ episodes"
+            "state": "translated",
+            "value": "%@ epizód"
           }
         }
       }
@@ -265,8 +265,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "%@ Seasons • %@ Episodes"
+            "state": "translated",
+            "value": "%@ série • %@ epizód"
           }
         }
       }
@@ -1032,8 +1032,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Add items with future release dates to your watchlist to see them here."
+            "state": "translated",
+            "value": "Pridaj položky s budúcim dátumom vydania do sledovaného, aby sa zobrazili tu."
           }
         }
       }
@@ -1250,8 +1250,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Add upcoming movie releases from your watchlist to the Cronica calendar."
+            "state": "translated",
+            "value": "Pridaj nadchádzajúce filmové premiéry zo sledovaného do kalendára Cronica."
           }
         }
       }
@@ -1296,8 +1296,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Add upcoming TV episodes and season premieres to the Cronica calendar."
+            "state": "translated",
+            "value": "Pridaj nadchádzajúce epizódy a premiéry sérií do kalendára Cronica."
           }
         }
       }
@@ -1802,8 +1802,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Anonymous crash reports may be processed by our error monitoring provider. Email support@eggerco.com to request removal. App Store purchase history is managed by Apple."
+            "state": "translated",
+            "value": "Anonymné hlásenia o pádoch môže spracovať náš poskytovateľ monitorovania chýb. Na odstránenie napíš na support@eggerco.com. Históriu nákupov v App Store spravuje Apple."
           }
         }
       }
@@ -1848,8 +1848,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "App preferences and filters"
+            "state": "translated",
+            "value": "Predvoľby a filtre aplikácie"
           }
         }
       }
@@ -2359,52 +2359,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Zálohovať a obnoviť"
-          }
-        }
-      }
-    },
-    "Backup/Restore is in beta, only use it to export your data or to import if you're switching your iCloud account, there's no logic at the moment to avoid duplication.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Backup/Wiederherstellung befindet sich in der Beta-Phase. Verwende es nur zum Exportieren deiner Daten oder zum Importieren, wenn du deinen iCloud-Account wechselst. Derzeit gibt es keine Logik, um Duplikationen zu vermeiden."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Backup/Restore is in beta, only use it to export your data or to import if you're switching your iCloud account, there's no logic at the moment to avoid duplication."
-          }
-        },
-        "es-MX": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La copia de seguridad/restauración está en versión beta, solo úsalo para exportar tus datos o para importar si estás cambiando tu cuenta de iCloud, no hay lógica en este momento para evitar la duplicación."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sauvegarde/Restauration est en version bêta. Ne l'utilisez que pour exporter vos données ou pour importer si vous changez de compte iCloud, rien n'est fait pour l'instant pour éviter les duplications."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Backup/Ripristino è in beta, usalo solo per esportare i tuoi dati o per importarli se stai cambiando il tuo account iCloud, non c'è nessuna logica attualmente per impedire i duplicati."
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "O Backup/Restaurar está em versão beta, use-o apenas para exportar seus dados ou para importar se você estiver mudando sua conta do iCloud, não há lógica no momento para evitar a duplicação."
-          }
-        },
-        "sk": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zálohovanie/Obnovanie je v beta verzii. Používaj ho iba na export údajov alebo na import, ak prepínaš svoj iCloud účet. V súčasnosti neexistuje žiadna logika, aby sa zabránilo duplicite."
           }
         }
       }
@@ -3004,8 +2958,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Burnt Orange"
+            "state": "translated",
+            "value": "Pálená oranžová"
           }
         }
       }
@@ -3050,8 +3004,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Cached images and network responses will be removed. This cannot be undone."
+            "state": "translated",
+            "value": "Odstránia sa uložené obrázky a sieťové odpovede. Toto nie je možné vrátiť späť."
           }
         }
       }
@@ -3096,8 +3050,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Calendar Sync"
+            "state": "translated",
+            "value": "Synchronizácia kalendára"
           }
         }
       }
@@ -3467,8 +3421,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Cherry"
+            "state": "translated",
+            "value": "Čerešňová"
           }
         }
       }
@@ -3513,8 +3467,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Choose what happens when you double-tap a cover or poster."
+            "state": "translated",
+            "value": "Vyber, čo sa stane pri dvojitom ťuknutí na obal alebo plagát."
           }
         }
       }
@@ -3651,8 +3605,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Clear Cache?"
+            "state": "translated",
+            "value": "Vymazať vyrovnávaciu pamäť?"
           }
         }
       }
@@ -3697,7 +3651,7 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
+            "state": "translated",
             "value": "CloudKit"
           }
         }
@@ -4022,8 +3976,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Completed"
+            "state": "translated",
+            "value": "Hotovo"
           }
         }
       }
@@ -4344,8 +4298,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Coral"
+            "state": "translated",
+            "value": "Koralová"
           }
         }
       }
@@ -4799,8 +4753,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Cronica calendar and release events"
+            "state": "translated",
+            "value": "Kalendár Cronica a udalosti vydaní"
           }
         }
       }
@@ -4891,8 +4845,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Cronica does not use accounts. Your watchlist, ratings, notes, and preferences are stored on this device and, if enabled, in your private iCloud account."
+            "state": "translated",
+            "value": "Cronica nepoužíva účty. Tvoje sledované, hodnotenia, poznámky a predvoľby sú uložené na tomto zariadení a, ak je zapnuté, v tvojom súkromnom iCloud účte."
           }
         }
       }
@@ -4937,8 +4891,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Cronica links open in the app when possible. TMDB links are used when a Cronica link isn’t available."
+            "state": "translated",
+            "value": "Odkazy Cronica sa podľa možnosti otvoria v aplikácii. Odkazy TMDB sa použijú, keď odkaz Cronica nie je dostupný."
           }
         }
       }
@@ -5306,8 +5260,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Delete %@? Items can stay on your watchlist or be removed with the list."
+            "state": "translated",
+            "value": "Odstrániť %@? Položky môžu zostať v sledovanom alebo sa odstránia so zoznamom."
           }
         }
       }
@@ -5444,8 +5398,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Deleting your data…"
+            "state": "translated",
+            "value": "Mazanie tvojich údajov…"
           }
         }
       }
@@ -5490,8 +5444,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Deletion Failed"
+            "state": "translated",
+            "value": "Mazanie zlyhalo"
           }
         }
       }
@@ -6424,8 +6378,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Electric Blue"
+            "state": "translated",
+            "value": "Elektrická modrá"
           }
         }
       }
@@ -6656,8 +6610,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Episode progress, ratings, and notes"
+            "state": "translated",
+            "value": "Pokrok v epizódach, hodnotenia a poznámky"
           }
         }
       }
@@ -6842,8 +6796,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Events are saved to a dedicated Cronica calendar in the Calendar app."
+            "state": "translated",
+            "value": "Udalosti sa uložia do samostatného kalendára Cronica v aplikácii Kalendár."
           }
         }
       }
@@ -6888,8 +6842,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Example"
+            "state": "translated",
+            "value": "Príklad"
           }
         }
       }
@@ -7256,8 +7210,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Favorites Movies"
+            "state": "translated",
+            "value": "Obľúbené filmy"
           }
         }
       }
@@ -7671,8 +7625,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Fireball"
+            "state": "translated",
+            "value": "Ohnivá guľa"
           }
         }
       }
@@ -7994,8 +7948,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Full swipe activates the primary action for that edge."
+            "state": "translated",
+            "value": "Úplné potiahnutie aktivuje primárnu akciu pre danú stranu."
           }
         }
       }
@@ -8288,7 +8242,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Lass dich benachrichtigen, wenn neue Filme und Folgen erscheinen."
+            "value": "Lass dich benachrichtigen, wenn neue Filme und Episoden erscheinen."
           }
         },
         "es-MX": {
@@ -8313,6 +8267,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Receba avisos quando novos filmes e episódios chegarem."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dostávaj upozornenia, keď vyjdú nové filmy a epizódy."
           }
         }
       }
@@ -8357,8 +8317,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Goldenrod"
+            "state": "translated",
+            "value": "Zlatá"
           }
         }
       }
@@ -9043,8 +9003,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "iCloud Sync"
+            "state": "translated",
+            "value": "Synchronizácia iCloud"
           }
         }
       }
@@ -9137,52 +9097,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "ID"
-          }
-        }
-      }
-    },
-    "If iCloud sync is enabled, deletions will sync to your other Apple devices signed into the same iCloud account. You can also remove Cronica data from Settings → Apple ID → iCloud on any device.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "new",
-            "value": "If iCloud sync is enabled, deletions will sync to your other Apple devices signed into the same iCloud account. You can also remove Cronica data from Settings → Apple ID → iCloud on any device."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "If iCloud sync is enabled, deletions will sync to your other Apple devices signed into the same iCloud account. You can also remove Cronica data from Settings → Apple ID → iCloud on any device."
-          }
-        },
-        "es-MX": {
-          "stringUnit": {
-            "state": "new",
-            "value": "If iCloud sync is enabled, deletions will sync to your other Apple devices signed into the same iCloud account. You can also remove Cronica data from Settings → Apple ID → iCloud on any device."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "new",
-            "value": "If iCloud sync is enabled, deletions will sync to your other Apple devices signed into the same iCloud account. You can also remove Cronica data from Settings → Apple ID → iCloud on any device."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "new",
-            "value": "If iCloud sync is enabled, deletions will sync to your other Apple devices signed into the same iCloud account. You can also remove Cronica data from Settings → Apple ID → iCloud on any device."
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "new",
-            "value": "If iCloud sync is enabled, deletions will sync to your other Apple devices signed into the same iCloud account. You can also remove Cronica data from Settings → Apple ID → iCloud on any device."
-          }
-        },
-        "sk": {
-          "stringUnit": {
-            "state": "new",
-            "value": "If iCloud sync is enabled, deletions will sync to your other Apple devices signed into the same iCloud account. You can also remove Cronica data from Settings → Apple ID → iCloud on any device."
           }
         }
       }
@@ -9505,8 +9419,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Initialize CloudKit Schema"
+            "state": "translated",
+            "value": "Inicializovať schému CloudKit"
           }
         }
       }
@@ -10020,7 +9934,7 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
+            "state": "translated",
             "value": "Kevin Manca"
           }
         }
@@ -10343,8 +10257,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Launch"
+            "state": "translated",
+            "value": "Spustenie"
           }
         }
       }
@@ -10389,8 +10303,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Launch Screen"
+            "state": "translated",
+            "value": "Úvodná obrazovka"
           }
         }
       }
@@ -10435,8 +10349,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Lavender"
+            "state": "translated",
+            "value": "Levanduľová"
           }
         }
       }
@@ -10844,7 +10758,7 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
+            "state": "translated",
             "value": "Luis Felipe Lerma Alvarez"
           }
         }
@@ -10890,8 +10804,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Mahogany"
+            "state": "translated",
+            "value": "Mahagónová"
           }
         }
       }
@@ -11045,7 +10959,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Markiere Gesehenes und mach genau dort weiter."
+            "value": "Markiere, was du gesehen hast, und mach genau dort weiter."
           }
         },
         "es-MX": {
@@ -11070,6 +10984,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Marque o que assistiu e continue de onde parou."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Označ, čo si pozrel, a pokračuj presne tam, kde si skončil."
           }
         }
       }
@@ -11714,8 +11634,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Mystic Teal"
+            "state": "translated",
+            "value": "Mystický tyrkys"
           }
         }
       }
@@ -11817,8 +11737,8 @@
       "localizations": {
         "de": {
           "stringUnit": {
-            "state": "new",
-            "value": "Never miss a release"
+            "state": "translated",
+            "value": "Keine Veröffentlichung verpassen"
           }
         },
         "en": {
@@ -11853,8 +11773,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Never miss a release"
+            "state": "translated",
+            "value": "Nezmeškaj žiadne vydanie"
           }
         }
       }
@@ -12475,8 +12395,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "No Upcoming Releases"
+            "state": "translated",
+            "value": "Žiadne nadchádzajúce vydania"
           }
         }
       }
@@ -12521,8 +12441,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "No watchlist releases on this date."
+            "state": "translated",
+            "value": "Na tento dátum nie sú v sledovanom žiadne vydania."
           }
         }
       }
@@ -14034,7 +13954,7 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
+            "state": "translated",
             "value": "Pierre Quéré"
           }
         }
@@ -14866,8 +14786,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Preview"
+            "state": "translated",
+            "value": "Náhľad"
           }
         }
       }
@@ -14912,8 +14832,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Preview Items"
+            "state": "translated",
+            "value": "Položky náhľadu"
           }
         }
       }
@@ -14958,8 +14878,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Primary Left"
+            "state": "translated",
+            "value": "Primárna vľavo"
           }
         }
       }
@@ -15004,8 +14924,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Primary Right"
+            "state": "translated",
+            "value": "Primárna vpravo"
           }
         }
       }
@@ -15558,8 +15478,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Rating star %@ of 5."
+            "state": "translated",
+            "value": "Hodnotenie hviezdičkou %@ z 5."
           }
         }
       }
@@ -17267,8 +17187,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Rose Gold"
+            "state": "translated",
+            "value": "Ružové zlato"
           }
         }
       }
@@ -17313,8 +17233,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Ruby Red"
+            "state": "translated",
+            "value": "Rubínová červená"
           }
         }
       }
@@ -17468,7 +17388,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Speichere Filme und Serien – Cronica hält alles organisiert."
+            "value": "Speichere Filme und Serien — Cronica hält sie für dich organisiert."
           }
         },
         "es-MX": {
@@ -17493,6 +17413,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Salve filmes e séries — a Cronica organiza por você."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ukladaj filmy a seriály — Cronica ich pre teba usporiada."
           }
         }
       }
@@ -17537,8 +17463,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Scheduled notifications"
+            "state": "translated",
+            "value": "Naplánované oznámenia"
           }
         }
       }
@@ -17951,8 +17877,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Season %@"
+            "state": "translated",
+            "value": "Séria %@"
           }
         }
       }
@@ -18181,8 +18107,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Secondary Left"
+            "state": "translated",
+            "value": "Sekundárna vľavo"
           }
         }
       }
@@ -18227,8 +18153,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Secondary Right"
+            "state": "translated",
+            "value": "Sekundárna vpravo"
           }
         }
       }
@@ -18918,8 +18844,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Sharing"
+            "state": "translated",
+            "value": "Zdieľanie"
           }
         }
       }
@@ -19464,7 +19390,7 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
+            "state": "translated",
             "value": "Simon Boer"
           }
         }
@@ -19556,8 +19482,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Sky Blue"
+            "state": "translated",
+            "value": "Nebeská modrá"
           }
         }
       }
@@ -20434,8 +20360,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Steel"
+            "state": "translated",
+            "value": "Oceľová"
           }
         }
       }
@@ -20480,8 +20406,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Storage"
+            "state": "translated",
+            "value": "Úložisko"
           }
         }
       }
@@ -20803,8 +20729,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "SwiftUI Preview"
+            "state": "translated",
+            "value": "Náhľad SwiftUI"
           }
         }
       }
@@ -20988,8 +20914,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Sync Movie Releases"
+            "state": "translated",
+            "value": "Synchronizovať filmové premiéry"
           }
         }
       }
@@ -21034,8 +20960,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Sync to Calendar"
+            "state": "translated",
+            "value": "Synchronizovať s kalendárom"
           }
         }
       }
@@ -21080,8 +21006,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Sync TV Episodes"
+            "state": "translated",
+            "value": "Synchronizovať televízne epizódy"
           }
         }
       }
@@ -21264,7 +21190,7 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
+            "state": "translated",
             "value": "Test"
           }
         }
@@ -21449,8 +21375,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "The filter improves results but can make search take longer."
+            "state": "translated",
+            "value": "Filter zlepšuje výsledky, ale môže predĺžiť vyhľadávanie."
           }
         }
       }
@@ -21727,8 +21653,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Third-Party Data"
+            "state": "translated",
+            "value": "Údaje tretích strán"
           }
         }
       }
@@ -21820,8 +21746,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "This is for Preview"
+            "state": "translated",
+            "value": "Toto je pre náhľad"
           }
         }
       }
@@ -21912,8 +21838,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "This permanently removes your personal data from Cronica on this device. It cannot be undone."
+            "state": "translated",
+            "value": "Týmto sa natrvalo odstránia tvoje osobné údaje z Cronica na tomto zariadení. Nie je možné to vrátiť späť."
           }
         }
       }
@@ -21958,8 +21884,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "This permanently removes your watchlist, lists, progress, notifications, calendar events, and preferences from this device."
+            "state": "translated",
+            "value": "Týmto sa natrvalo odstráni tvoje sledované, zoznamy, pokrok, oznámenia, kalendárové udalosti a predvoľby z tohto zariadenia."
           }
         }
       }
@@ -22510,7 +22436,7 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
+            "state": "translated",
             "value": "Tomáš Švec"
           }
         }
@@ -22520,8 +22446,8 @@
       "localizations": {
         "de": {
           "stringUnit": {
-            "state": "new",
-            "value": "Track episodes"
+            "state": "translated",
+            "value": "Episoden verfolgen"
           }
         },
         "en": {
@@ -22556,8 +22482,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Track episodes"
+            "state": "translated",
+            "value": "Sleduj epizódy"
           }
         }
       }
@@ -22598,6 +22524,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Acompanhe o que você assiste. Nunca perca o fio."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sleduj, čo pozeráš. Už nikdy nestratíš miesto."
           }
         }
       }
@@ -22960,8 +22892,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Turquoise"
+            "state": "translated",
+            "value": "Tyrkysová"
           }
         }
       }
@@ -23006,8 +22938,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Turquoise Blue"
+            "state": "translated",
+            "value": "Tyrkysovomodrá"
           }
         }
       }
@@ -24208,8 +24140,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Version %@"
+            "state": "translated",
+            "value": "Verzia %@"
           }
         }
       }
@@ -24300,8 +24232,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "View Release Calendar"
+            "state": "translated",
+            "value": "Zobraziť kalendár vydaní"
           }
         }
       }
@@ -24807,8 +24739,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Watchlist items and custom lists"
+            "state": "translated",
+            "value": "Položky sledovaného a vlastné zoznamy"
           }
         }
       }
@@ -24991,8 +24923,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "What Gets Deleted"
+            "state": "translated",
+            "value": "Čo sa odstráni"
           }
         }
       }
@@ -25221,8 +25153,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Your Data"
+            "state": "translated",
+            "value": "Tvoje údaje"
           }
         }
       }
@@ -25267,8 +25199,8 @@
         },
         "sk": {
           "stringUnit": {
-            "state": "new",
-            "value": "Your data has been deleted from this device. Welcome will appear again the next time you open Cronica."
+            "state": "translated",
+            "value": "Tvoje údaje boli z tohto zariadenia odstránené. Vitaj znova sa zobrazí pri ďalšom otvorení Cronica."
           }
         }
       }
@@ -25355,6 +25287,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Sua lista fica sincronizada no iPhone, iPad, Mac, Apple Watch e Apple TV."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tvoj zoznam zostáva synchronizovaný na iPhone, iPade, Macu, Apple Watch a Apple TV."
           }
         }
       }
@@ -25671,6 +25609,236 @@
           "stringUnit": {
             "state": "translated",
             "value": ""
+          }
+        }
+      }
+    },
+    "Export creates a JSON backup of your watchlist. Restore merges by item — existing titles are updated, new ones are added. Custom lists are not included.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Export creates a JSON backup of your watchlist. Restore merges by item — existing titles are updated, new ones are added. Custom lists are not included."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Export vytvorí JSON zálohu tvojho sledovaného. Obnovenie zlučuje podľa položky — existujúce tituly sa aktualizujú, nové sa pridajú. Vlastné zoznamy nie sú zahrnuté."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Export erstellt ein JSON-Backup deiner Merkliste. Wiederherstellen führt nach Titel zusammen — vorhandene Einträge werden aktualisiert, neue hinzugefügt. Eigene Listen sind nicht enthalten."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A exportação cria um backup JSON da sua lista. A restauração mescla por item — títulos existentes são atualizados e novos são adicionados. Listas personalizadas não estão incluídas."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La exportación crea una copia JSON de tu lista. La restauración combina por elemento: se actualizan los títulos existentes y se añaden los nuevos. Las listas personalizadas no se incluyen."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "L’export crée une sauvegarde JSON de votre liste. La restauration fusionne par élément — les titres existants sont mis à jour, les nouveaux sont ajoutés. Les listes personnalisées ne sont pas incluses."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "L’esportazione crea un backup JSON della tua lista. Il ripristino unisce per elemento: i titoli esistenti vengono aggiornati, i nuovi aggiunti. Le liste personalizzate non sono incluse."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exporteren maakt een JSON-back-up van je watchlist. Herstellen voegt per item samen — bestaande titels worden bijgewerkt, nieuwe toegevoegd. Aangepaste lijsten zijn niet inbegrepen."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eksport tworzy kopię JSON twojej listy. Przywracanie scala według pozycji — istniejące tytuły są aktualizowane, nowe dodawane. Listy własne nie są uwzględniane."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Экспорт создаёт JSON-резервную копию списка. Восстановление объединяет по элементам — существующие обновляются, новые добавляются. Пользовательские списки не включены."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dışa aktarma, izleme listenizin JSON yedeğini oluşturur. Geri yükleme öğeye göre birleştirir — mevcut başlıklar güncellenir, yenileri eklenir. Özel listeler dahil değildir."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Експорт створює JSON-резервну копію списку. Відновлення об’єднує за елементом — наявні оновлюються, нові додаються. Власні списки не включено."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Export vytvoří JSON zálohu vašeho seznamu. Obnovení sloučí podle položky — existující se aktualizují, nové se přidají. Vlastní seznamy nejsou zahrnuty."
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eksport opretter en JSON-backup af din watchlist. Gendan fletter pr. titel — eksisterende opdateres, nye tilføjes. Brugerlister er ikke med."
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vienti luo JSON-varmuuskopion listastasi. Palautus yhdistää kohteittain — olemassa olevat päivitetään, uudet lisätään. Mukautetut listat eivät ole mukana."
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eksport lager en JSON-sikkerhetskopi av listen din. Gjenoppretting slår sammen per element — eksisterende oppdateres, nye legges til. Egne lister er ikke inkludert."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Export skapar en JSON-säkerhetskopia av din lista. Återställning slår ihop per objekt — befintliga uppdateras, nya läggs till. Egna listor ingår inte."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Η εξαγωγή δημιουργεί αντίγραφο JSON της λίστας σας. Η επαναφορά συγχωνεύει ανά στοιχείο — τα υπάρχοντα ενημερώνονται, τα νέα προστίθενται. Οι προσαρμοσμένες λίστες δεν περιλαμβάνονται."
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Izvoz stvara JSON sigurnosnu kopiju vaše liste. Vraćanje spaja po stavci — postojeće se ažuriraju, nove se dodaju. Prilagođeni popisi nisu uključeni."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Az export JSON biztonsági másolatot készít a listádról. A visszaállítás elemenként egyesít — a meglévők frissülnek, az újak hozzáadódnak. Az egyéni listák nincsenek benne."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ekspor membuat cadangan JSON daftar tontonan Anda. Pulihkan menggabungkan per item — yang ada diperbarui, yang baru ditambahkan. Daftar kustom tidak disertakan."
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eksport mencipta sandaran JSON senarai anda. Pulih menggabung mengikut item — sedia ada dikemas kini, baharu ditambah. Senarai tersuai tidak disertakan."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exportul creează o copie JSON a listei tale. Restaurarea unește pe element — cele existente se actualizează, cele noi se adaugă. Listele personalizate nu sunt incluse."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "एक्सपोर्ट आपकी वॉचलिस्ट का JSON बैकअप बनाता है। रिस्टोर आइटम के अनुसार मिलाता है — मौजूदा अपडेट होते हैं, नए जुड़ते हैं। कस्टम सूचियाँ शामिल नहीं हैं।"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ينشئ التصدير نسخة JSON احتياطية من قائمتك. الاستعادة تدمج حسب العنصر — تُحدَّث الموجودات وتُضاف الجديدة. القوائم المخصصة غير مشمولة."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ייצוא יוצר גיבוי JSON של הרשימה. שחזור ממזג לפי פריט — קיימים מתעדכנים, חדשים מתווספים. רשימות מותאמות אינן כלולות."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "エクスポートはウォッチリストのJSONバックアップを作成します。復元は作品ごとに統合し、既存は更新、新規は追加されます。カスタムリストは含まれません。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "내보내기는 관심 목록의 JSON 백업을 만듭니다. 복원은 항목별로 병합하며 기존은 업데이트되고 새 항목은 추가됩니다. 사용자 지정 목록은 포함되지 않습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "导出会创建关注列表的 JSON 备份。恢复按条目合并——已有条目会更新，新条目会添加。不包括自定义列表。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "匯出會建立追蹤清單的 JSON 備份。還原會依項目合併——既有項目會更新，新項目會加入。不含自訂清單。"
+          }
+        }
+      }
+    },
+    "If iCloud sync is enabled, deletions sync to your other Apple devices signed into the same iCloud account. Sync can take a short time to finish. You can also remove Cronica data from Settings → Apple ID → iCloud on any device.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "If iCloud sync is enabled, deletions sync to your other Apple devices signed into the same iCloud account. Sync can take a short time to finish. You can also remove Cronica data from Settings → Apple ID → iCloud on any device."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ak je synchronizácia iCloud zapnutá, vymazania sa syncnú na tvoje ostatné zariadenia Apple s rovnakým iCloud účtom. Synchronizácia môže chvíľu trvať. Cronica údaje môžeš odstrániť aj v Nastaveniach → Apple ID → iCloud na akomkoľvek zariadení."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wenn iCloud-Sync aktiviert ist, werden Löschungen auf deine anderen Apple-Geräte mit demselben iCloud-Account synchronisiert. Die Sync kann kurz dauern. Du kannst Cronica-Daten auch unter Einstellungen → Apple-ID → iCloud entfernen."
+          }
+        },
+        "es-MX": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Si la sincronización de iCloud está activada, las eliminaciones se sincronizan con tus otros dispositivos Apple con la misma cuenta de iCloud. La sincronización puede tardar un poco. También puedes eliminar los datos de Cronica en Ajustes → Apple ID → iCloud en cualquier dispositivo."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Si la synchronisation iCloud est activée, les suppressions se synchronisent sur vos autres appareils Apple connectés au même compte iCloud. La sync peut prendre un peu de temps. Vous pouvez aussi supprimer les données Cronica dans Réglages → Identifiant Apple → iCloud."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se la sincronizzazione iCloud è attiva, le eliminazioni si sincronizzano sugli altri dispositivi Apple con lo stesso account iCloud. La sync può richiedere poco tempo. Puoi anche rimuovere i dati di Cronica da Impostazioni → ID Apple → iCloud."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se a sincronização do iCloud estiver ativada, as exclusões sincronizam com seus outros dispositivos Apple na mesma conta iCloud. A sincronização pode demorar um pouco. Você também pode remover dados do Cronica em Ajustes → Apple ID → iCloud."
           }
         }
       }

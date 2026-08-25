@@ -105,24 +105,52 @@ struct PersistenceController {
         }
     }
 
+    /// Deletes all watchlist items and custom lists via per-object deletes so CloudKit
+    /// receives proper tombstones (unlike `NSBatchDeleteRequest`, which often skips sync).
     func deleteAllUserContent() throws {
         let context = container.viewContext
-        try batchDelete(entityName: "WatchlistItem", in: context)
-        try batchDelete(entityName: "CustomList", in: context)
-        save()
+
+        let lists = try context.fetch(CustomList.fetchRequest())
+        for list in lists {
+            context.delete(list)
+        }
+
+        let items = try context.fetch(WatchlistItem.fetchRequest())
+        for item in items {
+            context.delete(item)
+        }
+
+        if context.hasChanges {
+            try context.save()
+        }
     }
 
-    private func batchDelete(entityName: String, in context: NSManagedObjectContext) throws {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        deleteRequest.resultType = .resultTypeObjectIDs
-        let result = try context.execute(deleteRequest) as? NSBatchDeleteResult
-        if let objectIDs = result?.result as? [NSManagedObjectID] {
-            NSManagedObjectContext.mergeChanges(
-                fromRemoteContextSave: [NSDeletedObjectsKey: objectIDs],
-                into: [context]
-            )
+    /// Restores a JSON backup, updating existing rows matched by `contentID` instead of duplicating.
+    @discardableResult
+    func importWatchlistBackup(from data: Data) throws -> (inserted: Int, updated: Int) {
+        let backups = try JSONDecoder().decode([WatchlistItemBackup].self, from: data)
+        var inserted = 0
+        var updated = 0
+
+        for backup in backups where !backup.contentID.isEmpty {
+            if let existing = fetch(for: backup.contentID) {
+                existing.apply(backup)
+                updated += 1
+            } else {
+                let item = WatchlistItem(context: container.viewContext)
+                item.apply(backup)
+                inserted += 1
+            }
         }
+
+        save()
+        return (inserted, updated)
+    }
+
+    func exportWatchlistBackup() throws -> Data {
+        let items = try container.viewContext.fetch(WatchlistItem.fetchRequest())
+        let backups = items.map(WatchlistItemBackup.init(item:))
+        return try JSONEncoder().encode(backups)
     }
 
     private static func isICloudAccountAvailable() -> Bool {

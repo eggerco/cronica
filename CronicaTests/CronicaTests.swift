@@ -151,6 +151,58 @@ final class CronicaTests: XCTestCase {
         XCTAssertEqual(count, 1)
     }
 
+    func testDeleteAllUserContentRemovesItemsAndLists() throws {
+        _ = persistence.createList(
+            title: "Test List",
+            description: "Notes",
+            items: Set(ItemContent.examples.compactMap { persistence.fetch(for: $0.itemContentID) }),
+            isPin: false
+        )
+
+        try persistence.deleteAllUserContent()
+
+        XCTAssertEqual(try managedContext.count(for: WatchlistItem.fetchRequest()), 0)
+        XCTAssertEqual(try managedContext.count(for: CustomList.fetchRequest()), 0)
+    }
+
+    func testWatchlistBackupImportUpdatesInsteadOfDuplicating() throws {
+        guard let example = ItemContent.examples.first else {
+            XCTFail("Expected preview content")
+            return
+        }
+        let existing = requireItem(for: example.itemContentID)
+        existing.userNotes = "before"
+        existing.watched = false
+        persistence.save()
+
+        let data = try persistence.exportWatchlistBackup()
+        let result = try persistence.importWatchlistBackup(from: data)
+        XCTAssertEqual(result.inserted, 0)
+        XCTAssertGreaterThanOrEqual(result.updated, 1)
+
+        let request: NSFetchRequest<WatchlistItem> = WatchlistItem.fetchRequest()
+        request.predicate = NSPredicate(format: "contentID == %@", example.itemContentID)
+        XCTAssertEqual(try managedContext.count(for: request), 1)
+
+        // Mutate exported payload and re-import as an update.
+        var backups = try JSONDecoder().decode([WatchlistItemBackup].self, from: data)
+        backups = backups.map { backup in
+            var updated = backup
+            if updated.contentID == example.itemContentID {
+                updated.userNotes = "after restore"
+                updated.watched = true
+            }
+            return updated
+        }
+        let updatedData = try JSONEncoder().encode(backups)
+        _ = try persistence.importWatchlistBackup(from: updatedData)
+
+        let restored = requireItem(for: example.itemContentID)
+        XCTAssertEqual(restored.userNotes, "after restore")
+        XCTAssertTrue(restored.watched)
+        XCTAssertEqual(try managedContext.count(for: request), 1)
+    }
+
     func testWatchProgressUsesCachedEpisodeTotal() {
         let item = WatchlistItem(context: managedContext)
         item.title = "Progress Show"

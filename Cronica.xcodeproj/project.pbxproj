@@ -264,6 +264,8 @@
 		C0USERDATA000000000002 /* UserDataDeletionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0USERDATA000000000001 /* UserDataDeletionService.swift */; };
 		C0USERDATA000000000003 /* UserDataDeletionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0USERDATA000000000001 /* UserDataDeletionService.swift */; };
 		C0DATAMGMT000000000002 /* DataManagementSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DATAMGMT000000000001 /* DataManagementSettingsView.swift */; };
+		C0WLBACKUP000000000002 /* WatchlistItemBackup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WLBACKUP000000000001 /* WatchlistItemBackup.swift */; };
+		C0WLBACKUP000000000003 /* WatchlistItemBackup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WLBACKUP000000000001 /* WatchlistItemBackup.swift */; };
 		C0CALMGR000000000002 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CALMGR000000000001 /* CalendarManager.swift */; };
 		C0CALMGR000000000003 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CALMGR000000000001 /* CalendarManager.swift */; };
 		C0RELCV000000000002 /* ReleaseCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0RELCV000000000001 /* ReleaseCalendarView.swift */; };
@@ -559,6 +561,7 @@
 		C0CALMGR000000000001 /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
 		C0USERDATA000000000001 /* UserDataDeletionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataDeletionService.swift; sourceTree = "<group>"; };
 		C0DATAMGMT000000000001 /* DataManagementSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagementSettingsView.swift; sourceTree = "<group>"; };
+		C0WLBACKUP000000000001 /* WatchlistItemBackup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistItemBackup.swift; sourceTree = "<group>"; };
 		C0RELCV000000000001 /* ReleaseCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseCalendarView.swift; sourceTree = "<group>"; };
 		C0RELCROUTE000000001 /* ReleaseCalendarRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseCalendarRoute.swift; sourceTree = "<group>"; };
 		B8FB2A8829524FAD006DAC8E /* WatchlistPosterSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistPosterSection.swift; sourceTree = "<group>"; };
@@ -728,6 +731,7 @@
 				C0ITEMSECTION00000000001 /* ItemContentSection.swift */,
 				B81DD92429BD149D009F73F3 /* WatchlistItem+CoreDataClass.swift */,
 				B81DD92529BD149D009F73F3 /* WatchlistItem+CoreDataProperties.swift */,
+				C0WLBACKUP000000000001 /* WatchlistItemBackup.swift */,
 				B819418C2A0822C30057DA04 /* UpNextEpisode.swift */,
 			);
 			path = Model;
@@ -1677,6 +1681,7 @@
 				B8B8A4282A6E29C400E5533F /* BackgroundManager.swift in Sources */,
 				C0CALMGR000000000003 /* CalendarManager.swift in Sources */,
 				C0USERDATA000000000003 /* UserDataDeletionService.swift in Sources */,
+				C0WLBACKUP000000000003 /* WatchlistItemBackup.swift in Sources */,
 				B899F21328B0391C00272484 /* DefaultListTypes.swift in Sources */,
 				B81941CC2A0861D70057DA04 /* WatchEpisodeButton.swift in Sources */,
 				B818483829C286C300650763 /* UserDefaults-Extensions.swift in Sources */,
@@ -1803,6 +1808,7 @@
 				B87F746328064D3800E94126 /* BackgroundManager.swift in Sources */,
 				C0CALMGR000000000002 /* CalendarManager.swift in Sources */,
 				C0USERDATA000000000002 /* UserDataDeletionService.swift in Sources */,
+				C0WLBACKUP000000000002 /* WatchlistItemBackup.swift in Sources */,
 				C0DATAMGMT000000000002 /* DataManagementSettingsView.swift in Sources */,
 				B883A1E32AEF1DB800793EE2 /* SearchItemContentContextMenu.swift in Sources */,
 				B89429CC297E076E0029646F /* SupportEmail.swift in Sources */,

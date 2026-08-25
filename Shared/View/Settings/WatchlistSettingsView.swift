@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import CoreData
 
 struct WatchlistSettingsView: View {
     @StateObject private var store = SettingsStore.shared
@@ -14,7 +13,6 @@ struct WatchlistSettingsView: View {
     @State private var isGeneratingExport = false
     @State private var showFilePicker = false
     @State private var exportUrl: URL?
-    @Environment(\.managedObjectContext) private var context
     @State private var hasImported = false
     let background = BackgroundManager.shared
     var body: some View {
@@ -85,7 +83,7 @@ struct WatchlistSettingsView: View {
 #endif
             } footer: {
 #if os(iOS)
-                Text("Backup/Restore is in beta, only use it to export your data or to import if you're switching your iCloud account, there's no logic at the moment to avoid duplication.")
+                Text("Export creates a JSON backup of your watchlist. Restore merges by item — existing titles are updated, new ones are added. Custom lists are not included.")
 #endif
             }
 #if os(iOS)
@@ -167,15 +165,11 @@ extension WatchlistSettingsView {
     private func export() {
         do {
             isGeneratingExport = true
-            let request = WatchlistItem.fetchRequest()
-            let items = try context.fetch(request)
-            let jsonData = try JSONEncoder().encode(items)
-            if let jsonString = String(data: jsonData, encoding: .utf8) {
-                if let tempUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-                    let pathUrl = tempUrl.appending(component: "CronicaExport \(Date().formatted(date: .abbreviated, time: .omitted)).json")
-                    try jsonString.write(to: pathUrl, atomically: true, encoding: .utf8)
-                    exportUrl = pathUrl
-                }
+            let jsonData = try PersistenceController.shared.exportWatchlistBackup()
+            if let tempUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+                let pathUrl = tempUrl.appending(component: "CronicaExport \(Date().formatted(date: .abbreviated, time: .omitted)).json")
+                try jsonData.write(to: pathUrl, options: .atomic)
+                exportUrl = pathUrl
             }
             isGeneratingExport = false
         } catch {
@@ -187,10 +181,7 @@ extension WatchlistSettingsView {
     private func importJSON(_ url: URL) {
         do {
             let jsonData = try Data(contentsOf: url)
-            let decoder = JSONDecoder()
-            decoder.userInfo[.context] = PersistenceController.shared.container.viewContext
-            _ = try decoder.decode([WatchlistItem].self, from: jsonData)
-            try context.save()
+            _ = try PersistenceController.shared.importWatchlistBackup(from: jsonData)
             hasImported.toggle()
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 withAnimation {
