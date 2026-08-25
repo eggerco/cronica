@@ -68,14 +68,14 @@ struct AboutSettings: View {
             }
 #endif
             
-            CronicaFormSection("Content Provider") {
+            Section("Content Provider") {
                 aboutButton(
                     title: "The Movie Database",
                     url: "https://www.themoviedb.org"
                 )
             }
             
-            CronicaFormSection("Design") {
+            Section("Design") {
                 aboutButton(
                     title: NSLocalizedString("Icon Designer", comment: ""),
                     subtitle: "Akhmad",
@@ -83,7 +83,7 @@ struct AboutSettings: View {
                 )
             }
             
-            CronicaFormSection("Translation") {
+            Section("Translation") {
                 aboutButton(title: String(localized: "German"),
                             subtitle: "Simon Boer",
                             url: "https://twitter.com/SimonBoer29")
@@ -98,7 +98,7 @@ struct AboutSettings: View {
                             subtitle: "Kevin Manca", url: "http://github.com/kevinm6")
             }
             
-            CronicaFormSection("Libraries") {
+            Section("Libraries") {
                 aboutButton(
                     title: "Nuke",
                     url: "https://github.com/kean/Nuke"
@@ -114,12 +114,15 @@ struct AboutSettings: View {
                 CenterHorizontalView {
                     Text("Version \(appVersion ?? "") • \(buildNumber)")
                         .foregroundColor(.secondary)
+                        .textCase(.uppercase)
                 }
             }
             .listRowBackground(Color.clear)
         }
         .navigationTitle("About")
-        .cronicaSettingsForm()
+#if os(macOS)
+        .formStyle(.grouped)
+#endif
     }
     
     private func aboutButton(title: String, subtitle: String? = nil, url: String) -> some View {

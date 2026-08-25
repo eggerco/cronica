@@ -19,7 +19,7 @@ struct WatchlistSettingsView: View {
     let background = BackgroundManager.shared
     var body: some View {
         Form {
-            CronicaFormSection("Behavior") {
+            Section("Behavior") {
 #if os(iOS) || os(macOS)
                 Toggle("Open List Selector when adding an item", isOn: $store.openListSelectorOnAdding)
 #endif
@@ -27,7 +27,7 @@ struct WatchlistSettingsView: View {
                 Toggle("Show Remove Confirmation", isOn: $store.showRemoveConfirmation)
             }
             
-            CronicaFormSection("Appearance") {
+            Section("Appearance") {
                 Picker(selection: $store.watchlistStyle) {
                     ForEach(SectionDetailsPreferredStyle.allCases) { item in
 #if os(tvOS)
@@ -46,7 +46,7 @@ struct WatchlistSettingsView: View {
 #endif
             }
             
-            CronicaFormSection("Sync") {
+            Section("Sync") {
                 Button {
                     updateItems()
                 } label: {
@@ -66,8 +66,9 @@ struct WatchlistSettingsView: View {
                 .buttonStyle(.plain)
 #endif
             }
+#if !os(tvOS)
+            Section {
 #if os(iOS)
-            CronicaFormSectionWithFooter("Backup & Restore") {
                 importButton
                 if let exportUrl {
                     ShareLink(item: exportUrl) {
@@ -77,9 +78,17 @@ struct WatchlistSettingsView: View {
                 } else {
                     exportButton
                 }
+#endif
+            } header: {
+#if !os(macOS)
+                Text("Backup & Restore")
+#endif
             } footer: {
+#if os(iOS)
                 Text("Backup/Restore is in beta, only use it to export your data or to import if you're switching your iCloud account, there's no logic at the moment to avoid duplication.")
+#endif
             }
+#if os(iOS)
             .fileImporter(isPresented: $showFilePicker, allowedContentTypes: [.json]) { result in
                 switch result {
                 case .success(let success):
@@ -91,12 +100,16 @@ struct WatchlistSettingsView: View {
                 }
             }
 #endif
+#endif
         }
         .navigationTitle("Watchlist Settings")
 #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
+        .scrollBounceBehavior(.basedOnSize, axes: .vertical)
 #endif
-        .cronicaSettingsForm()
+#if os(macOS)
+        .formStyle(.grouped)
+#endif
     }
     
 #if os(iOS)

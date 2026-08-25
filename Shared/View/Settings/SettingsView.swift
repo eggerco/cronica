@@ -21,19 +21,19 @@ struct SettingsView: View {
     private var settings: some View {
 #if os(iOS) || os(visionOS)
         Form {
-            CronicaFormSection("General") {
+            Section("General") {
                 settingsNavigationLink(.appearance, title: String(localized: "Appearance"), icon: "paintbrush", color: .blue)
                 settingsNavigationLink(.behavior, title: String(localized: "Behavior"), icon: "hand.tap", color: .gray)
                 settingsNavigationLink(.notifications, title: String(localized: "Notifications"), icon: "bell", color: .red)
             }
             
-            CronicaFormSection("Features") {
+            Section("Features") {
                 settingsNavigationLink(.watchlist, title: String(localized: "Watchlist"), icon: "rectangle.on.rectangle", color: AppThemeColors.goldenrod.color)
                 settingsNavigationLink(.season, title: String(localized: "Season & Up Next"), icon: "tv", color: AppThemeColors.turquoiseBlue.color)
                 settingsNavigationLink(.region, title: String(localized: "Watch Provider"), icon: "globe", color: .purple)
             }
             
-            CronicaFormSection("About") {
+            Section("About") {
                 settingsNavigationLink(.about, title: String(localized: "About"), icon: "info.circle", color: .black)
                 settingsNavigationLink(.dataManagement, title: String(localized: "Privacy & Data"), icon: "lock.shield", color: .orange)
                 settingsNavigationLink(.feedback, title: String(localized: "Feedback"), icon: "envelope.fill", color: AppThemeColors.steel.color)
@@ -44,7 +44,7 @@ struct SettingsView: View {
         }
         .navigationTitle("Settings")
         .navigationBarTitleDisplayMode(.inline)
-        .cronicaSettingsForm()
+        .scrollBounceBehavior(.basedOnSize, axes: .vertical)
         .accessibilityIdentifier("Settings View")
 #elseif os(macOS)
         TabView {
@@ -92,7 +92,6 @@ struct SettingsView: View {
                 }
             }
             .navigationTitle("Settings")
-            .cronicaSettingsForm()
         }
 #endif
     }
@@ -105,8 +104,25 @@ struct SettingsView: View {
         color: Color
     ) -> some View {
         NavigationLink(value: value) {
-            CronicaSettingsRowLabel(title: title, icon: icon, color: color)
+            settingsLabel(title: title, icon: icon, color: color)
         }
+    }
+
+    private func settingsLabel(title: String, icon: String, color: Color) -> some View {
+        HStack {
+            ZStack {
+                Rectangle()
+                    .fill(color)
+                    .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
+                Image(systemName: icon)
+                    .foregroundColor(.white)
+            }
+            .frame(width: 30, height: 30, alignment: .center)
+            .padding(.trailing, 8)
+            .accessibilityHidden(true)
+            Text(title)
+        }
+        .padding(.vertical, 2)
     }
 #endif
 }

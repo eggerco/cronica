@@ -67,8 +67,10 @@ struct WatchProviderSettings: View {
         .navigationTitle("Watch Provider Settings")
 #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
+        .scrollBounceBehavior(.basedOnSize, axes: .vertical)
+#elseif os(macOS)
+        .formStyle(.grouped)
 #endif
-        .cronicaSettingsForm()
         .onChange(of: settings.isSelectedWatchProviderEnabled) { checkStatus() }
         .onAppear(perform: load)
     }

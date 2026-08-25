@@ -62,7 +62,7 @@ struct WatchlistSelectorView: View {
                         }
                     }
                     
-                    CronicaFormSection("Sort Order") {
+                    Section("Sort Order") {
                         Picker(selection: $sortOrder) {
                             ForEach(WatchlistSortOrder.allCases) { item in
                                 Text(item.localizableName).tag(item)

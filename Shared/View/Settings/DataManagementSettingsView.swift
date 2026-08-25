@@ -14,96 +14,69 @@ struct DataManagementSettingsView: View {
 
     var body: some View {
         Form {
-            CronicaPlainFormSection {
+            Section {
                 Button {
                     openURL(AppWebsite.privacyPolicy)
                 } label: {
-                    Label {
-                        CronicaFormText("Privacy Policy")
-                    } icon: {
-                        Image(systemName: "hand.raised")
-                    }
+                    Label("Privacy Policy", systemImage: "hand.raised")
                 }
 #if os(macOS)
                 .buttonStyle(.link)
 #endif
             }
 
-            CronicaFormSection("Your Data") {
-                CronicaFormText(
-                    "Cronica does not use accounts. Your watchlist, ratings, notes, and preferences are stored on this device and, if enabled, in your private iCloud account.",
-                    font: .subheadline,
-                    color: .secondary
-                )
+            Section("Your Data") {
+                Text("Cronica does not use accounts. Your watchlist, ratings, notes, and preferences are stored on this device and, if enabled, in your private iCloud account.")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
             }
 
-            CronicaFormSection("What Gets Deleted") {
-                Label {
-                    CronicaFormText("Watchlist items and custom lists")
-                } icon: {
-                    Image(systemName: "rectangle.on.rectangle")
-                }
-                Label {
-                    CronicaFormText("Episode progress, ratings, and notes")
-                } icon: {
-                    Image(systemName: "note.text")
-                }
-                Label {
-                    CronicaFormText("Scheduled notifications")
-                } icon: {
-                    Image(systemName: "bell")
-                }
+            Section("What Gets Deleted") {
+                Label("Watchlist items and custom lists", systemImage: "rectangle.on.rectangle")
+                Label("Episode progress, ratings, and notes", systemImage: "note.text")
+                Label("Scheduled notifications", systemImage: "bell")
 #if !os(tvOS) && !os(watchOS)
-                Label {
-                    CronicaFormText("Cronica calendar and release events")
-                } icon: {
-                    Image(systemName: "calendar")
-                }
+                Label("Cronica calendar and release events", systemImage: "calendar")
 #endif
-                Label {
-                    CronicaFormText("App preferences and filters")
-                } icon: {
-                    Image(systemName: "slider.horizontal.3")
-                }
+                Label("App preferences and filters", systemImage: "slider.horizontal.3")
             }
 
-            CronicaFormSection("iCloud Sync") {
-                CronicaFormText(
-                    "If iCloud sync is enabled, deletions will sync to your other Apple devices signed into the same iCloud account. You can also remove Cronica data from Settings → Apple ID → iCloud on any device.",
-                    font: .subheadline,
-                    color: .secondary
-                )
+            Section("iCloud Sync") {
+                Text("If iCloud sync is enabled, deletions will sync to your other Apple devices signed into the same iCloud account. You can also remove Cronica data from Settings → Apple ID → iCloud on any device.")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
             }
 
-            CronicaFormSection("Third-Party Data") {
-                CronicaFormText(
-                    "Anonymous crash reports may be processed by our error monitoring provider. Email support@eggerco.com to request removal. App Store purchase history is managed by Apple.",
-                    font: .subheadline,
-                    color: .secondary
-                )
+            Section("Third-Party Data") {
+                Text("Anonymous crash reports may be processed by our error monitoring provider. Email support@eggerco.com to request removal. App Store purchase history is managed by Apple.")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
             }
 
             if didDeleteData {
-                CronicaFormSection("Completed") {
-                    CronicaFormText(
-                        "Your data has been deleted from this device. Welcome will appear again the next time you open Cronica.",
-                        font: .subheadline,
-                        color: .secondary
-                    )
+                Section("Completed") {
+                    Text("Your data has been deleted from this device. Welcome will appear again the next time you open Cronica.")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
                 }
             }
 
-            CronicaPlainFormSectionWithFooter {
+            Section {
                 Button("Delete My Data", role: .destructive) {
                     showDeleteConfirmation = true
                 }
                 .disabled(isDeleting)
             } footer: {
-                CronicaFormFooter("This permanently removes your personal data from Cronica on this device. It cannot be undone.")
+                Text("This permanently removes your personal data from Cronica on this device. It cannot be undone.")
             }
         }
-        .cronicaNavigationTitle("Privacy & Data", displayMode: .inline)
-        .cronicaSettingsForm()
+        .navigationTitle(String(localized: "Privacy & Data"))
+#if os(iOS)
+        .navigationBarTitleDisplayMode(.inline)
+#endif
+#if os(macOS)
+        .formStyle(.grouped)
+#endif
         .accessibilityIdentifier("Privacy & Data View")
         .overlay {
             if isDeleting {

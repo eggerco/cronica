@@ -57,22 +57,17 @@ struct ReleaseCalendarView: View {
             .listRowInsets(EdgeInsets(top: 0, leading: 4, bottom: 0, trailing: 4))
             .listRowBackground(Color.clear)
 
-            CronicaListSection(releasesSectionTitle) {
+            Section(releasesSectionTitle) {
                 if upcomingItems.isEmpty {
                     ContentUnavailableView {
-                        Label {
-                            CronicaFormText("No Upcoming Releases")
-                        } icon: {
-                            Image(systemName: "calendar")
-                        }
+                        Label("No Upcoming Releases", systemImage: "calendar")
                     } description: {
-                        CronicaFormText(
-                            "Add items with future release dates to your watchlist to see them here.",
-                            color: .secondary
-                        )
+                        Text("Add items with future release dates to your watchlist to see them here.")
+                            .foregroundStyle(.secondary)
                     }
                 } else if selectedDayItems.isEmpty {
-                    CronicaFormText("No watchlist releases on this date.", color: .secondary)
+                    Text("No watchlist releases on this date.")
+                        .foregroundStyle(.secondary)
                 } else {
                     ForEach(selectedDayItems) { item in
                         NavigationLink(value: item) {
@@ -82,11 +77,11 @@ struct ReleaseCalendarView: View {
                 }
             }
         }
-        .cronicaNormalTextCase()
 #if os(iOS)
-        .cronicaNavigationTitle("Release Calendar", displayMode: .large)
+        .navigationTitle("Release Calendar")
+        .navigationBarTitleDisplayMode(.large)
 #else
-        .cronicaNavigationTitle("Release Calendar")
+        .navigationTitle("Release Calendar")
 #endif
     }
 
@@ -206,9 +201,11 @@ private struct ReleaseCalendarRow: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
-            CronicaFormText(item.itemTitle)
+            Text(item.itemTitle)
             if let info = item.itemGlanceInfo {
-                CronicaFormText(info, font: .caption, color: .secondary)
+                Text(info)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
             }
         }
         .padding(.vertical, 2)

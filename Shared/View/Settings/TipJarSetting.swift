@@ -57,7 +57,10 @@ struct TipJarSetting: View {
                 withAnimation { productsLoaded = true }
             }
         }
-        .cronicaSettingsForm()
+        .scrollBounceBehavior(.basedOnSize)
+#if os(macOS)
+        .formStyle(.grouped)
+#endif
     }
 }
 

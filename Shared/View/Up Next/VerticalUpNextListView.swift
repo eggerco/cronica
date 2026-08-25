@@ -117,7 +117,9 @@ struct VerticalUpNextListView: View {
                 .redacted(reason: viewModel.isLoaded ? [] : .placeholder)
             }
         }
-        .cronicaSettingsForm()
+#if os(macOS)
+        .formStyle(.grouped)
+#endif
     }
     
     private var cardStyle: some View {
@@ -137,6 +139,7 @@ struct VerticalUpNextListView: View {
                                             .lineLimit(2)
                                         Text(String(format: NSLocalizedString("S%d, E%d", comment: ""), item.episode.itemSeasonNumber, item.episode.itemEpisodeNumber))
                                             .font(.caption)
+                                            .textCase(.uppercase)
                                             .fontWeight(.medium)
                                             .foregroundColor(.secondary)
                                             .lineLimit(1)
@@ -161,6 +164,7 @@ struct VerticalUpNextListView: View {
                                             .lineLimit(2)
                                         Text(String(format: NSLocalizedString("S%d, E%d", comment: ""), item.episode.itemSeasonNumber, item.episode.itemEpisodeNumber))
                                             .font(.caption)
+                                            .textCase(.uppercase)
                                             .foregroundColor(.secondary)
                                             .lineLimit(1)
                                     }

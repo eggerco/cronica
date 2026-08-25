@@ -66,13 +66,13 @@ struct ReviewView: View {
                         .listRowInsets(EdgeInsets())
                         .listRowBackground(Color.clear)
                         
-                        CronicaFormSection("Rating") {
+                        Section("Rating") {
                             CenterHorizontalView {
                                 RatingView(rating: $rating)
                             }
                         }
 #if os(iOS) || os(macOS)
-                        CronicaFormSection("Notes") {
+                        Section("Notes") {
                             TextEditor(text: $note)
                                 .frame(minHeight: 150, maxHeight: 800)
                             

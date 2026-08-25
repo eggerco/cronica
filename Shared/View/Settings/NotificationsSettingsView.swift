@@ -37,21 +37,15 @@ struct NotificationsSettingsView: View {
     var body: some View {
         Form {
             Section {
-                Toggle(isOn: $settings.allowNotifications) {
-                    CronicaFormText("Allow Notifications")
-                }
+                Toggle("Allow Notifications", isOn: $settings.allowNotifications)
                 Toggle(isOn: $settings.notifyMovieRelease) {
-                    CronicaFormToggleLabel(
-                        title: "Notify Movie Releases",
-                        subtitle: "Notify when a movie on your watchlist is released."
-                    )
+                    Text("Notify Movie Releases")
+                    Text("Notify when a movie on your watchlist is released.")
                 }
                 .disabled(!settings.allowNotifications)
                 Toggle(isOn: $settings.notifyNewEpisodes) {
-                    CronicaFormToggleLabel(
-                        title: "Notify New Episodes",
-                        subtitle: "Notify when a new episode from a TV Show on your watchlist is released."
-                    )
+                    Text("Notify New Episodes")
+                    Text("Notify when a new episode from a TV Show on your watchlist is released.")
                 }
                 .disabled(!settings.allowNotifications)
                 
@@ -65,7 +59,7 @@ struct NotificationsSettingsView: View {
             
 #if !os(tvOS)
             if settings.allowNotifications {
-                CronicaFormSection("Notification Time") {
+                Section("Notification Time") {
                     DatePicker("Select the hour and minute for notification delivery",
                                selection: notificationTimeBinding,
                                displayedComponents: .hourAndMinute)
@@ -80,37 +74,31 @@ struct NotificationsSettingsView: View {
 #endif
             
 #if os(iOS)
-            Button {
+            Button("Edit Notifications in Settings app") {
                 openURL.openNotificationSettings()
-            } label: {
-                CronicaFormText("Edit Notifications in Settings app")
             }
 #endif
 
 #if os(iOS) || os(macOS) || os(visionOS)
-            CronicaFormSectionWithFooter("Calendar Sync") {
-                Toggle(isOn: $settings.allowCalendarSync) {
-                    CronicaFormText("Sync to Calendar")
-                }
+            Section {
+                Toggle("Sync to Calendar", isOn: $settings.allowCalendarSync)
                 Toggle(isOn: $settings.syncCalendarMovies) {
-                    CronicaFormToggleLabel(
-                        title: "Sync Movie Releases",
-                        subtitle: "Add upcoming movie releases from your watchlist to the Cronica calendar."
-                    )
+                    Text("Sync Movie Releases")
+                    Text("Add upcoming movie releases from your watchlist to the Cronica calendar.")
                 }
                 .disabled(!settings.allowCalendarSync)
                 Toggle(isOn: $settings.syncCalendarTVShows) {
-                    CronicaFormToggleLabel(
-                        title: "Sync TV Episodes",
-                        subtitle: "Add upcoming TV episodes and season premieres to the Cronica calendar."
-                    )
+                    Text("Sync TV Episodes")
+                    Text("Add upcoming TV episodes and season premieres to the Cronica calendar.")
                 }
                 .disabled(!settings.allowCalendarSync)
                 NavigationLink(value: ReleaseCalendarRoute.watchlist) {
-                    CronicaFormText("View Release Calendar")
+                    Text("View Release Calendar")
                 }
+            } header: {
+                Text("Calendar Sync")
             } footer: {
-                CronicaFormFooter("Events are saved to a dedicated Cronica calendar in the Calendar app.")
+                Text("Events are saved to a dedicated Cronica calendar in the Calendar app.")
             }
             .onChange(of: settings.allowCalendarSync) { _, enabled in
                 Task {
@@ -130,7 +118,9 @@ struct NotificationsSettingsView: View {
 #endif
         }
         .navigationTitle(NSLocalizedString(navigationTitle, comment: ""))
-        .cronicaSettingsForm()
+#if os(macOS)
+        .formStyle(.grouped)
+#endif
     }
     
     private func setDefaultNotificationTime() {

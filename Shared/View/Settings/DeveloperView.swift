@@ -28,7 +28,7 @@ struct DeveloperView: View {
     @State private var cloudKitSchemaMessage = ""
     var body: some View {
         Form {
-            CronicaFormSection("Network") {
+            Section("Network") {
                 TextField("ID", text: $itemIdField)
 #if os(iOS)
                     .keyboardType(.numberPad)
@@ -76,7 +76,7 @@ struct DeveloperView: View {
             }
             
 #if !os(macOS)
-            CronicaFormSection("Presentation") {
+            Section("Presentation") {
                 Button("Show Onboard") {
                     showOnboarding.toggle()
                 }
@@ -105,7 +105,7 @@ struct DeveloperView: View {
                 Button("Reset asked for review") { askedForReview = false }
             }
 
-            CronicaFormSection("CloudKit") {
+            Section("CloudKit") {
                 Button("Initialize CloudKit Schema") {
                     cloudKitSchemaMessage = persistence.initializeCloudKitDevelopmentSchema()
                 }
@@ -175,7 +175,9 @@ struct DeveloperView: View {
                     }
             }
         }
-        .cronicaSettingsForm()
+#if os(macOS)
+        .formStyle(.grouped)
+#endif
         .scrollBounceBehavior(.basedOnSize)
     }
 }

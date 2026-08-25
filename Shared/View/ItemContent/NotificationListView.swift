@@ -16,43 +16,33 @@ struct NotificationListView: View {
     @State private var showPopup = false
     @State private var popupType: ActionPopupItems?
     var body: some View {
-        List {
+        Form {
             if hasLoaded {
-                deliveredItemsView
-                upcomingItemsView
+                List {
+                    deliveredItemsView
+                    upcomingItemsView
+                }
+            } else {
+                EmptyView()
             }
         }
         .cronicaLoadingOverlay(!hasLoaded)
         .actionPopup(isShowing: $showPopup, for: popupType)
         .navigationTitle("Notifications")
-        .cronicaSettingsForm()
-#if os(iOS)
+#if os(macOS)
+        .formStyle(.grouped)
+#elseif os(iOS)
         .navigationBarTitleDisplayMode(.large)
 #endif
         .toolbar {
 #if os(iOS)
             ToolbarItem(placement: .topBarTrailing) {
-                HStack {
-                    NavigationLink(value: ReleaseCalendarRoute.watchlist) {
-                        Label("Release Calendar", systemImage: "calendar")
-                    }
-                    configButton
-                }
-            }
-#elseif os(macOS)
-            ToolbarItem(placement: .automatic) {
-                NavigationLink(value: ReleaseCalendarRoute.watchlist) {
-                    Label("Release Calendar", systemImage: "calendar")
-                }
-            }
-            ToolbarItem(placement: .automatic) {
                 configButton
             }
 #endif
         }
         .task { await load() }
         .scrollBounceBehavior(.basedOnSize)
-        .accessibilityIdentifier("Notification List View")
     }
     
     private var configButton: some View {
@@ -64,7 +54,7 @@ struct NotificationListView: View {
     @ViewBuilder
     private var deliveredItemsView: some View {
         if !deliveredItems.isEmpty {
-            CronicaFormSection("Recent Notifications") {
+            Section("Recent Notifications") {
                 ForEach(deliveredItems.sorted(by: { $0.itemTitle < $1.itemTitle })) { item in
                     ItemContentRowView(item: item, showPopup: $showPopup, popupType: $popupType, showNotificationDate: true)
                         .swipeActions(edge: .trailing, allowsFullSwipe: true) {
@@ -89,7 +79,7 @@ struct NotificationListView: View {
                     .foregroundColor(.secondary)
             }
         } else {
-            CronicaFormSection("Upcoming Notifications") {
+            Section("Upcoming Notifications") {
                 ForEach(items) { item in
                     ItemContentRowView(item: item, showPopup: $showPopup, popupType: $popupType, showNotificationDate: true)
                         .onAppear {
@@ -108,16 +98,13 @@ struct NotificationListView: View {
     private func load() async {
         if hasLoaded { return }
         let upcomingContent = await NotificationManager.shared.fetchUpcomingNotifications() ?? []
-        let delivered = await NotificationManager.shared.fetchDeliveredNotifications()
-        await MainActor.run {
-            if !upcomingContent.isEmpty {
-                items = upcomingContent.sorted {
-                    ($0.itemNotificationSortDate ?? .distantPast) < ($1.itemNotificationSortDate ?? .distantPast)
-                }
-            }
-            deliveredItems = delivered
-            withAnimation { hasLoaded = true }
+        if !upcomingContent.isEmpty {
+            let orderedContent = upcomingContent.sorted(by: { $0.itemNotificationSortDate ?? Date.distantPast < $1.itemNotificationSortDate ?? Date.distantPast})
+            items = orderedContent
         }
+        deliveredItems = await NotificationManager.shared.fetchDeliveredNotifications()
+        withAnimation { hasLoaded = true }
+        //await MainActor.run { withAnimation { self.hasLoaded = true } }
     }
     
     private func removeDelivered(id: String, for content: Int) {
