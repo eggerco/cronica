@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://cronica.eggerco.com/resources/img/cronica/icon.webp" alt="Cronica" width="128" height="128" />
+  <img src="web/public/resources/img/cronica/icon.webp" alt="Cronica" width="128" height="128" />
 </p>
 
 <h1 align="center">Cronica</h1>
