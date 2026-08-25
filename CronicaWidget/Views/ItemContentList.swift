@@ -32,7 +32,7 @@ struct ItemContentList: View {
     }
 
     private var visibleItems: [WidgetDisplayItem] {
-        Array(items.prefix(family.displayLimit(isPhone: isPhone)))
+        Array(items.prefix(family.displayLimit))
     }
 
     var body: some View {
@@ -57,11 +57,8 @@ struct ItemContentList: View {
         case .systemMedium:
             rowLayout(width: 74, height: 112, spacing: 6)
         case .systemLarge:
-            if isPhone {
-                gridLayout(columns: 4, posterHeight: 118)
-            } else {
-                gridLayout(columns: 3, posterHeight: 130)
-            }
+            // 3×2 keeps posters readable on both iPhone and iPad large widgets.
+            gridLayout(columns: 3, posterHeight: isPhone ? 128 : 130)
         case .systemExtraLarge:
             gridLayout(columns: 4, posterHeight: 150)
         default:
@@ -169,11 +166,11 @@ private extension Array {
 }
 
 private extension WidgetFamily {
-    func displayLimit(isPhone: Bool) -> Int {
+    var displayLimit: Int {
         switch self {
         case .systemSmall: 2
         case .systemMedium: 4
-        case .systemLarge: isPhone ? 8 : 6
+        case .systemLarge: 6
         case .systemExtraLarge: 8
         default: 4
         }
