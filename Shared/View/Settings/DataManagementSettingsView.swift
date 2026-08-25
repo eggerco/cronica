@@ -49,7 +49,7 @@ struct DataManagementSettingsView: View {
             }
 
             Section("Third-Party Data") {
-                Text("Anonymous crash reports may be processed by our error monitoring provider. Email support@eggerco.com to request removal. App Store purchase history is managed by Apple.")
+                Text("Anonymous crash reports may be processed by our error monitoring provider. Email support@eggerco.com to request removal.")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             }

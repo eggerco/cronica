@@ -1762,52 +1762,6 @@
         }
       }
     },
-    "Anonymous crash reports may be processed by our error monitoring provider. Email support@eggerco.com to request removal. App Store purchase history is managed by Apple.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "new",
-            "value": "Anonymous crash reports may be processed by our error monitoring provider. Email support@eggerco.com to request removal. App Store purchase history is managed by Apple."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Anonymous crash reports may be processed by our error monitoring provider. Email support@eggerco.com to request removal. App Store purchase history is managed by Apple."
-          }
-        },
-        "es-MX": {
-          "stringUnit": {
-            "state": "new",
-            "value": "Anonymous crash reports may be processed by our error monitoring provider. Email support@eggerco.com to request removal. App Store purchase history is managed by Apple."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "new",
-            "value": "Anonymous crash reports may be processed by our error monitoring provider. Email support@eggerco.com to request removal. App Store purchase history is managed by Apple."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "new",
-            "value": "Anonymous crash reports may be processed by our error monitoring provider. Email support@eggerco.com to request removal. App Store purchase history is managed by Apple."
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "new",
-            "value": "Anonymous crash reports may be processed by our error monitoring provider. Email support@eggerco.com to request removal. App Store purchase history is managed by Apple."
-          }
-        },
-        "sk": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Anonymné hlásenia o pádoch môže spracovať náš poskytovateľ monitorovania chýb. Na odstránenie napíš na support@eggerco.com. Históriu nákupov v App Store spravuje Apple."
-          }
-        }
-      }
-    },
     "App preferences and filters": {
       "localizations": {
         "de": {
@@ -16779,52 +16733,6 @@
         }
       }
     },
-    "Restore Purchase": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kauf wiederherstellen"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Restore purchase"
-          }
-        },
-        "es-MX": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Restaurar la compra"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rétablir l'achat"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ripristina Acquisti"
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Restaurar Compra"
-          }
-        },
-        "sk": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Obnoviť nákup"
-          }
-        }
-      }
-    },
     "Retry": {
       "localizations": {
         "de": {
@@ -21150,52 +21058,6 @@
         }
       }
     },
-    "Thank you for your purchase! Your support is much appreciated. 😁": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vielen Dank für deinen Kauf! Deine Unterstützung wird sehr geschätzt. 😁"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Thank you for your purchase! Your support is much appreciated. 😁"
-          }
-        },
-        "es-MX": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "¡Gracias por su compra! Su apoyo es muy apreciado. 😁"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Merci pour votre achat ! Votre soutien est très apprécié. 😁"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Grazie per il tuo acquisto! Il tuo supporto è davvero apprezzato. 😁"
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Obrigado pela sua compra! Seu apoio é muito apreciado. 😁"
-          }
-        },
-        "sk": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ďakujeme za nákup! Tvoju podporu si veľmi vážime. 😁"
-          }
-        }
-      }
-    },
     "The API is undergoing maintenance. Try again later.": {
       "extractionState": "stale",
       "localizations": {
@@ -21932,52 +21794,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Thriller"
-          }
-        }
-      }
-    },
-    "Tip Jar": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Trinkgeld"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tip Jar"
-          }
-        },
-        "es-MX": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bote de Propinas"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Boîte à pourboire"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tip Jar"
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Caixinha de Gorjetas"
-          }
-        },
-        "sk": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pokladnička"
           }
         }
       }
@@ -24975,52 +24791,6 @@
         }
       }
     },
-    "You can choose to contribute a small, medium, or large amount, and all proceeds will go towards improving and maintaining the app. Cronica will always remain free and ad-free, so this is purely an optional way for users to support the development of the app.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Du kannst dich entscheiden, einen kleinen, mittleren oder großen Betrag beizutragen, und alle Einnahmen werden zur Verbesserung und Pflege der App verwendet. Cronica wird immer kostenlos und werbefrei bleiben, daher ist dies rein optional und eine Möglichkeit für Benutzer, die Entwicklung der App zu unterstützen."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "You can choose to contribute a small, medium, or large amount, and all proceeds will go towards improving and maintaining the app. Cronica will always remain free and ad-free, so this is purely an optional way for users to support the development of the app."
-          }
-        },
-        "es-MX": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Puede optar por contribuir con una cantidad pequeña, mediana o grande, y todos los ingresos se destinarán a mejorar y mantener la aplicación. Cronica siempre permanecerá libre y sin anuncios, por lo que esta es una forma puramente opcional para que los usuarios apoyen el desarrollo de la aplicación."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vous pouvez choisir de contribuer à hauteur d'un petit, moyen ou grand montant, et tous les bénéfices iront à l'amélioration et à la maintenance de l'application. Cronica restera toujours gratuite et sans publicité, il s'agit donc d'un moyen purement facultatif pour les utilisateurs de soutenir le développement de l'application."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Puoi scegliere di contribuire con un piccolo, medio o grande importo, and tutto verrà utilizzato nel miglioramento e mantenimento dell'applicazione.\nCronica resterà sempre gratis e senza pubblicità, quindi questa è semplicemente una via facoltativa per gli utente per supportare lo sviluppo dell'applicazione."
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Você pode optar por contribuir com uma quantidade pequena, média ou grande, e todos os rendimentos irão para melhorar e manter o aplicativo. O Cronica sempre permanecerá gratuito e livre de anúncios, portanto, esta é uma maneira puramente opcional para os usuários apoiarem o desenvolvimento do aplicativo."
-          }
-        },
-        "sk": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Môžeš si vybrať, či chceš prispieť malou, strednou alebo veľkou sumou, a celý výťažok pôjde na zlepšenie a údržbu aplikácie. Cronica zostane navždy bezplatná a bez reklám, takže ide o čisto dobrovoľný spôsob, ako môžu používatelia podporiť vývoj aplikácie."
-          }
-        }
-      }
-    },
     "Your Data": {
       "localizations": {
         "de": {
@@ -27267,6 +27037,52 @@
           "stringUnit": {
             "state": "translated",
             "value": "SIMKL-Konto-ID konnte nicht geladen werden."
+          }
+        }
+      }
+    },
+    "Anonymous crash reports may be processed by our error monitoring provider. Email support@eggerco.com to request removal.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Anonymous crash reports may be processed by our error monitoring provider. Email support@eggerco.com to request removal."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anonymous crash reports may be processed by our error monitoring provider. Email support@eggerco.com to request removal."
+          }
+        },
+        "es-MX": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Anonymous crash reports may be processed by our error monitoring provider. Email support@eggerco.com to request removal."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Anonymous crash reports may be processed by our error monitoring provider. Email support@eggerco.com to request removal."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Anonymous crash reports may be processed by our error monitoring provider. Email support@eggerco.com to request removal."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Anonymous crash reports may be processed by our error monitoring provider. Email support@eggerco.com to request removal."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anonymné hlásenia o pádoch môže spracovať náš poskytovateľ monitorovania chýb. Na odstránenie napíš na support@eggerco.com."
           }
         }
       }

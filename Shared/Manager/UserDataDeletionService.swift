@@ -73,7 +73,6 @@ enum UserDataDeletionService {
             "allowCalendarSync",
             "syncCalendarMovies",
             "syncCalendarTVShows",
-            "userHasPurchasedTipJar",
             "itemContentListDisplayType",
             "exploreDisplayType",
             "preferCompactUI",

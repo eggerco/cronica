@@ -46,7 +46,6 @@ final class SettingsStore: ObservableObject {
     @AppStorage("syncCalendarMovies") var syncCalendarMovies = true
     @AppStorage("syncCalendarTVShows") var syncCalendarTVShows = true
 #endif
-    @AppStorage("userHasPurchasedTipJar") var hasPurchasedTipJar = false
 #if os(tvOS)
     @AppStorage("itemContentListDisplayType") var listsDisplayType: ItemContentListPreferredDisplayType = .card
 #else

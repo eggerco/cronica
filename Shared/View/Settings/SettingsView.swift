@@ -38,9 +38,6 @@ struct SettingsView: View {
                 settingsNavigationLink(.about, title: String(localized: "About"), icon: "info.circle", color: .black)
                 settingsNavigationLink(.dataManagement, title: String(localized: "Privacy & Data"), icon: "lock.shield", color: .orange)
                 settingsNavigationLink(.feedback, title: String(localized: "Feedback"), icon: "envelope.fill", color: AppThemeColors.steel.color)
-#if !os(visionOS)
-                settingsNavigationLink(.tipJar, title: String(localized: "Tip Jar"), icon: "heart", color: .red)
-#endif
             }
         }
         .navigationTitle("Settings")
@@ -79,9 +76,6 @@ struct SettingsView: View {
                 DataManagementSettingsView()
             }
             .tabItem { Label("Privacy & Data", systemImage: "lock.shield") }
-            
-            TipJarSetting()
-                .tabItem { Label("Tip Jar", systemImage: "heart") }
         }
         .frame(minWidth: 420, idealWidth: 500, minHeight: 320, idealHeight: 320)
         .tabViewStyle(.automatic)
@@ -92,10 +86,6 @@ struct SettingsView: View {
                     NavigationLink("Watchlist", destination: WatchlistSettingsView())
                     NavigationLink("Appearance", destination: AppearanceSetting())
                     NavigationLink("Integrations", destination: IntegrationsSettingsView())
-                }
-                
-                Section {
-                    NavigationLink("Tip Jar", destination: TipJarSetting())
                 }
             }
             .navigationTitle("Settings")

@@ -99,7 +99,6 @@ extension View {
                     DeveloperView()
 #endif
                 case .notifications: NotificationsSettingsView()
-                case .tipJar: TipJarSetting()
                 case .feedback: FeedbackComposerView()
                 case .region: WatchProviderSettings()
                 case .settings: SettingsView()

@@ -56,8 +56,6 @@
 		B81941A62A0833450057DA04 /* AddToListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81941A42A0833450057DA04 /* AddToListRow.swift */; };
 		B81941AB2A0835D40057DA04 /* PosterPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81941AA2A0835D40057DA04 /* PosterPlaceholder.swift */; };
 		B81941AC2A0835D40057DA04 /* PosterPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81941AA2A0835D40057DA04 /* PosterPlaceholder.swift */; };
-		B81941B22A0839A50057DA04 /* TipJarSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = B892EB0B29675582002E028E /* TipJarSetting.swift */; };
-		B81941B32A0839B00057DA04 /* StoreKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B892EB1329675B5E002E028E /* StoreKitManager.swift */; };
 		B81941C22A0861C80057DA04 /* WatchlistButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81941BA2A0861C70057DA04 /* WatchlistButton.swift */; };
 		B81941C32A0861C80057DA04 /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81941BB2A0861C70057DA04 /* FavoriteButton.swift */; };
 		B81941C52A0861C80057DA04 /* CustomListButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81941BD2A0861C70057DA04 /* CustomListButton.swift */; };
@@ -178,10 +176,6 @@
 		B890C57927FC999F006BE5E1 /* HeroImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B890C57827FC999F006BE5E1 /* HeroImage.swift */; };
 		B890C57B27FCB54D006BE5E1 /* TrailerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B890C57A27FCB54D006BE5E1 /* TrailerListView.swift */; };
 		B890C58527FE4442006BE5E1 /* Episode-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B890C58427FE4442006BE5E1 /* Episode-Extension.swift */; };
-		B892EB0A29675265002E028E /* Cronica.storekit in Resources */ = {isa = PBXBuildFile; fileRef = B892EB0929675265002E028E /* Cronica.storekit */; };
-		B892EB0C29675582002E028E /* TipJarSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = B892EB0B29675582002E028E /* TipJarSetting.swift */; };
-		B892EB10296755A3002E028E /* ProductList.plist in Resources */ = {isa = PBXBuildFile; fileRef = B892EB0F296755A2002E028E /* ProductList.plist */; };
-		B892EB1429675B5E002E028E /* StoreKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B892EB1329675B5E002E028E /* StoreKitManager.swift */; };
 		B89429C9297C94CD0029646F /* DetailedPeopleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89429C8297C94CD0029646F /* DetailedPeopleList.swift */; };
 		B89429CC297E076E0029646F /* SupportEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89429CB297E076E0029646F /* SupportEmail.swift */; };
 		B89446BF294FDACA008974BA /* AppThemeColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89446BE294FDACA008974BA /* AppThemeColors.swift */; };
@@ -509,10 +503,6 @@
 		B890C57827FC999F006BE5E1 /* HeroImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroImage.swift; sourceTree = "<group>"; };
 		B890C57A27FCB54D006BE5E1 /* TrailerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailerListView.swift; sourceTree = "<group>"; };
 		B890C58427FE4442006BE5E1 /* Episode-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Episode-Extension.swift"; sourceTree = "<group>"; };
-		B892EB0929675265002E028E /* Cronica.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cronica.storekit; sourceTree = "<group>"; };
-		B892EB0B29675582002E028E /* TipJarSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJarSetting.swift; sourceTree = "<group>"; };
-		B892EB0F296755A2002E028E /* ProductList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ProductList.plist; sourceTree = "<group>"; };
-		B892EB1329675B5E002E028E /* StoreKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKitManager.swift; sourceTree = "<group>"; };
 		B89429C8297C94CD0029646F /* DetailedPeopleList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedPeopleList.swift; sourceTree = "<group>"; };
 		B89429CB297E076E0029646F /* SupportEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportEmail.swift; sourceTree = "<group>"; };
 		B89446BE294FDACA008974BA /* AppThemeColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppThemeColors.swift; sourceTree = "<group>"; };
@@ -735,8 +725,6 @@
 		B8110ED7279245D000844FEB /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				B892EB0F296755A2002E028E /* ProductList.plist */,
-				B892EB0929675265002E028E /* Cronica.storekit */,
 				B8110EDA279245D100844FEB /* Assets.xcassets */,
 				B87B5CD32799AF3600632648 /* Attribution.xcassets */,
 				B8E7651927B738D200D9B731 /* Configuration */,
@@ -1162,7 +1150,6 @@
 				B81DD94029BE226E009F73F3 /* NotificationsSettingsView.swift */,
 				B8A2C15A2B62D1F80033CD33 /* SeasonUpNextSettingsView.swift */,
 				B845132927EA514C00F0D4A4 /* SettingsView.swift */,
-				B892EB0B29675582002E028E /* TipJarSetting.swift */,
 				B8A2C1582B62D0D40033CD33 /* WatchlistSettingsView.swift */,
 				B86AA7FB2A3A4C8C009847FE /* WatchProviderSettings.swift */,
 			);
@@ -1376,7 +1363,6 @@
 				B8B94CEE28EB8B8200EDEC85 /* CronicaTelemetry.swift */,
 				B8EC462E27D7AA99009389FC /* NotificationManager.swift */,
 				C0SENTRYMGR000000000001 /* SentryManager.swift */,
-				B892EB1329675B5E002E028E /* StoreKitManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1644,11 +1630,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B892EB10296755A3002E028E /* ProductList.plist in Resources */,
 				B8F253BE2BC9CBDB003F27E8 /* PrivacyInfo.xcprivacy in Resources */,
 				B87B5CD42799AF3600632648 /* Attribution.xcassets in Resources */,
 				B86670B92B600CAE00CBA595 /* Localizable.xcstrings in Resources */,
-				B892EB0A29675265002E028E /* Cronica.storekit in Resources */,
 				B87B5CCC27999C5700632648 /* content.json in Resources */,
 				B8110EEC279245D100844FEB /* Assets.xcassets in Resources */,
 			);
@@ -1700,7 +1684,6 @@
 				B801070D29F255F3008A4551 /* DefaultListView.swift in Sources */,
 				B8C0215829E0D2B0006E9D82 /* SettingsStore.swift in Sources */,
 				B84403542A673C7A00D0AACF /* UpcomingListView.swift in Sources */,
-				B81941B32A0839B00057DA04 /* StoreKitManager.swift in Sources */,
 				B8B981EF29F433340001CF0B /* CustomListView.swift in Sources */,
 				B81DD92E29BD149D009F73F3 /* WatchlistItem+CoreDataProperties.swift in Sources */,
 				B87D1B222A64971300EB6D14 /* ConfirmationPopupModifier.swift in Sources */,
@@ -1742,7 +1725,6 @@
 				C0SEARCHITEMEXTWATCH0002 /* SearchItemContent-Extension.swift in Sources */,
 				C0ATTRIBUTIONVIEWW00002 /* AttributionView.swift in Sources */,
 				B8C0215B29E0D56C006E9D82 /* ItemContentListPreferredDisplayType.swift in Sources */,
-				B81941B22A0839A50057DA04 /* TipJarSetting.swift in Sources */,
 				B819418E2A0822C30057DA04 /* UpNextEpisode.swift in Sources */,
 				B8FB2A8B2952606A006DAC8E /* AppThemeColors.swift in Sources */,
 				B86DD41A28BAABCC002C8427 /* HeroImage.swift in Sources */,
@@ -1840,7 +1822,6 @@
 				B8779377281E319D00174F32 /* TabBarView.swift in Sources */,
 				C1TABRESEL000000000002 /* TabBarReselectDetector.swift in Sources */,
 				B8105265298F58E100723E94 /* CompanyDetails.swift in Sources */,
-				B892EB1429675B5E002E028E /* StoreKitManager.swift in Sources */,
 				B8ADAF6F282C42B3001D72EF /* SettingsStore.swift in Sources */,
 				B82BE4D9299BF35D005F9990 /* PersistenceController-WatchlistItem.swift in Sources */,
 				B8C781F2287F576100B4C2C2 /* FilmographyListView.swift in Sources */,
@@ -1926,7 +1907,6 @@
 				B8FB2A8229524C37006DAC8E /* WatchlistItemPosterView.swift in Sources */,
 				B8105259298DC2EF00723E94 /* ReleaseDatesResult-Extensions.swift in Sources */,
 				B8FB2A8929524FAD006DAC8E /* WatchlistPosterSection.swift in Sources */,
-				B892EB0C29675582002E028E /* TipJarSetting.swift in Sources */,
 				B890C58527FE4442006BE5E1 /* Episode-Extension.swift in Sources */,
 				B8F6DE5829329AE8005D1A50 /* EndpointDetails.swift in Sources */,
 				B8DA5CC62B0E432200678592 /* UpNextMenuBar.swift in Sources */,
