@@ -55,7 +55,7 @@
 4. Add your TMDb API key (and optionally `SENTRY_DSN`, `SIMKL_CLIENT_ID`) in `Secrets.xcconfig`.
 5. Build the **Cronica (EN-US)** scheme.
 
-For CI, set repository secrets `TMDB_API_KEY` and optionally `SENTRY_DSN`. See [SECURITY.md](SECURITY.md). Optional integrations (SIMKL and others): [docs/INTEGRATIONS.md](docs/INTEGRATIONS.md).
+For CI, set repository secrets `TMDB_API_KEY` and optionally `SENTRY_DSN`. See [SECURITY.md](SECURITY.md). Optional integrations (SIMKL and others): [Docs/INTEGRATIONS.md](Docs/INTEGRATIONS.md).
 
 ## Architecture
 
@@ -79,7 +79,7 @@ Issues and pull requests are welcome.
 
 **Translations** — Edit [`Shared/Localization/Localizable.xcstrings`](Shared/Localization/Localizable.xcstrings) and open a PR, or email completed strings to [support@eggerco.com](mailto:support@eggerco.com).
 
-Before a release, run through [`docs/QA-SMOKE-TEST.md`](docs/QA-SMOKE-TEST.md).
+Before a release, run through [`Docs/QA-SMOKE-TEST.md`](Docs/QA-SMOKE-TEST.md).
 
 ## Security & privacy
 
