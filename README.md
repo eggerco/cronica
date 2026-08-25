@@ -10,7 +10,12 @@
 </p>
 
 <p align="center">
-  <a href="https://apps.apple.com/app/cronica/id1614950275"><img src="https://img.shields.io/badge/App%20Store-Download-0D96F6?style=flat-square&logo=apple&logoColor=white" alt="Download on the App Store" /></a>
+  <a href="https://apps.apple.com/app/cronica/id1614950275">
+    <img src="web/public/resources/img/cronica/AppStoreBadge.svg" alt="Download on the App Store" width="160" />
+  </a>
+</p>
+
+<p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/github/license/eggerco/cronica?style=flat-square" alt="MIT License" /></a>
   <img src="https://img.shields.io/badge/Swift-6-F05138?style=flat-square&logo=swift&logoColor=white" alt="Swift" />
   <img src="https://img.shields.io/badge/platforms-iOS%20%7C%20iPadOS%20%7C%20macOS%20%7C%20watchOS%20%7C%20tvOS%20%7C%20visionOS-lightgrey?style=flat-square" alt="Platforms" />
@@ -33,22 +38,6 @@
 - **iCloud sync** — Core Data + CloudKit keeps your list in sync across devices
 - **Discover** — Explore, search, and browse with TMDb data
 - **Everywhere Apple** — iPhone, iPad, Mac, Apple Watch, Apple TV, and Vision Pro
-
-## Download
-
-| iPhone | iPad | Mac |
-|:---:|:---:|:---:|
-| <img src="Screenshots/iPhone.webp" alt="Cronica on iPhone" width="220" /> | <img src="Screenshots/iPad.webp" alt="Cronica on iPad" width="280" /> | <img src="Screenshots/Mac.webp" alt="Cronica on Mac" width="320" /> |
-
-| Apple Watch | Apple TV | Vision Pro |
-|:---:|:---:|:---:|
-| <img src="Screenshots/Apple%20Watch.webp" alt="Cronica on Apple Watch" width="160" /> | <img src="Screenshots/TV.webp" alt="Cronica on Apple TV" width="320" /> | <img src="Screenshots/Vision.webp" alt="Cronica on Vision Pro" width="280" /> |
-
-<p align="center">
-  <a href="https://apps.apple.com/app/cronica/id1614950275">
-    <img src="https://cronica.eggerco.com/resources/img/cronica/AppStoreBadge.svg" alt="Download on the App Store" width="160" />
-  </a>
-</p>
 
 ## Requirements
 
