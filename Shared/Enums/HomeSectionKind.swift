@@ -11,7 +11,7 @@ enum HomeSectionKind: String, CaseIterable, Codable, Identifiable, Hashable {
     case upcomingWatchlist
     case pins
     case favoriteLists
-    case trending
+    case featured
     case moviesUpcoming
     case moviesNowPlaying
     case moviesPopular
@@ -27,7 +27,7 @@ enum HomeSectionKind: String, CaseIterable, Codable, Identifiable, Hashable {
         case .upcomingWatchlist: String(localized: "Upcoming")
         case .pins: String(localized: "Pins")
         case .favoriteLists: String(localized: "Favorite Lists")
-        case .trending: String(localized: "Trending")
+        case .featured: String(localized: "Featured")
         case .moviesUpcoming: String(localized: "Upcoming Movies")
         case .moviesNowPlaying: String(localized: "Latest Movies")
         case .moviesPopular: String(localized: "Popular Movies")
@@ -43,7 +43,7 @@ enum HomeSectionKind: String, CaseIterable, Codable, Identifiable, Hashable {
         case .upcomingWatchlist: String(localized: "From Your Watchlist")
         case .pins: String(localized: "Pinned Titles")
         case .favoriteLists: String(localized: "Your Favorite Lists")
-        case .trending: String(localized: "Today")
+        case .featured: String(localized: "Popular and trending titles")
         case .moviesUpcoming: String(localized: "Coming Soon To Theaters")
         case .moviesNowPlaying: String(localized: "Recently Released")
         case .moviesPopular: String(localized: "Most Popular Right Now")
@@ -66,13 +66,18 @@ enum HomeSectionKind: String, CaseIterable, Codable, Identifiable, Hashable {
         }
     }
 
+    static func fromPersistedRawValue(_ raw: String) -> HomeSectionKind? {
+        if raw == "trending" { return .featured }
+        return HomeSectionKind(rawValue: raw)
+    }
+
     static var defaultOrder: [HomeSectionKind] {
         [
             .upNext,
             .upcomingWatchlist,
             .pins,
             .favoriteLists,
-            .trending,
+            .featured,
             .moviesUpcoming,
             .moviesNowPlaying,
             .moviesPopular,
@@ -84,6 +89,6 @@ enum HomeSectionKind: String, CaseIterable, Codable, Identifiable, Hashable {
 
     /// Sections enabled by default (matches historic Home before customizer).
     static var defaultVisible: Set<HomeSectionKind> {
-        [.upNext, .upcomingWatchlist, .pins, .favoriteLists, .trending, .moviesUpcoming, .moviesNowPlaying]
+        [.upNext, .upcomingWatchlist, .pins, .favoriteLists, .featured, .moviesUpcoming, .moviesNowPlaying]
     }
 }

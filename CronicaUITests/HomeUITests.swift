@@ -22,15 +22,15 @@ final class HomeUITests: XCTestCase {
         navigator = nil
     }
 
-    func testTrendingSectionShowsMockContent() throws {
+    func testFeaturedSectionShowsMockContent() throws {
         navigator.openHomeTab()
         navigator.assertScreen("Home View")
 
-        XCTAssertTrue(app.staticTexts["Trending"].waitForExistence(timeout: 15))
-        XCTAssertTrue(app.staticTexts["Today"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Featured"].waitForExistence(timeout: 15))
+        XCTAssertTrue(app.staticTexts["Popular and trending titles"].waitForExistence(timeout: 5))
 
-        let trendingList = app.scrollViews["Trending Horizontal List"]
-        XCTAssertTrue(trendingList.waitForExistence(timeout: 10))
-        XCTAssertTrue(trendingList.buttons[UITestFixtures.mockMovieTitle].waitForExistence(timeout: 10))
+        let featuredList = app.scrollViews["Featured Horizontal List"]
+        XCTAssertTrue(featuredList.waitForExistence(timeout: 10))
+        XCTAssertTrue(featuredList.buttons[UITestFixtures.mockMovieTitle].waitForExistence(timeout: 10))
     }
 }

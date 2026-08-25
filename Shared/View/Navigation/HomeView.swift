@@ -52,7 +52,7 @@ struct HomeView: View {
 #endif
         .cronicaLoadingOverlay(!viewModel.isLoaded)
         .overlay {
-            if viewModel.isLoaded && viewModel.trending.isEmpty && viewModel.sectionResults.isEmpty {
+            if viewModel.isLoaded && viewModel.featured.isEmpty && viewModel.sectionResults.isEmpty {
                 ContentUnavailableView {
                     Label("Couldn't Load Home", systemImage: "wifi.exclamationmark")
                 } description: {
@@ -149,12 +149,12 @@ struct HomeView: View {
             PinItemsList(showPopup: $showPopup, popupType: $popupType, shouldReload: $reloadHome)
         case .favoriteLists:
             HorizontalPinnedList(showPopup: $showPopup, popupType: $popupType, shouldReload: $reloadHome)
-        case .trending:
-            HorizontalItemContentListView(items: viewModel.trending,
-                                          title: section.title,
-                                          subtitle: section.subtitle,
-                                          showPopup: $showPopup,
-                                          popupType: $popupType)
+        case .featured:
+            FeaturedHomeSectionView(items: viewModel.featured,
+                                    title: section.title,
+                                    subtitle: section.subtitle,
+                                    showPopup: $showPopup,
+                                    popupType: $popupType)
         case .moviesUpcoming, .moviesNowPlaying, .moviesPopular, .moviesTopRated, .tvPopular, .tvTopRated:
             if let endpoint = section.endpoint {
                 let items = viewModel.sectionResults[endpoint] ?? []

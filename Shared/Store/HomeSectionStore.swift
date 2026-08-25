@@ -66,7 +66,7 @@ final class HomeSectionStore: ObservableObject {
         guard let raw = UserDefaults.standard.array(forKey: "homeSectionOrder") as? [String] else {
             return HomeSectionKind.defaultOrder
         }
-        var parsed = raw.compactMap(HomeSectionKind.init(rawValue:))
+        var parsed = raw.compactMap(HomeSectionKind.fromPersistedRawValue)
         // Append any newly introduced sections the user hasn't seen yet.
         for kind in HomeSectionKind.defaultOrder where !parsed.contains(kind) {
             parsed.append(kind)
@@ -78,6 +78,6 @@ final class HomeSectionStore: ObservableObject {
         guard let raw = UserDefaults.standard.array(forKey: "homeSectionHidden") as? [String] else {
             return Set(HomeSectionKind.allCases.filter { !HomeSectionKind.defaultVisible.contains($0) })
         }
-        return Set(raw.compactMap(HomeSectionKind.init(rawValue:)))
+        return Set(raw.compactMap(HomeSectionKind.fromPersistedRawValue))
     }
 }

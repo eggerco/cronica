@@ -74,28 +74,28 @@ struct AppNavigator {
         )
     }
 
-    func openTrendingItem(named title: String, file: StaticString = #filePath, line: UInt = #line) {
+    func openFeaturedItem(named title: String, file: StaticString = #filePath, line: UInt = #line) {
         openHomeTab()
-        XCTAssertTrue(app.staticTexts["Trending"].waitForExistence(timeout: 15), file: file, line: line)
+        XCTAssertTrue(app.staticTexts["Featured"].waitForExistence(timeout: 15), file: file, line: line)
 
-        let trendingList = app.scrollViews["Trending Horizontal List"]
-        XCTAssertTrue(trendingList.waitForExistence(timeout: 10), file: file, line: line)
+        let featuredList = app.scrollViews["Featured Horizontal List"]
+        XCTAssertTrue(featuredList.waitForExistence(timeout: 10), file: file, line: line)
 
-        let itemButton = trendingList.buttons[title]
+        let itemButton = featuredList.buttons[title]
         if itemButton.waitForExistence(timeout: 5) {
             itemButton.tap()
             return
         }
 
         for _ in 0..<4 {
-            trendingList.swipeLeft()
+            featuredList.swipeLeft()
             if itemButton.waitForExistence(timeout: 1) {
                 itemButton.tap()
                 return
             }
         }
 
-        XCTFail("Could not find trending item \(title)", file: file, line: line)
+        XCTFail("Could not find featured item \(title)", file: file, line: line)
     }
 }
 

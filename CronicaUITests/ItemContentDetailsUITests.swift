@@ -23,7 +23,7 @@ final class ItemContentDetailsUITests: XCTestCase {
     }
 
     func testDetailScreenShowsMockMetadata() throws {
-        navigator.openTrendingItem(named: UITestFixtures.mockMovieTitle)
+        navigator.openFeaturedItem(named: UITestFixtures.mockMovieTitle)
         navigator.assertScreen("Item Content Details View")
 
         let title = app.staticTexts["Item Title"]
@@ -35,7 +35,7 @@ final class ItemContentDetailsUITests: XCTestCase {
     }
 
     func testWatchlistButtonTogglesOnDetailScreen() throws {
-        navigator.openTrendingItem(named: UITestFixtures.mockMovieTitle)
+        navigator.openFeaturedItem(named: UITestFixtures.mockMovieTitle)
         navigator.assertScreen("Item Content Details View")
 
         let watchlistButton = app.buttons["Watchlist Button"]

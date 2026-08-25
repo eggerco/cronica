@@ -12,21 +12,20 @@ import SwiftUI
 @MainActor
 class HomeViewModel: ObservableObject {
     private let service: NetworkService = NetworkService.shared
-    @Published var trending = [ItemContent]()
+    @Published var featured = [ItemContent]()
     /// Remote TMDB rails keyed by endpoint.
     @Published var sectionResults: [Endpoints: [ItemContent]] = [:]
     @Published var isLoaded = false
 
     func load(visibleKinds: [HomeSectionKind]) async {
-        let needsTrending = visibleKinds.contains(.trending)
-        if needsTrending, trending.isEmpty {
+        let needsFeatured = visibleKinds.contains(.featured)
+        if needsFeatured, featured.isEmpty {
             do {
                 let result = try await service.fetchItems(from: "trending/all/day")
-                let filtered = result.filter { $0.itemContentMedia != .person }
-                trending = filtered
+                featured = Self.filterFeaturedItems(result)
             } catch {
                 if Task.isCancelled { return }
-                CronicaTelemetry.shared.handleMessage(error.localizedDescription, for: "HomeViewModel.load.trending")
+                CronicaTelemetry.shared.handleMessage(error.localizedDescription, for: "HomeViewModel.load.featured")
             }
         }
 
@@ -46,7 +45,7 @@ class HomeViewModel: ObservableObject {
         withAnimation {
             isLoaded = false
         }
-        trending.removeAll()
+        featured.removeAll()
         sectionResults.removeAll()
         Task {
             await load(visibleKinds: HomeSectionStore.shared.visibleOrderedSections)
@@ -64,6 +63,13 @@ class HomeViewModel: ObservableObject {
             CronicaTelemetry.shared.handleMessage(error.localizedDescription, for: "HomeViewModel.fetchSection.\(endpoint)")
             return nil
         }
+    }
+
+    private static func filterFeaturedItems(_ items: [ItemContent]) -> [ItemContent] {
+        items
+            .filter { $0.itemContentMedia != .person }
+            .filter { $0.posterPath != nil }
+            .sorted { $0.itemPopularity > $1.itemPopularity }
     }
 }
 #endif

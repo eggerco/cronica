@@ -835,6 +835,13 @@ final class CronicaTests: XCTestCase {
         XCTAssertEqual(stats.watchedLast30Days, 1)
     }
 
+    func testHomeSectionKindMigratesTrendingToFeatured() {
+        XCTAssertEqual(HomeSectionKind.fromPersistedRawValue("trending"), .featured)
+        XCTAssertEqual(HomeSectionKind.fromPersistedRawValue("featured"), .featured)
+        XCTAssertTrue(HomeSectionKind.defaultOrder.contains(.featured))
+        XCTAssertFalse(HomeSectionKind.defaultOrder.contains(where: { $0.rawValue == "trending" }))
+    }
+
     func testTMDBReviewResponseParsing() throws {
         let json = """
         {"id":550,"page":1,"total_pages":1,"total_results":1,"results":[{"author":"Brett Pascoe","author_details":{"name":"Brett Pascoe","username":"SneekyNuts","avatar_path":"/avatar.jpg","rating":9.0},"content":"Great movie.","created_at":"2018-07-05T13:22:41.754Z","id":"5b3e1ba1925141144c007f17","updated_at":"2021-06-23T15:58:10.199Z","url":"https://www.themoviedb.org/review/5b3e1ba1925141144c007f17"}]}
