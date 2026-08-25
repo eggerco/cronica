@@ -8,6 +8,7 @@
 import CoreData
 import SwiftUI
 
+#if !os(watchOS)
 @MainActor
 class HomeViewModel: ObservableObject {
     private let service: NetworkService = NetworkService.shared
@@ -65,7 +66,4 @@ class HomeViewModel: ObservableObject {
         }
     }
 }
-
-/// Theses keywords are used in some NSFW titles, this should be only used
-/// for avoiding displaying such titles in recommendations lists, explore and search.
-let nsfwKeywords = [155477, 230416, 190370, 158254, 159551, 301766]
+#endif

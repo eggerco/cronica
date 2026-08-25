@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C0WATCHPROGRING0000004 /* WatchProgressRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WATCHPROGRING0000001 /* WatchProgressRing.swift */; };
+		C0NSFWKW000000000002 /* NSFWKeywords.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0NSFWKW000000000001 /* NSFWKeywords.swift */; };
+		C0NSFWKW000000000003 /* NSFWKeywords.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0NSFWKW000000000001 /* NSFWKeywords.swift */; };
 		C0WATCHPROGRING0000002 /* WatchProgressRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WATCHPROGRING0000001 /* WatchProgressRing.swift */; };
 		C0HIDEWATCHBTN00000002 /* HideFromWatchlistButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0HIDEWATCHBTN00000001 /* HideFromWatchlistButton.swift */; };
 		C0HIDEWATCHBTN00000003 /* HideFromWatchlistButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0HIDEWATCHBTN00000001 /* HideFromWatchlistButton.swift */; };
@@ -249,7 +252,6 @@
 		B8DD56A2290DE2FE002CAAFD /* CenterHorizontalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DD569F290DE2D7002CAAFD /* CenterHorizontalView.swift */; };
 		B8E3ABF62955361C00CA0945 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8E3ABF52955361C00CA0945 /* CloudKit.framework */; };
 		B8E6D64227B6B106002E7A63 /* Watchlist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B8E6D64027B6B106002E7A63 /* Watchlist.xcdatamodeld */; };
-		B8E6EF5B2A043A61000A3617 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CC953227D05D1000B6757C /* HomeViewModel.swift */; };
 		B8E6EF672A044E5A000A3617 /* ContextMenuPreviewImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E6EF662A044E5A000A3617 /* ContextMenuPreviewImage.swift */; };
 		B8EC462F27D7AA99009389FC /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EC462E27D7AA99009389FC /* NotificationManager.swift */; };
 		B8ED4C3D27B4B9680045C68F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8ED4C3C27B4B9680045C68F /* HomeView.swift */; };
@@ -410,6 +412,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C0NSFWKW000000000001 /* NSFWKeywords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSFWKeywords.swift; sourceTree = "<group>"; };
 		C0WATCHPROGRING0000001 /* WatchProgressRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchProgressRing.swift; sourceTree = "<group>"; };
 		C0HIDEWATCHBTN00000001 /* HideFromWatchlistButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideFromWatchlistButton.swift; sourceTree = "<group>"; };
 		C0WATCHSTATSVIEW00001 /* WatchStatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchStatisticsView.swift; sourceTree = "<group>"; };
@@ -1273,6 +1276,7 @@ C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 			isa = PBXGroup;
 			children = (
 				B86F7AC02A0941D800AA4855 /* EpisodeHelper.swift */,
+				C0NSFWKW000000000001 /* NSFWKeywords.swift */,
 				C0WATCHSTATSHELP00001 /* WatchStatistics.swift */,
 			);
 			path = Helpers;
@@ -1782,6 +1786,8 @@ C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 				E2D5308DD9924C62B277E58C /* HideFromUpNextButton.swift in Sources */,
 				C0HIDEWATCHBTN00000003 /* HideFromWatchlistButton.swift in Sources */,
 				C0WATCHSTATSHELP00003 /* WatchStatistics.swift in Sources */,
+				C0NSFWKW000000000003 /* NSFWKeywords.swift in Sources */,
+				C0WATCHPROGRING0000004 /* WatchProgressRing.swift in Sources */,
 				B8B2F6B52A85DC1600FF0246 /* ItemContentSearchRowView.swift in Sources */,
 				B8FCAE8A2AED8CA200F688FE /* FilmographyListView.swift in Sources */,
 				B806C4E12899BE2800A5330E /* CronicaWatchApp.swift in Sources */,
@@ -1930,6 +1936,7 @@ C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 				D881F08A8D584E998F39E43A /* HideFromUpNextButton.swift in Sources */,
 				C0HIDEWATCHBTN00000002 /* HideFromWatchlistButton.swift in Sources */,
 				C0WATCHSTATSHELP00002 /* WatchStatistics.swift in Sources */,
+				C0NSFWKW000000000002 /* NSFWKeywords.swift in Sources */,
 				C0WATCHSTATSVIEW00002 /* WatchStatisticsView.swift in Sources */,
 				B81941C52A0861C80057DA04 /* CustomListButton.swift in Sources */,
 				B8BF633C29146AF10051915C /* UpcomingWatchlist.swift in Sources */,

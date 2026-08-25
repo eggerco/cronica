@@ -57,7 +57,7 @@ struct WatchlistItemRowView: View {
                     if content.isTvShow, content.watchProgress > 0, !(content.isWatched) {
                         WatchProgressRing(progress: content.watchProgress, size: 20)
                             .padding(4)
-                            .background(.ultraThinMaterial, in: Circle())
+                            .background(progressRingBackground, in: Circle())
                             .padding(4)
                     }
                 }
@@ -165,9 +165,11 @@ private struct DrawingConstants {
 #if os(watchOS)
     static let imageWidth: CGFloat = 80.5
     static let textLimit: Int = 2
+    static let progressRingBackground = AnyShapeStyle(Color.black.opacity(0.35))
 #else
     static let imageWidth: CGFloat = 88
     static let textLimit: Int = 1
+    static let progressRingBackground = AnyShapeStyle(.ultraThinMaterial)
 #endif
     static let imageHeight: CGFloat = 55
     static let imageRadius: CGFloat = 12
