@@ -61,7 +61,6 @@ struct ItemContentPosterView: View {
             if isInWatchlist {
                 WatchlistPosterStatusOverlay(
                     isWatched: isWatched,
-                    isFavorite: isFavorite,
                     compact: settings.isCompactUI
                 )
             }

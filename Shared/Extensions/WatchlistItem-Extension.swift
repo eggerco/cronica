@@ -160,10 +160,13 @@ extension WatchlistItem {
 			return isUpcomingTvShow
 		}
 	}
+	/// Schedule-based released check (does not depend on watched state).
+	/// Watched titles stay visible under the default Released smart filter;
+	/// use the Unwatched filter for the to-watch queue.
 	var isReleasedMovie: Bool {
 		if itemMedia == .movie {
-			if date != nil && itemReleaseDate < Date() && !isWatched { return true }
-			if itemSchedule == .released && !notify && !isWatched {
+			if date != nil && itemReleaseDate < Date() { return true }
+			if itemSchedule == .released && !notify {
 				return true
 			}
 		}
@@ -171,12 +174,11 @@ extension WatchlistItem {
 	}
 	private var isReleasedTvShow: Bool {
 		if itemMedia == .tvShow {
-			if isWatched { return false }
 			if itemSchedule == .ended { return true }
-			if itemSchedule == .released && !isWatched { return true }
-			if itemSchedule == .cancelled && !isWatched { return true }
+			if itemSchedule == .released { return true }
+			if itemSchedule == .cancelled { return true }
 			if let firstAirDate {
-				if firstAirDate < Date() && !isWatched { return true }
+				if firstAirDate < Date() { return true }
 			}
 			if itemSchedule == .renewed && nextSeasonNumber == 1 && nextEpisodeNumber > 1 { return true }
 			if itemSchedule == .renewed && nextSeasonNumber != 1 { return true }

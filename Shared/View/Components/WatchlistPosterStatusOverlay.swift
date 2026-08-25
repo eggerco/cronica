@@ -2,36 +2,25 @@
 //  WatchlistPosterStatusOverlay.swift
 //  Cronica
 //
-//  Compact bottom-trailing status badge for poster/card grids.
+//  Minimal bottom-trailing status indicator for explore/search posters.
 //
 
 import SwiftUI
 
-/// Single primary status indicator for explore/search/watchlist posters.
-/// Avoids stacking watched + watchlist icons in a crowded gradient strip.
+/// Subtle SF Symbol status for posters outside the Watchlist tab.
+/// Prefer a single symbol with a light shadow — no capsules or stacked icons.
 struct WatchlistPosterStatusOverlay: View {
     let isWatched: Bool
-    var isFavorite: Bool = false
     var compact: Bool = false
 
     private var symbolName: String {
-        if isWatched {
-            return "rectangle.badge.checkmark.fill"
-        }
-        if isFavorite {
-            return "heart.fill"
-        }
-        return "square.stack.fill"
+        isWatched ? "checkmark.circle.fill" : "square.stack.fill"
     }
 
     private var accessibilityLabel: String {
-        if isWatched {
-            return String(localized: "Watched")
-        }
-        if isFavorite {
-            return String(localized: "Favorite")
-        }
-        return String(localized: "In Watchlist")
+        isWatched
+            ? String(localized: "Watched")
+            : String(localized: "In Watchlist")
     }
 
     var body: some View {
@@ -40,11 +29,10 @@ struct WatchlistPosterStatusOverlay: View {
             HStack {
                 Spacer(minLength: 0)
                 Image(systemName: symbolName)
-                    .font(compact ? .caption2.weight(.semibold) : .caption.weight(.semibold))
-                    .foregroundStyle(.white)
-                    .padding(.horizontal, compact ? 6 : 8)
-                    .padding(.vertical, compact ? 4 : 6)
-                    .background(.black.opacity(0.55), in: Capsule())
+                    .font(compact ? .caption.weight(.semibold) : .body.weight(.semibold))
+                    .symbolRenderingMode(.palette)
+                    .foregroundStyle(.white, .black.opacity(0.55))
+                    .shadow(color: .black.opacity(0.45), radius: 2, y: 1)
                     .accessibilityLabel(accessibilityLabel)
                     .padding(compact ? 6 : 8)
             }
@@ -58,7 +46,7 @@ struct WatchlistPosterStatusOverlay: View {
         RoundedRectangle(cornerRadius: 12, style: .continuous)
             .fill(.gray.gradient)
             .frame(width: 160, height: 240)
-        WatchlistPosterStatusOverlay(isWatched: true, isFavorite: false)
+        WatchlistPosterStatusOverlay(isWatched: true)
             .frame(width: 160, height: 240)
     }
 }

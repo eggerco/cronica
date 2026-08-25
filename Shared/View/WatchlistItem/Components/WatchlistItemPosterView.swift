@@ -10,7 +10,6 @@ import NukeUI
 
 struct WatchlistItemPosterView: View {
     let content: WatchlistItem
-    @State private var isInWatchlist = true
     @State private var isWatched = false
     @State private var isFavorite = false
     @State private var isPin = false
@@ -56,15 +55,6 @@ struct WatchlistItemPosterView: View {
     
     private var image: some View {
         WatchlistPosterImageView(item: content)
-            .overlay {
-                if isInWatchlist {
-                    WatchlistPosterStatusOverlay(
-                        isWatched: isWatched,
-                        isFavorite: isFavorite,
-                        compact: settings.isCompactUI
-                    )
-                }
-            }
             .frame(width: settings.isCompactUI ? DrawingConstants.compactPosterWidth : DrawingConstants.posterWidth,
                    height: settings.isCompactUI ? DrawingConstants.compactPosterHeight : DrawingConstants.posterHeight)
             .clipShape(RoundedRectangle(cornerRadius: settings.isCompactUI ? DrawingConstants.compactPosterRadius : DrawingConstants.posterRadius,

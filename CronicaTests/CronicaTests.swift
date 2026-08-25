@@ -56,6 +56,52 @@ final class CronicaTests: XCTestCase {
         XCTAssertNil(item.watchedDate)
     }
 
+    /// Marking Watched auto-saves into the watchlist; default Released filter must still show it
+    /// (Unwatched is the to-watch queue). Regression: watched titles vanished from Released.
+    func testWatchedItemStaysVisibleInReleasedFilter() {
+        let item = WatchlistItem(context: managedContext)
+        item.title = "Released Movie"
+        item.id = 4242
+        item.contentID = "4242@0"
+        item.contentType = MediaType.movie.toInt
+        item.schedule = ItemSchedule.released.toInt
+        item.notify = false
+        item.date = Date().addingTimeInterval(-86_400)
+        item.watched = false
+        persistence.save()
+
+        XCTAssertTrue(persistence.isItemSaved(id: "4242@0"))
+        XCTAssertTrue(item.isReleased)
+
+        persistence.updateWatched(for: item)
+
+        XCTAssertTrue(item.isWatched)
+        XCTAssertTrue(persistence.isItemSaved(id: "4242@0"))
+        XCTAssertTrue(item.isReleased, "Released is schedule-based; watched titles must not leave the default filter")
+        XCTAssertFalse(!item.isCurrentlyWatching && !item.isWatched && item.isReleased,
+                       "Unwatched filter should exclude newly watched titles")
+    }
+
+    func testMarkWatchedOnUnsavedTitlePersistsLikeManualAdd() {
+        guard let content = ItemContent.examples.first else {
+            XCTFail("Expected preview content")
+            return
+        }
+        if let existing = persistence.fetch(for: content.itemContentID) {
+            persistence.delete(existing)
+        }
+        XCTAssertFalse(persistence.isItemSaved(id: content.itemContentID))
+
+        // Mirrors ItemContentViewModel.update(.watched): auto-add then mark watched.
+        persistence.save(content)
+        let item = requireItem(for: content.itemContentID)
+        persistence.updateWatched(for: item)
+
+        XCTAssertTrue(persistence.isItemSaved(id: content.itemContentID))
+        XCTAssertTrue(persistence.isMarkedAsWatched(id: content.itemContentID))
+        XCTAssertNotNil(item.watchedDate)
+    }
+
     func testParseSimklWatchedDate() {
         XCTAssertNotNil(SimklImportMapper.parseSimklDate("2024-01-15T12:00:00Z"))
         XCTAssertNotNil(SimklImportMapper.parseSimklDate("2024-01-15"))

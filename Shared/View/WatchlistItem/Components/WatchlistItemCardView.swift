@@ -36,12 +36,6 @@ struct WatchlistItemCardView: View {
                     }
                 }
                 .transition(.opacity)
-                .overlay {
-                    WatchlistPosterStatusOverlay(
-                        isWatched: isWatched,
-                        isFavorite: isFavorite
-                    )
-                }
                 .frame(width: DrawingConstants.imageWidth,
                        height: DrawingConstants.imageHeight)
                 .clipShape(RoundedRectangle(cornerRadius: DrawingConstants.imageRadius,

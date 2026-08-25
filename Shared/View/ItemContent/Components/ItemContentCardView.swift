@@ -44,10 +44,7 @@ struct ItemContentCardView: View {
                 }
                 .overlay {
                     if isInWatchlist {
-                        WatchlistPosterStatusOverlay(
-                            isWatched: isWatched,
-                            isFavorite: isFavorite
-                        )
+                        WatchlistPosterStatusOverlay(isWatched: isWatched)
                     }
                 }
                 .aspectRatio(contentMode: .fill)
