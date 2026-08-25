@@ -787,7 +787,7 @@ extension ItemContentDetails {
         .buttonStyle(.borderedProminent)
 #elseif os(iOS)  || os(visionOS)
         .controlSize(.regular)
-        .buttonStyle(viewModel.isInWatchlist ? .borderedProminent : .bordered)
+        .modifier(BorderedProminentWhen(isProminent: viewModel.isInWatchlist))
         .applyHoverEffect()
 #else
         .buttonStyle(.borderedProminent)
@@ -861,7 +861,7 @@ extension ItemContentDetails {
         .tint(.primary)
 #elseif !os(tvOS)
         .controlSize(.regular)
-        .buttonStyle(viewModel.isWatched ? .borderedProminent : .bordered)
+        .modifier(BorderedProminentWhen(isProminent: viewModel.isWatched))
         .buttonBorderShape(.capsule)
         .tint(viewModel.isWatched ? store.appTheme.color : .primary)
 #endif
@@ -1331,6 +1331,18 @@ extension ItemContentDetails {
         openURL(url)
     }
 #endif
+}
+
+private struct BorderedProminentWhen: ViewModifier {
+    let isProminent: Bool
+
+    func body(content: Content) -> some View {
+        if isProminent {
+            content.buttonStyle(.borderedProminent)
+        } else {
+            content.buttonStyle(.bordered)
+        }
+    }
 }
 
 private struct DrawingConstants {
