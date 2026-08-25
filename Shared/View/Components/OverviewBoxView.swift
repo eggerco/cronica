@@ -49,7 +49,16 @@ struct OverviewBoxView: View {
                 .animation(expandAnimation, value: showFullText)
                 .accessibilityIdentifier("Overview Text")
 #if os(iOS)
-                .background(truncationDetector(for: overview))
+                .background(truncationMeasurer(for: overview))
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    guard isTruncated else { return }
+                    if let expandAnimation {
+                        withAnimation(expandAnimation) { showFullText.toggle() }
+                    } else {
+                        showFullText.toggle()
+                    }
+                }
 #endif
             if isTruncated || showFullText {
                 Button {
@@ -71,6 +80,10 @@ struct OverviewBoxView: View {
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
+        .onChange(of: overview) { _, _ in
+            showFullText = false
+            isTruncated = false
+        }
         .contextMenu { ShareLink(item: overview) }
     }
 
@@ -160,7 +173,7 @@ struct OverviewBoxView: View {
     }
 
 #if os(iOS)
-    private func truncationDetector(for overview: String) -> some View {
+    private func truncationMeasurer(for overview: String) -> some View {
         Text(overview)
             .lineLimit(4)
             .font(.callout)
@@ -168,16 +181,23 @@ struct OverviewBoxView: View {
                 GeometryReader { displayedGeometry in
                     Text(overview)
                         .font(.callout)
+                        .fixedSize(horizontal: false, vertical: true)
                         .background(
                             GeometryReader { fullGeometry in
-                                Color.clear.onAppear {
-                                    isTruncated = fullGeometry.size.height > displayedGeometry.size.height
-                                }
+                                Color.clear
+                                    .onAppear { updateTruncation(displayed: displayedGeometry.size, full: fullGeometry.size) }
+                                    .onChange(of: displayedGeometry.size) { _, newSize in
+                                        updateTruncation(displayed: newSize, full: fullGeometry.size)
+                                    }
                             }
                         )
                 }
             )
             .hidden()
+    }
+
+    private func updateTruncation(displayed: CGSize, full: CGSize) {
+        isTruncated = full.height > displayed.height + 1
     }
 #endif
 }

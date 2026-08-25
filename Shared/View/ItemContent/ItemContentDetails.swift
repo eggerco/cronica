@@ -209,13 +209,11 @@ struct ItemContentDetails: View {
                     .foregroundColor(.secondary)
                     .fontDesign(.rounded)
                     .padding(.horizontal, DrawingConstants.contentHorizontalInset)
-            } else if let info = viewModel.content?.itemQuickInfo, !info.isEmpty {
-                Text(info)
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-                    .fontDesign(.rounded)
-                    .padding(.horizontal, DrawingConstants.contentHorizontalInset)
             }
+
+            watchedDateCaption
+                .frame(maxWidth: .infinity, alignment: .center)
+                .padding(.horizontal, DrawingConstants.contentHorizontalInset)
             
             VStack(spacing: 12) {
                 HStack(spacing: 12) {
@@ -738,15 +736,8 @@ extension ItemContentDetails {
     }
 
     private var detailMetadataSubtitle: String? {
-        var parts: [String] = []
-        if let info = viewModel.content?.itemQuickInfo, !info.isEmpty {
-            parts.append(info)
-        }
-        if viewModel.isWatched, let watchedDateLabel = viewModel.watchedDateLabel {
-            parts.append("\(String(localized: "Watched")) \(watchedDateLabel)")
-        }
-        guard !parts.isEmpty else { return nil }
-        return parts.joined(separator: " • ")
+        guard let info = viewModel.content?.itemQuickInfo, !info.isEmpty else { return nil }
+        return info
     }
 
     private var watchlistButton: some View {

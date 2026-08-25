@@ -103,18 +103,9 @@ struct HomeView: View {
                         .labelStyle(.iconOnly)
                 }
             }
-            ToolbarItem {
-                NavigationLink(value: SettingsScreens.homeCustomizer) {
-                    Label("Customize Home", systemImage: "slider.horizontal.3")
-                }
-            }
 #elseif os(iOS) || os(visionOS)
             ToolbarItem(placement: .navigationBarTrailing) {
                 HStack {
-                    NavigationLink(value: SettingsScreens.homeCustomizer) {
-                        Image(systemName: "slider.horizontal.3")
-                            .accessibilityLabel("Customize Home")
-                    }
                     NavigationLink(value: Screens.notifications) {
                         Image(systemName: hasNotifications ? "bell.badge.fill" : "bell")
                             .accessibilityLabel("Notifications")
