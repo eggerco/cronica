@@ -278,6 +278,8 @@
 		C0LIBAUTH00000000002 /* TMDBAccountAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0LIBAUTH00000000001 /* TMDBAccountAuthService.swift */; };
 		C0LIBTMDB00000000002 /* TMDBAccountImportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0LIBTMDB00000000001 /* TMDBAccountImportService.swift */; };
 		C0LIBVIEWTM000000002 /* TMDBAccountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0LIBVIEWTM000000001 /* TMDBAccountSettingsView.swift */; };
+		C0TMDBSYNC00000000002 /* TMDBSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0TMDBSYNC00000000001 /* TMDBSyncService.swift */; };
+		C0TMDBPUSH00000000002 /* TMDBPushService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0TMDBPUSH00000000001 /* TMDBPushService.swift */; };
 		C0SIMKLKNOWN000000003 /* SimklKnownItemsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLKNOWN000000001 /* SimklKnownItemsStore.swift */; };
 		C0WLBACKUP000000000002 /* WatchlistItemBackup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WLBACKUP000000000001 /* WatchlistItemBackup.swift */; };
 		C0WLBACKUP000000000003 /* WatchlistItemBackup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WLBACKUP000000000001 /* WatchlistItemBackup.swift */; };
@@ -593,6 +595,8 @@
 		C0LIBAUTH00000000001 /* TMDBAccountAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAccountAuthService.swift; sourceTree = "<group>"; };
 		C0LIBTMDB00000000001 /* TMDBAccountImportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAccountImportService.swift; sourceTree = "<group>"; };
 		C0LIBVIEWTM000000001 /* TMDBAccountSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAccountSettingsView.swift; sourceTree = "<group>"; };
+		C0TMDBSYNC00000000001 /* TMDBSyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBSyncService.swift; sourceTree = "<group>"; };
+		C0TMDBPUSH00000000001 /* TMDBPushService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBPushService.swift; sourceTree = "<group>"; };
 		C0WLBACKUP000000000001 /* WatchlistItemBackup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistItemBackup.swift; sourceTree = "<group>"; };
 		C0RELCV000000000001 /* ReleaseCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseCalendarView.swift; sourceTree = "<group>"; };
 		C0RELCROUTE000000001 /* ReleaseCalendarRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseCalendarRoute.swift; sourceTree = "<group>"; };
@@ -1328,6 +1332,8 @@
 				C0LIBAPI000000000001 /* TMDBAccountAPIClient.swift */,
 				C0LIBAUTH00000000001 /* TMDBAccountAuthService.swift */,
 				C0LIBTMDB00000000001 /* TMDBAccountImportService.swift */,
+				C0TMDBSYNC00000000001 /* TMDBSyncService.swift */,
+				C0TMDBPUSH00000000001 /* TMDBPushService.swift */,
 			);
 			path = LibraryImport;
 			sourceTree = "<group>";
@@ -1890,6 +1896,8 @@
 				C0LIBAUTH00000000002 /* TMDBAccountAuthService.swift in Sources */,
 				C0LIBTMDB00000000002 /* TMDBAccountImportService.swift in Sources */,
 				C0LIBVIEWTM000000002 /* TMDBAccountSettingsView.swift in Sources */,
+				C0TMDBSYNC00000000002 /* TMDBSyncService.swift in Sources */,
+				C0TMDBPUSH00000000002 /* TMDBPushService.swift in Sources */,
 				C0WLBACKUP000000000002 /* WatchlistItemBackup.swift in Sources */,
 				C0DATAMGMT000000000002 /* DataManagementSettingsView.swift in Sources */,
 				B883A1E32AEF1DB800793EE2 /* SearchItemContentContextMenu.swift in Sources */,

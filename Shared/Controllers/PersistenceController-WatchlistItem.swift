@@ -59,6 +59,7 @@ extension PersistenceController {
                 let imdb = saved.imdbID
                 Task { @MainActor in
                     SimklPushService.shared.enqueueAdd(tmdb: tmdb, media: media, status: .plantowatch, imdb: imdb)
+                    TMDBPushService.shared.enqueueWatchlist(tmdb: tmdb, media: media, onList: true)
                 }
             }
 #endif
@@ -170,6 +171,7 @@ extension PersistenceController {
         let imdb = content.imdbID
         Task { @MainActor in
             SimklPushService.shared.enqueueRemove(tmdb: tmdb, media: media, imdb: imdb)
+            TMDBPushService.shared.enqueueWatchlist(tmdb: tmdb, media: media, onList: false)
         }
 #endif
         let notification = NotificationManager.shared
@@ -205,6 +207,7 @@ extension PersistenceController {
         Task { @MainActor in
             if watched {
                 SimklPushService.shared.enqueueWatched(tmdb: tmdb, media: media, imdb: imdb)
+                TMDBPushService.shared.enqueueWatched(tmdb: tmdb, media: media)
             } else if watching {
                 SimklPushService.shared.enqueueAdd(tmdb: tmdb, media: media, status: .watching, imdb: imdb)
             }
@@ -225,6 +228,14 @@ extension PersistenceController {
     func updateFavorite(for item: WatchlistItem) {
         item.favorite.toggle()
         save()
+#if !os(watchOS)
+        let tmdb = item.itemId
+        let media = item.itemMedia
+        let isFavorite = item.favorite
+        Task { @MainActor in
+            TMDBPushService.shared.enqueueFavorite(tmdb: tmdb, media: media, isFavorite: isFavorite)
+        }
+#endif
     }
     
     func updatePin(for item: WatchlistItem) {
@@ -275,6 +286,7 @@ extension PersistenceController {
         let imdb = item.imdbID
         Task { @MainActor in
             SimklPushService.shared.enqueueRating(tmdb: tmdb, media: media, cronicaRating: rating, imdb: imdb)
+            TMDBPushService.shared.enqueueRating(tmdb: tmdb, media: media, cronicaRating: rating)
         }
 #endif
     }

@@ -9,8 +9,8 @@ import CronicaCore
 struct TMDBAccountSettingsView: View {
     @StateObject private var settings = SettingsStore.shared
     @State private var isConnecting = false
-    @State private var isImporting = false
-    @State private var importTask: Task<Void, Never>?
+    @State private var isSyncing = false
+    @State private var syncTask: Task<Void, Never>?
     @State private var errorMessage: String?
     @State private var summary: LibraryImportSummary?
     @State private var progressPhase = ""
@@ -23,7 +23,7 @@ struct TMDBAccountSettingsView: View {
     var body: some View {
         Form {
             Section {
-                Text("Connect your TMDB account to import your watchlist, ratings, and favorites into Cronica. Cronica already uses TMDB for catalog data; this only imports your personal lists.")
+                Text("Connect an optional TMDB account to sync your watchlist, ratings, and favorites with Cronica. Cronica already uses TMDB for catalog data; CloudKit still syncs your Apple devices.")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             }
@@ -40,7 +40,7 @@ struct TMDBAccountSettingsView: View {
             }
 
             if let summary {
-                Section("Last Import") {
+                Section("Last Sync") {
                     LabeledContent("Added", value: "\(summary.inserted)")
                     LabeledContent("Updated", value: "\(summary.updated)")
                     LabeledContent("Skipped", value: "\(summary.skipped)")
@@ -49,13 +49,14 @@ struct TMDBAccountSettingsView: View {
             }
 
             Section("About") {
-                Text("Phase 1 is import-only. Cronica does not push watches back to TMDB or remove local titles when they leave your TMDB lists.")
+                Text("TMDB has no activity feed or watched-history API. Sync re-downloads your account lists. Titles removed on TMDB stay in Cronica. Live scrobbling is not available.")
                     .font(.caption)
                     .foregroundStyle(.secondary)
                 Link("TMDB Website", destination: URL(string: "https://www.themoviedb.org")!)
+                Link("TMDB API Terms", destination: URL(string: "https://www.themoviedb.org/documentation/api/terms-of-use")!)
             }
         }
-        .navigationTitle("TMDB Account")
+        .navigationTitle("TMDB")
 #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
 #endif
@@ -71,16 +72,16 @@ struct TMDBAccountSettingsView: View {
             Text(errorMessage ?? "")
         }
         .overlay {
-            if isImporting {
+            if isSyncing {
                 ProgressView {
                     VStack(spacing: 8) {
-                        Text(progressPhase.isEmpty ? String(localized: "Importing…") : progressPhase)
+                        Text(progressPhase.isEmpty ? String(localized: "Syncing…") : progressPhase)
                         if progressTotal > 0 {
                             Text("\(progressProcessed) / \(progressTotal)")
                                 .font(.caption)
                                 .foregroundStyle(.secondary)
                         }
-                        Button("Cancel") { importTask?.cancel() }
+                        Button("Cancel") { syncTask?.cancel() }
                             .buttonStyle(.bordered)
                     }
                 }
@@ -91,7 +92,7 @@ struct TMDBAccountSettingsView: View {
         .onAppear {
             settings.isUserConnectedWithTMDb = TMDBSessionStore.hasSession
         }
-        .onDisappear { importTask?.cancel() }
+        .onDisappear { syncTask?.cancel() }
     }
 
     @ViewBuilder
@@ -126,25 +127,33 @@ struct TMDBAccountSettingsView: View {
                 LabeledContent("Account", value: settings.tmdbAccountName)
             }
             if let date = settings.tmdbAccountLastImportDate {
-                LabeledContent("Last import", value: date.formatted(date: .abbreviated, time: .shortened))
+                LabeledContent("Last sync", value: date.formatted(date: .abbreviated, time: .shortened))
             }
             Button {
-                startImport()
+                startSync()
             } label: {
-                Text("Import Watchlist & Ratings")
+                Text("Sync Now")
             }
-            .disabled(isImporting)
+            .disabled(isSyncing)
         } footer: {
-            Text("Imports TMDB watchlist, ratings, and favorites. Existing Cronica titles are updated; nothing is deleted.")
+            Text("Downloads your TMDB watchlist, ratings, and favorites. Existing Cronica titles are updated; nothing is deleted.")
         }
+
+#if !os(tvOS)
+        Section {
+            Toggle("Push changes to TMDB", isOn: $settings.tmdbPushEnabled)
+        } footer: {
+            Text("When enabled, watchlist, favorites, and ratings in Cronica are queued and sent to TMDB. Marking watched removes the title from your TMDB watchlist (TMDB has no watched-history API). Off by default.")
+        }
+#endif
 
         Section {
             Button("Disconnect", role: .destructive) {
-                importTask?.cancel()
+                syncTask?.cancel()
                 TMDBAccountAuthService.shared.disconnect()
                 summary = nil
             }
-            .disabled(isImporting)
+            .disabled(isSyncing)
         }
     }
 
@@ -154,29 +163,32 @@ struct TMDBAccountSettingsView: View {
         defer { isConnecting = false }
         do {
             try await TMDBAccountAuthService.shared.signIn()
-            startImport()
+            startSync()
         } catch {
             errorMessage = error.localizedDescription
         }
     }
 #endif
 
-    private func startImport() {
-        importTask?.cancel()
-        isImporting = true
+    private func startSync() {
+        syncTask?.cancel()
+        isSyncing = true
         progressPhase = ""
         progressProcessed = 0
         progressTotal = 0
-        importTask = Task {
+        syncTask = Task {
             defer {
-                isImporting = false
-                importTask = nil
+                isSyncing = false
+                syncTask = nil
             }
             do {
-                summary = try await TMDBAccountImportService.importLibrary { value in
+                summary = try await TMDBSyncService.syncNow { value in
                     progressPhase = value.phase
                     progressProcessed = value.processed
                     progressTotal = value.total
+                }
+                if settings.tmdbPushEnabled {
+                    await TMDBPushService.shared.flush()
                 }
             } catch is CancellationError {
                 // ignored

@@ -114,6 +114,11 @@ enum LibraryImportService {
         return Int64(max(0, min(5, Int((clamped + 1) / 2))))
     }
 
+    /// Cronica 0–5 stars → TMDB 0–10 (half-star friendly even integers).
+    static func tenPointRating(fromCronica rating: Int) -> Double {
+        Double(max(0, min(10, rating * 2)))
+    }
+
     // MARK: - Resolve
 
     private static func resolve(_ row: LibraryImportRow) async throws -> (Int, MediaType)? {

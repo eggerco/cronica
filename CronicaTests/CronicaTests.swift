@@ -549,6 +549,64 @@ final class CronicaTests: XCTestCase {
         XCTAssertEqual(LibraryImportService.cronicaRating(fromTenPoint: 0), 0)
     }
 
+    func testLibraryImportCronicaRatingMapsToTenPoint() {
+        XCTAssertEqual(LibraryImportService.tenPointRating(fromCronica: 5), 10)
+        XCTAssertEqual(LibraryImportService.tenPointRating(fromCronica: 1), 2)
+        XCTAssertEqual(LibraryImportService.tenPointRating(fromCronica: 0), 0)
+        XCTAssertEqual(
+            LibraryImportService.cronicaRating(fromTenPoint: LibraryImportService.tenPointRating(fromCronica: 4)),
+            4
+        )
+    }
+
+    func testTMDBSessionStoreRoundTripAndClear() throws {
+        defer { TMDBSessionStore.delete() }
+        TMDBSessionStore.delete()
+        XCTAssertFalse(TMDBSessionStore.hasSession)
+        do {
+            try TMDBSessionStore.saveSessionID("unit-test-tmdb-session")
+        } catch {
+            throw XCTSkip("Keychain unavailable in this test environment: \(error.localizedDescription)")
+        }
+        TMDBSessionStore.saveAccountID(42)
+        XCTAssertEqual(TMDBSessionStore.loadSessionID(), "unit-test-tmdb-session")
+        XCTAssertEqual(TMDBSessionStore.loadAccountID(), 42)
+        XCTAssertTrue(TMDBSessionStore.hasSession)
+        TMDBSessionStore.delete()
+        XCTAssertNil(TMDBSessionStore.loadSessionID())
+        XCTAssertEqual(TMDBSessionStore.loadAccountID(), 0)
+        XCTAssertFalse(TMDBSessionStore.hasSession)
+    }
+
+    func testTMDBForegroundThrottleMatchesSimklInterval() {
+        let now: TimeInterval = 1_000_000
+        XCTAssertFalse(TMDBSyncService.shouldSkipForegroundCheck(lastCheck: 0, now: now))
+        XCTAssertTrue(
+            TMDBSyncService.shouldSkipForegroundCheck(
+                lastCheck: now - 60,
+                now: now
+            )
+        )
+        XCTAssertFalse(
+            TMDBSyncService.shouldSkipForegroundCheck(
+                lastCheck: now - TMDBSyncService.foregroundThrottleInterval - 1,
+                now: now
+            )
+        )
+    }
+
+    func testTMDBPushOperationRoundTrip() throws {
+        let ops: [TMDBPushService.Operation] = [
+            .watchlist(tmdb: 680, media: 0, onList: true),
+            .favorite(tmdb: 1396, media: 1, isFavorite: true),
+            .rating(tmdb: 550, media: 0, value: 8),
+            .removeRating(tmdb: 550, media: 0)
+        ]
+        let data = try JSONEncoder().encode(ops)
+        let decoded = try JSONDecoder().decode([TMDBPushService.Operation].self, from: data)
+        XCTAssertEqual(decoded, ops)
+    }
+
     private enum SelfHelper {
         static func makeTVContent(id: Int, episodeNumber: Int, seasonNumber: Int, airDate: Date) -> ItemContent {
             let airDateString = DatesManager.dateFormatter.string(from: airDate)

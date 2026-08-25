@@ -38,8 +38,8 @@ enum UserDataDeletionService {
         SimklKnownItemsStore.clear()
 #if !os(watchOS)
         SimklPushService.shared.clearQueue()
-        // TMDB account session import is iOS-only.
         TMDBSessionStore.delete()
+        TMDBPushService.shared.clearQueue()
 #endif
 
         resetUserDefaults()
@@ -83,6 +83,9 @@ enum UserDataDeletionService {
             "tmdbAccountLastImportTimestamp",
             "isSimklConnected",
             "tmdbAccountID",
+            "tmdbPushEnabled",
+            "tmdbLastSyncCheck",
+            "tmdbPushQueue",
             "simklLastImportTimestamp",
             "simklActivitiesAll",
             "simklRemovedMovies",
@@ -185,5 +188,7 @@ enum UserDataDeletionService {
         settings.isUserConnectedWithTMDb = false
         settings.tmdbAccountName = ""
         settings.tmdbAccountLastImportDate = nil
+        settings.tmdbPushEnabled = false
+        settings.markTMDBSyncChecked(Date(timeIntervalSince1970: 0))
     }
 }

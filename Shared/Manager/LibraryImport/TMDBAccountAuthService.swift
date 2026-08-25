@@ -29,11 +29,20 @@ final class TMDBAccountAuthService: NSObject {
     var isConnected: Bool { TMDBSessionStore.hasSession }
 
     func disconnect() {
+        let sessionID = TMDBSessionStore.loadSessionID()
         TMDBSessionStore.delete()
+        TMDBPushService.shared.clearQueue()
         let settings = SettingsStore.shared
         settings.isUserConnectedWithTMDb = false
         settings.tmdbAccountName = ""
         settings.tmdbAccountLastImportDate = nil
+        settings.tmdbPushEnabled = false
+        settings.markTMDBSyncChecked(Date(timeIntervalSince1970: 0))
+        if let sessionID {
+            Task {
+                try? await TMDBAccountAPIClient.shared.deleteSession(sessionID: sessionID)
+            }
+        }
     }
 
 #if os(iOS) || os(macOS) || os(visionOS)
