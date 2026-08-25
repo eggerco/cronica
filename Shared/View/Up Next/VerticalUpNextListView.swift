@@ -12,6 +12,7 @@ struct VerticalUpNextListView: View {
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \WatchlistItem.title, ascending: true)],
         predicate: NSCompoundPredicate(type: .and, subpredicates: [ NSPredicate(format: "displayOnUpNext == %d", true),
+                                                                    NSPredicate(format: "hideFromUpNext == %d", false),
                                                                     NSPredicate(format: "isArchive == %d", false),
                                                                     NSPredicate(format: "watched == %d", false)]),
         animation: .default

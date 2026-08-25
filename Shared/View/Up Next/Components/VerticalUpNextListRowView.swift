@@ -67,6 +67,12 @@ struct VerticalUpNextListRowView: View {
             Button("Show Details") {
                 selectedEpisode = item
             }
+            Button("Skip this episode") {
+                Task { await viewModel.skipEpisode(for: item) }
+            }
+            Button("Hide from Up Next", systemImage: "eye.slash") {
+                Task { await viewModel.hideFromUpNext(item) }
+            }
         }
         .confirmationDialog("Confirm Watched Episode",
                             isPresented: $askConfirmation, titleVisibility: .visible) {

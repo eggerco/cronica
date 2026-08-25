@@ -21,6 +21,8 @@ struct ItemContentContextMenu: ViewModifier {
 	@Binding var popupType: ActionPopupItems?
 	@StateObject private var settings = SettingsStore.shared
     @State private var showRemoveConfirmation = false
+    @State private var isNotificationsMuted = false
+    @State private var isHiddenFromUpNext = false
 	func body(content: Content) -> some View {
 #if !os(watchOS)
 		return content
@@ -44,6 +46,10 @@ struct ItemContentContextMenu: ViewModifier {
 					} label: {
 						Label("Review", systemImage: "note.text")
 					}
+                    if item.itemContentMedia == .tvShow {
+                        HideFromUpNextButton(id: item.itemContentID, isHidden: $isHiddenFromUpNext)
+                    }
+                    MuteNotificationsButton(id: item.itemContentID, isMuted: $isNotificationsMuted)
 #endif
 				}
 				Divider()
@@ -60,6 +66,10 @@ struct ItemContentContextMenu: ViewModifier {
                 Button("Confirm", action: remove)
             } message: {
                 Text("Remove \(item.itemTitle) from your Watchlist?")
+            }
+            .onAppear {
+                isNotificationsMuted = context.areNotificationsMuted(id: item.itemContentID)
+                isHiddenFromUpNext = context.isHiddenFromUpNext(id: item.itemContentID)
             }
 #if !os(tvOS)
 			.swipeActions(edge: .leading, allowsFullSwipe: settings.allowFullSwipe) {

@@ -61,6 +61,18 @@ class UpNextViewModel: ObservableObject {
         await handleWatched(item)
     }
 
+    func hideFromUpNext(_ content: UpNextEpisode) async {
+        guard let show = persistence.fetch(for: "\(content.showID)@\(MediaType.tvShow.toInt)") else {
+            return
+        }
+        persistence.updateHideFromUpNext(for: show, hidden: true)
+        await MainActor.run {
+            withAnimation(.easeInOut) {
+                self.episodes.removeAll(where: { $0.showID == content.showID })
+            }
+        }
+    }
+
     func handleWatched(_ content: UpNextEpisode?) async {
         guard let content else { return }
         await MainActor.run {

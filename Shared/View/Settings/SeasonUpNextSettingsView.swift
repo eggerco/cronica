@@ -9,6 +9,11 @@ import SwiftUI
 
 struct SeasonUpNextSettingsView: View {
     @StateObject private var store = SettingsStore.shared
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \WatchlistItem.title, ascending: true)],
+        predicate: NSPredicate(format: "hideFromUpNext == %d", true),
+        animation: .default
+    ) private var hiddenFromUpNext: FetchedResults<WatchlistItem>
     var body: some View {
         Form {
             Section("Behavior") {
@@ -31,6 +36,27 @@ struct SeasonUpNextSettingsView: View {
                 Toggle(isOn: $store.hideEpisodesThumbnails) {
                     Text("Hide Thumbnails from Unwatched Episodes")
                     Text("To avoid potential spoilers, you can hide thumbnails from unwatched episodes.")
+                }
+            }
+
+            if !hiddenFromUpNext.isEmpty {
+                Section {
+                    ForEach(hiddenFromUpNext) { item in
+                        HStack {
+                            Text(item.itemTitle)
+                            Spacer()
+                            Button("Show in Up Next") {
+                                PersistenceController.shared.updateHideFromUpNext(for: item, hidden: false)
+                            }
+#if os(macOS)
+                            .buttonStyle(.link)
+#endif
+                        }
+                    }
+                } header: {
+                    Text("Hidden from Up Next")
+                } footer: {
+                    Text("These series stay off Up Next until you show them again.")
                 }
             }
             

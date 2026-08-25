@@ -62,6 +62,11 @@
 		B81941C62A0861C80057DA04 /* PinButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81941BE2A0861C70057DA04 /* PinButton.swift */; };
 		B81941C72A0861C80057DA04 /* WatchedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81941BF2A0861C80057DA04 /* WatchedButton.swift */; };
 		B81941C82A0861C80057DA04 /* ArchiveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81941C02A0861C80057DA04 /* ArchiveButton.swift */; };
+		1053847DAC5346CBA1498E0C /* MuteNotificationsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2DA843FC344EF2B8F8D0A2 /* MuteNotificationsButton.swift */; };
+		8E52BB2210E84E05A27D0D62 /* MuteNotificationsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2DA843FC344EF2B8F8D0A2 /* MuteNotificationsButton.swift */; };
+		D881F08A8D584E998F39E43A /* HideFromUpNextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29764BB1EA6843FEBC04BC32 /* HideFromUpNextButton.swift */; };
+		E2D5308DD9924C62B277E58C /* HideFromUpNextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29764BB1EA6843FEBC04BC32 /* HideFromUpNextButton.swift */; };
+		C9A3356771B9412783A78C42 /* WhatsNewYearListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACFB154E98E46D29714A42A /* WhatsNewYearListView.swift */; };
 		B81941C92A0861C80057DA04 /* WatchEpisodeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81941C12A0861C80057DA04 /* WatchEpisodeButton.swift */; };
 		B81941CA2A0861D70057DA04 /* WatchedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81941BF2A0861C80057DA04 /* WatchedButton.swift */; };
 		B81941CB2A0861D70057DA04 /* PinButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81941BE2A0861C70057DA04 /* PinButton.swift */; };
@@ -433,6 +438,9 @@
 		B81941BE2A0861C70057DA04 /* PinButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinButton.swift; sourceTree = "<group>"; };
 		B81941BF2A0861C80057DA04 /* WatchedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchedButton.swift; sourceTree = "<group>"; };
 		B81941C02A0861C80057DA04 /* ArchiveButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArchiveButton.swift; sourceTree = "<group>"; };
+		3A2DA843FC344EF2B8F8D0A2 /* MuteNotificationsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuteNotificationsButton.swift; sourceTree = "<group>"; };
+		29764BB1EA6843FEBC04BC32 /* HideFromUpNextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideFromUpNextButton.swift; sourceTree = "<group>"; };
+		1ACFB154E98E46D29714A42A /* WhatsNewYearListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewYearListView.swift; sourceTree = "<group>"; };
 		B81941C12A0861C80057DA04 /* WatchEpisodeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchEpisodeButton.swift; sourceTree = "<group>"; };
 		B81DD92429BD149D009F73F3 /* WatchlistItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WatchlistItem+CoreDataClass.swift"; sourceTree = "<group>"; };
 		B81DD92529BD149D009F73F3 /* WatchlistItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WatchlistItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -562,6 +570,7 @@
 		B8E3ABF72955362A00CA0945 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS16.1.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		B8E6D64127B6B106002E7A63 /* Watchlist.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Watchlist.xcdatamodel; sourceTree = "<group>"; };
 		5EDAFB5B97814CCAA33BAF20 /* Watchlist 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Watchlist 2.xcdatamodel"; sourceTree = "<group>"; };
+		4D1CBB5EC636413B89C4775F /* Watchlist 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Watchlist 3.xcdatamodel"; sourceTree = "<group>"; };
 		B8E6EF662A044E5A000A3617 /* ContextMenuPreviewImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMenuPreviewImage.swift; sourceTree = "<group>"; };
 		B8EC462E27D7AA99009389FC /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		B8ED4C3C27B4B9680045C68F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -843,6 +852,8 @@
 			isa = PBXGroup;
 			children = (
 				B81941C02A0861C80057DA04 /* ArchiveButton.swift */,
+				29764BB1EA6843FEBC04BC32 /* HideFromUpNextButton.swift */,
+				3A2DA843FC344EF2B8F8D0A2 /* MuteNotificationsButton.swift */,
 				B81941BD2A0861C70057DA04 /* CustomListButton.swift */,
 				B81941BB2A0861C70057DA04 /* FavoriteButton.swift */,
 				B81941BE2A0861C70057DA04 /* PinButton.swift */,
@@ -1097,6 +1108,7 @@
 				B84043CB289B294600D5CEBF /* SearchItem.swift */,
 				B80B4DA9284537EF008BA43C /* SearchItemView.swift */,
 				B8B2F6B62A85E5E700FF0246 /* SearchContentPosterView.swift */,
+				1ACFB154E98E46D29714A42A /* WhatsNewYearListView.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -1724,6 +1736,8 @@
 				B84043B8289B18AA00D5CEBF /* WatchlistItem-Extension.swift in Sources */,
 				B84043BB289B18BF00D5CEBF /* NotificationManager.swift in Sources */,
 				B81941CA2A0861D70057DA04 /* WatchedButton.swift in Sources */,
+				8E52BB2210E84E05A27D0D62 /* MuteNotificationsButton.swift in Sources */,
+				E2D5308DD9924C62B277E58C /* HideFromUpNextButton.swift in Sources */,
 				B8B2F6B52A85DC1600FF0246 /* ItemContentSearchRowView.swift in Sources */,
 				B8FCAE8A2AED8CA200F688FE /* FilmographyListView.swift in Sources */,
 				B806C4E12899BE2800A5330E /* CronicaWatchApp.swift in Sources */,
@@ -1794,6 +1808,7 @@
 				C0SENTRYMGR000000000002 /* SentryManager.swift in Sources */,
 				B8389ED228AB46E3003025BC /* WatchlistSearchScope.swift in Sources */,
 				B8B2F6B72A85E5E700FF0246 /* SearchContentPosterView.swift in Sources */,
+				C9A3356771B9412783A78C42 /* WhatsNewYearListView.swift in Sources */,
 				B86AA7FC2A3A4C8C009847FE /* WatchProviderSettings.swift in Sources */,
 				B87D1B242A65CF6000EB6D14 /* UpNextViewModel.swift in Sources */,
 				B8110EEA279245D100844FEB /* ContentView.swift in Sources */,
@@ -1868,6 +1883,8 @@
 				B82BE4FB29A188D8005F9990 /* EditCustomList.swift in Sources */,
 				B8B2F6A32A85D34000FF0246 /* KeywordSectionView.swift in Sources */,
 				B81941C72A0861C80057DA04 /* WatchedButton.swift in Sources */,
+				1053847DAC5346CBA1498E0C /* MuteNotificationsButton.swift in Sources */,
+				D881F08A8D584E998F39E43A /* HideFromUpNextButton.swift in Sources */,
 				B81941C52A0861C80057DA04 /* CustomListButton.swift in Sources */,
 				B8BF633C29146AF10051915C /* UpcomingWatchlist.swift in Sources */,
 				B8F253BB2BC8688A003F27E8 /* SeasonDetailView.swift in Sources */,
@@ -2654,8 +2671,9 @@
 			children = (
 				B8E6D64127B6B106002E7A63 /* Watchlist.xcdatamodel */,
 				5EDAFB5B97814CCAA33BAF20 /* Watchlist 2.xcdatamodel */,
+				4D1CBB5EC636413B89C4775F /* Watchlist 3.xcdatamodel */,
 			);
-			currentVersion = 5EDAFB5B97814CCAA33BAF20 /* Watchlist 2.xcdatamodel */;
+			currentVersion = 4D1CBB5EC636413B89C4775F /* Watchlist 3.xcdatamodel */;
 			path = Watchlist.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

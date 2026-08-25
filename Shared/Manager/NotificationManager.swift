@@ -42,6 +42,9 @@ final class NotificationManager: ObservableObject {
         } else {
             if !settings.notifyNewEpisodes { return }
         }
+        if let item = PersistenceController.shared.fetch(for: content.itemContentID), !item.shouldNotify {
+            return
+        }
         self.requestAuthorization { granted in
             if !granted {
                 return

@@ -29,6 +29,7 @@ struct WatchlistItemBackup: Codable, Equatable {
     var nextEpisodeNumberUpNext: Int64
     var seasonNumberUpNext: Int64
     var displayOnUpNext: Bool
+    var hideFromUpNext: Bool
     var isPin: Bool
     var lastEpisodeNumber: Int64
     var lastSelectedSeason: Int64
@@ -62,6 +63,7 @@ struct WatchlistItemBackup: Codable, Equatable {
         nextEpisodeNumberUpNext = item.nextEpisodeNumberUpNext
         seasonNumberUpNext = item.seasonNumberUpNext
         displayOnUpNext = item.displayOnUpNext
+        hideFromUpNext = item.hideFromUpNext
         isPin = item.isPin
         lastEpisodeNumber = item.lastEpisodeNumber
         lastSelectedSeason = item.lastSelectedSeason
@@ -97,6 +99,7 @@ struct WatchlistItemBackup: Codable, Equatable {
         nextEpisodeNumberUpNext = try values.decodeIfPresent(Int64.self, forKey: .nextEpisodeNumberUpNext) ?? 0
         seasonNumberUpNext = try values.decodeIfPresent(Int64.self, forKey: .seasonNumberUpNext) ?? 0
         displayOnUpNext = try values.decodeIfPresent(Bool.self, forKey: .displayOnUpNext) ?? false
+        hideFromUpNext = try values.decodeIfPresent(Bool.self, forKey: .hideFromUpNext) ?? false
         isPin = try values.decodeIfPresent(Bool.self, forKey: .isPin) ?? false
         lastEpisodeNumber = try values.decodeIfPresent(Int64.self, forKey: .lastEpisodeNumber) ?? 0
         lastSelectedSeason = try values.decodeIfPresent(Int64.self, forKey: .lastSelectedSeason) ?? 0
@@ -133,6 +136,7 @@ extension WatchlistItem {
         nextEpisodeNumberUpNext = backup.nextEpisodeNumberUpNext
         seasonNumberUpNext = backup.seasonNumberUpNext
         displayOnUpNext = backup.displayOnUpNext
+        hideFromUpNext = backup.hideFromUpNext
         isPin = backup.isPin
         lastEpisodeNumber = backup.lastEpisodeNumber
         lastSelectedSeason = backup.lastSelectedSeason

@@ -719,6 +719,66 @@ final class CronicaTests: XCTestCase {
         XCTAssertEqual(MediaTypeFilters.tvShows.apply(to: items).map(\.contentID), ["2@1"])
     }
 
+    func testHideFromUpNextPersistsAndClearsDisplayFlag() {
+        let item = requireItem(for: ItemContent.examples[0].itemContentID)
+        item.contentType = MediaType.tvShow.toInt
+        item.displayOnUpNext = true
+        item.hideFromUpNext = false
+        item.watchedEpisodes = "-1@1"
+        item.isWatching = true
+        persistence.save()
+
+        persistence.updateHideFromUpNext(for: item, hidden: true)
+        XCTAssertTrue(item.hideFromUpNext)
+        XCTAssertFalse(item.displayOnUpNext)
+        XCTAssertTrue(persistence.isHiddenFromUpNext(id: item.itemContentID))
+
+        persistence.updateHideFromUpNext(for: item, hidden: false)
+        XCTAssertFalse(item.hideFromUpNext)
+        XCTAssertTrue(item.displayOnUpNext)
+    }
+
+    func testHideFromUpNextBlocksRedisplayWhenWatchingEpisodes() {
+        let example = ItemContent.examples.first { $0.itemContentMedia == .tvShow } ?? ItemContent.examples[0]
+        let item = requireItem(for: example.itemContentID)
+        item.contentType = MediaType.tvShow.toInt
+        item.hideFromUpNext = true
+        item.displayOnUpNext = false
+        persistence.save()
+
+        let episode = Episode(id: 99, episodeNumber: 2, seasonNumber: 1, name: "Next", runtime: 42)
+        persistence.updateUpNext(item, episode: episode)
+        XCTAssertTrue(item.hideFromUpNext)
+        XCTAssertFalse(item.displayOnUpNext)
+    }
+
+    func testNotificationsMuteClearsPendingFlag() {
+        let item = requireItem(for: ItemContent.examples[0].itemContentID)
+        XCTAssertTrue(item.shouldNotify)
+        persistence.updateNotificationsMuted(for: item, muted: true)
+        XCTAssertFalse(item.shouldNotify)
+        XCTAssertTrue(persistence.areNotificationsMuted(id: item.itemContentID))
+        persistence.updateNotificationsMuted(for: item, muted: false)
+        XCTAssertTrue(item.shouldNotify)
+        XCTAssertFalse(persistence.areNotificationsMuted(id: item.itemContentID))
+    }
+
+    func testRemoveWatchedEpisodesClearsProgress() {
+        let item = requireItem(for: ItemContent.examples[0].itemContentID)
+        item.contentType = MediaType.tvShow.toInt
+        item.watchedEpisodes = "-10@1-11@1"
+        item.displayOnUpNext = true
+        item.isWatching = true
+        persistence.save()
+        XCTAssertTrue(item.hasStartedWatching)
+
+        persistence.removeWatchedEpisodes(for: item)
+        XCTAssertEqual(item.watchedEpisodes, "")
+        XCTAssertFalse(item.displayOnUpNext)
+        XCTAssertFalse(item.isWatching)
+        XCTAssertFalse(item.hasStartedWatching)
+    }
+
     private func requireItem(for contentID: String,
                              file: StaticString = #filePath,
                              line: UInt = #line) -> WatchlistItem {

@@ -13,15 +13,39 @@ struct WatchedButton: View {
     @Binding var popupType: ActionPopupItems?
     @Binding var showPopup: Bool
     private let persistence = PersistenceController.shared
+    @State private var showUnwatchConfirmation = false
     var body: some View {
         Button(isWatched ? "Unwatched" : "Watched",
-               systemImage: isWatched ? "rectangle.badge.checkmark.fill" : "rectangle.badge.checkmark",
-               action: updateWatched)
+               systemImage: isWatched ? "rectangle.badge.checkmark.fill" : "rectangle.badge.checkmark") {
+            requestUpdateWatched()
+        }
+        .confirmationDialog("Reset Episode Progress?",
+                            isPresented: $showUnwatchConfirmation,
+                            titleVisibility: .visible) {
+            Button("Reset Progress", role: .destructive) {
+                applyWatchedUpdate(resetEpisodeProgress: true)
+            }
+            Button("Keep Progress") {
+                applyWatchedUpdate(resetEpisodeProgress: false)
+            }
+            Button("Cancel", role: .cancel) { }
+        } message: {
+            Text("Marking this series as unwatched can clear watched episodes. Choose whether to reset progress or keep it.")
+        }
     }
 }
 
 extension WatchedButton {
-    private func updateWatched() {
+    private func requestUpdateWatched() {
+        guard let item = persistence.fetch(for: id) else { return }
+        if item.isTvShow && item.isWatched && item.hasStartedWatching {
+            showUnwatchConfirmation = true
+            return
+        }
+        applyWatchedUpdate(resetEpisodeProgress: true)
+    }
+
+    private func applyWatchedUpdate(resetEpisodeProgress: Bool) {
         guard let item = persistence.fetch(for: id) else { return }
         persistence.updateWatched(for: item)
         withAnimation {
@@ -29,24 +53,31 @@ extension WatchedButton {
             popupType = isWatched ? .markedWatched : .removedWatched
             showPopup = true
         }
-        if item.itemMedia == .tvShow { updateSeasons() }
-    }
-    
-    private func updateSeasons() {
+        guard item.itemMedia == .tvShow else { return }
         Task {
-            let network = NetworkService.shared
-            guard let item = persistence.fetch(for: id) else { return }
-            guard let content = try? await network.fetchItem(id: item.itemId, type: .tvShow) else { return }
-            guard let seasons = content.itemSeasons else { return }
-            var episodes = [Episode]()
-            for season in seasons {
-                let result = try? await network.fetchSeason(id: item.itemId, season: season)
-                if let seasonEpisodes = result?.episodes {
-                    for seasonEpisode in seasonEpisodes {
-                        episodes.append(seasonEpisode)
-                    }
-                }
+            await updateSeasons(resetEpisodeProgress: resetEpisodeProgress)
+        }
+    }
+
+    private func updateSeasons(resetEpisodeProgress: Bool) async {
+        guard let item = persistence.fetch(for: id) else { return }
+        if !item.isWatched {
+            if resetEpisodeProgress {
+                persistence.removeWatchedEpisodes(for: item)
             }
+            return
+        }
+        let network = NetworkService.shared
+        guard let content = try? await network.fetchItem(id: item.itemId, type: .tvShow) else { return }
+        guard let seasons = content.itemSeasons else { return }
+        var episodes = [Episode]()
+        for season in seasons {
+            let result = try? await network.fetchSeason(id: item.itemId, season: season)
+            if let seasonEpisodes = result?.episodes {
+                episodes.append(contentsOf: seasonEpisodes)
+            }
+        }
+        if !episodes.isEmpty {
             persistence.updateEpisodeList(to: item, show: item.itemId, episodes: episodes)
         }
     }

@@ -16,6 +16,7 @@ struct HorizontalUpNextListView: View {
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \WatchlistItem.title, ascending: true)],
         predicate: NSCompoundPredicate(type: .and, subpredicates: [ NSPredicate(format: "displayOnUpNext == %d", true),
+                                                                    NSPredicate(format: "hideFromUpNext == %d", false),
                                                                     NSPredicate(format: "isArchive == %d", false),
                                                                     NSPredicate(format: "watched == %d", false)]),
         animation: .default
@@ -301,6 +302,9 @@ private struct UpNextCard: View {
                 Button("Skip this episode") {
                     Task { await viewModel.skipEpisode(for: item) }
                 }
+                Button("Hide from Up Next", systemImage: "eye.slash") {
+                    Task { await viewModel.hideFromUpNext(item) }
+                }
             }
 #if os(tvOS)
             .buttonStyle(.card)
@@ -340,11 +344,6 @@ private struct UpNextCard: View {
             }
         } message: {
             Text("Mark Episode \(item.episode.itemEpisodeNumber) from season \(item.episode.itemSeasonNumber) of \(item.showTitle) as Watched?")
-        }
-        .contextMenu {
-            Button("Details") {
-                selectedEpisode = item
-            }
         }
     }
 }

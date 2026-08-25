@@ -367,7 +367,9 @@ extension PersistenceController {
                 }
                 item.lastSelectedSeason = Int64(season)
                 item.lastWatchedEpisode = Int64(episode)
-                item.displayOnUpNext = true
+                if !item.hideFromUpNext {
+                    item.displayOnUpNext = true
+                }
                 item.lastValuesUpdated = Date()
             }
             save()
@@ -404,12 +406,47 @@ extension PersistenceController {
         item.displayOnUpNext = false
         save()
     }
+
+    /// Persistently hide a series from Up Next without clearing episode progress.
+    func updateHideFromUpNext(for item: WatchlistItem, hidden: Bool? = nil) {
+        let nextValue = hidden ?? !item.hideFromUpNext
+        item.hideFromUpNext = nextValue
+        if nextValue {
+            item.displayOnUpNext = false
+        } else if item.isTvShow && item.hasStartedWatching && !item.isWatched && !item.isArchive {
+            item.displayOnUpNext = true
+        }
+        save()
+    }
+
+    func isHiddenFromUpNext(id: String) -> Bool {
+        guard let item = fetch(for: id) else { return false }
+        return item.hideFromUpNext
+    }
+
+    /// Mute or unmute per-title notifications. Unmute does not backfill past notifications.
+    func updateNotificationsMuted(for item: WatchlistItem, muted: Bool? = nil) {
+        let currentlyMuted = !item.shouldNotify
+        let willMute = muted ?? !currentlyMuted
+        item.shouldNotify = !willMute
+        save()
+        if willMute {
+            NotificationManager.shared.removeNotification(identifier: item.itemContentID)
+        }
+    }
+
+    func areNotificationsMuted(id: String) -> Bool {
+        guard let item = fetch(for: id) else { return false }
+        return !item.shouldNotify
+    }
     
     func updateUpNext(_ item: WatchlistItem, episode: Episode) {
 		guard let seasonNumber = episode.seasonNumber, let episodeNumber = episode.episodeNumber else { return }
         item.nextEpisodeNumberUpNext = Int64(episodeNumber)
         item.seasonNumberUpNext = Int64(seasonNumber)
-        item.displayOnUpNext = true
+        if !item.hideFromUpNext {
+            item.displayOnUpNext = true
+        }
         save()
     }
     

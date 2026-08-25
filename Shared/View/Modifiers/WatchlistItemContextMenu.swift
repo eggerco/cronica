@@ -21,7 +21,10 @@ struct WatchlistItemContextMenu: ViewModifier {
     private let notification = NotificationManager.shared
     @State private var settings = SettingsStore.shared
     @State private var showDeleteConfirmation = false
-    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \CustomList.title, ascending: true)],
+    @State private var isNotificationsMuted = false
+    @State private var isHiddenFromUpNext = false
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \CustomList.isPin, ascending: false),
+                                    NSSortDescriptor(keyPath: \CustomList.title, ascending: true)],
                   animation: .default) private var lists: FetchedResults<CustomList>
     func body(content: Content) -> some View {
 #if os(watchOS)
@@ -60,6 +63,10 @@ struct WatchlistItemContextMenu: ViewModifier {
                 archiveButton
                 customListButton
                 reviewButton
+                if item.isTvShow {
+                    HideFromUpNextButton(id: item.itemContentID, isHidden: $isHiddenFromUpNext)
+                }
+                MuteNotificationsButton(id: item.itemContentID, isMuted: $isNotificationsMuted)
                 Divider()
                 deleteButton
             }
@@ -68,6 +75,7 @@ struct WatchlistItemContextMenu: ViewModifier {
             } message: {
                 Text("Remove \(item.itemTitle) from your Watchlist?")
             }
+            .onAppear { refreshMuteAndHideState() }
 #else
         content
             .swipeActions(edge: .leading, allowsFullSwipe: settings.allowFullSwipe) {
@@ -86,6 +94,10 @@ struct WatchlistItemContextMenu: ViewModifier {
                 archiveButton
                 customListButton
                 reviewButton
+                if item.isTvShow {
+                    HideFromUpNextButton(id: item.itemContentID, isHidden: $isHiddenFromUpNext)
+                }
+                MuteNotificationsButton(id: item.itemContentID, isMuted: $isNotificationsMuted)
                 Divider()
                 deleteButton
             } preview: {
@@ -98,7 +110,13 @@ struct WatchlistItemContextMenu: ViewModifier {
             } message: {
                 Text("Remove \(item.itemTitle) from your Watchlist?")
             }
+            .onAppear { refreshMuteAndHideState() }
 #endif
+    }
+
+    private func refreshMuteAndHideState() {
+        isNotificationsMuted = !item.shouldNotify
+        isHiddenFromUpNext = item.hideFromUpNext
     }
     
     private var watchedButton: some View {

@@ -27,6 +27,7 @@ struct ItemContentDetails: View {
     @State private var animateGesture = false
     @State private var animationImage = ""
     @State private var showConfirmationPopup = false
+    @State private var showUnwatchConfirmation = false
     
     // MARK: View properties for sizeBasedPadMacView
     @State private var isSideInfoPanelShowed = false
@@ -117,6 +118,23 @@ struct ItemContentDetails: View {
         .actionPopup(isShowing: $showPopup, for: popupType)
         .cronicaErrorAlert(isPresented: $viewModel.showErrorAlert, message: viewModel.errorMessage) {
             Task { await viewModel.load(id: id, type: type) }
+        }
+        .confirmationDialog("Reset Episode Progress?",
+                            isPresented: $showUnwatchConfirmation,
+                            titleVisibility: .visible) {
+            Button("Reset Progress", role: .destructive) {
+                viewModel.updateWatched(resetEpisodeProgress: true)
+                resetPopupAnimation()
+                animatePopup(for: .removedWatched)
+            }
+            Button("Keep Progress") {
+                viewModel.updateWatched(resetEpisodeProgress: false)
+                resetPopupAnimation()
+                animatePopup(for: .removedWatched)
+            }
+            Button("Cancel", role: .cancel) { }
+        } message: {
+            Text("Marking this series as unwatched can clear watched episodes. Choose whether to reset progress or keep it.")
         }
         .sheet(isPresented: $showCustomList) {
             if let contentID = viewModel.content?.itemContentID {
@@ -579,6 +597,8 @@ struct ItemContentDetails: View {
                 }
                 infoView(title: String(localized: "Run Time"),
                          content: item?.itemRuntime)
+                infoView(title: String(localized: "Certification"),
+                         content: item?.itemCertification)
                 if type == .movie {
                     if let theatricalStringDate = item?.itemTheatricalString {
                         tappableInfoDisclosureRow(
@@ -739,9 +759,7 @@ extension ItemContentDetails {
 
     private var watchButton: some View {
         Button {
-            viewModel.update(.watched)
-            resetPopupAnimation()
-            animatePopup(for: viewModel.isWatched ? .markedWatched : .removedWatched)
+            requestWatchToggle()
         } label: {
 #if os(macOS)
             Label("Watched",
@@ -783,6 +801,20 @@ extension ItemContentDetails {
 #elseif os(tvOS)
         .focused($isWatchInFocus)
 #endif
+    }
+
+    private func requestWatchToggle() {
+        if type == .tvShow,
+           viewModel.isWatched,
+           let contentID = viewModel.content?.itemContentID,
+           let item = PersistenceController.shared.fetch(for: contentID),
+           item.hasStartedWatching {
+            showUnwatchConfirmation = true
+            return
+        }
+        viewModel.update(.watched)
+        resetPopupAnimation()
+        animatePopup(for: viewModel.isWatched ? .markedWatched : .removedWatched)
     }
     
     private var favoriteButton: some View {
@@ -889,8 +921,7 @@ extension ItemContentDetails {
     private var watchButtonToolbar: some View {
         Button(viewModel.isWatched ? "Unwatched" : "Watched",
                systemImage: viewModel.isWatched ? "rectangle.badge.checkmark.fill" : "rectangle.badge.checkmark") {
-            viewModel.update(.watched)
-            animatePopup(for: viewModel.isWatched ? .markedWatched : .removedWatched)
+            requestWatchToggle()
         }.symbolEffect(.bounce.down, value: viewModel.isWatched)
     }
     
@@ -923,6 +954,24 @@ extension ItemContentDetails {
     
     private var reviewButtonToolbar: some View {
         Button("Review", systemImage: "note.text") { showUserNotes.toggle() }
+    }
+
+    @ViewBuilder
+    private var muteNotificationsToolbar: some View {
+        Button(viewModel.isNotificationsMuted ? "Unmute Notifications" : "Mute Notifications",
+               systemImage: viewModel.isNotificationsMuted ? "bell.slash.fill" : "bell.slash") {
+            viewModel.toggleNotificationsMuted()
+        }
+    }
+
+    @ViewBuilder
+    private var hideFromUpNextToolbar: some View {
+        if type == .tvShow {
+            Button(viewModel.isHiddenFromUpNext ? "Show in Up Next" : "Hide from Up Next",
+                   systemImage: viewModel.isHiddenFromUpNext ? "eye" : "eye.slash") {
+                viewModel.toggleHideFromUpNext()
+            }
+        }
     }
     
     @ViewBuilder
@@ -972,6 +1021,10 @@ extension ItemContentDetails {
                 .disabled(!viewModel.isInWatchlist)
             reviewButtonToolbar
                 .disabled(!viewModel.isInWatchlist)
+            if viewModel.isInWatchlist {
+                muteNotificationsToolbar
+                hideFromUpNextToolbar
+            }
             openInMenu
         }
         .disabled(viewModel.isLoading ? true : false)
@@ -990,6 +1043,8 @@ extension ItemContentDetails {
                 archiveButtonToolbar
                 pinButtonToolbar
                 reviewButtonToolbar
+                muteNotificationsToolbar
+                hideFromUpNextToolbar
             }
             openInMenu
 #else
@@ -1003,7 +1058,12 @@ extension ItemContentDetails {
                     archiveButtonToolbar
                     pinButtonToolbar
                     reviewButtonToolbar
+                    muteNotificationsToolbar
+                    hideFromUpNextToolbar
                 }
+            } else if viewModel.isInWatchlist {
+                muteNotificationsToolbar
+                hideFromUpNextToolbar
             }
             openInMenu
 #endif
@@ -1021,6 +1081,8 @@ extension ItemContentDetails {
                       content: viewModel.content?.originalItemTitle)
             infoLabel(title: String(localized: "Run Time"),
                       content: viewModel.content?.itemRuntime)
+            infoLabel(title: String(localized: "Certification"),
+                      content: viewModel.content?.itemCertification)
             if let numberOfSeasons = viewModel.content?.numberOfSeasons, let numberOfEpisodes = viewModel.content?.numberOfEpisodes {
                 infoLabel(title: String(localized: "Overview"),
                           content: "\(numberOfSeasons) Seasons • \(numberOfEpisodes) Episodes")

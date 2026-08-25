@@ -25,6 +25,8 @@ class ItemContentViewModel: ObservableObject {
     @Published private(set) var isFavorite = false
     @Published private(set) var isArchive = false
     @Published private(set) var isPin = false
+    @Published private(set) var isNotificationsMuted = false
+    @Published private(set) var isHiddenFromUpNext = false
     @Published private(set) var isLoading = true
     @Published private(set) var showMarkAsButton = false
     @Published private(set) var isItemAddedToAnyList = false
@@ -52,6 +54,8 @@ class ItemContentViewModel: ObservableObject {
                         isFavorite = persistence.isMarkedAsFavorite(id: content.itemContentID)
                         isArchive = persistence.isItemArchived(id: content.itemContentID)
                         isPin = persistence.isItemPinned(id: content.itemContentID)
+                        isNotificationsMuted = persistence.areNotificationsMuted(id: content.itemContentID)
+                        isHiddenFromUpNext = persistence.isHiddenFromUpNext(id: content.itemContentID)
                         isItemAddedToAnyList = persistence.isItemAddedToAnyList(content.itemContentID)
                     }
                     isNotificationAvailable = content.itemCanNotify
@@ -148,6 +152,8 @@ class ItemContentViewModel: ObservableObject {
                 isWatched = persistence.isMarkedAsWatched(id: content.itemContentID)
                 refreshWatchedDate()
                 isArchive = persistence.isItemArchived(id: content.itemContentID)
+                isNotificationsMuted = persistence.areNotificationsMuted(id: content.itemContentID)
+                isHiddenFromUpNext = persistence.isHiddenFromUpNext(id: content.itemContentID)
             }
         } else {
             let isSaved = persistence.isItemSaved(id: content.itemContentID)
@@ -160,12 +166,14 @@ class ItemContentViewModel: ObservableObject {
                 isWatched = false
                 watchedDateLabel = nil
                 isArchive = false
+                isNotificationsMuted = false
+                isHiddenFromUpNext = false
             }
         }
     }
     
     func registerNotification() {
-		if isInWatchlist && !isArchive {
+		if isInWatchlist && !isArchive && !isNotificationsMuted {
 			guard let content else { return }
             let type = content.itemContentMedia
 			// TV Shows
@@ -204,10 +212,7 @@ class ItemContentViewModel: ObservableObject {
         guard let item = persistence.fetch(for: content.itemContentID) else { return }
         switch property {
         case .watched:
-            persistence.updateWatched(for: item)
-            withAnimation { isWatched.toggle() }
-            refreshWatchedDate()
-            Task { await updateSeasons() }
+            updateWatched(resetEpisodeProgress: true)
         case .favorite:
             persistence.updateFavorite(for: item)
             withAnimation { isFavorite.toggle() }
@@ -219,15 +224,45 @@ class ItemContentViewModel: ObservableObject {
             withAnimation { isArchive.toggle() }
         }
     }
+
+    func updateWatched(resetEpisodeProgress: Bool) {
+        guard let content else { return }
+        if !isInWatchlist { updateWatchlist(with: content) }
+        guard let item = persistence.fetch(for: content.itemContentID) else { return }
+        persistence.updateWatched(for: item)
+        withAnimation { isWatched.toggle() }
+        refreshWatchedDate()
+        Task { await updateSeasons(resetEpisodeProgress: resetEpisodeProgress) }
+    }
+
+    func toggleNotificationsMuted() {
+        guard let content else { return }
+        guard let item = persistence.fetch(for: content.itemContentID) else { return }
+        let willMute = !isNotificationsMuted
+        persistence.updateNotificationsMuted(for: item, muted: willMute)
+        withAnimation { isNotificationsMuted = willMute }
+        if !willMute {
+            notification.schedule(content)
+        }
+    }
+
+    func toggleHideFromUpNext() {
+        guard let content, content.itemContentMedia == .tvShow else { return }
+        guard let item = persistence.fetch(for: content.itemContentID) else { return }
+        let willHide = !isHiddenFromUpNext
+        persistence.updateHideFromUpNext(for: item, hidden: willHide)
+        withAnimation { isHiddenFromUpNext = willHide }
+    }
     
-    private func updateSeasons() async {
+    private func updateSeasons(resetEpisodeProgress: Bool = true) async {
         guard let content else { return }
         let type = content.itemContentMedia
         if type != .tvShow { return }
         guard let item = persistence.fetch(for: content.itemContentID) else { return }
         if !isWatched {
-            /// if item is removed from watched, then all watched episodes will also be removed.
-            persistence.removeWatchedEpisodes(for: item)
+            if resetEpisodeProgress {
+                persistence.removeWatchedEpisodes(for: item)
+            }
         } else {
             /// if item is marked as watched, all episodes will also be marked as watched.
             guard let seasons = content.seasons else { return }
