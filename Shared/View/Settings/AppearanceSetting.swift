@@ -61,13 +61,7 @@ struct AppearanceSetting: View {
 
                 Picker("Accent Color", selection: $store.appTheme) {
                     ForEach(AppThemeColors.allCases) { item in
-                        Label {
-                            Text(item.title)
-                        } icon: {
-                            Image(systemName: "circle.fill")
-                                .foregroundStyle(item.color)
-                        }
-                        .tag(item)
+                        Text(item.title).tag(item)
                     }
                 }
             } header: {
