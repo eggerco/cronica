@@ -11,7 +11,6 @@ import SwiftUI
 struct SettingsView: View {
 #if os(iOS) || os(visionOS)
     static let tag: Screens? = .settings
-    @State private var showPrivacyDataSheet = false
 #elseif os(tvOS)
     @StateObject private var store = SettingsStore.shared
 #endif
@@ -57,14 +56,10 @@ struct SettingsView: View {
                     settingsLabel(title: NSLocalizedString("About", comment: ""),
                                   icon: "info.circle", color: .black)
                 }
-                Button {
-                    showPrivacyDataSheet = true
-                } label: {
+                NavigationLink(value: SettingsScreens.dataManagement) {
                     settingsLabel(title: String(localized: "Privacy & Data"),
                                   icon: "lock.shield", color: .orange)
                 }
-                .buttonStyle(.plain)
-                .accessibilityIdentifier("Privacy & Data Settings Button")
                 NavigationLink(value: SettingsScreens.feedback) {
                     settingsLabel(title: NSLocalizedString("Feedback", comment: ""),
                                   icon: "envelope.fill", color: AppThemeColors.steel.color)
@@ -81,18 +76,6 @@ struct SettingsView: View {
         .navigationBarTitleDisplayMode(.inline)
         .cronicaSettingsForm()
         .accessibilityIdentifier("Settings View")
-        .sheet(isPresented: $showPrivacyDataSheet) {
-            NavigationStack {
-                DataManagementSettingsView()
-                    .nativeSheetDismissToolbar { showPrivacyDataSheet = false }
-            }
-#if os(iOS) || os(visionOS)
-            .presentationDetents([.large])
-            .presentationDragIndicator(.visible)
-#endif
-            .appTheme()
-            .appTint()
-        }
 #elseif os(macOS)
         TabView {
             AppearanceSetting()

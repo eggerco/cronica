@@ -209,7 +209,6 @@ struct CronicaFormSectionHeader: View {
             .font(.footnote)
             .foregroundStyle(.secondary)
             .textCase(.uppercase)
-            .environment(\.textCase, .uppercase)
     }
 }
 
@@ -277,6 +276,7 @@ struct CronicaFormSection<Content: View>: View {
     var body: some View {
         Section {
             content()
+                .environment(\.textCase, nil)
         } header: {
             CronicaFormSectionHeader(title: title)
         }
@@ -302,6 +302,7 @@ struct CronicaFormSectionWithFooter<Content: View, Footer: View>: View {
     var body: some View {
         Section {
             content()
+                .environment(\.textCase, nil)
         } header: {
             CronicaFormSectionHeader(title: title)
         } footer: {
