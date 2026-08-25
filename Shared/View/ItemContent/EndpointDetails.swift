@@ -139,7 +139,7 @@ extension EndpointDetails {
         isLoadingMore = true
         defer { isLoadingMore = false }
         do {
-            let result = try await NetworkService.shared.fetchItems(from: "\(endpoint.type.rawValue)/\(endpoint.rawValue)", page: String(page))
+            let result = try await NetworkService.shared.fetchItems(from: endpoint.path, page: String(page))
             let filtered = result.filter { $0.backdropPath != nil && $0.posterPath != nil }
             for item in filtered {
                 if !items.contains(item) {

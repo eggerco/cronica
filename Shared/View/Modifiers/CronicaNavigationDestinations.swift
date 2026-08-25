@@ -102,6 +102,7 @@ extension View {
                 case .integrations: IntegrationsSettingsView()
                 case .simkl: SimklSettingsView()
                 case .tmdbAccount: TMDBAccountSettingsView()
+                case .homeCustomizer: HomeCustomizerView()
                 }
             }
     }

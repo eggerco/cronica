@@ -16,11 +16,13 @@ struct HorizontalPinnedList: View {
     @Binding var showPopup: Bool
     @Binding var popupType: ActionPopupItems?
     @Binding var shouldReload: Bool
+    @AppStorage("homePinnedListSortOrder") private var sortOrder: WatchlistSortOrder = .titleAsc
     var body: some View {
         if !lists.isEmpty {
             ForEach(lists) { list in
-                if !list.itemsSet.isEmpty {
-                    HorizontalWatchlistList(items: list.itemsArray,
+                let items = list.sortedItems(by: sortOrder)
+                if !items.isEmpty {
+                    HorizontalWatchlistList(items: items,
                                             title: list.itemTitle,
                                             subtitle: list.notes,
                                             showPopup: $showPopup,

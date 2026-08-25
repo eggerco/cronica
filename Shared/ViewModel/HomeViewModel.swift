@@ -12,12 +12,13 @@ import SwiftUI
 class HomeViewModel: ObservableObject {
     private let service: NetworkService = NetworkService.shared
     @Published var trending = [ItemContent]()
-    @Published var sections = [ItemContentSection]()
+    /// Remote TMDB rails keyed by endpoint.
+    @Published var sectionResults: [Endpoints: [ItemContent]] = [:]
     @Published var isLoaded = false
-    
-    /// Loads data for the home screen asynchronously, including trending items and sections.
-    func load() async {
-        if trending.isEmpty {
+
+    func load(visibleKinds: [HomeSectionKind]) async {
+        let needsTrending = visibleKinds.contains(.trending)
+        if needsTrending, trending.isEmpty {
             do {
                 let result = try await service.fetchItems(from: "trending/all/day")
                 let filtered = result.filter { $0.itemContentMedia != .person }
@@ -27,42 +28,34 @@ class HomeViewModel: ObservableObject {
                 CronicaTelemetry.shared.handleMessage(error.localizedDescription, for: "HomeViewModel.load.trending")
             }
         }
-        if sections.isEmpty {
-            let result = await self.fetchSections()
-            sections.append(contentsOf: result)
+
+        let endpoints = visibleKinds.compactMap(\.endpoint)
+        for endpoint in endpoints where sectionResults[endpoint] == nil {
+            if let section = await fetch(from: endpoint) {
+                sectionResults[endpoint] = section.results
+            }
         }
+
         await MainActor.run {
             withAnimation { self.isLoaded = true }
         }
     }
-    
+
     func reload() {
         withAnimation {
             isLoaded = false
         }
         trending.removeAll()
-        sections.removeAll()
-        Task { await load() }
-    }
-    
-    private func fetchSections() async -> [ItemContentSection] {
-        let endpoints = Endpoints.allCases
-        var sections = [ItemContentSection]()
-        for endpoint in endpoints {
-            let section = await fetch(from: endpoint)
-            if let section {
-                sections.append(section)
-            }
+        sectionResults.removeAll()
+        Task {
+            await load(visibleKinds: HomeSectionStore.shared.visibleOrderedSections)
         }
-        return sections
     }
-    
+
     /// Fetch an Endpoint value.
-    /// - Parameter endpoint: The endpoint used for popular, upcoming, etc.
-    /// - Returns: Return a ItemContentSection already populated with Endpoint value if that fetch is successful, otherwise it returns nil.
     private func fetch(from endpoint: Endpoints) async -> ItemContentSection? {
         do {
-            let section = try await service.fetchItems(from: "\(endpoint.type.rawValue)/\(endpoint.rawValue)")
+            let section = try await service.fetchItems(from: endpoint.path)
             let filtered = section.filter { $0.backdropPath != nil && $0.posterPath != nil }
             return .init(results: filtered, endpoint: endpoint)
         } catch {

@@ -15,6 +15,7 @@ struct HomeView: View {
     @AppStorage("showOnboarding") private var displayOnboard = true
 #endif
     @StateObject private var viewModel = HomeViewModel()
+    @StateObject private var homeSections = HomeSectionStore.shared
     @State private var showNotifications = false
     @State private var showPopup = false
     @State private var reloadHome = false
@@ -33,22 +34,8 @@ struct HomeView: View {
 #if os(iOS)
                 if showReviewBanner { CallToReviewAppView(showView: $showReviewBanner).unredacted() }
 #endif
-                HorizontalUpNextListView(shouldReload: $reloadHome)
-                UpcomingWatchlist(shouldReload: $reloadHome)
-                PinItemsList(showPopup: $showPopup, popupType: $popupType, shouldReload: $reloadHome)
-                HorizontalPinnedList(showPopup: $showPopup, popupType: $popupType, shouldReload: $reloadHome)
-                HorizontalItemContentListView(items: viewModel.trending,
-                                              title: String(localized: "Trending"),
-                                              subtitle: String(localized: "Today"),
-                                              showPopup: $showPopup,
-                                              popupType: $popupType)
-                ForEach(viewModel.sections) { section in
-                    HorizontalItemContentListView(items: section.results,
-                                                  title: section.title,
-                                                  subtitle: section.subtitle,
-                                                  showPopup: $showPopup,
-                                                  popupType: $popupType,
-                                                  endpoint: section.endpoint)
+                ForEach(homeSections.visibleOrderedSections) { section in
+                    homeSectionView(section)
                 }
                 AttributionView()
             }
@@ -65,7 +52,7 @@ struct HomeView: View {
 #endif
         .cronicaLoadingOverlay(!viewModel.isLoaded)
         .overlay {
-            if viewModel.isLoaded && viewModel.trending.isEmpty && viewModel.sections.isEmpty {
+            if viewModel.isLoaded && viewModel.trending.isEmpty && viewModel.sectionResults.isEmpty {
                 ContentUnavailableView {
                     Label("Couldn't Load Home", systemImage: "wifi.exclamationmark")
                 } description: {
@@ -116,9 +103,18 @@ struct HomeView: View {
                         .labelStyle(.iconOnly)
                 }
             }
+            ToolbarItem {
+                NavigationLink(value: SettingsScreens.homeCustomizer) {
+                    Label("Customize Home", systemImage: "slider.horizontal.3")
+                }
+            }
 #elseif os(iOS) || os(visionOS)
             ToolbarItem(placement: .navigationBarTrailing) {
                 HStack {
+                    NavigationLink(value: SettingsScreens.homeCustomizer) {
+                        Image(systemName: "slider.horizontal.3")
+                            .accessibilityLabel("Customize Home")
+                    }
                     NavigationLink(value: Screens.notifications) {
                         Image(systemName: hasNotifications ? "bell.badge.fill" : "bell")
                             .accessibilityLabel("Notifications")
@@ -140,8 +136,46 @@ struct HomeView: View {
             let notifications = await NotificationManager.shared.hasDeliveredItems()
             hasNotifications = notifications
         }
-        .task {
-            await viewModel.load()
+        .task(id: homeSections.visibleOrderedSections.map(\.rawValue).joined(separator: ",")) {
+            await viewModel.load(visibleKinds: homeSections.visibleOrderedSections)
+        }
+        .onChange(of: homeSections.order) { _, _ in
+            viewModel.reload()
+        }
+        .onChange(of: homeSections.hidden) { _, _ in
+            viewModel.reload()
+        }
+    }
+
+    @ViewBuilder
+    private func homeSectionView(_ section: HomeSectionKind) -> some View {
+        switch section {
+        case .upNext:
+            HorizontalUpNextListView(shouldReload: $reloadHome)
+        case .upcomingWatchlist:
+            UpcomingWatchlist(shouldReload: $reloadHome)
+        case .pins:
+            PinItemsList(showPopup: $showPopup, popupType: $popupType, shouldReload: $reloadHome)
+        case .favoriteLists:
+            HorizontalPinnedList(showPopup: $showPopup, popupType: $popupType, shouldReload: $reloadHome)
+        case .trending:
+            HorizontalItemContentListView(items: viewModel.trending,
+                                          title: section.title,
+                                          subtitle: section.subtitle,
+                                          showPopup: $showPopup,
+                                          popupType: $popupType)
+        case .moviesUpcoming, .moviesNowPlaying, .moviesPopular, .moviesTopRated, .tvPopular, .tvTopRated:
+            if let endpoint = section.endpoint {
+                let items = viewModel.sectionResults[endpoint] ?? []
+                if !items.isEmpty {
+                    HorizontalItemContentListView(items: items,
+                                                  title: section.title,
+                                                  subtitle: section.subtitle,
+                                                  showPopup: $showPopup,
+                                                  popupType: $popupType,
+                                                  endpoint: endpoint)
+                }
+            }
         }
     }
     

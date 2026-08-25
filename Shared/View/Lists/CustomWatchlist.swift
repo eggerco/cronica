@@ -25,27 +25,15 @@ struct CustomWatchlist: View {
     @Binding var popupType: ActionPopupItems?
     @AppStorage("customListSortOrder") private var sortOrder: WatchlistSortOrder = .titleAsc
     @State private var showFilters = false
+    @State private var showBatchEdit = false
 #if os(tvOS)
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \CustomList.isPin, ascending: false),
                                     NSSortDescriptor(keyPath: \CustomList.title, ascending: true)],
                   animation: .default) private var lists: FetchedResults<CustomList>
 #endif
     private var sortedItems: [WatchlistItem] {
-        guard let items = selectedList?.itemsArray else { return [] }
-        switch sortOrder {
-        case .titleAsc:
-            return items.sorted { $0.itemTitle < $1.itemTitle }
-        case .titleDesc:
-            return items.sorted { $0.itemTitle > $1.itemTitle }
-        case .ratingAsc:
-            return items.sorted { $0.userRating < $1.userRating }
-        case .ratingDesc:
-            return items.sorted { $0.userRating > $1.userRating }
-        case .dateAsc:
-            return items.sorted { $0.itemSortDate < $1.itemSortDate }
-        case .dateDesc:
-            return items.sorted { $0.itemSortDate > $1.itemSortDate }
-        }
+        guard let list = selectedList else { return [] }
+        return list.sortedItems(by: sortOrder)
     }
     private var smartFiltersItems: [WatchlistItem] {
         let base: [WatchlistItem]
@@ -207,7 +195,14 @@ struct CustomWatchlist: View {
                 styleButton
             }
             ToolbarItem(placement: .navigationBarTrailing) {
-                filterButton
+                HStack {
+                    if !(selectedList?.itemsArray.isEmpty ?? true) {
+                        Button("Select", systemImage: "checkmark.circle") {
+                            showBatchEdit = true
+                        }
+                    }
+                    filterButton
+                }
             }
 #elseif os(macOS)
             filterButton
@@ -254,6 +249,9 @@ struct CustomWatchlist: View {
                            sortOrder: $sortOrder,
                            filter: $selectedOrder,
                            showAllItems: $showAllItems)
+        }
+        .sheet(isPresented: $showBatchEdit) {
+            WatchlistBatchEditView(items: displayedItems, isPresented: $showBatchEdit)
         }
     }
 

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C0WATCHBATCHEDIT00002 /* WatchlistBatchEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WATCHBATCHEDIT00001 /* WatchlistBatchEditView.swift */; };
+		C0HOMECUSTVIEW0000002 /* HomeCustomizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0HOMECUSTVIEW0000001 /* HomeCustomizerView.swift */; };
+		C0HOMESECSTORE00000002 /* HomeSectionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0HOMESECSTORE00000001 /* HomeSectionStore.swift */; };
+		C0HOMESECKIND000000002 /* HomeSectionKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0HOMESECKIND000000001 /* HomeSectionKind.swift */; };
 		B801070829F24499008A4551 /* ItemContentCustomListSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A2C88029CA6ED100FDBB33 /* ItemContentCustomListSelector.swift */; };
 		B801070929F244DE008A4551 /* NewCustomListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B812C7B3299480620096E806 /* NewCustomListView.swift */; };
 		B801070D29F255F3008A4551 /* DefaultListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B801070C29F255F3008A4551 /* DefaultListView.swift */; };
@@ -395,6 +399,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C0WATCHBATCHEDIT00001 /* WatchlistBatchEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistBatchEditView.swift; sourceTree = "<group>"; };
+		C0HOMECUSTVIEW0000001 /* HomeCustomizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCustomizerView.swift; sourceTree = "<group>"; };
+		C0HOMESECSTORE00000001 /* HomeSectionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSectionStore.swift; sourceTree = "<group>"; };
+		C0HOMESECKIND000000001 /* HomeSectionKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSectionKind.swift; sourceTree = "<group>"; };
 		B801070C29F255F3008A4551 /* DefaultListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultListView.swift; sourceTree = "<group>"; };
 		B801070E29F25615008A4551 /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
 		B801071029F2562C008A4551 /* WatchlistSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistSectionView.swift; sourceTree = "<group>"; };
@@ -975,6 +983,7 @@
 				B81941A42A0833450057DA04 /* AddToListRow.swift */,
 				B82BE4E2299BFBC5005F9990 /* CustomWatchlist.swift */,
 				B819419E2A0831EF0057DA04 /* DefaultListRow.swift */,
+				C0WATCHBATCHEDIT00001 /* WatchlistBatchEditView.swift */,
 				B82BE4DD299BF734005F9990 /* DefaultWatchlist.swift */,
 				B82BE4FA29A188D8005F9990 /* EditCustomList.swift */,
 				B8A2C88029CA6ED100FDBB33 /* ItemContentCustomListSelector.swift */,
@@ -1056,7 +1065,8 @@
 				B8389ED128AB46E3003025BC /* WatchlistSearchScope.swift */,
 				B88AA92229DF781000F80EE4 /* MediaTypeFilters.swift */,
 				B883A1DF2AEED78900793EE2 /* SearchStage.swift */,
-				B8152EC52B718F9A0032836A /* WatchlistSortOrder.swift */,
+								C0HOMESECKIND000000001 /* HomeSectionKind.swift */,
+B8152EC52B718F9A0032836A /* WatchlistSortOrder.swift */,
 				C0UPNEXTSORT000000000001 /* UpNextSortOrder.swift */,
 			);
 			path = Enums;
@@ -1160,7 +1170,8 @@
 				C0DATAMGMT000000000001 /* DataManagementSettingsView.swift */,
 				C0SIMKLVIEW00000000001 /* SimklSettingsView.swift */,
 				C0LIBVIEWTM000000001 /* TMDBAccountSettingsView.swift */,
-				C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
+								C0HOMECUSTVIEW0000001 /* HomeCustomizerView.swift */,
+C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 				B80BBE572949665A00958876 /* AppearanceSetting.swift */,
 				B8FB2A8D29526341006DAC8E /* BehaviorSetting.swift */,
 				B80318A729256AE700714B3E /* FeedbackSettingsView.swift */,
@@ -1176,6 +1187,7 @@
 		B8ADAF6D282C42A9001D72EF /* Store */ = {
 			isa = PBXGroup;
 			children = (
+				C0HOMESECSTORE00000001 /* HomeSectionStore.swift */,
 				B8ADAF6E282C42B3001D72EF /* SettingsStore.swift */,
 			);
 			path = Store;
@@ -1907,7 +1919,11 @@
 				C0SIMKLIMP000000000002 /* SimklImportService.swift in Sources */,
 				C0SIMKLMAP000000000002 /* SimklImportMapper.swift in Sources */,
 				C0SIMKLVIEW00000000002 /* SimklSettingsView.swift in Sources */,
-				C0INTEGVIEW00000000002 /* IntegrationsSettingsView.swift in Sources */,
+								C0HOMESECKIND000000002 /* HomeSectionKind.swift in Sources */,
+				C0HOMESECSTORE00000002 /* HomeSectionStore.swift in Sources */,
+				C0HOMECUSTVIEW0000002 /* HomeCustomizerView.swift in Sources */,
+				C0WATCHBATCHEDIT00002 /* WatchlistBatchEditView.swift in Sources */,
+C0INTEGVIEW00000000002 /* IntegrationsSettingsView.swift in Sources */,
 				C0SIMKLSYNC0000000002 /* SimklSyncService.swift in Sources */,
 				C0SIMKLACCT0000000002 /* SimklAccountService.swift in Sources */,
 				C0SIMKLPUSH0000000002 /* SimklPushService.swift in Sources */,

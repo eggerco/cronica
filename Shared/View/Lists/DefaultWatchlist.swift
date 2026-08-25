@@ -24,6 +24,7 @@ struct DefaultWatchlist: View {
     @Binding var popupType: ActionPopupItems?
     @AppStorage("defaultWatchlistSortOrder") private var sortOrder: WatchlistSortOrder = .titleAsc
     @State private var showFilters = false
+    @State private var showBatchEdit = false
     private var sortedItems: [WatchlistItem] {
         switch sortOrder {
         case .titleAsc:
@@ -191,6 +192,11 @@ struct DefaultWatchlist: View {
             }
             ToolbarItem(placement: .navigationBarTrailing) {
                 HStack {
+                    if !items.isEmpty {
+                        Button("Select", systemImage: "checkmark.circle") {
+                            showBatchEdit = true
+                        }
+                    }
                     Button("Filters",
                            systemImage: "line.3.horizontal.decrease.circle") {
                         showFilters = true
@@ -233,6 +239,9 @@ struct DefaultWatchlist: View {
                            sortOrder: $sortOrder,
                            filter: $smartFilter,
                            showAllItems: $showAllItems)
+        }
+        .sheet(isPresented: $showBatchEdit) {
+            WatchlistBatchEditView(items: displayedItems, isPresented: $showBatchEdit)
         }
     }
 

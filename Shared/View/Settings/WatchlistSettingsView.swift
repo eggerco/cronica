@@ -9,6 +9,7 @@ import SwiftUI
 
 struct WatchlistSettingsView: View {
     @StateObject private var store = SettingsStore.shared
+    @AppStorage("homePinnedListSortOrder") private var homePinnedListSortOrder: WatchlistSortOrder = .titleAsc
     @State private var updatingItems = false
     @State private var isGeneratingExport = false
     @State private var showFilePicker = false
@@ -41,6 +42,11 @@ struct WatchlistSettingsView: View {
                 }
 #if !os(tvOS)
                 Toggle("Show Date in Watchlist", isOn: $store.showDateOnWatchlist)
+                Picker("Favorite Lists Sort on Home", selection: $homePinnedListSortOrder) {
+                    ForEach(WatchlistSortOrder.allCases) { item in
+                        Text(item.localizableName).tag(item)
+                    }
+                }
 #endif
             }
             

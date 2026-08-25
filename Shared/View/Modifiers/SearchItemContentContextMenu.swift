@@ -54,6 +54,43 @@ struct SearchItemContentContextMenu: ViewModifier {
             } message: {
                 Text("Remove \(item.itemTitle) from your Watchlist?")
             }
+#if !os(tvOS)
+            .swipeActions(edge: .leading, allowsFullSwipe: settings.allowFullSwipe) {
+                if !isInWatchlist {
+                    WatchlistButton(id: item.itemContentID,
+                                    isInWatchlist: $isInWatchlist,
+                                    showPopup: $showPopup,
+                                    showListSelector: $showCustomListView,
+                                    popupType: $popupType,
+                                    showRemoveConfirmation: $showRemoveConfirmation)
+                    .tint(.green)
+                } else {
+                    WatchedButton(id: item.itemContentID,
+                                  isWatched: $isWatched,
+                                  popupType: $popupType,
+                                  showPopup: $showPopup)
+                    .tint(isWatched ? .yellow : .blue)
+                }
+            }
+            .swipeActions(edge: .trailing, allowsFullSwipe: settings.allowFullSwipe) {
+                if isInWatchlist {
+                    WatchlistButton(id: item.itemContentID,
+                                    isInWatchlist: $isInWatchlist,
+                                    showPopup: $showPopup,
+                                    showListSelector: $showCustomListView,
+                                    popupType: $popupType,
+                                    showRemoveConfirmation: $showRemoveConfirmation)
+                    .tint(.red)
+                } else {
+                    Button {
+                        addAndMarkAsWatched()
+                    } label: {
+                        Label("Add & Mark Watched", systemImage: "rectangle.badge.checkmark.fill")
+                    }
+                    .tint(.blue)
+                }
+            }
+#endif
 #endif
     }
 
