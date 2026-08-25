@@ -599,6 +599,23 @@ final class CronicaTests: XCTestCase {
         }
     }
 
+    func testMediaTypeFiltersApplySeparatesMoviesAndTVShows() {
+        let movie = WatchlistItem(context: managedContext)
+        movie.contentType = MediaType.movie.toInt
+        movie.title = "Movie"
+        movie.contentID = "1@0"
+
+        let show = WatchlistItem(context: managedContext)
+        show.contentType = MediaType.tvShow.toInt
+        show.title = "Show"
+        show.contentID = "2@1"
+
+        let items = [movie, show]
+        XCTAssertEqual(MediaTypeFilters.showAll.apply(to: items).count, 2)
+        XCTAssertEqual(MediaTypeFilters.movies.apply(to: items).map(\.contentID), ["1@0"])
+        XCTAssertEqual(MediaTypeFilters.tvShows.apply(to: items).map(\.contentID), ["2@1"])
+    }
+
     private func requireItem(for contentID: String,
                              file: StaticString = #filePath,
                              line: UInt = #line) -> WatchlistItem {

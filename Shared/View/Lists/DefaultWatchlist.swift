@@ -16,7 +16,6 @@ struct DefaultWatchlist: View {
     @State private var filteredItems = [WatchlistItem]()
     @State private var query = ""
     @AppStorage("selectedOrder") private var smartFilter: SmartFiltersTypes = .released
-    @State private var scope: WatchlistSearchScope = .noScope
     @State private var isSearching = false
     @StateObject private var settings = SettingsStore.shared
     @AppStorage("watchlistShowAllItems") private var showAllItems = false
@@ -42,38 +41,38 @@ struct DefaultWatchlist: View {
         }
     }
     private var smartFiltersItems: [WatchlistItem] {
+        let base: [WatchlistItem]
         switch smartFilter {
         case .released:
-            sortedItems.filter { $0.isReleased }
+            base = sortedItems.filter { $0.isReleased }
         case .production:
-            sortedItems.filter { $0.isInProduction || $0.isUpcoming }
+            base = sortedItems.filter { $0.isInProduction || $0.isUpcoming }
         case .watching:
-            sortedItems.filter { $0.isCurrentlyWatching }
+            base = sortedItems.filter { $0.isCurrentlyWatching }
         case .watched:
-            sortedItems.filter { $0.isWatched }
+            base = sortedItems.filter { $0.isWatched }
         case .favorites:
-            sortedItems.filter { $0.isFavorite }
+            base = sortedItems.filter { $0.isFavorite }
         case .pin:
-            sortedItems.filter { $0.isPin }
+            base = sortedItems.filter { $0.isPin }
         case .archive:
-            sortedItems.filter { $0.isArchive }
+            base = sortedItems.filter { $0.isArchive }
         case .notWatched:
-            sortedItems.filter { !$0.isCurrentlyWatching && !$0.isWatched && $0.isReleased }
+            base = sortedItems.filter { !$0.isCurrentlyWatching && !$0.isWatched && $0.isReleased }
         }
+        return mediaTypeFilter.apply(to: base)
     }
-    private var scopeFiltersItems: [WatchlistItem] {
-        switch scope {
-        case .noScope: filteredItems
-        case .movies: filteredItems.filter { $0.isMovie }
-        case .shows: filteredItems.filter { $0.isTvShow }
-        }
+    private var searchResultItems: [WatchlistItem] {
+        mediaTypeFilter.apply(to: filteredItems)
     }
     private var mediaTypeItems: [WatchlistItem] {
-        switch mediaTypeFilter {
-        case .showAll: sortedItems
-        case .movies: sortedItems.filter { $0.isMovie }
-        case .tvShows: sortedItems.filter { $0.isTvShow }
+        mediaTypeFilter.apply(to: sortedItems)
+    }
+    private var listSectionTitle: String {
+        if showAllItems {
+            return mediaTypeFilter.localizableTitle
         }
+        return smartFilter.title
     }
 #if os(tvOS)
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \CustomList.title, ascending: true)],
@@ -124,18 +123,18 @@ struct DefaultWatchlist: View {
                         }
                         .padding(.horizontal, 64)
                     }
-                    if smartFiltersItems.isEmpty {
+                    if displayedItems.isEmpty {
                         empty
                     } else {
                         switch settings.watchlistStyle {
                         case .list:
-                            WatchlistCardSection(items: smartFiltersItems,
+                            WatchlistCardSection(items: displayedItems,
                                                  title: String(), showPopup: $showPopup, popupType: $popupType)
                         case .card:
-                            WatchlistCardSection(items: smartFiltersItems,
+                            WatchlistCardSection(items: displayedItems,
                                                  title: String(), showPopup: $showPopup, popupType: $popupType)
                         case .poster:
-                            WatchlistPosterSection(items: smartFiltersItems,
+                            WatchlistPosterSection(items: displayedItems,
                                                    title: String(), showPopup: $showPopup, popupType: $popupType)
                         }
                         
@@ -144,60 +143,41 @@ struct DefaultWatchlist: View {
             }
 #else
             if items.isEmpty {
-                if scope != .noScope {
-                    empty
-                } else {
-                    empty
-                }
+                empty
             } else {
                 if !filteredItems.isEmpty {
                     switch settings.watchlistStyle {
                     case .list:
-                        WatchListSection(items: scopeFiltersItems,
+                        WatchListSection(items: searchResultItems,
                                          title: String(localized: "Search results"), showPopup: $showPopup, popupType: $popupType)
                     case .card:
-                        WatchlistCardSection(items: scopeFiltersItems,
+                        WatchlistCardSection(items: searchResultItems,
                                              title: String(localized: "Search results"), showPopup: $showPopup, popupType: $popupType)
                     case .poster:
-                        WatchlistPosterSection(items: scopeFiltersItems,
+                        WatchlistPosterSection(items: searchResultItems,
                                                title: String(localized: "Search results"), showPopup: $showPopup, popupType: $popupType)
                     }
                     
                 } else if !query.isEmpty && filteredItems.isEmpty && !isSearching  {
                     noResults
                 } else {
-                    if showAllItems {
-                        switch settings.watchlistStyle {
-                        case .list:
-                            WatchListSection(items: mediaTypeItems,
-                                             title: mediaTypeFilter.localizableTitle,
-                                             showPopup: $showPopup, popupType: $popupType)
-                        case .card:
-                            WatchlistCardSection(items: mediaTypeItems,
-                                                 title: mediaTypeFilter.localizableTitle, showPopup: $showPopup, popupType: $popupType)
-                        case .poster:
-                            WatchlistPosterSection(items: mediaTypeItems,
-                                                   title: mediaTypeFilter.localizableTitle, showPopup: $showPopup, popupType: $popupType)
-                        }
-                    } else {
-                        switch settings.watchlistStyle {
-                        case .list:
-                            WatchListSection(items: smartFiltersItems,
-                                             title: smartFilter.title,
-                                             emptyFilter: smartFilter,
-                                             showPopup: $showPopup, popupType: $popupType)
-                        case .card:
-                            WatchlistCardSection(items: smartFiltersItems,
-                                                 title: smartFilter.title,
-                                                 emptyFilter: smartFilter,
-                                                 showPopup: $showPopup,
-                                                 popupType: $popupType)
-                        case .poster:
-                            WatchlistPosterSection(items: smartFiltersItems,
-                                                   title: smartFilter.title,
-                                                   emptyFilter: smartFilter,
-                                                   showPopup: $showPopup, popupType: $popupType)
-                        }
+                    switch settings.watchlistStyle {
+                    case .list:
+                        WatchListSection(items: displayedItems,
+                                         title: listSectionTitle,
+                                         emptyFilter: showAllItems ? nil : smartFilter,
+                                         showPopup: $showPopup, popupType: $popupType)
+                    case .card:
+                        WatchlistCardSection(items: displayedItems,
+                                             title: listSectionTitle,
+                                             emptyFilter: showAllItems ? nil : smartFilter,
+                                             showPopup: $showPopup,
+                                             popupType: $popupType)
+                    case .poster:
+                        WatchlistPosterSection(items: displayedItems,
+                                               title: listSectionTitle,
+                                               emptyFilter: showAllItems ? nil : smartFilter,
+                                               showPopup: $showPopup, popupType: $popupType)
                     }
                 }
             }
@@ -225,21 +205,23 @@ struct DefaultWatchlist: View {
                     placement: horizontalSizeClass == .regular ? .automatic : .navigationBarDrawer(displayMode: .always),
                     prompt: "Search Watchlist")
         .safeAreaInset(edge: .top, spacing: 0) {
-            if !query.isEmpty {
-                Picker("Filter", selection: $scope) {
-                    ForEach(WatchlistSearchScope.allCases) { item in
-                        Text(item.localizableTitle).tag(item)
-                    }
-                }
-                .pickerStyle(.segmented)
-                .labelsHidden()
-                .padding(.horizontal)
-                .padding(.vertical, 8)
-                .sensoryFeedback(.selection, trigger: scope)
+            if !items.isEmpty {
+                mediaTypePicker
             }
         }
 #elseif os(macOS)
         .searchable(text: $query, placement: .toolbar)
+        .safeAreaInset(edge: .top, spacing: 0) {
+            if !items.isEmpty {
+                mediaTypePicker
+            }
+        }
+#elseif os(visionOS)
+        .safeAreaInset(edge: .top, spacing: 0) {
+            if !items.isEmpty {
+                mediaTypePicker
+            }
+        }
 #endif
         .disableAutocorrection(true)
         .task(id: query) {
@@ -249,9 +231,27 @@ struct DefaultWatchlist: View {
             ListFilterView(showView: $showFilters,
                            sortOrder: $sortOrder,
                            filter: $smartFilter,
-                           mediaFilter: $mediaTypeFilter,
                            showAllItems: $showAllItems)
         }
+    }
+
+    /// Items shown for the current smart/show-all mode, after the media-type filter.
+    private var displayedItems: [WatchlistItem] {
+        showAllItems ? mediaTypeItems : smartFiltersItems
+    }
+
+    private var mediaTypePicker: some View {
+        Picker("Media Type", selection: $mediaTypeFilter) {
+            ForEach(MediaTypeFilters.allCases) { item in
+                Text(item.localizableTitle).tag(item)
+            }
+        }
+        .pickerStyle(.segmented)
+        .labelsHidden()
+        .padding(.horizontal)
+        .padding(.vertical, 8)
+        .sensoryFeedback(.selection, trigger: mediaTypeFilter)
+        .accessibilityIdentifier("Watchlist Media Type Filter")
     }
     
     private func search() async {
@@ -274,6 +274,8 @@ struct DefaultWatchlist: View {
         Menu {
 #if !os(tvOS)
             Toggle("Show All Items", isOn: $showAllItems)
+            Divider()
+#endif
             Picker("Media Filter", selection: $mediaTypeFilter) {
                 ForEach(MediaTypeFilters.allCases) { sort in
                     Text(sort.localizableTitle).tag(sort)
@@ -284,9 +286,7 @@ struct DefaultWatchlist: View {
 #else
             .pickerStyle(.menu)
 #endif
-            .disabled(!showAllItems)
             Divider()
-#endif
             Picker("Smart Filters", selection: $smartFilter) {
                 ForEach(SmartFiltersTypes.allCases) { sort in
                     Text(sort.title).tag(sort)

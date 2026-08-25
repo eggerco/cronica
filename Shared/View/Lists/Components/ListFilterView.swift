@@ -11,20 +11,12 @@ struct ListFilterView: View {
     @Binding var showView: Bool
     @Binding var sortOrder: WatchlistSortOrder
     @Binding var filter: SmartFiltersTypes
-    @Binding var mediaFilter: MediaTypeFilters
     @Binding var showAllItems: Bool
     var body: some View {
         NavigationStack {
             Form {
                 Section {
                     Toggle("Show All", isOn: $showAllItems)
-                    
-                    Picker("Media Type", selection: $mediaFilter) {
-                        ForEach(MediaTypeFilters.allCases) { sort in
-                            Text(sort.localizableTitle).tag(sort)
-                        }
-                    }
-                    .disabled(!showAllItems)
                 } header: {
                     Text("Basic Filter")
                 }
@@ -61,7 +53,6 @@ struct ListFilterView: View {
             .nativeSheetDismissToolbar { showView = false }
             .sensoryFeedback(.selection, trigger: filter)
             .sensoryFeedback(.selection, trigger: sortOrder)
-            .sensoryFeedback(.selection, trigger: mediaFilter)
             .sensoryFeedback(.selection, trigger: showAllItems)
             .scrollBounceBehavior(.basedOnSize)
             .onChange(of: filter) {
