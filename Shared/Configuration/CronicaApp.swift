@@ -114,6 +114,7 @@ struct CronicaApp: App {
 #if !os(watchOS)
             if phase == .active {
                 Task { await SimklSyncService.syncIfNeededOnForeground() }
+                Task { await TMDBSyncService.syncIfNeededOnForeground() }
             }
 #endif
 #if !os(watchOS) && !os(tvOS)

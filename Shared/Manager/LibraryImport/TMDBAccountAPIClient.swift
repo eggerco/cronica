@@ -102,6 +102,92 @@ actor TMDBAccountAPIClient {
         return items
     }
 
+    // MARK: - Writes (require session)
+
+    struct StatusResponse: Decodable {
+        let success: Bool?
+        let statusCode: Int?
+        let statusMessage: String?
+    }
+
+    func setWatchlist(mediaType: String, mediaID: Int, watchlist: Bool) async throws {
+        let (sessionID, accountID) = try sessionCredentials()
+        let url = try url(path: "account/\(accountID)/watchlist", query: ["session_id": sessionID])
+        try await postJSON(
+            url,
+            body: [
+                "media_type": mediaType,
+                "media_id": mediaID,
+                "watchlist": watchlist
+            ]
+        )
+    }
+
+    func setFavorite(mediaType: String, mediaID: Int, favorite: Bool) async throws {
+        let (sessionID, accountID) = try sessionCredentials()
+        let url = try url(path: "account/\(accountID)/favorite", query: ["session_id": sessionID])
+        try await postJSON(
+            url,
+            body: [
+                "media_type": mediaType,
+                "media_id": mediaID,
+                "favorite": favorite
+            ]
+        )
+    }
+
+    /// TMDB ratings are 0.5–10 in half-star steps.
+    func setRating(mediaType: String, mediaID: Int, value: Double) async throws {
+        let sessionID = try requireSessionID()
+        let clamped = max(0.5, min(10, value))
+        let url = try url(path: "\(mediaType)/\(mediaID)/rating", query: ["session_id": sessionID])
+        try await postJSON(url, body: ["value": clamped])
+    }
+
+    func deleteRating(mediaType: String, mediaID: Int) async throws {
+        let sessionID = try requireSessionID()
+        let url = try url(path: "\(mediaType)/\(mediaID)/rating", query: ["session_id": sessionID])
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        let _: StatusResponse = try await send(request)
+    }
+
+    /// Best-effort remote session invalidation.
+    func deleteSession(sessionID: String) async throws {
+        let url = try url(path: "authentication/session")
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try JSONSerialization.data(withJSONObject: ["session_id": sessionID])
+        let _: StatusResponse = try await send(request)
+    }
+
+    private func sessionCredentials() throws -> (String, Int) {
+        guard let sessionID = TMDBSessionStore.loadSessionID() else {
+            throw LibraryImportError.message("Connect a TMDB account first.")
+        }
+        let accountID = TMDBSessionStore.loadAccountID()
+        guard accountID != 0 else {
+            throw LibraryImportError.message("TMDB account id missing. Disconnect and sign in again.")
+        }
+        return (sessionID, accountID)
+    }
+
+    private func requireSessionID() throws -> String {
+        guard let sessionID = TMDBSessionStore.loadSessionID() else {
+            throw LibraryImportError.message("Connect a TMDB account first.")
+        }
+        return sessionID
+    }
+
+    private func postJSON(_ url: URL, body: [String: Any]) async throws {
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try JSONSerialization.data(withJSONObject: body)
+        let _: StatusResponse = try await send(request)
+    }
+
     private func url(path: String, query: [String: String] = [:]) throws -> URL {
         guard Key.isConfigured else { throw LibraryImportError.notConfigured }
         var component = URLComponents()

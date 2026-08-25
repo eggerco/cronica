@@ -10,6 +10,9 @@ import CronicaCore
 struct IntegrationsSettingsView: View {
     @StateObject private var settings = SettingsStore.shared
 
+    private static let tmdbTeal = Color(red: 0x01 / 255, green: 0xB4 / 255, blue: 0xE4 / 255)
+    private static let tmdbGreen = Color(red: 0x90 / 255, green: 0xCE / 255, blue: 0xA1 / 255)
+
     var body: some View {
         Form {
             Section {
@@ -26,7 +29,7 @@ struct IntegrationsSettingsView: View {
                         title: "SIMKL",
                         subtitle: simklSubtitle,
                         systemImage: "arrow.triangle.2.circlepath",
-                        color: .indigo
+                        fill: Color.indigo
                     )
                 }
 
@@ -34,16 +37,20 @@ struct IntegrationsSettingsView: View {
                     TMDBAccountSettingsView()
                 } label: {
                     integrationRow(
-                        title: "TMDB Account",
+                        title: "TMDB",
                         subtitle: tmdbSubtitle,
-                        systemImage: "person.crop.circle.badge.checkmark",
-                        color: .green
+                        systemImage: "arrow.triangle.2.circlepath",
+                        fill: LinearGradient(
+                            colors: [Self.tmdbTeal, Self.tmdbGreen],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
                     )
                 }
             }
 
             Section("Capabilities") {
-                Text("SIMKL can sync continuously when connected. TMDB Account imports your personal lists after sign-in.")
+                Text("SIMKL and TMDB can sync when connected. SIMKL supports incremental activity checks; TMDB re-downloads your account lists on Sync Now.")
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
@@ -83,14 +90,19 @@ struct IntegrationsSettingsView: View {
         if settings.isUserConnectedWithTMDb && TMDBSessionStore.hasSession {
             return String(localized: "Connected")
         }
-        return String(localized: "Import account lists")
+        return String(localized: "Not connected")
     }
 
-    private func integrationRow(title: String, subtitle: String, systemImage: String, color: Color) -> some View {
+    private func integrationRow<S: ShapeStyle>(
+        title: String,
+        subtitle: String,
+        systemImage: String,
+        fill: S
+    ) -> some View {
         HStack(spacing: 12) {
             ZStack {
                 RoundedRectangle(cornerRadius: 6, style: .continuous)
-                    .fill(color)
+                    .fill(fill)
                 Image(systemName: systemImage)
                     .foregroundStyle(.white)
             }

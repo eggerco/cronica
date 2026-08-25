@@ -26,7 +26,7 @@ struct DataManagementSettingsView: View {
             }
 
             Section("Your Data") {
-                Text("Cronica does not require accounts. Your watchlist, ratings, notes, and preferences are stored on this device and, if enabled, in your private iCloud account. Optional integrations (SIMKL, TMDB Account) can be connected for import.")
+                Text("Cronica does not require accounts. Your watchlist, ratings, notes, and preferences are stored on this device and, if enabled, in your private iCloud account. Optional integrations (SIMKL, TMDB) can be connected for sync.")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             }

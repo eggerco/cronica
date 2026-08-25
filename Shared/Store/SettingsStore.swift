@@ -66,6 +66,12 @@ final class SettingsStore: ObservableObject {
         get { tmdbAccountLastImportTimestamp > 0 ? Date(timeIntervalSince1970: tmdbAccountLastImportTimestamp) : nil }
         set { tmdbAccountLastImportTimestamp = newValue?.timeIntervalSince1970 ?? 0 }
     }
+    @AppStorage("tmdbPushEnabled") var tmdbPushEnabled = false
+    @AppStorage("tmdbLastSyncCheck") private var tmdbLastSyncCheck = 0.0
+    var tmdbLastSyncCheckTimestamp: TimeInterval { tmdbLastSyncCheck }
+    func markTMDBSyncChecked(_ date: Date = Date()) {
+        tmdbLastSyncCheck = date.timeIntervalSince1970
+    }
     @AppStorage("isSimklConnected") var isSimklConnected = false
     @AppStorage("simklLastImportTimestamp") private var simklLastImportTimestamp: Double = 0
     var simklLastImportDate: Date? {
