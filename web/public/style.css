@@ -311,7 +311,6 @@ nav a:hover {
 @media screen and (min-width: 768px) {
   .site-footer {
     padding: 24px 80px 48px;
-    text-align: left;
   }
 
   .page-home .site-footer {
@@ -320,6 +319,7 @@ nav a:hover {
     left: 0;
     max-width: min(50vw, 640px);
     padding-bottom: 24px;
+    text-align: left;
   }
 }
 
