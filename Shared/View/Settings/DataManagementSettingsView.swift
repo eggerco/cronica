@@ -66,6 +66,18 @@ struct DataManagementSettingsView: View {
                     showDeleteConfirmation = true
                 }
                 .disabled(isDeleting)
+                .confirmationDialog(
+                    "Delete My Data?",
+                    isPresented: $showDeleteConfirmation,
+                    titleVisibility: .visible
+                ) {
+                    Button("Delete My Data", role: .destructive) {
+                        Task { await performDeletion() }
+                    }
+                    Button("Cancel", role: .cancel) { }
+                } message: {
+                    Text("This permanently removes your watchlist, lists, progress, notifications, calendar events, and preferences from this device.")
+                }
             } footer: {
                 Text("This permanently removes your personal data from Cronica on this device. It cannot be undone.")
             }
@@ -84,14 +96,6 @@ struct DataManagementSettingsView: View {
                     .padding()
                     .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
             }
-        }
-        .alert("Delete My Data?", isPresented: $showDeleteConfirmation) {
-            Button("Delete My Data", role: .destructive) {
-                Task { await performDeletion() }
-            }
-            Button("Cancel", role: .cancel) { }
-        } message: {
-            Text("This permanently removes your watchlist, lists, progress, notifications, calendar events, and preferences from this device.")
         }
         .alert("Deletion Failed", isPresented: Binding(
             get: { deletionError != nil },

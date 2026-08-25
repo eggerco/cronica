@@ -13,58 +13,50 @@ struct TabBarReselectDetector: UIViewControllerRepresentable {
     let tabs: [Screens]
     let onReselect: (Screens) -> Void
 
-    func makeUIViewController(context: Context) -> Controller {
-        let controller = Controller(tabs: tabs, onReselect: onReselect)
-        return controller
+    func makeCoordinator() -> Coordinator {
+        Coordinator(tabs: tabs, onReselect: onReselect)
     }
 
-    func updateUIViewController(_ uiViewController: Controller, context: Context) {
-        uiViewController.tabs = tabs
-        uiViewController.onReselect = onReselect
-        uiViewController.attachIfNeeded()
+    func makeUIViewController(context: Context) -> UIViewController {
+        let host = UIViewController()
+        host.view.isUserInteractionEnabled = false
+        host.view.backgroundColor = .clear
+        return host
     }
 
-    final class Controller: UIViewController, UITabBarControllerDelegate {
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+        context.coordinator.tabs = tabs
+        context.coordinator.onReselect = onReselect
+        context.coordinator.attach(from: uiViewController)
+    }
+
+    final class Coordinator: NSObject, UITabBarControllerDelegate {
         var tabs: [Screens]
         var onReselect: (Screens) -> Void
-        private weak var attachedTabBarController: UITabBarController?
-        private weak var originalDelegate: UITabBarControllerDelegate?
+        private weak var observedController: UITabBarController?
+        private weak var previousDelegate: UITabBarControllerDelegate?
 
         init(tabs: [Screens], onReselect: @escaping (Screens) -> Void) {
             self.tabs = tabs
             self.onReselect = onReselect
-            super.init(nibName: nil, bundle: nil)
-            view.isUserInteractionEnabled = false
         }
 
-        @available(*, unavailable)
-        required init?(coder: NSCoder) {
-            fatalError("init(coder:) has not been implemented")
-        }
-
-        override func viewDidAppear(_ animated: Bool) {
-            super.viewDidAppear(animated)
-            attachIfNeeded()
-        }
-
-        override func viewDidLayoutSubviews() {
-            super.viewDidLayoutSubviews()
-            attachIfNeeded()
-        }
-
-        func attachIfNeeded() {
-            guard let tabBarController = locateTabBarController(),
-                  tabBarController !== attachedTabBarController else {
+        func attach(from host: UIViewController) {
+            guard let found = Self.findTabBarController(from: host),
+                  found !== observedController else {
                 return
             }
 
-            attachedTabBarController = tabBarController
-            originalDelegate = tabBarController.delegate
-            tabBarController.delegate = self
+            observedController = found
+            previousDelegate = found.delegate
+            found.delegate = self
         }
 
-        func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-            let defaultShouldSelect = originalDelegate?.tabBarController?(tabBarController, shouldSelect: viewController) ?? true
+        func tabBarController(
+            _ tabBarController: UITabBarController,
+            shouldSelect viewController: UIViewController
+        ) -> Bool {
+            let allowed = previousDelegate?.tabBarController?(tabBarController, shouldSelect: viewController) ?? true
 
             if tabBarController.selectedViewController === viewController,
                let index = tabBarController.viewControllers?.firstIndex(of: viewController),
@@ -72,17 +64,26 @@ struct TabBarReselectDetector: UIViewControllerRepresentable {
                 onReselect(tabs[index])
             }
 
-            return defaultShouldSelect
+            return allowed
         }
 
-        private func locateTabBarController() -> UITabBarController? {
-            var responder: UIResponder? = view
+        private static func findTabBarController(from host: UIViewController) -> UITabBarController? {
+            var responder: UIResponder? = host
             while let current = responder {
-                if let tabBarController = current as? UITabBarController {
-                    return tabBarController
+                if let found = current as? UITabBarController {
+                    return found
                 }
                 responder = current.next
             }
+
+            var parent = host.parent
+            while let current = parent {
+                if let found = current as? UITabBarController {
+                    return found
+                }
+                parent = current.parent
+            }
+
             return nil
         }
     }

@@ -121,6 +121,16 @@ struct BehaviorSetting: View {
                 Button("Clear Cache (\(String(format: "%.1f", cacheSizeMB)) MB)", role: .destructive) {
                     showClearCacheConfirmation = true
                 }
+                .confirmationDialog(
+                    "Clear Cache?",
+                    isPresented: $showClearCacheConfirmation,
+                    titleVisibility: .visible
+                ) {
+                    Button("Clear Cache", role: .destructive, action: clearCache)
+                    Button("Cancel", role: .cancel) { }
+                } message: {
+                    Text("Cached images and network responses will be removed. This cannot be undone.")
+                }
             } header: {
                 Text("Storage")
             }
@@ -131,12 +141,6 @@ struct BehaviorSetting: View {
 #endif
         .onAppear {
             updateCacheSize()
-        }
-        .alert("Clear Cache?", isPresented: $showClearCacheConfirmation) {
-            Button("Clear Cache", role: .destructive, action: clearCache)
-            Button("Cancel", role: .cancel) { }
-        } message: {
-            Text("Cached images and network responses will be removed. This cannot be undone.")
         }
     }
     
