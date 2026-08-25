@@ -34,6 +34,8 @@ enum UserDataDeletionService {
             throw UserDataDeletionError.deletionFailed(error.localizedDescription)
         }
 
+        SimklTokenStore.delete()
+
         resetUserDefaults()
         clearCaches()
         reloadWidgets()
@@ -73,6 +75,8 @@ enum UserDataDeletionService {
             "selectedWatchProviders",
             "userHasImportedFromTMDB",
             "isUserConnectedWithTMDB",
+            "isSimklConnected",
+            "simklLastImportTimestamp",
             "showRemoveConfirmation",
             "choosePreferredLaunchScreen",
             "preferredLaunchScreen",
@@ -141,5 +145,7 @@ enum UserDataDeletionService {
         settings.displayOnboard = true
         settings.allowCalendarSync = false
         settings.allowNotifications = false
+        settings.isSimklConnected = false
+        settings.simklLastImportDate = nil
     }
 }

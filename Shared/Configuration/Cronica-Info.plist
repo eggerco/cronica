@@ -36,6 +36,8 @@
 	<string>$(TMDB_API_KEY)</string>
 	<key>SENTRY_DSN</key>
 	<string>$(SENTRY_DSN)</string>
+	<key>SIMKL_CLIENT_ID</key>
+	<string>$(SIMKL_CLIENT_ID)</string>
 	<key>UILaunchScreen</key>
 	<dict>
 		<key>UINavigationBar</key>

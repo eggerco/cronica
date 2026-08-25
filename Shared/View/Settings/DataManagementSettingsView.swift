@@ -26,7 +26,7 @@ struct DataManagementSettingsView: View {
             }
 
             Section("Your Data") {
-                Text("Cronica does not use accounts. Your watchlist, ratings, notes, and preferences are stored on this device and, if enabled, in your private iCloud account.")
+                Text("Cronica does not require accounts. Your watchlist, ratings, notes, and preferences are stored on this device and, if enabled, in your private iCloud account. An optional SIMKL account can be connected for import.")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             }
@@ -39,6 +39,7 @@ struct DataManagementSettingsView: View {
                 Label("Cronica calendar and release events", systemImage: "calendar")
 #endif
                 Label("App preferences and filters", systemImage: "slider.horizontal.3")
+                Label("SIMKL sign-in token (if connected)", systemImage: "arrow.triangle.2.circlepath")
             }
 
             Section("iCloud Sync") {
@@ -76,7 +77,7 @@ struct DataManagementSettingsView: View {
                     }
                     Button("Cancel", role: .cancel) { }
                 } message: {
-                    Text("This permanently removes your watchlist, lists, progress, notifications, calendar events, and preferences from this device.")
+                    Text("This permanently removes your watchlist, lists, progress, notifications, calendar events, preferences, and any SIMKL sign-in from this device.")
                 }
             } footer: {
                 Text("This permanently removes your personal data from Cronica on this device. It cannot be undone.")

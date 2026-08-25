@@ -24,8 +24,13 @@ public struct Key {
         let dsn = configurationValue(for: "SENTRY_DSN")
         return dsn.isEmpty ? nil : dsn
     }()
+    public static let simklClientID = configurationValue(for: "SIMKL_CLIENT_ID")
 
     public static var isConfigured: Bool {
         !tmdbApi.isEmpty
+    }
+
+    public static var isSimklConfigured: Bool {
+        !simklClientID.isEmpty && !simklClientID.hasPrefix("YOUR_")
     }
 }

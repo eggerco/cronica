@@ -62,6 +62,12 @@ final class SettingsStore: ObservableObject {
     @AppStorage("selectedWatchProviders") var selectedWatchProviders = ""
     @AppStorage("userHasImportedFromTMDB") var userImportedTMDB = false
     @AppStorage("isUserConnectedWithTMDB") var isUserConnectedWithTMDb = false
+    @AppStorage("isSimklConnected") var isSimklConnected = false
+    @AppStorage("simklLastImportTimestamp") private var simklLastImportTimestamp: Double = 0
+    var simklLastImportDate: Date? {
+        get { simklLastImportTimestamp > 0 ? Date(timeIntervalSince1970: simklLastImportTimestamp) : nil }
+        set { simklLastImportTimestamp = newValue?.timeIntervalSince1970 ?? 0 }
+    }
     @AppStorage("showRemoveConfirmation") var showRemoveConfirmation = true
     @AppStorage("choosePreferredLaunchScreen") var isPreferredLaunchScreenEnabled = false
 #if !os(watchOS)

@@ -262,6 +262,108 @@ final class CronicaTests: XCTestCase {
         XCTAssertEqual(saved.itemUpcomingReleaseDate, episodeDate)
     }
 
+    func testSimklContentIDUsesTMDBAndMediaType() {
+        XCTAssertEqual(SimklImportMapper.contentID(tmdbID: 1981, media: .tvShow), "1981@1")
+        XCTAssertEqual(SimklImportMapper.contentID(tmdbID: 550, media: .movie), "550@0")
+    }
+
+    func testSimklRatingMapsTenPointScaleToFiveStars() {
+        XCTAssertEqual(SimklImportMapper.cronicaRating(fromSimkl: 10), 5)
+        XCTAssertEqual(SimklImportMapper.cronicaRating(fromSimkl: 9), 5)
+        XCTAssertEqual(SimklImportMapper.cronicaRating(fromSimkl: 1), 1)
+        XCTAssertEqual(SimklImportMapper.cronicaRating(fromSimkl: 0), 0)
+    }
+
+    func testSimklAnimeWithoutTMDBIsSkipped() throws {
+        let json = """
+        {"status":"completed","show":{"title":"Cowboy Bebop","ids":{"simkl":37089,"mal":"1"}}}
+        """.data(using: .utf8)!
+        let entry = try JSONDecoder().decode(SimklLibraryEntry.self, from: json)
+        XCTAssertTrue(SimklImportMapper.shouldSkipAnimeWithoutTMDB(entry))
+    }
+
+    func testSimklFlexibleIDDecodesStringOrInt() throws {
+        let stringJSON = "\"1981\"".data(using: .utf8)!
+        let intJSON = "1981".data(using: .utf8)!
+        XCTAssertEqual(try JSONDecoder().decode(FlexibleID.self, from: stringJSON).intValue, 1981)
+        XCTAssertEqual(try JSONDecoder().decode(FlexibleID.self, from: intJSON).intValue, 1981)
+    }
+
+    func testSimklApplyStatusMarksCompletedMovieWatched() {
+        let item = WatchlistItem(context: managedContext)
+        item.title = "Pulp Fiction"
+        item.id = 680
+        item.contentID = "680@0"
+        item.contentType = MediaType.movie.toInt
+        persistence.save()
+
+        let entry = SimklLibraryEntry(
+            status: .completed,
+            watchedEpisodesCount: 0,
+            totalEpisodesCount: 0,
+            userRating: 10,
+            lastWatchedAt: nil,
+            movie: SimklMediaObject(title: "Pulp Fiction", year: 1994, ids: SimklIDs(simkl: 1, tmdb: .int(680), imdb: nil, tvdb: nil, slug: nil)),
+            show: nil,
+            seasons: nil,
+            animeType: nil
+        )
+        SimklImportMapper.applyStatus(entry, to: "680@0", media: .movie)
+        let saved = requireItem(for: "680@0")
+        XCTAssertTrue(saved.watched)
+        XCTAssertFalse(saved.isArchive)
+        XCTAssertEqual(saved.userRating, 5)
+    }
+
+    func testSimklEpisodeTokensUseExistingFormat() {
+        let entry = SimklLibraryEntry(
+            status: .watching,
+            seasons: [
+                SimklSeason(
+                    number: 1,
+                    episodes: [
+                        SimklEpisode(number: 1, watchedAt: "2024-01-01"),
+                        SimklEpisode(number: 2, watchedAt: "2024-01-02"),
+                        SimklEpisode(number: 3, watchedAt: nil)
+                    ]
+                )
+            ]
+        )
+        XCTAssertEqual(
+            SimklImportMapper.watchedEpisodeTokens(from: entry),
+            ["-1@1", "-2@1"]
+        )
+        XCTAssertEqual(SimklImportMapper.episodeToken(episode: 4, season: 2), "-4@2")
+    }
+
+    func testSimklDroppedStatusArchivesItem() {
+        let item = WatchlistItem(context: managedContext)
+        item.title = "Dropped Show"
+        item.id = 999
+        item.contentID = "999@1"
+        item.contentType = MediaType.tvShow.toInt
+        persistence.save()
+
+        let entry = SimklLibraryEntry(status: .dropped, show: SimklMediaObject(title: "Dropped Show", ids: SimklIDs(tmdb: .int(999))))
+        SimklImportMapper.applyStatus(entry, to: "999@1", media: .tvShow)
+        let saved = requireItem(for: "999@1")
+        XCTAssertTrue(saved.isArchive)
+        XCTAssertFalse(saved.watched)
+        XCTAssertFalse(saved.isWatching)
+    }
+
+    func testSimklTokenStoreRoundTrip() throws {
+        defer { SimklTokenStore.delete() }
+        SimklTokenStore.delete()
+        XCTAssertFalse(SimklTokenStore.hasToken)
+        try SimklTokenStore.save("unit-test-token")
+        XCTAssertEqual(SimklTokenStore.load(), "unit-test-token")
+        XCTAssertTrue(SimklTokenStore.hasToken)
+        SimklTokenStore.delete()
+        XCTAssertNil(SimklTokenStore.load())
+        XCTAssertFalse(SimklTokenStore.hasToken)
+    }
+
     private enum SelfHelper {
         static func makeTVContent(id: Int, episodeNumber: Int, seasonNumber: Int, airDate: Date) -> ItemContent {
             let airDateString = DatesManager.dateFormatter.string(from: airDate)

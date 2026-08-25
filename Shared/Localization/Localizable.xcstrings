@@ -1307,7 +1307,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Zusätzlich"
+            "value": "Hinzugefügt"
           }
         },
         "en": {
@@ -21844,52 +21844,6 @@
         }
       }
     },
-    "This permanently removes your watchlist, lists, progress, notifications, calendar events, and preferences from this device.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "new",
-            "value": "This permanently removes your watchlist, lists, progress, notifications, calendar events, and preferences from this device."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "This permanently removes your watchlist, lists, progress, notifications, calendar events, and preferences from this device."
-          }
-        },
-        "es-MX": {
-          "stringUnit": {
-            "state": "new",
-            "value": "This permanently removes your watchlist, lists, progress, notifications, calendar events, and preferences from this device."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "new",
-            "value": "This permanently removes your watchlist, lists, progress, notifications, calendar events, and preferences from this device."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "new",
-            "value": "This permanently removes your watchlist, lists, progress, notifications, calendar events, and preferences from this device."
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "new",
-            "value": "This permanently removes your watchlist, lists, progress, notifications, calendar events, and preferences from this device."
-          }
-        },
-        "sk": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Týmto sa natrvalo odstráni tvoje sledované, zoznamy, pokrok, oznámenia, kalendárové udalosti a predvoľby z tohto zariadenia."
-          }
-        }
-      }
-    },
     "This product uses the TMDb API but is not endorsed or certified by TMDb.": {
       "localizations": {
         "de": {
@@ -25839,6 +25793,558 @@
           "stringUnit": {
             "state": "translated",
             "value": "Se a sincronização do iCloud estiver ativada, as exclusões sincronizam com seus outros dispositivos Apple na mesma conta iCloud. A sincronização pode demorar um pouco. Você também pode remover dados do Cronica em Ajustes → Apple ID → iCloud."
+          }
+        }
+      }
+    },
+    "SIMKL": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SIMKL"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SIMKL"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SIMKL"
+          }
+        }
+      }
+    },
+    "Connect with SIMKL": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connect with SIMKL"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pripojiť SIMKL"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mit SIMKL verbinden"
+          }
+        }
+      }
+    },
+    "Import from SIMKL": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import from SIMKL"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Importovať zo SIMKL"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aus SIMKL importieren"
+          }
+        }
+      }
+    },
+    "Disconnect": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disconnect"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Odpojiť"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trennen"
+          }
+        }
+      }
+    },
+    "Connected": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connected"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pripojené"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verbunden"
+          }
+        }
+      }
+    },
+    "Last import": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Last import"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Posledný import"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Letzter Import"
+          }
+        }
+      }
+    },
+    "Last Import": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Last Import"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Posledný import"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Letzter Import"
+          }
+        }
+      }
+    },
+    "Updated": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Updated"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aktualizované"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aktualisiert"
+          }
+        }
+      }
+    },
+    "Skipped": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skipped"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preskočené"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Übersprungen"
+          }
+        }
+      }
+    },
+    "Failed": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Failed"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zlyhalo"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fehlgeschlagen"
+          }
+        }
+      }
+    },
+    "Importing…": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Importing…"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Importuje sa…"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Importieren…"
+          }
+        }
+      }
+    },
+    "Importing movies…": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Importing movies…"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Importujú sa filmy…"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Filme werden importiert…"
+          }
+        }
+      }
+    },
+    "Importing TV shows…": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Importing TV shows…"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Importujú sa seriály…"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Serien werden importiert…"
+          }
+        }
+      }
+    },
+    "Importing anime…": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Importing anime…"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Importuje sa anime…"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anime wird importiert…"
+          }
+        }
+      }
+    },
+    "About SIMKL": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "About SIMKL"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O SIMKL"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Über SIMKL"
+          }
+        }
+      }
+    },
+    "SIMKL Website": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SIMKL Website"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Web SIMKL"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SIMKL-Website"
+          }
+        }
+      }
+    },
+    "SIMKL API": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SIMKL API"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SIMKL API"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SIMKL-API"
+          }
+        }
+      }
+    },
+    "Connect an optional SIMKL account to import your watchlist into Cronica. CloudKit still syncs your devices.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connect an optional SIMKL account to import your watchlist into Cronica. CloudKit still syncs your devices."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pripoj voliteľný účet SIMKL a importuj sledované do Cronica. CloudKit stále synchronizuje tvoje zariadenia."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verbinde optional ein SIMKL-Konto, um deine Merkliste in Cronica zu importieren. CloudKit synchronisiert weiterhin deine Geräte."
+          }
+        }
+      }
+    },
+    "Import merges into your local watchlist by TMDB ID. Existing titles are updated; items without a TMDB ID are skipped.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import merges into your local watchlist by TMDB ID. Existing titles are updated; items without a TMDB ID are skipped."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import sa zlučuje do lokálneho sledovaného podľa TMDB ID. Existujúce tituly sa aktualizujú; položky bez TMDB ID sa preskočia."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import wird nach TMDB-ID in die lokale Merkliste übernommen. Vorhandene Titel werden aktualisiert; Einträge ohne TMDB-ID werden übersprungen."
+          }
+        }
+      }
+    },
+    "Sign-in opens SIMKL in a secure browser session. Cronica never stores your SIMKL password.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sign-in opens SIMKL in a secure browser session. Cronica never stores your SIMKL password."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prihlásenie otvorí SIMKL v zabezpečenom prehliadači. Cronica nikdy neukladá tvoje heslo SIMKL."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Anmeldung öffnet SIMKL in einer sicheren Browser-Sitzung. Cronica speichert niemals dein SIMKL-Passwort."
+          }
+        }
+      }
+    },
+    "SIMKL is not configured for this build. Add SIMKL_CLIENT_ID in Secrets.xcconfig.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SIMKL is not configured for this build. Add SIMKL_CLIENT_ID in Secrets.xcconfig."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SIMKL nie je v tomto builde nakonfigurované. Pridaj SIMKL_CLIENT_ID do Secrets.xcconfig."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SIMKL ist in diesem Build nicht konfiguriert. Füge SIMKL_CLIENT_ID in Secrets.xcconfig hinzu."
+          }
+        }
+      }
+    },
+    "SIMKL sign-in token (if connected)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SIMKL sign-in token (if connected)"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prihlasovací token SIMKL (ak je pripojené)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SIMKL-Anmeldetoken (falls verbunden)"
+          }
+        }
+      }
+    },
+    "Enter this code at simkl.com/pin": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter this code at simkl.com/pin"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zadaj tento kód na simkl.com/pin"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gib diesen Code unter simkl.com/pin ein"
+          }
+        }
+      }
+    },
+    "This permanently removes your watchlist, lists, progress, notifications, calendar events, preferences, and any SIMKL sign-in from this device.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dadurch werden deine Merkliste, Listen, Fortschritt, Mitteilungen, Kalenderereignisse, Einstellungen und ggf. die SIMKL-Anmeldung dauerhaft von diesem Gerät entfernt."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This permanently removes your watchlist, lists, progress, notifications, calendar events, preferences, and any SIMKL sign-in from this device."
+          }
+        },
+        "es-MX": {
+          "stringUnit": {
+            "state": "new",
+            "value": "This permanently removes your watchlist, lists, progress, notifications, calendar events, preferences, and any SIMKL sign-in from this device."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "new",
+            "value": "This permanently removes your watchlist, lists, progress, notifications, calendar events, preferences, and any SIMKL sign-in from this device."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "new",
+            "value": "This permanently removes your watchlist, lists, progress, notifications, calendar events, preferences, and any SIMKL sign-in from this device."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "new",
+            "value": "This permanently removes your watchlist, lists, progress, notifications, calendar events, preferences, and any SIMKL sign-in from this device."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Týmto natrvalo odstránite sledované, zoznamy, postup, notifikácie, kalendárové udalosti, preferencie a prípadné prihlásenie SIMKL z tohto zariadenia."
           }
         }
       }

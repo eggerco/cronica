@@ -73,6 +73,10 @@ struct AboutSettings: View {
                     title: "The Movie Database",
                     url: "https://www.themoviedb.org"
                 )
+                aboutButton(
+                    title: "SIMKL",
+                    url: "https://simkl.com"
+                )
             }
             
             Section("Design") {

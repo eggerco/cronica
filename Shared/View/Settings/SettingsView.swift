@@ -31,6 +31,7 @@ struct SettingsView: View {
                 settingsNavigationLink(.watchlist, title: String(localized: "Watchlist"), icon: "rectangle.on.rectangle", color: AppThemeColors.goldenrod.color)
                 settingsNavigationLink(.season, title: String(localized: "Season & Up Next"), icon: "tv", color: AppThemeColors.turquoiseBlue.color)
                 settingsNavigationLink(.region, title: String(localized: "Watch Provider"), icon: "globe", color: .purple)
+                settingsNavigationLink(.simkl, title: String(localized: "SIMKL"), icon: "arrow.triangle.2.circlepath", color: .indigo)
             }
             
             Section("About") {
@@ -70,6 +71,11 @@ struct SettingsView: View {
                 .tabItem { Label("Region", systemImage: "globe")  }
 
             NavigationStack {
+                SimklSettingsView()
+            }
+            .tabItem { Label("SIMKL", systemImage: "arrow.triangle.2.circlepath") }
+
+            NavigationStack {
                 DataManagementSettingsView()
             }
             .tabItem { Label("Privacy & Data", systemImage: "lock.shield") }
@@ -85,6 +91,7 @@ struct SettingsView: View {
                 Section {
                     NavigationLink("Watchlist", destination: WatchlistSettingsView())
                     NavigationLink("Appearance", destination: AppearanceSetting())
+                    NavigationLink("SIMKL", destination: SimklSettingsView())
                 }
                 
                 Section {

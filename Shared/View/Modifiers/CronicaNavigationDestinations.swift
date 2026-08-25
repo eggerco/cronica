@@ -106,6 +106,7 @@ extension View {
                 case .watchlist: WatchlistSettingsView()
                 case .season: SeasonUpNextSettingsView()
                 case .dataManagement: DataManagementSettingsView()
+                case .simkl: SimklSettingsView()
                 }
             }
     }
