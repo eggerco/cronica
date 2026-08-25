@@ -29,7 +29,7 @@ class ItemContentViewModel: ObservableObject {
     @Published private(set) var isHiddenFromUpNext = false
     @Published private(set) var isHiddenFromWatchlist = false
 #if !os(watchOS)
-    @Published private(set) var criticRatings: ExternalCriticRatings?
+    @Published private(set) var tmdbReviews: [TMDBReview] = []
 #endif
     @Published private(set) var isLoading = true
     @Published private(set) var showMarkAsButton = false
@@ -90,7 +90,12 @@ class ItemContentViewModel: ObservableObject {
 				}
 #if !os(watchOS)
                 Task {
-                    criticRatings = await CriticRatingsService.shared.fetch(for: content, type: type)
+                    if type != .person,
+                       let response = try? await service.fetchReviews(id: id, type: type) {
+                        tmdbReviews = response.results
+                    } else {
+                        tmdbReviews = []
+                    }
                 }
 #endif
 #if os(iOS) || os(macOS)

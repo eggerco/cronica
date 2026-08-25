@@ -278,11 +278,7 @@
 		C0SIMKLMODEL0000000003 /* SimklModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLMODEL0000000001 /* SimklModels.swift */; };
 		C0SIMKLTOKEN0000000002 /* SimklTokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLTOKEN0000000001 /* SimklTokenStore.swift */; };
 		C0SIMKLTOKEN0000000003 /* SimklTokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLTOKEN0000000001 /* SimklTokenStore.swift */; };
-		C0CRITMODEL00000000002 /* CriticRatingsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CRITMODEL00000000001 /* CriticRatingsModels.swift */; };
-		C0CRITOMDB00000000002 /* OMDbAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CRITOMDB00000000001 /* OMDbAPIClient.swift */; };
-		C0CRITLBOX00000000002 /* LetterboxdRatingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CRITLBOX00000000001 /* LetterboxdRatingService.swift */; };
-		C0CRITSVC000000000002 /* CriticRatingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CRITSVC000000000001 /* CriticRatingsService.swift */; };
-		C0CRITUI000000000002 /* CriticScoresSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CRITUI000000000001 /* CriticScoresSection.swift */; };
+		C0TMDBREVUI00000000002 /* TMDBReviewsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0TMDBREVUI00000000001 /* TMDBReviewsSection.swift */; };
 		C0ITEMHERO000000000002 /* ItemContentHeroHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ITEMHERO000000000001 /* ItemContentHeroHeader.swift */; };
 		C0SIMKLAPI000000000002 /* SimklAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLAPI000000000001 /* SimklAPIClient.swift */; };
 		C0SIMKLAUTH00000000002 /* SimklAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLAUTH00000000001 /* SimklAuthService.swift */; };
@@ -617,11 +613,7 @@
 		C0DATAMGMT000000000001 /* DataManagementSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagementSettingsView.swift; sourceTree = "<group>"; };
 		C0SIMKLMODEL0000000001 /* SimklModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimklModels.swift; sourceTree = "<group>"; };
 		C0SIMKLTOKEN0000000001 /* SimklTokenStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimklTokenStore.swift; sourceTree = "<group>"; };
-		C0CRITMODEL00000000001 /* CriticRatingsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriticRatingsModels.swift; sourceTree = "<group>"; };
-		C0CRITOMDB00000000001 /* OMDbAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMDbAPIClient.swift; sourceTree = "<group>"; };
-		C0CRITLBOX00000000001 /* LetterboxdRatingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterboxdRatingService.swift; sourceTree = "<group>"; };
-		C0CRITSVC000000000001 /* CriticRatingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriticRatingsService.swift; sourceTree = "<group>"; };
-		C0CRITUI000000000001 /* CriticScoresSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriticScoresSection.swift; sourceTree = "<group>"; };
+		C0TMDBREVUI00000000001 /* TMDBReviewsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBReviewsSection.swift; sourceTree = "<group>"; };
 		C0ITEMHERO000000000001 /* ItemContentHeroHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemContentHeroHeader.swift; sourceTree = "<group>"; };
 		C0SIMKLAPI000000000001 /* SimklAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimklAPIClient.swift; sourceTree = "<group>"; };
 		C0SIMKLAUTH00000000001 /* SimklAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimklAuthService.swift; sourceTree = "<group>"; };
@@ -1260,7 +1252,7 @@ C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 				B82C26792795E33900259D98 /* ItemContentPosterView.swift */,
 				B824E4352A04945400E385CE /* ItemContentRowView.swift */,
 				B8B2F6B32A85DBFD00FF0246 /* ItemContentSearchRowView.swift */,
-				C0CRITUI000000000001 /* CriticScoresSection.swift */,
+				C0TMDBREVUI00000000001 /* TMDBReviewsSection.swift */,
 				C0ITEMHERO000000000001 /* ItemContentHeroHeader.swift */,
 			);
 			path = Components;
@@ -1416,17 +1408,6 @@ C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 			path = Simkl;
 			sourceTree = "<group>";
 		};
-		C0CRITGROUP0000000001 /* CriticRatings */ = {
-			isa = PBXGroup;
-			children = (
-				C0CRITMODEL00000000001 /* CriticRatingsModels.swift */,
-				C0CRITOMDB00000000001 /* OMDbAPIClient.swift */,
-				C0CRITLBOX00000000001 /* LetterboxdRatingService.swift */,
-				C0CRITSVC000000000001 /* CriticRatingsService.swift */,
-			);
-			path = CriticRatings;
-			sourceTree = "<group>";
-		};
 		B8EC463D27D84C45009389FC /* Manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -1434,7 +1415,6 @@ C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 				C0CALMGR000000000001 /* CalendarManager.swift */,
 				C0USERDATA000000000001 /* UserDataDeletionService.swift */,
 				C0INTREMOTE0000000001 /* IntegrationRemoteApply.swift */,
-				C0CRITGROUP0000000001 /* CriticRatings */,
 				C0SIMKLGROUP0000000001 /* Simkl */,
 				C0LIBGROUP0000000001 /* LibraryImport */,
 				B8B94CEE28EB8B8200EDEC85 /* CronicaTelemetry.swift */,
@@ -1966,11 +1946,7 @@ C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 				C0USERDATA000000000002 /* UserDataDeletionService.swift in Sources */,
 				C0SIMKLMODEL0000000002 /* SimklModels.swift in Sources */,
 				C0SIMKLTOKEN0000000002 /* SimklTokenStore.swift in Sources */,
-				C0CRITMODEL00000000002 /* CriticRatingsModels.swift in Sources */,
-				C0CRITOMDB00000000002 /* OMDbAPIClient.swift in Sources */,
-				C0CRITLBOX00000000002 /* LetterboxdRatingService.swift in Sources */,
-				C0CRITSVC000000000002 /* CriticRatingsService.swift in Sources */,
-				C0CRITUI000000000002 /* CriticScoresSection.swift in Sources */,
+				C0TMDBREVUI00000000002 /* TMDBReviewsSection.swift in Sources */,
 				C0ITEMHERO000000000002 /* ItemContentHeroHeader.swift in Sources */,
 				C0SIMKLAPI000000000002 /* SimklAPIClient.swift in Sources */,
 				C0SIMKLAUTH00000000002 /* SimklAuthService.swift in Sources */,

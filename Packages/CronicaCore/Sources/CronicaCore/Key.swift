@@ -25,7 +25,6 @@ public struct Key {
         return dsn.isEmpty ? nil : dsn
     }()
     public static let simklClientID = configurationValue(for: "SIMKL_CLIENT_ID")
-    public static let omdbApiKey = configurationValue(for: "OMDB_API_KEY")
 
     public static var isConfigured: Bool {
         !tmdbApi.isEmpty
@@ -33,9 +32,5 @@ public struct Key {
 
     public static var isSimklConfigured: Bool {
         !simklClientID.isEmpty && !simklClientID.hasPrefix("YOUR_")
-    }
-
-    public static var isOMDbConfigured: Bool {
-        !omdbApiKey.isEmpty && !omdbApiKey.hasPrefix("YOUR_")
     }
 }

@@ -835,14 +835,17 @@ final class CronicaTests: XCTestCase {
         XCTAssertEqual(stats.watchedLast30Days, 1)
     }
 
-    func testOMDbRatingResponseParsing() throws {
+    func testTMDBReviewResponseParsing() throws {
         let json = """
-        {"Response":"True","Metascore":"82","Ratings":[{"Source":"Rotten Tomatoes","Value":"93%"},{"Source":"Metacritic","Value":"82/100"}]}
+        {"id":550,"page":1,"total_pages":1,"total_results":1,"results":[{"author":"Brett Pascoe","author_details":{"name":"Brett Pascoe","username":"SneekyNuts","avatar_path":"/avatar.jpg","rating":9.0},"content":"Great movie.","created_at":"2018-07-05T13:22:41.754Z","id":"5b3e1ba1925141144c007f17","updated_at":"2021-06-23T15:58:10.199Z","url":"https://www.themoviedb.org/review/5b3e1ba1925141144c007f17"}]}
         """
-        let decoded = try JSONDecoder().decode(OMDbRatingResponse.self, from: Data(json.utf8))
-        XCTAssertTrue(decoded.isSuccessful)
-        XCTAssertEqual(decoded.rottenTomatoesScore, "93%")
-        XCTAssertEqual(decoded.metacriticScore, "82/100")
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        let decoded = try decoder.decode(TMDBReviewsResponse.self, from: Data(json.utf8))
+        XCTAssertEqual(decoded.results.count, 1)
+        XCTAssertEqual(decoded.results[0].displayName, "Brett Pascoe")
+        XCTAssertEqual(decoded.results[0].ratingLabel, "9.0/10")
+        XCTAssertEqual(decoded.results.averageRatingLabel, "9.0/10")
     }
 
     func testRemoveWatchedEpisodesClearsProgress() {

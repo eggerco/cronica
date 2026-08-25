@@ -239,7 +239,8 @@ struct ItemContentDetails: View {
                 .padding(.horizontal)
                 .padding(.top, 4)
 
-            CriticScoresSection(ratings: viewModel.criticRatings, fallbackTMDB: viewModel.content?.itemRating)
+            TMDBReviewsSection(reviews: viewModel.tmdbReviews,
+                               communityScore: viewModel.content?.itemRating)
                 .padding(.horizontal)
                 .padding(.top, 8)
             
@@ -275,6 +276,7 @@ struct ItemContentDetails: View {
                 VStack { }
             }
         }
+        .toolbarBackground(.hidden, for: .navigationBar)
         .navigationTitle(title)
         .navigationBarTitleDisplayMode(.inline)
         .actionPopup(isShowing: $showPopup, for: popupType)
@@ -335,7 +337,8 @@ struct ItemContentDetails: View {
 
                     watchedDateCaption
 
-                    CriticScoresSection(ratings: viewModel.criticRatings, fallbackTMDB: viewModel.content?.itemRating)
+                    TMDBReviewsSection(reviews: viewModel.tmdbReviews,
+                                       communityScore: viewModel.content?.itemRating)
                         .padding(.top, 8)
                 }
                 .frame(width: 360)
