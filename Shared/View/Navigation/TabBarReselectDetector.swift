@@ -27,7 +27,7 @@ struct TabBarReselectDetector: UIViewControllerRepresentable {
     final class Controller: UIViewController, UITabBarControllerDelegate {
         var tabs: [Screens]
         var onReselect: (Screens) -> Void
-        private weak var tabBarController: UITabBarController?
+        private weak var attachedTabBarController: UITabBarController?
         private weak var originalDelegate: UITabBarControllerDelegate?
 
         init(tabs: [Screens], onReselect: @escaping (Screens) -> Void) {
@@ -53,11 +53,12 @@ struct TabBarReselectDetector: UIViewControllerRepresentable {
         }
 
         func attachIfNeeded() {
-            guard let tabBarController = locateTabBarController(), tabBarController !== self.tabBarController else {
+            guard let tabBarController = locateTabBarController(),
+                  tabBarController !== attachedTabBarController else {
                 return
             }
 
-            self.tabBarController = tabBarController
+            attachedTabBarController = tabBarController
             originalDelegate = tabBarController.delegate
             tabBarController.delegate = self
         }
