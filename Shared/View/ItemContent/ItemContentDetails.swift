@@ -180,7 +180,6 @@ struct ItemContentDetails: View {
     private var sizedBasedPhoneView: some View {
         VStack(spacing: 0) {
             ItemContentHeroHeader(
-                backdropURL: detailBackdropURL,
                 posterURL: detailPosterURL,
                 posterWidth: DrawingConstants.posterWidth,
                 posterHeight: DrawingConstants.posterHeight
@@ -192,9 +191,9 @@ struct ItemContentDetails: View {
                 .font(.title)
                 .fontDesign(.rounded)
                 .fontWeight(.bold)
-                .padding(.horizontal, 16)
-                .padding(.top, 4)
-                .padding(.bottom, 2)
+                .padding(.horizontal, DrawingConstants.contentHorizontalInset)
+                .padding(.top, 8)
+                .padding(.bottom, 4)
                 .unredacted()
                 .accessibilityIdentifier("Item Title")
             if let subtitle = detailMetadataSubtitle {
@@ -203,17 +202,19 @@ struct ItemContentDetails: View {
                     .foregroundStyle(.secondary)
                     .fontDesign(.rounded)
                     .multilineTextAlignment(.center)
-                    .padding(.horizontal, 12)
+                    .padding(.horizontal, DrawingConstants.contentHorizontalInset)
             } else if let genres = viewModel.content?.itemGenres, !genres.isEmpty {
                 Text(genres)
                     .font(.caption)
                     .foregroundColor(.secondary)
                     .fontDesign(.rounded)
+                    .padding(.horizontal, DrawingConstants.contentHorizontalInset)
             } else if let info = viewModel.content?.itemQuickInfo, !info.isEmpty {
                 Text(info)
                     .font(.caption)
                     .foregroundColor(.secondary)
                     .fontDesign(.rounded)
+                    .padding(.horizontal, DrawingConstants.contentHorizontalInset)
             }
             
             VStack(spacing: 12) {
@@ -231,18 +232,19 @@ struct ItemContentDetails: View {
                 listButton
                     .frame(maxWidth: .infinity)
             }
-            .padding([.top, .horizontal])
+            .padding(.top, 20)
+            .padding(.horizontal, DrawingConstants.contentHorizontalInset)
             
             OverviewBoxView(overview: viewModel.content?.itemOverview,
                             title: title,
                             plainStyle: true)
-                .padding(.horizontal)
-                .padding(.top, 4)
+                .padding(.horizontal, DrawingConstants.contentHorizontalInset)
+                .padding(.top, 16)
 
             TMDBReviewsSection(reviews: viewModel.tmdbReviews,
                                communityScore: viewModel.content?.itemRating)
-                .padding(.horizontal)
-                .padding(.top, 8)
+                .padding(.horizontal, DrawingConstants.contentHorizontalInset)
+                .padding(.top, 16)
             
             if let season = viewModel.content?.seasons {
                 SeasonListView(
@@ -252,31 +254,37 @@ struct ItemContentDetails: View {
                     isInWatchlist: $viewModel.isInWatchlist,
                     showCover: viewModel.content?.cardImageMedium
                 )
-                .padding([.top, .horizontal], .zero)
+                .padding(.top, 8)
                 .padding(.bottom)
             }
             
             WatchProvidersList(id: id, type: type)
+                .padding(.top, 8)
             
             TrailerListView(trailers: viewModel.trailers)
+                .padding(.top, 8)
             
             CastListView(credits: viewModel.credits)
+                .padding(.top, 8)
             
             HorizontalItemContentListView(items: viewModel.recommendations,
                                           title: String(localized: "Recommendations"),
                                           showPopup: $showPopup,
                                           popupType: $popupType,
                                           displayAsCard: true)
+                .padding(.top, 8)
             
-            infoBox(item: viewModel.content, type: type).padding()
+            infoBox(item: viewModel.content, type: type)
+                .padding(.horizontal, DrawingConstants.contentHorizontalInset)
+                .padding(.vertical, 16)
             
         }
+        .padding(.bottom, 32)
         .toolbar {
             ToolbarItem(placement: .principal) {
                 VStack { }
             }
         }
-        .toolbarBackground(.hidden, for: .navigationBar)
         .navigationTitle(title)
         .navigationBarTitleDisplayMode(.inline)
         .actionPopup(isShowing: $showPopup, for: popupType)
@@ -710,12 +718,6 @@ extension ItemContentDetails {
 #endif
     
     // MARK: Action Buttons
-    private var detailBackdropURL: URL? {
-        viewModel.content?.cardImageLarge
-            ?? viewModel.content?.cardImageMedium
-            ?? viewModel.content?.posterImageMedium
-    }
-
     private var detailPosterURL: URL? {
         if viewModel.showPoster || store.usePostersAsCover {
             return viewModel.content?.posterImageMedium
@@ -1351,6 +1353,7 @@ private struct BorderedProminentWhen: ViewModifier {
 private struct DrawingConstants {
     static let shadowRadius: CGFloat = 12
 #if os(iOS)
+    static let contentHorizontalInset: CGFloat = 20
     static let posterWidth: CGFloat = 200
     static let posterHeight: CGFloat = 300
     static let coverWidth: CGFloat = 360
