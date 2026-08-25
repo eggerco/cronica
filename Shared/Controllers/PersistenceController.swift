@@ -69,7 +69,10 @@ struct PersistenceController {
             }
         }
 
-        container.loadPersistentStores { _, error in
+        // Capture locally so the escaping load callback does not retain mutating `self`
+        // (PersistenceController is a struct; property access inside init would capture self).
+        let loadedContainer = container
+        loadedContainer.loadPersistentStores { _, error in
             if let error = error as NSError? {
 #if DEBUG
                 fatalError("Unresolved error \(error), \(error.userInfo)")
@@ -82,7 +85,7 @@ struct PersistenceController {
             // After model changes, launch a DEBUG build signed into iCloud, then promote
             // the schema in CloudKit Console (Deploy Schema Changes → Production).
             if !inMemory {
-                Self.initializeDevelopmentCloudKitSchema(for: container)
+                Self.initializeDevelopmentCloudKitSchema(for: loadedContainer)
             }
 #endif
         }
