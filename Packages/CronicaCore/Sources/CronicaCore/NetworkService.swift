@@ -139,6 +139,13 @@ public final class NetworkService: Sendable {
         }
         return try await self.fetch(url: url)
     }
+
+    public func fetchExternalIds(id: Int, type: MediaType) async throws -> ExternalIds {
+        guard type != .person else { throw NetworkError.invalidRequest }
+        let url = URL(string: "https://api.themoviedb.org/3/\(type.rawValue)/\(id)/external_ids?api_key=\(Key.tmdbApi)")
+        guard let url else { throw NetworkError.invalidRequest }
+        return try await fetch(url: url)
+    }
     
     public func downloadData(from url: URL) async throws -> Data {
         let (data, response) = try await URLSession.shared.data(from: url)

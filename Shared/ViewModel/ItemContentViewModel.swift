@@ -28,6 +28,9 @@ class ItemContentViewModel: ObservableObject {
     @Published private(set) var isNotificationsMuted = false
     @Published private(set) var isHiddenFromUpNext = false
     @Published private(set) var isHiddenFromWatchlist = false
+#if !os(watchOS)
+    @Published private(set) var criticRatings: ExternalCriticRatings?
+#endif
     @Published private(set) var isLoading = true
     @Published private(set) var showMarkAsButton = false
     @Published private(set) var isItemAddedToAnyList = false
@@ -85,6 +88,11 @@ class ItemContentViewModel: ObservableObject {
 				Task {
 					hasNotificationScheduled = await isNotificationScheduled()
 				}
+#if !os(watchOS)
+                Task {
+                    criticRatings = await CriticRatingsService.shared.fetch(for: content, type: type)
+                }
+#endif
 #if os(iOS) || os(macOS)
                 if isInWatchlist {
                     persistence.update(item: content)

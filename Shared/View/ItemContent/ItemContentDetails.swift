@@ -619,8 +619,7 @@ struct ItemContentDetails: View {
                     infoView(title: String(localized: "First Air Date"),
                              content: item?.itemFirstAirDate)
                 }
-                infoView(title: String(localized: "Ratings Score"),
-                         content: item?.itemRating)
+                CriticScoresSection(ratings: viewModel.criticRatings, fallbackTMDB: item?.itemRating)
                 infoView(title: String(localized: "Status"),
                          content: item?.itemStatus.localizedTitle)
                 infoView(title: String(localized: "Genres"),
@@ -1122,6 +1121,7 @@ extension ItemContentDetails {
                 infoLabel(title: String(localized: "First Air Date"),
                           content: viewModel.content?.itemFirstAirDate)
             }
+            CriticScoresSection(ratings: viewModel.criticRatings, fallbackTMDB: viewModel.content?.itemRating)
             infoLabel(title: String(localized: "Region of Origin"),
                       content: viewModel.content?.itemCountry)
             infoLabel(title: String(localized: "Genres"),

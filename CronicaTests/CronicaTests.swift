@@ -835,6 +835,16 @@ final class CronicaTests: XCTestCase {
         XCTAssertEqual(stats.watchedLast30Days, 1)
     }
 
+    func testOMDbRatingResponseParsing() throws {
+        let json = """
+        {"Response":"True","Metascore":"82","Ratings":[{"Source":"Rotten Tomatoes","Value":"93%"},{"Source":"Metacritic","Value":"82/100"}]}
+        """
+        let decoded = try JSONDecoder().decode(OMDbRatingResponse.self, from: Data(json.utf8))
+        XCTAssertTrue(decoded.isSuccessful)
+        XCTAssertEqual(decoded.rottenTomatoesScore, "93%")
+        XCTAssertEqual(decoded.metacriticScore, "82/100")
+    }
+
     func testRemoveWatchedEpisodesClearsProgress() {
         let item = requireItem(for: ItemContent.examples[0].itemContentID)
         item.contentType = MediaType.tvShow.toInt
