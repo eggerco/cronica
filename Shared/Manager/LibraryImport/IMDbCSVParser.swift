@@ -21,6 +21,8 @@ enum IMDbCSVParser {
         let hasYourRating = headers.contains("your rating") || headers.contains("you rated")
         let defaultIntent: LibraryImportIntent = {
             let name = (filenameHint ?? "").lowercased()
+            // Filename wins — IMDb watchlist CSVs still include an empty "Your Rating" column.
+            if name.contains("watchlist") { return .watchlist }
             if name.contains("rating") { return .rated }
             if hasYourRating { return .rated }
             return .watchlist
