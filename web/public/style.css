@@ -302,13 +302,19 @@ nav a:hover {
 }
 
 .site-footer {
+  position: relative;
+  z-index: 1;
   padding: 24px 30px 40px;
   text-align: center;
 }
 
 @media screen and (min-width: 768px) {
   .site-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
     padding: 24px 80px 48px;
+    text-align: left;
   }
 }
 
