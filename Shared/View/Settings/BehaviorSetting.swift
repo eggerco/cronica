@@ -118,7 +118,7 @@ struct BehaviorSetting: View {
 #endif
 
             Section {
-                Button("Clear Cache (\(String(format: "%.1f", cacheSizeMB)) MB)", role: .destructive) {
+                Button(String(localized: "Clear Cache \(String(format: "%.1f", cacheSizeMB)) MB"), role: .destructive) {
                     showClearCacheConfirmation = true
                 }
                 .confirmationDialog(
