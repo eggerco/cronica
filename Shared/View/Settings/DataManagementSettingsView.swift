@@ -14,6 +14,21 @@ struct DataManagementSettingsView: View {
 
     var body: some View {
         Form {
+            Section {
+                Button {
+                    openURL(AppWebsite.privacyPolicy)
+                } label: {
+                    Label {
+                        CronicaFormText("Privacy Policy")
+                    } icon: {
+                        Image(systemName: "hand.raised")
+                    }
+                }
+#if os(macOS)
+                .buttonStyle(.link)
+#endif
+            }
+
             CronicaFormSection("Your Data") {
                 CronicaFormText(
                     "Cronica does not use accounts. Your watchlist, ratings, notes, and preferences are stored on this device and, if enabled, in your private iCloud account.",
@@ -66,13 +81,6 @@ struct DataManagementSettingsView: View {
                     font: .subheadline,
                     color: .secondary
                 )
-
-                Button("Privacy Policy") {
-                    openURL(AppWebsite.privacyPolicy)
-                }
-#if os(macOS)
-                .buttonStyle(.link)
-#endif
             }
 
             if didDeleteData {
@@ -96,6 +104,7 @@ struct DataManagementSettingsView: View {
         }
         .cronicaNavigationTitle("Privacy & Data", displayMode: .inline)
         .cronicaSettingsForm()
+        .accessibilityIdentifier("Privacy & Data View")
         .overlay {
             if isDeleting {
                 ProgressView("Deleting your data…")
@@ -103,11 +112,7 @@ struct DataManagementSettingsView: View {
                     .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
             }
         }
-        .confirmationDialog(
-            "Delete My Data?",
-            isPresented: $showDeleteConfirmation,
-            titleVisibility: .visible
-        ) {
+        .alert("Delete My Data?", isPresented: $showDeleteConfirmation) {
             Button("Delete My Data", role: .destructive) {
                 Task { await performDeletion() }
             }

@@ -11,7 +11,7 @@ import SwiftUI
 struct SettingsView: View {
 #if os(iOS) || os(visionOS)
     static let tag: Screens? = .settings
-    @Environment(\.openURL) private var openURL
+    @State private var showPrivacyDataSheet = false
 #elseif os(tvOS)
     @StateObject private var store = SettingsStore.shared
 #endif
@@ -58,16 +58,13 @@ struct SettingsView: View {
                                   icon: "info.circle", color: .black)
                 }
                 Button {
-                    openURL(AppWebsite.privacyPolicy)
+                    showPrivacyDataSheet = true
                 } label: {
-                    settingsLabel(title: NSLocalizedString("Privacy Policy", comment: ""),
-                                  icon: "hand.raised", color: .indigo)
-                }
-                .buttonStyle(.plain)
-                NavigationLink(value: SettingsScreens.dataManagement) {
-                    settingsLabel(title: NSLocalizedString("Privacy & Data", comment: ""),
+                    settingsLabel(title: String(localized: "Privacy & Data"),
                                   icon: "lock.shield", color: .orange)
                 }
+                .buttonStyle(.plain)
+                .accessibilityIdentifier("Privacy & Data Settings Button")
                 NavigationLink(value: SettingsScreens.feedback) {
                     settingsLabel(title: NSLocalizedString("Feedback", comment: ""),
                                   icon: "envelope.fill", color: AppThemeColors.steel.color)
@@ -84,6 +81,18 @@ struct SettingsView: View {
         .navigationBarTitleDisplayMode(.inline)
         .cronicaSettingsForm()
         .accessibilityIdentifier("Settings View")
+        .sheet(isPresented: $showPrivacyDataSheet) {
+            NavigationStack {
+                DataManagementSettingsView()
+                    .nativeSheetDismissToolbar { showPrivacyDataSheet = false }
+            }
+#if os(iOS) || os(visionOS)
+            .presentationDetents([.large])
+            .presentationDragIndicator(.visible)
+#endif
+            .appTheme()
+            .appTint()
+        }
 #elseif os(macOS)
         TabView {
             AppearanceSetting()
@@ -106,6 +115,11 @@ struct SettingsView: View {
             
             WatchProviderSettings()
                 .tabItem { Label("Region", systemImage: "globe")  }
+
+            NavigationStack {
+                DataManagementSettingsView()
+            }
+            .tabItem { Label("Privacy & Data", systemImage: "lock.shield") }
             
             TipJarSetting()
                 .tabItem { Label("Tip Jar", systemImage: "heart") }
@@ -144,8 +158,10 @@ struct SettingsView: View {
             .accessibilityHidden(true)
             Text(verbatim: title)
                 .textCase(nil)
+                .environment(\.textCase, nil)
         }
         .padding(.vertical, 2)
+        .environment(\.textCase, nil)
     }
 }
 
