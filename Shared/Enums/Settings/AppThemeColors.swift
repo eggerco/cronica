@@ -37,6 +37,7 @@ enum AppThemeColors: Int, Identifiable, CaseIterable {
     case fireballRed = 25
     case mysticTeal = 26
     case electricBlue = 27
+
     var color: Color {
         switch self {
         case .blue: .blue
@@ -67,6 +68,39 @@ enum AppThemeColors: Int, Identifiable, CaseIterable {
         case .fireballRed: Color(red: 0.93, green: 0.16, blue: 0.16)
         case .mysticTeal: Color(red: 0.0, green: 0.6, blue: 0.6)
         case .electricBlue: Color(red: 0.0, green: 0.69, blue: 0.96)
+        }
+    }
+
+    var title: String {
+        switch self {
+        case .blue: String(localized: "Blue")
+        case .red: String(localized: "Red")
+        case .green: String(localized: "Green")
+        case .brown: String(localized: "Brown")
+        case .cyan: String(localized: "Cyan")
+        case .gray: String(localized: "Gray")
+        case .indigo: String(localized: "Indigo")
+        case .mint: String(localized: "Mint")
+        case .orange: String(localized: "Orange")
+        case .pink: String(localized: "Pink")
+        case .purple: String(localized: "Purple")
+        case .teal: String(localized: "Teal")
+        case .yellow: String(localized: "Yellow")
+        case .steel: String(localized: "Steel")
+        case .roseGold: String(localized: "Rose Gold")
+        case .turquoise: String(localized: "Turquoise")
+        case .lavender: String(localized: "Lavender")
+        case .cherry: String(localized: "Cherry")
+        case .skyBlue: String(localized: "Sky Blue")
+        case .goldenrod: String(localized: "Goldenrod")
+        case .coral: String(localized: "Coral")
+        case .turquoiseBlue: String(localized: "Turquoise Blue")
+        case .rubyRed: String(localized: "Ruby Red")
+        case .mahoganyBrown: String(localized: "Mahogany")
+        case .burntOrange: String(localized: "Burnt Orange")
+        case .fireballRed: String(localized: "Fireball")
+        case .mysticTeal: String(localized: "Mystic Teal")
+        case .electricBlue: String(localized: "Electric Blue")
         }
     }
 }

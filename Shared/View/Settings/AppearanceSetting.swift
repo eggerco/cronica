@@ -10,6 +10,7 @@ import SwiftUI
 struct AppearanceSetting: View {
     @StateObject private var store = SettingsStore.shared
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+
     var body: some View {
         Form {
 #if os(iOS)
@@ -19,7 +20,7 @@ struct AppearanceSetting: View {
                 }
             }
 #endif
-            
+
 #if !os(tvOS)
             Section("Style Preferences") {
                 Picker(selection: $store.sectionStyleType) {
@@ -36,9 +37,9 @@ struct AppearanceSetting: View {
                 } label: {
                     Text("Horizontal List Style")
                 }
-
             }
 #endif
+
 #if os(iOS)
             if horizontalSizeClass == .compact {
                 Section {
@@ -49,25 +50,31 @@ struct AppearanceSetting: View {
                 }
             }
 #endif
-            
-#if os(iOS)
-            Section("App Theme") {
-                Picker(selection: $store.currentTheme) {
+
+#if os(iOS) || os(macOS)
+            Section {
+                Picker("Theme", selection: $store.currentTheme) {
                     ForEach(AppTheme.allCases) { item in
                         Text(item.localizableName).tag(item)
                     }
-                } label: {
-                    Text("Theme")
                 }
-                .pickerStyle(.menu)
+
+                Picker("Accent Color", selection: $store.appTheme) {
+                    ForEach(AppThemeColors.allCases) { item in
+                        Label {
+                            Text(item.title)
+                        } icon: {
+                            Image(systemName: "circle.fill")
+                                .foregroundStyle(item.color)
+                        }
+                        .tag(item)
+                    }
+                }
+            } header: {
+                Text("Appearance")
             }
-            
-            Section("Accent Color") {
-                accentColor
-            }
-            .listRowInsets(EdgeInsets())
 #endif
-            
+
             Section {
                 Toggle(isOn: $store.disableTranslucent) {
                     Text("Disable Translucent Background")
@@ -78,54 +85,7 @@ struct AppearanceSetting: View {
 #if os(macOS)
         .formStyle(.grouped)
 #endif
-    }
-    
-    private var accentColor: some View {
-        VStack(alignment: .leading) {
-            ScrollViewReader { proxy in
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack {
-                        ForEach(AppThemeColors.allCases) { item in
-                            colorButton(for: item)
-                                .padding(.leading, item == AppThemeColors.allCases.first ? 16 : 0)
-                                .padding(.trailing, item == AppThemeColors.allCases.last ? 16 : 0)
-                                .padding(.horizontal, 4)
-                        }
-                    }
-                    .padding(.vertical, 6)
-                    .onAppear {
-                        withAnimation { proxy.scrollTo(store.appTheme, anchor: .topLeading) }
-                    }
-                }
-            }
-        }
-    }
-    
-    private func colorButton(for item: AppThemeColors) -> some View {
-        Button {
-            withAnimation {
-                store.appTheme = item
-            }
-        } label: {
-            ZStack {
-                Circle()
-                    .fill(item.color)
-                if store.appTheme == item {
-                    Image(systemName: "checkmark.circle.fill")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .imageScale(.large)
-                        .foregroundColor(.white.opacity(0.6))
-                        .fontWeight(.black)
-                    
-                }
-            }
-            .frame(width: 30)
-        }
-        .buttonStyle(.plain)
-        .accessibilityElement(children: .ignore)
-        .accessibilityAddTraits(item == store.appTheme ? [.isButton, .isSelected] : .isButton )
-        .padding(.horizontal, 4)
+        .tint(store.appTheme.color)
     }
 }
 
