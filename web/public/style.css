@@ -310,11 +310,16 @@ nav a:hover {
 
 @media screen and (min-width: 768px) {
   .site-footer {
+    padding: 24px 80px 48px;
+    text-align: left;
+  }
+
+  .page-home .site-footer {
     position: fixed;
     bottom: 0;
     left: 0;
-    padding: 24px 80px 48px;
-    text-align: left;
+    max-width: min(50vw, 640px);
+    padding-bottom: 24px;
   }
 }
 
