@@ -18,12 +18,8 @@ Config/Secrets.xcconfig
 *.perspectivev3
 !default.perspectivev3
 
-### Web (Next.js) ###
+### Web (Cloudflare Workers) ###
 web/node_modules/
-web/.next/
-web/out/
-web/.vercel/
+web/.wrangler/
 web/.env
 web/.env*.local
-web/next-env.d.ts
-web/*.tsbuildinfo

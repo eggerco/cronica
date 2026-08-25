@@ -1,0 +1,302 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+  background: #f9f9f9;
+  color: #111;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+}
+
+.content-container {
+  max-width: 720px;
+  margin: 20px auto 120px auto;
+  padding: 0 24px;
+  line-height: 1.6;
+}
+
+.content-container h1 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.content-container h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 2rem;
+}
+
+.content-container p,
+.content-container li {
+  color: #444;
+}
+
+.content-container ul {
+  margin: 0.75rem 0 0 1.25rem;
+}
+
+.content-container a {
+  color: #111;
+  text-decoration: underline;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 30px;
+}
+
+@media screen and (min-width: 768px) {
+  .navbar {
+    padding: 24px 80px;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.logo-icon {
+  height: 1.2em;
+  width: 1.2em;
+  border-radius: 22%;
+}
+
+.logo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo-link:visited {
+  color: inherit;
+}
+
+nav a {
+  margin-left: 32px;
+  text-decoration: none;
+  color: #555;
+  font-size: 14px;
+}
+
+nav a:hover {
+  color: #000;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 80px;
+  min-height: 85vh;
+}
+
+.hero-content {
+  max-width: 650px;
+}
+
+.hero h1 {
+  font-size: 56px;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.hero p {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+.cta-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.download-cta {
+  display: inline-flex;
+  cursor: pointer;
+}
+
+.download-cta img {
+  display: block;
+  cursor: pointer;
+  height: 40px;
+  width: auto;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 40px 0;
+  }
+
+  .hero-image {
+    margin-top: 40px;
+  }
+
+  .hero h1 {
+    font-size: 40px;
+  }
+
+  .cta-group {
+    align-items: center;
+  }
+}
+
+.img-bottom-right {
+  position: relative;
+  left: 50%;
+  height: auto;
+  width: 180%;
+  max-width: none;
+  margin: 0 auto;
+  display: block;
+  transform: translateX(-78%);
+}
+
+@media screen and (min-width: 768px) {
+  .img-bottom-right {
+    position: fixed;
+    left: auto;
+    bottom: -5vh;
+    right: 20vw;
+    height: 100vh;
+    width: auto;
+    max-width: none;
+    max-height: none;
+    transform: none;
+    z-index: 0;
+    pointer-events: none;
+  }
+}
+
+.details-page {
+  min-height: 100vh;
+}
+
+.details-shell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 88px);
+  padding: 40px 24px 80px;
+}
+
+.details-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 40px 32px;
+  border-radius: 24px;
+  background: #fff;
+  border: 1px solid #ececec;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.details-poster {
+  width: 176px;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: 16px;
+  margin: 0 auto 24px;
+  display: block;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+}
+
+.details-poster-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, #1f1f1f, #3a3a3a);
+}
+
+.details-poster-icon {
+  width: 64px;
+  height: 64px;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.details-card h1 {
+  font-size: 1.75rem;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.details-type {
+  margin-top: 8px;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.details-copy {
+  margin-top: 16px;
+  color: #666;
+  line-height: 1.6;
+}
+
+.details-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.details-actions .download-cta {
+  align-self: center;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 18px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.button-primary {
+  background: #111;
+  color: #fff;
+}
+
+.button-secondary {
+  border: 1px solid #ddd;
+  color: #111;
+}
+
+.details-hint {
+  margin-top: 24px;
+  max-width: 420px;
+  text-align: center;
+  color: #888;
+  font-size: 0.85rem;
+}
+
+.details-hint code {
+  background: #eee;
+  padding: 2px 6px;
+  border-radius: 6px;
+}

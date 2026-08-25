@@ -1,0 +1,9 @@
+name = "cronica"
+main = "src/worker.ts"
+compatibility_date = "2025-02-24"
+
+[assets]
+directory = "./public"
+binding = "ASSETS"
+html_handling = "auto-trailing-slash"
+not_found_handling = "404-page"

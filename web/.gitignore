@@ -1,28 +1,5 @@
-# dependencies
 node_modules/
-.pnp
-.pnp.js
-
-# next.js
-.next/
-out/
-
-# astro (legacy)
-.astro/
-dist/
-
-# misc
-.DS_Store
-*.pem
-npm-debug.log*
-
-# env
+.wrangler/
+.dev.vars
 .env
 .env*.local
-
-# vercel
-.vercel
-
-# typescript
-next-env.d.ts
-*.tsbuildinfo

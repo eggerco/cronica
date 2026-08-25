@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="web/public/resources/img/cronica/icon.webp" alt="Cronica" width="128" height="128" />
+  <img src="web/public/assets/icon.png" alt="Cronica" width="128" height="128" />
 </p>
 
 <h1 align="center">Cronica</h1>
@@ -11,7 +11,7 @@
 
 <p align="center">
   <a href="https://apps.apple.com/app/cronica/id1614950275">
-    <img src="web/public/resources/img/cronica/AppStoreBadge.svg" alt="Download on the App Store" width="160" />
+    <img src="web/public/assets/download.svg" alt="Download on the App Store" width="160" />
   </a>
 </p>
 
@@ -65,7 +65,7 @@ Cronica/
 ├── AppleWatch/             # Watch-specific UI
 ├── CronicaWidget/          # Widgets
 ├── Packages/CronicaCore/   # Shared models & TMDb networking
-├── web/                    # Marketing site (Next.js) → cronica.eggerco.com
+├── web/                    # Marketing site (Cloudflare Worker) → cronica.eggerco.com
 └── Config/                 # Secrets.xcconfig (gitignored) + example
 ```
 
