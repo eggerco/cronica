@@ -23,30 +23,29 @@ struct ItemContentList: View {
     @Environment(\.widgetFamily) private var family
     let items: [WidgetDisplayItem]
 
-    /// Standard movie-poster ratio (width / height). Same on every size and device.
-    private static let posterAspect: CGFloat = 2.0 / 3.0
-    private static let spacing: CGFloat = 8
-
-    private var visibleItems: [WidgetDisplayItem] {
-        Array(items.prefix(family.displayLimit))
+    private var layoutFamily: WidgetPosterLayout.Family {
+        switch family {
+        case .systemSmall: .small
+        case .systemMedium: .medium
+        case .systemLarge: .large
+        case .systemExtraLarge: .extraLarge
+        default: .medium
+        }
     }
 
-    private var gridColumns: Int {
-        switch family {
-        case .systemLarge: 2
-        case .systemExtraLarge: 4
-        default: 2
-        }
+    private var visibleItems: [WidgetDisplayItem] {
+        Array(items.prefix(layoutFamily.displayLimit))
     }
 
     var body: some View {
         Group {
             if visibleItems.isEmpty {
-                Text("Trending service isn't available right now.")
+                Text(String(localized: "Trending service isn't available right now."))
                     .font(family == .systemSmall ? .caption : .callout)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .accessibilityElement(children: .combine)
             } else {
                 layout
             }
@@ -60,23 +59,21 @@ struct ItemContentList: View {
         case .systemSmall, .systemMedium:
             rowLayout
         case .systemLarge, .systemExtraLarge:
-            gridLayout(columns: gridColumns)
+            gridLayout(columns: layoutFamily.gridColumns)
         default:
             rowLayout
         }
     }
 
-    /// Single centered row of equal 2∶3 posters.
     private var rowLayout: some View {
         GeometryReader { geo in
-            let size = Self.posterSize(
-                count: visibleItems.count,
-                columns: visibleItems.count,
+            let size = WidgetPosterLayout.posterSize(
+                columns: max(visibleItems.count, 1),
                 rows: 1,
                 in: geo.size
             )
 
-            HStack(spacing: Self.spacing) {
+            HStack(spacing: WidgetPosterLayout.spacing) {
                 ForEach(visibleItems) { entry in
                     posterCell(for: entry)
                         .frame(width: size.width, height: size.height)
@@ -86,22 +83,20 @@ struct ItemContentList: View {
         }
     }
 
-    /// Centered grid of equal 2∶3 posters — same shape on iPhone and iPad.
     private func gridLayout(columns: Int) -> some View {
         let rows = visibleItems.chunked(into: columns)
         let rowCount = max(rows.count, 1)
 
         return GeometryReader { geo in
-            let size = Self.posterSize(
-                count: visibleItems.count,
+            let size = WidgetPosterLayout.posterSize(
                 columns: columns,
                 rows: rowCount,
                 in: geo.size
             )
 
-            VStack(spacing: Self.spacing) {
+            VStack(spacing: WidgetPosterLayout.spacing) {
                 ForEach(Array(rows.enumerated()), id: \.offset) { _, row in
-                    HStack(spacing: Self.spacing) {
+                    HStack(spacing: WidgetPosterLayout.spacing) {
                         ForEach(row) { entry in
                             posterCell(for: entry)
                                 .frame(width: size.width, height: size.height)
@@ -111,29 +106,6 @@ struct ItemContentList: View {
             }
             .frame(width: geo.size.width, height: geo.size.height)
         }
-    }
-
-    /// Largest 2∶3 poster that fits the available grid cell on any device.
-    private static func posterSize(
-        count: Int,
-        columns: Int,
-        rows: Int,
-        in bounds: CGSize
-    ) -> CGSize {
-        let columnCount = CGFloat(max(columns, 1))
-        let rowCount = CGFloat(max(rows, 1))
-        let maxWidth = (bounds.width - spacing * (columnCount - 1)) / columnCount
-        let maxHeight = (bounds.height - spacing * (rowCount - 1)) / rowCount
-
-        let widthFromHeight = maxHeight * posterAspect
-        let width = min(maxWidth, widthFromHeight)
-        let height = width / posterAspect
-
-        // Avoid zero-size placeholders when the timeline is empty mid-layout.
-        guard count > 0, width.isFinite, height.isFinite, width > 0, height > 0 else {
-            return .zero
-        }
-        return CGSize(width: width, height: height)
     }
 
     @ViewBuilder
@@ -148,8 +120,10 @@ struct ItemContentList: View {
             Link(destination: destination) {
                 poster
             }
+            .accessibilityLabel(entry.item.itemTitle)
         } else {
             poster
+                .accessibilityLabel(entry.item.itemTitle)
         }
     }
 }
@@ -174,6 +148,7 @@ private struct WidgetPosterView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .clipped()
+        .accessibilityHidden(true)
     }
 
     private func platformImage(from data: Data) -> Image? {
@@ -204,19 +179,6 @@ private extension Array {
         guard size > 0 else { return isEmpty ? [] : [self] }
         return stride(from: 0, to: count, by: size).map {
             Array(self[$0..<Swift.min($0 + size, count)])
-        }
-    }
-}
-
-private extension WidgetFamily {
-    var displayLimit: Int {
-        switch self {
-        case .systemSmall: 2
-        case .systemMedium: 4
-        // 2×2 — same poster shape as small/medium; drop the cramped third column.
-        case .systemLarge: 4
-        case .systemExtraLarge: 8
-        default: 4
         }
     }
 }

@@ -13,40 +13,90 @@ import AppKit
 #endif
 
 struct Provider: TimelineProvider {
+    private static let refreshInterval: TimeInterval = 86_400
+    private static let trendingPath = "trending/all/day"
+    /// Gallery snapshots must not hang; timeline uses the same helper without a race.
+    private static let snapshotTimeoutNanoseconds: UInt64 = 5_000_000_000
+
     func placeholder(in context: Context) -> ItemContentEntry {
-        ItemContentEntry(date: Date(), items: Self.placeholderItems())
+        ItemContentEntry(date: Date(), items: Self.bundledPlaceholderItems())
     }
 
     func getSnapshot(in context: Context, completion: @escaping (ItemContentEntry) -> ()) {
-        let entry = ItemContentEntry(date: Date(), items: Self.placeholderItems())
-        completion(entry)
+        Task {
+            let items: [WidgetDisplayItem]
+            if context.isPreview {
+                items = Self.bundledPlaceholderItems()
+            } else {
+                items = await Self.resolveItems(preferNetwork: true, timeoutNanoseconds: Self.snapshotTimeoutNanoseconds)
+            }
+            completion(ItemContentEntry(date: .now, items: items))
+        }
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         if context.isPreview {
-            let entry = ItemContentEntry(date: .now, items: Self.placeholderItems())
+            let entry = ItemContentEntry(date: .now, items: Self.bundledPlaceholderItems())
             completion(Timeline(entries: [entry], policy: .never))
             return
         }
 
         Task {
-            let nextUpdate = Date().addingTimeInterval(86400)
-            do {
-                let result = try await NetworkService.shared.fetchItems(from: "trending/all/day")
-                let content = Array(result.prefix(8))
-                let items = await Self.buildDisplayItems(from: content)
-                let entry = ItemContentEntry(date: .now, items: items)
-                completion(Timeline(entries: [entry], policy: .after(nextUpdate)))
-            } catch {
-                let items = await Self.buildDisplayItems(from: ItemContent.widgetExamples)
-                let entry = ItemContentEntry(date: .now, items: items)
-                completion(Timeline(entries: [entry], policy: .after(nextUpdate)))
-            }
+            let nextUpdate = Date().addingTimeInterval(Self.refreshInterval)
+            // No artificial timeout — WidgetKit already bounds extension runtime.
+            let items = await Self.resolveItems(preferNetwork: true, timeoutNanoseconds: nil)
+            let entry = ItemContentEntry(date: .now, items: items)
+            completion(Timeline(entries: [entry], policy: .after(nextUpdate)))
         }
     }
 
-    private static func placeholderItems() -> [WidgetDisplayItem] {
-        ItemContent.widgetExamples.prefix(8).map { WidgetDisplayItem(item: $0, posterData: nil) }
+    /// Live TMDb when possible; otherwise bundled asset placeholders (no network).
+    private static func resolveItems(
+        preferNetwork: Bool,
+        timeoutNanoseconds: UInt64?
+    ) async -> [WidgetDisplayItem] {
+        guard preferNetwork else {
+            return bundledPlaceholderItems()
+        }
+
+        guard let timeoutNanoseconds else {
+            return await fetchLiveItems() ?? bundledPlaceholderItems()
+        }
+
+        return await withTaskGroup(of: [WidgetDisplayItem].self) { group in
+            group.addTask {
+                await fetchLiveItems() ?? bundledPlaceholderItems()
+            }
+            group.addTask {
+                try? await Task.sleep(nanoseconds: timeoutNanoseconds)
+                return bundledPlaceholderItems()
+            }
+            let first = await group.next() ?? bundledPlaceholderItems()
+            group.cancelAll()
+            return first
+        }
+    }
+
+    private static func fetchLiveItems() async -> [WidgetDisplayItem]? {
+        do {
+            let result = try await NetworkService.shared.fetchItems(from: trendingPath)
+            let content = Array(result.prefix(WidgetPosterLayout.maxFetchedItems))
+            guard !content.isEmpty else {
+                AppLogger.network.warning("Widget trending fetch returned no items.")
+                return nil
+            }
+            return await buildDisplayItems(from: content)
+        } catch {
+            AppLogger.network.error("Widget trending fetch failed: \(error.localizedDescription, privacy: .public)")
+            return nil
+        }
+    }
+
+    /// Asset-backed placeholders — reliable offline / gallery / error UX.
+    private static func bundledPlaceholderItems() -> [WidgetDisplayItem] {
+        ItemContent.widgetExamples
+            .prefix(WidgetPosterLayout.maxFetchedItems)
+            .map { WidgetDisplayItem(item: $0, posterData: nil) }
     }
 
     private static func buildDisplayItems(from content: [ItemContent]) async -> [WidgetDisplayItem] {
@@ -55,7 +105,13 @@ struct Provider: TimelineProvider {
                 group.addTask {
                     var posterData: Data?
                     if let url = item.posterImageMedium {
-                        posterData = try? await NetworkService.shared.downloadData(from: url)
+                        do {
+                            posterData = try await NetworkService.shared.downloadData(from: url)
+                        } catch {
+                            AppLogger.network.debug(
+                                "Widget poster download failed for \(item.id, privacy: .public): \(error.localizedDescription, privacy: .public)"
+                            )
+                        }
                     }
                     return (index, WidgetDisplayItem(item: item, posterData: posterData))
                 }
@@ -114,8 +170,34 @@ struct CronicaWidget: Widget {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             CronicaWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("Trending")
-        .description("Shows movies and TV Shows trending from TMDb.")
+        .configurationDisplayName(LocalizedStringResource("Trending"))
+        .description(LocalizedStringResource("Shows movies and TV Shows trending from TMDb."))
         .supportedFamilies(CronicaWidgetFamilies.homeScreen)
     }
 }
+
+#if DEBUG
+#Preview("Small", as: .systemSmall) {
+    CronicaWidget()
+} timeline: {
+    ItemContentEntry(date: .now, items: ItemContent.widgetExamples.prefix(2).map {
+        WidgetDisplayItem(item: $0, posterData: nil)
+    })
+}
+
+#Preview("Medium", as: .systemMedium) {
+    CronicaWidget()
+} timeline: {
+    ItemContentEntry(date: .now, items: ItemContent.widgetExamples.prefix(4).map {
+        WidgetDisplayItem(item: $0, posterData: nil)
+    })
+}
+
+#Preview("Large", as: .systemLarge) {
+    CronicaWidget()
+} timeline: {
+    ItemContentEntry(date: .now, items: ItemContent.widgetExamples.prefix(4).map {
+        WidgetDisplayItem(item: $0, posterData: nil)
+    })
+}
+#endif
