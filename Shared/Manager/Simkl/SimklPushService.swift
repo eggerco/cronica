@@ -22,44 +22,61 @@ final class SimklPushService {
         case removeHistory(tmdb: Int, media: Int, imdb: String?)
     }
 
-    func enqueueAdd(item: WatchlistItem, status: SimklWatchStatus = .plantowatch) {
+    func enqueueAdd(tmdb: Int, media: MediaType, status: SimklWatchStatus = .plantowatch, imdb: String?) {
         guard shouldEnqueue else { return }
         let statusValue: String = {
-            if item.itemMedia == .movie, status == .watching || status == .hold {
+            if media == .movie, status == .watching || status == .hold {
                 return SimklWatchStatus.plantowatch.rawValue
             }
             return status.rawValue
         }()
-        append(.addToList(tmdb: item.itemId, media: item.itemMedia.toInt, status: statusValue, imdb: item.imdbID))
+        append(.addToList(tmdb: tmdb, media: Int(media.toInt), status: statusValue, imdb: imdb))
         Task { await flush() }
     }
 
-    func enqueueWatched(item: WatchlistItem) {
+    func enqueueWatched(tmdb: Int, media: MediaType, imdb: String?) {
         guard shouldEnqueue else { return }
-        if item.itemMedia == .movie {
-            append(.history(tmdb: item.itemId, media: MediaType.movie.toInt, season: nil, episode: nil, imdb: item.imdbID))
+        if media == .movie {
+            append(.history(tmdb: tmdb, media: Int(MediaType.movie.toInt), season: nil, episode: nil, imdb: imdb))
         } else {
-            append(.addToList(tmdb: item.itemId, media: MediaType.tvShow.toInt, status: SimklWatchStatus.completed.rawValue, imdb: item.imdbID))
+            append(.addToList(tmdb: tmdb, media: Int(MediaType.tvShow.toInt), status: SimklWatchStatus.completed.rawValue, imdb: imdb))
         }
         Task { await flush() }
     }
 
     func enqueueEpisode(showID: Int, season: Int, episode: Int, imdb: String?) {
         guard shouldEnqueue else { return }
-        append(.history(tmdb: showID, media: MediaType.tvShow.toInt, season: season, episode: episode, imdb: imdb))
+        append(.history(tmdb: showID, media: Int(MediaType.tvShow.toInt), season: season, episode: episode, imdb: imdb))
         Task { await flush() }
+    }
+
+    func enqueueRemove(tmdb: Int, media: MediaType, imdb: String?) {
+        guard shouldEnqueue else { return }
+        append(.removeHistory(tmdb: tmdb, media: Int(media.toInt), imdb: imdb))
+        Task { await flush() }
+    }
+
+    func enqueueArchive(tmdb: Int, media: MediaType, imdb: String?) {
+        guard shouldEnqueue else { return }
+        append(.addToList(tmdb: tmdb, media: Int(media.toInt), status: SimklWatchStatus.dropped.rawValue, imdb: imdb))
+        Task { await flush() }
+    }
+
+    /// Convenience for call sites that still have a managed object on the main actor.
+    func enqueueAdd(item: WatchlistItem, status: SimklWatchStatus = .plantowatch) {
+        enqueueAdd(tmdb: item.itemId, media: item.itemMedia, status: status, imdb: item.imdbID)
+    }
+
+    func enqueueWatched(item: WatchlistItem) {
+        enqueueWatched(tmdb: item.itemId, media: item.itemMedia, imdb: item.imdbID)
     }
 
     func enqueueRemove(item: WatchlistItem) {
-        guard shouldEnqueue else { return }
-        append(.removeHistory(tmdb: item.itemId, media: item.itemMedia.toInt, imdb: item.imdbID))
-        Task { await flush() }
+        enqueueRemove(tmdb: item.itemId, media: item.itemMedia, imdb: item.imdbID)
     }
 
     func enqueueArchive(item: WatchlistItem) {
-        guard shouldEnqueue else { return }
-        append(.addToList(tmdb: item.itemId, media: item.itemMedia.toInt, status: SimklWatchStatus.dropped.rawValue, imdb: item.imdbID))
-        Task { await flush() }
+        enqueueArchive(tmdb: item.itemId, media: item.itemMedia, imdb: item.imdbID)
     }
 
     func clearQueue() {
@@ -72,10 +89,9 @@ final class SimklPushService {
         isFlushing = true
         defer { isFlushing = false }
 
-        var queue = loadQueue()
+        let queue = loadQueue()
         guard !queue.isEmpty else { return }
 
-        var remaining: [Operation] = []
         var batchAdd: [Operation] = []
         var batchHistory: [Operation] = []
         var batchRemove: [Operation] = []
@@ -94,12 +110,10 @@ final class SimklPushService {
             try await sendRemoves(batchRemove)
             saveQueue([])
         } catch {
-            // Keep queue for next flush; avoid spinning forever on auth failure.
             if case SimklError.notAuthenticated = error {
                 clearQueue()
             } else {
-                remaining = queue
-                saveQueue(remaining)
+                saveQueue(queue)
             }
             AppLogger.network.error("SIMKL push flush failed: \(error.localizedDescription, privacy: .public)")
         }
@@ -134,13 +148,12 @@ final class SimklPushService {
 
     private func sendAdds(_ ops: [Operation]) async throws {
         guard !ops.isEmpty else { return }
-        // Group by status so each POST has one `to`.
         var byStatus: [String: (movies: [SimklHistoryItem], shows: [SimklHistoryItem])] = [:]
         for op in ops {
             guard case let .addToList(tmdb, media, status, imdb) = op else { continue }
             var bucket = byStatus[status] ?? ([], [])
             let item = SimklHistoryItem(ids: SimklWriteIds(tmdb: tmdb, imdb: imdb), watchedAt: nil, seasons: nil)
-            if media == MediaType.movie.toInt {
+            if media == Int(MediaType.movie.toInt) {
                 bucket.movies.append(item)
             } else {
                 bucket.shows.append(item)
@@ -164,7 +177,7 @@ final class SimklPushService {
         var shows: [SimklHistoryItem] = []
         for op in ops {
             guard case let .history(tmdb, media, season, episode, imdb) = op else { continue }
-            if media == MediaType.movie.toInt {
+            if media == Int(MediaType.movie.toInt) {
                 movies.append(SimklHistoryItem(ids: SimklWriteIds(tmdb: tmdb, imdb: imdb), watchedAt: nil, seasons: nil))
             } else if let season, let episode {
                 shows.append(
@@ -193,7 +206,7 @@ final class SimklPushService {
         for op in ops {
             guard case let .removeHistory(tmdb, media, imdb) = op else { continue }
             let item = SimklHistoryItem(ids: SimklWriteIds(tmdb: tmdb, imdb: imdb), watchedAt: nil, seasons: nil)
-            if media == MediaType.movie.toInt {
+            if media == Int(MediaType.movie.toInt) {
                 movies.append(item)
             } else {
                 shows.append(item)

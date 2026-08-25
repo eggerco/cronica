@@ -54,7 +54,12 @@ extension PersistenceController {
             save()
 #if !os(watchOS)
             if let saved = fetch(for: content.itemContentID) {
-                SimklPushService.shared.enqueueAdd(item: saved, status: .plantowatch)
+                let tmdb = saved.itemId
+                let media = saved.itemMedia
+                let imdb = saved.imdbID
+                Task { @MainActor in
+                    SimklPushService.shared.enqueueAdd(tmdb: tmdb, media: media, status: .plantowatch, imdb: imdb)
+                }
             }
 #endif
         }
@@ -160,7 +165,12 @@ extension PersistenceController {
         let item = try? viewContext.existingObject(with: content.objectID)
         guard let item else { return }
 #if !os(watchOS)
-        SimklPushService.shared.enqueueRemove(item: content)
+        let tmdb = content.itemId
+        let media = content.itemMedia
+        let imdb = content.imdbID
+        Task { @MainActor in
+            SimklPushService.shared.enqueueRemove(tmdb: tmdb, media: media, imdb: imdb)
+        }
 #endif
         let notification = NotificationManager.shared
         notification.removeNotification(identifier: content.itemContentID)
@@ -180,10 +190,17 @@ extension PersistenceController {
         }
         save()
 #if !os(watchOS)
-        if item.isWatched {
-            SimklPushService.shared.enqueueWatched(item: item)
-        } else if item.isWatching {
-            SimklPushService.shared.enqueueAdd(item: item, status: .watching)
+        let tmdb = item.itemId
+        let media = item.itemMedia
+        let imdb = item.imdbID
+        let watched = item.isWatched
+        let watching = item.isWatching
+        Task { @MainActor in
+            if watched {
+                SimklPushService.shared.enqueueWatched(tmdb: tmdb, media: media, imdb: imdb)
+            } else if watching {
+                SimklPushService.shared.enqueueAdd(tmdb: tmdb, media: media, status: .watching, imdb: imdb)
+            }
         }
 #endif
     }
@@ -212,7 +229,12 @@ extension PersistenceController {
         save()
 #if !os(watchOS)
         if item.isArchive {
-            SimklPushService.shared.enqueueArchive(item: item)
+            let tmdb = item.itemId
+            let media = item.itemMedia
+            let imdb = item.imdbID
+            Task { @MainActor in
+                SimklPushService.shared.enqueueArchive(tmdb: tmdb, media: media, imdb: imdb)
+            }
         }
 #endif
         if !item.isArchive {
@@ -332,7 +354,11 @@ extension PersistenceController {
         save()
 #if !os(watchOS)
         if !wasWatched, let season = episode.seasonNumber, let number = episode.episodeNumber {
-            SimklPushService.shared.enqueueEpisode(showID: item.itemId, season: season, episode: number, imdb: item.imdbID)
+            let showID = item.itemId
+            let imdb = item.imdbID
+            Task { @MainActor in
+                SimklPushService.shared.enqueueEpisode(showID: showID, season: season, episode: number, imdb: imdb)
+            }
         }
 #endif
     }
