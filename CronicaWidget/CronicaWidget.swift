@@ -170,8 +170,8 @@ struct CronicaWidget: Widget {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             CronicaWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName(LocalizedStringResource("Trending"))
-        .description(LocalizedStringResource("Shows movies and TV Shows trending from TMDb."))
+        .configurationDisplayName(String(localized: "Trending"))
+        .description(String(localized: "Shows movies and TV Shows trending from TMDb."))
         .supportedFamilies(CronicaWidgetFamilies.homeScreen)
     }
 }
