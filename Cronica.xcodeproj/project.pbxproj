@@ -1258,6 +1258,7 @@ C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 				B82C26792795E33900259D98 /* ItemContentPosterView.swift */,
 				B824E4352A04945400E385CE /* ItemContentRowView.swift */,
 				B8B2F6B32A85DBFD00FF0246 /* ItemContentSearchRowView.swift */,
+				C0CRITUI000000000001 /* CriticScoresSection.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1400,10 +1401,6 @@ C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 			children = (
 				C0SIMKLMODEL0000000001 /* SimklModels.swift */,
 				C0SIMKLTOKEN0000000001 /* SimklTokenStore.swift */,
-				C0CRITMODEL00000000001 /* CriticRatingsModels.swift */,
-				C0CRITOMDB00000000001 /* OMDbAPIClient.swift */,
-				C0CRITLBOX00000000001 /* LetterboxdRatingService.swift */,
-				C0CRITSVC000000000001 /* CriticRatingsService.swift */,
 				C0SIMKLAPI000000000001 /* SimklAPIClient.swift */,
 				C0SIMKLAUTH00000000001 /* SimklAuthService.swift */,
 				C0SIMKLIMP000000000001 /* SimklImportService.swift */,
@@ -1416,6 +1413,17 @@ C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 			path = Simkl;
 			sourceTree = "<group>";
 		};
+		C0CRITGROUP0000000001 /* CriticRatings */ = {
+			isa = PBXGroup;
+			children = (
+				C0CRITMODEL00000000001 /* CriticRatingsModels.swift */,
+				C0CRITOMDB00000000001 /* OMDbAPIClient.swift */,
+				C0CRITLBOX00000000001 /* LetterboxdRatingService.swift */,
+				C0CRITSVC000000000001 /* CriticRatingsService.swift */,
+			);
+			path = CriticRatings;
+			sourceTree = "<group>";
+		};
 		B8EC463D27D84C45009389FC /* Manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -1423,6 +1431,7 @@ C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 				C0CALMGR000000000001 /* CalendarManager.swift */,
 				C0USERDATA000000000001 /* UserDataDeletionService.swift */,
 				C0INTREMOTE0000000001 /* IntegrationRemoteApply.swift */,
+				C0CRITGROUP0000000001 /* CriticRatings */,
 				C0SIMKLGROUP0000000001 /* Simkl */,
 				C0LIBGROUP0000000001 /* LibraryImport */,
 				B8B94CEE28EB8B8200EDEC85 /* CronicaTelemetry.swift */,
@@ -1444,7 +1453,6 @@ C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 				C1PAGE00128A9BD31003025D /* PaginationFooter.swift */,
 				C1SRCH00128A9BD31003025E /* SearchContentUnavailableView.swift */,
 				B81941AA2A0835D40057DA04 /* PosterPlaceholder.swift */,
-				C0CRITUI000000000001 /* CriticScoresSection.swift */,
 				C1WPSTOVLY128A9BD31000001 /* WatchlistPosterStatusOverlay.swift */,
 				B8A36AB42B1D4999004A5687 /* ReviewAppBanner.swift */,
 				B8FF4DBE27FA511A00C7DE9F /* TitleView.swift */,
