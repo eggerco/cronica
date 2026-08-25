@@ -72,11 +72,6 @@ struct SettingsView: View {
 
             NavigationStack {
                 IntegrationsSettingsView()
-                    .navigationDestination(for: SettingsScreens.self) { screen in
-                        if screen == .simkl {
-                            SimklSettingsView()
-                        }
-                    }
             }
             .tabItem { Label("Integrations", systemImage: "link") }
 

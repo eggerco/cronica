@@ -19,7 +19,9 @@ struct IntegrationsSettingsView: View {
             }
 
             Section("Library Services") {
-                NavigationLink(value: SettingsScreens.simkl) {
+                NavigationLink {
+                    SimklSettingsView()
+                } label: {
                     integrationRow(
                         title: "SIMKL",
                         subtitle: simklSubtitle,
@@ -44,11 +46,6 @@ struct IntegrationsSettingsView: View {
 #if os(macOS)
         .formStyle(.grouped)
 #endif
-        .navigationDestination(for: SettingsScreens.self) { screen in
-            if screen == .simkl {
-                SimklSettingsView()
-            }
-        }
     }
 
     private var simklSubtitle: String {
