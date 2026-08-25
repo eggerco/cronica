@@ -10,7 +10,7 @@ import CronicaCore
 @MainActor
 enum SimklSyncService {
     /// SIMKL recommends throttling wake/startup activity checks to once every 15–30 minutes.
-    static let foregroundThrottleInterval: TimeInterval = 20 * 60
+    nonisolated static let foregroundThrottleInterval: TimeInterval = 20 * 60
 
     private static var isApplyingRemote = false
 
@@ -144,7 +144,7 @@ enum SimklSyncService {
 
     // MARK: - Testable helpers
 
-    static func shouldSkipForegroundCheck(
+    nonisolated static func shouldSkipForegroundCheck(
         lastCheck: TimeInterval,
         now: TimeInterval,
         interval: TimeInterval = foregroundThrottleInterval
@@ -153,7 +153,7 @@ enum SimklSyncService {
     }
 
     /// Episode-level payload only when watching/hold buckets moved (or were never saved).
-    static func needsEpisodeExtended(
+    nonisolated static func needsEpisodeExtended(
         activities: SimklActivitiesResponse,
         previousTVWatching: String,
         previousTVHold: String,

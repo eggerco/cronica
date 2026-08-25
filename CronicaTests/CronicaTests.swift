@@ -289,6 +289,7 @@ final class CronicaTests: XCTestCase {
         XCTAssertEqual(try JSONDecoder().decode(FlexibleID.self, from: intJSON).intValue, 1981)
     }
 
+    @MainActor
     func testSimklApplyStatusMarksCompletedMovieWatched() {
         let item = WatchlistItem(context: managedContext)
         item.title = "Pulp Fiction"
@@ -336,6 +337,7 @@ final class CronicaTests: XCTestCase {
         XCTAssertEqual(SimklImportMapper.episodeToken(episode: 4, season: 2), "-4@2")
     }
 
+    @MainActor
     func testSimklDroppedStatusArchivesItem() {
         let item = WatchlistItem(context: managedContext)
         item.title = "Dropped Show"
