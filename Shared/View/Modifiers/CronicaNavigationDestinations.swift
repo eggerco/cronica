@@ -108,6 +108,9 @@ extension View {
                 case .dataManagement: DataManagementSettingsView()
                 case .integrations: IntegrationsSettingsView()
                 case .simkl: SimklSettingsView()
+                case .letterboxd: LetterboxdSettingsView()
+                case .imdb: IMDbSettingsView()
+                case .tmdbAccount: TMDBAccountSettingsView()
                 }
             }
     }

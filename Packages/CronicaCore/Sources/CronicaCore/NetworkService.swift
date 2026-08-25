@@ -33,6 +33,67 @@ public final class NetworkService: Sendable {
         }
         return try await self.fetch(url: url)
     }
+
+    /// Resolve an external ID (e.g. IMDb `tt…`) to TMDB movie/TV results.
+    public func findByExternalID(_ externalID: String, source: ExternalIDSource) async throws -> ExternalIDFindResponse {
+        guard !externalID.isEmpty else { throw NetworkError.invalidRequest }
+        var component = URLComponents()
+        component.scheme = "https"
+        component.host = "api.themoviedb.org"
+        component.path = "/3/find/\(externalID)"
+        component.queryItems = [
+            .init(name: "api_key", value: Key.tmdbApi),
+            .init(name: "language", value: Locale.userLang),
+            .init(name: "external_source", value: source.rawValue)
+        ]
+        guard let url = component.url else { throw NetworkError.invalidEndpoint }
+        return try await self.fetch(url: url)
+    }
+
+    /// Title search used for Letterboxd CSV rows that lack external IDs.
+    public func searchMovie(query: String, year: Int? = nil, page: String = "1") async throws -> [ItemContent] {
+        guard !query.isEmpty else { return [] }
+        var component = URLComponents()
+        component.scheme = "https"
+        component.host = "api.themoviedb.org"
+        component.path = "/3/search/movie"
+        var items: [URLQueryItem] = [
+            .init(name: "api_key", value: Key.tmdbApi),
+            .init(name: "language", value: Locale.userLang),
+            .init(name: "query", value: query),
+            .init(name: "page", value: page),
+            .init(name: "include_adult", value: "false")
+        ]
+        if let year {
+            items.append(.init(name: "year", value: "\(year)"))
+        }
+        component.queryItems = items
+        guard let url = component.url else { throw NetworkError.invalidEndpoint }
+        let response: ItemContentResponse = try await self.fetch(url: url)
+        return response.results
+    }
+
+    public func searchTV(query: String, firstAirYear: Int? = nil, page: String = "1") async throws -> [ItemContent] {
+        guard !query.isEmpty else { return [] }
+        var component = URLComponents()
+        component.scheme = "https"
+        component.host = "api.themoviedb.org"
+        component.path = "/3/search/tv"
+        var items: [URLQueryItem] = [
+            .init(name: "api_key", value: Key.tmdbApi),
+            .init(name: "language", value: Locale.userLang),
+            .init(name: "query", value: query),
+            .init(name: "page", value: page),
+            .init(name: "include_adult", value: "false")
+        ]
+        if let firstAirYear {
+            items.append(.init(name: "first_air_date_year", value: "\(firstAirYear)"))
+        }
+        component.queryItems = items
+        guard let url = component.url else { throw NetworkError.invalidEndpoint }
+        let response: ItemContentResponse = try await self.fetch(url: url)
+        return response.results
+    }
     
     public func fetchSeason(id: Int, season: Int) async throws -> Season {
         guard let url = urlBuilder(path: "\(MediaType.tvShow.rawValue)/\(id)/season/\(season)") else {

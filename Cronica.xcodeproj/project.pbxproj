@@ -278,6 +278,18 @@
 		C0SIMKLACCT0000000002 /* SimklAccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLACCT0000000001 /* SimklAccountService.swift */; };
 		C0SIMKLPUSH0000000002 /* SimklPushService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLPUSH0000000001 /* SimklPushService.swift */; };
 		C0SIMKLKNOWN000000002 /* SimklKnownItemsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLKNOWN000000001 /* SimklKnownItemsStore.swift */; };
+		C0LIBCSV000000000002 /* CSVTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0LIBCSV000000000001 /* CSVTable.swift */; };
+		C0LIBMOD000000000002 /* LibraryImportModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0LIBMOD000000000001 /* LibraryImportModels.swift */; };
+		C0LIBIMDB00000000002 /* IMDbCSVParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0LIBIMDB00000000001 /* IMDbCSVParser.swift */; };
+		C0LIBLBXD00000000002 /* LetterboxdCSVParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0LIBLBXD00000000001 /* LetterboxdCSVParser.swift */; };
+		C0LIBSVC000000000002 /* LibraryImportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0LIBSVC000000000001 /* LibraryImportService.swift */; };
+		C0LIBSESS00000000002 /* TMDBSessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0LIBSESS00000000001 /* TMDBSessionStore.swift */; };
+		C0LIBAPI000000000002 /* TMDBAccountAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0LIBAPI000000000001 /* TMDBAccountAPIClient.swift */; };
+		C0LIBAUTH00000000002 /* TMDBAccountAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0LIBAUTH00000000001 /* TMDBAccountAuthService.swift */; };
+		C0LIBTMDB00000000002 /* TMDBAccountImportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0LIBTMDB00000000001 /* TMDBAccountImportService.swift */; };
+		C0LIBVIEWLB000000002 /* LetterboxdSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0LIBVIEWLB000000001 /* LetterboxdSettingsView.swift */; };
+		C0LIBVIEWIM000000002 /* IMDbSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0LIBVIEWIM000000001 /* IMDbSettingsView.swift */; };
+		C0LIBVIEWTM000000002 /* TMDBAccountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0LIBVIEWTM000000001 /* TMDBAccountSettingsView.swift */; };
 		C0SIMKLKNOWN000000003 /* SimklKnownItemsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLKNOWN000000001 /* SimklKnownItemsStore.swift */; };
 		C0WLBACKUP000000000002 /* WatchlistItemBackup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WLBACKUP000000000001 /* WatchlistItemBackup.swift */; };
 		C0WLBACKUP000000000003 /* WatchlistItemBackup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WLBACKUP000000000001 /* WatchlistItemBackup.swift */; };
@@ -588,6 +600,18 @@
 		C0SIMKLACCT0000000001 /* SimklAccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimklAccountService.swift; sourceTree = "<group>"; };
 		C0SIMKLPUSH0000000001 /* SimklPushService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimklPushService.swift; sourceTree = "<group>"; };
 		C0SIMKLKNOWN000000001 /* SimklKnownItemsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimklKnownItemsStore.swift; sourceTree = "<group>"; };
+		C0LIBCSV000000000001 /* CSVTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVTable.swift; sourceTree = "<group>"; };
+		C0LIBMOD000000000001 /* LibraryImportModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryImportModels.swift; sourceTree = "<group>"; };
+		C0LIBIMDB00000000001 /* IMDbCSVParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMDbCSVParser.swift; sourceTree = "<group>"; };
+		C0LIBLBXD00000000001 /* LetterboxdCSVParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterboxdCSVParser.swift; sourceTree = "<group>"; };
+		C0LIBSVC000000000001 /* LibraryImportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryImportService.swift; sourceTree = "<group>"; };
+		C0LIBSESS00000000001 /* TMDBSessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBSessionStore.swift; sourceTree = "<group>"; };
+		C0LIBAPI000000000001 /* TMDBAccountAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAccountAPIClient.swift; sourceTree = "<group>"; };
+		C0LIBAUTH00000000001 /* TMDBAccountAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAccountAuthService.swift; sourceTree = "<group>"; };
+		C0LIBTMDB00000000001 /* TMDBAccountImportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAccountImportService.swift; sourceTree = "<group>"; };
+		C0LIBVIEWLB000000001 /* LetterboxdSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterboxdSettingsView.swift; sourceTree = "<group>"; };
+		C0LIBVIEWIM000000001 /* IMDbSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMDbSettingsView.swift; sourceTree = "<group>"; };
+		C0LIBVIEWTM000000001 /* TMDBAccountSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAccountSettingsView.swift; sourceTree = "<group>"; };
 		C0WLBACKUP000000000001 /* WatchlistItemBackup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistItemBackup.swift; sourceTree = "<group>"; };
 		C0RELCV000000000001 /* ReleaseCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseCalendarView.swift; sourceTree = "<group>"; };
 		C0RELCROUTE000000001 /* ReleaseCalendarRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseCalendarRoute.swift; sourceTree = "<group>"; };
@@ -1135,6 +1159,9 @@
 				B8FB2A8F295263AB006DAC8E /* AboutSettings.swift */,
 				C0DATAMGMT000000000001 /* DataManagementSettingsView.swift */,
 				C0SIMKLVIEW00000000001 /* SimklSettingsView.swift */,
+				C0LIBVIEWLB000000001 /* LetterboxdSettingsView.swift */,
+				C0LIBVIEWIM000000001 /* IMDbSettingsView.swift */,
+				C0LIBVIEWTM000000001 /* TMDBAccountSettingsView.swift */,
 				C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 				B80BBE572949665A00958876 /* AppearanceSetting.swift */,
 				B8FB2A8D29526341006DAC8E /* BehaviorSetting.swift */,
@@ -1316,6 +1343,22 @@
 			path = Configuration;
 			sourceTree = "<group>";
 		};
+		C0LIBGROUP0000000001 /* LibraryImport */ = {
+			isa = PBXGroup;
+			children = (
+				C0LIBCSV000000000001 /* CSVTable.swift */,
+				C0LIBMOD000000000001 /* LibraryImportModels.swift */,
+				C0LIBIMDB00000000001 /* IMDbCSVParser.swift */,
+				C0LIBLBXD00000000001 /* LetterboxdCSVParser.swift */,
+				C0LIBSVC000000000001 /* LibraryImportService.swift */,
+				C0LIBSESS00000000001 /* TMDBSessionStore.swift */,
+				C0LIBAPI000000000001 /* TMDBAccountAPIClient.swift */,
+				C0LIBAUTH00000000001 /* TMDBAccountAuthService.swift */,
+				C0LIBTMDB00000000001 /* TMDBAccountImportService.swift */,
+			);
+			path = LibraryImport;
+			sourceTree = "<group>";
+		};
 		C0SIMKLGROUP0000000001 /* Simkl */ = {
 			isa = PBXGroup;
 			children = (
@@ -1340,6 +1383,7 @@
 				C0CALMGR000000000001 /* CalendarManager.swift */,
 				C0USERDATA000000000001 /* UserDataDeletionService.swift */,
 				C0SIMKLGROUP0000000001 /* Simkl */,
+				C0LIBGROUP0000000001 /* LibraryImport */,
 				B8B94CEE28EB8B8200EDEC85 /* CronicaTelemetry.swift */,
 				B8EC462E27D7AA99009389FC /* NotificationManager.swift */,
 				C0SENTRYMGR000000000001 /* SentryManager.swift */,
@@ -1870,6 +1914,18 @@
 				C0SIMKLACCT0000000002 /* SimklAccountService.swift in Sources */,
 				C0SIMKLPUSH0000000002 /* SimklPushService.swift in Sources */,
 				C0SIMKLKNOWN000000002 /* SimklKnownItemsStore.swift in Sources */,
+				C0LIBCSV000000000002 /* CSVTable.swift in Sources */,
+				C0LIBMOD000000000002 /* LibraryImportModels.swift in Sources */,
+				C0LIBIMDB00000000002 /* IMDbCSVParser.swift in Sources */,
+				C0LIBLBXD00000000002 /* LetterboxdCSVParser.swift in Sources */,
+				C0LIBSVC000000000002 /* LibraryImportService.swift in Sources */,
+				C0LIBSESS00000000002 /* TMDBSessionStore.swift in Sources */,
+				C0LIBAPI000000000002 /* TMDBAccountAPIClient.swift in Sources */,
+				C0LIBAUTH00000000002 /* TMDBAccountAuthService.swift in Sources */,
+				C0LIBTMDB00000000002 /* TMDBAccountImportService.swift in Sources */,
+				C0LIBVIEWLB000000002 /* LetterboxdSettingsView.swift in Sources */,
+				C0LIBVIEWIM000000002 /* IMDbSettingsView.swift in Sources */,
+				C0LIBVIEWTM000000002 /* TMDBAccountSettingsView.swift in Sources */,
 				C0WLBACKUP000000000002 /* WatchlistItemBackup.swift in Sources */,
 				C0DATAMGMT000000000002 /* DataManagementSettingsView.swift in Sources */,
 				B883A1E32AEF1DB800793EE2 /* SearchItemContentContextMenu.swift in Sources */,

@@ -193,6 +193,11 @@ struct CronicaApp: App {
         if url.scheme?.lowercased() == "cronica" {
             let raw = url.absoluteString.dropFirst("cronica://".count)
             let id = String(raw.split(separator: "?").first ?? Substring(raw))
+            // OAuth / account callbacks are not watchlist deep links.
+            let lower = id.lowercased()
+            if lower.hasPrefix("simkl/") || lower.hasPrefix("tmdb/") {
+                return nil
+            }
             return id.isEmpty ? nil : id
         }
 

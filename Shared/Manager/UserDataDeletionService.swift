@@ -39,6 +39,7 @@ enum UserDataDeletionService {
 #if !os(watchOS)
         SimklPushService.shared.clearQueue()
 #endif
+        TMDBSessionStore.delete()
 
         resetUserDefaults()
         clearCaches()
@@ -79,7 +80,12 @@ enum UserDataDeletionService {
             "selectedWatchProviders",
             "userHasImportedFromTMDB",
             "isUserConnectedWithTMDB",
+            "tmdbAccountName",
+            "letterboxdLastImportTimestamp",
+            "imdbLastImportTimestamp",
+            "tmdbAccountLastImportTimestamp",
             "isSimklConnected",
+            "tmdbAccountID",
             "simklLastImportTimestamp",
             "simklActivitiesAll",
             "simklRemovedMovies",
@@ -179,5 +185,10 @@ enum UserDataDeletionService {
         settings.simklAccountID = 0
         settings.simklAccountName = ""
         settings.simklLastStatsFetchDate = nil
+        settings.isUserConnectedWithTMDb = false
+        settings.tmdbAccountName = ""
+        settings.letterboxdLastImportDate = nil
+        settings.imdbLastImportDate = nil
+        settings.tmdbAccountLastImportDate = nil
     }
 }
