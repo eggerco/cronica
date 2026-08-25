@@ -2,19 +2,21 @@
 //  WatchlistPosterStatusOverlay.swift
 //  Cronica
 //
-//  Minimal bottom-trailing status indicator for explore/search posters.
+//  Centered status indicator for explore/search posters —
+//  same treatment as Watchlist list thumbnails (dim + icon in the middle).
 //
 
 import SwiftUI
 
-/// Subtle SF Symbol status for posters outside the Watchlist tab.
-/// Prefer a single symbol in a padded material circle — no capsules or stacked icons.
+/// Full-bleed dim with a centered SF Symbol, matching `WatchlistItemRowView` /
+/// `ItemContentRowView` watched thumbnails. Used on Discover/Search posters
+/// (not Watchlist poster grids, which intentionally show no badge).
 struct WatchlistPosterStatusOverlay: View {
     let isWatched: Bool
     var compact: Bool = false
 
     private var symbolName: String {
-        isWatched ? "checkmark" : "square.stack.fill"
+        isWatched ? "rectangle.fill.badge.checkmark" : "square.stack.fill"
     }
 
     private var accessibilityLabel: String {
@@ -24,18 +26,12 @@ struct WatchlistPosterStatusOverlay: View {
     }
 
     var body: some View {
-        VStack {
-            Spacer(minLength: 0)
-            HStack {
-                Spacer(minLength: 0)
-                Image(systemName: symbolName)
-                    .font(compact ? .caption2.weight(.bold) : .caption.weight(.bold))
-                    .foregroundStyle(.white)
-                    .padding(compact ? 5 : 6)
-                    .background(.ultraThinMaterial, in: Circle())
-                    .accessibilityLabel(accessibilityLabel)
-                    .padding(compact ? 6 : 8)
-            }
+        ZStack {
+            Color.black.opacity(0.5)
+            Image(systemName: symbolName)
+                .font(compact ? .body.weight(.semibold) : .title2.weight(.semibold))
+                .foregroundStyle(.white)
+                .accessibilityLabel(accessibilityLabel)
         }
         .allowsHitTesting(false)
     }
@@ -48,5 +44,6 @@ struct WatchlistPosterStatusOverlay: View {
             .frame(width: 160, height: 240)
         WatchlistPosterStatusOverlay(isWatched: true)
             .frame(width: 160, height: 240)
+            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
     }
 }
