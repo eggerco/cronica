@@ -20,7 +20,7 @@ public enum Endpoints: String, CaseIterable, Identifiable, Sendable {
     }
     public var title: String {
         switch self {
-        case .upcoming: return NSLocalizedString("Up Coming", comment: "")
+        case .upcoming: return NSLocalizedString("Upcoming", comment: "")
         case .nowPlaying: return NSLocalizedString("Latest Movies", comment: "")
         }
     }

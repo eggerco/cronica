@@ -12162,7 +12162,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pins"
+            "value": "Angepinnt"
           }
         },
         "en": {
@@ -19442,7 +19442,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Trendig"
+            "value": "Trends"
           }
         },
         "en": {
@@ -20456,70 +20456,280 @@
     "%d%% watched": {
       "comment": "TV show watch progress in Up Next",
       "localizations": {
-        "de": { "stringUnit": { "state": "translated", "value": "%d%% gesehen" } },
-        "en": { "stringUnit": { "state": "translated", "value": "%d%% watched" } },
-        "es-MX": { "stringUnit": { "state": "translated", "value": "%d%% visto" } },
-        "fr": { "stringUnit": { "state": "translated", "value": "%d%% regardé" } },
-        "it": { "stringUnit": { "state": "translated", "value": "%d%% visto" } },
-        "pt-BR": { "stringUnit": { "state": "translated", "value": "%d%% assistido" } },
-        "sk": { "stringUnit": { "state": "translated", "value": "%d%% pozreté" } }
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%d%% gesehen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%d%% watched"
+          }
+        },
+        "es-MX": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%d%% visto"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%d%% regardé"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%d%% visto"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%d%% assistido"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%d%% pozreté"
+          }
+        }
       }
     },
     "Hide Unstarted Series": {
       "localizations": {
-        "de": { "stringUnit": { "state": "translated", "value": "Nicht begonnene Serien ausblenden" } },
-        "en": { "stringUnit": { "state": "translated", "value": "Hide unstarted series" } },
-        "es-MX": { "stringUnit": { "state": "translated", "value": "Ocultar series sin empezar" } },
-        "fr": { "stringUnit": { "state": "translated", "value": "Masquer les séries non commencées" } },
-        "it": { "stringUnit": { "state": "translated", "value": "Nascondi serie non iniziate" } },
-        "pt-BR": { "stringUnit": { "state": "translated", "value": "Ocultar séries não iniciadas" } },
-        "sk": { "stringUnit": { "state": "translated", "value": "Skryť nezačaté seriály" } }
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nicht begonnene Serien ausblenden"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hide unstarted series"
+          }
+        },
+        "es-MX": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ocultar series sin empezar"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Masquer les séries non commencées"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nascondi serie non iniziate"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ocultar séries não iniciadas"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skryť nezačaté seriály"
+          }
+        }
       }
     },
     "Only show series in Up Next after you've watched at least one episode.": {
       "localizations": {
-        "de": { "stringUnit": { "state": "translated", "value": "Serien in „Als Nächstes“ erst anzeigen, nachdem mindestens eine Folge gesehen wurde." } },
-        "en": { "stringUnit": { "state": "translated", "value": "Only show series in Up Next after you've watched at least one episode." } },
-        "es-MX": { "stringUnit": { "state": "translated", "value": "Mostrar series en Siguiente solo después de haber visto al menos un episodio." } },
-        "fr": { "stringUnit": { "state": "translated", "value": "Afficher les séries dans À suivre uniquement après avoir regardé au moins un épisode." } },
-        "it": { "stringUnit": { "state": "translated", "value": "Mostra le serie in Prossimo episodio solo dopo aver visto almeno un episodio." } },
-        "pt-BR": { "stringUnit": { "state": "translated", "value": "Mostrar séries em Próximo apenas depois de assistir a pelo menos um episódio." } },
-        "sk": { "stringUnit": { "state": "translated", "value": "Zobraziť seriály v Ďalej až po pozretí aspoň jednej epizódy." } }
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Serien in „Als Nächstes“ erst anzeigen, nachdem mindestens eine Folge gesehen wurde."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Only show series in Up Next after you've watched at least one episode."
+          }
+        },
+        "es-MX": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mostrar series en Siguiente solo después de haber visto al menos un episodio."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Afficher les séries dans À suivre uniquement après avoir regardé au moins un épisode."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mostra le serie in Prossimo episodio solo dopo aver visto almeno un episodio."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mostrar séries em Próximo apenas depois de assistir a pelo menos um episódio."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zobraziť seriály v Ďalej až po pozretí aspoň jednej epizódy."
+          }
+        }
       }
     },
     "Recent Activity": {
       "comment": "Up Next sort order",
       "localizations": {
-        "de": { "stringUnit": { "state": "translated", "value": "Kürzliche Aktivität" } },
-        "en": { "stringUnit": { "state": "translated", "value": "Recent activity" } },
-        "es-MX": { "stringUnit": { "state": "translated", "value": "Actividad reciente" } },
-        "fr": { "stringUnit": { "state": "translated", "value": "Activité récente" } },
-        "it": { "stringUnit": { "state": "translated", "value": "Attività recente" } },
-        "pt-BR": { "stringUnit": { "state": "translated", "value": "Atividade recente" } },
-        "sk": { "stringUnit": { "state": "translated", "value": "Nedávna aktivita" } }
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kürzliche Aktivität"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recent activity"
+          }
+        },
+        "es-MX": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Actividad reciente"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Activité récente"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Attività recente"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Atividade recente"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nedávna aktivita"
+          }
+        }
       }
     },
     "Up Next Sort Order": {
       "localizations": {
-        "de": { "stringUnit": { "state": "translated", "value": "Sortierung für Als Nächstes" } },
-        "en": { "stringUnit": { "state": "translated", "value": "Up Next sort order" } },
-        "es-MX": { "stringUnit": { "state": "translated", "value": "Orden de Siguiente" } },
-        "fr": { "stringUnit": { "state": "translated", "value": "Ordre de À suivre" } },
-        "it": { "stringUnit": { "state": "translated", "value": "Ordine Prossimo episodio" } },
-        "pt-BR": { "stringUnit": { "state": "translated", "value": "Ordem do Próximo" } },
-        "sk": { "stringUnit": { "state": "translated", "value": "Poradie Ďalej" } }
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sortierung für Als Nächstes"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Up Next sort order"
+          }
+        },
+        "es-MX": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Orden de Siguiente"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ordre de À suivre"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ordine Prossimo episodio"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ordem do Próximo"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Poradie Ďalej"
+          }
+        }
       }
     },
     "Watch Progress": {
       "comment": "Up Next sort order",
       "localizations": {
-        "de": { "stringUnit": { "state": "translated", "value": "Wiedergabefortschritt" } },
-        "en": { "stringUnit": { "state": "translated", "value": "Watch progress" } },
-        "es-MX": { "stringUnit": { "state": "translated", "value": "Progreso de visualización" } },
-        "fr": { "stringUnit": { "state": "translated", "value": "Progression de visionnage" } },
-        "it": { "stringUnit": { "state": "translated", "value": "Progresso visione" } },
-        "pt-BR": { "stringUnit": { "state": "translated", "value": "Progresso de exibição" } },
-        "sk": { "stringUnit": { "state": "translated", "value": "Postup sledovania" } }
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wiedergabefortschritt"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Watch progress"
+          }
+        },
+        "es-MX": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Progreso de visualización"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Progression de visionnage"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Progresso visione"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Progresso de exibição"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Postup sledovania"
+          }
+        }
       }
     },
     "Up Next": {
@@ -20527,7 +20737,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Up Next"
+            "value": "Als Nächstes"
           }
         },
         "en": {
@@ -22722,6 +22932,52 @@
           "stringUnit": {
             "state": "translated",
             "value": "Receba avisos quando novos filmes e episódios chegarem."
+          }
+        }
+      }
+    },
+    "Release Calendar": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Release Calendar"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kinokalender"
+          }
+        },
+        "es-MX": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calendario de estrenos"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calendrier des sorties"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calendario uscite"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calendário de Lançamentos"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kalendár premiér"
           }
         }
       }
