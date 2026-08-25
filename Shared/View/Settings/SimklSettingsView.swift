@@ -206,7 +206,7 @@ struct SimklSettingsView: View {
 
     @ViewBuilder
     private var statsSection: some View {
-        Section("Your SIMKL Stats") {
+        Section {
             if let stats {
                 LabeledContent("Total watched", value: stats.totalHoursText)
                 if let movies = stats.movies?.completed?.count {
@@ -237,6 +237,8 @@ struct SimklSettingsView: View {
                 }
             }
             .disabled(isLoadingStats || isSyncing)
+        } header: {
+            Text("Your SIMKL Stats")
         } footer: {
             Text("Stats are computed live on SIMKL and are expensive. Cronica only loads them when you tap this button.")
         }
@@ -244,7 +246,7 @@ struct SimklSettingsView: View {
 
     @ViewBuilder
     private var playbackSection: some View {
-        Section("Paused on SIMKL") {
+        Section {
             if playbacks.isEmpty {
                 Text("No paused playbacks.")
                     .foregroundStyle(.secondary)
@@ -268,6 +270,8 @@ struct SimklSettingsView: View {
                 }
             }
             .disabled(isLoadingPlaybacks || isSyncing)
+        } header: {
+            Text("Paused on SIMKL")
         } footer: {
             Text("Shows titles paused on other SIMKL apps. Cronica does not run a full media player, so live start/pause scrobbling is not used.")
         }
