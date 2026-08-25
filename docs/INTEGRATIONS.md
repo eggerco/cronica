@@ -14,6 +14,7 @@ Behavior notes:
 
 - Import pulls SIMKL → Cronica; optional push of watches is **off by default**.
 - Foreground activity checks are throttled (~20 minutes). Manual **Sync Now** always runs.
+- Last successful sync time is shown in **Integrations** (hub subtitle) and on the SIMKL settings screen.
 - Titles removed on SIMKL are counted but **never auto-deleted** from Cronica.
 - Stats and paused playbacks load only when you tap the buttons (expensive SIMKL endpoints).
 - Live player scrobbling is not used (Cronica has no full media player).
@@ -29,6 +30,7 @@ Optional account bridge for personal watchlist, ratings, and favorites. Catalog 
 Behavior notes:
 
 - **Sync Now** always performs a full account-list pull (watchlist / rated / favorites). TMDB has no activities feed, so this is not a true incremental sync.
+- Last successful sync time is shown in **Integrations** (hub subtitle) and on the TMDB settings screen.
 - After lists are fetched, Cronica fingerprints item id sets (and ratings). If the fingerprint matches the last successful sync, Core Data / catalog re-apply is skipped (cheaper; still may have downloaded pages, or reused 304 bodies).
 - When TMDB returns `ETag`s, subsequent page GETs send `If-None-Match`. A `304` reuses the cached page body (bandwidth win when lists are unchanged).
 - Foreground pulls are throttled (~20 minutes) after the first successful sync. When a prior fingerprint exists, Cronica first probes page 1 of each list with conditional GETs; if all are Not Modified, it skips the full pull. **Sync Now** never uses this light path.

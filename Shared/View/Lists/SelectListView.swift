@@ -11,7 +11,8 @@ import SwiftUI
 struct SelectListView: View {
     @Environment(\.managedObjectContext) var viewContext
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \CustomList.title, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \CustomList.isPin, ascending: false),
+                          NSSortDescriptor(keyPath: \CustomList.title, ascending: true)],
         animation: .default)
     private var lists: FetchedResults<CustomList>
     @Binding var selectedList: CustomList?

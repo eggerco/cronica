@@ -74,6 +74,9 @@ struct IntegrationsSettingsView: View {
             return String(localized: "Not configured")
         }
         if settings.isSimklConnected && SimklTokenStore.hasToken {
+            if let date = settings.simklLastImportDate {
+                return String(localized: "Connected") + " · " + date.formatted(date: .abbreviated, time: .shortened)
+            }
             return String(localized: "Connected")
         }
         return String(localized: "Not connected")
@@ -84,6 +87,9 @@ struct IntegrationsSettingsView: View {
             return String(localized: "Not configured")
         }
         if settings.isUserConnectedWithTMDb && TMDBSessionStore.hasSession {
+            if let date = settings.tmdbAccountLastImportDate {
+                return String(localized: "Connected") + " · " + date.formatted(date: .abbreviated, time: .shortened)
+            }
             return String(localized: "Connected")
         }
         return String(localized: "Not connected")

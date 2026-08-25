@@ -26,7 +26,8 @@ struct CustomWatchlist: View {
     @AppStorage("customListSortOrder") private var sortOrder: WatchlistSortOrder = .titleAsc
     @State private var showFilters = false
 #if os(tvOS)
-    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \CustomList.title, ascending: true)],
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \CustomList.isPin, ascending: false),
+                                    NSSortDescriptor(keyPath: \CustomList.title, ascending: true)],
                   animation: .default) private var lists: FetchedResults<CustomList>
 #endif
     private var sortedItems: [WatchlistItem] {

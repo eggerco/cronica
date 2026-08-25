@@ -32,7 +32,12 @@ struct NewCustomListView: View {
 #endif
             }
             
-            Section { Toggle("Pin", isOn: $pinOnHome) }
+                Section {
+                    Toggle("Favorite", isOn: $pinOnHome)
+                    Text("Favorite lists appear first when adding titles and on Home.")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
             
             NavigationLink("Select Items",
                            destination: NewCustomListItemSelector(itemsToAdd: $itemsToAdd,

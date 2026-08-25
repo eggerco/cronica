@@ -103,6 +103,38 @@ public extension ItemContent {
         }
         return nil
     }
+
+    /// Parental certification for the user's region (movies via release dates, TV via content ratings).
+    var itemCertification: String? {
+        if let movieCertification = movieCertification {
+            return movieCertification
+        }
+        return tvCertification
+    }
+
+    private var movieCertification: String? {
+        guard let results = releaseDates?.results, !results.isEmpty else { return nil }
+        let region = Locale.userRegion
+        let preferred = results.first { $0.iso31661?.caseInsensitiveCompare(region) == .orderedSame }
+            ?? results.first { $0.iso31661?.caseInsensitiveCompare("US") == .orderedSame }
+            ?? results.first
+        guard let dates = preferred?.releaseDates else { return nil }
+        let theatrical = dates.first { $0.type == ReleaseDateType.theatrical.toInt && !( $0.certification?.isEmpty ?? true) }
+        let anyRated = dates.first { !($0.certification?.isEmpty ?? true) }
+        let value = theatrical?.certification ?? anyRated?.certification
+        guard let value, !value.isEmpty else { return nil }
+        return value
+    }
+
+    private var tvCertification: String? {
+        guard let results = contentRatings?.results, !results.isEmpty else { return nil }
+        let region = Locale.userRegion
+        let preferred = results.first { $0.iso31661?.caseInsensitiveCompare(region) == .orderedSame }
+            ?? results.first { $0.iso31661?.caseInsensitiveCompare("US") == .orderedSame }
+            ?? results.first
+        guard let rating = preferred?.rating, !rating.isEmpty else { return nil }
+        return rating
+    }
     var itemInfo: String {
         if let itemTheatricalString, let shortItemRuntime {
             return "\(itemGenre) • \(itemTheatricalString) • \(shortItemRuntime)"

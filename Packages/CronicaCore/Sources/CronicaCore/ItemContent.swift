@@ -25,6 +25,7 @@ public struct ItemContent: Identifiable, Codable, Hashable, Sendable {
     public let credits: Credits?
     public let recommendations: ItemContentResponse?
     public let releaseDates: ReleaseDates?
+    public let contentRatings: ContentRatings?
     public let mediaType: String?
     public var videos: Videos?
     public var nextEpisodeToAir, lastEpisodeToAir: Episode?
@@ -41,7 +42,7 @@ public struct ItemContent: Identifiable, Codable, Hashable, Sendable {
         seasons: [Season]?, genres: [Genre]?, credits: Credits?, recommendations: ItemContentResponse?, releaseDates: ReleaseDates?,
         mediaType: String?, videos: Videos?, nextEpisodeToAir: Episode?, lastEpisodeToAir: Episode?,
         originalName: String?, firstAirDate: String?, homepage: String?, episodeRunTime: [Int]?,
-        placeholderImagePath: String?
+        placeholderImagePath: String?, contentRatings: ContentRatings? = nil
     ) {
         self.adult = adult
         self.id = id
@@ -68,6 +69,7 @@ public struct ItemContent: Identifiable, Codable, Hashable, Sendable {
         self.credits = credits
         self.recommendations = recommendations
         self.releaseDates = releaseDates
+        self.contentRatings = contentRatings
         self.mediaType = mediaType
         self.videos = videos
         self.nextEpisodeToAir = nextEpisodeToAir
@@ -86,7 +88,7 @@ public struct ItemContent: Identifiable, Codable, Hashable, Sendable {
         case runtime, numberOfEpisodes, numberOfSeasons, voteCount
         case popularity, voteAverage
         case productionCompanies, productionCountries, seasons, genres, credits
-        case recommendations, releaseDates, mediaType, videos
+        case recommendations, releaseDates, contentRatings, mediaType, videos
         case nextEpisodeToAir, lastEpisodeToAir
         case originalName, firstAirDate, homepage, episodeRunTime
     }

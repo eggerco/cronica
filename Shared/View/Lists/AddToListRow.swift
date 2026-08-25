@@ -25,7 +25,15 @@ struct AddToListRow: View {
                     .foregroundColor(SettingsStore.shared.appTheme.color)
                     .padding(.leading, 4)
                 VStack(alignment: .leading) {
-                    Text(list.itemTitle)
+                    HStack(spacing: 4) {
+                        Text(list.itemTitle)
+                        if list.isPin {
+                            Image(systemName: "star.fill")
+                                .font(.caption2)
+                                .foregroundStyle(.yellow)
+                                .accessibilityLabel(String(localized: "Favorite"))
+                        }
+                    }
                     if let totalItems = list.items?.count {
                         Text("\(totalItems) items")
                             .foregroundColor(.secondary)

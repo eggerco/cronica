@@ -92,6 +92,7 @@ struct SearchView: View {
         case .none:
             ScrollView {
                 VStack {
+                    WhatsNewYearListView()
                     TrendingKeywordsListView()
                         .environmentObject(viewModel)
                     Spacer()
@@ -143,7 +144,13 @@ struct SearchView: View {
     @ViewBuilder
     private var posterView: some View {
         switch viewModel.stage {
-        case .none: TrendingKeywordsListView()
+        case .none:
+            ScrollView {
+                VStack {
+                    WhatsNewYearListView()
+                    TrendingKeywordsListView()
+                }
+            }
         case .searching: searchingView
         case .empty: emptyView
         case .failure: failureView

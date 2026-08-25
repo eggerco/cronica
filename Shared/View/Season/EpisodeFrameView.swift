@@ -102,6 +102,16 @@ struct EpisodeFrameView: View {
 #else
                     .foregroundColor(isFocused ? .primary : .secondary)
 #endif
+                if let runtime = episode.itemRuntime {
+                    Text("• \(runtime)")
+                        .font(.caption2)
+                        .lineLimit(1)
+#if !os(tvOS)
+                        .foregroundColor(.secondary)
+#else
+                        .foregroundColor(isFocused ? .primary : .secondary)
+#endif
+                }
                 Spacer()
             }
             .padding(.top, 1)

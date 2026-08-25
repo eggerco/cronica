@@ -27,14 +27,23 @@ extension Episode {
 	}
 	var itemInfo: String? {
         let localizedString = String(localized: "Episode")
-		if let itemDate, let episodeNumber {
-			return "\(localizedString) \(episodeNumber) • \(itemDate)"
-		}
+        var parts = [String]()
 		if let episodeNumber {
-			return "\(localizedString) \(episodeNumber)"
+			parts.append("\(localizedString) \(episodeNumber)")
 		}
-		return nil
+		if let itemDate {
+			parts.append(itemDate)
+		}
+        if let runtime, runtime > 0 {
+            parts.append(runtime.convertToShortRuntime())
+        }
+        return parts.isEmpty ? nil : parts.joined(separator: " • ")
 	}
+
+    var itemRuntime: String? {
+        guard let runtime, runtime > 0 else { return nil }
+        return runtime.convertToShortRuntime()
+    }
 	var itemEpisodeNumberDisplay: Int {
 		guard let episodeNumber else { return 0 }
 		return episodeNumber

@@ -38,7 +38,10 @@ struct EditCustomList: View {
                 }
                 
                 Section {
-                    Toggle("Pin", isOn: $pinOnHome)
+                    Toggle("Favorite", isOn: $pinOnHome)
+                    Text("Favorite lists appear first when adding titles and on Home.")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
                 }
                 
                 NavigationLink("Select Items",

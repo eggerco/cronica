@@ -75,7 +75,8 @@ struct DefaultWatchlist: View {
         return smartFilter.title
     }
 #if os(tvOS)
-    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \CustomList.title, ascending: true)],
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \CustomList.isPin, ascending: false),
+                                    NSSortDescriptor(keyPath: \CustomList.title, ascending: true)],
                   animation: .default) private var lists: FetchedResults<CustomList>
     @Binding var selectedList: CustomList?
 #endif

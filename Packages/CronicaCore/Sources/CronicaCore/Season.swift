@@ -21,6 +21,7 @@ public struct Episode: Identifiable, Codable, Hashable {
     public let id: Int
     public let episodeNumber, seasonNumber: Int?
     public let name, overview, stillPath, airDate: String?
+    public let runtime: Int?
 
     public init(
         id: Int,
@@ -29,7 +30,8 @@ public struct Episode: Identifiable, Codable, Hashable {
         name: String? = nil,
         overview: String? = nil,
         stillPath: String? = nil,
-        airDate: String? = nil
+        airDate: String? = nil,
+        runtime: Int? = nil
     ) {
         self.id = id
         self.episodeNumber = episodeNumber
@@ -38,6 +40,7 @@ public struct Episode: Identifiable, Codable, Hashable {
         self.overview = overview
         self.stillPath = stillPath
         self.airDate = airDate
+        self.runtime = runtime
     }
 }
 

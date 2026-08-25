@@ -29,7 +29,7 @@ public enum MediaType: String, CaseIterable, Identifiable {
         switch self {
         case .movie: "credits,recommendations,release_dates,videos"
         case .person: "combined_credits,images"
-        case .tvShow: "credits,recommendations,videos"
+        case .tvShow: "credits,recommendations,videos,content_ratings"
         }
     }
 }

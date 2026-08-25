@@ -14,7 +14,8 @@ struct ItemContentCustomListSelector: View {
     @Binding var showView: Bool
     let title: String
     let image: URL?
-    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \CustomList.title, ascending: true)],
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \CustomList.isPin, ascending: false),
+                                    NSSortDescriptor(keyPath: \CustomList.title, ascending: true)],
                   animation: .default) private var lists: FetchedResults<CustomList>
     @State private var selectedList: CustomList?
     @State private var isLoading = false
