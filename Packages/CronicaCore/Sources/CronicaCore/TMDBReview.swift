@@ -45,14 +45,14 @@ public struct TMDBReviewAuthorDetails: Codable, Hashable, Sendable {
 
 public extension TMDBReview {
     var avatarURL: URL? {
-        guard let avatarPath, !avatarPath.isEmpty else { return nil }
+        guard let avatarPath = authorDetails?.avatarPath, !avatarPath.isEmpty else { return nil }
         if avatarPath.hasPrefix("http") {
             return URL(string: avatarPath)
         }
         if avatarPath.hasPrefix("/http") {
             return URL(string: String(avatarPath.dropFirst()))
         }
-        return NetworkService.urlBuilder(size: .w185, path: avatarPath)
+        return NetworkService.urlBuilder(size: .small, path: avatarPath)
     }
 }
 
