@@ -63,16 +63,6 @@ final class SettingsStore: ObservableObject {
     @AppStorage("userHasImportedFromTMDB") var userImportedTMDB = false
     @AppStorage("isUserConnectedWithTMDB") var isUserConnectedWithTMDb = false
     @AppStorage("tmdbAccountName") var tmdbAccountName = ""
-    @AppStorage("letterboxdLastImportTimestamp") private var letterboxdLastImportTimestamp: Double = 0
-    var letterboxdLastImportDate: Date? {
-        get { letterboxdLastImportTimestamp > 0 ? Date(timeIntervalSince1970: letterboxdLastImportTimestamp) : nil }
-        set { letterboxdLastImportTimestamp = newValue?.timeIntervalSince1970 ?? 0 }
-    }
-    @AppStorage("imdbLastImportTimestamp") private var imdbLastImportTimestamp: Double = 0
-    var imdbLastImportDate: Date? {
-        get { imdbLastImportTimestamp > 0 ? Date(timeIntervalSince1970: imdbLastImportTimestamp) : nil }
-        set { imdbLastImportTimestamp = newValue?.timeIntervalSince1970 ?? 0 }
-    }
     @AppStorage("tmdbAccountLastImportTimestamp") private var tmdbAccountLastImportTimestamp: Double = 0
     var tmdbAccountLastImportDate: Date? {
         get { tmdbAccountLastImportTimestamp > 0 ? Date(timeIntervalSince1970: tmdbAccountLastImportTimestamp) : nil }

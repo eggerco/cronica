@@ -18,10 +18,6 @@ Behavior notes:
 - Stats and paused playbacks load only when you tap the buttons (expensive SIMKL endpoints).
 - Live player scrobbling is not used (Cronica has no full media player).
 
-## Letterboxd / IMDb (CSV)
-
-One-shot imports from desktop CSV exports under **Settings → Integrations**. No live sync API.
-
 ## TMDB Account
 
 Optional sign-in to import personal TMDB lists. Catalog browsing still uses the app TMDb API key.

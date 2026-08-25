@@ -9147,52 +9147,6 @@
         }
       }
     },
-    "IMDb": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "IMDb"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "IMDb"
-          }
-        },
-        "es-MX": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "IMDb"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "IMDb"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "IMDb"
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "IMDb"
-          }
-        },
-        "sk": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "IMDB"
-          }
-        }
-      }
-    },
     "India": {
       "comment": "Country",
       "localizations": {

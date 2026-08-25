@@ -7,8 +7,6 @@ import Foundation
 import CronicaCore
 
 enum LibraryImportSource: String, Sendable {
-    case letterboxd
-    case imdb
     case tmdbAccount
 }
 
@@ -26,15 +24,11 @@ enum LibraryImportIntent: String, Sendable {
 
 struct LibraryImportRow: Sendable, Equatable {
     var title: String?
-    var year: Int?
-    var imdbID: String?
     var tmdbID: Int?
     var mediaHint: MediaType?
     var intent: LibraryImportIntent
-    /// IMDb-style 1–10 (or Letterboxd mapped into this scale).
+    /// TMDB-style 1–10 rating.
     var ratingOutOfTen: Double?
-    /// Letterboxd native 0.5–5 stars.
-    var letterboxdRating: Double?
 }
 
 struct LibraryImportSummary: Sendable, Equatable {
@@ -55,8 +49,6 @@ enum LibraryImportResult: Sendable {
 }
 
 enum LibraryImportError: LocalizedError, Sendable {
-    case emptyFile
-    case unrecognizedCSV
     case notConfigured
     case cancelled
     case invalidResponse
@@ -64,10 +56,6 @@ enum LibraryImportError: LocalizedError, Sendable {
 
     var errorDescription: String? {
         switch self {
-        case .emptyFile:
-            return String(localized: "The selected file is empty.")
-        case .unrecognizedCSV:
-            return String(localized: "This CSV doesn’t look like a Letterboxd or IMDb export Cronica understands.")
         case .notConfigured:
             return String(localized: "TMDB is not configured for this build.")
         case .cancelled:

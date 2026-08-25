@@ -540,81 +540,13 @@ final class CronicaTests: XCTestCase {
         XCTAssertTrue(stats.totalHoursText.contains("2"))
     }
 
-    // MARK: - Library CSV import
-
-    func testCSVTableParsesQuotedCommas() throws {
-        let csv = """
-        Name,Year,Letterboxd URI
-        "Foo, Bar",1999,https://boxd.it/abc
-        Baz,2001,https://boxd.it/def
-        """
-        let table = try CSVTable.parse(csv)
-        XCTAssertEqual(table.rows.count, 2)
-        XCTAssertEqual(table.rows[0]["name"], "Foo, Bar")
-        XCTAssertEqual(table.rows[1]["year"], "2001")
-    }
-
-    func testIMDbCSVParserNormalizesConstAndTitleType() throws {
-        let csv = """
-        Const,Your Rating,Date Rated,Title,URL,Title Type,IMDb Rating,Runtime (mins),Year,Genres,Num Votes,Release Date,Directors
-        tt0111161,10,2020-01-01,The Shawshank Redemption,https://www.imdb.com/title/tt0111161/,Movie,9.3,142,1994,"Drama",2800000,1994-09-23,Frank Darabont
-        tt0903747,9,2020-02-01,Breaking Bad,https://www.imdb.com/title/tt0903747/,TV Series,9.5,45,2008,"Crime, Drama",2000000,2008-01-20,
-        tt9999999,,,Some Episode,https://www.imdb.com/title/tt9999999/,TV Episode,8.0,40,2010,Drama,100,2010-01-01,
-        """
-        let rows = try IMDbCSVParser.parse(data: Data(csv.utf8), filenameHint: "ratings.csv")
-        XCTAssertEqual(rows.count, 2)
-        XCTAssertEqual(rows[0].imdbID, "tt0111161")
-        XCTAssertEqual(rows[0].mediaHint, .movie)
-        XCTAssertEqual(rows[0].intent, .rated)
-        XCTAssertEqual(rows[0].ratingOutOfTen, 10)
-        XCTAssertEqual(rows[1].mediaHint, .tvShow)
-        XCTAssertEqual(IMDbCSVParser.normalizeIMDbID("0111161"), "tt0111161")
-        XCTAssertEqual(IMDbCSVParser.normalizeIMDbID("https://www.imdb.com/title/tt0111161/"), "tt0111161")
-    }
-
-    func testIMDbWatchlistDefaultsToWatchlistIntent() throws {
-        let csv = """
-        Position,Const,Created,Modified,Description,Title,Original Title,URL,Title Type,IMDb Rating,Runtime (mins),Year,Genres,Num Votes,Release Date,Directors,Your Rating,Date Rated
-        1,tt0068646,2024-01-01,2024-01-01,,The Godfather,The Godfather,https://www.imdb.com/title/tt0068646/,Movie,9.2,175,1972,Crime,2000000,1972-03-24,Francis Ford Coppola,,
-        """
-        let rows = try IMDbCSVParser.parse(data: Data(csv.utf8), filenameHint: "watchlist.csv")
-        XCTAssertEqual(rows.count, 1)
-        XCTAssertEqual(rows[0].intent, .watchlist)
-        XCTAssertNil(rows[0].ratingOutOfTen)
-    }
-
-    func testLetterboxdCSVParserMapsWatchlistAndRatings() throws {
-        let watchlist = """
-        Date,Name,Year,Letterboxd URI
-        2025-11-14,Whiplash,2014,https://boxd.it/7bQA
-        """
-        let ratings = """
-        Date,Name,Year,Letterboxd URI,Rating
-        2025-11-14,Pulp Fiction,1994,https://boxd.it/29Pq,4.5
-        """
-        let watchRows = try LetterboxdCSVParser.parse(data: Data(watchlist.utf8), filenameHint: "watchlist.csv")
-        let ratingRows = try LetterboxdCSVParser.parse(data: Data(ratings.utf8), filenameHint: "ratings.csv")
-        XCTAssertEqual(watchRows.count, 1)
-        XCTAssertEqual(watchRows[0].intent, .watchlist)
-        XCTAssertEqual(watchRows[0].title, "Whiplash")
-        XCTAssertEqual(watchRows[0].year, 2014)
-        XCTAssertEqual(ratingRows[0].intent, .rated)
-        XCTAssertEqual(ratingRows[0].letterboxdRating, 4.5)
-        XCTAssertEqual(LetterboxdCSVParser.cronicaRating(fromLetterboxd: 4.5), 5)
-        XCTAssertEqual(LetterboxdCSVParser.cronicaRating(fromLetterboxd: 3.0), 3)
-    }
+    // MARK: - Library import
 
     func testLibraryImportTenPointRatingMapsToFiveStars() {
         XCTAssertEqual(LibraryImportService.cronicaRating(fromTenPoint: 10), 5)
         XCTAssertEqual(LibraryImportService.cronicaRating(fromTenPoint: 9), 5)
         XCTAssertEqual(LibraryImportService.cronicaRating(fromTenPoint: 1), 1)
         XCTAssertEqual(LibraryImportService.cronicaRating(fromTenPoint: 0), 0)
-    }
-
-    func testLibraryImportTitleNormalization() {
-        XCTAssertTrue(LibraryImportService.titlesRoughlyMatch("The Godfather", "the godfather"))
-        XCTAssertTrue(LibraryImportService.titlesRoughlyMatch("Amélie", "Amelie"))
-        XCTAssertFalse(LibraryImportService.titlesRoughlyMatch("Inception", "Interstellar"))
     }
 
     private enum SelfHelper {

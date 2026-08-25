@@ -944,12 +944,6 @@ extension ItemContentDetails {
                     openUrl(for: url)
                 }
             }
-            if viewModel.content?.hasIMDbUrl ?? false {
-                Button("IMDb") {
-                    guard let url = viewModel.content?.imdbUrl else { return }
-                    openUrl(for: url)
-                }
-            }
             Button("The Movie Database") {
                 guard let url = viewModel.content?.itemURL else { return }
                 openUrl(for: url)

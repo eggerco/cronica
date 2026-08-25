@@ -40,38 +40,16 @@ struct IntegrationsSettingsView: View {
                         color: .green
                     )
                 }
-
-                NavigationLink {
-                    LetterboxdSettingsView()
-                } label: {
-                    integrationRow(
-                        title: "Letterboxd",
-                        subtitle: letterboxdSubtitle,
-                        systemImage: "film.stack",
-                        color: .orange
-                    )
-                }
-
-                NavigationLink {
-                    IMDbSettingsView()
-                } label: {
-                    integrationRow(
-                        title: "IMDb",
-                        subtitle: imdbSubtitle,
-                        systemImage: "star.square.on.square",
-                        color: .yellow
-                    )
-                }
             }
 
             Section("Capabilities") {
-                Text("SIMKL can sync continuously when connected. Letterboxd and IMDb are CSV import only. TMDB Account imports your personal lists after sign-in.")
+                Text("SIMKL can sync continuously when connected. TMDB Account imports your personal lists after sign-in.")
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
 
             Section("Attribution") {
-                Text("SIMKL, Letterboxd, IMDb, and TMDB are trademarks of their respective owners. Cronica uses these services only when you choose to connect or import.")
+                Text("SIMKL and TMDB are trademarks of their respective owners. Cronica uses these services only when you choose to connect or import.")
                     .font(.caption)
                     .foregroundStyle(.secondary)
                 Link("SIMKL Website", destination: URL(string: "https://simkl.com")!)
@@ -106,20 +84,6 @@ struct IntegrationsSettingsView: View {
             return String(localized: "Connected")
         }
         return String(localized: "Import account lists")
-    }
-
-    private var letterboxdSubtitle: String {
-        if settings.letterboxdLastImportDate != nil {
-            return String(localized: "Imported")
-        }
-        return String(localized: "CSV import")
-    }
-
-    private var imdbSubtitle: String {
-        if settings.imdbLastImportDate != nil {
-            return String(localized: "Imported")
-        }
-        return String(localized: "CSV import")
     }
 
     private func integrationRow(title: String, subtitle: String, systemImage: String, color: Color) -> some View {

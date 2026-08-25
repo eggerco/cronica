@@ -50,22 +50,22 @@ enum TMDBAccountImportService {
 
         var rows: [LibraryImportRow] = []
         rows.append(contentsOf: wlMovies.map {
-            LibraryImportRow(title: $0.title, year: nil, imdbID: nil, tmdbID: $0.id, mediaHint: .movie, intent: .watchlist, ratingOutOfTen: nil, letterboxdRating: nil)
+            LibraryImportRow(title: $0.title, tmdbID: $0.id, mediaHint: .movie, intent: .watchlist, ratingOutOfTen: nil)
         })
         rows.append(contentsOf: wlTV.map {
-            LibraryImportRow(title: $0.name, year: nil, imdbID: nil, tmdbID: $0.id, mediaHint: .tvShow, intent: .watchlist, ratingOutOfTen: nil, letterboxdRating: nil)
+            LibraryImportRow(title: $0.name, tmdbID: $0.id, mediaHint: .tvShow, intent: .watchlist, ratingOutOfTen: nil)
         })
         rows.append(contentsOf: rMovies.map {
-            LibraryImportRow(title: $0.title, year: nil, imdbID: nil, tmdbID: $0.id, mediaHint: .movie, intent: .rated, ratingOutOfTen: $0.rating, letterboxdRating: nil)
+            LibraryImportRow(title: $0.title, tmdbID: $0.id, mediaHint: .movie, intent: .rated, ratingOutOfTen: $0.rating)
         })
         rows.append(contentsOf: rTV.map {
-            LibraryImportRow(title: $0.name, year: nil, imdbID: nil, tmdbID: $0.id, mediaHint: .tvShow, intent: .rated, ratingOutOfTen: $0.rating, letterboxdRating: nil)
+            LibraryImportRow(title: $0.name, tmdbID: $0.id, mediaHint: .tvShow, intent: .rated, ratingOutOfTen: $0.rating)
         })
         rows.append(contentsOf: fMovies.map {
-            LibraryImportRow(title: $0.title, year: nil, imdbID: nil, tmdbID: $0.id, mediaHint: .movie, intent: .favorite, ratingOutOfTen: nil, letterboxdRating: nil)
+            LibraryImportRow(title: $0.title, tmdbID: $0.id, mediaHint: .movie, intent: .favorite, ratingOutOfTen: nil)
         })
         rows.append(contentsOf: fTV.map {
-            LibraryImportRow(title: $0.name, year: nil, imdbID: nil, tmdbID: $0.id, mediaHint: .tvShow, intent: .favorite, ratingOutOfTen: nil, letterboxdRating: nil)
+            LibraryImportRow(title: $0.name, tmdbID: $0.id, mediaHint: .tvShow, intent: .favorite, ratingOutOfTen: nil)
         })
 
         // Deduplicate by content ID; prefer rated over watchlist. Favorites applied after.
@@ -92,13 +92,10 @@ enum TMDBAccountImportService {
             if best[key] == nil {
                 best[key] = LibraryImportRow(
                     title: row.title,
-                    year: nil,
-                    imdbID: nil,
                     tmdbID: id,
                     mediaHint: media,
                     intent: .watchlist,
-                    ratingOutOfTen: nil,
-                    letterboxdRating: nil
+                    ratingOutOfTen: nil
                 )
             }
         }

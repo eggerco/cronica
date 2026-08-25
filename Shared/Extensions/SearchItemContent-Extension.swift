@@ -118,10 +118,6 @@ extension SearchItemContent {
 	var castImage: URL? {
 		return NetworkService.urlBuilder(size: .medium, path: profilePath)
 	}
-	var imdbUrl: URL? {
-		guard let imdbId else { return nil }
-		return URL(string: "https://www.imdb.com/title/\(imdbId)")
-	}
 	var itemImage: URL? {
 #if os(tvOS)
 		switch media {
@@ -145,10 +141,6 @@ extension SearchItemContent {
 	}
 	
 	// MARK: Bool
-	var hasIMDbUrl: Bool {
-		if imdbId != nil { return true }
-		return false
-	}
 	var itemCanNotify: Bool {
 		if let itemTheatricalDate {
 			if itemTheatricalDate > Date() {
