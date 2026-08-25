@@ -48,7 +48,6 @@ struct ItemContentList: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .clipped()
     }
 
     @ViewBuilder
@@ -63,64 +62,60 @@ struct ItemContentList: View {
         }
     }
 
+    /// Single row — flexible equal-width cells that fill the widget height.
     private var rowLayout: some View {
-        GeometryReader { geo in
-            let spacing: CGFloat = 8
-            let count = max(visibleItems.count, 1)
-            let cellWidth = (geo.size.width - spacing * CGFloat(count - 1)) / CGFloat(count)
-
-            HStack(spacing: spacing) {
-                ForEach(visibleItems) { entry in
-                    posterLink(for: entry)
-                        .frame(width: cellWidth, height: geo.size.height)
-                }
+        HStack(spacing: 8) {
+            ForEach(visibleItems) { entry in
+                posterCell(for: entry)
             }
-            .frame(width: geo.size.width, height: geo.size.height)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
+    /// Multi-row grid — equal flexible rows/columns; posters fill and clip inside cells.
     private func gridLayout(columns: Int) -> some View {
         let rows = visibleItems.chunked(into: columns)
-        let rowCount = max(rows.count, 1)
-
-        return GeometryReader { geo in
-            let spacing: CGFloat = 8
-            let cellWidth = (geo.size.width - spacing * CGFloat(columns - 1)) / CGFloat(columns)
-            let cellHeight = (geo.size.height - spacing * CGFloat(rowCount - 1)) / CGFloat(rowCount)
-
-            VStack(spacing: spacing) {
-                ForEach(Array(rows.enumerated()), id: \.offset) { _, row in
-                    HStack(spacing: spacing) {
-                        ForEach(row) { entry in
-                            posterLink(for: entry)
-                                .frame(width: cellWidth, height: cellHeight)
-                        }
-                        if row.count < columns {
-                            ForEach(0..<(columns - row.count), id: \.self) { _ in
-                                Color.clear
-                                    .frame(width: cellWidth, height: cellHeight)
-                            }
+        return VStack(spacing: 8) {
+            ForEach(Array(rows.enumerated()), id: \.offset) { _, row in
+                HStack(spacing: 8) {
+                    ForEach(row) { entry in
+                        posterCell(for: entry)
+                    }
+                    if row.count < columns {
+                        ForEach(0..<(columns - row.count), id: \.self) { _ in
+                            Color.clear
+                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
                         }
                     }
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-            .frame(width: geo.size.width, height: geo.size.height, alignment: .topLeading)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
+    /// Layout size comes from `Color.clear` + flexible frame.
+    /// Image is an overlay so `scaledToFill` cannot inflate the cell (WidgetKit-safe).
     @ViewBuilder
-    private func posterLink(for entry: WidgetDisplayItem) -> some View {
-        let poster = WidgetPosterView(posterData: entry.posterData, placeholderName: entry.item.placeholderImagePath)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+    private func posterCell(for entry: WidgetDisplayItem) -> some View {
+        let cell = Color.clear
+            .overlay {
+                WidgetPosterView(
+                    posterData: entry.posterData,
+                    placeholderName: entry.item.placeholderImagePath
+                )
+            }
             .clipped()
             .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
 
         if let destination = entry.item.cronicaDeepLinkURL {
             Link(destination: destination) {
-                poster
+                cell
             }
+            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
         } else {
-            poster
+            cell
         }
     }
 }

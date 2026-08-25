@@ -46,7 +46,7 @@ struct Provider: TimelineProvider {
     }
 
     private static func placeholderItems() -> [WidgetDisplayItem] {
-        ItemContent.widgetExamples.prefix(4).map { WidgetDisplayItem(item: $0, posterData: nil) }
+        ItemContent.widgetExamples.prefix(8).map { WidgetDisplayItem(item: $0, posterData: nil) }
     }
 
     private static func buildDisplayItems(from content: [ItemContent]) async -> [WidgetDisplayItem] {
@@ -80,8 +80,7 @@ struct CronicaWidgetEntryView: View {
 
     var body: some View {
         ItemContentList(items: entry.items)
-            .padding(10)
-            .clipped()
+            .padding(8)
             .containerBackground(for: .widget) {
 #if os(iOS)
                 Color(uiColor: .systemBackground)
@@ -119,5 +118,8 @@ struct CronicaWidget: Widget {
         .configurationDisplayName("Trending")
         .description("Shows movies and TV Shows trending from TMDb.")
         .supportedFamilies(CronicaWidgetFamilies.homeScreen)
+        // Disable system content margins so poster grids can fill the widget predictably.
+        // We apply a fixed 8pt inset in CronicaWidgetEntryView instead.
+        .contentMarginsDisabled()
     }
 }
