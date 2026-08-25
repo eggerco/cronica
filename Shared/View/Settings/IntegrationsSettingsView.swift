@@ -37,6 +37,7 @@ struct IntegrationsSettingsView: View {
                     .foregroundStyle(.secondary)
                 Link("SIMKL Website", destination: URL(string: "https://simkl.com")!)
                 Link("SIMKL API Rules", destination: URL(string: "https://api.simkl.org/api-rules.md")!)
+                Link("Integration notes", destination: URL(string: "https://github.com/eggerco/cronica/blob/main/docs/INTEGRATIONS.md")!)
             }
         }
         .navigationTitle("Integrations")

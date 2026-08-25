@@ -64,8 +64,12 @@ enum SimklImportMapper {
 
     /// Maps SIMKL status / episode progress onto an existing Cronica watchlist item.
     @MainActor
-    static func applyStatus(_ entry: SimklLibraryEntry, to contentID: String, media: MediaType) {
-        let persistence = PersistenceController.shared
+    static func applyStatus(
+        _ entry: SimklLibraryEntry,
+        to contentID: String,
+        media: MediaType,
+        persistence: PersistenceController = .shared
+    ) {
         guard let item = persistence.fetch(for: contentID) else { return }
         let status = entry.status ?? .plantowatch
 

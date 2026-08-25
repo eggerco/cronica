@@ -27,6 +27,7 @@ enum SimklTokenStore {
         var add = query
         add[kSecValueData as String] = data
         add[kSecAttrAccessible as String] = kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly
+        add[kSecUseDataProtectionKeychain as String] = true
         let status = SecItemAdd(add as CFDictionary, nil)
         guard status == errSecSuccess else {
             throw SimklError.message("Failed to store SIMKL token (\(status)).")
@@ -39,7 +40,8 @@ enum SimklTokenStore {
             kSecAttrService as String: service,
             kSecAttrAccount as String: account,
             kSecReturnData as String: true,
-            kSecMatchLimit as String: kSecMatchLimitOne
+            kSecMatchLimit as String: kSecMatchLimitOne,
+            kSecUseDataProtectionKeychain as String: true
         ]
         var item: CFTypeRef?
         let status = SecItemCopyMatching(query as CFDictionary, &item)
@@ -56,8 +58,9 @@ enum SimklTokenStore {
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrService as String: service,
-            kSecAttrAccount as String: account
+            kSecAttrAccount as String: account,
+            kSecUseDataProtectionKeychain as String: true
         ]
         SecItemDelete(query as CFDictionary)
     }
-}
+

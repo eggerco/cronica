@@ -63,10 +63,10 @@
 1. Install [Xcode 26](https://developer.apple.com/xcode/) or later.
 2. Clone this repository and open `Cronica.xcodeproj`.
 3. Copy `Config/Secrets.xcconfig.example` → `Config/Secrets.xcconfig`.
-4. Add your TMDb API key (and optionally `SENTRY_DSN`) in `Secrets.xcconfig`.
+4. Add your TMDb API key (and optionally `SENTRY_DSN`, `SIMKL_CLIENT_ID`) in `Secrets.xcconfig`.
 5. Build the **Cronica (EN-US)** scheme.
 
-For CI, set repository secrets `TMDB_API_KEY` and optionally `SENTRY_DSN`. See [SECURITY.md](SECURITY.md).
+For CI, set repository secrets `TMDB_API_KEY` and optionally `SENTRY_DSN`. See [SECURITY.md](SECURITY.md). Optional integrations (SIMKL and others): [docs/INTEGRATIONS.md](docs/INTEGRATIONS.md).
 
 ## Architecture
 
