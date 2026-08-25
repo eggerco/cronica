@@ -92,12 +92,6 @@ extension View {
                 case .about: AboutSettings()
                 case .appearance: AppearanceSetting()
                 case .behavior: BehaviorSetting()
-                case .developer:
-#if os(tvOS)
-                    EmptyView()
-#else
-                    DeveloperView()
-#endif
                 case .notifications: NotificationsSettingsView()
                 case .feedback: FeedbackComposerView()
                 case .region: WatchProviderSettings()

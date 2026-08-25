@@ -6,14 +6,8 @@
 //
 
 import SwiftUI
-#if os(iOS)
-import UIKit
-#endif
 
 struct AboutSettings: View {
-    /// Triple-tap logo or version. Local `@AppStorage` so the link refreshes immediately
-    /// (`SettingsStore`'s `@AppStorage` does not publish `objectWillChange`).
-    @AppStorage("displayDeveloperSettings") private var displayDeveloperSettings = false
     @Environment(\.openURL) private var openURL
     let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     let buildNumber: String = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "Unknown"
@@ -29,9 +23,6 @@ struct AboutSettings: View {
                             .clipShape(RoundedRectangle(cornerRadius: 22.4, style: .continuous))
                             .shadow(color: .black.opacity(0.18), radius: 8, x: 0, y: 4)
                             .accessibilityHidden(true)
-                            .onTapGesture(count: 3) {
-                                toggleDeveloperSettings()
-                            }
                         Text("An Egger & Co Product")
                             .fontWeight(.semibold)
                             .fontDesign(.monospaced)
@@ -117,23 +108,10 @@ struct AboutSettings: View {
             }
             
             Section {
-#if os(iOS) || os(macOS) || os(visionOS)
-                if displayDeveloperSettings {
-                    // Avoid nesting another SettingsScreens value under About's destination.
-                    NavigationLink {
-                        DeveloperView()
-                    } label: {
-                        Label("Developer Options", systemImage: "hammer")
-                    }
-                }
-#endif
                 CenterHorizontalView {
                     Text("Version \(appVersion ?? "") • \(buildNumber)")
                         .foregroundColor(.secondary)
                         .textCase(.uppercase)
-                        .onTapGesture(count: 3) {
-                            toggleDeveloperSettings()
-                        }
                 }
             }
             .listRowBackground(Color.clear)
@@ -144,15 +122,6 @@ struct AboutSettings: View {
 #endif
     }
 
-    private func toggleDeveloperSettings() {
-        withAnimation {
-            displayDeveloperSettings.toggle()
-        }
-#if os(iOS)
-        UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-#endif
-    }
-    
     private func aboutButton(title: String, subtitle: String? = nil, url: String) -> some View {
         Button {
             guard let url = URL(string: url) else { return }

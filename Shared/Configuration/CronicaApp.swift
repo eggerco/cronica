@@ -92,11 +92,6 @@ struct CronicaApp: App {
                 .sheet(isPresented: $showAbout) {
                     NavigationStack {
                         AboutSettings()
-                            .navigationDestination(for: SettingsScreens.self) { screen in
-                                if screen == .developer {
-                                    DeveloperView()
-                                }
-                            }
                     }
                     .frame(width: 400, height: 400, alignment: .center)
                     .toolbar {

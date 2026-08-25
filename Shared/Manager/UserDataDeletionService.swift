@@ -51,7 +51,6 @@ enum UserDataDeletionService {
     private static func resetUserDefaults() {
         let keys = [
             "showOnboarding",
-            "displayDeveloperSettings",
             "gesture",
             "appThemeColor",
             "watchlistStyle",

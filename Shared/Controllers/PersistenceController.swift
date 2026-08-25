@@ -77,24 +77,38 @@ struct PersistenceController {
                 AppLogger.persistence.fault("Unresolved error loading persistent store: \(error), \(error.userInfo)")
 #endif
             }
+#if DEBUG
+            // Development environment only — never run in App Store Release builds.
+            // After model changes, launch a DEBUG build signed into iCloud, then promote
+            // the schema in CloudKit Console (Deploy Schema Changes → Production).
+            if !inMemory {
+                Self.initializeDevelopmentCloudKitSchema(for: container)
+            }
+#endif
         }
     }
 
-    /// Development-only: push the current Core Data model into the CloudKit **development** schema.
-    /// Call from Developer Options after model changes while signed into iCloud — not on every launch.
-    @discardableResult
-    func initializeCloudKitDevelopmentSchema() -> String {
-        guard Self.isICloudAccountAvailable() else {
-            return "Sign in to iCloud on this device/simulator first."
+#if DEBUG
+    /// Pushes the current Core Data model into the CloudKit **development** schema.
+    /// Safe to call on DEBUG launches when iCloud + CloudKit are available; no-op otherwise.
+    private static func initializeDevelopmentCloudKitSchema(for container: NSPersistentCloudKitContainer) {
+        guard isICloudAccountAvailable(),
+              container.persistentStoreDescriptions.first?.cloudKitContainerOptions != nil else {
+            AppLogger.persistence.info(
+                "Skipping CloudKit schema init (sign in to iCloud on a DEBUG build after Core Data model changes)."
+            )
+            return
         }
         do {
             try container.initializeCloudKitSchema(options: [])
-            return "CloudKit development schema initialized."
+            AppLogger.persistence.info(
+                "CloudKit development schema initialized. Promote in CloudKit Console → Deploy Schema Changes for production."
+            )
         } catch {
             AppLogger.persistence.error("initializeCloudKitSchema failed: \(error.localizedDescription)")
-            return error.localizedDescription
         }
     }
+#endif
 
     func save() {
         if container.viewContext.hasChanges {

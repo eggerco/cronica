@@ -5635,52 +5635,6 @@
         }
       }
     },
-    "Developer Options": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Developer Options"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Developer Options"
-          }
-        },
-        "es-MX": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Developer Options"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Options pour les développeurs"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Opzioni Sviluppatore"
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Developer Options"
-          }
-        },
-        "sk": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vývojárske možnosti"
-          }
-        }
-      }
-    },
     "Digital": {
       "extractionState": "stale",
       "localizations": {
@@ -7304,52 +7258,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Spätná väzba odoslaná. Ďakujeme."
-          }
-        }
-      }
-    },
-    "Fetch": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fetch"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fetch"
-          }
-        },
-        "es-MX": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fetch"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rechercher"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Recupera"
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fetch"
-          }
-        },
-        "sk": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Získať"
           }
         }
       }
@@ -9283,52 +9191,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Informácie"
-          }
-        }
-      }
-    },
-    "Initialize CloudKit Schema": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "new",
-            "value": "Initialize CloudKit Schema"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Initialize CloudKit Schema"
-          }
-        },
-        "es-MX": {
-          "stringUnit": {
-            "state": "new",
-            "value": "Initialize CloudKit Schema"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "new",
-            "value": "Initialize CloudKit Schema"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "new",
-            "value": "Initialize CloudKit Schema"
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "new",
-            "value": "Initialize CloudKit Schema"
-          }
-        },
-        "sk": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Inicializovať schému CloudKit"
           }
         }
       }
@@ -16595,52 +16457,6 @@
         }
       }
     },
-    "Reset asked for review": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reset asked for review"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reset asked for review"
-          }
-        },
-        "es-MX": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reset asked for review"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Réinitialisation demandée pour examen"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Inizializza richiesta della recensione"
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reset asked for review"
-          }
-        },
-        "sk": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Resetovať žiadosť o kontrolu"
-          }
-        }
-      }
-    },
     "Reset to Default": {
       "localizations": {
         "de": {
@@ -18389,52 +18205,6 @@
         }
       }
     },
-    "Send Object to Developer": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Send Object to Developer"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Send Object to Developer"
-          }
-        },
-        "es-MX": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Send Object to Developer"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Envoyer l'objet au développeur"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Invia Oggetto allo Sviluppatore"
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Send Object to Developer"
-          }
-        },
-        "sk": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Odoslať objekt vývojárovi"
-          }
-        }
-      }
-    },
     "Serbia": {
       "comment": "Country",
       "localizations": {
@@ -18984,52 +18754,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Zobraziť viac"
-          }
-        }
-      }
-    },
-    "Show Onboard": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Onboarding anzeigen"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Show Onboard"
-          }
-        },
-        "es-MX": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Show Onboard"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Afficher à bord"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mostra Spettacoli"
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Show Onboard"
-          }
-        },
-        "sk": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zobraziť sprievodcu"
           }
         }
       }

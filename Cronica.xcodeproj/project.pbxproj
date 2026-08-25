@@ -133,7 +133,6 @@
 		B86A3A922B509CB000BDE432 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = B86A3A912B509CB000BDE432 /* NukeUI */; };
 		B86A3A942B509CB400BDE432 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = B86A3A932B509CB400BDE432 /* Nuke */; };
 		B86AA7FC2A3A4C8C009847FE /* WatchProviderSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86AA7FB2A3A4C8C009847FE /* WatchProviderSettings.swift */; };
-		B86AAD0A28BD1CDD00D135B1 /* DeveloperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86AAD0928BD1CDD00D135B1 /* DeveloperView.swift */; };
 		B86AAD0D28BD2E2600D135B1 /* PlaceholderMedia.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B86AAD0B28BD2D6B00D135B1 /* PlaceholderMedia.xcassets */; };
 		B86DD41A28BAABCC002C8427 /* HeroImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B890C57827FC999F006BE5E1 /* HeroImage.swift */; };
 		B86E7A24290AB6C500459E41 /* WatchlistItemContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86E7A22290AB68000459E41 /* WatchlistItemContextMenu.swift */; };
@@ -471,7 +470,6 @@
 		B85C65AB27A6307C0080121E /* PersonDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailsView.swift; sourceTree = "<group>"; };
 		B86670B82B600CAE00CBA595 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		B86AA7FB2A3A4C8C009847FE /* WatchProviderSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchProviderSettings.swift; sourceTree = "<group>"; };
-		B86AAD0928BD1CDD00D135B1 /* DeveloperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperView.swift; sourceTree = "<group>"; };
 		B86AAD0B28BD2D6B00D135B1 /* PlaceholderMedia.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = PlaceholderMedia.xcassets; sourceTree = "<group>"; };
 		B86E7A22290AB68000459E41 /* WatchlistItemContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistItemContextMenu.swift; sourceTree = "<group>"; };
 		B86F7ABC2A087FF900AA4855 /* HorizontalUpNextListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalUpNextListView.swift; sourceTree = "<group>"; };
@@ -1145,7 +1143,6 @@
 				C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 				B80BBE572949665A00958876 /* AppearanceSetting.swift */,
 				B8FB2A8D29526341006DAC8E /* BehaviorSetting.swift */,
-				B86AAD0928BD1CDD00D135B1 /* DeveloperView.swift */,
 				B80318A729256AE700714B3E /* FeedbackSettingsView.swift */,
 				B81DD94029BE226E009F73F3 /* NotificationsSettingsView.swift */,
 				B8A2C15A2B62D1F80033CD33 /* SeasonUpNextSettingsView.swift */,
@@ -1807,7 +1804,6 @@
 				B845132A27EA514C00F0D4A4 /* SettingsView.swift in Sources */,
 				B8BF633529146A2A0051915C /* PinItemsList.swift in Sources */,
 				B8CC952A27D02C5700B6757C /* ItemContentDetails.swift in Sources */,
-				B86AAD0A28BD1CDD00D135B1 /* DeveloperView.swift in Sources */,
 				B8779375281E2CE700174F32 /* ExploreView.swift in Sources */,
 				B83F1E9928BAD24C008E151D /* SideBarView.swift in Sources */,
 				B80BBE582949665A00958876 /* AppearanceSetting.swift in Sources */,

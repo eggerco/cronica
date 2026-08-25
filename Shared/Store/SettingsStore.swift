@@ -11,7 +11,6 @@ final class SettingsStore: ObservableObject {
     private init() { }
     static var shared = SettingsStore()
     @AppStorage("showOnboarding") var displayOnboard = true
-    @AppStorage("displayDeveloperSettings") var displayDeveloperSettings = false
     @AppStorage("gesture") var gesture: UpdateItemProperties = .favorite
     @AppStorage("appThemeColor") var appTheme: AppThemeColors = .blue
 #if os(iOS)
