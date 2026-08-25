@@ -113,61 +113,11 @@ struct SearchContentPosterView: View {
     @ViewBuilder
     private var overlay: some View {
         if isInWatchlist {
-            VStack {
-                Spacer()
-                HStack {
-                    Spacer()
-                    if !settings.isCompactUI {
-                        if isArchive {
-                            Image(systemName: "archivebox.fill")
-                                .imageScale(.small)
-                                .foregroundColor(.white.opacity(0.9))
-                                .padding([.vertical])
-                                .padding(.trailing, 4)
-                        }
-                        if isPin {
-                            Image(systemName: "pin.fill")
-                                .imageScale(.small)
-                                .foregroundColor(.white.opacity(0.9))
-                                .padding([.vertical])
-                                .padding(.trailing, 4)
-                        }
-                    }
-                    if isFavorite {
-                        Image(systemName: "suit.heart")
-                            .imageScale(.small)
-                            .foregroundColor(.white.opacity(0.9))
-                            .padding([.vertical])
-                            .padding(.trailing, 4)
-                    }
-                    if isWatched {
-                        Image(systemName: "rectangle.badge.checkmark")
-                            .imageScale(.small)
-                            .foregroundColor(.white.opacity(0.9))
-                            .padding([.vertical])
-                            .padding(.trailing, 4)
-                    }
-                    Image(systemName: "square.stack")
-                        .imageScale(.small)
-                        .foregroundColor(.white.opacity(0.9))
-                        .padding([.vertical, .trailing])
-                }
-                .background {
-                    if item.posterImageMedium != nil {
-                        Color.black.opacity(0.6)
-                            .mask {
-                                LinearGradient(colors:
-                                                [Color.black,
-                                                 Color.black.opacity(0.924),
-                                                 Color.black.opacity(0.707),
-                                                 Color.black.opacity(0.383),
-                                                 Color.black.opacity(0)],
-                                               startPoint: .bottom,
-                                               endPoint: .top)
-                            }
-                    }
-                }
-            }
+            WatchlistPosterStatusOverlay(
+                isWatched: isWatched,
+                isFavorite: isFavorite,
+                compact: settings.isCompactUI
+            )
         }
     }
     

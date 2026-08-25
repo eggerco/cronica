@@ -192,6 +192,8 @@ struct ItemContentDetails: View {
                 Spacer()
             }
             .padding([.top, .horizontal])
+
+            watchedDateCaption
             
             OverviewBoxView(overview: viewModel.content?.itemOverview,
                             title: title).padding()
@@ -285,6 +287,8 @@ struct ItemContentDetails: View {
                                 .padding(.horizontal)
                         }
                     }
+
+                    watchedDateCaption
                 }
                 .frame(width: 360)
                 
@@ -428,6 +432,8 @@ struct ItemContentDetails: View {
 #endif
                         }
                     }
+
+                    watchedDateCaption
                 }
                 .frame(width: 700)
                 
@@ -591,8 +597,6 @@ struct ItemContentDetails: View {
                          content: item?.itemRating)
                 infoView(title: String(localized: "Status"),
                          content: item?.itemStatus.localizedTitle)
-                infoView(title: String(localized: "Watched Date"),
-                         content: viewModel.watchedDateLabel)
                 infoView(title: String(localized: "Genres"),
                          content: item?.itemGenres)
                 infoView(title: String(localized: "Region of Origin"),
@@ -713,6 +717,26 @@ extension ItemContentDetails {
         .accessibilityIdentifier("Watchlist Button")
     }
     
+    @ViewBuilder
+    private var watchedDateCaption: some View {
+        if viewModel.isWatched, let watchedDateLabel = viewModel.watchedDateLabel {
+            Button {
+                showUserNotes = true
+            } label: {
+                HStack(spacing: 4) {
+                    Image(systemName: "calendar")
+                    Text("\(String(localized: "Watched")) \(watchedDateLabel)")
+                }
+                .font(.caption)
+                .fontDesign(.rounded)
+                .foregroundStyle(.secondary)
+            }
+            .buttonStyle(.plain)
+            .accessibilityHint(String(localized: "Edit watched date in Review"))
+            .padding(.top, 4)
+        }
+    }
+
     private var watchButton: some View {
         Button {
             viewModel.update(.watched)
@@ -1040,8 +1064,6 @@ extension ItemContentDetails {
             }
             infoLabel(title: String(localized: "Status"),
                       content: viewModel.content?.itemStatus.localizedTitle)
-            infoLabel(title: String(localized: "Watched Date"),
-                      content: viewModel.watchedDateLabel)
         }
         .sheet(isPresented: $showReleaseDateInfo) {
             let productionRegion = viewModel.content?.productionCountries?.first?.iso31661 ?? "US"

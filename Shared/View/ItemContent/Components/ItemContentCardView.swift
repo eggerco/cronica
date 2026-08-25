@@ -44,59 +44,10 @@ struct ItemContentCardView: View {
                 }
                 .overlay {
                     if isInWatchlist {
-                        VStack {
-                            Spacer()
-                            HStack {
-                                Spacer()
-                                if isArchive {
-                                    Image(systemName: "archivebox")
-                                        .imageScale(.small)
-                                        .foregroundColor(.white.opacity(0.9))
-                                        .padding([.vertical])
-                                        .padding(.trailing, 4)
-                                }
-                                if isPin {
-                                    Image(systemName: "pin")
-                                        .imageScale(.small)
-                                        .foregroundColor(.white.opacity(0.9))
-                                        .padding([.vertical])
-                                        .padding(.trailing, 4)
-                                }
-                                if isFavorite {
-                                    Image(systemName: "suit.heart")
-                                        .imageScale(.small)
-                                        .foregroundColor(.white.opacity(0.9))
-                                        .padding([.vertical])
-                                        .padding(.trailing, 4)
-                                }
-                                if isWatched {
-                                    Image(systemName: "rectangle.badge.checkmark")
-                                        .imageScale(.small)
-                                        .foregroundColor(.white.opacity(0.9))
-                                        .padding([.vertical])
-                                        .padding(.trailing, 4)
-                                }
-                                Image(systemName: "square.stack")
-                                    .imageScale(.small)
-                                    .foregroundColor(.white.opacity(0.9))
-                                    .padding([.vertical, .trailing])
-                            }
-                            .background {
-                                if item.cardImageMedium != nil {
-                                    Color.black.opacity(0.6)
-                                        .mask {
-                                            LinearGradient(colors:
-                                                            [Color.black,
-                                                             Color.black.opacity(0.924),
-                                                             Color.black.opacity(0.707),
-                                                             Color.black.opacity(0.383),
-                                                             Color.black.opacity(0)],
-                                                           startPoint: .bottom,
-                                                           endPoint: .top)
-                                        }
-                                }
-                            }
-                        }
+                        WatchlistPosterStatusOverlay(
+                            isWatched: isWatched,
+                            isFavorite: isFavorite
+                        )
                     }
                 }
                 .aspectRatio(contentMode: .fill)

@@ -331,6 +331,8 @@
 		C1A1NAV128A9BD31003025B /* CronicaNavigationDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A1NAV028A9BD31003025B /* CronicaNavigationDestinations.swift */; };
 		C1EMP00228A9BD31003025C /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EMP00128A9BD31003025C /* EmptyListView.swift */; };
 		C1PAGE00228A9BD31003025D /* PaginationFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1PAGE00128A9BD31003025D /* PaginationFooter.swift */; };
+		C1WPSTOVLY128A9BD31000002 /* WatchlistPosterStatusOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1WPSTOVLY128A9BD31000001 /* WatchlistPosterStatusOverlay.swift */; };
+		C1WPSTOVLY128A9BD31000003 /* WatchlistPosterStatusOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1WPSTOVLY128A9BD31000001 /* WatchlistPosterStatusOverlay.swift */; };
 		C1SRCH00228A9BD31003025E /* SearchContentUnavailableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1SRCH00128A9BD31003025E /* SearchContentUnavailableView.swift */; };
 		CF267C97303C3C65001DB342 /* CronicaCore in Frameworks */ = {isa = PBXBuildFile; productRef = C0CRONICACORE00000000001 /* CronicaCore */; };
 		CF267C98303C3C65001DB342 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = C0SENTRYPROD000000000001 /* Sentry */; };
@@ -639,6 +641,7 @@
 		C1A1NAV028A9BD31003025B /* CronicaNavigationDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaNavigationDestinations.swift; sourceTree = "<group>"; };
 		C1EMP00128A9BD31003025C /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
 		C1PAGE00128A9BD31003025D /* PaginationFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationFooter.swift; sourceTree = "<group>"; };
+		C1WPSTOVLY128A9BD31000001 /* WatchlistPosterStatusOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistPosterStatusOverlay.swift; sourceTree = "<group>"; };
 		C1SRCH00128A9BD31003025E /* SearchContentUnavailableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchContentUnavailableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1404,6 +1407,7 @@
 				C1PAGE00128A9BD31003025D /* PaginationFooter.swift */,
 				C1SRCH00128A9BD31003025E /* SearchContentUnavailableView.swift */,
 				B81941AA2A0835D40057DA04 /* PosterPlaceholder.swift */,
+				C1WPSTOVLY128A9BD31000001 /* WatchlistPosterStatusOverlay.swift */,
 				B8A36AB42B1D4999004A5687 /* ReviewAppBanner.swift */,
 				B8FF4DBE27FA511A00C7DE9F /* TitleView.swift */,
 				B8733A7729293ABB00CBEF2B /* TranslucentBackground.swift */,
@@ -1759,6 +1763,7 @@
 				B86DD41A28BAABCC002C8427 /* HeroImage.swift in Sources */,
 				B86F7AC22A0941D800AA4855 /* EpisodeHelper.swift in Sources */,
 				B81941AC2A0835D40057DA04 /* PosterPlaceholder.swift in Sources */,
+				C1WPSTOVLY128A9BD31000003 /* WatchlistPosterStatusOverlay.swift in Sources */,
 				B87D1B272A65E63700EB6D14 /* UpNextListView.swift in Sources */,
 				B8A36AB82B1D51EA004A5687 /* BehaviorSetting.swift in Sources */,
 				B81941D12A0861D70057DA04 /* ArchiveButton.swift in Sources */,
@@ -1829,6 +1834,7 @@
 				B8FB2A90295263AB006DAC8E /* AboutSettings.swift in Sources */,
 				B81DD92629BD149D009F73F3 /* WatchlistItem+CoreDataClass.swift in Sources */,
 				B81941AB2A0835D40057DA04 /* PosterPlaceholder.swift in Sources */,
+				C1WPSTOVLY128A9BD31000002 /* WatchlistPosterStatusOverlay.swift in Sources */,
 				B8C335472815ED140055389D /* WatchListSection.swift in Sources */,
 				B8B2F6A62A85D39000FF0246 /* TrendingKeywordsListView.swift in Sources */,
 				B845132A27EA514C00F0D4A4 /* SettingsView.swift in Sources */,

@@ -59,90 +59,11 @@ struct ItemContentPosterView: View {
         }
         .overlay {
             if isInWatchlist {
-                VStack {
-                    Spacer()
-                    HStack {
-                        Spacer()
-#if !os(tvOS)
-                        if !settings.isCompactUI {
-                            if isArchive {
-                                Image(systemName: "archivebox.fill")
-                                    .imageScale(.small)
-                                    .foregroundColor(.white.opacity(0.9))
-                                    .padding([.vertical])
-#if !os(tvOS)
-                                    .padding(.trailing, 4)
-#else
-                                    .padding(.trailing, 2)
-                                    .font(.caption)
-#endif
-                            }
-                            if isPin {
-                                Image(systemName: "pin.fill")
-                                    .imageScale(.small)
-                                    .foregroundColor(.white.opacity(0.9))
-                                    .padding([.vertical])
-#if !os(tvOS)
-                                    .padding(.trailing, 4)
-#else
-                                    .padding(.trailing, 2)
-                                    .font(.caption)
-#endif
-                            }
-                        }
-                        if isFavorite {
-                            Image(systemName: "suit.heart.fill")
-                                .imageScale(.small)
-                                .foregroundColor(.white.opacity(0.9))
-                                .padding([.vertical])
-#if !os(tvOS)
-                                .padding(.trailing, 4)
-#else
-                                .padding(.trailing, 2)
-                                .font(.caption)
-#endif
-                        }
-#endif
-                        if isWatched {
-                            Image(systemName: "rectangle.badge.checkmark.fill")
-                                .imageScale(.small)
-                                .foregroundColor(.white.opacity(0.9))
-                                .padding([.vertical])
-#if !os(tvOS)
-                                .padding(.trailing, 4)
-#else
-                                .padding(.trailing, 2)
-                                .font(.caption)
-#endif
-                        }
-                        Image(systemName: "square.stack.fill")
-                            .imageScale(.small)
-                            .foregroundColor(.white.opacity(0.9))
-                            .padding(.vertical)
-#if !os(tvOS)
-                            .padding(.trailing)
-#else
-                            .padding(.horizontal)
-                            .font(.caption)
-#endif
-                    }
-                    .background {
-                        if item.posterImageMedium != nil {
-                            Color.black.opacity(0.6)
-                                .mask {
-                                    LinearGradient(colors:
-                                                    [Color.black,
-                                                     Color.black.opacity(0.924),
-                                                     Color.black.opacity(0.707),
-                                                     Color.black.opacity(0.383),
-                                                     Color.black.opacity(0)],
-                                                   startPoint: .bottom,
-                                                   endPoint: .top)
-                                }
-                        }
-                    }
-                }
-                .frame(width: settings.isCompactUI ? DrawingConstants.compactPosterWidth : DrawingConstants.posterWidth)
+                WatchlistPosterStatusOverlay(
+                    isWatched: isWatched,
+                    isFavorite: isFavorite,
+                    compact: settings.isCompactUI
+                )
             }
         }
         .transition(.opacity)

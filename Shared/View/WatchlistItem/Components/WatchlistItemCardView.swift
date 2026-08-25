@@ -37,57 +37,10 @@ struct WatchlistItemCardView: View {
                 }
                 .transition(.opacity)
                 .overlay {
-                    VStack {
-                        Spacer()
-                        HStack {
-                            Spacer()
-                            if isFavorite {
-                                Image(systemName: "suit.heart")
-                                    .imageScale(.small)
-                                    .foregroundColor(.white.opacity(0.9))
-                                    .padding([.vertical])
-                                    .padding(.horizontal)
-#if os(tvOS)
-                                    .font(.caption)
-#endif
-                            }
-                            if !isFavorite, isWatched {
-                                Image(systemName: "rectangle.badge.checkmark")
-                                    .imageScale(.small)
-                                    .foregroundColor(.white.opacity(0.9))
-                                    .padding([.vertical])
-                                    .padding(.horizontal)
-#if os(tvOS)
-                                    .font(.caption)
-#endif
-                            }
-                            if !isFavorite, !isWatched {
-                                Image(systemName: "square.stack")
-                                    .imageScale(.small)
-                                    .foregroundColor(.white.opacity(0.9))
-                                    .padding([.vertical, .trailing])
-#if os(tvOS)
-                                    .font(.caption)
-#endif
-                            }
-                            
-                        }
-                        .background {
-                            if content.backCompatibleCardImage != nil {
-                                Color.black.opacity(0.6)
-                                    .mask {
-                                        LinearGradient(colors:
-                                                        [Color.black,
-                                                         Color.black.opacity(0.924),
-                                                         Color.black.opacity(0.707),
-                                                         Color.black.opacity(0.383),
-                                                         Color.black.opacity(0)],
-                                                       startPoint: .bottom,
-                                                       endPoint: .top)
-                                    }
-                            }
-                        }
-                    }
+                    WatchlistPosterStatusOverlay(
+                        isWatched: isWatched,
+                        isFavorite: isFavorite
+                    )
                 }
                 .frame(width: DrawingConstants.imageWidth,
                        height: DrawingConstants.imageHeight)
