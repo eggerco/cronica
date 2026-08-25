@@ -71,7 +71,7 @@ struct SimklLibraryEntry: Decodable {
     var mediaObject: SimklMediaObject? { movie ?? show }
 }
 
-struct SimklMediaObject: Decodable {
+struct SimklMediaObject: Decodable, Equatable {
     var title: String?
     var year: Int?
     var ids: SimklIDs?
@@ -83,7 +83,7 @@ struct SimklMediaObject: Decodable {
     }
 }
 
-struct SimklIDs: Decodable {
+struct SimklIDs: Decodable, Equatable {
     var simkl: Int?
     var tmdb: FlexibleID?
     var imdb: String?
