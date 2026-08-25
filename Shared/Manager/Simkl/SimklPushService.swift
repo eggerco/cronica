@@ -131,19 +131,28 @@ final class SimklPushService {
             }
         }
 
+        var remaining = queue
         do {
-            try await sendAdds(batchAdd)
-            try await sendHistory(batchHistory)
-            try await sendRemoves(batchRemove)
-            try await sendRatings(batchRatings)
-            try await sendRemoveRatings(batchRemoveRatings)
-            try await sendScrobbles(batchScrobble)
+            let stages: [([Operation], ([Operation]) async throws -> Void)] = [
+                (batchAdd, sendAdds),
+                (batchHistory, sendHistory),
+                (batchRemove, sendRemoves),
+                (batchRatings, sendRatings),
+                (batchRemoveRatings, sendRemoveRatings),
+                (batchScrobble, sendScrobbles)
+            ]
+            for (batch, send) in stages where !batch.isEmpty {
+                try await send(batch)
+                remaining.removeAll { batch.contains($0) }
+                saveQueue(remaining)
+            }
             saveQueue([])
         } catch {
             if case SimklError.notAuthenticated = error {
                 clearQueue()
             } else {
-                saveQueue(queue)
+                // Persist whatever has not been confirmed yet (avoids re-sending succeeded stages).
+                saveQueue(remaining)
             }
             AppLogger.network.error("SIMKL push flush failed: \(error.localizedDescription, privacy: .public)")
         }
