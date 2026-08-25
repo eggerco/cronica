@@ -52,7 +52,7 @@ struct HomeView: View {
 #endif
         .cronicaLoadingOverlay(!viewModel.isLoaded)
         .overlay {
-            if viewModel.isLoaded && viewModel.featured.isEmpty && viewModel.sectionResults.isEmpty {
+            if shouldShowRemoteLoadFailure {
                 ContentUnavailableView {
                     Label("Couldn't Load Home", systemImage: "wifi.exclamationmark")
                 } description: {
@@ -130,12 +130,33 @@ struct HomeView: View {
         .task(id: homeSections.visibleOrderedSections.map(\.rawValue).joined(separator: ",")) {
             await viewModel.load(visibleKinds: homeSections.visibleOrderedSections)
         }
-        .onChange(of: homeSections.order) { _, _ in
-            viewModel.reload()
+    }
+
+    /// Show failure UI only when visible remote rails failed to load, not when local rails still have content.
+    private var shouldShowRemoteLoadFailure: Bool {
+        guard viewModel.isLoaded else { return false }
+
+        let visible = homeSections.visibleOrderedSections
+        let hasVisibleRemoteSection = visible.contains { section in
+            section == .featured || section.endpoint != nil
         }
-        .onChange(of: homeSections.hidden) { _, _ in
-            viewModel.reload()
+        guard hasVisibleRemoteSection else { return false }
+
+        for section in visible {
+            switch section {
+            case .featured:
+                if !viewModel.featured.isEmpty { return false }
+            case .moviesUpcoming, .moviesNowPlaying, .moviesPopular, .moviesTopRated, .tvPopular, .tvTopRated:
+                if let endpoint = section.endpoint,
+                   let items = viewModel.sectionResults[endpoint],
+                   !items.isEmpty {
+                    return false
+                }
+            default:
+                break
+            }
         }
+        return true
     }
 
     @ViewBuilder

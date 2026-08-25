@@ -93,6 +93,16 @@ private struct FeaturedItemCardView: View {
                                 isArchive: $isArchive)
 #else
         .buttonStyle(.plain)
+        .itemContentContextMenu(item: item,
+                                isWatched: $isWatched,
+                                showPopup: $showPopup,
+                                isInWatchlist: $isInWatchlist,
+                                showNote: $showNote,
+                                showCustomList: $showCustomListView,
+                                popupType: $popupType,
+                                isFavorite: $isFavorite,
+                                isPin: $isPin,
+                                isArchive: $isArchive)
 #endif
         .task {
             withAnimation {
@@ -138,18 +148,6 @@ private struct FeaturedItemCardView: View {
         .frame(width: FeaturedDrawingConstants.cardWidth, height: FeaturedDrawingConstants.posterHeight)
         .clipShape(RoundedRectangle(cornerRadius: FeaturedDrawingConstants.cornerRadius, style: .continuous))
         .shadow(color: .black.opacity(0.22), radius: 8, y: 5)
-#if !os(tvOS)
-        .itemContentContextMenu(item: item,
-                                isWatched: $isWatched,
-                                showPopup: $showPopup,
-                                isInWatchlist: $isInWatchlist,
-                                showNote: $showNote,
-                                showCustomList: $showCustomListView,
-                                popupType: $popupType,
-                                isFavorite: $isFavorite,
-                                isPin: $isPin,
-                                isArchive: $isArchive)
-#endif
     }
 
     private var trimmedOverview: String? {

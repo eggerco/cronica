@@ -842,6 +842,49 @@ final class CronicaTests: XCTestCase {
         XCTAssertFalse(HomeSectionKind.defaultOrder.contains(where: { $0.rawValue == "trending" }))
     }
 
+    func testHomeSectionOrderDedupesMigratedFeatured() {
+        let raw = ["trending", "featured", "upNext"]
+        let parsed = raw.compactMap(HomeSectionKind.fromPersistedRawValue)
+        var deduped = [HomeSectionKind]()
+        var seen = Set<HomeSectionKind>()
+        for kind in parsed where seen.insert(kind).inserted {
+            deduped.append(kind)
+        }
+        XCTAssertEqual(deduped.filter { $0 == .featured }.count, 1)
+        XCTAssertEqual(deduped.first, .featured)
+    }
+
+    func testFeaturedItemFilterExcludesPeopleAndRequiresPoster() {
+        let movie = ItemContent.examples.first!
+        let filtered = HomeViewModel.filterFeaturedItems([movie])
+        XCTAssertFalse(filtered.isEmpty)
+        XCTAssertEqual(filtered.first?.id, movie.id)
+
+        let noPoster = ItemContent(
+            adult: nil, id: 99, title: "No Poster", name: nil, overview: nil, originalTitle: nil,
+            posterPath: nil, backdropPath: nil, profilePath: nil, releaseDate: nil, status: nil, imdbId: nil,
+            runtime: nil, numberOfEpisodes: nil, numberOfSeasons: nil, voteCount: nil,
+            popularity: 100, voteAverage: nil, productionCompanies: nil, productionCountries: nil,
+            seasons: nil, genres: nil, credits: nil, recommendations: nil, releaseDates: nil,
+            mediaType: .movie, videos: nil, nextEpisodeToAir: nil, lastEpisodeToAir: nil,
+            originalName: nil, firstAirDate: nil, homepage: nil, episodeRunTime: nil,
+            placeholderImagePath: nil
+        )
+        XCTAssertTrue(HomeViewModel.filterFeaturedItems([noPoster]).isEmpty)
+
+        let person = ItemContent(
+            adult: nil, id: 100, title: nil, name: "Actor", overview: nil, originalTitle: nil,
+            posterPath: "/poster.jpg", backdropPath: nil, profilePath: nil, releaseDate: nil, status: nil, imdbId: nil,
+            runtime: nil, numberOfEpisodes: nil, numberOfSeasons: nil, voteCount: nil,
+            popularity: 50, voteAverage: nil, productionCompanies: nil, productionCountries: nil,
+            seasons: nil, genres: nil, credits: nil, recommendations: nil, releaseDates: nil,
+            mediaType: .person, videos: nil, nextEpisodeToAir: nil, lastEpisodeToAir: nil,
+            originalName: nil, firstAirDate: nil, homepage: nil, episodeRunTime: nil,
+            placeholderImagePath: nil
+        )
+        XCTAssertTrue(HomeViewModel.filterFeaturedItems([person]).isEmpty)
+    }
+
     func testTMDBReviewResponseParsing() throws {
         let json = """
         {"id":550,"page":1,"total_pages":1,"total_results":1,"results":[{"author":"Brett Pascoe","author_details":{"name":"Brett Pascoe","username":"SneekyNuts","avatar_path":"/avatar.jpg","rating":9.0},"content":"Great movie.","created_at":"2018-07-05T13:22:41.754Z","id":"5b3e1ba1925141144c007f17","updated_at":"2021-06-23T15:58:10.199Z","url":"https://www.themoviedb.org/review/5b3e1ba1925141144c007f17"}]}

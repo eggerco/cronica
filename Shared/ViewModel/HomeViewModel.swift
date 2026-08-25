@@ -65,7 +65,7 @@ class HomeViewModel: ObservableObject {
         }
     }
 
-    private static func filterFeaturedItems(_ items: [ItemContent]) -> [ItemContent] {
+    static func filterFeaturedItems(_ items: [ItemContent]) -> [ItemContent] {
         items
             .filter { $0.itemContentMedia != .person }
             .filter { $0.posterPath != nil }

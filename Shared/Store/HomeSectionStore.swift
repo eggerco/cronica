@@ -19,6 +19,7 @@ final class HomeSectionStore: ObservableObject {
     private init() {
         order = Self.loadOrder()
         hidden = Self.loadHidden()
+        normalizePersistedLayoutIfNeeded()
     }
 
     var visibleOrderedSections: [HomeSectionKind] {
@@ -66,7 +67,7 @@ final class HomeSectionStore: ObservableObject {
         guard let raw = UserDefaults.standard.array(forKey: "homeSectionOrder") as? [String] else {
             return HomeSectionKind.defaultOrder
         }
-        var parsed = raw.compactMap(HomeSectionKind.fromPersistedRawValue)
+        var parsed = deduplicatedPreservingOrder(raw.compactMap(HomeSectionKind.fromPersistedRawValue))
         // Append any newly introduced sections the user hasn't seen yet.
         for kind in HomeSectionKind.defaultOrder where !parsed.contains(kind) {
             parsed.append(kind)
@@ -79,5 +80,25 @@ final class HomeSectionStore: ObservableObject {
             return Set(HomeSectionKind.allCases.filter { !HomeSectionKind.defaultVisible.contains($0) })
         }
         return Set(raw.compactMap(HomeSectionKind.fromPersistedRawValue))
+    }
+
+    private static func deduplicatedPreservingOrder(_ kinds: [HomeSectionKind]) -> [HomeSectionKind] {
+        var seen = Set<HomeSectionKind>()
+        return kinds.filter { seen.insert($0).inserted }
+    }
+
+    /// Rewrites persisted layout when legacy values (e.g. trending) were migrated in memory.
+    private func normalizePersistedLayoutIfNeeded() {
+        let persistedOrder = UserDefaults.standard.array(forKey: orderKey) as? [String]
+        let normalizedOrder = order.map(\.rawValue)
+        if persistedOrder != normalizedOrder {
+            persistOrder()
+        }
+
+        let persistedHidden = UserDefaults.standard.array(forKey: hiddenKey) as? [String]
+        let normalizedHidden = hidden.map(\.rawValue).sorted()
+        if persistedHidden?.sorted() != normalizedHidden {
+            persistHidden()
+        }
     }
 }
