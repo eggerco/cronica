@@ -142,7 +142,8 @@ struct SettingsView: View {
             .frame(width: 30, height: 30, alignment: .center)
             .padding(.trailing, 8)
             .accessibilityHidden(true)
-            Text(title)
+            Text(verbatim: title)
+                .textCase(nil)
         }
         .padding(.vertical, 2)
     }

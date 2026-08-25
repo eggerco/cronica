@@ -67,9 +67,6 @@ struct AboutSettings: View {
                 }
             }
 #endif
-#if !os(tvOS)
-            privacy
-#endif
             
             CronicaFormSection("Content Provider") {
                 aboutButton(
@@ -147,31 +144,6 @@ struct AboutSettings: View {
             }
         }
     }
-    
-#if os(macOS)
-    private var privacy: some View {
-        CronicaFormSection("Privacy") {
-            Button("Privacy Policy") {
-                openURL(AppWebsite.privacyPolicy)
-            }
-            .buttonStyle(.link)
-            NavigationLink(value: SettingsScreens.dataManagement) {
-                Text("Privacy & Data")
-            }
-        }
-    }
-#else
-    private var privacy: some View {
-        CronicaFormSection("Privacy") {
-            Button("Privacy Policy") {
-                openURL(AppWebsite.privacyPolicy)
-            }
-            NavigationLink(value: SettingsScreens.dataManagement) {
-                Text("Privacy & Data")
-            }
-        }
-    }
-#endif
 }
 
 #Preview {

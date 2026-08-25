@@ -93,13 +93,8 @@ struct CronicaApp: App {
                     NavigationStack {
                         AboutSettings()
                             .navigationDestination(for: SettingsScreens.self) { screen in
-                                switch screen {
-                                case .dataManagement:
-                                    DataManagementSettingsView()
-                                case .developer:
+                                if screen == .developer {
                                     DeveloperView()
-                                default:
-                                    EmptyView()
                                 }
                             }
                     }
