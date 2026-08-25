@@ -21,52 +21,111 @@ export default function PrivacyPage() {
 
           <p className="mt-10 text-xs font-bold uppercase tracking-[0.2em] text-coral">Legal</p>
           <h1 className="mt-4 text-4xl font-extrabold tracking-tight sm:text-5xl">Privacy Policy</h1>
-          <p className="mt-3 text-sm text-muted">Last updated: August 24, 2026</p>
+          <p className="mt-3 text-sm text-muted">Last updated: August 25, 2026</p>
 
           <div className="prose-cronica mt-12 space-y-10 text-muted">
             <p>
-              Welcome to Cronica. This Privacy Policy explains how we collect, use, and safeguard your
-              information when you use our privacy-focused watchlist app.
+              Welcome to Cronica. This Privacy Policy explains how we handle your information when you
+              use our privacy-focused watchlist app. Cronica is designed to store your data on your device
+              and in your private iCloud account — not on our servers.
             </p>
 
             <section className="space-y-4">
-              <h2 className="text-xl font-bold text-ink">1. Introduction</h2>
+              <h2 className="text-xl font-bold text-ink">1. Who We Are</h2>
               <p className="leading-relaxed">
-                Cronica is a privacy-focused app that lets you track movies and TV shows. We collect
-                minimal data to reduce crashes and improve the app. The data we collect is anonymous and
-                cannot be traced back to you.
+                Cronica is published by Egger &amp; Co. For privacy questions or data requests, contact{" "}
+                <a href="mailto:support@eggerco.com" className="font-semibold text-ink underline">
+                  support@eggerco.com
+                </a>
+                .
               </p>
             </section>
 
             <section className="space-y-4">
-              <h2 className="text-xl font-bold text-ink">2. Data Collection</h2>
+              <h2 className="text-xl font-bold text-ink">2. Data We Process</h2>
+              <p className="leading-relaxed">
+                <strong className="text-ink">No accounts.</strong> Cronica does not require sign-up. We do
+                not operate user accounts or store your watchlist on our own servers.
+              </p>
+              <p className="leading-relaxed">
+                <strong className="text-ink">Your watchlist data.</strong> Titles you save, episode
+                progress, ratings, notes, custom lists, and app preferences are stored locally on your
+                device. If iCloud sync is enabled, this data is stored in your private iCloud account via
+                Apple CloudKit. We, as developers, cannot access your iCloud data.
+              </p>
+              <p className="leading-relaxed">
+                <strong className="text-ink">Calendar and notifications.</strong> If you enable them,
+                release reminders are scheduled on your device and optional release dates may be added to a
+                dedicated &quot;Cronica&quot; calendar in your calendar app.
+              </p>
+              <p className="leading-relaxed">
+                <strong className="text-ink">Crash diagnostics.</strong> In release builds, anonymous crash
+                and error reports may be sent to Sentry to help us fix bugs. These reports do not include
+                your watchlist content.
+              </p>
               <p className="leading-relaxed">
                 <strong className="text-ink">No ads or data selling.</strong> We do not sell or rent your
-                data to third parties, and the app contains no advertisements.
+                data, and the app contains no advertisements.
               </p>
+            </section>
+
+            <section className="space-y-4">
+              <h2 className="text-xl font-bold text-ink">3. Legal Basis (GDPR)</h2>
               <p className="leading-relaxed">
-                <strong className="text-ink">iCloud sync.</strong> By default, your data syncs with your
-                private iCloud account. Your synced data remains safe and inaccessible to us as app
-                developers.
-              </p>
-              <p className="leading-relaxed">
-                <strong className="text-ink">Aptabase analytics.</strong> To minimize crashes and improve
-                performance, we use Aptabase — a privacy-first analytics service. Information collected
-                includes:
+                Where EU/EEA/UK data protection law applies, we process data based on:
               </p>
               <ul className="list-disc space-y-2 pl-5 leading-relaxed">
-                <li>Random user ID — active users and app version adoption</li>
-                <li>Device type — iPhone, iPad, Mac, Apple Watch, Apple TV, or Vision Pro</li>
-                <li>OS version and locale</li>
-                <li>App version, build number, and relevant crash reports</li>
+                <li>
+                  <strong className="text-ink">Contract / service delivery</strong> — to provide watchlist,
+                  sync, notifications, and calendar features you choose to use
+                </li>
+                <li>
+                  <strong className="text-ink">Legitimate interests</strong> — to maintain app stability
+                  through anonymous crash reporting
+                </li>
+                <li>
+                  <strong className="text-ink">Consent</strong> — where required for notifications,
+                  calendar access, or optional features you enable in Settings
+                </li>
               </ul>
             </section>
 
             <section className="space-y-4">
-              <h2 className="text-xl font-bold text-ink">3. Data Security</h2>
+              <h2 className="text-xl font-bold text-ink">4. Your Rights</h2>
               <p className="leading-relaxed">
-                Content data is provided by the TMDB API via secure HTTPS requests. Cronica is open source
-                on{" "}
+                Depending on your location, you may have the right to access, correct, delete, restrict, or
+                object to processing of your personal data, and to data portability.
+              </p>
+              <p className="leading-relaxed">
+                <strong className="text-ink">Delete your data in the app:</strong> Open{" "}
+                <strong className="text-ink">Settings → Privacy &amp; Data → Delete My Data</strong>. This
+                removes your watchlist, lists, progress, notifications, calendar events, and preferences
+                from the device. If iCloud sync is enabled, deletions sync to your other Apple devices on
+                the same iCloud account.
+              </p>
+              <p className="leading-relaxed">
+                You can also remove iCloud data via Apple&apos;s system settings, and request removal of
+                third-party crash reports by emailing{" "}
+                <a href="mailto:support@eggerco.com" className="font-semibold text-ink underline">
+                  support@eggerco.com
+                </a>
+                .
+              </p>
+            </section>
+
+            <section className="space-y-4">
+              <h2 className="text-xl font-bold text-ink">5. Data Retention</h2>
+              <p className="leading-relaxed">
+                Your watchlist data remains on your device and in your iCloud account until you delete it
+                using the in-app deletion feature or remove the app/iCloud data. Cached images and network
+                responses are temporary and can be cleared in Settings → Behavior → Clear Cache.
+              </p>
+            </section>
+
+            <section className="space-y-4">
+              <h2 className="text-xl font-bold text-ink">6. Data Security</h2>
+              <p className="leading-relaxed">
+                Content metadata is fetched from the TMDB API over HTTPS. Cronica is open source on{" "}
                 <a href="https://github.com/eggerco/cronica" className="font-semibold text-ink underline">
                   GitHub
                 </a>
@@ -75,9 +134,9 @@ export default function PrivacyPage() {
             </section>
 
             <section className="space-y-4">
-              <h2 className="text-xl font-bold text-ink">4. Contact</h2>
+              <h2 className="text-xl font-bold text-ink">7. Contact</h2>
               <p className="leading-relaxed">
-                Questions about this policy? Contact us at{" "}
+                Questions about this policy or your data? Contact us at{" "}
                 <a href="mailto:support@eggerco.com" className="font-semibold text-ink underline">
                   support@eggerco.com
                 </a>

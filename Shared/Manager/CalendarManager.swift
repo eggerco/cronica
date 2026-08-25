@@ -137,6 +137,14 @@ final class CalendarManager {
         }
     }
 
+    func removeAllCalendarData() {
+        removeAllEvents()
+        if let calendar = eventStore.calendars(for: .event).first(where: { $0.title == calendarTitle }) {
+            try? eventStore.removeCalendar(calendar, commit: true)
+        }
+        storedEventIDs = [:]
+    }
+
     func syncAll() async {
         guard SettingsStore.shared.allowCalendarSync else {
             removeAllEvents()
@@ -290,6 +298,7 @@ final class CalendarManager {
     func schedule(_ item: WatchlistItem) { }
     func removeEvent(identifier: String) { }
     func removeAllEvents() { }
+    func removeAllCalendarData() { }
     func syncAll() async { }
 }
 #endif

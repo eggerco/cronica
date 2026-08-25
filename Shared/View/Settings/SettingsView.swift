@@ -64,6 +64,10 @@ struct SettingsView: View {
                                   icon: "hand.raised", color: .indigo)
                 }
                 .buttonStyle(.plain)
+                NavigationLink(value: SettingsScreens.dataManagement) {
+                    settingsLabel(title: NSLocalizedString("Privacy & Data", comment: ""),
+                                  icon: "lock.shield", color: .orange)
+                }
                 NavigationLink(value: SettingsScreens.feedback) {
                     settingsLabel(title: NSLocalizedString("Feedback", comment: ""),
                                   icon: "envelope.fill", color: AppThemeColors.steel.color)

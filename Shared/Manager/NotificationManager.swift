@@ -106,6 +106,14 @@ final class NotificationManager: ObservableObject {
         UNUserNotificationCenter.current().removeAllDeliveredNotifications()
 #endif
     }
+
+    func removeAllNotifications() {
+#if os(tvOS)
+#else
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        removeAllDeliveredNotifications()
+#endif
+    }
     
     private func getUpcomingNotificationsId() async -> [String] {
         var identifiers = [String]()

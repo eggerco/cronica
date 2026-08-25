@@ -260,6 +260,9 @@
 		B8FB2A8629524D9A006DAC8E /* View-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FB2A8329524D6E006DAC8E /* View-Extensions.swift */; };
 		C0OPENURLSYS000000000002 /* OpenURLAction+SystemSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0OPENURLSYS000000000001 /* OpenURLAction+SystemSettings.swift */; };
 		C0OPENURLSYS000000000003 /* OpenURLAction+SystemSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0OPENURLSYS000000000001 /* OpenURLAction+SystemSettings.swift */; };
+		C0USERDATA000000000002 /* UserDataDeletionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0USERDATA000000000001 /* UserDataDeletionService.swift */; };
+		C0USERDATA000000000003 /* UserDataDeletionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0USERDATA000000000001 /* UserDataDeletionService.swift */; };
+		C0DATAMGMT000000000002 /* DataManagementSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DATAMGMT000000000001 /* DataManagementSettingsView.swift */; };
 		C0CALMGR000000000002 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CALMGR000000000001 /* CalendarManager.swift */; };
 		C0CALMGR000000000003 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CALMGR000000000001 /* CalendarManager.swift */; };
 		C0RELCV000000000002 /* ReleaseCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0RELCV000000000001 /* ReleaseCalendarView.swift */; };
@@ -552,6 +555,8 @@
 		B8FB2A8329524D6E006DAC8E /* View-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View-Extensions.swift"; sourceTree = "<group>"; };
 		C0OPENURLSYS000000000001 /* OpenURLAction+SystemSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OpenURLAction+SystemSettings.swift"; sourceTree = "<group>"; };
 		C0CALMGR000000000001 /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
+		C0USERDATA000000000001 /* UserDataDeletionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataDeletionService.swift; sourceTree = "<group>"; };
+		C0DATAMGMT000000000001 /* DataManagementSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagementSettingsView.swift; sourceTree = "<group>"; };
 		C0RELCV000000000001 /* ReleaseCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseCalendarView.swift; sourceTree = "<group>"; };
 		C0RELCROUTE000000001 /* ReleaseCalendarRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseCalendarRoute.swift; sourceTree = "<group>"; };
 		B8FB2A8829524FAD006DAC8E /* WatchlistPosterSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistPosterSection.swift; sourceTree = "<group>"; };
@@ -1095,6 +1100,7 @@
 			isa = PBXGroup;
 			children = (
 				B8FB2A8F295263AB006DAC8E /* AboutSettings.swift */,
+				C0DATAMGMT000000000001 /* DataManagementSettingsView.swift */,
 				B80BBE572949665A00958876 /* AppearanceSetting.swift */,
 				B8FB2A8D29526341006DAC8E /* BehaviorSetting.swift */,
 				B86AAD0928BD1CDD00D135B1 /* DeveloperView.swift */,
@@ -1279,6 +1285,7 @@
 			children = (
 				B87F746228064D3800E94126 /* BackgroundManager.swift */,
 				C0CALMGR000000000001 /* CalendarManager.swift */,
+				C0USERDATA000000000001 /* UserDataDeletionService.swift */,
 				B8B94CEE28EB8B8200EDEC85 /* CronicaTelemetry.swift */,
 				B8EC462E27D7AA99009389FC /* NotificationManager.swift */,
 				C0SENTRYMGR000000000001 /* SentryManager.swift */,
@@ -1666,6 +1673,7 @@
 				B84043E7289B417500D5CEBF /* TitleView.swift in Sources */,
 				B8B8A4282A6E29C400E5533F /* BackgroundManager.swift in Sources */,
 				C0CALMGR000000000003 /* CalendarManager.swift in Sources */,
+				C0USERDATA000000000003 /* UserDataDeletionService.swift in Sources */,
 				B899F21328B0391C00272484 /* DefaultListTypes.swift in Sources */,
 				B81941CC2A0861D70057DA04 /* WatchEpisodeButton.swift in Sources */,
 				B818483829C286C300650763 /* UserDefaults-Extensions.swift in Sources */,
@@ -1790,6 +1798,8 @@
 				B8C0215A29E0D527006E9D82 /* ItemContentListPreferredDisplayType.swift in Sources */,
 				B87F746328064D3800E94126 /* BackgroundManager.swift in Sources */,
 				C0CALMGR000000000002 /* CalendarManager.swift in Sources */,
+				C0USERDATA000000000002 /* UserDataDeletionService.swift in Sources */,
+				C0DATAMGMT000000000002 /* DataManagementSettingsView.swift in Sources */,
 				B883A1E32AEF1DB800793EE2 /* SearchItemContentContextMenu.swift in Sources */,
 				B89429CC297E076E0029646F /* SupportEmail.swift in Sources */,
 				B89429C9297C94CD0029646F /* DetailedPeopleList.swift in Sources */,

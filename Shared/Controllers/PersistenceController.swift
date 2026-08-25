@@ -105,6 +105,26 @@ struct PersistenceController {
         }
     }
 
+    func deleteAllUserContent() throws {
+        let context = container.viewContext
+        try batchDelete(entityName: "WatchlistItem", in: context)
+        try batchDelete(entityName: "CustomList", in: context)
+        save()
+    }
+
+    private func batchDelete(entityName: String, in context: NSManagedObjectContext) throws {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        deleteRequest.resultType = .resultTypeObjectIDs
+        let result = try context.execute(deleteRequest) as? NSBatchDeleteResult
+        if let objectIDs = result?.result as? [NSManagedObjectID] {
+            NSManagedObjectContext.mergeChanges(
+                fromRemoteContextSave: [NSDeletedObjectsKey: objectIDs],
+                into: [context]
+            )
+        }
+    }
+
     private static func isICloudAccountAvailable() -> Bool {
         // Synchronous signal for whether an iCloud account is signed in on this device/simulator.
         FileManager.default.ubiquityIdentityToken != nil
