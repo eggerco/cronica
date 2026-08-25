@@ -80,7 +80,7 @@ struct CronicaWidgetEntryView: View {
 
     var body: some View {
         ItemContentList(items: entry.items)
-            .padding(12)
+            .padding(10)
             .containerBackground(for: .widget) {
 #if os(iOS)
                 Color(uiColor: .systemBackground)

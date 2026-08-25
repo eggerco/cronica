@@ -23,16 +23,16 @@ struct ItemContentList: View {
     @Environment(\.widgetFamily) private var family
     let items: [WidgetDisplayItem]
 
-    private var isPhone: Bool {
-#if os(iOS)
-        UIDevice.current.userInterfaceIdiom == .phone
-#else
-        false
-#endif
-    }
-
     private var visibleItems: [WidgetDisplayItem] {
         Array(items.prefix(family.displayLimit))
+    }
+
+    private var gridColumns: Int {
+        switch family {
+        case .systemLarge: 3
+        case .systemExtraLarge: 4
+        default: 3
+        }
     }
 
     var body: some View {
@@ -52,56 +52,51 @@ struct ItemContentList: View {
     @ViewBuilder
     private var layout: some View {
         switch family {
-        case .systemSmall:
-            rowLayout(width: 68, height: 102, spacing: 8)
-        case .systemMedium:
-            rowLayout(width: 74, height: 112, spacing: 6)
-        case .systemLarge:
-            // 3×2 keeps posters readable on both iPhone and iPad large widgets.
-            gridLayout(columns: 3, posterHeight: isPhone ? 128 : 130)
-        case .systemExtraLarge:
-            gridLayout(columns: 4, posterHeight: 150)
+        case .systemSmall, .systemMedium:
+            rowLayout
+        case .systemLarge, .systemExtraLarge:
+            gridLayout(columns: gridColumns)
         default:
-            rowLayout(width: 74, height: 112, spacing: 6)
+            rowLayout
         }
     }
 
-    private func rowLayout(width: CGFloat, height: CGFloat, spacing: CGFloat) -> some View {
-        HStack(spacing: spacing) {
+    private var rowLayout: some View {
+        HStack(spacing: 8) {
             ForEach(visibleItems) { entry in
-                posterLink(for: entry, width: width, height: height)
+                posterLink(for: entry)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
-    private func gridLayout(columns: Int, posterHeight: CGFloat) -> some View {
+    private func gridLayout(columns: Int) -> some View {
         let rows = visibleItems.chunked(into: columns)
         return VStack(spacing: 8) {
             ForEach(Array(rows.enumerated()), id: \.offset) { _, row in
                 HStack(spacing: 8) {
                     ForEach(row) { entry in
-                        posterLink(for: entry, width: nil, height: posterHeight)
-                            .frame(maxWidth: .infinity)
+                        posterLink(for: entry)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
                     if row.count < columns {
                         ForEach(0..<(columns - row.count), id: \.self) { _ in
-                            Color.clear.frame(maxWidth: .infinity)
+                            Color.clear.frame(maxWidth: .infinity, maxHeight: .infinity)
                         }
                     }
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
     @ViewBuilder
-    private func posterLink(for entry: WidgetDisplayItem, width: CGFloat?, height: CGFloat) -> some View {
+    private func posterLink(for entry: WidgetDisplayItem) -> some View {
         let poster = WidgetPosterView(posterData: entry.posterData, placeholderName: entry.item.placeholderImagePath)
-            .frame(maxWidth: width == nil ? .infinity : width)
-            .frame(width: width, height: height)
-            .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
-            .shadow(radius: 1)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
 
         if let destination = entry.item.cronicaDeepLinkURL {
             Link(destination: destination) {
@@ -131,6 +126,7 @@ private struct WidgetPosterView: View {
                 PlaceholderImage()
             }
         }
+        .clipped()
     }
 
     private func platformImage(from data: Data) -> Image? {
