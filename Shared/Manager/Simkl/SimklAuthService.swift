@@ -31,8 +31,15 @@ final class SimklAuthService: NSObject {
 
     func disconnect() {
         SimklTokenStore.delete()
+        SimklKnownItemsStore.clear()
+        SimklPushService.shared.clearQueue()
         SettingsStore.shared.isSimklConnected = false
         SettingsStore.shared.simklLastImportDate = nil
+        SettingsStore.shared.simklActivitiesAll = ""
+        SettingsStore.shared.simklRemovedMovies = ""
+        SettingsStore.shared.simklRemovedShows = ""
+        SettingsStore.shared.simklRemovedAnime = ""
+        SettingsStore.shared.simklPushEnabled = false
     }
 
 #if os(iOS) || os(macOS) || os(visionOS)

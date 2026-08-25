@@ -68,6 +68,11 @@ final class SettingsStore: ObservableObject {
         get { simklLastImportTimestamp > 0 ? Date(timeIntervalSince1970: simklLastImportTimestamp) : nil }
         set { simklLastImportTimestamp = newValue?.timeIntervalSince1970 ?? 0 }
     }
+    @AppStorage("simklActivitiesAll") var simklActivitiesAll = ""
+    @AppStorage("simklRemovedMovies") var simklRemovedMovies = ""
+    @AppStorage("simklRemovedShows") var simklRemovedShows = ""
+    @AppStorage("simklRemovedAnime") var simklRemovedAnime = ""
+    @AppStorage("simklPushEnabled") var simklPushEnabled = false
     @AppStorage("showRemoveConfirmation") var showRemoveConfirmation = true
     @AppStorage("choosePreferredLaunchScreen") var isPreferredLaunchScreenEnabled = false
 #if !os(watchOS)

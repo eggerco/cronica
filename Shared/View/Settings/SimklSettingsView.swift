@@ -9,8 +9,8 @@ import CronicaCore
 struct SimklSettingsView: View {
     @StateObject private var settings = SettingsStore.shared
     @State private var isConnecting = false
-    @State private var isImporting = false
-    @State private var importTask: Task<Void, Never>?
+    @State private var isSyncing = false
+    @State private var syncTask: Task<Void, Never>?
     @State private var errorMessage: String?
     @State private var summary: SimklImportSummary?
     @State private var progressPhase = ""
@@ -27,7 +27,7 @@ struct SimklSettingsView: View {
     var body: some View {
         Form {
             Section {
-                Text("Connect an optional SIMKL account to import your watchlist into Cronica. CloudKit still syncs your devices.")
+                Text("Connect an optional SIMKL account to sync your watchlist with Cronica. CloudKit still syncs your Apple devices.")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             }
@@ -44,11 +44,22 @@ struct SimklSettingsView: View {
             }
 
             if let summary {
-                Section("Last Import") {
-                    LabeledContent("Added", value: "\(summary.inserted)")
-                    LabeledContent("Updated", value: "\(summary.updated)")
-                    LabeledContent("Skipped", value: "\(summary.skipped)")
-                    LabeledContent("Failed", value: "\(summary.failed)")
+                Section("Last Sync") {
+                    if summary.unchanged {
+                        Text("Already up to date")
+                            .foregroundStyle(.secondary)
+                    } else {
+                        LabeledContent("Added", value: "\(summary.inserted)")
+                        LabeledContent("Updated", value: "\(summary.updated)")
+                        LabeledContent("Skipped", value: "\(summary.skipped)")
+                        LabeledContent("Failed", value: "\(summary.failed)")
+                        if summary.removedOnSimkl > 0 {
+                            LabeledContent("Removed on SIMKL", value: "\(summary.removedOnSimkl)")
+                            Text("Titles removed on SIMKL stay in Cronica. Delete them here if you no longer want them.")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+                    }
                 }
             }
 
@@ -73,17 +84,17 @@ struct SimklSettingsView: View {
             Text(errorMessage ?? "")
         }
         .overlay {
-            if isImporting {
+            if isSyncing {
                 ProgressView {
                     VStack(spacing: 8) {
-                        Text(progressPhase.isEmpty ? String(localized: "Importing…") : progressPhase)
+                        Text(progressPhase.isEmpty ? String(localized: "Syncing…") : progressPhase)
                         if progressTotal > 0 {
                             Text("\(progressProcessed) / \(progressTotal)")
                                 .font(.caption)
                                 .foregroundStyle(.secondary)
                         }
                         Button("Cancel") {
-                            importTask?.cancel()
+                            syncTask?.cancel()
                         }
                         .buttonStyle(.bordered)
                     }
@@ -99,7 +110,7 @@ struct SimklSettingsView: View {
 #if os(tvOS)
             pinTask?.cancel()
 #endif
-            importTask?.cancel()
+            syncTask?.cancel()
         }
     }
 
@@ -142,26 +153,43 @@ struct SimklSettingsView: View {
             Label("Connected", systemImage: "checkmark.circle.fill")
                 .foregroundStyle(.green)
             if let date = settings.simklLastImportDate {
-                LabeledContent("Last import", value: date.formatted(date: .abbreviated, time: .shortened))
+                LabeledContent("Last sync", value: date.formatted(date: .abbreviated, time: .shortened))
             }
             Button {
-                startImport()
+                startSync(full: false)
             } label: {
-                Text("Import from SIMKL")
+                Text("Sync Now")
             }
-            .disabled(isImporting)
+            .disabled(isSyncing)
+            Button {
+                startSync(full: true)
+            } label: {
+                Text("Full Re-import")
+            }
+            .disabled(isSyncing)
+        } footer: {
+            Text("Sync checks SIMKL for changes since your last pull. Full re-import downloads your entire library again.")
+        }
+
+#if !os(tvOS)
+        Section {
+            Toggle("Push watches to SIMKL", isOn: $settings.simklPushEnabled)
+        } footer: {
+            Text("When enabled, adding, watching, archiving, or removing titles in Cronica is queued and sent to SIMKL. Off by default.")
+        }
+#endif
+
+        Section {
             Button("Disconnect", role: .destructive) {
 #if os(tvOS)
                 pinTask?.cancel()
                 pinCode = nil
 #endif
-                importTask?.cancel()
+                syncTask?.cancel()
                 SimklAuthService.shared.disconnect()
                 summary = nil
             }
-            .disabled(isImporting)
-        } footer: {
-            Text("Import merges into your local watchlist by TMDB ID. Existing titles are updated; items without a TMDB ID are skipped.")
+            .disabled(isSyncing)
         }
     }
 
@@ -171,6 +199,7 @@ struct SimklSettingsView: View {
         defer { isConnecting = false }
         do {
             try await SimklAuthService.shared.signInWithPKCE()
+            startSync(full: settings.simklActivitiesAll.isEmpty)
         } catch {
             errorMessage = error.localizedDescription
         }
@@ -193,6 +222,7 @@ struct SimklSettingsView: View {
                         interval: session.interval
                     )
                     pinCode = nil
+                    startSync(full: settings.simklActivitiesAll.isEmpty)
                 } catch is CancellationError {
                     // ignored
                 } catch {
@@ -206,22 +236,30 @@ struct SimklSettingsView: View {
     }
 #endif
 
-    private func startImport() {
-        importTask?.cancel()
-        isImporting = true
+    private func startSync(full: Bool) {
+        syncTask?.cancel()
+        isSyncing = true
         progressPhase = ""
         progressProcessed = 0
         progressTotal = 0
-        importTask = Task {
+        syncTask = Task {
             defer {
-                isImporting = false
-                importTask = nil
+                isSyncing = false
+                syncTask = nil
             }
             do {
-                summary = try await SimklImportService.importLibrary { progress in
-                    progressPhase = progress.phase
-                    progressProcessed = progress.processed
-                    progressTotal = progress.total
+                let progress: @MainActor (SimklSyncService.Progress) -> Void = { value in
+                    progressPhase = value.phase
+                    progressProcessed = value.processed
+                    progressTotal = value.total
+                }
+                if full {
+                    summary = try await SimklSyncService.fullImport(progress: progress)
+                } else {
+                    summary = try await SimklSyncService.incrementalSync(progress: progress)
+                }
+                if settings.simklPushEnabled {
+                    await SimklPushService.shared.flush()
                 }
             } catch is CancellationError {
                 // User cancelled.

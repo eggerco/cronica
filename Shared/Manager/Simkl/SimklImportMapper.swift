@@ -58,6 +58,7 @@ enum SimklImportMapper {
         }
 
         applyStatus(entry, to: content.itemContentID, media: media)
+        SimklKnownItemsStore.insert(content.itemContentID)
         return existed ? .updated : .inserted
     }
 

@@ -52,6 +52,11 @@ extension PersistenceController {
 			}
             item.formattedDate = content.itemTheatricalString
             save()
+#if !os(watchOS)
+            if let saved = fetch(for: content.itemContentID) {
+                SimklPushService.shared.enqueueAdd(item: saved, status: .plantowatch)
+            }
+#endif
         }
     }
     
@@ -154,6 +159,9 @@ extension PersistenceController {
         let viewContext = container.viewContext
         let item = try? viewContext.existingObject(with: content.objectID)
         guard let item else { return }
+#if !os(watchOS)
+        SimklPushService.shared.enqueueRemove(item: content)
+#endif
         let notification = NotificationManager.shared
         notification.removeNotification(identifier: content.itemContentID)
         CalendarManager.shared.removeEvent(identifier: content.itemContentID)
@@ -171,6 +179,13 @@ extension PersistenceController {
             item.isPin = false
         }
         save()
+#if !os(watchOS)
+        if item.isWatched {
+            SimklPushService.shared.enqueueWatched(item: item)
+        } else if item.isWatching {
+            SimklPushService.shared.enqueueAdd(item: item, status: .watching)
+        }
+#endif
     }
     
     func updateFavorite(for item: WatchlistItem) {
@@ -195,6 +210,11 @@ extension PersistenceController {
             item.displayOnUpNext.toggle()
         }
         save()
+#if !os(watchOS)
+        if item.isArchive {
+            SimklPushService.shared.enqueueArchive(item: item)
+        }
+#endif
         if !item.isArchive {
             Task {
                 let newValues = try? await NetworkService.shared.fetchItem(id: item.itemId,
@@ -296,7 +316,8 @@ extension PersistenceController {
     }
     
     func updateWatchedEpisodes(for item: WatchlistItem, with episode: Episode) {
-        if isEpisodeSaved(show: item.itemId, season: episode.itemSeasonNumber, episode: episode.id) {
+        let wasWatched = isEpisodeSaved(show: item.itemId, season: episode.itemSeasonNumber, episode: episode.id)
+        if wasWatched {
             let watched = item.watchedEpisodes?.replacingOccurrences(of: "-\(episode.id)@\(episode.itemSeasonNumber)",
                                                                      with: "")
             item.watchedEpisodes = watched
@@ -309,6 +330,11 @@ extension PersistenceController {
         item.lastValuesUpdated = Date()
         item.isWatching = true
         save()
+#if !os(watchOS)
+        if !wasWatched, let season = episode.seasonNumber, let number = episode.episodeNumber {
+            SimklPushService.shared.enqueueEpisode(showID: item.itemId, season: season, episode: number, imdb: item.imdbID)
+        }
+#endif
     }
     
     func removeFromUpNext(_ item: WatchlistItem) {

@@ -35,6 +35,10 @@ enum UserDataDeletionService {
         }
 
         SimklTokenStore.delete()
+        SimklKnownItemsStore.clear()
+#if !os(watchOS)
+        SimklPushService.shared.clearQueue()
+#endif
 
         resetUserDefaults()
         clearCaches()
@@ -77,6 +81,13 @@ enum UserDataDeletionService {
             "isUserConnectedWithTMDB",
             "isSimklConnected",
             "simklLastImportTimestamp",
+            "simklActivitiesAll",
+            "simklRemovedMovies",
+            "simklRemovedShows",
+            "simklRemovedAnime",
+            "simklPushEnabled",
+            "simklKnownContentIDs",
+            "simklPushQueue",
             "showRemoveConfirmation",
             "choosePreferredLaunchScreen",
             "preferredLaunchScreen",
@@ -147,5 +158,10 @@ enum UserDataDeletionService {
         settings.allowNotifications = false
         settings.isSimklConnected = false
         settings.simklLastImportDate = nil
+        settings.simklActivitiesAll = ""
+        settings.simklRemovedMovies = ""
+        settings.simklRemovedShows = ""
+        settings.simklRemovedAnime = ""
+        settings.simklPushEnabled = false
     }
 }

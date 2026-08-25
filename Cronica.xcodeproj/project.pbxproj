@@ -273,6 +273,10 @@
 		C0SIMKLIMP000000000002 /* SimklImportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLIMP000000000001 /* SimklImportService.swift */; };
 		C0SIMKLMAP000000000002 /* SimklImportMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLMAP000000000001 /* SimklImportMapper.swift */; };
 		C0SIMKLVIEW00000000002 /* SimklSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLVIEW00000000001 /* SimklSettingsView.swift */; };
+		C0SIMKLSYNC0000000002 /* SimklSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLSYNC0000000001 /* SimklSyncService.swift */; };
+		C0SIMKLPUSH0000000002 /* SimklPushService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLPUSH0000000001 /* SimklPushService.swift */; };
+		C0SIMKLKNOWN000000002 /* SimklKnownItemsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLKNOWN000000001 /* SimklKnownItemsStore.swift */; };
+		C0SIMKLKNOWN000000003 /* SimklKnownItemsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLKNOWN000000001 /* SimklKnownItemsStore.swift */; };
 		C0WLBACKUP000000000002 /* WatchlistItemBackup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WLBACKUP000000000001 /* WatchlistItemBackup.swift */; };
 		C0WLBACKUP000000000003 /* WatchlistItemBackup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WLBACKUP000000000001 /* WatchlistItemBackup.swift */; };
 		C0CALMGR000000000002 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CALMGR000000000001 /* CalendarManager.swift */; };
@@ -577,6 +581,9 @@
 		C0SIMKLIMP000000000001 /* SimklImportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimklImportService.swift; sourceTree = "<group>"; };
 		C0SIMKLMAP000000000001 /* SimklImportMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimklImportMapper.swift; sourceTree = "<group>"; };
 		C0SIMKLVIEW00000000001 /* SimklSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimklSettingsView.swift; sourceTree = "<group>"; };
+		C0SIMKLSYNC0000000001 /* SimklSyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimklSyncService.swift; sourceTree = "<group>"; };
+		C0SIMKLPUSH0000000001 /* SimklPushService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimklPushService.swift; sourceTree = "<group>"; };
+		C0SIMKLKNOWN000000001 /* SimklKnownItemsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimklKnownItemsStore.swift; sourceTree = "<group>"; };
 		C0WLBACKUP000000000001 /* WatchlistItemBackup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistItemBackup.swift; sourceTree = "<group>"; };
 		C0RELCV000000000001 /* ReleaseCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseCalendarView.swift; sourceTree = "<group>"; };
 		C0RELCROUTE000000001 /* ReleaseCalendarRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseCalendarRoute.swift; sourceTree = "<group>"; };
@@ -1313,6 +1320,9 @@
 				C0SIMKLAUTH00000000001 /* SimklAuthService.swift */,
 				C0SIMKLIMP000000000001 /* SimklImportService.swift */,
 				C0SIMKLMAP000000000001 /* SimklImportMapper.swift */,
+				C0SIMKLSYNC0000000001 /* SimklSyncService.swift */,
+				C0SIMKLPUSH0000000001 /* SimklPushService.swift */,
+				C0SIMKLKNOWN000000001 /* SimklKnownItemsStore.swift */,
 			);
 			path = Simkl;
 			sourceTree = "<group>";
@@ -1713,6 +1723,7 @@
 				C0CALMGR000000000003 /* CalendarManager.swift in Sources */,
 				C0USERDATA000000000003 /* UserDataDeletionService.swift in Sources */,
 				C0SIMKLMODEL0000000003 /* SimklModels.swift in Sources */,
+				C0SIMKLKNOWN000000003 /* SimklKnownItemsStore.swift in Sources */,
 				C0SIMKLTOKEN0000000003 /* SimklTokenStore.swift in Sources */,
 				C0WLBACKUP000000000003 /* WatchlistItemBackup.swift in Sources */,
 				B899F21328B0391C00272484 /* DefaultListTypes.swift in Sources */,
@@ -1848,6 +1859,9 @@
 				C0SIMKLIMP000000000002 /* SimklImportService.swift in Sources */,
 				C0SIMKLMAP000000000002 /* SimklImportMapper.swift in Sources */,
 				C0SIMKLVIEW00000000002 /* SimklSettingsView.swift in Sources */,
+				C0SIMKLSYNC0000000002 /* SimklSyncService.swift in Sources */,
+				C0SIMKLPUSH0000000002 /* SimklPushService.swift in Sources */,
+				C0SIMKLKNOWN000000002 /* SimklKnownItemsStore.swift in Sources */,
 				C0WLBACKUP000000000002 /* WatchlistItemBackup.swift in Sources */,
 				C0DATAMGMT000000000002 /* DataManagementSettingsView.swift in Sources */,
 				B883A1E32AEF1DB800793EE2 /* SearchItemContentContextMenu.swift in Sources */,

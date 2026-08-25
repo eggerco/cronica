@@ -208,9 +208,82 @@ struct SimklImportSummary: Equatable {
     var updated = 0
     var skipped = 0
     var failed = 0
+    var removedOnSimkl = 0
+    var unchanged = false
 
     var totalProcessed: Int { inserted + updated + skipped + failed }
 }
+
+struct SimklActivitiesResponse: Decodable, Equatable {
+    var all: String?
+    var movies: SimklActivitiesBucket?
+    var tvShows: SimklActivitiesBucket?
+    var anime: SimklActivitiesBucket?
+
+    enum CodingKeys: String, CodingKey {
+        case all, movies, anime
+        case tvShows = "tv_shows"
+    }
+}
+
+struct SimklActivitiesBucket: Decodable, Equatable {
+    var all: String?
+    var watching: String?
+    var plantowatch: String?
+    var hold: String?
+    var completed: String?
+    var dropped: String?
+    var removedFromList: String?
+
+    enum CodingKeys: String, CodingKey {
+        case all, watching, plantowatch, hold, completed, dropped
+        case removedFromList = "removed_from_list"
+    }
+}
+
+struct SimklWriteIds: Encodable {
+    var tmdb: Int?
+    var imdb: String?
+
+    init(tmdb: Int? = nil, imdb: String? = nil) {
+        self.tmdb = tmdb
+        self.imdb = imdb
+    }
+}
+
+struct SimklHistoryItem: Encodable {
+    var ids: SimklWriteIds
+    var watchedAt: String?
+    var seasons: [SimklHistorySeason]?
+
+    enum CodingKeys: String, CodingKey {
+        case ids
+        case watchedAt = "watched_at"
+        case seasons
+    }
+}
+
+struct SimklHistorySeason: Encodable {
+    var number: Int
+    var episodes: [SimklHistoryEpisode]
+}
+
+struct SimklHistoryEpisode: Encodable {
+    var number: Int
+}
+
+struct SimklHistoryPayload: Encodable {
+    var movies: [SimklHistoryItem]?
+    var shows: [SimklHistoryItem]?
+}
+
+struct SimklAddToListPayload: Encodable {
+    var to: String
+    var movies: [SimklHistoryItem]?
+    var shows: [SimklHistoryItem]?
+}
+
+struct SimklEmptyResponse: Decodable {}
 
 enum SimklError: LocalizedError {
     case notConfigured
@@ -218,6 +291,7 @@ enum SimklError: LocalizedError {
     case cancelled
     case invalidResponse
     case httpStatus(Int)
+    case rateLimited
     case message(String)
 
     var errorDescription: String? {
@@ -232,6 +306,8 @@ enum SimklError: LocalizedError {
             return String(localized: "Unexpected response from SIMKL.")
         case .httpStatus(let code):
             return String(localized: "SIMKL request failed (\(code)).")
+        case .rateLimited:
+            return String(localized: "SIMKL is busy. Try again in a moment.")
         case .message(let text):
             return text
         }

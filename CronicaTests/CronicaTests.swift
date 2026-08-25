@@ -364,6 +364,55 @@ final class CronicaTests: XCTestCase {
         XCTAssertFalse(SimklTokenStore.hasToken)
     }
 
+    func testSimklActivitiesDecodeNestedBuckets() throws {
+        let json = """
+        {"all":"2026-05-08T14:23:11Z","movies":{"all":"2026-05-08T14:20:00Z","removed_from_list":"2026-05-08T14:21:00Z"},"tv_shows":{"all":"2026-05-08T14:22:00Z","watching":"2026-05-08T14:22:00Z"},"anime":{"all":"2026-05-01T00:00:00Z"}}
+        """.data(using: .utf8)!
+        let activities = try JSONDecoder().decode(SimklActivitiesResponse.self, from: json)
+        XCTAssertEqual(activities.all, "2026-05-08T14:23:11Z")
+        XCTAssertEqual(activities.movies?.removedFromList, "2026-05-08T14:21:00Z")
+        XCTAssertEqual(activities.tvShows?.watching, "2026-05-08T14:22:00Z")
+    }
+
+    func testSimklKnownItemsStoreTracksContentIDs() {
+        defer { SimklKnownItemsStore.clear() }
+        SimklKnownItemsStore.clear()
+        SimklKnownItemsStore.insert("680@0")
+        SimklKnownItemsStore.insert("1981@1")
+        XCTAssertEqual(SimklKnownItemsStore.all(), Set(["680@0", "1981@1"]))
+        SimklKnownItemsStore.replace(with: ["680@0"])
+        XCTAssertEqual(SimklKnownItemsStore.all(), Set(["680@0"]))
+    }
+
+    func testSimklPushOperationRoundTrip() throws {
+        let ops: [SimklPushService.Operation] = [
+            .addToList(tmdb: 680, media: 0, status: "plantowatch", imdb: "tt0110912"),
+            .history(tmdb: 1399, media: 1, season: 1, episode: 1, imdb: nil),
+            .removeHistory(tmdb: 550, media: 0, imdb: nil)
+        ]
+        let data = try JSONEncoder().encode(ops)
+        let decoded = try JSONDecoder().decode([SimklPushService.Operation].self, from: data)
+        XCTAssertEqual(decoded, ops)
+    }
+
+    func testSimklHistoryPayloadEncodesTMDBIds() throws {
+        let payload = SimklHistoryPayload(
+            movies: [SimklHistoryItem(ids: SimklWriteIds(tmdb: 680), watchedAt: nil, seasons: nil)],
+            shows: [
+                SimklHistoryItem(
+                    ids: SimklWriteIds(tmdb: 1399),
+                    watchedAt: nil,
+                    seasons: [SimklHistorySeason(number: 1, episodes: [SimklHistoryEpisode(number: 1)])]
+                )
+            ]
+        )
+        let data = try JSONEncoder().encode(payload)
+        let json = try XCTUnwrap(String(data: data, encoding: .utf8))
+        XCTAssertTrue(json.contains("\"tmdb\":680"))
+        XCTAssertTrue(json.contains("\"tmdb\":1399"))
+        XCTAssertTrue(json.contains("\"number\":1"))
+    }
+
     private enum SelfHelper {
         static func makeTVContent(id: Int, episodeNumber: Int, seasonNumber: Int, airDate: Date) -> ItemContent {
             let airDateString = DatesManager.dateFormatter.string(from: airDate)

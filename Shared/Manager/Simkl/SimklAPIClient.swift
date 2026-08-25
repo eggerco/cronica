@@ -10,7 +10,7 @@ actor SimklAPIClient {
     static let shared = SimklAPIClient()
 
     private let session: URLSession
-    private let appName = "Cronica"
+    private let appName = "cronica"
     private let baseURL = URL(string: "https://api.simkl.com")!
 
     private init(session: URLSession = .shared) {
@@ -56,13 +56,21 @@ actor SimklAPIClient {
         try await get(path: "/oauth/pin/\(userCode)", authorized: false)
     }
 
+    func fetchActivities() async throws -> SimklActivitiesResponse {
+        try await get(path: "/sync/activities", authorized: true)
+    }
+
     func fetchAllItems(
-        type: SimklMediaKind,
+        type: SimklMediaKind? = nil,
+        dateFrom: String? = nil,
         extended: String? = nil,
         includeAllEpisodes: Bool = false,
         episodeWatchedAt: Bool = false
     ) async throws -> SimklAllItemsResponse {
         var query: [URLQueryItem] = []
+        if let dateFrom {
+            query.append(URLQueryItem(name: "date_from", value: dateFrom))
+        }
         if let extended {
             query.append(URLQueryItem(name: "extended", value: extended))
         }
@@ -72,7 +80,20 @@ actor SimklAPIClient {
         if episodeWatchedAt {
             query.append(URLQueryItem(name: "episode_watched_at", value: "yes"))
         }
-        return try await get(path: "/sync/all-items/\(type.rawValue)", query: query, authorized: true)
+        let path = type.map { "/sync/all-items/\($0.rawValue)" } ?? "/sync/all-items"
+        return try await get(path: path, query: query, authorized: true)
+    }
+
+    func addToList(_ payload: SimklAddToListPayload) async throws {
+        try await postVoid(path: "/sync/add-to-list", body: payload, authorized: true)
+    }
+
+    func addHistory(_ payload: SimklHistoryPayload) async throws {
+        try await postVoid(path: "/sync/history", body: payload, authorized: true)
+    }
+
+    func removeHistory(_ payload: SimklHistoryPayload) async throws {
+        try await postVoid(path: "/sync/history/remove", body: payload, authorized: true)
     }
 
     // MARK: - HTTP
@@ -97,6 +118,17 @@ actor SimklAPIClient {
         return try await send(request)
     }
 
+    private func postVoid<Body: Encodable>(
+        path: String,
+        body: Body,
+        authorized: Bool
+    ) async throws {
+        var request = try makeRequest(path: path, method: "POST", query: [], authorized: authorized)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try JSONEncoder().encode(body)
+        _ = try await sendData(request)
+    }
+
     private func makeRequest(
         path: String,
         method: String,
@@ -117,7 +149,16 @@ actor SimklAPIClient {
         return request
     }
 
-    private func send<T: Decodable>(_ request: URLRequest) async throws -> T {
+    private func send<T: Decodable>(_ request: URLRequest, isRetry: Bool = false) async throws -> T {
+        let data = try await sendData(request, isRetry: isRetry)
+        do {
+            return try JSONDecoder().decode(T.self, from: data)
+        } catch {
+            throw SimklError.invalidResponse
+        }
+    }
+
+    private func sendData(_ request: URLRequest, isRetry: Bool = false) async throws -> Data {
         let (data, response) = try await session.data(for: request)
         guard let http = response as? HTTPURLResponse else { throw SimklError.invalidResponse }
         if http.statusCode == 401 {
@@ -127,14 +168,22 @@ actor SimklAPIClient {
             }
             throw SimklError.notAuthenticated
         }
+        if http.statusCode == 400, Self.isRateLimit(data) {
+            if !isRetry {
+                try await Task.sleep(nanoseconds: 3_000_000_000)
+                return try await sendData(request, isRetry: true)
+            }
+            throw SimklError.rateLimited
+        }
         guard (200..<300).contains(http.statusCode) else {
             throw SimklError.httpStatus(http.statusCode)
         }
-        do {
-            return try JSONDecoder().decode(T.self, from: data)
-        } catch {
-            throw SimklError.invalidResponse
-        }
+        return data
+    }
+
+    private static func isRateLimit(_ data: Data) -> Bool {
+        guard let text = String(data: data, encoding: .utf8)?.lowercased() else { return false }
+        return text.contains("rate_limit") || text.contains("rate limit")
     }
 
     private func endpointURL(path: String, query: [URLQueryItem]) throws -> URL {

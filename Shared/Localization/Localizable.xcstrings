@@ -26348,6 +26348,424 @@
           }
         }
       }
+    },
+    "Sync Now": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sync Now"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Synchronizovať"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jetzt synchronisieren"
+          }
+        }
+      }
+    },
+    "Full Re-import": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Full Re-import"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Úplný reimport"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vollständiger Neuimport"
+          }
+        }
+      }
+    },
+    "Push watches to SIMKL": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Push watches to SIMKL"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Odosielať sledovania do SIMKL"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wiedergaben an SIMKL senden"
+          }
+        }
+      }
+    },
+    "When enabled, adding, watching, archiving, or removing titles in Cronica is queued and sent to SIMKL. Off by default.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "When enabled, adding, watching, archiving, or removing titles in Cronica is queued and sent to SIMKL. Off by default."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ak je zapnuté, pridávanie, sledovanie, archivácia alebo odstraňovanie titulov v Cronica sa zaradi do fronty a odošle do SIMKL. Predvolene vypnuté."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wenn aktiviert, werden Hinzufügen, Ansehen, Archivieren oder Entfernen in Cronica in eine Warteschlange gestellt und an SIMKL gesendet. Standardmäßig aus."
+          }
+        }
+      }
+    },
+    "Sync checks SIMKL for changes since your last pull. Full re-import downloads your entire library again.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sync checks SIMKL for changes since your last pull. Full re-import downloads your entire library again."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Synchronizácia skontroluje zmeny na SIMKL od posledného ťahania. Úplný reimport stiahne celú knižnicu znova."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sync prüft SIMKL auf Änderungen seit dem letzten Abruf. Ein vollständiger Neuimport lädt die gesamte Bibliothek erneut."
+          }
+        }
+      }
+    },
+    "Already up to date": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Already up to date"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Už je aktuálne"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bereits auf dem neuesten Stand"
+          }
+        }
+      }
+    },
+    "Removed on SIMKL": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Removed on SIMKL"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Odstránené na SIMKL"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auf SIMKL entfernt"
+          }
+        }
+      }
+    },
+    "Titles removed on SIMKL stay in Cronica. Delete them here if you no longer want them.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Titles removed on SIMKL stay in Cronica. Delete them here if you no longer want them."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tituly odstránené na SIMKL zostanú v Cronica. Vymaž ich tu, ak ich už nechceš."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auf SIMKL entfernte Titel bleiben in Cronica. Lösche sie hier, wenn du sie nicht mehr brauchst."
+          }
+        }
+      }
+    },
+    "Checking SIMKL…": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Checking SIMKL…"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kontrolujem SIMKL…"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SIMKL wird geprüft…"
+          }
+        }
+      }
+    },
+    "Syncing changes…": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Syncing changes…"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Synchronizujem zmeny…"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Änderungen werden synchronisiert…"
+          }
+        }
+      }
+    },
+    "Syncing movies…": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Syncing movies…"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Synchronizujem filmy…"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Filme werden synchronisiert…"
+          }
+        }
+      }
+    },
+    "Syncing TV shows…": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Syncing TV shows…"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Synchronizujem seriály…"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Serien werden synchronisiert…"
+          }
+        }
+      }
+    },
+    "Syncing anime…": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Syncing anime…"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Synchronizujem anime…"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anime wird synchronisiert…"
+          }
+        }
+      }
+    },
+    "Checking removals…": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Checking removals…"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kontrolujem odstránenia…"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Entfernungen werden geprüft…"
+          }
+        }
+      }
+    },
+    "Syncing…": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Syncing…"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Synchronizujem…"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Synchronisieren…"
+          }
+        }
+      }
+    },
+    "Last Sync": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Last Sync"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Posledná synchronizácia"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Letzte Sync"
+          }
+        }
+      }
+    },
+    "Last sync": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Last sync"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Posledná synchronizácia"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Letzte Sync"
+          }
+        }
+      }
+    },
+    "SIMKL is busy. Try again in a moment.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SIMKL is busy. Try again in a moment."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SIMKL je zaneprázdnené. Skús o chvíľu."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SIMKL ist beschäftigt. Versuche es gleich erneut."
+          }
+        }
+      }
+    },
+    "Connect an optional SIMKL account to sync your watchlist with Cronica. CloudKit still syncs your Apple devices.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connect an optional SIMKL account to sync your watchlist with Cronica. CloudKit still syncs your Apple devices."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pripoj voliteľný účet SIMKL a synchronizuj sledované s Cronica. CloudKit stále synchronizuje tvoje Apple zariadenia."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verbinde optional ein SIMKL-Konto, um deine Merkliste mit Cronica zu synchronisieren. CloudKit synchronisiert weiterhin deine Apple-Geräte."
+          }
+        }
+      }
     }
   },
   "version": "1.1"

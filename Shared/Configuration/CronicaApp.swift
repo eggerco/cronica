@@ -116,6 +116,11 @@ struct CronicaApp: App {
             if phase == .background {
                 scheduleAppRefresh()
             }
+#if !os(watchOS)
+            if phase == .active {
+                Task { await SimklSyncService.syncIfNeededOnForeground() }
+            }
+#endif
 #if !os(watchOS) && !os(tvOS)
             if phase == .active, !Self.hasSyncedCalendarThisLaunch, settings.allowCalendarSync {
                 Self.hasSyncedCalendarThisLaunch = true
