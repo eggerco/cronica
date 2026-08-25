@@ -756,25 +756,27 @@ final class CronicaTests: XCTestCase {
     }
 
     func testHideFromUpNextPersistsAndClearsDisplayFlag() {
-        let example = ItemContent.examples.first { $0.itemContentMedia == .tvShow } ?? ItemContent.examples[0]
-        let item = requireItem(for: example.itemContentID)
-        item.contentType = MediaType.tvShow.toInt
-        item.watched = false
-        item.isArchive = false
-        item.displayOnUpNext = true
-        item.hideFromUpNext = false
-        item.watchedEpisodes = "-10@1"
-        item.isWatching = true
+        let show = WatchlistItem(context: managedContext)
+        show.title = "Up Next Test Show"
+        show.id = 9_999
+        show.contentID = "9999@1"
+        show.contentType = MediaType.tvShow.toInt
+        show.watched = false
+        show.isArchive = false
+        show.displayOnUpNext = true
+        show.hideFromUpNext = false
+        show.watchedEpisodes = "-10@1"
+        show.isWatching = true
         persistence.save()
 
-        persistence.updateHideFromUpNext(for: item, hidden: true)
-        XCTAssertTrue(item.hideFromUpNext)
-        XCTAssertFalse(item.displayOnUpNext)
-        XCTAssertTrue(persistence.isHiddenFromUpNext(id: item.itemContentID))
+        persistence.updateHideFromUpNext(for: show, hidden: true)
+        XCTAssertTrue(show.hideFromUpNext)
+        XCTAssertFalse(show.displayOnUpNext)
+        XCTAssertTrue(persistence.isHiddenFromUpNext(id: show.itemContentID))
 
-        persistence.updateHideFromUpNext(for: item, hidden: false)
-        XCTAssertFalse(item.hideFromUpNext)
-        XCTAssertTrue(item.displayOnUpNext)
+        persistence.updateHideFromUpNext(for: show, hidden: false)
+        XCTAssertFalse(show.hideFromUpNext)
+        XCTAssertTrue(show.displayOnUpNext)
     }
 
     func testHideFromUpNextBlocksRedisplayWhenWatchingEpisodes() {
