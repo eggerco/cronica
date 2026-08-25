@@ -241,8 +241,8 @@ struct ItemContentDetails: View {
                 .padding(.horizontal, DrawingConstants.contentHorizontalInset)
                 .padding(.top, 16)
 
-            TMDBReviewsSection(reviews: viewModel.tmdbReviews,
-                               communityScore: viewModel.content?.itemRating)
+            TMDBReviewsSection(communityScore: viewModel.content?.itemRating,
+                               averageReviewScore: viewModel.tmdbReviews.averageRatingLabel)
                 .padding(.horizontal, DrawingConstants.contentHorizontalInset)
                 .padding(.top, 16)
             
@@ -345,8 +345,8 @@ struct ItemContentDetails: View {
 
                     watchedDateCaption
 
-                    TMDBReviewsSection(reviews: viewModel.tmdbReviews,
-                                       communityScore: viewModel.content?.itemRating)
+                    TMDBReviewsSection(communityScore: viewModel.content?.itemRating,
+                                       averageReviewScore: viewModel.tmdbReviews.averageRatingLabel)
                         .padding(.top, 8)
                 }
                 .frame(width: 360)
