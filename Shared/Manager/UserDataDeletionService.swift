@@ -38,8 +38,9 @@ enum UserDataDeletionService {
         SimklKnownItemsStore.clear()
 #if !os(watchOS)
         SimklPushService.shared.clearQueue()
-#endif
+        // Library import (TMDB session, Letterboxd/IMDb CSV) is iOS-only.
         TMDBSessionStore.delete()
+#endif
 
         resetUserDefaults()
         clearCaches()
