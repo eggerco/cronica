@@ -108,7 +108,13 @@ struct ItemContentDetails: View {
         .cronicaLoadingOverlay(viewModel.isLoading)
 #if !os(visionOS)
         .background {
-            TranslucentBackground(image: viewModel.showPoster ? viewModel.content?.posterImageMedium : viewModel.content?.cardImageLarge)
+#if os(iOS)
+            if horizontalSizeClass == .regular {
+                TranslucentBackground(image: detailBackgroundImageURL)
+            }
+#else
+            TranslucentBackground(image: detailBackgroundImageURL)
+#endif
         }
 #endif
         .task {
@@ -172,55 +178,70 @@ struct ItemContentDetails: View {
     
 #if os(iOS)
     private var sizedBasedPhoneView: some View {
-        VStack {
-            if viewModel.showPoster || store.usePostersAsCover {
-                poster
-            } else {
-                cover
-            }
+        VStack(spacing: 0) {
+            ItemContentHeroHeader(
+                backdropURL: detailBackdropURL,
+                posterURL: detailPosterURL,
+                posterWidth: DrawingConstants.posterWidth,
+                posterHeight: DrawingConstants.posterHeight
+            )
             
             Text(title)
                 .multilineTextAlignment(.center)
                 .lineLimit(3)
-                .font(.title2)
+                .font(.title)
                 .fontDesign(.rounded)
-                .fontWeight(.semibold)
-                .padding(.horizontal, 8)
-                .padding(.bottom, 4)
+                .fontWeight(.bold)
+                .padding(.horizontal, 16)
+                .padding(.top, 4)
+                .padding(.bottom, 2)
                 .unredacted()
                 .accessibilityIdentifier("Item Title")
-            if let genres = viewModel.content?.itemGenres, !genres.isEmpty {
+            if let subtitle = detailMetadataSubtitle {
+                Text(subtitle)
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                    .fontDesign(.rounded)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 12)
+            } else if let genres = viewModel.content?.itemGenres, !genres.isEmpty {
                 Text(genres)
                     .font(.caption)
                     .foregroundColor(.secondary)
                     .fontDesign(.rounded)
-            }
-            if let info = viewModel.content?.itemQuickInfo, !info.isEmpty {
+            } else if let info = viewModel.content?.itemQuickInfo, !info.isEmpty {
                 Text(info)
                     .font(.caption)
                     .foregroundColor(.secondary)
                     .fontDesign(.rounded)
             }
             
-            HStack {
-                Spacer()
-                if type == .movie {
-                    watchButton
-                } else {
-                    favoriteButton
+            VStack(spacing: 12) {
+                HStack(spacing: 12) {
+                    watchlistButton
+                        .frame(maxWidth: .infinity)
+                    if type == .movie {
+                        watchButton
+                            .frame(maxWidth: .infinity)
+                    } else {
+                        favoriteButton
+                            .frame(maxWidth: .infinity)
+                    }
                 }
-                watchlistButton
-                    .keyboardShortcut("l", modifiers: [.option])
-                    .padding(.horizontal)
                 listButton
-                Spacer()
+                    .frame(maxWidth: .infinity)
             }
             .padding([.top, .horizontal])
-
-            watchedDateCaption
             
             OverviewBoxView(overview: viewModel.content?.itemOverview,
-                            title: title).padding()
+                            title: title,
+                            plainStyle: true)
+                .padding(.horizontal)
+                .padding(.top, 4)
+
+            CriticScoresSection(ratings: viewModel.criticRatings, fallbackTMDB: viewModel.content?.itemRating)
+                .padding(.horizontal)
+                .padding(.top, 8)
             
             if let season = viewModel.content?.seasons {
                 SeasonListView(
@@ -313,6 +334,9 @@ struct ItemContentDetails: View {
                     }
 
                     watchedDateCaption
+
+                    CriticScoresSection(ratings: viewModel.criticRatings, fallbackTMDB: viewModel.content?.itemRating)
+                        .padding(.top, 8)
                 }
                 .frame(width: 360)
                 
@@ -619,7 +643,6 @@ struct ItemContentDetails: View {
                     infoView(title: String(localized: "First Air Date"),
                              content: item?.itemFirstAirDate)
                 }
-                CriticScoresSection(ratings: viewModel.criticRatings, fallbackTMDB: item?.itemRating)
                 infoView(title: String(localized: "Status"),
                          content: item?.itemStatus.localizedTitle)
                 infoView(title: String(localized: "Genres"),
@@ -684,6 +707,43 @@ extension ItemContentDetails {
 #endif
     
     // MARK: Action Buttons
+    private var detailBackdropURL: URL? {
+        viewModel.content?.cardImageLarge
+            ?? viewModel.content?.cardImageMedium
+            ?? viewModel.content?.posterImageMedium
+    }
+
+    private var detailPosterURL: URL? {
+        if viewModel.showPoster || store.usePostersAsCover {
+            return viewModel.content?.posterImageMedium
+        }
+        return viewModel.content?.cardImageMedium ?? viewModel.content?.posterImageMedium
+    }
+
+    private var detailBackgroundImageURL: URL? {
+        viewModel.showPoster ? viewModel.content?.posterImageMedium : viewModel.content?.cardImageLarge
+    }
+
+    private var watchlistAddTint: Color {
+#if os(iOS)
+        Color(uiColor: .label)
+#else
+        store.appTheme.color
+#endif
+    }
+
+    private var detailMetadataSubtitle: String? {
+        var parts: [String] = []
+        if let info = viewModel.content?.itemQuickInfo, !info.isEmpty {
+            parts.append(info)
+        }
+        if viewModel.isWatched, let watchedDateLabel = viewModel.watchedDateLabel {
+            parts.append("\(String(localized: "Watched")) \(watchedDateLabel)")
+        }
+        guard !parts.isEmpty else { return nil }
+        return parts.joined(separator: " • ")
+    }
+
     private var watchlistButton: some View {
         Button {
             if viewModel.isInWatchlist {
@@ -716,25 +776,28 @@ extension ItemContentDetails {
             }
 #if !os(watchOS)
             .padding(.vertical, 4)
-            .frame(width: DrawingConstants.buttonWidth, height: DrawingConstants.buttonHeight)
+            .frame(minWidth: DrawingConstants.buttonWidth, maxWidth: .infinity, minHeight: DrawingConstants.buttonHeight)
 #else
             .padding(.vertical, 2)
 #endif
 #endif
         }
-        .buttonStyle(.borderedProminent)
 #if os(macOS)
         .controlSize(.large)
+        .buttonStyle(.borderedProminent)
 #elseif os(iOS)  || os(visionOS)
-        .controlSize(.small)
+        .controlSize(.regular)
+        .buttonStyle(viewModel.isInWatchlist ? .borderedProminent : .bordered)
         .applyHoverEffect()
+#else
+        .buttonStyle(.borderedProminent)
 #endif
         .disabled(viewModel.isLoading)
 #if os(iOS) || os(macOS) || os(watchOS)
-        .tint(viewModel.isInWatchlist ? .red.opacity(0.95) : store.appTheme.color)
+        .tint(viewModel.isInWatchlist ? .red.opacity(0.95) : (watchlistAddTint))
 #endif
 #if os(iOS) || os(visionOS)
-        .buttonBorderShape(.roundedRectangle(radius: DrawingConstants.buttonRadius))
+        .buttonBorderShape(.capsule)
 #endif
         .confirmationDialog("Are You Sure?", isPresented: $showConfirmationPopup, titleVisibility: .visible) {
             Button("Confirm") { updateWatchlist() }
@@ -785,7 +848,7 @@ extension ItemContentDetails {
 #endif
             }
             .padding(.vertical, 4)
-            .frame(width: DrawingConstants.buttonWidth, height: DrawingConstants.buttonHeight)
+            .frame(minWidth: DrawingConstants.buttonWidth, maxWidth: .infinity, minHeight: DrawingConstants.buttonHeight)
 #endif
         }
 #if !os(tvOS)
@@ -793,13 +856,14 @@ extension ItemContentDetails {
 #endif
 #if os(macOS)
         .controlSize(.large)
-#elseif !os(tvOS)
-        .controlSize(.small)
-#endif
         .buttonStyle(.bordered)
         .buttonBorderShape(.roundedRectangle(radius: DrawingConstants.buttonRadius))
-#if !os(visionOS)
         .tint(.primary)
+#elseif !os(tvOS)
+        .controlSize(.regular)
+        .buttonStyle(viewModel.isWatched ? .borderedProminent : .bordered)
+        .buttonBorderShape(.capsule)
+        .tint(viewModel.isWatched ? store.appTheme.color : .primary)
 #endif
 #if os(iOS)
         .applyHoverEffect()
@@ -866,7 +930,7 @@ extension ItemContentDetails {
 #endif
             }
             .padding(.vertical, 4)
-            .frame(width: DrawingConstants.buttonWidth, height: DrawingConstants.buttonHeight)
+            .frame(minWidth: DrawingConstants.buttonWidth, maxWidth: .infinity, minHeight: DrawingConstants.buttonHeight)
 #endif
         }
 #if !os(tvOS)
@@ -875,10 +939,10 @@ extension ItemContentDetails {
 #if os(macOS)
         .controlSize(.large)
 #elseif !os(tvOS)
-        .controlSize(.small)
+        .controlSize(.regular)
 #endif
         .buttonStyle(.bordered)
-        .buttonBorderShape(.roundedRectangle(radius: DrawingConstants.buttonRadius))
+        .buttonBorderShape(.capsule)
 #if !os(visionOS)
         .tint(.primary)
 #endif
@@ -904,16 +968,16 @@ extension ItemContentDetails {
                     .lineLimit(1)
             }
             .padding(.vertical, 4)
-            .frame(width: DrawingConstants.buttonWidth, height: DrawingConstants.buttonHeight)
+            .frame(minWidth: DrawingConstants.buttonWidth, maxWidth: .infinity, minHeight: DrawingConstants.buttonHeight)
 #endif
         }
 #if !os(tvOS) && !os(macOS)
-        .controlSize(.small)
+        .controlSize(.regular)
 #elseif !os(tvOS)
         .controlSize(.large)
 #endif
         .buttonStyle(.bordered)
-        .buttonBorderShape(.roundedRectangle(radius: DrawingConstants.buttonRadius))
+        .buttonBorderShape(.capsule)
 #if !os(visionOS)
         .tint(.primary)
 #endif
@@ -1121,7 +1185,6 @@ extension ItemContentDetails {
                 infoLabel(title: String(localized: "First Air Date"),
                           content: viewModel.content?.itemFirstAirDate)
             }
-            CriticScoresSection(ratings: viewModel.criticRatings, fallbackTMDB: viewModel.content?.itemRating)
             infoLabel(title: String(localized: "Region of Origin"),
                       content: viewModel.content?.itemCountry)
             infoLabel(title: String(localized: "Genres"),
