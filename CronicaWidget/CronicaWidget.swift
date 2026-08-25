@@ -80,7 +80,6 @@ struct CronicaWidgetEntryView: View {
 
     var body: some View {
         ItemContentList(items: entry.items)
-            .padding(8)
             .containerBackground(for: .widget) {
 #if os(iOS)
                 Color(uiColor: .systemBackground)
@@ -118,8 +117,5 @@ struct CronicaWidget: Widget {
         .configurationDisplayName("Trending")
         .description("Shows movies and TV Shows trending from TMDb.")
         .supportedFamilies(CronicaWidgetFamilies.homeScreen)
-        // Disable system content margins so poster grids can fill the widget predictably.
-        // We apply a fixed 8pt inset in CronicaWidgetEntryView instead.
-        .contentMarginsDisabled()
     }
 }
