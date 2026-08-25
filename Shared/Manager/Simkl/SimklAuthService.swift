@@ -46,6 +46,9 @@ final class SimklAuthService: NSObject {
         settings.simklAnimeHold = ""
         settings.markSimklActivitiesChecked(Date(timeIntervalSince1970: 0))
         settings.simklPushEnabled = false
+        settings.simklAccountID = 0
+        settings.simklAccountName = ""
+        settings.simklLastStatsFetchDate = nil
     }
 
 #if os(iOS) || os(macOS) || os(visionOS)

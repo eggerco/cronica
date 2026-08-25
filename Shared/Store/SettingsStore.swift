@@ -82,6 +82,13 @@ final class SettingsStore: ObservableObject {
         simklLastActivitiesCheck = date.timeIntervalSince1970
     }
     @AppStorage("simklPushEnabled") var simklPushEnabled = false
+    @AppStorage("simklAccountID") var simklAccountID = 0
+    @AppStorage("simklAccountName") var simklAccountName = ""
+    @AppStorage("simklLastStatsFetch") private var simklLastStatsFetch = 0.0
+    var simklLastStatsFetchDate: Date? {
+        get { simklLastStatsFetch > 0 ? Date(timeIntervalSince1970: simklLastStatsFetch) : nil }
+        set { simklLastStatsFetch = newValue?.timeIntervalSince1970 ?? 0 }
+    }
     @AppStorage("showRemoveConfirmation") var showRemoveConfirmation = true
     @AppStorage("choosePreferredLaunchScreen") var isPreferredLaunchScreenEnabled = false
 #if !os(watchOS)

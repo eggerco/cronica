@@ -313,6 +313,154 @@ struct SimklAddToListPayload: Encodable {
     var shows: [SimklHistoryItem]?
 }
 
+struct SimklRatedItem: Encodable {
+    var rating: Int
+    var ids: SimklWriteIds
+}
+
+struct SimklRatingsPayload: Encodable {
+    var movies: [SimklRatedItem]?
+    var shows: [SimklRatedItem]?
+}
+
+struct SimklUserSettings: Decodable {
+    var user: SimklUserProfile?
+    var account: SimklAccountInfo?
+}
+
+struct SimklUserProfile: Decodable {
+    var name: String?
+    var avatar: String?
+}
+
+struct SimklAccountInfo: Decodable {
+    var id: Int?
+    var timezone: String?
+    var type: String?
+}
+
+struct SimklUserStats: Decodable, Equatable {
+    var totalMins: Int?
+    var movies: SimklDomainStats?
+    var tv: SimklDomainStats?
+    var anime: SimklDomainStats?
+    var watchedLastWeek: SimklWeekStats?
+    var user: SimklStatsUser?
+
+    enum CodingKeys: String, CodingKey {
+        case movies, tv, anime, user
+        case totalMins = "total_mins"
+        case watchedLastWeek = "watched_last_week"
+    }
+
+    var totalHoursText: String {
+        let mins = totalMins ?? 0
+        let hours = mins / 60
+        let rem = mins % 60
+        if hours == 0 { return String(localized: "\(mins) min") }
+        if rem == 0 { return String(localized: "\(hours) hr") }
+        return String(localized: "\(hours) hr \(rem) min")
+    }
+}
+
+struct SimklStatsUser: Decodable, Equatable {
+    var id: Int?
+    var name: String?
+}
+
+struct SimklDomainStats: Decodable, Equatable {
+    var totalMins: Int?
+    var completed: SimklBucketStats?
+    var plantowatch: SimklBucketStats?
+    var dropped: SimklBucketStats?
+    var watching: SimklWatchingBucketStats?
+
+    enum CodingKeys: String, CodingKey {
+        case completed, plantowatch, dropped, watching
+        case totalMins = "total_mins"
+    }
+}
+
+struct SimklBucketStats: Decodable, Equatable {
+    var mins: Int?
+    var count: Int?
+}
+
+struct SimklWatchingBucketStats: Decodable, Equatable {
+    var count: Int?
+    var watchedEpisodesCount: Int?
+    var totalEpisodesCount: Int?
+    var leftToWatchEpisodes: Int?
+    var leftToWatchMins: Int?
+
+    enum CodingKeys: String, CodingKey {
+        case count
+        case watchedEpisodesCount = "watched_episodes_count"
+        case totalEpisodesCount = "total_episodes_count"
+        case leftToWatchEpisodes = "left_to_watch_episodes"
+        case leftToWatchMins = "left_to_watch_mins"
+    }
+}
+
+struct SimklWeekStats: Decodable, Equatable {
+    var totalMins: Int?
+    var moviesMins: Int?
+    var tvMins: Int?
+    var animeMins: Int?
+
+    enum CodingKeys: String, CodingKey {
+        case totalMins = "total_mins"
+        case moviesMins = "movies_mins"
+        case tvMins = "tv_mins"
+        case animeMins = "anime_mins"
+    }
+}
+
+struct SimklPlaybackResponse: Decodable {
+    var movies: [SimklPlaybackEntry]?
+    var episodes: [SimklPlaybackEntry]?
+}
+
+struct SimklPlaybackEntry: Decodable, Identifiable, Equatable {
+    var progress: Double?
+    var pausedAt: String?
+    var type: String?
+    var movie: SimklMediaObject?
+    var show: SimklMediaObject?
+    var episode: SimklPlaybackEpisode?
+
+    var id: String {
+        let tmdb = movie?.ids?.tmdb?.intValue ?? show?.ids?.tmdb?.intValue ?? 0
+        let ep = episode?.number ?? 0
+        let season = episode?.season ?? 0
+        return "\(tmdb)-\(season)-\(ep)-\(progress ?? 0)"
+    }
+
+    var title: String {
+        movie?.title ?? show?.title ?? String(localized: "Untitled")
+    }
+
+    var progressPercent: Int {
+        Int(((progress ?? 0) * 100).rounded())
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case progress, type, movie, show, episode
+        case pausedAt = "paused_at"
+    }
+}
+
+struct SimklPlaybackEpisode: Decodable, Equatable {
+    var season: Int?
+    var number: Int?
+}
+
+struct SimklScrobblePayload: Encodable {
+    var movie: SimklHistoryItem?
+    var show: SimklHistoryItem?
+    var progress: Double
+}
+
 struct SimklEmptyResponse: Decodable {}
 
 enum SimklError: LocalizedError {

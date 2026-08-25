@@ -131,6 +131,11 @@ enum SimklImportMapper {
         Int64(max(0, min(5, (rating + 1) / 2)))
     }
 
+    /// Cronica 0–5 stars → SIMKL 1–10 (0 clears).
+    static func simklRating(fromCronica rating: Int) -> Int {
+        max(0, min(10, rating * 2))
+    }
+
     static func shouldSkipAnimeWithoutTMDB(_ entry: SimklLibraryEntry) -> Bool {
         entry.mediaObject?.ids?.tmdb?.intValue == nil
     }

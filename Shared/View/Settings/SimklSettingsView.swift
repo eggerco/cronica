@@ -10,9 +10,13 @@ struct SimklSettingsView: View {
     @StateObject private var settings = SettingsStore.shared
     @State private var isConnecting = false
     @State private var isSyncing = false
+    @State private var isLoadingStats = false
+    @State private var isLoadingPlaybacks = false
     @State private var syncTask: Task<Void, Never>?
     @State private var errorMessage: String?
     @State private var summary: SimklImportSummary?
+    @State private var stats: SimklUserStats?
+    @State private var playbacks: [SimklPlaybackEntry] = []
     @State private var progressPhase = ""
     @State private var progressProcessed = 0
     @State private var progressTotal = 0
@@ -39,6 +43,8 @@ struct SimklSettingsView: View {
                 }
             } else if isConnected {
                 connectedSection
+                statsSection
+                playbackSection
             } else {
                 disconnectedSection
             }
@@ -152,6 +158,9 @@ struct SimklSettingsView: View {
         Section {
             Label("Connected", systemImage: "checkmark.circle.fill")
                 .foregroundStyle(.green)
+            if !settings.simklAccountName.isEmpty {
+                LabeledContent("Account", value: settings.simklAccountName)
+            }
             if let date = settings.simklLastImportDate {
                 LabeledContent("Last sync", value: date.formatted(date: .abbreviated, time: .shortened))
             }
@@ -175,7 +184,7 @@ struct SimklSettingsView: View {
         Section {
             Toggle("Push watches to SIMKL", isOn: $settings.simklPushEnabled)
         } footer: {
-            Text("When enabled, adding, watching, archiving, or removing titles in Cronica is queued and sent to SIMKL. Off by default.")
+            Text("When enabled, watches, ratings, archive, and removals in Cronica are queued and sent to SIMKL. Off by default.")
         }
 #endif
 
@@ -188,8 +197,79 @@ struct SimklSettingsView: View {
                 syncTask?.cancel()
                 SimklAuthService.shared.disconnect()
                 summary = nil
+                stats = nil
+                playbacks = []
             }
             .disabled(isSyncing)
+        }
+    }
+
+    @ViewBuilder
+    private var statsSection: some View {
+        Section("Your SIMKL Stats") {
+            if let stats {
+                LabeledContent("Total watched", value: stats.totalHoursText)
+                if let movies = stats.movies?.completed?.count {
+                    LabeledContent("Movies completed", value: "\(movies)")
+                }
+                if let shows = stats.tv?.completed?.count {
+                    LabeledContent("Shows completed", value: "\(shows)")
+                }
+                if let anime = stats.anime?.completed?.count {
+                    LabeledContent("Anime completed", value: "\(anime)")
+                }
+                if let week = stats.watchedLastWeek?.totalMins {
+                    LabeledContent("Last 7 days", value: Self.minutesLabel(week))
+                }
+                if let date = settings.simklLastStatsFetchDate {
+                    Text("Fetched \(date.formatted(date: .abbreviated, time: .shortened))")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+            }
+            Button {
+                Task { await loadStats() }
+            } label: {
+                if isLoadingStats {
+                    ProgressView()
+                } else {
+                    Text(stats == nil ? "Load Stats" : "Refresh Stats")
+                }
+            }
+            .disabled(isLoadingStats || isSyncing)
+        } footer: {
+            Text("Stats are computed live on SIMKL and are expensive. Cronica only loads them when you tap this button.")
+        }
+    }
+
+    @ViewBuilder
+    private var playbackSection: some View {
+        Section("Paused on SIMKL") {
+            if playbacks.isEmpty {
+                Text("No paused playbacks.")
+                    .foregroundStyle(.secondary)
+            } else {
+                ForEach(playbacks) { entry in
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text(entry.title)
+                        Text("\(entry.progressPercent)%")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                }
+            }
+            Button {
+                Task { await loadPlaybacks() }
+            } label: {
+                if isLoadingPlaybacks {
+                    ProgressView()
+                } else {
+                    Text(playbacks.isEmpty ? "Load Playbacks" : "Refresh Playbacks")
+                }
+            }
+            .disabled(isLoadingPlaybacks || isSyncing)
+        } footer: {
+            Text("Shows titles paused on other SIMKL apps. Cronica does not run a full media player, so live start/pause scrobbling is not used.")
         }
     }
 
@@ -199,6 +279,7 @@ struct SimklSettingsView: View {
         defer { isConnecting = false }
         do {
             try await SimklAuthService.shared.signInWithPKCE()
+            _ = try? await SimklAccountService.ensureAccountID()
             startSync(full: settings.simklActivitiesAll.isEmpty)
         } catch {
             errorMessage = error.localizedDescription
@@ -222,6 +303,7 @@ struct SimklSettingsView: View {
                         interval: session.interval
                     )
                     pinCode = nil
+                    _ = try? await SimklAccountService.ensureAccountID()
                     startSync(full: settings.simklActivitiesAll.isEmpty)
                 } catch is CancellationError {
                     // ignored
@@ -267,6 +349,34 @@ struct SimklSettingsView: View {
                 errorMessage = error.localizedDescription
             }
         }
+    }
+
+    private func loadStats() async {
+        isLoadingStats = true
+        defer { isLoadingStats = false }
+        do {
+            stats = try await SimklAccountService.loadStats()
+        } catch {
+            errorMessage = error.localizedDescription
+        }
+    }
+
+    private func loadPlaybacks() async {
+        isLoadingPlaybacks = true
+        defer { isLoadingPlaybacks = false }
+        do {
+            playbacks = try await SimklAccountService.loadPlaybacks()
+        } catch {
+            errorMessage = error.localizedDescription
+        }
+    }
+
+    private static func minutesLabel(_ mins: Int) -> String {
+        let hours = mins / 60
+        let rem = mins % 60
+        if hours == 0 { return String(localized: "\(mins) min") }
+        if rem == 0 { return String(localized: "\(hours) hr") }
+        return String(localized: "\(hours) hr \(rem) min")
     }
 }
 

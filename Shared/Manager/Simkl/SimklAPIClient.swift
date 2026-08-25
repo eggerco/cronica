@@ -99,6 +99,35 @@ actor SimklAPIClient {
         try await postVoid(path: "/sync/history/remove", body: payload, authorized: true)
     }
 
+    func addRatings(_ payload: SimklRatingsPayload) async throws {
+        try await postVoid(path: "/sync/ratings", body: payload, authorized: true)
+    }
+
+    func removeRatings(_ payload: SimklRatingsPayload) async throws {
+        try await postVoid(path: "/sync/ratings/remove", body: payload, authorized: true)
+    }
+
+    func fetchUserSettings() async throws -> SimklUserSettings {
+        try await postDecodable(path: "/users/settings", body: [String: String](), authorized: true)
+    }
+
+    func fetchUserStats(userID: Int) async throws -> SimklUserStats {
+        try await postDecodable(path: "/users/\(userID)/stats", body: [String: String](), authorized: true)
+    }
+
+    func fetchPlayback() async throws -> SimklPlaybackResponse {
+        try await get(path: "/sync/playback", authorized: true)
+    }
+
+    /// Fire-and-forget checkin (auto-completes by runtime). Prefer `/sync/history` for explicit marks.
+    func scrobbleCheckin(_ payload: SimklScrobblePayload) async throws {
+        try await postVoid(path: "/scrobble/checkin", body: payload, authorized: true)
+    }
+
+    func scrobbleStop(_ payload: SimklScrobblePayload) async throws {
+        try await postVoid(path: "/scrobble/stop", body: payload, authorized: true)
+    }
+
     // MARK: - HTTP
 
     private func get<T: Decodable>(
@@ -113,6 +142,18 @@ actor SimklAPIClient {
     private func postJSON<T: Decodable>(
         path: String,
         body: [String: String],
+        authorized: Bool
+    ) async throws -> T {
+        try await waitForPOSTSlot()
+        var request = try makeRequest(path: path, method: "POST", query: [], authorized: authorized)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try JSONEncoder().encode(body)
+        return try await send(request)
+    }
+
+    private func postDecodable<Body: Encodable, T: Decodable>(
+        path: String,
+        body: Body,
         authorized: Bool
     ) async throws -> T {
         try await waitForPOSTSlot()

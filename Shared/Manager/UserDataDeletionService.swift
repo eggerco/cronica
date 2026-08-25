@@ -91,6 +91,9 @@ enum UserDataDeletionService {
             "simklAnimeHold",
             "simklLastActivitiesCheck",
             "simklPushEnabled",
+            "simklAccountID",
+            "simklAccountName",
+            "simklLastStatsFetch",
             "simklKnownContentIDs",
             "simklPushQueue",
             "showRemoveConfirmation",
@@ -173,5 +176,8 @@ enum UserDataDeletionService {
         settings.simklAnimeHold = ""
         settings.markSimklActivitiesChecked(Date(timeIntervalSince1970: 0))
         settings.simklPushEnabled = false
+        settings.simklAccountID = 0
+        settings.simklAccountName = ""
+        settings.simklLastStatsFetchDate = nil
     }
 }

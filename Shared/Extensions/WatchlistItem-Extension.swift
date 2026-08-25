@@ -242,6 +242,13 @@ extension WatchlistItem {
 		if userNotes.isEmpty { return false }
 		return true
 	}
+	var itemHasRating: Bool {
+		userRating > 0
+	}
+	var itemRatingLabel: String? {
+		guard itemHasRating else { return nil }
+		return "\(userRating)"
+	}
 	static var example: WatchlistItem {
 		let controller = PersistenceController(inMemory: true)
 		let viewContext = controller.container.viewContext

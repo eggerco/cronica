@@ -252,6 +252,14 @@ extension PersistenceController {
         item.userNotes = notes
         item.userRating = Int64(rating)
         save()
+#if !os(watchOS)
+        let tmdb = item.itemId
+        let media = item.itemMedia
+        let imdb = item.imdbID
+        Task { @MainActor in
+            SimklPushService.shared.enqueueRating(tmdb: tmdb, media: media, cronicaRating: rating, imdb: imdb)
+        }
+#endif
     }
     
     // MARK: Properties read

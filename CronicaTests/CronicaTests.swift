@@ -447,6 +447,24 @@ final class CronicaTests: XCTestCase {
         )
     }
 
+    func testSimklRatingRoundTripFiveStarsToTen() {
+        XCTAssertEqual(SimklImportMapper.simklRating(fromCronica: 5), 10)
+        XCTAssertEqual(SimklImportMapper.simklRating(fromCronica: 1), 2)
+        XCTAssertEqual(SimklImportMapper.simklRating(fromCronica: 0), 0)
+        XCTAssertEqual(SimklImportMapper.cronicaRating(fromSimkl: 10), 5)
+    }
+
+    func testSimklUserStatsDecodeTotalMins() throws {
+        let json = """
+        {"total_mins":120,"movies":{"total_mins":60,"completed":{"mins":60,"count":2}},"tv":{"total_mins":60,"completed":{"mins":60,"count":1}},"watched_last_week":{"total_mins":30,"movies_mins":10,"tv_mins":20,"anime_mins":0}}
+        """.data(using: .utf8)!
+        let stats = try JSONDecoder().decode(SimklUserStats.self, from: json)
+        XCTAssertEqual(stats.totalMins, 120)
+        XCTAssertEqual(stats.movies?.completed?.count, 2)
+        XCTAssertEqual(stats.watchedLastWeek?.totalMins, 30)
+        XCTAssertTrue(stats.totalHoursText.contains("2"))
+    }
+
     private enum SelfHelper {
         static func makeTVContent(id: Int, episodeNumber: Int, seasonNumber: Int, airDate: Date) -> ItemContent {
             let airDateString = DatesManager.dateFormatter.string(from: airDate)

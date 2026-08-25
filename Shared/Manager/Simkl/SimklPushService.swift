@@ -20,6 +20,9 @@ final class SimklPushService {
         case addToList(tmdb: Int, media: Int, status: String, imdb: String?)
         case history(tmdb: Int, media: Int, season: Int?, episode: Int?, imdb: String?)
         case removeHistory(tmdb: Int, media: Int, imdb: String?)
+        case rating(tmdb: Int, media: Int, rating: Int, imdb: String?)
+        case removeRating(tmdb: Int, media: Int, imdb: String?)
+        case scrobbleStop(tmdb: Int, media: Int, imdb: String?)
     }
 
     func enqueueAdd(tmdb: Int, media: MediaType, status: SimklWatchStatus = .plantowatch, imdb: String?) {
@@ -62,6 +65,24 @@ final class SimklPushService {
         Task { await flush() }
     }
 
+    func enqueueRating(tmdb: Int, media: MediaType, cronicaRating: Int, imdb: String?) {
+        guard shouldEnqueue else { return }
+        if cronicaRating <= 0 {
+            append(.removeRating(tmdb: tmdb, media: Int(media.toInt), imdb: imdb))
+        } else {
+            let simkl = SimklImportMapper.simklRating(fromCronica: cronicaRating)
+            append(.rating(tmdb: tmdb, media: Int(media.toInt), rating: simkl, imdb: imdb))
+        }
+        Task { await flush() }
+    }
+
+    /// Marks a title fully watched via scrobble/stop (progress 100). Complements history writes.
+    func enqueueScrobbleStop(tmdb: Int, media: MediaType, imdb: String?) {
+        guard shouldEnqueue else { return }
+        append(.scrobbleStop(tmdb: tmdb, media: Int(media.toInt), imdb: imdb))
+        Task { await flush() }
+    }
+
     /// Convenience for call sites that still have a managed object on the main actor.
     func enqueueAdd(item: WatchlistItem, status: SimklWatchStatus = .plantowatch) {
         enqueueAdd(tmdb: item.itemId, media: item.itemMedia, status: status, imdb: item.imdbID)
@@ -95,12 +116,18 @@ final class SimklPushService {
         var batchAdd: [Operation] = []
         var batchHistory: [Operation] = []
         var batchRemove: [Operation] = []
+        var batchRatings: [Operation] = []
+        var batchRemoveRatings: [Operation] = []
+        var batchScrobble: [Operation] = []
 
         for op in queue {
             switch op {
             case .addToList: batchAdd.append(op)
             case .history: batchHistory.append(op)
             case .removeHistory: batchRemove.append(op)
+            case .rating: batchRatings.append(op)
+            case .removeRating: batchRemoveRatings.append(op)
+            case .scrobbleStop: batchScrobble.append(op)
             }
         }
 
@@ -108,6 +135,9 @@ final class SimklPushService {
             try await sendAdds(batchAdd)
             try await sendHistory(batchHistory)
             try await sendRemoves(batchRemove)
+            try await sendRatings(batchRatings)
+            try await sendRemoveRatings(batchRemoveRatings)
+            try await sendScrobbles(batchScrobble)
             saveQueue([])
         } catch {
             if case SimklError.notAuthenticated = error {
@@ -218,5 +248,62 @@ final class SimklPushService {
                 shows: shows.isEmpty ? nil : shows
             )
         )
+    }
+
+    private func sendRatings(_ ops: [Operation]) async throws {
+        guard !ops.isEmpty else { return }
+        var movies: [SimklRatedItem] = []
+        var shows: [SimklRatedItem] = []
+        for op in ops {
+            guard case let .rating(tmdb, media, rating, imdb) = op else { continue }
+            let item = SimklRatedItem(rating: rating, ids: SimklWriteIds(tmdb: tmdb, imdb: imdb))
+            if media == Int(MediaType.movie.toInt) {
+                movies.append(item)
+            } else {
+                shows.append(item)
+            }
+        }
+        try await SimklAPIClient.shared.addRatings(
+            SimklRatingsPayload(
+                movies: movies.isEmpty ? nil : movies,
+                shows: shows.isEmpty ? nil : shows
+            )
+        )
+    }
+
+    private func sendRemoveRatings(_ ops: [Operation]) async throws {
+        guard !ops.isEmpty else { return }
+        var movies: [SimklRatedItem] = []
+        var shows: [SimklRatedItem] = []
+        for op in ops {
+            guard case let .removeRating(tmdb, media, imdb) = op else { continue }
+            let item = SimklRatedItem(rating: 0, ids: SimklWriteIds(tmdb: tmdb, imdb: imdb))
+            if media == Int(MediaType.movie.toInt) {
+                movies.append(item)
+            } else {
+                shows.append(item)
+            }
+        }
+        try await SimklAPIClient.shared.removeRatings(
+            SimklRatingsPayload(
+                movies: movies.isEmpty ? nil : movies,
+                shows: shows.isEmpty ? nil : shows
+            )
+        )
+    }
+
+    private func sendScrobbles(_ ops: [Operation]) async throws {
+        for op in ops {
+            guard case let .scrobbleStop(tmdb, media, imdb) = op else { continue }
+            let ids = SimklWriteIds(tmdb: tmdb, imdb: imdb)
+            let item = SimklHistoryItem(ids: ids, watchedAt: nil, seasons: nil)
+            let payload: SimklScrobblePayload
+            if media == Int(MediaType.movie.toInt) {
+                payload = SimklScrobblePayload(movie: item, show: nil, progress: 100)
+            } else {
+                payload = SimklScrobblePayload(movie: nil, show: item, progress: 100)
+            }
+            try await SimklAPIClient.shared.scrobbleStop(payload)
+        }
     }
 }

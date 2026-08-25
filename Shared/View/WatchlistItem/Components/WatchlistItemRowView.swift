@@ -61,6 +61,17 @@ struct WatchlistItemRowView: View {
                             .font(.callout)
                             .fontDesign(.rounded)
                             .fontWeight(.medium)
+                        if content.itemHasRating {
+                            HStack(spacing: 2) {
+                                Image(systemName: "star.fill")
+                                    .font(.caption2)
+                                    .foregroundStyle(.yellow)
+                                Text("\(content.userRating)")
+                                    .font(.caption2)
+                                    .foregroundStyle(.secondary)
+                            }
+                            .accessibilityLabel(String(localized: "Rated \(content.userRating) of 5"))
+                        }
                     }
                     HStack {
 #if os(watchOS)
