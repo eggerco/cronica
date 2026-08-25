@@ -26766,6 +26766,182 @@
           }
         }
       }
+    },
+    "Integrations": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Integrations"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Integrácie"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Integrationen"
+          }
+        }
+      }
+    },
+    "Library Services": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Library Services"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Knižničné služby"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bibliotheksdienste"
+          }
+        }
+      }
+    },
+    "Attribution": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Attribution"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uvedenie zdroja"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Attribution"
+          }
+        }
+      }
+    },
+    "Not configured": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not configured"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nenakonfigurované"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nicht konfiguriert"
+          }
+        }
+      }
+    },
+    "Not connected": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not connected"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nepripojené"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nicht verbunden"
+          }
+        }
+      }
+    },
+    "Connect optional services to import or sync your library with Cronica. Your Apple devices still sync through iCloud when enabled.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connect optional services to import or sync your library with Cronica. Your Apple devices still sync through iCloud when enabled."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pripoj voliteľné služby na import alebo synchronizáciu knižnice s Cronica. Tvoje Apple zariadenia sa stále synchronizujú cez iCloud, ak je zapnutý."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verbinde optionale Dienste, um deine Bibliothek mit Cronica zu importieren oder zu synchronisieren. Deine Apple-Geräte synchronisieren weiterhin über iCloud, wenn aktiviert."
+          }
+        }
+      }
+    },
+    "SIMKL is a trademark of its respective owners. Cronica uses the SIMKL API when you choose to connect an account.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SIMKL is a trademark of its respective owners. Cronica uses the SIMKL API when you choose to connect an account."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SIMKL je ochranná známka príslušných vlastníkov. Cronica používa SIMKL API, keď sa rozhodneš pripojiť účet."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SIMKL ist eine Marke der jeweiligen Eigentümer. Cronica nutzt die SIMKL-API, wenn du ein Konto verbindest."
+          }
+        }
+      }
+    },
+    "SIMKL API Rules": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SIMKL API Rules"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pravidlá SIMKL API"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SIMKL-API-Regeln"
+          }
+        }
+      }
     }
   },
   "version": "1.1"

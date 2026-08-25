@@ -273,6 +273,7 @@
 		C0SIMKLIMP000000000002 /* SimklImportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLIMP000000000001 /* SimklImportService.swift */; };
 		C0SIMKLMAP000000000002 /* SimklImportMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLMAP000000000001 /* SimklImportMapper.swift */; };
 		C0SIMKLVIEW00000000002 /* SimklSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLVIEW00000000001 /* SimklSettingsView.swift */; };
+		C0INTEGVIEW00000000002 /* IntegrationsSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */; };
 		C0SIMKLSYNC0000000002 /* SimklSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLSYNC0000000001 /* SimklSyncService.swift */; };
 		C0SIMKLPUSH0000000002 /* SimklPushService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLPUSH0000000001 /* SimklPushService.swift */; };
 		C0SIMKLKNOWN000000002 /* SimklKnownItemsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLKNOWN000000001 /* SimklKnownItemsStore.swift */; };
@@ -581,6 +582,7 @@
 		C0SIMKLIMP000000000001 /* SimklImportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimklImportService.swift; sourceTree = "<group>"; };
 		C0SIMKLMAP000000000001 /* SimklImportMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimklImportMapper.swift; sourceTree = "<group>"; };
 		C0SIMKLVIEW00000000001 /* SimklSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimklSettingsView.swift; sourceTree = "<group>"; };
+		C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationsSettingsView.swift; sourceTree = "<group>"; };
 		C0SIMKLSYNC0000000001 /* SimklSyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimklSyncService.swift; sourceTree = "<group>"; };
 		C0SIMKLPUSH0000000001 /* SimklPushService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimklPushService.swift; sourceTree = "<group>"; };
 		C0SIMKLKNOWN000000001 /* SimklKnownItemsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimklKnownItemsStore.swift; sourceTree = "<group>"; };
@@ -1131,6 +1133,7 @@
 				B8FB2A8F295263AB006DAC8E /* AboutSettings.swift */,
 				C0DATAMGMT000000000001 /* DataManagementSettingsView.swift */,
 				C0SIMKLVIEW00000000001 /* SimklSettingsView.swift */,
+				C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 				B80BBE572949665A00958876 /* AppearanceSetting.swift */,
 				B8FB2A8D29526341006DAC8E /* BehaviorSetting.swift */,
 				B86AAD0928BD1CDD00D135B1 /* DeveloperView.swift */,
@@ -1859,6 +1862,7 @@
 				C0SIMKLIMP000000000002 /* SimklImportService.swift in Sources */,
 				C0SIMKLMAP000000000002 /* SimklImportMapper.swift in Sources */,
 				C0SIMKLVIEW00000000002 /* SimklSettingsView.swift in Sources */,
+				C0INTEGVIEW00000000002 /* IntegrationsSettingsView.swift in Sources */,
 				C0SIMKLSYNC0000000002 /* SimklSyncService.swift in Sources */,
 				C0SIMKLPUSH0000000002 /* SimklPushService.swift in Sources */,
 				C0SIMKLKNOWN000000002 /* SimklKnownItemsStore.swift in Sources */,

@@ -220,6 +220,18 @@ struct SimklActivitiesResponse: Decodable, Equatable {
     var tvShows: SimklActivitiesBucket?
     var anime: SimklActivitiesBucket?
 
+    init(
+        all: String? = nil,
+        movies: SimklActivitiesBucket? = nil,
+        tvShows: SimklActivitiesBucket? = nil,
+        anime: SimklActivitiesBucket? = nil
+    ) {
+        self.all = all
+        self.movies = movies
+        self.tvShows = tvShows
+        self.anime = anime
+    }
+
     enum CodingKeys: String, CodingKey {
         case all, movies, anime
         case tvShows = "tv_shows"
@@ -234,6 +246,24 @@ struct SimklActivitiesBucket: Decodable, Equatable {
     var completed: String?
     var dropped: String?
     var removedFromList: String?
+
+    init(
+        all: String? = nil,
+        watching: String? = nil,
+        plantowatch: String? = nil,
+        hold: String? = nil,
+        completed: String? = nil,
+        dropped: String? = nil,
+        removedFromList: String? = nil
+    ) {
+        self.all = all
+        self.watching = watching
+        self.plantowatch = plantowatch
+        self.hold = hold
+        self.completed = completed
+        self.dropped = dropped
+        self.removedFromList = removedFromList
+    }
 
     enum CodingKeys: String, CodingKey {
         case all, watching, plantowatch, hold, completed, dropped

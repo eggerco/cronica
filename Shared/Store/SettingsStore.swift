@@ -72,6 +72,15 @@ final class SettingsStore: ObservableObject {
     @AppStorage("simklRemovedMovies") var simklRemovedMovies = ""
     @AppStorage("simklRemovedShows") var simklRemovedShows = ""
     @AppStorage("simklRemovedAnime") var simklRemovedAnime = ""
+    @AppStorage("simklTVWatching") var simklTVWatching = ""
+    @AppStorage("simklTVHold") var simklTVHold = ""
+    @AppStorage("simklAnimeWatching") var simklAnimeWatching = ""
+    @AppStorage("simklAnimeHold") var simklAnimeHold = ""
+    @AppStorage("simklLastActivitiesCheck") private var simklLastActivitiesCheck = 0.0
+    var simklLastActivitiesCheckTimestamp: TimeInterval { simklLastActivitiesCheck }
+    func markSimklActivitiesChecked(_ date: Date = Date()) {
+        simklLastActivitiesCheck = date.timeIntervalSince1970
+    }
     @AppStorage("simklPushEnabled") var simklPushEnabled = false
     @AppStorage("showRemoveConfirmation") var showRemoveConfirmation = true
     @AppStorage("choosePreferredLaunchScreen") var isPreferredLaunchScreenEnabled = false

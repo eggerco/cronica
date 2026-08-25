@@ -413,6 +413,40 @@ final class CronicaTests: XCTestCase {
         XCTAssertTrue(json.contains("\"number\":1"))
     }
 
+    func testSimklForegroundThrottleSkipsRapidRechecks() {
+        let now: TimeInterval = 1_000_000
+        XCTAssertFalse(SimklSyncService.shouldSkipForegroundCheck(lastCheck: 0, now: now))
+        XCTAssertTrue(SimklSyncService.shouldSkipForegroundCheck(lastCheck: now - 60, now: now))
+        XCTAssertFalse(SimklSyncService.shouldSkipForegroundCheck(lastCheck: now - (21 * 60), now: now))
+    }
+
+    func testSimklNeedsEpisodeExtendedWhenWatchingBucketMoves() {
+        let activities = SimklActivitiesResponse(
+            all: "2026-05-08T14:23:11Z",
+            movies: nil,
+            tvShows: SimklActivitiesBucket(watching: "2026-05-08T14:23:11Z"),
+            anime: nil
+        )
+        XCTAssertTrue(
+            SimklSyncService.needsEpisodeExtended(
+                activities: activities,
+                previousTVWatching: "2026-05-01T00:00:00Z",
+                previousTVHold: "",
+                previousAnimeWatching: "",
+                previousAnimeHold: ""
+            )
+        )
+        XCTAssertFalse(
+            SimklSyncService.needsEpisodeExtended(
+                activities: activities,
+                previousTVWatching: "2026-05-08T14:23:11Z",
+                previousTVHold: "",
+                previousAnimeWatching: "",
+                previousAnimeHold: ""
+            )
+        )
+    }
+
     private enum SelfHelper {
         static func makeTVContent(id: Int, episodeNumber: Int, seasonNumber: Int, airDate: Date) -> ItemContent {
             let airDateString = DatesManager.dateFormatter.string(from: airDate)

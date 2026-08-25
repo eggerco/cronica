@@ -85,6 +85,11 @@ enum UserDataDeletionService {
             "simklRemovedMovies",
             "simklRemovedShows",
             "simklRemovedAnime",
+            "simklTVWatching",
+            "simklTVHold",
+            "simklAnimeWatching",
+            "simklAnimeHold",
+            "simklLastActivitiesCheck",
             "simklPushEnabled",
             "simklKnownContentIDs",
             "simklPushQueue",
@@ -162,6 +167,11 @@ enum UserDataDeletionService {
         settings.simklRemovedMovies = ""
         settings.simklRemovedShows = ""
         settings.simklRemovedAnime = ""
+        settings.simklTVWatching = ""
+        settings.simklTVHold = ""
+        settings.simklAnimeWatching = ""
+        settings.simklAnimeHold = ""
+        settings.markSimklActivitiesChecked(Date(timeIntervalSince1970: 0))
         settings.simklPushEnabled = false
     }
 }

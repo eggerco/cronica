@@ -12,6 +12,9 @@ actor SimklAPIClient {
     private let session: URLSession
     private let appName = "cronica"
     private let baseURL = URL(string: "https://api.simkl.com")!
+    /// SIMKL POST limit: 1 request per second per client.
+    private let minimumPOSTInterval: TimeInterval = 1.05
+    private var lastPOSTAt: Date?
 
     private init(session: URLSession = .shared) {
         self.session = session
@@ -112,6 +115,7 @@ actor SimklAPIClient {
         body: [String: String],
         authorized: Bool
     ) async throws -> T {
+        try await waitForPOSTSlot()
         var request = try makeRequest(path: path, method: "POST", query: [], authorized: authorized)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = try JSONEncoder().encode(body)
@@ -123,10 +127,22 @@ actor SimklAPIClient {
         body: Body,
         authorized: Bool
     ) async throws {
+        try await waitForPOSTSlot()
         var request = try makeRequest(path: path, method: "POST", query: [], authorized: authorized)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = try JSONEncoder().encode(body)
         _ = try await sendData(request)
+    }
+
+    private func waitForPOSTSlot() async throws {
+        if let lastPOSTAt {
+            let elapsed = Date().timeIntervalSince(lastPOSTAt)
+            if elapsed < minimumPOSTInterval {
+                let delay = minimumPOSTInterval - elapsed
+                try await Task.sleep(nanoseconds: UInt64(delay * 1_000_000_000))
+            }
+        }
+        lastPOSTAt = Date()
     }
 
     private func makeRequest(

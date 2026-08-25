@@ -33,13 +33,19 @@ final class SimklAuthService: NSObject {
         SimklTokenStore.delete()
         SimklKnownItemsStore.clear()
         SimklPushService.shared.clearQueue()
-        SettingsStore.shared.isSimklConnected = false
-        SettingsStore.shared.simklLastImportDate = nil
-        SettingsStore.shared.simklActivitiesAll = ""
-        SettingsStore.shared.simklRemovedMovies = ""
-        SettingsStore.shared.simklRemovedShows = ""
-        SettingsStore.shared.simklRemovedAnime = ""
-        SettingsStore.shared.simklPushEnabled = false
+        let settings = SettingsStore.shared
+        settings.isSimklConnected = false
+        settings.simklLastImportDate = nil
+        settings.simklActivitiesAll = ""
+        settings.simklRemovedMovies = ""
+        settings.simklRemovedShows = ""
+        settings.simklRemovedAnime = ""
+        settings.simklTVWatching = ""
+        settings.simklTVHold = ""
+        settings.simklAnimeWatching = ""
+        settings.simklAnimeHold = ""
+        settings.markSimklActivitiesChecked(Date(timeIntervalSince1970: 0))
+        settings.simklPushEnabled = false
     }
 
 #if os(iOS) || os(macOS) || os(visionOS)

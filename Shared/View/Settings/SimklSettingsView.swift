@@ -256,7 +256,7 @@ struct SimklSettingsView: View {
                 if full {
                     summary = try await SimklSyncService.fullImport(progress: progress)
                 } else {
-                    summary = try await SimklSyncService.incrementalSync(progress: progress)
+                    summary = try await SimklSyncService.incrementalSync(ignoreThrottle: true, progress: progress)
                 }
                 if settings.simklPushEnabled {
                     await SimklPushService.shared.flush()

@@ -9,6 +9,9 @@ import CronicaCore
 /// Pulls SIMKL → Cronica using the official two-phase model (full, then activities + date_from).
 @MainActor
 enum SimklSyncService {
+    /// SIMKL recommends throttling wake/startup activity checks to once every 15–30 minutes.
+    static let foregroundThrottleInterval: TimeInterval = 20 * 60
+
     private static var isApplyingRemote = false
 
     static var isApplyingRemoteChanges: Bool { isApplyingRemote }
@@ -48,12 +51,15 @@ enum SimklSyncService {
         try await applyEntries(anime.anime ?? [], media: .tvShow, summary: &summary, progress: progress, phase: String(localized: "Importing anime…"), requireTMDB: true)
 
         try await persistActivitiesSnapshot()
+        SettingsStore.shared.markSimklActivitiesChecked()
         finishLocalFlags()
         return summary
     }
 
     /// Phase 2 incremental pull. Call on foreground / manual Sync — never on a blind timer.
+    /// - Parameter ignoreThrottle: Manual Sync Now should pass `true`.
     static func incrementalSync(
+        ignoreThrottle: Bool = true,
         progress: (@MainActor (Progress) -> Void)? = nil
     ) async throws -> SimklImportSummary {
         guard SimklTokenStore.hasToken else { throw SimklError.notAuthenticated }
@@ -63,8 +69,20 @@ enum SimklSyncService {
             return try await fullImport(progress: progress)
         }
 
+        if !ignoreThrottle,
+           shouldSkipForegroundCheck(
+            lastCheck: settings.simklLastActivitiesCheckTimestamp,
+            now: Date().timeIntervalSince1970
+           ) {
+            var summary = SimklImportSummary()
+            summary.unchanged = true
+            return summary
+        }
+
         progress?(Progress(phase: String(localized: "Checking SIMKL…"), processed: 0, total: 0))
         let activities = try await SimklAPIClient.shared.fetchActivities()
+        settings.markSimklActivitiesChecked()
+
         guard let remoteAll = activities.all, !remoteAll.isEmpty else {
             throw SimklError.invalidResponse
         }
@@ -80,12 +98,20 @@ enum SimklSyncService {
         defer { isApplyingRemote = false }
 
         var summary = SimklImportSummary()
+        let wantEpisodes = needsEpisodeExtended(
+            activities: activities,
+            previousTVWatching: settings.simklTVWatching,
+            previousTVHold: settings.simklTVHold,
+            previousAnimeWatching: settings.simklAnimeWatching,
+            previousAnimeHold: settings.simklAnimeHold
+        )
+
         progress?(Progress(phase: String(localized: "Syncing changes…"), processed: 0, total: 0))
         let delta = try await SimklAPIClient.shared.fetchAllItems(
             dateFrom: settings.simklActivitiesAll,
-            extended: "full",
-            includeAllEpisodes: true,
-            episodeWatchedAt: true
+            extended: wantEpisodes ? "full" : nil,
+            includeAllEpisodes: wantEpisodes,
+            episodeWatchedAt: wantEpisodes
         )
 
         try await applyEntries(delta.movies ?? [], media: .movie, summary: &summary, progress: progress, phase: String(localized: "Syncing movies…"))
@@ -97,26 +123,56 @@ enum SimklSyncService {
             summary.removedOnSimkl = try await reconcileRemovalsWithoutDeleting(progress: progress)
         }
 
-        settings.simklActivitiesAll = remoteAll
-        settings.simklRemovedMovies = activities.movies?.removedFromList ?? ""
-        settings.simklRemovedShows = activities.tvShows?.removedFromList ?? ""
-        settings.simklRemovedAnime = activities.anime?.removedFromList ?? ""
+        persistActivityFields(activities, into: settings)
         finishLocalFlags()
         return summary
     }
 
-    /// Foreground-safe sync: incremental if seeded, otherwise no-op until user imports.
+    /// Foreground-safe sync: throttled activities check; never a blind timer.
     static func syncIfNeededOnForeground() async {
         guard Key.isSimklConfigured, SimklTokenStore.hasToken else { return }
         guard !SettingsStore.shared.simklActivitiesAll.isEmpty else { return }
         do {
-            _ = try await incrementalSync()
+            _ = try await incrementalSync(ignoreThrottle: false)
             if SettingsStore.shared.simklPushEnabled {
                 await SimklPushService.shared.flush()
             }
         } catch {
             AppLogger.network.error("SIMKL foreground sync failed: \(error.localizedDescription, privacy: .public)")
         }
+    }
+
+    // MARK: - Testable helpers
+
+    static func shouldSkipForegroundCheck(
+        lastCheck: TimeInterval,
+        now: TimeInterval,
+        interval: TimeInterval = foregroundThrottleInterval
+    ) -> Bool {
+        lastCheck > 0 && (now - lastCheck) < interval
+    }
+
+    /// Episode-level payload only when watching/hold buckets moved (or were never saved).
+    static func needsEpisodeExtended(
+        activities: SimklActivitiesResponse,
+        previousTVWatching: String,
+        previousTVHold: String,
+        previousAnimeWatching: String,
+        previousAnimeHold: String
+    ) -> Bool {
+        let tvWatching = activities.tvShows?.watching ?? ""
+        let tvHold = activities.tvShows?.hold ?? ""
+        let animeWatching = activities.anime?.watching ?? ""
+        let animeHold = activities.anime?.hold ?? ""
+
+        if previousTVWatching.isEmpty && previousTVHold.isEmpty
+            && previousAnimeWatching.isEmpty && previousAnimeHold.isEmpty {
+            return true
+        }
+        return tvWatching != previousTVWatching
+            || tvHold != previousTVHold
+            || animeWatching != previousAnimeWatching
+            || animeHold != previousAnimeHold
     }
 
     // MARK: - Private
@@ -150,11 +206,18 @@ enum SimklSyncService {
 
     private static func persistActivitiesSnapshot() async throws {
         let activities = try await SimklAPIClient.shared.fetchActivities()
-        let settings = SettingsStore.shared
+        persistActivityFields(activities, into: SettingsStore.shared)
+    }
+
+    private static func persistActivityFields(_ activities: SimklActivitiesResponse, into settings: SettingsStore) {
         settings.simklActivitiesAll = activities.all ?? ""
         settings.simklRemovedMovies = activities.movies?.removedFromList ?? ""
         settings.simklRemovedShows = activities.tvShows?.removedFromList ?? ""
         settings.simklRemovedAnime = activities.anime?.removedFromList ?? ""
+        settings.simklTVWatching = activities.tvShows?.watching ?? ""
+        settings.simklTVHold = activities.tvShows?.hold ?? ""
+        settings.simklAnimeWatching = activities.anime?.watching ?? ""
+        settings.simklAnimeHold = activities.anime?.hold ?? ""
     }
 
     private static func finishLocalFlags() {
