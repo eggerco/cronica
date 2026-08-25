@@ -315,6 +315,7 @@ final class CronicaTests: XCTestCase {
         XCTAssertEqual(list.sortedItems(by: .watchedDateAsc).map(\.itemTitle), ["Older", "Newer"])
     }
 
+    @MainActor
     func testSimklTimestampIsISO8601() {
         let date = Date(timeIntervalSince1970: 1_724_000_000)
         let stamp = SimklPushService.simklTimestamp(date)
@@ -854,6 +855,7 @@ final class CronicaTests: XCTestCase {
         XCTAssertEqual(deduped.first, .featured)
     }
 
+    @MainActor
     func testFeaturedItemFilterExcludesPeopleAndRequiresPoster() {
         let movie = ItemContent.examples.first!
         let filtered = HomeViewModel.filterFeaturedItems([movie])
@@ -866,7 +868,7 @@ final class CronicaTests: XCTestCase {
             runtime: nil, numberOfEpisodes: nil, numberOfSeasons: nil, voteCount: nil,
             popularity: 100, voteAverage: nil, productionCompanies: nil, productionCountries: nil,
             seasons: nil, genres: nil, credits: nil, recommendations: nil, releaseDates: nil,
-            mediaType: .movie, videos: nil, nextEpisodeToAir: nil, lastEpisodeToAir: nil,
+            mediaType: "movie", videos: nil, nextEpisodeToAir: nil, lastEpisodeToAir: nil,
             originalName: nil, firstAirDate: nil, homepage: nil, episodeRunTime: nil,
             placeholderImagePath: nil
         )
@@ -878,7 +880,7 @@ final class CronicaTests: XCTestCase {
             runtime: nil, numberOfEpisodes: nil, numberOfSeasons: nil, voteCount: nil,
             popularity: 50, voteAverage: nil, productionCompanies: nil, productionCountries: nil,
             seasons: nil, genres: nil, credits: nil, recommendations: nil, releaseDates: nil,
-            mediaType: .person, videos: nil, nextEpisodeToAir: nil, lastEpisodeToAir: nil,
+            mediaType: "person", videos: nil, nextEpisodeToAir: nil, lastEpisodeToAir: nil,
             originalName: nil, firstAirDate: nil, homepage: nil, episodeRunTime: nil,
             placeholderImagePath: nil
         )
