@@ -30,6 +30,7 @@ struct SettingsView: View {
             Section("Features") {
                 settingsNavigationLink(.homeCustomizer, title: String(localized: "Customize Home"), icon: "slider.horizontal.3", color: .cyan)
                 settingsNavigationLink(.watchlist, title: String(localized: "Watchlist"), icon: "rectangle.on.rectangle", color: AppThemeColors.goldenrod.color)
+                settingsNavigationLink(.watchStatistics, title: String(localized: "Watch Statistics"), icon: "chart.bar", color: .green)
                 settingsNavigationLink(.season, title: String(localized: "Season & Up Next"), icon: "tv", color: AppThemeColors.turquoiseBlue.color)
                 settingsNavigationLink(.region, title: String(localized: "Watch Provider"), icon: "globe", color: .purple)
                 settingsNavigationLink(.integrations, title: String(localized: "Integrations"), icon: "link", color: .indigo)
@@ -66,6 +67,11 @@ struct SettingsView: View {
 
             WatchlistSettingsView()
                 .tabItem { Label("Watchlist", systemImage: "rectangle.on.rectangle") }
+
+            NavigationStack {
+                WatchStatisticsView()
+            }
+            .tabItem { Label("Watch Statistics", systemImage: "chart.bar") }
             
             SeasonUpNextSettingsView()
                 .tabItem { Label("Season & Up Next", systemImage: "tv") }

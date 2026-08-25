@@ -62,7 +62,7 @@ struct WatchlistItemRowView: View {
                     }
                 }
                 .applyHoverEffect()
-                VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: 6) {
                     HStack {
                         Text(content.itemTitle)
                             .lineLimit(DrawingConstants.textLimit)

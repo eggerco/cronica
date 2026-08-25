@@ -32,7 +32,26 @@ public extension Person {
         return String(localized: "No biography available.", bundle: .main)
     }
     var personRole: String? {
-        job ?? character
+        let base = job ?? character
+        guard let base, !base.isEmpty else {
+            return isVoiceRole ? String(localized: "Voice", bundle: .main) : nil
+        }
+        if isVoiceRole, !base.localizedCaseInsensitiveContains("voice") {
+            let voice = String(localized: "Voice", bundle: .main)
+            return "\(voice) • \(base)"
+        }
+        return base
+    }
+    var isVoiceRole: Bool {
+        if let job, job.localizedCaseInsensitiveContains("voice") { return true }
+        if let character, character.localizedCaseInsensitiveContains("voice") { return true }
+        if let knownForDepartment,
+           knownForDepartment.localizedCaseInsensitiveContains("Actors")
+            || knownForDepartment.localizedCaseInsensitiveContains("Acting") {
+            // Animated / dub credits often use "(voice)" in the character field only.
+            if let character, character.localizedCaseInsensitiveContains("(voice)") { return true }
+        }
+        return false
     }
     var itemPopularity: Double {
         return popularity ?? 0.00
@@ -54,7 +73,7 @@ public extension Person {
     static var previewCast: Person {
         example.first ?? Person(
             adult: nil, id: 0, name: "Preview", job: nil, character: nil,
-            biography: nil, profilePath: nil, combinedCredits: nil, popularity: nil
+            biography: nil, profilePath: nil, knownForDepartment: nil, combinedCredits: nil, popularity: nil
         )
     }
 }

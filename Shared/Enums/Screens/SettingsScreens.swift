@@ -9,5 +9,5 @@ import Foundation
 
 enum SettingsScreens: String, CaseIterable, Identifiable {
     var id: String { rawValue }
-    case about, appearance, behavior, notifications, settings, feedback, region, watchlist, season, dataManagement, integrations, simkl, tmdbAccount, homeCustomizer
+    case about, appearance, behavior, notifications, settings, feedback, region, watchlist, season, dataManagement, integrations, simkl, tmdbAccount, homeCustomizer, watchStatistics
 }

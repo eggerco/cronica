@@ -46,24 +46,25 @@ struct DefaultWatchlist: View {
         }
     }
     private var smartFiltersItems: [WatchlistItem] {
+        let visible = sortedItems.filter { !$0.hideFromWatchlist }
         let base: [WatchlistItem]
         switch smartFilter {
         case .released:
-            base = sortedItems.filter { $0.isReleased }
+            base = visible.filter { $0.isReleased }
         case .production:
-            base = sortedItems.filter { $0.isInProduction || $0.isUpcoming }
+            base = visible.filter { $0.isInProduction || $0.isUpcoming }
         case .watching:
-            base = sortedItems.filter { $0.isCurrentlyWatching }
+            base = visible.filter { $0.isCurrentlyWatching }
         case .watched:
-            base = sortedItems.filter { $0.isWatched }
+            base = visible.filter { $0.isWatched }
         case .favorites:
-            base = sortedItems.filter { $0.isFavorite }
+            base = visible.filter { $0.isFavorite }
         case .pin:
-            base = sortedItems.filter { $0.isPin }
+            base = visible.filter { $0.isPin }
         case .archive:
-            base = sortedItems.filter { $0.isArchive }
+            base = visible.filter { $0.isArchive }
         case .notWatched:
-            base = sortedItems.filter { !$0.isCurrentlyWatching && !$0.isWatched && $0.isReleased }
+            base = visible.filter { !$0.isCurrentlyWatching && !$0.isWatched && $0.isReleased }
         }
         return mediaTypeFilter.apply(to: base)
     }
@@ -71,7 +72,7 @@ struct DefaultWatchlist: View {
         mediaTypeFilter.apply(to: filteredItems)
     }
     private var mediaTypeItems: [WatchlistItem] {
-        mediaTypeFilter.apply(to: sortedItems)
+        mediaTypeFilter.apply(to: sortedItems.filter { !$0.hideFromWatchlist })
     }
     private var listSectionTitle: String {
         if showAllItems {

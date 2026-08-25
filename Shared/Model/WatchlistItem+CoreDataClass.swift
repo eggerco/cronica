@@ -40,6 +40,8 @@ public class WatchlistItem: NSManagedObject, Codable {
             seasonNumberUpNext = try values.decode(Int64.self, forKey: .seasonNumberUpNext)
             displayOnUpNext = try values.decode(Bool.self, forKey: .displayOnUpNext)
             hideFromUpNext = try values.decodeIfPresent(Bool.self, forKey: .hideFromUpNext) ?? false
+            hideFromWatchlist = try values.decodeIfPresent(Bool.self, forKey: .hideFromWatchlist) ?? false
+            runtimeMinutes = try values.decodeIfPresent(Int64.self, forKey: .runtimeMinutes) ?? 0
             isPin = try values.decode(Bool.self, forKey: .isPin)
             lastEpisodeNumber = try values.decode(Int64.self, forKey: .lastEpisodeNumber)
             lastSelectedSeason = try values.decode(Int64.self, forKey: .lastSelectedSeason)
@@ -79,6 +81,8 @@ public class WatchlistItem: NSManagedObject, Codable {
         try values.encode(seasonNumberUpNext, forKey: .seasonNumberUpNext)
         try values.encode(displayOnUpNext, forKey: .displayOnUpNext)
         try values.encode(hideFromUpNext, forKey: .hideFromUpNext)
+        try values.encode(hideFromWatchlist, forKey: .hideFromWatchlist)
+        try values.encode(runtimeMinutes, forKey: .runtimeMinutes)
         try values.encode(isPin, forKey: .isPin)
         try values.encode(lastEpisodeNumber, forKey: .lastEpisodeNumber)
         try values.encode(lastSelectedSeason, forKey: .lastSelectedSeason)
@@ -96,7 +100,7 @@ public class WatchlistItem: NSManagedObject, Codable {
         case title, contentID, id, image, watchedEpisodes, watched, favorite, contentType,
              schedule, largeCardImage, largePosterImage, mediumPosterImage, shouldNotify,
              isArchive, nextEpisodeNumber, nextSeasonNumber, nextEpisodeNumberUpNext,
-             seasonNumberUpNext, displayOnUpNext, hideFromUpNext, isPin, lastEpisodeNumber, lastSelectedSeason,
+             seasonNumberUpNext, displayOnUpNext, hideFromUpNext, hideFromWatchlist, runtimeMinutes, isPin, lastEpisodeNumber, lastSelectedSeason,
              userNotes, userRating, isWatching, posterPath, backdropPath, firstAirDate, movieReleaseDate,
              numberOfEpisodes
     }

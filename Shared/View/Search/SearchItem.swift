@@ -35,7 +35,7 @@ struct SearchItem: View {
                     .hoverEffect()
 #endif
             }
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 6) {
                 HStack {
                     Text(item.itemTitle)
                         .lineLimit(DrawingConstants.textLimit)
@@ -120,7 +120,7 @@ struct ItemContentRow: View {
                     .hoverEffect()
 #endif
             }
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 6) {
                 HStack {
                     Text(item.itemTitle)
                         .lineLimit(DrawingConstants.textLimit)

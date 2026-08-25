@@ -20,6 +20,7 @@ public struct Person: Codable, Identifiable, Hashable, Transferable {
     public let id: Int
     public let name: String
     public let job, character, biography, profilePath: String?
+    public let knownForDepartment: String?
     public let combinedCredits: Filmography?
     public let popularity: Double?
 }

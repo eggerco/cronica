@@ -30,6 +30,8 @@ struct WatchlistItemBackup: Codable, Equatable {
     var seasonNumberUpNext: Int64
     var displayOnUpNext: Bool
     var hideFromUpNext: Bool
+    var hideFromWatchlist: Bool
+    var runtimeMinutes: Int64
     var isPin: Bool
     var lastEpisodeNumber: Int64
     var lastSelectedSeason: Int64
@@ -64,6 +66,8 @@ struct WatchlistItemBackup: Codable, Equatable {
         seasonNumberUpNext = item.seasonNumberUpNext
         displayOnUpNext = item.displayOnUpNext
         hideFromUpNext = item.hideFromUpNext
+        hideFromWatchlist = item.hideFromWatchlist
+        runtimeMinutes = item.runtimeMinutes
         isPin = item.isPin
         lastEpisodeNumber = item.lastEpisodeNumber
         lastSelectedSeason = item.lastSelectedSeason
@@ -100,6 +104,8 @@ struct WatchlistItemBackup: Codable, Equatable {
         seasonNumberUpNext = try values.decodeIfPresent(Int64.self, forKey: .seasonNumberUpNext) ?? 0
         displayOnUpNext = try values.decodeIfPresent(Bool.self, forKey: .displayOnUpNext) ?? false
         hideFromUpNext = try values.decodeIfPresent(Bool.self, forKey: .hideFromUpNext) ?? false
+        hideFromWatchlist = try values.decodeIfPresent(Bool.self, forKey: .hideFromWatchlist) ?? false
+        runtimeMinutes = try values.decodeIfPresent(Int64.self, forKey: .runtimeMinutes) ?? 0
         isPin = try values.decodeIfPresent(Bool.self, forKey: .isPin) ?? false
         lastEpisodeNumber = try values.decodeIfPresent(Int64.self, forKey: .lastEpisodeNumber) ?? 0
         lastSelectedSeason = try values.decodeIfPresent(Int64.self, forKey: .lastSelectedSeason) ?? 0
@@ -137,6 +143,8 @@ extension WatchlistItem {
         seasonNumberUpNext = backup.seasonNumberUpNext
         displayOnUpNext = backup.displayOnUpNext
         hideFromUpNext = backup.hideFromUpNext
+        hideFromWatchlist = backup.hideFromWatchlist
+        runtimeMinutes = backup.runtimeMinutes
         isPin = backup.isPin
         lastEpisodeNumber = backup.lastEpisodeNumber
         lastSelectedSeason = backup.lastSelectedSeason

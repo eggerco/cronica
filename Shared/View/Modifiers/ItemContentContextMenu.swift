@@ -23,6 +23,7 @@ struct ItemContentContextMenu: ViewModifier {
     @State private var showRemoveConfirmation = false
     @State private var isNotificationsMuted = false
     @State private var isHiddenFromUpNext = false
+    @State private var isHiddenFromWatchlist = false
 	func body(content: Content) -> some View {
 #if !os(watchOS)
 		return content
@@ -46,6 +47,7 @@ struct ItemContentContextMenu: ViewModifier {
 					} label: {
 						Label("Review", systemImage: "note.text")
 					}
+                    HideFromWatchlistButton(id: item.itemContentID, isHidden: $isHiddenFromWatchlist)
                     if item.itemContentMedia == .tvShow {
                         HideFromUpNextButton(id: item.itemContentID, isHidden: $isHiddenFromUpNext)
                     }
@@ -70,6 +72,7 @@ struct ItemContentContextMenu: ViewModifier {
             .onAppear {
                 isNotificationsMuted = context.areNotificationsMuted(id: item.itemContentID)
                 isHiddenFromUpNext = context.isHiddenFromUpNext(id: item.itemContentID)
+                isHiddenFromWatchlist = context.isHiddenFromWatchlist(id: item.itemContentID)
             }
 #if !os(tvOS)
 			.swipeActions(edge: .leading, allowsFullSwipe: settings.allowFullSwipe) {
@@ -117,6 +120,12 @@ struct ItemContentContextMenu: ViewModifier {
 			context.save(item)
 			let content = context.fetch(for: item.itemContentID)
 			guard let content else { return }
+            if !content.isWatched && !content.isReleasedForWatching {
+                await MainActor.run {
+                    withAnimation { isInWatchlist = true }
+                }
+                return
+            }
 			context.updateWatched(for: content)
 			DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
 				withAnimation {

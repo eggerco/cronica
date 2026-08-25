@@ -51,6 +51,7 @@ extension PersistenceController {
                 }
 			}
             item.formattedDate = content.itemTheatricalString
+            item.runtimeMinutes = content.itemRuntimeMinutes
             save()
 #if !os(watchOS)
             if let saved = fetch(for: content.itemContentID) {
@@ -152,6 +153,10 @@ extension PersistenceController {
 						item.date = date
 					}
 				}
+            }
+            let runtime = content.itemRuntimeMinutes
+            if runtime > 0, item.runtimeMinutes != runtime {
+                item.runtimeMinutes = runtime
             }
             if item.hasChanges && item.isReleasedMovie {
                 item.lastValuesUpdated = Date()
@@ -433,6 +438,18 @@ extension PersistenceController {
     func isHiddenFromUpNext(id: String) -> Bool {
         guard let item = fetch(for: id) else { return false }
         return item.hideFromUpNext
+    }
+
+    /// Hide from main Watchlist lists without removing the item (still reachable from detail/search/settings).
+    func updateHideFromWatchlist(for item: WatchlistItem, hidden: Bool? = nil) {
+        let nextValue = hidden ?? !item.hideFromWatchlist
+        item.hideFromWatchlist = nextValue
+        save()
+    }
+
+    func isHiddenFromWatchlist(id: String) -> Bool {
+        guard let item = fetch(for: id) else { return false }
+        return item.hideFromWatchlist
     }
 
     /// Mute or unmute per-title notifications. Unmute does not backfill past notifications.

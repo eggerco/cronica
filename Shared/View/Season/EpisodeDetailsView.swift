@@ -132,6 +132,9 @@ struct EpisodeDetailsView: View {
         }
 #if os(iOS)
         .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                ShareLink(item: episode.itemURL(showID: show))
+            }
             if horizontalSizeClass == .compact {
                 ToolbarItem(placement: .topBarTrailing) {
                     if let showItem {
@@ -144,6 +147,12 @@ struct EpisodeDetailsView: View {
         }
         .navigationBarTitleDisplayMode(.large)
         .navigationTitle(Text(String()))
+#elseif os(macOS)
+        .toolbar {
+            ToolbarItem {
+                ShareLink(item: episode.itemURL(showID: show))
+            }
+        }
 #endif
     }
 #endif

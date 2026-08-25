@@ -27,6 +27,7 @@ class ItemContentViewModel: ObservableObject {
     @Published private(set) var isPin = false
     @Published private(set) var isNotificationsMuted = false
     @Published private(set) var isHiddenFromUpNext = false
+    @Published private(set) var isHiddenFromWatchlist = false
     @Published private(set) var isLoading = true
     @Published private(set) var showMarkAsButton = false
     @Published private(set) var isItemAddedToAnyList = false
@@ -56,6 +57,7 @@ class ItemContentViewModel: ObservableObject {
                         isPin = persistence.isItemPinned(id: content.itemContentID)
                         isNotificationsMuted = persistence.areNotificationsMuted(id: content.itemContentID)
                         isHiddenFromUpNext = persistence.isHiddenFromUpNext(id: content.itemContentID)
+                        isHiddenFromWatchlist = persistence.isHiddenFromWatchlist(id: content.itemContentID)
                         isItemAddedToAnyList = persistence.isItemAddedToAnyList(content.itemContentID)
                     }
                     isNotificationAvailable = content.itemCanNotify
@@ -212,7 +214,7 @@ class ItemContentViewModel: ObservableObject {
         guard let item = persistence.fetch(for: content.itemContentID) else { return }
         switch property {
         case .watched:
-            updateWatched(resetEpisodeProgress: true)
+            _ = updateWatched(resetEpisodeProgress: true)
         case .favorite:
             persistence.updateFavorite(for: item)
             withAnimation { isFavorite.toggle() }
@@ -225,14 +227,20 @@ class ItemContentViewModel: ObservableObject {
         }
     }
 
-    func updateWatched(resetEpisodeProgress: Bool) {
-        guard let content else { return }
+    /// Returns `false` when marking watched is blocked because the title is unreleased.
+    @discardableResult
+    func updateWatched(resetEpisodeProgress: Bool) -> Bool {
+        guard let content else { return false }
         if !isInWatchlist { updateWatchlist(with: content) }
-        guard let item = persistence.fetch(for: content.itemContentID) else { return }
+        guard let item = persistence.fetch(for: content.itemContentID) else { return false }
+        if !item.isWatched && !item.isReleasedForWatching {
+            return false
+        }
         persistence.updateWatched(for: item)
         withAnimation { isWatched.toggle() }
         refreshWatchedDate()
         Task { await updateSeasons(resetEpisodeProgress: resetEpisodeProgress) }
+        return true
     }
 
     func toggleNotificationsMuted() {
@@ -252,6 +260,15 @@ class ItemContentViewModel: ObservableObject {
         let willHide = !isHiddenFromUpNext
         persistence.updateHideFromUpNext(for: item, hidden: willHide)
         withAnimation { isHiddenFromUpNext = willHide }
+    }
+
+    func toggleHideFromWatchlist() {
+        guard let content else { return }
+        if !isInWatchlist { updateWatchlist(with: content) }
+        guard let item = persistence.fetch(for: content.itemContentID) else { return }
+        let willHide = !isHiddenFromWatchlist
+        persistence.updateHideFromWatchlist(for: item, hidden: willHide)
+        withAnimation { isHiddenFromWatchlist = willHide }
     }
     
     private func updateSeasons(resetEpisodeProgress: Bool = true) async {

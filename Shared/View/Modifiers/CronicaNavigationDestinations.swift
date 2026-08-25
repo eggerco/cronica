@@ -97,6 +97,7 @@ extension View {
                 case .region: WatchProviderSettings()
                 case .settings: SettingsView()
                 case .watchlist: WatchlistSettingsView()
+                case .watchStatistics: WatchStatisticsView()
                 case .season: SeasonUpNextSettingsView()
                 case .dataManagement: DataManagementSettingsView()
                 case .integrations: IntegrationsSettingsView()

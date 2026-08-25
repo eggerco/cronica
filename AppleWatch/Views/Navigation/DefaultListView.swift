@@ -34,25 +34,26 @@ struct DefaultListView: View {
 		}
 	}
 	private var smartFiltersItems: [WatchlistItem] {
+		let visible = sortedItems.filter { !$0.hideFromWatchlist }
 		switch selectedOrder {
 		case .released:
-			return sortedItems.filter { $0.isReleased }
+			return visible.filter { $0.isReleased }
 		case .production:
-			return sortedItems.filter { $0.isInProduction || $0.isUpcoming }
+			return visible.filter { $0.isInProduction || $0.isUpcoming }
 		case .watching:
-			return sortedItems.filter { $0.isCurrentlyWatching }
+			return visible.filter { $0.isCurrentlyWatching }
 		case .watched:
-			return sortedItems.filter { $0.isWatched }
+			return visible.filter { $0.isWatched }
 		case .favorites:
-			return sortedItems.filter { $0.isFavorite }
+			return visible.filter { $0.isFavorite }
 		case .pin:
-			return sortedItems.filter { $0.isPin }
+			return visible.filter { $0.isPin }
 		case .archive:
-			return sortedItems.filter { $0.isArchive }
+			return visible.filter { $0.isArchive }
 		case .notWatched:
-			return sortedItems.filter { !$0.isCurrentlyWatching && !$0.isWatched && $0.isReleased }
+			return visible.filter { !$0.isCurrentlyWatching && !$0.isWatched && $0.isReleased }
 		case .none:
-			return sortedItems.filter { $0.isReleased }
+			return visible.filter { $0.isReleased }
 		}
 	}
     var body: some View {

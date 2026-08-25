@@ -172,7 +172,7 @@ extension WatchlistItem {
 		}
 		return false
 	}
-	private var isReleasedTvShow: Bool {
+	var isReleasedTvShow: Bool {
 		if itemMedia == .tvShow {
 			if itemSchedule == .ended { return true }
 			if itemSchedule == .released { return true }
@@ -184,6 +184,14 @@ extension WatchlistItem {
 			if itemSchedule == .renewed && nextSeasonNumber != 1 { return true }
 		}
 		return false
+	}
+	/// Schedule/date-based release check used when deciding if watch can be marked (ignores archive).
+	var isReleasedForWatching: Bool {
+		if isMovie { return isReleasedMovie }
+		return isReleasedTvShow
+	}
+	var isHiddenFromWatchlist: Bool {
+		hideFromWatchlist
 	}
 	private var isUpcomingMovie: Bool {
 		if itemMedia == .movie {

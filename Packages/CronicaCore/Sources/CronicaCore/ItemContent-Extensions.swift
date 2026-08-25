@@ -81,6 +81,18 @@ public extension ItemContent {
         if runtime > 0 { return runtime.convertToLongRuntime() }
         return nil
     }
+    /// Minutes used for local watch-time estimates (movie runtime, or TV episode average/first).
+    var itemRuntimeMinutes: Int64 {
+        if itemContentMedia == .movie {
+            guard let runtime, runtime > 0 else { return 0 }
+            return Int64(runtime)
+        }
+        guard let times = episodeRunTime, !times.isEmpty else { return 0 }
+        let positive = times.filter { $0 > 0 }
+        guard !positive.isEmpty else { return 0 }
+        let average = positive.reduce(0, +) / positive.count
+        return Int64(average)
+    }
     var itemContentID: String {
         return "\(id)@\(itemContentMedia.toInt)"
     }

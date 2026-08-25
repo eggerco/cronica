@@ -87,4 +87,10 @@ extension Episode {
 	var itemNotificationID: String {
 		return "\(id)@\(MediaType.tvShow.toInt)"
 	}
+
+    /// Plain TMDB episode page URL for ShareLink (not story-style share).
+    func itemURL(showID: Int) -> URL {
+        URL(string: "https://www.themoviedb.org/tv/\(showID)/season/\(itemSeasonNumber)/episode/\(itemEpisodeNumber)")
+            ?? URL(string: "https://www.themoviedb.org")!
+    }
 }

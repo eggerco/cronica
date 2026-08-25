@@ -55,7 +55,7 @@ struct ItemContentRowView: View {
 					   height: DrawingConstants.imageHeight)
 				.clipShape(RoundedRectangle(cornerRadius: DrawingConstants.imageRadius))
                 .shadow(color: .black.opacity(0.2), radius: 2.5, x: 0, y: 2.5)
-				VStack(alignment: .leading) {
+				VStack(alignment: .leading, spacing: 6) {
                     Text(item.itemTitle)
                         .lineLimit(DrawingConstants.textLimit)
                         .fontWeight(.medium)

@@ -125,6 +125,12 @@ struct SearchItemContentContextMenu: ViewModifier {
             context.save(item)
             let content = context.fetch(for: item.itemContentID)
             guard let content else { return }
+            if !content.isWatched && !content.isReleasedForWatching {
+                await MainActor.run {
+                    withAnimation { isInWatchlist = true }
+                }
+                return
+            }
             context.updateWatched(for: content)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 withAnimation {

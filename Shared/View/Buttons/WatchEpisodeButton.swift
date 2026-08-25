@@ -15,6 +15,7 @@ struct WatchEpisodeButton: View {
     private let persistence = PersistenceController.shared
     private let network = NetworkService.shared
     @State private var isItemSaved = false
+    @State private var showNotReleasedAlert = false
     var body: some View {
         Button(action: update) {
 #if !os(macOS)
@@ -44,11 +45,20 @@ struct WatchEpisodeButton: View {
 #elseif os(watchOS)
         .padding(.horizontal)
 #endif
+        .alert("Not Released Yet", isPresented: $showNotReleasedAlert) {
+            Button("OK", role: .cancel) { }
+        } message: {
+            Text("You can mark this episode as watched after it has aired.")
+        }
     }
 }
 
 extension WatchEpisodeButton {
     private func update() {
+        if !isWatched && !episode.isItemReleased {
+            showNotReleasedAlert = true
+            return
+        }
         checkIfItemIsSaved()
         if !isItemSaved {
             Task {

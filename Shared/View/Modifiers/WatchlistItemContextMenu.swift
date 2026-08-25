@@ -23,6 +23,7 @@ struct WatchlistItemContextMenu: ViewModifier {
     @State private var showDeleteConfirmation = false
     @State private var isNotificationsMuted = false
     @State private var isHiddenFromUpNext = false
+    @State private var isHiddenFromWatchlist = false
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \CustomList.isPin, ascending: false),
                                     NSSortDescriptor(keyPath: \CustomList.title, ascending: true)],
                   animation: .default) private var lists: FetchedResults<CustomList>
@@ -37,6 +38,7 @@ struct WatchlistItemContextMenu: ViewModifier {
                 pinButton
                 customListButton
                 archiveButton
+                HideFromWatchlistButton(id: item.itemContentID, isHidden: $isHiddenFromWatchlist)
                 Divider()
                 deleteButton
             }
@@ -45,6 +47,7 @@ struct WatchlistItemContextMenu: ViewModifier {
             } message: {
                 Text("Remove \(item.itemTitle) from your Watchlist?")
             }
+            .onAppear { refreshMuteAndHideState() }
 #elseif os(visionOS)
         content
             .swipeActions(edge: .leading, allowsFullSwipe: settings.allowFullSwipe) {
@@ -63,6 +66,7 @@ struct WatchlistItemContextMenu: ViewModifier {
                 archiveButton
                 customListButton
                 reviewButton
+                HideFromWatchlistButton(id: item.itemContentID, isHidden: $isHiddenFromWatchlist)
                 if item.isTvShow {
                     HideFromUpNextButton(id: item.itemContentID, isHidden: $isHiddenFromUpNext)
                 }
@@ -85,6 +89,7 @@ struct WatchlistItemContextMenu: ViewModifier {
             .swipeActions(edge: .trailing, allowsFullSwipe: settings.allowFullSwipe) {
                 primaryRightSwipeActions
                 secondaryRightSwipeActions
+                hideSwipeAction
             }
             .contextMenu {
                 share
@@ -94,6 +99,7 @@ struct WatchlistItemContextMenu: ViewModifier {
                 archiveButton
                 customListButton
                 reviewButton
+                HideFromWatchlistButton(id: item.itemContentID, isHidden: $isHiddenFromWatchlist)
                 if item.isTvShow {
                     HideFromUpNextButton(id: item.itemContentID, isHidden: $isHiddenFromUpNext)
                 }
@@ -117,6 +123,7 @@ struct WatchlistItemContextMenu: ViewModifier {
     private func refreshMuteAndHideState() {
         isNotificationsMuted = !item.shouldNotify
         isHiddenFromUpNext = item.hideFromUpNext
+        isHiddenFromWatchlist = item.hideFromWatchlist
     }
     
     private var watchedButton: some View {
@@ -145,6 +152,11 @@ struct WatchlistItemContextMenu: ViewModifier {
                       isArchive: $isArchive,
                       popupType: $popupType,
                       showPopup: $showPopup)
+    }
+
+    private var hideSwipeAction: some View {
+        HideFromWatchlistButton(id: item.itemContentID, isHidden: $isHiddenFromWatchlist)
+            .tint(.gray)
     }
     
 #if !os(watchOS)

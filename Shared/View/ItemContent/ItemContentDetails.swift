@@ -28,6 +28,7 @@ struct ItemContentDetails: View {
     @State private var animationImage = ""
     @State private var showConfirmationPopup = false
     @State private var showUnwatchConfirmation = false
+    @State private var showNotReleasedAlert = false
     
     // MARK: View properties for sizeBasedPadMacView
     @State private var isSideInfoPanelShowed = false
@@ -135,6 +136,11 @@ struct ItemContentDetails: View {
             Button("Cancel", role: .cancel) { }
         } message: {
             Text("Marking this series as unwatched can clear watched episodes. Choose whether to reset progress or keep it.")
+        }
+        .alert("Not Released Yet", isPresented: $showNotReleasedAlert) {
+            Button("OK", role: .cancel) { }
+        } message: {
+            Text("You can mark this as watched after it has been released.")
         }
         .sheet(isPresented: $showCustomList) {
             if let contentID = viewModel.content?.itemContentID {
@@ -812,7 +818,10 @@ extension ItemContentDetails {
             showUnwatchConfirmation = true
             return
         }
-        viewModel.update(.watched)
+        guard viewModel.updateWatched(resetEpisodeProgress: true) else {
+            showNotReleasedAlert = true
+            return
+        }
         resetPopupAnimation()
         animatePopup(for: viewModel.isWatched ? .markedWatched : .removedWatched)
     }
@@ -973,6 +982,14 @@ extension ItemContentDetails {
             }
         }
     }
+
+    @ViewBuilder
+    private var hideFromWatchlistToolbar: some View {
+        Button(viewModel.isHiddenFromWatchlist ? "Unhide from Watchlist" : "Hide from Watchlist",
+               systemImage: viewModel.isHiddenFromWatchlist ? "eye" : "eye.slash") {
+            viewModel.toggleHideFromWatchlist()
+        }
+    }
     
     @ViewBuilder
     private var shareButton: some View {
@@ -1023,6 +1040,7 @@ extension ItemContentDetails {
                 .disabled(!viewModel.isInWatchlist)
             if viewModel.isInWatchlist {
                 muteNotificationsToolbar
+                hideFromWatchlistToolbar
                 hideFromUpNextToolbar
             }
             openInMenu
@@ -1044,6 +1062,7 @@ extension ItemContentDetails {
                 pinButtonToolbar
                 reviewButtonToolbar
                 muteNotificationsToolbar
+                hideFromWatchlistToolbar
                 hideFromUpNextToolbar
             }
             openInMenu
@@ -1059,10 +1078,12 @@ extension ItemContentDetails {
                     pinButtonToolbar
                     reviewButtonToolbar
                     muteNotificationsToolbar
+                    hideFromWatchlistToolbar
                     hideFromUpNextToolbar
                 }
             } else if viewModel.isInWatchlist {
                 muteNotificationsToolbar
+                hideFromWatchlistToolbar
                 hideFromUpNextToolbar
             }
             openInMenu

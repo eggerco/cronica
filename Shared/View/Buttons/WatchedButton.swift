@@ -14,6 +14,7 @@ struct WatchedButton: View {
     @Binding var showPopup: Bool
     private let persistence = PersistenceController.shared
     @State private var showUnwatchConfirmation = false
+    @State private var showNotReleasedAlert = false
     var body: some View {
         Button(isWatched ? "Unwatched" : "Watched",
                systemImage: isWatched ? "rectangle.badge.checkmark.fill" : "rectangle.badge.checkmark") {
@@ -32,12 +33,21 @@ struct WatchedButton: View {
         } message: {
             Text("Marking this series as unwatched can clear watched episodes. Choose whether to reset progress or keep it.")
         }
+        .alert("Not Released Yet", isPresented: $showNotReleasedAlert) {
+            Button("OK", role: .cancel) { }
+        } message: {
+            Text("You can mark this as watched after it has been released.")
+        }
     }
 }
 
 extension WatchedButton {
     private func requestUpdateWatched() {
         guard let item = persistence.fetch(for: id) else { return }
+        if !item.isWatched && !item.isReleasedForWatching {
+            showNotReleasedAlert = true
+            return
+        }
         if item.isTvShow && item.isWatched && item.hasStartedWatching {
             showUnwatchConfirmation = true
             return

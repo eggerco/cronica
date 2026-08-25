@@ -798,6 +798,43 @@ final class CronicaTests: XCTestCase {
         XCTAssertFalse(persistence.areNotificationsMuted(id: item.itemContentID))
     }
 
+    func testHideFromWatchlistPersistsSeparatelyFromArchive() {
+        let item = requireItem(for: ItemContent.examples[0].itemContentID)
+        item.hideFromWatchlist = false
+        item.isArchive = false
+        persistence.save()
+
+        persistence.updateHideFromWatchlist(for: item, hidden: true)
+        XCTAssertTrue(item.hideFromWatchlist)
+        XCTAssertFalse(item.isArchive)
+        XCTAssertTrue(persistence.isHiddenFromWatchlist(id: item.itemContentID))
+
+        persistence.updateHideFromWatchlist(for: item, hidden: false)
+        XCTAssertFalse(item.hideFromWatchlist)
+    }
+
+    func testSaveStoresRuntimeMinutesFromItemContent() {
+        let example = ItemContent.examples[0]
+        persistence.save(example)
+        let item = requireItem(for: example.itemContentID)
+        XCTAssertEqual(item.runtimeMinutes, example.itemRuntimeMinutes)
+    }
+
+    func testWatchStatisticsCountsWatchedAndEstimatesMovieMinutes() {
+        let movie = requireItem(for: ItemContent.examples[0].itemContentID)
+        movie.watched = true
+        movie.watchedDate = Date()
+        movie.runtimeMinutes = 120
+        movie.contentType = MediaType.movie.toInt
+        persistence.save()
+
+        let stats = WatchStatistics.compute(from: [movie])
+        XCTAssertEqual(stats.watchedCount, 1)
+        XCTAssertEqual(stats.estimatedMinutes, 120)
+        XCTAssertEqual(stats.watchedLast7Days, 1)
+        XCTAssertEqual(stats.watchedLast30Days, 1)
+    }
+
     func testRemoveWatchedEpisodesClearsProgress() {
         let item = requireItem(for: ItemContent.examples[0].itemContentID)
         item.contentType = MediaType.tvShow.toInt
