@@ -12,17 +12,17 @@ public extension ItemContent {
     var itemTitle: String {
         if let title { return title }
         if let name { return name }
-        return NSLocalizedString("Not Available", comment: "")
+        return String(localized: "Not Available", bundle: .main)
     }
     var itemOverview: String {
         if let overview {
             if overview.isEmpty {
-                return NSLocalizedString("No information available.", comment: "")
+                return String(localized: "No information available.", bundle: .main)
             } else {
                 return overview
             }
         }
-        return NSLocalizedString("No information available.", comment: "")
+        return String(localized: "No information available.", bundle: .main)
     }
     var itemGenre: String {
         if let genre = genres?.first?.name { return genre }
@@ -42,7 +42,7 @@ public extension ItemContent {
     }
     var itemCountry: String {
         if let country = productionCountries?.first?.name { return country }
-        return NSLocalizedString("Not Available", comment: "")
+        return String(localized: "Not Available", bundle: .main)
     }
     var itemCompany: String {
         if let productionCompanies {
@@ -57,7 +57,7 @@ public extension ItemContent {
         if let company = productionCompanies?.first?.name {
             return company
         }
-        return NSLocalizedString("Not Available", comment: "")
+        return String(localized: "Not Available", bundle: .main)
     }
     var itemRuntime: String? {
         if let runtime {

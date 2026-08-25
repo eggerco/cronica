@@ -12,17 +12,17 @@ extension SearchItemContent {
 	var itemTitle: String {
 		if let title { return title }
 		if let name { return name }
-		return NSLocalizedString("Not Available", comment: "")
+		return String(localized: "Not Available")
 	}
 	var itemOverview: String {
 		if let overview {
 			if overview.isEmpty {
-				return NSLocalizedString("No information available.", comment: "")
+				return String(localized: "No information available.")
 			} else {
 				return overview
 			}
 		}
-		return NSLocalizedString("No information available.", comment: "")
+		return String(localized: "No information available.")
 	}
 	var itemContentID: String {
 		return "\(id)@\(itemContentMedia.toInt)"

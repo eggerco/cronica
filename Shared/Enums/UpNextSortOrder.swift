@@ -12,9 +12,9 @@ enum UpNextSortOrder: String, Identifiable, CaseIterable {
     var localizableName: String {
         switch self {
         case .recentActivity:
-            NSLocalizedString("Recent Activity", comment: "Up Next sort order")
+            String(localized: "Recent Activity")
         case .watchProgress:
-            NSLocalizedString("Watch Progress", comment: "Up Next sort order")
+            String(localized: "Watch Progress")
         }
     }
 }

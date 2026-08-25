@@ -131,7 +131,7 @@ public extension Genre {
         return false
     }
     public var itemTitle: String {
-        name ?? NSLocalizedString("Not Found", comment: "")
+        name ?? String(localized: "Not Found", bundle: .main)
     }
 }
 

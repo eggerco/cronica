@@ -34,7 +34,7 @@ struct WatchlistCardSection: View {
                         .onDelete(perform: delete)
                     } header: {
                         HStack(alignment: .firstTextBaseline) {
-                            Text(NSLocalizedString(title, comment: ""))
+                            Text(title)
                                 .foregroundColor(.secondary)
                                 .font(.footnote)
                             Spacer()

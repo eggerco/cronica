@@ -19,7 +19,7 @@ struct WatchlistSectionView: View {
                     WatchlistItemRowView(content: item, showPopup: $showPopup, popupType: $popupType)
                 }
             } header: {
-                Text(NSLocalizedString(title, comment: ""))
+                Text(title)
             }
         } else {
             ContentUnavailableView("No results", systemImage: "rectangle.on.rectangle")

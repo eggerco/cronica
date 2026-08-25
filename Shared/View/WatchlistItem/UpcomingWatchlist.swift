@@ -48,8 +48,8 @@ struct UpcomingWatchlist: View {
 #if !os(tvOS) && !os(visionOS)
                 HStack(alignment: .center) {
                     NavigationLink(value: items) {
-                        TitleView(title: NSLocalizedString("Upcoming", comment: ""),
-                                  subtitle: NSLocalizedString("From Watchlist", comment: ""),
+                        TitleView(title: String(localized: "Upcoming"),
+                                  subtitle: String(localized: "From Watchlist"),
                                   showChevron: items.count > 4 ? true : false)
                     }
                     .buttonStyle(.plain)
@@ -66,8 +66,8 @@ struct UpcomingWatchlist: View {
 #endif
                 }
 #else
-                TitleView(title: NSLocalizedString("Upcoming", comment: ""),
-                          subtitle: NSLocalizedString("From Watchlist", comment: ""),
+                TitleView(title: String(localized: "Upcoming"),
+                          subtitle: String(localized: "From Watchlist"),
                           showChevron: false)
 #if os(tvOS)
                 .padding(.leading, 64)

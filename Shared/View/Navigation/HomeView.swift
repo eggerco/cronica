@@ -38,8 +38,8 @@ struct HomeView: View {
                 PinItemsList(showPopup: $showPopup, popupType: $popupType, shouldReload: $reloadHome)
                 HorizontalPinnedList(showPopup: $showPopup, popupType: $popupType, shouldReload: $reloadHome)
                 HorizontalItemContentListView(items: viewModel.trending,
-                                              title: NSLocalizedString("Trending", comment: ""),
-                                              subtitle: NSLocalizedString("Today", comment: ""),
+                                              title: String(localized: "Trending"),
+                                              subtitle: String(localized: "Today"),
                                               showPopup: $showPopup,
                                               popupType: $popupType)
                 ForEach(viewModel.sections) { section in

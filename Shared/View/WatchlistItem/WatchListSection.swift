@@ -42,7 +42,7 @@ struct WatchListSection: View {
                 .onDelete(perform: delete)
             } header: {
                 HStack {
-                    Text(NSLocalizedString(title, comment: ""))
+                    Text(title)
                     Spacer()
                     Text("\(items.count) items")
                 }

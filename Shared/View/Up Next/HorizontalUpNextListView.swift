@@ -89,7 +89,7 @@ struct HorizontalUpNextListView: View {
                                                     Text(item.showTitle)
                                                         .font(.caption)
                                                         .lineLimit(1)
-                                                    Text(String(format: NSLocalizedString("S%d, E%d", comment: ""), item.episode.itemSeasonNumber, item.episode.itemEpisodeNumber))
+                                                    Text(String(format: String(localized: "S%d, E%d"), item.episode.itemSeasonNumber, item.episode.itemEpisodeNumber))
                                                         .font(.caption)
                                                         .foregroundColor(.secondary)
                                                         .lineLimit(1)
@@ -277,7 +277,7 @@ private struct UpNextCard: View {
                                             .foregroundColor(.white)
                                             .fontWeight(.semibold)
                                             .lineLimit(1)
-                                        Text(String(format: NSLocalizedString("S%d, E%d", comment: ""), item.episode.itemSeasonNumber, item.episode.itemEpisodeNumber))
+                                        Text(String(format: String(localized: "S%d, E%d"), item.episode.itemSeasonNumber, item.episode.itemEpisodeNumber))
                                             .font(.caption)
                                             .fontWeight(.medium)
                                             .foregroundColor(.white.opacity(0.8))
@@ -318,7 +318,7 @@ private struct UpNextCard: View {
             }
             .frame(width: DrawingConstants.imageWidth)
             HStack {
-                Text(String(format: NSLocalizedString("S%d, E%d", comment: ""), item.episode.itemSeasonNumber, item.episode.itemEpisodeNumber))
+                Text(String(format: String(localized: "S%d, E%d"), item.episode.itemSeasonNumber, item.episode.itemEpisodeNumber))
                     .font(.caption)
                     .foregroundColor(.secondary)
                     .lineLimit(1)

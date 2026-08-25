@@ -169,7 +169,7 @@ public struct WatchProviderContent: Codable, Hashable {
 
 public extension WatchProviderContent {
     public var providerTitle: String {
-        providerName ?? NSLocalizedString("Not Available", comment: "")
+        providerName ?? String(localized: "Not Available", bundle: .main)
     }
     public var itemId: Int {
         providerId ?? 1000

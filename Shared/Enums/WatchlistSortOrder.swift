@@ -13,12 +13,12 @@ enum WatchlistSortOrder: String, Identifiable, CaseIterable {
     
     var localizableName: String {
         switch self {
-        case .titleAsc: NSLocalizedString("Title (Asc)", comment: "")
-        case .titleDesc: NSLocalizedString("Title (Desc)", comment: "")
-        case .dateAsc: NSLocalizedString("Date (Asc)", comment: "")
-        case .dateDesc: NSLocalizedString("Date (Desc)", comment: "")
-        case .ratingAsc: NSLocalizedString("Rating (Asc)", comment: "")
-        case .ratingDesc: NSLocalizedString("Rating (Desc)", comment: "")
+        case .titleAsc: String(localized: "Title (Asc)")
+        case .titleDesc: String(localized: "Title (Desc)")
+        case .dateAsc: String(localized: "Date (Asc)")
+        case .dateDesc: String(localized: "Date (Desc)")
+        case .ratingAsc: String(localized: "Rating (Asc)")
+        case .ratingDesc: String(localized: "Rating (Desc)")
         }
     }
 }

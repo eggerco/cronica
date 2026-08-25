@@ -10,10 +10,10 @@ import CoreData
 
 extension WatchlistItem {
 	var itemTitle: String {
-		title ?? NSLocalizedString("No title available", comment: "")
+		title ?? String(localized: "No title available")
 	}
 	var itemOriginalTitle: String {
-		originalTitle ?? NSLocalizedString("No title available", comment: "")
+		originalTitle ?? String(localized: "No title available")
 	}
 	var itemLastUpdateDate: Date {
 		lastValuesUpdated ?? Date.distantPast
@@ -40,7 +40,7 @@ extension WatchlistItem {
 	var watchProgressLabel: String? {
 		guard watchProgress > 0 else { return nil }
 		let percent = Int((watchProgress * 100).rounded())
-		return String(format: NSLocalizedString("%d%% watched", comment: "TV show watch progress in Up Next"), percent)
+		return String(format: String(localized: "%d%% watched"), percent)
 	}
 	var itemReleaseDate: Date {
 		itemDate ?? Date.distantPast
@@ -103,7 +103,7 @@ extension WatchlistItem {
 #if os(watchOS)
 				return itemDateForNextSeason
 #else
-				let season = NSLocalizedString("Season", comment: "")
+				let season = String(localized: "Season")
 				return "\(season) \(nextSeasonNumber) • \(itemDateForNextSeason)"
 #endif
 			}

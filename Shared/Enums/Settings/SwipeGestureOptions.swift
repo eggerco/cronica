@@ -12,12 +12,12 @@ enum SwipeGestureOptions: String, CaseIterable, Identifiable {
     case markWatch, markFavorite, markPin, markArchive, delete, share
     var localizableName: String {
         switch self {
-        case .markWatch: NSLocalizedString("Watch", comment: "")
-        case .markFavorite: NSLocalizedString("Favorite", comment: "")
-        case .markPin: NSLocalizedString("Pin", comment: "")
-        case .markArchive: NSLocalizedString("Archive", comment: "")
-        case .delete: NSLocalizedString("Remove", comment: "")
-        case .share: NSLocalizedString("Share", comment: "")
+        case .markWatch: String(localized: "Watch")
+        case .markFavorite: String(localized: "Favorite")
+        case .markPin: String(localized: "Pin")
+        case .markArchive: String(localized: "Archive")
+        case .delete: String(localized: "Remove")
+        case .share: String(localized: "Share")
         }
     }
 }

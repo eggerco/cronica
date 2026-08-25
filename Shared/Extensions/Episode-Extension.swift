@@ -11,7 +11,7 @@ extension Episode {
 	// MARK: Strings
 	var itemTitle: String {
 		if let name { return name }
-		return NSLocalizedString("Not Available", comment: "")
+		return String(localized: "Not Available")
 	}
 	var itemOverview: String {
 		if let overview {
@@ -26,7 +26,7 @@ extension Episode {
 		return nil
 	}
 	var itemInfo: String? {
-        let localizedString = NSLocalizedString("Episode", comment: "")
+        let localizedString = String(localized: "Episode")
 		if let itemDate, let episodeNumber {
 			return "\(localizedString) \(episodeNumber) • \(itemDate)"
 		}

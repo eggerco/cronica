@@ -9,7 +9,7 @@ import Foundation
 
 extension CustomList {
     var itemTitle: String {
-        return title ?? NSLocalizedString("Untitled List", comment: "")
+        return title ?? String(localized: "Untitled List")
     }
     var itemLastUpdateFormatted: String {
         if let updatedDate {

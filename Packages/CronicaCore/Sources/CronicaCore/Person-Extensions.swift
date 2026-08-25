@@ -25,11 +25,11 @@ public extension Person {
     var personBiography: String {
         if let biography {
             if biography.isEmpty {
-                return NSLocalizedString("No biography available.", comment: "")
+                return String(localized: "No biography available.", bundle: .main)
             }
             return biography
         }
-        return NSLocalizedString("No biography available.", comment: "")
+        return String(localized: "No biography available.", bundle: .main)
     }
     var personRole: String? {
         job ?? character

@@ -235,7 +235,7 @@ struct SelectListView: View {
     private func deleteList(_ list: CustomList, includingWatchlistItems: Bool) {
         if selectedList == list {
             selectedList = nil
-            navigationTitle = NSLocalizedString("Watchlist", comment: "")
+            navigationTitle = String(localized: "Watchlist")
         }
         PersistenceController.shared.deleteList(list, includingWatchlistItems: includingWatchlistItems)
         listToDelete = nil

@@ -711,8 +711,8 @@ enum ForYouTabType: String, Identifiable, Codable, Hashable, CaseIterable {
     
     var localizedTitle: String {
         switch self {
-        case .recommendations: NSLocalizedString("For You", comment: "")
-        case .explore: NSLocalizedString("Explore", comment: "")
+        case .recommendations: String(localized: "For You")
+        case .explore: String(localized: "Explore")
         }
     }
     

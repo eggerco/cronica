@@ -16,14 +16,14 @@ enum Screens: String, Identifiable, CaseIterable {
     
     var title: String {
         switch self {
-        case .home: NSLocalizedString("Home", comment: "")
-        case .explore: NSLocalizedString("Explore", comment: "")
-        case .watchlist: NSLocalizedString("Watchlist", comment: "")
-        case .search: NSLocalizedString("Search", comment: "")
+        case .home: String(localized: "Home")
+        case .explore: String(localized: "Explore")
+        case .watchlist: String(localized: "Watchlist")
+        case .search: String(localized: "Search")
 #if os(iOS) || os(tvOS) || os(visionOS)
-        case .settings: NSLocalizedString("Settings", comment: "")
+        case .settings: String(localized: "Settings")
 #endif
-        case .notifications: NSLocalizedString("Notifications", comment: "")
+        case .notifications: String(localized: "Notifications")
         }
     }
 }
@@ -34,10 +34,10 @@ enum Screens: String, Identifiable, CaseIterable {
     
     var title: String {
         switch self {
-        case .trending: NSLocalizedString("Trending", comment: "")
-        case .watchlist: NSLocalizedString("Watchlist", comment: "")
-        case .upcoming: NSLocalizedString("Upcoming", comment: "")
-        case .upNext: NSLocalizedString("Up Next", comment: "")
+        case .trending: String(localized: "Trending")
+        case .watchlist: String(localized: "Watchlist")
+        case .upcoming: String(localized: "Upcoming")
+        case .upNext: String(localized: "Up Next")
         }
     }
     var toSFSymbols: String {

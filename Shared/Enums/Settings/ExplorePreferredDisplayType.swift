@@ -13,9 +13,9 @@ enum SectionDetailsPreferredStyle: String, CaseIterable, Identifiable {
     
     var title: String {
         switch self {
-        case .list: return NSLocalizedString("List", comment: "")
-        case .card: return NSLocalizedString("Card", comment: "")
-        case .poster: return NSLocalizedString("Poster", comment: "")
+        case .list: return String(localized: "List")
+        case .card: return String(localized: "Card")
+        case .poster: return String(localized: "Poster")
         }
     }
 }
@@ -25,8 +25,8 @@ enum UpNextDetailsPreferredStyle: String, CaseIterable, Identifiable {
     
     var title: String {
         switch self {
-        case .list: return NSLocalizedString("List", comment: "")
-        case .card: return NSLocalizedString("Card", comment: "")
+        case .list: return String(localized: "List")
+        case .card: return String(localized: "Card")
         }
     }
 }

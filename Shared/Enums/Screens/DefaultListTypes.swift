@@ -15,21 +15,21 @@ enum SmartFiltersTypes: String, Identifiable, Hashable, CaseIterable {
     var title: String {
         switch self {
         case .released:
-            return NSLocalizedString("Released", comment: "")
+            return String(localized: "Released")
         case .production:
-            return NSLocalizedString("Upcoming", comment: "")
+            return String(localized: "Upcoming")
         case .watched:
-            return NSLocalizedString("Watched", comment: "")
+            return String(localized: "Watched")
         case .favorites:
-            return NSLocalizedString("Favorites", comment: "")
+            return String(localized: "Favorites")
         case .pin:
-            return NSLocalizedString("Pins", comment: "")
+            return String(localized: "Pins")
         case .archive:
-            return NSLocalizedString("Archive", comment: "")
+            return String(localized: "Archive")
         case .watching:
-            return NSLocalizedString("Watching", comment: "")
+            return String(localized: "Watching")
         case .notWatched:
-            return NSLocalizedString("Unwatched", comment: "")
+            return String(localized: "Unwatched")
         }
     }
 }

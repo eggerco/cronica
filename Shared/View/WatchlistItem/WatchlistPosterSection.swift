@@ -32,7 +32,7 @@ struct WatchlistPosterSection: View {
                     } header: {
 #if !os(tvOS)
                         HStack(alignment: .firstTextBaseline) {
-                            Text(NSLocalizedString(title, comment: ""))
+                            Text(title)
                                 .foregroundColor(.secondary)
                                 .font(.footnote)
                             Spacer()

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NotificationsSettingsView: View {
-    var navigationTitle = "Notifications"
+    var navigationTitle = String(localized: "Notifications")
     @StateObject private var settings = SettingsStore.shared
     @Environment(\.openURL) private var openURL
     @State private var currentDate = Date()
@@ -117,7 +117,7 @@ struct NotificationsSettingsView: View {
             }
 #endif
         }
-        .navigationTitle(NSLocalizedString(navigationTitle, comment: ""))
+        .navigationTitle(navigationTitle)
 #if os(macOS)
         .formStyle(.grouped)
 #endif

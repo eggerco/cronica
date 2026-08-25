@@ -42,7 +42,7 @@ struct EpisodeDetailsView: View {
 				}.padding(.horizontal)
                    
                 
-				Text(String(format: NSLocalizedString("S%d, E%d", comment: ""), episode.itemSeasonNumber, episode.itemEpisodeNumber))
+				Text(String(format: String(localized: "S%d, E%d"), episode.itemSeasonNumber, episode.itemEpisodeNumber))
                     .font(.caption)
                     .lineLimit(2)
                     .multilineTextAlignment(.center)

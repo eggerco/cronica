@@ -33,7 +33,7 @@ struct PersonDetailsView: View {
                         if let overview = person?.biography {
                             OverviewBoxView(
                                 overview: overview,
-                                title: NSLocalizedString("Biography", comment: ""),
+                                title: String(localized: "Biography"),
                                 type: .person,
                                 showAsPopover: true
                             )

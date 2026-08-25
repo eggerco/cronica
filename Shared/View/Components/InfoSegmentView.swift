@@ -13,7 +13,7 @@ struct InfoSegmentView: View {
     var body: some View {
         if let info {
             VStack(alignment: .leading) {
-                Text(NSLocalizedString(title, comment: ""))
+                Text(title)
                     .lineLimit(1)
                     .font(.body)
                     .foregroundColor(.secondary)

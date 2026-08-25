@@ -140,14 +140,14 @@ struct CustomWatchlist: View {
                                 switch settings.watchlistStyle {
                                 case .list:
                                     WatchListSection(items: scopeFiltersItems,
-                                                     title: NSLocalizedString("Search results", comment: ""),
+                                                     title: String(localized: "Search results"),
                                                      showPopup: $showPopup, popupType: $popupType)
                                 case .card:
                                     WatchlistCardSection(items: scopeFiltersItems,
-                                                         title: NSLocalizedString("Search results", comment: ""), showPopup: $showPopup, popupType: $popupType)
+                                                         title: String(localized: "Search results"), showPopup: $showPopup, popupType: $popupType)
                                 case .poster:
                                     WatchlistPosterSection(items: scopeFiltersItems,
-                                                           title: NSLocalizedString("Search results", comment: ""), showPopup: $showPopup, popupType: $popupType)
+                                                           title: String(localized: "Search results"), showPopup: $showPopup, popupType: $popupType)
                                 }
                                 
                             } else {
@@ -196,14 +196,14 @@ struct CustomWatchlist: View {
                         switch settings.watchlistStyle {
                         case .list:
                             WatchListSection(items: scopeFiltersItems,
-                                             title: NSLocalizedString("Search results", comment: ""),
+                                             title: String(localized: "Search results"),
                                              showPopup: $showPopup, popupType: $popupType)
                         case .card:
                             WatchlistCardSection(items: scopeFiltersItems,
-                                                 title: NSLocalizedString("Search results", comment: ""), showPopup: $showPopup, popupType: $popupType)
+                                                 title: String(localized: "Search results"), showPopup: $showPopup, popupType: $popupType)
                         case .poster:
                             WatchlistPosterSection(items: scopeFiltersItems,
-                                                   title: NSLocalizedString("Search results", comment: ""), showPopup: $showPopup, popupType: $popupType)
+                                                   title: String(localized: "Search results"), showPopup: $showPopup, popupType: $popupType)
                         }
                         
                     } else if !query.isEmpty && filteredItems.isEmpty && !isSearching  {

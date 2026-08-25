@@ -55,7 +55,7 @@ struct AboutSettings: View {
 #endif
                 
                 
-                aboutButton(title: NSLocalizedString("X (Twitter)", comment: ""),
+                aboutButton(title: String(localized: "X (Twitter)"),
                             url: "https://x.com/CronicaApp")
                 
                 if let appUrl = URL(string: "https://apple.co/3TV9SLP") {
@@ -77,7 +77,7 @@ struct AboutSettings: View {
             
             Section("Design") {
                 aboutButton(
-                    title: NSLocalizedString("Icon Designer", comment: ""),
+                    title: String(localized: "Icon Designer"),
                     subtitle: "Akhmad",
                     url: "https://www.fiverr.com/akhmad437"
                 )

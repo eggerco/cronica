@@ -213,7 +213,7 @@ struct ItemContentDetails: View {
             CastListView(credits: viewModel.credits)
             
             HorizontalItemContentListView(items: viewModel.recommendations,
-                                          title: NSLocalizedString("Recommendations", comment: ""),
+                                          title: String(localized: "Recommendations"),
                                           showPopup: $showPopup,
                                           popupType: $popupType,
                                           displayAsCard: true)
@@ -324,7 +324,7 @@ struct ItemContentDetails: View {
             CastListView(credits: viewModel.credits)
             
             HorizontalItemContentListView(items: viewModel.recommendations,
-                                          title: NSLocalizedString("Recommendations", comment: ""),
+                                          title: String(localized: "Recommendations"),
                                           showPopup: $showPopup,
                                           popupType: $popupType,
                                           displayAsCard: true)
@@ -454,7 +454,7 @@ struct ItemContentDetails: View {
 #endif
             
             HorizontalItemContentListView(items: viewModel.recommendations,
-                                          title: NSLocalizedString("Recommendations", comment: ""),
+                                          title: String(localized: "Recommendations"),
                                           showPopup: $showPopup,
                                           popupType: $popupType,
                                           displayAsCard: true)
@@ -569,7 +569,7 @@ struct ItemContentDetails: View {
                     }
                     .padding([.horizontal, .top], 2)
                 }
-                infoView(title: NSLocalizedString("Run Time", comment: ""),
+                infoView(title: String(localized: "Run Time"),
                          content: item?.itemRuntime)
                 if type == .movie {
                     if let theatricalStringDate = item?.itemTheatricalString {
@@ -582,19 +582,16 @@ struct ItemContentDetails: View {
                     }
                     
                 } else {
-                    infoView(title: NSLocalizedString("First Air Date",
-                                                      comment: ""),
+                    infoView(title: String(localized: "First Air Date"),
                              content: item?.itemFirstAirDate)
                 }
-                infoView(title: NSLocalizedString("Ratings Score", comment: ""),
+                infoView(title: String(localized: "Ratings Score"),
                          content: item?.itemRating)
-                infoView(title: NSLocalizedString("Status",
-                                                  comment: ""),
+                infoView(title: String(localized: "Status"),
                          content: item?.itemStatus.localizedTitle)
-                infoView(title: NSLocalizedString("Genres", comment: ""),
+                infoView(title: String(localized: "Genres"),
                          content: item?.itemGenres)
-                infoView(title: NSLocalizedString("Region of Origin",
-                                                  comment: ""),
+                infoView(title: String(localized: "Region of Origin"),
                          content: item?.itemCountry)
                 if let companies = item?.itemCompanies, let company = item?.itemCompany {
                     if !companies.isEmpty {
@@ -609,8 +606,7 @@ struct ItemContentDetails: View {
 #endif
                     }
                 } else {
-                    infoView(title: NSLocalizedString("Production Company",
-                                                      comment: ""),
+                    infoView(title: String(localized: "Production Company"),
                              content: item?.itemCompany)
                 }
             }
@@ -999,14 +995,12 @@ extension ItemContentDetails {
     // MARK: Information box
     private var quickInformationBoxView: some View {
         VStack(alignment: .leading) {
-            infoLabel(title: NSLocalizedString("Original Title",
-                                               comment: ""),
+            infoLabel(title: String(localized: "Original Title"),
                       content: viewModel.content?.originalItemTitle)
-            infoLabel(title: NSLocalizedString("Run Time", comment: ""),
+            infoLabel(title: String(localized: "Run Time"),
                       content: viewModel.content?.itemRuntime)
             if let numberOfSeasons = viewModel.content?.numberOfSeasons, let numberOfEpisodes = viewModel.content?.numberOfEpisodes {
-                infoLabel(title: NSLocalizedString("Overview",
-                                                   comment: ""),
+                infoLabel(title: String(localized: "Overview"),
                           content: "\(numberOfSeasons) Seasons • \(numberOfEpisodes) Episodes")
             }
             if viewModel.content?.itemContentMedia == .movie {
@@ -1020,14 +1014,12 @@ extension ItemContentDetails {
                 }
                 
             } else {
-                infoLabel(title: NSLocalizedString("First Air Date",
-                                                   comment: ""),
+                infoLabel(title: String(localized: "First Air Date"),
                           content: viewModel.content?.itemFirstAirDate)
             }
-            infoLabel(title: NSLocalizedString("Region of Origin",
-                                               comment: ""),
+            infoLabel(title: String(localized: "Region of Origin"),
                       content: viewModel.content?.itemCountry)
-            infoLabel(title: NSLocalizedString("Genres", comment: ""),
+            infoLabel(title: String(localized: "Genres"),
                       content: viewModel.content?.itemGenres)
             if let companies = viewModel.content?.itemCompanies,
                let company = viewModel.content?.itemCompany, !companies.isEmpty {
@@ -1039,12 +1031,10 @@ extension ItemContentDetails {
                 }
                 .buttonStyle(.plain)
             } else {
-                infoLabel(title: NSLocalizedString("Production Company",
-                                                   comment: ""),
+                infoLabel(title: String(localized: "Production Company"),
                           content: viewModel.content?.itemCompany)
             }
-            infoLabel(title: NSLocalizedString("Status",
-                                               comment: ""),
+            infoLabel(title: String(localized: "Status"),
                       content: viewModel.content?.itemStatus.localizedTitle)
         }
         .sheet(isPresented: $showReleaseDateInfo) {

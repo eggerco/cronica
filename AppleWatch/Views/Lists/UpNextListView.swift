@@ -110,7 +110,7 @@ private struct UpNextRowItemView: View {
                     Text(item.showTitle)
                         .font(.caption)
                         .lineLimit(2)
-                    Text(String(format: NSLocalizedString("S%d, E%d", comment: ""), item.episode.itemSeasonNumber, item.episode.itemEpisodeNumber))
+                    Text(String(format: String(localized: "S%d, E%d"), item.episode.itemSeasonNumber, item.episode.itemEpisodeNumber))
                         .font(.caption)
                         .foregroundColor(.secondary)
                         .lineLimit(1)

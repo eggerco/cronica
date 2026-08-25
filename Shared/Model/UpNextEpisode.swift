@@ -19,6 +19,6 @@ struct UpNextEpisode: Identifiable, Hashable {
     var watchProgressLabel: String? {
         guard watchProgress > 0 else { return nil }
         let percent = Int((watchProgress * 100).rounded())
-        return String(format: NSLocalizedString("%d%% watched", comment: "TV show watch progress in Up Next"), percent)
+        return String(format: String(localized: "%d%% watched"), percent)
     }
 }
