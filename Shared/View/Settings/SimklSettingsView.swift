@@ -95,9 +95,9 @@ struct SimklSettingsView: View {
                     VStack(spacing: 8) {
                         Text(progressPhase.isEmpty ? String(localized: "Syncing…") : progressPhase)
                         if progressTotal > 0 {
-                            Text("\(progressProcessed) / \(progressTotal)")
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
+                        Text(String(format: String(localized: "%lld / %lld"), progressProcessed, progressTotal))
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
                         }
                         Button("Cancel") {
                             syncTask?.cancel()
@@ -222,7 +222,7 @@ struct SimklSettingsView: View {
                     LabeledContent("Last 7 days", value: Self.minutesLabel(week))
                 }
                 if let date = settings.simklLastStatsFetchDate {
-                    Text("Fetched \(date.formatted(date: .abbreviated, time: .shortened))")
+                    Text(String(format: String(localized: "Fetched %@"), date.formatted(date: .abbreviated, time: .shortened)))
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
@@ -378,9 +378,9 @@ struct SimklSettingsView: View {
     private static func minutesLabel(_ mins: Int) -> String {
         let hours = mins / 60
         let rem = mins % 60
-        if hours == 0 { return String(localized: "\(mins) min") }
-        if rem == 0 { return String(localized: "\(hours) hr") }
-        return String(localized: "\(hours) hr \(rem) min")
+        if hours == 0 { return String(format: String(localized: "%lld min"), mins) }
+        if rem == 0 { return String(format: String(localized: "%lld hr"), hours) }
+        return String(format: String(localized: "%lld hr %lld min"), hours, rem)
     }
 }
 

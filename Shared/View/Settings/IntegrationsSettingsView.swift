@@ -10,8 +10,8 @@ import CronicaCore
 struct IntegrationsSettingsView: View {
     @StateObject private var settings = SettingsStore.shared
 
-    private static let tmdbTeal = Color(red: 0x01 / 255, green: 0xB4 / 255, blue: 0xE4 / 255)
-    private static let tmdbGreen = Color(red: 0x90 / 255, green: 0xCE / 255, blue: 0xA1 / 255)
+    /// TMDB primary brand blue/cyan (`#01B4E4`), solid to match SIMKL’s single-color icon treatment.
+    private static let tmdbBrand = Color(red: 0x01 / 255, green: 0xB4 / 255, blue: 0xE4 / 255)
 
     var body: some View {
         Form {
@@ -40,11 +40,7 @@ struct IntegrationsSettingsView: View {
                         title: "TMDB",
                         subtitle: tmdbSubtitle,
                         systemImage: "arrow.triangle.2.circlepath",
-                        fill: LinearGradient(
-                            colors: [Self.tmdbTeal, Self.tmdbGreen],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
+                        fill: Self.tmdbBrand
                     )
                 }
             }

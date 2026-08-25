@@ -357,9 +357,9 @@ struct SimklUserStats: Decodable, Equatable {
         let mins = totalMins ?? 0
         let hours = mins / 60
         let rem = mins % 60
-        if hours == 0 { return String(localized: "\(mins) min") }
-        if rem == 0 { return String(localized: "\(hours) hr") }
-        return String(localized: "\(hours) hr \(rem) min")
+        if hours == 0 { return String(format: String(localized: "%lld min"), mins) }
+        if rem == 0 { return String(format: String(localized: "%lld hr"), hours) }
+        return String(format: String(localized: "%lld hr %lld min"), hours, rem)
     }
 }
 
@@ -483,7 +483,7 @@ enum SimklError: LocalizedError {
         case .invalidResponse:
             return String(localized: "Unexpected response from SIMKL.")
         case .httpStatus(let code):
-            return String(localized: "SIMKL request failed (\(code)).")
+            return String(format: String(localized: "SIMKL request failed (%lld)."), code)
         case .rateLimited:
             return String(localized: "SIMKL is busy. Try again in a moment.")
         case .message(let text):

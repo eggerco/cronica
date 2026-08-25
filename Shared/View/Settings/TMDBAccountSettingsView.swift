@@ -77,7 +77,7 @@ struct TMDBAccountSettingsView: View {
                     VStack(spacing: 8) {
                         Text(progressPhase.isEmpty ? String(localized: "Syncing…") : progressPhase)
                         if progressTotal > 0 {
-                            Text("\(progressProcessed) / \(progressTotal)")
+                            Text(String(format: String(localized: "%lld / %lld"), progressProcessed, progressTotal))
                                 .font(.caption)
                                 .foregroundStyle(.secondary)
                         }
