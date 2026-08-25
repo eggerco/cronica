@@ -178,6 +178,10 @@ export function renderDetailsPage(url: URL): string {
     </section>
     ${hint}
   </main>
+
+  <footer class="site-footer">
+    <p>Copyright &copy; 2026 Egger, Inc. All rights reserved.</p>
+  </footer>
 </body>
 </html>`;
 }

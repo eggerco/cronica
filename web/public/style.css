@@ -300,3 +300,20 @@ nav a:hover {
   padding: 2px 6px;
   border-radius: 6px;
 }
+
+.site-footer {
+  padding: 24px 30px 40px;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .site-footer {
+    padding: 24px 80px 48px;
+  }
+}
+
+.site-footer p {
+  color: #888;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
