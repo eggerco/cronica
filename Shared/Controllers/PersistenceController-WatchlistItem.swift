@@ -185,8 +185,15 @@ extension PersistenceController {
         if item.isTvShow {
             item.isWatching.toggle()
         }
-        if item.isWatched && SettingsStore.shared.removeFromPinOnWatched {
-            item.isPin = false
+        if item.isWatched {
+            if item.watchedDate == nil {
+                item.watchedDate = Date()
+            }
+            if SettingsStore.shared.removeFromPinOnWatched {
+                item.isPin = false
+            }
+        } else {
+            item.watchedDate = nil
         }
         save()
 #if !os(watchOS)
@@ -203,6 +210,16 @@ extension PersistenceController {
             }
         }
 #endif
+    }
+
+    func updateWatchedDate(for item: WatchlistItem, date: Date?) {
+        guard item.isWatched else {
+            item.watchedDate = nil
+            save()
+            return
+        }
+        item.watchedDate = date
+        save()
     }
     
     func updateFavorite(for item: WatchlistItem) {

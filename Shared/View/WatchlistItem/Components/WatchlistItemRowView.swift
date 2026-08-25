@@ -80,7 +80,13 @@ struct WatchlistItemRowView: View {
                             .font(.caption)
                             .foregroundColor(.secondary)
 #else
-                        if content.itemReleaseDateQuickInfo.isEmpty {
+                        if let watchedLabel = content.itemWatchedDateLabel {
+                            Text("\(content.itemMedia.title) • \(String(localized: "Watched")) \(watchedLabel)")
+                                .lineLimit(1)
+                                .fontDesign(.rounded)
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                        } else if content.itemReleaseDateQuickInfo.isEmpty {
                             Text("\(content.itemMedia.title)")
                                 .fontDesign(.rounded)
                                 .font(.caption)

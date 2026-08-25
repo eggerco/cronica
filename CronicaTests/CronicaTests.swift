@@ -40,6 +40,29 @@ final class CronicaTests: XCTestCase {
         }
     }
     
+
+    func testWatchedDateSetAndCleared() {
+        let example = ItemContent.examples[0]
+        let item = requireItem(for: example.itemContentID)
+        XCTAssertNil(item.watchedDate)
+        persistence.updateWatched(for: item)
+        XCTAssertTrue(item.isWatched)
+        XCTAssertNotNil(item.watchedDate)
+        let custom = Date(timeIntervalSince1970: 1_700_000_000)
+        persistence.updateWatchedDate(for: item, date: custom)
+        XCTAssertEqual(item.watchedDate, custom)
+        persistence.updateWatched(for: item)
+        XCTAssertFalse(item.isWatched)
+        XCTAssertNil(item.watchedDate)
+    }
+
+    func testParseSimklWatchedDate() {
+        XCTAssertNotNil(SimklImportMapper.parseSimklDate("2024-01-15T12:00:00Z"))
+        XCTAssertNotNil(SimklImportMapper.parseSimklDate("2024-01-15"))
+        XCTAssertNil(SimklImportMapper.parseSimklDate(nil))
+        XCTAssertNil(SimklImportMapper.parseSimklDate(""))
+    }
+
     func testRemoveFromWatched() {
         for example in ItemContent.examples {
             let item = requireItem(for: example.itemContentID)

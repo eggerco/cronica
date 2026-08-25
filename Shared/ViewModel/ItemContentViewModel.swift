@@ -21,6 +21,7 @@ class ItemContentViewModel: ObservableObject {
     @Published var showErrorAlert = false
     @Published var isInWatchlist = false
     @Published private(set) var isWatched = false
+    @Published private(set) var watchedDateLabel: String?
     @Published private(set) var isFavorite = false
     @Published private(set) var isArchive = false
     @Published private(set) var isPin = false
@@ -47,6 +48,7 @@ class ItemContentViewModel: ObservableObject {
                 withAnimation {
                     if isInWatchlist {
                         isWatched = persistence.isMarkedAsWatched(id: content.itemContentID)
+                        refreshWatchedDate()
                         isFavorite = persistence.isMarkedAsFavorite(id: content.itemContentID)
                         isArchive = persistence.isItemArchived(id: content.itemContentID)
                         isPin = persistence.isItemPinned(id: content.itemContentID)
@@ -144,6 +146,7 @@ class ItemContentViewModel: ObservableObject {
                 isPin = persistence.isItemPinned(id: content.itemContentID)
                 isFavorite = persistence.isMarkedAsFavorite(id: content.itemContentID)
                 isWatched = persistence.isMarkedAsWatched(id: content.itemContentID)
+                refreshWatchedDate()
                 isArchive = persistence.isItemArchived(id: content.itemContentID)
             }
         } else {
@@ -155,6 +158,7 @@ class ItemContentViewModel: ObservableObject {
                 isPin = false
                 isFavorite = false
                 isWatched = false
+                watchedDateLabel = nil
                 isArchive = false
             }
         }
@@ -185,6 +189,15 @@ class ItemContentViewModel: ObservableObject {
 		return hasNotificationScheduled
     }
     
+
+    func refreshWatchedDate() {
+        guard let content else {
+            watchedDateLabel = nil
+            return
+        }
+        watchedDateLabel = persistence.fetch(for: content.itemContentID)?.itemWatchedDateLabel
+    }
+
     func update(_ property: UpdateItemProperties) {
         guard let content else { return }
         if !isInWatchlist { updateWatchlist(with: content) }
@@ -193,6 +206,7 @@ class ItemContentViewModel: ObservableObject {
         case .watched:
             persistence.updateWatched(for: item)
             withAnimation { isWatched.toggle() }
+            refreshWatchedDate()
             Task { await updateSeasons() }
         case .favorite:
             persistence.updateFavorite(for: item)

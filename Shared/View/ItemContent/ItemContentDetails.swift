@@ -128,7 +128,9 @@ struct ItemContentDetails: View {
                 }
             }
         }
-        .sheet(isPresented: $showUserNotes) {
+        .sheet(isPresented: $showUserNotes, onDismiss: {
+            viewModel.refreshWatchedDate()
+        }) {
             if let contentID = viewModel.content?.itemContentID {
                 ReviewView(id: contentID, showView: $showUserNotes)
             }
@@ -589,6 +591,8 @@ struct ItemContentDetails: View {
                          content: item?.itemRating)
                 infoView(title: String(localized: "Status"),
                          content: item?.itemStatus.localizedTitle)
+                infoView(title: String(localized: "Watched Date"),
+                         content: viewModel.watchedDateLabel)
                 infoView(title: String(localized: "Genres"),
                          content: item?.itemGenres)
                 infoView(title: String(localized: "Region of Origin"),
@@ -1036,6 +1040,8 @@ extension ItemContentDetails {
             }
             infoLabel(title: String(localized: "Status"),
                       content: viewModel.content?.itemStatus.localizedTitle)
+            infoLabel(title: String(localized: "Watched Date"),
+                      content: viewModel.watchedDateLabel)
         }
         .sheet(isPresented: $showReleaseDateInfo) {
             let productionRegion = viewModel.content?.productionCountries?.first?.iso31661 ?? "US"

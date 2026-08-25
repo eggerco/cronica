@@ -572,6 +572,7 @@
 		B8E3ABF52955361C00CA0945 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS9.1.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		B8E3ABF72955362A00CA0945 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS16.1.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		B8E6D64127B6B106002E7A63 /* Watchlist.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Watchlist.xcdatamodel; sourceTree = "<group>"; };
+		5EDAFB5B97814CCAA33BAF20 /* Watchlist 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Watchlist 2.xcdatamodel"; sourceTree = "<group>"; };
 		B8E6EF662A044E5A000A3617 /* ContextMenuPreviewImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMenuPreviewImage.swift; sourceTree = "<group>"; };
 		B8EC462E27D7AA99009389FC /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		B8ED4C3C27B4B9680045C68F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -2674,8 +2675,9 @@
 			isa = XCVersionGroup;
 			children = (
 				B8E6D64127B6B106002E7A63 /* Watchlist.xcdatamodel */,
+				5EDAFB5B97814CCAA33BAF20 /* Watchlist 2.xcdatamodel */,
 			);
-			currentVersion = B8E6D64127B6B106002E7A63 /* Watchlist.xcdatamodel */;
+			currentVersion = 5EDAFB5B97814CCAA33BAF20 /* Watchlist 2.xcdatamodel */;
 			path = Watchlist.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -96,6 +96,16 @@ enum SimklImportMapper {
             item.isArchive = true
         }
 
+        if item.watched {
+            if let parsed = parseSimklDate(entry.lastWatchedAt) {
+                item.watchedDate = parsed
+            } else if item.watchedDate == nil {
+                // Keep nil for historical imports without a date rather than inventing "now".
+            }
+        } else {
+            item.watchedDate = nil
+        }
+
         if let rating = entry.userRating {
             // SIMKL uses 1–10; Cronica stores 0–5 stars.
             item.userRating = Int64(max(0, min(5, (rating + 1) / 2)))
@@ -142,6 +152,23 @@ enum SimklImportMapper {
 
     static func shouldSkipAnimeWithoutTMDB(_ entry: SimklLibraryEntry) -> Bool {
         entry.mediaObject?.ids?.tmdb?.intValue == nil
+    }
+
+
+    static func parseSimklDate(_ value: String?) -> Date? {
+        guard let value, !value.isEmpty else { return nil }
+        let isoFractional = ISO8601DateFormatter()
+        isoFractional.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        if let date = isoFractional.date(from: value) { return date }
+        let iso = ISO8601DateFormatter()
+        iso.formatOptions = [.withInternetDateTime]
+        if let date = iso.date(from: value) { return date }
+        let day = DateFormatter()
+        day.calendar = Calendar(identifier: .gregorian)
+        day.locale = Locale(identifier: "en_US_POSIX")
+        day.timeZone = TimeZone(secondsFromGMT: 0)
+        day.dateFormat = "yyyy-MM-dd"
+        return day.date(from: value)
     }
 
     static func episodeToken(episode: Int, season: Int) -> String {

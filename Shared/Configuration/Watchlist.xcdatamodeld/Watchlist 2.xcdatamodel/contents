@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22G74" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+    <entity name="CustomList" representedClassName="CustomList" syncable="YES">
+        <attribute name="creationDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="idOnTMDb" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="isPin" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="isSyncEnabledTMDB" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="title" attributeType="String" defaultValueString=""/>
+        <attribute name="updatedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="WatchlistItem" inverseName="list" inverseEntity="WatchlistItem"/>
+    </entity>
+    <entity name="WatchlistItem" representedClassName="WatchlistItem" syncable="YES">
+        <attribute name="backdropPath" optional="YES" attributeType="String"/>
+        <attribute name="contentID" optional="YES" attributeType="String"/>
+        <attribute name="contentType" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="displayOnUpNext" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="favorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="firstAirDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="formattedDate" optional="YES" attributeType="String"/>
+        <attribute name="genre" optional="YES" attributeType="String"/>
+        <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="image" optional="YES" attributeType="URI"/>
+        <attribute name="imdbID" optional="YES" attributeType="String"/>
+        <attribute name="isArchive" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="isPin" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="isWatching" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="largeCardImage" optional="YES" attributeType="URI"/>
+        <attribute name="largePosterImage" optional="YES" attributeType="URI"/>
+        <attribute name="lastEpisodeNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="lastSelectedSeason" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="lastValuesUpdated" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="lastWatchedEpisode" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="mediumPosterImage" optional="YES" attributeType="URI"/>
+        <attribute name="movieReleaseDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="nextEpisodeNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="nextEpisodeNumberUpNext" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="nextSeasonNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="numberOfEpisodes" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="notify" attributeType="Boolean" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="originalTitle" optional="YES" attributeType="String"/>
+        <attribute name="posterPath" optional="YES" attributeType="String"/>
+        <attribute name="schedule" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="seasonNumberUpNext" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="shouldNotify" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="tmdbID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="upcomingSeason" attributeType="Boolean" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="userNotes" attributeType="String" defaultValueString=""/>
+        <attribute name="userRating" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="watched" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="watchedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="watchedEpisodes" attributeType="String" defaultValueString=""/>
+        <relationship name="list" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CustomList" inverseName="items" inverseEntity="CustomList"/>
+    </entity>
+</model>

@@ -46,6 +46,10 @@ struct PersistenceController {
             return
         }
 
+        // Optional attribute additions (e.g. watchedDate) use lightweight migration.
+        description.shouldMigrateStoreAutomatically = true
+        description.shouldInferMappingModelAutomatically = true
+
         if inMemory {
             description.url = URL(fileURLWithPath: "/dev/null")
             description.cloudKitContainerOptions = nil

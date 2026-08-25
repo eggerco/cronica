@@ -106,6 +106,9 @@ struct DeveloperView: View {
             }
 
             Section("CloudKit") {
+                Text("After adding Core Data attributes (e.g. watchedDate), run Initialize CloudKit Schema once on a signed-in development build, then promote the schema in CloudKit Console for production.")
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
                 Button("Initialize CloudKit Schema") {
                     cloudKitSchemaMessage = persistence.initializeCloudKitDevelopmentSchema()
                 }

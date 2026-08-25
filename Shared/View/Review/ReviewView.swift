@@ -14,6 +14,8 @@ struct ReviewView: View {
     @Binding var showView: Bool
     @State private var note = String()
     @State private var rating = 0
+    @State private var watchedDate = Date()
+    @State private var hasWatchedDate = false
     @State private var isLoading = true
     @State private var canSave = false
     @State private var showReviewImageSheet = false
@@ -71,6 +73,23 @@ struct ReviewView: View {
                                 RatingView(rating: $rating)
                             }
                         }
+
+#if os(iOS) || os(macOS)
+                        if item.isWatched {
+                            Section("Watched Date") {
+                                DatePicker(
+                                    "Watched Date",
+                                    selection: $watchedDate,
+                                    in: ...Date(),
+                                    displayedComponents: .date
+                                )
+                                .onChange(of: watchedDate) { _, _ in
+                                    if !canSave { canSave = true }
+                                    hasWatchedDate = true
+                                }
+                            }
+                        }
+#endif
 #if os(iOS) || os(macOS)
                         Section("Notes") {
                             TextEditor(text: $note)
@@ -138,6 +157,13 @@ struct ReviewView: View {
         }
         if note.isEmpty { note = item.userNotes }
         rating = Int(item.userRating)
+        if let date = item.watchedDate {
+            watchedDate = date
+            hasWatchedDate = true
+        } else if item.isWatched {
+            watchedDate = Date()
+            hasWatchedDate = false
+        }
         self.item = item
         isLoading = false
     }
@@ -159,6 +185,9 @@ struct ReviewView: View {
     private func save(dismiss: Bool = true) {
         guard let item else { return }
         persistence.updateReview(for: item, rating: rating, notes: note)
+        if item.isWatched {
+            persistence.updateWatchedDate(for: item, date: watchedDate)
+        }
         if dismiss {
             self.dismiss()
         }

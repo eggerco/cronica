@@ -126,6 +126,13 @@ extension WatchlistItem {
 	var isWatched: Bool {
 		return watched
 	}
+	var itemWatchedDate: Date? {
+		watchedDate
+	}
+	var itemWatchedDateLabel: String? {
+		guard isWatched, let watchedDate else { return nil }
+		return watchedDate.convertDateToString()
+	}
 	var isFavorite: Bool {
 		return favorite
 	}

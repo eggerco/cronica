@@ -15,6 +15,7 @@ struct WatchlistItemBackup: Codable, Equatable {
     var image: URL?
     var watchedEpisodes: String
     var watched: Bool
+    var watchedDate: Date?
     var favorite: Bool
     var contentType: Int64
     var schedule: Int16
@@ -47,6 +48,7 @@ struct WatchlistItemBackup: Codable, Equatable {
         image = item.image
         watchedEpisodes = item.watchedEpisodes ?? ""
         watched = item.watched
+        watchedDate = item.watchedDate
         favorite = item.favorite
         contentType = item.contentType
         schedule = item.schedule
@@ -81,6 +83,7 @@ struct WatchlistItemBackup: Codable, Equatable {
         image = try values.decodeIfPresent(URL.self, forKey: .image)
         watchedEpisodes = try values.decodeIfPresent(String.self, forKey: .watchedEpisodes) ?? ""
         watched = try values.decodeIfPresent(Bool.self, forKey: .watched) ?? false
+        watchedDate = try values.decodeIfPresent(Date.self, forKey: .watchedDate)
         favorite = try values.decodeIfPresent(Bool.self, forKey: .favorite) ?? false
         contentType = try values.decode(Int64.self, forKey: .contentType)
         schedule = try values.decodeIfPresent(Int16.self, forKey: .schedule) ?? 0
@@ -116,6 +119,7 @@ extension WatchlistItem {
         image = backup.image
         watchedEpisodes = backup.watchedEpisodes
         watched = backup.watched
+        watchedDate = backup.watchedDate
         favorite = backup.favorite
         contentType = backup.contentType
         schedule = backup.schedule

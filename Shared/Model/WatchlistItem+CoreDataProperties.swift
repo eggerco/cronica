@@ -46,6 +46,7 @@ extension WatchlistItem {
     @NSManaged public var tmdbID: Int64
     @NSManaged public var upcomingSeason: Bool
     @NSManaged public var watched: Bool
+    @NSManaged public var watchedDate: Date?
     @NSManaged public var watchedEpisodes: String?
     @NSManaged public var list: NSSet?
     @NSManaged public var nextEpisodeNumberUpNext: Int64
