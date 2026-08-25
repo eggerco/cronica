@@ -57,7 +57,7 @@ struct WatchlistItemRowView: View {
                     if content.isTvShow, content.watchProgress > 0, !(content.isWatched) {
                         WatchProgressRing(progress: content.watchProgress, size: 20)
                             .padding(4)
-                            .background(progressRingBackground, in: Circle())
+                            .background(DrawingConstants.progressRingBackground, in: Circle())
                             .padding(4)
                     }
                 }
