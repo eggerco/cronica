@@ -1,6 +1,6 @@
 # Integrations
 
-Cronica’s primary catalog and sync path is **TMDb + iCloud (CloudKit)**. Third-party services are optional and only contacted when you connect.
+Cronica’s primary catalog and sync path is **TMDb + iCloud (CloudKit)**. Third-party services are optional and only contacted when you connect or import.
 
 ## SIMKL
 
@@ -17,3 +17,11 @@ Behavior notes:
 - Titles removed on SIMKL are counted but **never auto-deleted** from Cronica.
 - Stats and paused playbacks load only when you tap the buttons (expensive SIMKL endpoints).
 - Live player scrobbling is not used (Cronica has no full media player).
+
+## Letterboxd / IMDb (CSV)
+
+One-shot imports from desktop CSV exports under **Settings → Integrations**. No live sync API.
+
+## TMDB Account
+
+Optional sign-in to import personal TMDB lists. Catalog browsing still uses the app TMDb API key.
