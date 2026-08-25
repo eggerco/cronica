@@ -147,4 +147,45 @@ final class CronicaCoreTests: XCTestCase {
     private static func formatted(_ date: Date) -> String {
         DatesManager.dateFormatter.string(from: date)
     }
+
+    func testVoiceRoleDetectionIncludesLocalizedKeywords() {
+        let voice = Person(
+            adult: nil, id: 1, name: "Alex", job: nil, character: "Hero (voice)",
+            biography: nil, profilePath: nil, knownForDepartment: "Acting", combinedCredits: nil, popularity: nil
+        )
+        let german = Person(
+            adult: nil, id: 2, name: "Alex", job: "Synchronsprecher", character: "Held",
+            biography: nil, profilePath: nil, knownForDepartment: "Acting", combinedCredits: nil, popularity: nil
+        )
+        let onScreen = Person(
+            adult: nil, id: 3, name: "Alex", job: nil, character: "Hero",
+            biography: nil, profilePath: nil, knownForDepartment: "Acting", combinedCredits: nil, popularity: nil
+        )
+
+        XCTAssertTrue(voice.isVoiceRole)
+        XCTAssertTrue(german.isVoiceRole)
+        XCTAssertFalse(onScreen.isVoiceRole)
+    }
+
+    func testVoiceCastSplittingAndAggregateCreditsParsing() throws {
+        let cast = [
+            Person(adult: nil, id: 1, name: "A", job: nil, character: "Lead (voice)", biography: nil, profilePath: nil, knownForDepartment: "Acting", combinedCredits: nil, popularity: nil),
+            Person(adult: nil, id: 2, name: "B", job: nil, character: "Lead", biography: nil, profilePath: nil, knownForDepartment: "Acting", combinedCredits: nil, popularity: nil),
+            Person(adult: nil, id: 1, name: "A", job: nil, character: "Alt (voice)", biography: nil, profilePath: nil, knownForDepartment: "Acting", combinedCredits: nil, popularity: nil)
+        ]
+        let split = VoiceCastFormatter.splitCast(cast)
+        XCTAssertEqual(split.onScreen.count, 1)
+        XCTAssertEqual(split.voice.count, 2)
+        XCTAssertEqual(VoiceCastFormatter.deduplicatedVoiceCast(cast).count, 1)
+
+        let json = """
+        {"id":1399,"cast":[{"adult":false,"id":10,"name":"Actor","profile_path":"/a.jpg","known_for_department":"Acting","popularity":1.0,"roles":[{"character":"Dragon (voice)"}]}]}
+        """
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        let response = try decoder.decode(AggregateCreditsResponse.self, from: Data(json.utf8))
+        let person = try XCTUnwrap(response.cast.first?.toPerson())
+        XCTAssertTrue(person.isVoiceRole)
+        XCTAssertEqual(person.character, "Dragon (voice)")
+    }
 }

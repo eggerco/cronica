@@ -10,6 +10,7 @@ import NukeUI
 
 struct DetailedPeopleList: View {
     let items: [Person]
+    var title: String = String(localized: "Cast & Crew")
     @State private var query = ""
     @State private var filteredItems = [Person]()
     var body: some View {
@@ -37,7 +38,7 @@ struct DetailedPeopleList: View {
             }
         }
         .scrollBounceBehavior(.basedOnSize)
-        .navigationTitle("Cast & Crew")
+        .navigationTitle(title)
 #if os(iOS)
         .navigationBarTitleDisplayMode(.large)
 #endif

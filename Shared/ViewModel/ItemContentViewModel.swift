@@ -30,6 +30,7 @@ class ItemContentViewModel: ObservableObject {
     @Published private(set) var isHiddenFromWatchlist = false
 #if !os(watchOS)
     @Published private(set) var tmdbReviews: [TMDBReview] = []
+    @Published private(set) var voiceCast: [Person] = []
 #endif
     @Published private(set) var isLoading = true
     @Published private(set) var showMarkAsButton = false
@@ -81,8 +82,11 @@ class ItemContentViewModel: ObservableObject {
                 if credits.isEmpty {
                     let cast = content.credits?.cast ?? []
                     let crew = content.credits?.crew ?? []
-                    let combined = cast + crew
-                    credits.append(contentsOf: combined)
+                    let split = VoiceCastFormatter.splitCast(cast)
+                    credits.append(contentsOf: split.onScreen + crew)
+#if !os(watchOS)
+                    voiceCast = VoiceCastFormatter.deduplicatedVoiceCast(split.voice)
+#endif
                 }
                 isLoading = false
 				Task {
@@ -96,6 +100,9 @@ class ItemContentViewModel: ObservableObject {
                     } else {
                         tmdbReviews = []
                     }
+                }
+                Task {
+                    await loadLocalizedVoiceCast(id: id, type: type)
                 }
 #endif
 #if os(iOS) || os(macOS)
@@ -113,6 +120,21 @@ class ItemContentViewModel: ObservableObject {
             }
         }
     }
+
+#if !os(watchOS)
+    private func loadLocalizedVoiceCast(id: Int, type: MediaType) async {
+        guard type != .person else {
+            voiceCast = []
+            return
+        }
+        guard let localizedCast = try? await service.fetchLocalizedCredits(id: id, type: type) else { return }
+        let localizedVoice = localizedCast.voiceCast
+        guard !localizedVoice.isEmpty else { return }
+        withAnimation {
+            voiceCast = localizedVoice
+        }
+    }
+#endif
     
     func checkListStatus() {
         guard let contentID = content?.itemContentID else { return }

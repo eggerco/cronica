@@ -11,15 +11,18 @@ import SwiftUI
 /// cast people in an ItemContent.
 struct CastListView: View {
     let credits: [Person]
+    var title: String = String(localized: "Cast & Crew")
+    var subtitle: String?
+
     var body: some View {
         if !credits.isEmpty {
             VStack(alignment: .leading) {
 #if os(tvOS)
-                TitleView(title: "Cast & Crew")
+                TitleView(title: title, subtitle: subtitle)
                     .padding(.leading, 64)
 #else
-                NavigationLink(value: credits) {
-                    TitleView(title: String(localized: "Cast & Crew"), showChevron: true)
+                NavigationLink(value: PeopleListDestination(title: title, people: credits)) {
+                    TitleView(title: title, subtitle: subtitle, showChevron: true)
                 }
                 .buttonStyle(.plain)
 #endif

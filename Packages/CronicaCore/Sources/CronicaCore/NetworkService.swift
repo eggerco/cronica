@@ -148,6 +148,26 @@ public final class NetworkService: Sendable {
         return try await fetch(url: url)
     }
 
+    public func fetchLocalizedCredits(id: Int, type: MediaType) async throws -> [Person] {
+        guard type != .person else { throw NetworkError.invalidRequest }
+        switch type {
+        case .movie:
+            guard let url = urlBuilder(path: "\(type.rawValue)/\(id)/credits") else {
+                throw NetworkError.invalidEndpoint
+            }
+            let response: Credits = try await fetch(url: url)
+            return response.cast
+        case .tvShow:
+            guard let url = urlBuilder(path: "\(type.rawValue)/\(id)/aggregate_credits") else {
+                throw NetworkError.invalidEndpoint
+            }
+            let response: AggregateCreditsResponse = try await fetch(url: url)
+            return response.cast.map { $0.toPerson() }
+        case .person:
+            return []
+        }
+    }
+
     public func downloadData(from url: URL) async throws -> Data {
         let (data, response) = try await URLSession.shared.data(from: url)
         guard let httpResponse = response as? HTTPURLResponse,

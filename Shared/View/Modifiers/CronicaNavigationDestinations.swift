@@ -37,11 +37,11 @@ extension View {
 #endif
             }
         }
-        .navigationDestination(for: [Person].self) { items in
+        .navigationDestination(for: PeopleListDestination.self) { destination in
 #if os(tvOS)
             EmptyView()
 #else
-            DetailedPeopleList(items: items)
+            DetailedPeopleList(items: destination.people, title: destination.title)
 #endif
         }
         .navigationDestination(for: ProductionCompany.self) { item in

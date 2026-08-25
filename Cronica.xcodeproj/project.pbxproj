@@ -193,6 +193,7 @@
 		B890C57927FC999F006BE5E1 /* HeroImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B890C57827FC999F006BE5E1 /* HeroImage.swift */; };
 		B890C57B27FCB54D006BE5E1 /* TrailerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B890C57A27FCB54D006BE5E1 /* TrailerListView.swift */; };
 		B890C58527FE4442006BE5E1 /* Episode-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B890C58427FE4442006BE5E1 /* Episode-Extension.swift */; };
+		C0PEOPLELISTDEST00002 /* PeopleListDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0PEOPLELISTDEST00001 /* PeopleListDestination.swift */; };
 		B89429C9297C94CD0029646F /* DetailedPeopleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89429C8297C94CD0029646F /* DetailedPeopleList.swift */; };
 		B89429CC297E076E0029646F /* SupportEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89429CB297E076E0029646F /* SupportEmail.swift */; };
 		B89446BF294FDACA008974BA /* AppThemeColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89446BE294FDACA008974BA /* AppThemeColors.swift */; };
@@ -536,6 +537,7 @@
 		B890C57827FC999F006BE5E1 /* HeroImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroImage.swift; sourceTree = "<group>"; };
 		B890C57A27FCB54D006BE5E1 /* TrailerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailerListView.swift; sourceTree = "<group>"; };
 		B890C58427FE4442006BE5E1 /* Episode-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Episode-Extension.swift"; sourceTree = "<group>"; };
+		C0PEOPLELISTDEST00001 /* PeopleListDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleListDestination.swift; sourceTree = "<group>"; };
 		B89429C8297C94CD0029646F /* DetailedPeopleList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedPeopleList.swift; sourceTree = "<group>"; };
 		B89429CB297E076E0029646F /* SupportEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportEmail.swift; sourceTree = "<group>"; };
 		B89446BE294FDACA008974BA /* AppThemeColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppThemeColors.swift; sourceTree = "<group>"; };
@@ -948,6 +950,7 @@
 			isa = PBXGroup;
 			children = (
 				B8A3F48527A610AF005F2941 /* CastListView.swift */,
+				C0PEOPLELISTDEST00001 /* PeopleListDestination.swift */,
 				B89429C8297C94CD0029646F /* DetailedPeopleList.swift */,
 				B8C781EF287F4A7500B4C2C2 /* PersonCardView.swift */,
 				B85C65AB27A6307C0080121E /* PersonDetailsView.swift */,
@@ -1978,6 +1981,7 @@ C0INTEGVIEW00000000002 /* IntegrationsSettingsView.swift in Sources */,
 				C0DATAMGMT000000000002 /* DataManagementSettingsView.swift in Sources */,
 				B883A1E32AEF1DB800793EE2 /* SearchItemContentContextMenu.swift in Sources */,
 				B89429CC297E076E0029646F /* SupportEmail.swift in Sources */,
+				C0PEOPLELISTDEST00002 /* PeopleListDestination.swift in Sources */,
 				B89429C9297C94CD0029646F /* DetailedPeopleList.swift in Sources */,
 				B879B70228B12201005EADCE /* TrailerItemView.swift in Sources */,
 				B81941C32A0861C80057DA04 /* FavoriteButton.swift in Sources */,

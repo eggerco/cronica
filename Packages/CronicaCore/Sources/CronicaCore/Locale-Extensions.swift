@@ -16,6 +16,10 @@ public extension Locale {
         }
         return "\(langCode)-\(regionCode)"
     }
+
+    static var userLanguageCode: String {
+        Locale.current.language.languageCode?.identifier ?? "en"
+    }
     
     static var userRegion: String {
         guard let region = Locale.current.language.region?.identifier else {

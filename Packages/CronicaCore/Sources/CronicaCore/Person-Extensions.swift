@@ -43,16 +43,32 @@ public extension Person {
         return base
     }
     var isVoiceRole: Bool {
-        if let job, job.localizedCaseInsensitiveContains("voice") { return true }
-        if let character, character.localizedCaseInsensitiveContains("voice") { return true }
+        if matchesVoiceKeyword(job) { return true }
+        if matchesVoiceKeyword(character) { return true }
         if let knownForDepartment,
            knownForDepartment.localizedCaseInsensitiveContains("Actors")
             || knownForDepartment.localizedCaseInsensitiveContains("Acting") {
-            // Animated / dub credits often use "(voice)" in the character field only.
-            if let character, character.localizedCaseInsensitiveContains("(voice)") { return true }
+            if matchesVoiceKeyword(character) { return true }
         }
         return false
     }
+
+    private func matchesVoiceKeyword(_ value: String?) -> Bool {
+        guard let value else { return false }
+        let normalized = value.localizedLowercase
+        return Self.voiceKeywords.contains { normalized.contains($0) }
+    }
+
+    private static let voiceKeywords = [
+        "voice",
+        "(voice)",
+        "stimme",
+        "synchron",
+        "dubbing",
+        "voix",
+        "voz",
+        "doppiat"
+    ]
     var itemPopularity: Double {
         return popularity ?? 0.00
     }

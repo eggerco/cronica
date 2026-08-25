@@ -262,6 +262,11 @@ struct ItemContentDetails: View {
             TrailerListView(trailers: viewModel.trailers)
                 .padding(.top, 8)
             
+            CastListView(credits: viewModel.voiceCast,
+                         title: String(localized: "Voice Cast"),
+                         subtitle: VoiceCastFormatter.sectionSubtitle())
+                .padding(.top, 8)
+
             CastListView(credits: viewModel.credits)
                 .padding(.top, 8)
             
@@ -384,6 +389,10 @@ struct ItemContentDetails: View {
             
             WatchProvidersList(id: id, type: type)
             
+            CastListView(credits: viewModel.voiceCast,
+                         title: String(localized: "Voice Cast"),
+                         subtitle: VoiceCastFormatter.sectionSubtitle())
+
             CastListView(credits: viewModel.credits)
             
             HorizontalItemContentListView(items: viewModel.recommendations,
@@ -524,6 +533,10 @@ struct ItemContentDetails: View {
                                           popupType: $popupType,
                                           displayAsCard: true)
             
+            CastListView(credits: viewModel.voiceCast,
+                         title: String(localized: "Voice Cast"),
+                         subtitle: VoiceCastFormatter.sectionSubtitle())
+
             CastListView(credits: viewModel.credits)
                 .padding(.bottom)
         }
