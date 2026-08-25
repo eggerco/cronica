@@ -6,7 +6,6 @@
 //  swiftlint:disable trailing_whitespace
 
 import CoreData
-import CloudKit
 
 /// An environment singleton responsible for managing Watchlist Core Data stack, including handling saving,
 /// tracking watchlists, and dealing with sample data.
@@ -69,10 +68,11 @@ struct PersistenceController {
             }
         }
 
-        // Capture locally so the escaping load callback does not retain mutating `self`
-        // (PersistenceController is a struct; property access inside init would capture self).
-        let loadedContainer = container
-        loadedContainer.loadPersistentStores { _, error in
+        // CloudKit schema is managed in CloudKit Console (not in-app). After Core Data
+        // model changes, add matching fields on CD_* record types in Development, then
+        // Deploy Schema Changes → Production. Attribute names must match what
+        // NSPersistentCloudKitContainer expects (typically CD_ prefixes).
+        container.loadPersistentStores { _, error in
             if let error = error as NSError? {
 #if DEBUG
                 fatalError("Unresolved error \(error), \(error.userInfo)")
@@ -80,38 +80,8 @@ struct PersistenceController {
                 AppLogger.persistence.fault("Unresolved error loading persistent store: \(error), \(error.userInfo)")
 #endif
             }
-#if DEBUG
-            // Development environment only — never run in App Store Release builds.
-            // After model changes, launch a DEBUG build signed into iCloud, then promote
-            // the schema in CloudKit Console (Deploy Schema Changes → Production).
-            if !inMemory {
-                Self.initializeDevelopmentCloudKitSchema(for: loadedContainer)
-            }
-#endif
         }
     }
-
-#if DEBUG
-    /// Pushes the current Core Data model into the CloudKit **development** schema.
-    /// Safe to call on DEBUG launches when iCloud + CloudKit are available; no-op otherwise.
-    private static func initializeDevelopmentCloudKitSchema(for container: NSPersistentCloudKitContainer) {
-        guard isICloudAccountAvailable(),
-              container.persistentStoreDescriptions.first?.cloudKitContainerOptions != nil else {
-            AppLogger.persistence.info(
-                "Skipping CloudKit schema init (sign in to iCloud on a DEBUG build after Core Data model changes)."
-            )
-            return
-        }
-        do {
-            try container.initializeCloudKitSchema(options: [])
-            AppLogger.persistence.info(
-                "CloudKit development schema initialized. Promote in CloudKit Console → Deploy Schema Changes for production."
-            )
-        } catch {
-            AppLogger.persistence.error("initializeCloudKitSchema failed: \(error.localizedDescription)")
-        }
-    }
-#endif
 
     func save() {
         if container.viewContext.hasChanges {
