@@ -47,6 +47,8 @@ struct ItemContentList: View {
                 layout
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .clipped()
     }
 
     @ViewBuilder
@@ -62,40 +64,55 @@ struct ItemContentList: View {
     }
 
     private var rowLayout: some View {
-        HStack(spacing: 8) {
-            ForEach(visibleItems) { entry in
-                posterLink(for: entry)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+        GeometryReader { geo in
+            let spacing: CGFloat = 8
+            let count = max(visibleItems.count, 1)
+            let cellWidth = (geo.size.width - spacing * CGFloat(count - 1)) / CGFloat(count)
+
+            HStack(spacing: spacing) {
+                ForEach(visibleItems) { entry in
+                    posterLink(for: entry)
+                        .frame(width: cellWidth, height: geo.size.height)
+                }
             }
+            .frame(width: geo.size.width, height: geo.size.height)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
     private func gridLayout(columns: Int) -> some View {
         let rows = visibleItems.chunked(into: columns)
-        return VStack(spacing: 8) {
-            ForEach(Array(rows.enumerated()), id: \.offset) { _, row in
-                HStack(spacing: 8) {
-                    ForEach(row) { entry in
-                        posterLink(for: entry)
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    }
-                    if row.count < columns {
-                        ForEach(0..<(columns - row.count), id: \.self) { _ in
-                            Color.clear.frame(maxWidth: .infinity, maxHeight: .infinity)
+        let rowCount = max(rows.count, 1)
+
+        return GeometryReader { geo in
+            let spacing: CGFloat = 8
+            let cellWidth = (geo.size.width - spacing * CGFloat(columns - 1)) / CGFloat(columns)
+            let cellHeight = (geo.size.height - spacing * CGFloat(rowCount - 1)) / CGFloat(rowCount)
+
+            VStack(spacing: spacing) {
+                ForEach(Array(rows.enumerated()), id: \.offset) { _, row in
+                    HStack(spacing: spacing) {
+                        ForEach(row) { entry in
+                            posterLink(for: entry)
+                                .frame(width: cellWidth, height: cellHeight)
+                        }
+                        if row.count < columns {
+                            ForEach(0..<(columns - row.count), id: \.self) { _ in
+                                Color.clear
+                                    .frame(width: cellWidth, height: cellHeight)
+                            }
                         }
                     }
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
+            .frame(width: geo.size.width, height: geo.size.height, alignment: .topLeading)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
     @ViewBuilder
     private func posterLink(for entry: WidgetDisplayItem) -> some View {
         let poster = WidgetPosterView(posterData: entry.posterData, placeholderName: entry.item.placeholderImagePath)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .clipped()
             .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
 
         if let destination = entry.item.cronicaDeepLinkURL {
@@ -117,15 +134,16 @@ private struct WidgetPosterView: View {
             if let posterData, let image = platformImage(from: posterData) {
                 image
                     .resizable()
-                    .aspectRatio(contentMode: .fill)
+                    .scaledToFill()
             } else if let placeholderName {
                 Image(placeholderName)
                     .resizable()
-                    .aspectRatio(contentMode: .fill)
+                    .scaledToFill()
             } else {
                 PlaceholderImage()
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .clipped()
     }
 

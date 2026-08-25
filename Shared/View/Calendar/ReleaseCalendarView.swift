@@ -10,6 +10,12 @@ import UIKit
 #endif
 
 #if !os(watchOS)
+/// UICalendarView peeks adjacent months when stretched wider than one month (common on iPad).
+private enum ReleaseCalendarMetrics {
+    static let maxWidth: CGFloat = 360
+    static let minHeight: CGFloat = 340
+}
+
 struct ReleaseCalendarView: View {
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \WatchlistItem.date, ascending: true)],
@@ -54,7 +60,7 @@ struct ReleaseCalendarView: View {
             Section {
                 calendarPicker
             }
-            .listRowInsets(EdgeInsets(top: 0, leading: 4, bottom: 0, trailing: 4))
+            .listRowInsets(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
             .listRowBackground(Color.clear)
 
             Section(releasesSectionTitle) {
@@ -96,7 +102,10 @@ struct ReleaseCalendarView: View {
     private var calendarPicker: some View {
 #if canImport(UIKit) && !os(tvOS)
         NativeReleaseCalendarPicker(selectedDate: $selectedDate, releaseDays: releaseDays)
-            .frame(minHeight: 320)
+            .frame(maxWidth: ReleaseCalendarMetrics.maxWidth)
+            .frame(maxWidth: .infinity, alignment: .center)
+            .frame(minHeight: ReleaseCalendarMetrics.minHeight)
+            .clipped()
 #else
         DatePicker(
             "Release Date",
@@ -105,6 +114,8 @@ struct ReleaseCalendarView: View {
         )
         .datePickerStyle(.graphical)
         .labelsHidden()
+        .frame(maxWidth: ReleaseCalendarMetrics.maxWidth)
+        .frame(maxWidth: .infinity, alignment: .center)
 #endif
     }
 
@@ -124,24 +135,43 @@ private struct NativeReleaseCalendarPicker: UIViewRepresentable {
         Coordinator(selectedDate: $selectedDate, releaseDays: releaseDays)
     }
 
-    func makeUIView(context: Context) -> UICalendarView {
+    func makeUIView(context: Context) -> UIView {
+        let container = UIView()
+        container.clipsToBounds = true
+        container.backgroundColor = .clear
+
         let calendarView = UICalendarView()
         calendarView.calendar = Calendar.current
         calendarView.locale = Locale.current
         calendarView.delegate = context.coordinator
+        calendarView.clipsToBounds = true
         calendarView.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         calendarView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
+        calendarView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
 
         let selection = UICalendarSelectionSingleDate(delegate: context.coordinator)
         calendarView.selectionBehavior = selection
         context.coordinator.selection = selection
+        context.coordinator.calendarView = calendarView
         selection.selectedDate = Calendar.current.dateComponents([.year, .month, .day], from: selectedDate)
 
-        return calendarView
+        calendarView.translatesAutoresizingMaskIntoConstraints = false
+        container.addSubview(calendarView)
+        NSLayoutConstraint.activate([
+            calendarView.topAnchor.constraint(equalTo: container.topAnchor),
+            calendarView.bottomAnchor.constraint(equalTo: container.bottomAnchor),
+            calendarView.centerXAnchor.constraint(equalTo: container.centerXAnchor),
+            calendarView.widthAnchor.constraint(lessThanOrEqualToConstant: ReleaseCalendarMetrics.maxWidth),
+            calendarView.widthAnchor.constraint(lessThanOrEqualTo: container.widthAnchor),
+            calendarView.widthAnchor.constraint(equalTo: container.widthAnchor).withPriority(.defaultHigh)
+        ])
+
+        return container
     }
 
-    func updateUIView(_ calendarView: UICalendarView, context: Context) {
+    func updateUIView(_ container: UIView, context: Context) {
         context.coordinator.releaseDays = releaseDays
+        guard let calendarView = context.coordinator.calendarView else { return }
 
         let selectedComponents = Calendar.current.dateComponents([.year, .month, .day], from: selectedDate)
         if context.coordinator.selection?.selectedDate != selectedComponents {
@@ -154,20 +184,25 @@ private struct NativeReleaseCalendarPicker: UIViewRepresentable {
         calendarView.reloadDecorations(forDateComponents: decorationComponents, animated: false)
     }
 
-    func sizeThatFits(_ proposal: ProposedViewSize, uiView: UICalendarView, context: Context) -> CGSize? {
+    func sizeThatFits(_ proposal: ProposedViewSize, uiView: UIView, context: Context) -> CGSize? {
         guard let width = proposal.width else { return nil }
-        let size = uiView.systemLayoutSizeFitting(
-            CGSize(width: width, height: UIView.layoutFittingCompressedSize.height),
+        let fittedWidth = min(width, ReleaseCalendarMetrics.maxWidth)
+        guard let calendarView = context.coordinator.calendarView else {
+            return CGSize(width: fittedWidth, height: ReleaseCalendarMetrics.minHeight)
+        }
+        let size = calendarView.systemLayoutSizeFitting(
+            CGSize(width: fittedWidth, height: UIView.layoutFittingCompressedSize.height),
             withHorizontalFittingPriority: .required,
             verticalFittingPriority: .fittingSizeLevel
         )
-        return size
+        return CGSize(width: width, height: max(size.height, ReleaseCalendarMetrics.minHeight))
     }
 
     final class Coordinator: NSObject, UICalendarViewDelegate, UICalendarSelectionSingleDateDelegate {
         @Binding var selectedDate: Date
         var releaseDays: Set<Date>
         weak var selection: UICalendarSelectionSingleDate?
+        weak var calendarView: UICalendarView?
 
         init(selectedDate: Binding<Date>, releaseDays: Set<Date>) {
             _selectedDate = selectedDate
@@ -192,6 +227,13 @@ private struct NativeReleaseCalendarPicker: UIViewRepresentable {
             guard releaseDays.contains(day) else { return nil }
             return .default(color: UIColor.tintColor, size: .small)
         }
+    }
+}
+
+private extension NSLayoutConstraint {
+    func withPriority(_ priority: UILayoutPriority) -> NSLayoutConstraint {
+        self.priority = priority
+        return self
     }
 }
 #endif
