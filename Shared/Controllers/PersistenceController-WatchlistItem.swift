@@ -204,9 +204,10 @@ extension PersistenceController {
         let imdb = item.imdbID
         let watched = item.isWatched
         let watching = item.isWatching
+        let watchedAt = item.watchedDate
         Task { @MainActor in
             if watched {
-                SimklPushService.shared.enqueueWatched(tmdb: tmdb, media: media, imdb: imdb)
+                SimklPushService.shared.enqueueWatched(tmdb: tmdb, media: media, imdb: imdb, watchedAt: watchedAt)
                 TMDBPushService.shared.enqueueWatched(tmdb: tmdb, media: media)
             } else if watching {
                 SimklPushService.shared.enqueueAdd(tmdb: tmdb, media: media, status: .watching, imdb: imdb)
@@ -223,6 +224,16 @@ extension PersistenceController {
         }
         item.watchedDate = date
         save()
+#if !os(watchOS)
+        if let date {
+            let tmdb = item.itemId
+            let media = item.itemMedia
+            let imdb = item.imdbID
+            Task { @MainActor in
+                SimklPushService.shared.enqueueWatched(tmdb: tmdb, media: media, imdb: imdb, watchedAt: date)
+            }
+        }
+#endif
     }
     
     func updateFavorite(for item: WatchlistItem) {
@@ -396,7 +407,7 @@ extension PersistenceController {
             let showID = item.itemId
             let imdb = item.imdbID
             Task { @MainActor in
-                SimklPushService.shared.enqueueEpisode(showID: showID, season: season, episode: number, imdb: imdb)
+                SimklPushService.shared.enqueueEpisode(showID: showID, season: season, episode: number, imdb: imdb, watchedAt: Date())
             }
         }
 #endif

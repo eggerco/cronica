@@ -18,7 +18,7 @@ final class SimklPushService {
 
     enum Operation: Codable, Equatable {
         case addToList(tmdb: Int, media: Int, status: String, imdb: String?)
-        case history(tmdb: Int, media: Int, season: Int?, episode: Int?, imdb: String?)
+        case history(tmdb: Int, media: Int, season: Int?, episode: Int?, imdb: String?, watchedAt: String?)
         case removeHistory(tmdb: Int, media: Int, imdb: String?)
         case rating(tmdb: Int, media: Int, rating: Int, imdb: String?)
         case removeRating(tmdb: Int, media: Int, imdb: String?)
@@ -37,19 +37,31 @@ final class SimklPushService {
         Task { await flush() }
     }
 
-    func enqueueWatched(tmdb: Int, media: MediaType, imdb: String?) {
+    func enqueueWatched(tmdb: Int, media: MediaType, imdb: String?, watchedAt: Date? = nil) {
         guard shouldEnqueue else { return }
+        let stamped = Self.simklTimestamp(watchedAt ?? Date())
         if media == .movie {
-            append(.history(tmdb: tmdb, media: Int(MediaType.movie.toInt), season: nil, episode: nil, imdb: imdb))
+            append(.history(tmdb: tmdb, media: Int(MediaType.movie.toInt), season: nil, episode: nil, imdb: imdb, watchedAt: stamped))
         } else {
             append(.addToList(tmdb: tmdb, media: Int(MediaType.tvShow.toInt), status: SimklWatchStatus.completed.rawValue, imdb: imdb))
+            // Also write history with date so SIMKL keeps when it was finished.
+            append(.history(tmdb: tmdb, media: Int(MediaType.tvShow.toInt), season: nil, episode: nil, imdb: imdb, watchedAt: stamped))
         }
         Task { await flush() }
     }
 
-    func enqueueEpisode(showID: Int, season: Int, episode: Int, imdb: String?) {
+    func enqueueEpisode(showID: Int, season: Int, episode: Int, imdb: String?, watchedAt: Date? = nil) {
         guard shouldEnqueue else { return }
-        append(.history(tmdb: showID, media: Int(MediaType.tvShow.toInt), season: season, episode: episode, imdb: imdb))
+        append(
+            .history(
+                tmdb: showID,
+                media: Int(MediaType.tvShow.toInt),
+                season: season,
+                episode: episode,
+                imdb: imdb,
+                watchedAt: Self.simklTimestamp(watchedAt ?? Date())
+            )
+        )
         Task { await flush() }
     }
 
@@ -215,19 +227,19 @@ final class SimklPushService {
         var movies: [SimklHistoryItem] = []
         var shows: [SimklHistoryItem] = []
         for op in ops {
-            guard case let .history(tmdb, media, season, episode, imdb) = op else { continue }
+            guard case let .history(tmdb, media, season, episode, imdb, watchedAt) = op else { continue }
             if media == Int(MediaType.movie.toInt) {
-                movies.append(SimklHistoryItem(ids: SimklWriteIds(tmdb: tmdb, imdb: imdb), watchedAt: nil, seasons: nil))
+                movies.append(SimklHistoryItem(ids: SimklWriteIds(tmdb: tmdb, imdb: imdb), watchedAt: watchedAt, seasons: nil))
             } else if let season, let episode {
                 shows.append(
                     SimklHistoryItem(
                         ids: SimklWriteIds(tmdb: tmdb, imdb: imdb),
-                        watchedAt: nil,
+                        watchedAt: watchedAt,
                         seasons: [SimklHistorySeason(number: season, episodes: [SimklHistoryEpisode(number: episode)])]
                     )
                 )
             } else {
-                shows.append(SimklHistoryItem(ids: SimklWriteIds(tmdb: tmdb, imdb: imdb), watchedAt: nil, seasons: nil))
+                shows.append(SimklHistoryItem(ids: SimklWriteIds(tmdb: tmdb, imdb: imdb), watchedAt: watchedAt, seasons: nil))
             }
         }
         try await SimklAPIClient.shared.addHistory(
@@ -314,5 +326,10 @@ final class SimklPushService {
             }
             try await SimklAPIClient.shared.scrobbleStop(payload)
         }
+    }
+
+    /// SIMKL expects ISO-8601 timestamps for `watched_at`.
+    static func simklTimestamp(_ date: Date) -> String {
+        ISO8601DateFormatter().string(from: date)
     }
 }

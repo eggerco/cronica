@@ -26,6 +26,10 @@ struct CustomListView: View {
 			return list?.itemsArray.sorted { $0.itemSortDate < $1.itemSortDate } ?? []
 		case .dateDesc:
 			return list?.itemsArray.sorted { $0.itemSortDate > $1.itemSortDate } ?? []
+		case .watchedDateAsc:
+			return list?.sortedItems(by: .watchedDateAsc) ?? []
+		case .watchedDateDesc:
+			return list?.sortedItems(by: .watchedDateDesc) ?? []
 		}
 	}
     var body: some View {

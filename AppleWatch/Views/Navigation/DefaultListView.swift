@@ -27,6 +27,10 @@ struct DefaultListView: View {
 			return items.sorted { $0.itemSortDate < $1.itemSortDate }
 		case .dateDesc:
 			return items.sorted { $0.itemSortDate > $1.itemSortDate }
+		case .watchedDateAsc:
+			return items.sorted { ($0.watchedDate ?? .distantPast) < ($1.watchedDate ?? .distantPast) }
+		case .watchedDateDesc:
+			return items.sorted { ($0.watchedDate ?? .distantPast) > ($1.watchedDate ?? .distantPast) }
 		}
 	}
 	private var smartFiltersItems: [WatchlistItem] {

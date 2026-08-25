@@ -44,7 +44,7 @@ struct VerticalUpNextListRowView: View {
                         .font(.caption)
                         .foregroundColor(.secondary)
                         .lineLimit(1)
-                    if settings.upNextSortOrder == .watchProgress, let progress = item.watchProgressLabel {
+                    if let progress = item.watchProgressLabel {
                         Text(progress)
                             .font(.caption2)
                             .foregroundStyle(.secondary)
@@ -53,6 +53,10 @@ struct VerticalUpNextListRowView: View {
                 }
                 .padding(.leading, 2)
                 Spacer()
+                if item.watchProgress > 0 {
+                    WatchProgressRing(progress: item.watchProgress, size: 26)
+                        .padding(.trailing, 4)
+                }
             }
         }
         .buttonStyle(.plain)

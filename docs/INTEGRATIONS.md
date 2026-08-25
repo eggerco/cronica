@@ -13,6 +13,7 @@ Optional library bridge for movies, TV, and anime.
 Behavior notes:
 
 - Import pulls SIMKL → Cronica; optional push of watches is **off by default**.
+- When push is enabled, history writes include `watched_at` from Cronica’s watched date (ISO-8601).
 - Foreground activity checks are throttled (~20 minutes). Manual **Sync Now** always runs.
 - Last successful sync time is shown in **Integrations** (hub subtitle) and on the SIMKL settings screen.
 - Titles removed on SIMKL are counted but **never auto-deleted** from Cronica.

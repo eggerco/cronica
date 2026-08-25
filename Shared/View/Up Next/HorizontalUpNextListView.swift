@@ -237,6 +237,14 @@ private struct UpNextCard: View {
                     .clipShape(RoundedRectangle(cornerRadius: DrawingConstants.imageRadius,
                                                 style: .continuous))
                     .shadow(color: .black.opacity(0.2), radius: 5, x: 0, y: 5)
+                    .overlay(alignment: .topTrailing) {
+                        if item.watchProgress > 0 {
+                            WatchProgressRing(progress: item.watchProgress, size: settings.isCompactUI ? 20 : 24)
+                                .padding(6)
+                                .background(.ultraThinMaterial, in: Circle())
+                                .padding(6)
+                        }
+                    }
                     .applyHoverEffect()
 #if !os(tvOS)
                     if !settings.isCompactUI {

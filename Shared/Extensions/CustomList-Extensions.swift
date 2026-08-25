@@ -47,6 +47,14 @@ extension CustomList {
             return set.sorted { $0.itemSortDate < $1.itemSortDate }
         case .dateDesc:
             return set.sorted { $0.itemSortDate > $1.itemSortDate }
+        case .watchedDateAsc:
+            return set.sorted {
+                ($0.watchedDate ?? .distantPast) < ($1.watchedDate ?? .distantPast)
+            }
+        case .watchedDateDesc:
+            return set.sorted {
+                ($0.watchedDate ?? .distantPast) > ($1.watchedDate ?? .distantPast)
+            }
         }
     }
 

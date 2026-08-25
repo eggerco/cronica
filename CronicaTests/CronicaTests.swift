@@ -285,6 +285,41 @@ final class CronicaTests: XCTestCase {
         XCTAssertEqual(item.watchedEpisodeCount, 3)
         XCTAssertEqual(item.watchProgress, 0.3, accuracy: 0.001)
         XCTAssertTrue(item.hasStartedWatching)
+        XCTAssertEqual(item.watchProgressLabel, "30% watched")
+    }
+
+    func testWatchlistSortByWatchedDate() {
+        let older = WatchlistItem(context: managedContext)
+        older.title = "Older"
+        older.id = 1
+        older.contentID = "1@0"
+        older.contentType = MediaType.movie.toInt
+        older.watched = true
+        older.watchedDate = Date(timeIntervalSince1970: 1_000)
+
+        let newer = WatchlistItem(context: managedContext)
+        newer.title = "Newer"
+        newer.id = 2
+        newer.contentID = "2@0"
+        newer.contentType = MediaType.movie.toInt
+        newer.watched = true
+        newer.watchedDate = Date(timeIntervalSince1970: 2_000)
+
+        let list = CustomList(context: managedContext)
+        list.id = UUID()
+        list.title = "Sort Test"
+        list.items = [older, newer] as NSSet
+        persistence.save()
+
+        XCTAssertEqual(list.sortedItems(by: .watchedDateDesc).map(\.itemTitle), ["Newer", "Older"])
+        XCTAssertEqual(list.sortedItems(by: .watchedDateAsc).map(\.itemTitle), ["Older", "Newer"])
+    }
+
+    func testSimklTimestampIsISO8601() {
+        let date = Date(timeIntervalSince1970: 1_724_000_000)
+        let stamp = SimklPushService.simklTimestamp(date)
+        XCTAssertTrue(stamp.contains("T"))
+        XCTAssertTrue(stamp.hasSuffix("Z") || stamp.contains("+") || stamp.contains("-"))
     }
 
     func testHideUnstartedUsesWatchedEpisodeCount() {
@@ -462,7 +497,7 @@ final class CronicaTests: XCTestCase {
     func testSimklPushOperationRoundTrip() throws {
         let ops: [SimklPushService.Operation] = [
             .addToList(tmdb: 680, media: 0, status: "plantowatch", imdb: "tt0110912"),
-            .history(tmdb: 1399, media: 1, season: 1, episode: 1, imdb: nil),
+            .history(tmdb: 1399, media: 1, season: 1, episode: 1, imdb: nil, watchedAt: "2026-08-25T12:00:00Z"),
             .removeHistory(tmdb: 550, media: 0, imdb: nil)
         ]
         let data = try JSONEncoder().encode(ops)

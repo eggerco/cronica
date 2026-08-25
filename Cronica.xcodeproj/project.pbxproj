@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C0WATCHPROGRING0000002 /* WatchProgressRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WATCHPROGRING0000001 /* WatchProgressRing.swift */; };
 		C0WATCHBATCHEDIT00002 /* WatchlistBatchEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WATCHBATCHEDIT00001 /* WatchlistBatchEditView.swift */; };
 		C0HOMECUSTVIEW0000002 /* HomeCustomizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0HOMECUSTVIEW0000001 /* HomeCustomizerView.swift */; };
 		C0HOMESECSTORE00000002 /* HomeSectionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0HOMESECSTORE00000001 /* HomeSectionStore.swift */; };
@@ -399,6 +400,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C0WATCHPROGRING0000001 /* WatchProgressRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchProgressRing.swift; sourceTree = "<group>"; };
 		C0WATCHBATCHEDIT00001 /* WatchlistBatchEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistBatchEditView.swift; sourceTree = "<group>"; };
 		C0HOMECUSTVIEW0000001 /* HomeCustomizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCustomizerView.swift; sourceTree = "<group>"; };
 		C0HOMESECSTORE00000001 /* HomeSectionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSectionStore.swift; sourceTree = "<group>"; };
@@ -1404,6 +1406,7 @@ C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 			isa = PBXGroup;
 			children = (
 				B8CBBF1B2A4B7C3E0052A59B /* DetailedReleaseDateView.swift */,
+				C0WATCHPROGRING0000001 /* WatchProgressRing.swift */,
 				B890C57827FC999F006BE5E1 /* HeroImage.swift */,
 				B8409D1C2A8286130048840F /* IconGridView.swift */,
 				B824E4432A05A4C500E385CE /* InfoSegmentView.swift */,
@@ -1922,7 +1925,8 @@ C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 								C0HOMESECKIND000000002 /* HomeSectionKind.swift in Sources */,
 				C0HOMESECSTORE00000002 /* HomeSectionStore.swift in Sources */,
 				C0HOMECUSTVIEW0000002 /* HomeCustomizerView.swift in Sources */,
-				C0WATCHBATCHEDIT00002 /* WatchlistBatchEditView.swift in Sources */,
+								C0WATCHPROGRING0000002 /* WatchProgressRing.swift in Sources */,
+C0WATCHBATCHEDIT00002 /* WatchlistBatchEditView.swift in Sources */,
 C0INTEGVIEW00000000002 /* IntegrationsSettingsView.swift in Sources */,
 				C0SIMKLSYNC0000000002 /* SimklSyncService.swift in Sources */,
 				C0SIMKLACCT0000000002 /* SimklAccountService.swift in Sources */,

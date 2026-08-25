@@ -53,6 +53,14 @@ struct WatchlistItemRowView: View {
                        height: DrawingConstants.imageHeight)
                 .clipShape(RoundedRectangle(cornerRadius: DrawingConstants.imageRadius))
                 .shadow(color: .black.opacity(0.2), radius: 2.5, x: 0, y: 2.5)
+                .overlay(alignment: .bottomTrailing) {
+                    if content.isTvShow, content.watchProgress > 0, !(content.isWatched) {
+                        WatchProgressRing(progress: content.watchProgress, size: 20)
+                            .padding(4)
+                            .background(.ultraThinMaterial, in: Circle())
+                            .padding(4)
+                    }
+                }
                 .applyHoverEffect()
                 VStack(alignment: .leading) {
                     HStack {
