@@ -151,7 +151,7 @@ private struct FeaturedItemCardView: View {
     }
 
     private var trimmedOverview: String? {
-        let overview = item.itemOverview?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        let overview = item.itemOverview.trimmingCharacters(in: .whitespacesAndNewlines)
         return overview.isEmpty ? nil : overview
     }
 }
