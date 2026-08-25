@@ -67,7 +67,7 @@ class HomeViewModel: ObservableObject {
 
     static func filterFeaturedItems(_ items: [ItemContent]) -> [ItemContent] {
         items
-            .filter { $0.itemContentMedia != .person }
+            .filter { $0.media != .person }
             .filter { $0.posterPath != nil }
             .sorted { $0.itemPopularity > $1.itemPopularity }
     }

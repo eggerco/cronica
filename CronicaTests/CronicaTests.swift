@@ -756,11 +756,14 @@ final class CronicaTests: XCTestCase {
     }
 
     func testHideFromUpNextPersistsAndClearsDisplayFlag() {
-        let item = requireItem(for: ItemContent.examples[0].itemContentID)
+        let example = ItemContent.examples.first { $0.itemContentMedia == .tvShow } ?? ItemContent.examples[0]
+        let item = requireItem(for: example.itemContentID)
         item.contentType = MediaType.tvShow.toInt
+        item.watched = false
+        item.isArchive = false
         item.displayOnUpNext = true
         item.hideFromUpNext = false
-        item.watchedEpisodes = "-1@1"
+        item.watchedEpisodes = "-10@1"
         item.isWatching = true
         persistence.save()
 
