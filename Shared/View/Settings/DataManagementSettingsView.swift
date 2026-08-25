@@ -14,7 +14,7 @@ struct DataManagementSettingsView: View {
 
     var body: some View {
         Form {
-            Section {
+            CronicaPlainFormSection {
                 Button {
                     openURL(AppWebsite.privacyPolicy)
                 } label: {
@@ -93,7 +93,7 @@ struct DataManagementSettingsView: View {
                 }
             }
 
-            Section {
+            CronicaPlainFormSectionWithFooter {
                 Button("Delete My Data", role: .destructive) {
                     showDeleteConfirmation = true
                 }

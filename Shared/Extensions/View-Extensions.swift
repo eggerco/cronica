@@ -84,6 +84,7 @@ extension View {
     }
 
     /// Standard settings form styling: sentence-case rows/footers, uppercase section headers via `CronicaFormSection`.
+    /// Pair with `CronicaFormText`, `CronicaSettingsRowLabel`, and `CronicaPlainFormSection` so row labels stay sentence case.
     func cronicaSettingsForm() -> some View {
         cronicaNormalTextCase()
 #if os(iOS)
@@ -195,8 +196,74 @@ struct CronicaListSection<Content: View>: View {
     var body: some View {
         Section {
             content()
+                .environment(\.textCase, nil)
         } header: {
             CronicaListSectionHeader(title: title)
+        }
+    }
+}
+
+/// Settings-style icon row label. Use inside Forms with `cronicaSettingsForm()`.
+struct CronicaSettingsRowLabel: View {
+    let title: String
+    let icon: String
+    let color: Color
+
+    var body: some View {
+        HStack {
+            ZStack {
+                Rectangle()
+                    .fill(color)
+                    .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
+                Image(systemName: icon)
+                    .foregroundColor(.white)
+            }
+            .frame(width: 30, height: 30, alignment: .center)
+            .padding(.trailing, 8)
+            .accessibilityHidden(true)
+            CronicaFormText(title)
+        }
+        .padding(.vertical, 2)
+        .environment(\.textCase, nil)
+    }
+}
+
+/// Form section without a header — keeps row labels in sentence case.
+struct CronicaPlainFormSection<Content: View>: View {
+    @ViewBuilder var content: () -> Content
+
+    init(@ViewBuilder content: @escaping () -> Content) {
+        self.content = content
+    }
+
+    var body: some View {
+        Section {
+            content()
+                .environment(\.textCase, nil)
+        }
+    }
+}
+
+/// Form section with footer and no header — keeps row labels in sentence case.
+struct CronicaPlainFormSectionWithFooter<Content: View, Footer: View>: View {
+    @ViewBuilder var content: () -> Content
+    @ViewBuilder var footer: () -> Footer
+
+    init(
+        @ViewBuilder content: @escaping () -> Content,
+        @ViewBuilder footer: @escaping () -> Footer
+    ) {
+        self.content = content
+        self.footer = footer
+    }
+
+    var body: some View {
+        Section {
+            content()
+                .environment(\.textCase, nil)
+        } footer: {
+            footer()
+                .environment(\.textCase, nil)
         }
     }
 }

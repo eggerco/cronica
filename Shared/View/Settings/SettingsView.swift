@@ -22,53 +22,23 @@ struct SettingsView: View {
 #if os(iOS) || os(visionOS)
         Form {
             CronicaFormSection("General") {
-                NavigationLink(value: SettingsScreens.appearance) {
-                    settingsLabel(title: NSLocalizedString("Appearance", comment: ""),
-                                  icon: "paintbrush", color: .blue)
-                }
-                NavigationLink(value: SettingsScreens.behavior) {
-                    settingsLabel(title: NSLocalizedString("Behavior", comment: ""),
-                                  icon: "hand.tap", color: .gray)
-                }
-                NavigationLink(value: SettingsScreens.notifications) {
-                    settingsLabel(title: NSLocalizedString("Notifications", comment: ""),
-                                  icon: "bell", color: .red)
-                }
+                settingsNavigationLink(.appearance, title: String(localized: "Appearance"), icon: "paintbrush", color: .blue)
+                settingsNavigationLink(.behavior, title: String(localized: "Behavior"), icon: "hand.tap", color: .gray)
+                settingsNavigationLink(.notifications, title: String(localized: "Notifications"), icon: "bell", color: .red)
             }
             
             CronicaFormSection("Features") {
-                NavigationLink(value: SettingsScreens.watchlist) {
-                    settingsLabel(title: NSLocalizedString("Watchlist", comment: ""),
-                                  icon: "rectangle.on.rectangle", color: AppThemeColors.goldenrod.color)
-                }
-                NavigationLink(value: SettingsScreens.season) {
-                    settingsLabel(title: NSLocalizedString("Season & Up Next", comment: ""),
-                                  icon: "tv", color: AppThemeColors.turquoiseBlue.color)
-                }
-                NavigationLink(value: SettingsScreens.region) {
-                    settingsLabel(title: NSLocalizedString("Watch Provider", comment: ""),
-                                  icon: "globe", color: .purple)
-                }
+                settingsNavigationLink(.watchlist, title: String(localized: "Watchlist"), icon: "rectangle.on.rectangle", color: AppThemeColors.goldenrod.color)
+                settingsNavigationLink(.season, title: String(localized: "Season & Up Next"), icon: "tv", color: AppThemeColors.turquoiseBlue.color)
+                settingsNavigationLink(.region, title: String(localized: "Watch Provider"), icon: "globe", color: .purple)
             }
             
             CronicaFormSection("About") {
-                NavigationLink(value: SettingsScreens.about) {
-                    settingsLabel(title: NSLocalizedString("About", comment: ""),
-                                  icon: "info.circle", color: .black)
-                }
-                NavigationLink(value: SettingsScreens.dataManagement) {
-                    settingsLabel(title: String(localized: "Privacy & Data"),
-                                  icon: "lock.shield", color: .orange)
-                }
-                NavigationLink(value: SettingsScreens.feedback) {
-                    settingsLabel(title: NSLocalizedString("Feedback", comment: ""),
-                                  icon: "envelope.fill", color: AppThemeColors.steel.color)
-                }
+                settingsNavigationLink(.about, title: String(localized: "About"), icon: "info.circle", color: .black)
+                settingsNavigationLink(.dataManagement, title: String(localized: "Privacy & Data"), icon: "lock.shield", color: .orange)
+                settingsNavigationLink(.feedback, title: String(localized: "Feedback"), icon: "envelope.fill", color: AppThemeColors.steel.color)
 #if !os(visionOS)
-                NavigationLink(value: SettingsScreens.tipJar) {
-                    settingsLabel(title: NSLocalizedString("Tip Jar", comment: ""),
-                                  icon: "heart", color: .red)
-                }
+                settingsNavigationLink(.tipJar, title: String(localized: "Tip Jar"), icon: "heart", color: .red)
 #endif
             }
         }
@@ -126,26 +96,19 @@ struct SettingsView: View {
         }
 #endif
     }
-    
-    private func settingsLabel(title: String, icon: String, color: Color) -> some View {
-        HStack {
-            ZStack {
-                Rectangle()
-                    .fill(color)
-                    .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
-                Image(systemName: icon)
-                    .foregroundColor(.white)
-            }
-            .frame(width: 30, height: 30, alignment: .center)
-            .padding(.trailing, 8)
-            .accessibilityHidden(true)
-            Text(verbatim: title)
-                .textCase(nil)
-                .environment(\.textCase, nil)
+
+#if os(iOS) || os(visionOS)
+    private func settingsNavigationLink(
+        _ value: SettingsScreens,
+        title: String,
+        icon: String,
+        color: Color
+    ) -> some View {
+        NavigationLink(value: value) {
+            CronicaSettingsRowLabel(title: title, icon: icon, color: color)
         }
-        .padding(.vertical, 2)
-        .environment(\.textCase, nil)
     }
+#endif
 }
 
 #Preview {
