@@ -45,12 +45,12 @@ struct TabBarView: View {
                 details
             }
         }
-        .onAppear(applyPreferredLaunchScreen)
+        .onAppear { applyPreferredLaunchScreen() }
         .appTint()
         .appTheme()
 #else
         details
-            .onAppear(applyPreferredLaunchScreen)
+            .onAppear { applyPreferredLaunchScreen() }
             .appTint()
             .appTheme()
 #endif
