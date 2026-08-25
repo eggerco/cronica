@@ -220,20 +220,20 @@ struct CustomWatchlist: View {
                     placement: horizontalSizeClass == .regular ? .automatic : .navigationBarDrawer(displayMode: .always),
                     prompt: "Search \(selectedList?.itemTitle ?? "List")")
         .safeAreaInset(edge: .top, spacing: 0) {
-            if selectedList?.itemsArray?.isEmpty == false {
+            if selectedList?.itemsArray.isEmpty == false {
                 mediaTypePicker
             }
         }
 #elseif os(macOS)
         .searchable(text: $query, placement: .toolbar, prompt: "Search \(selectedList?.itemTitle ?? "List")")
         .safeAreaInset(edge: .top, spacing: 0) {
-            if selectedList?.itemsArray?.isEmpty == false {
+            if selectedList?.itemsArray.isEmpty == false {
                 mediaTypePicker
             }
         }
 #elseif os(visionOS)
         .safeAreaInset(edge: .top, spacing: 0) {
-            if selectedList?.itemsArray?.isEmpty == false {
+            if selectedList?.itemsArray.isEmpty == false {
                 mediaTypePicker
             }
         }
