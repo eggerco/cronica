@@ -97,7 +97,7 @@ final class TMDBPushService {
     private var shouldEnqueue: Bool {
         SettingsStore.shared.tmdbPushEnabled
             && TMDBSessionStore.hasSession
-            && !TMDBSyncService.isApplyingRemoteChanges
+            && !IntegrationRemoteApply.shouldSuppressOutboundPush
     }
 
     private func append(_ op: Operation) {

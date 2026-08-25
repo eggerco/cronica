@@ -32,6 +32,7 @@ final class TMDBAccountAuthService: NSObject {
         let sessionID = TMDBSessionStore.loadSessionID()
         TMDBSessionStore.delete()
         TMDBPushService.shared.clearQueue()
+        TMDBAccountListCache.clear()
         let settings = SettingsStore.shared
         settings.isUserConnectedWithTMDb = false
         settings.tmdbAccountName = ""

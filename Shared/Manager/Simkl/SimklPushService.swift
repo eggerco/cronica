@@ -154,7 +154,7 @@ final class SimklPushService {
     private var shouldEnqueue: Bool {
         SettingsStore.shared.simklPushEnabled
             && SimklTokenStore.hasToken
-            && !SimklSyncService.isApplyingRemoteChanges
+            && !IntegrationRemoteApply.shouldSuppressOutboundPush
     }
 
     private func append(_ op: Operation) {

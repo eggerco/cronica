@@ -28,11 +28,14 @@ Optional account bridge for personal watchlist, ratings, and favorites. Catalog 
 
 Behavior notes:
 
-- **Sync Now** re-downloads account lists (watchlist / rated / favorites). TMDB has no activities feed, so there is no true incremental sync.
-- Foreground pulls are throttled (~20 minutes) after the first successful sync.
+- **Sync Now** always performs a full account-list pull (watchlist / rated / favorites). TMDB has no activities feed, so this is not a true incremental sync.
+- After lists are fetched, Cronica fingerprints item id sets (and ratings). If the fingerprint matches the last successful sync, Core Data / catalog re-apply is skipped (cheaper; still may have downloaded pages, or reused 304 bodies).
+- When TMDB returns `ETag`s, subsequent page GETs send `If-None-Match`. A `304` reuses the cached page body (bandwidth win when lists are unchanged).
+- Foreground pulls are throttled (~20 minutes) after the first successful sync. When a prior fingerprint exists, Cronica first probes page 1 of each list with conditional GETs; if all are Not Modified, it skips the full pull. **Sync Now** never uses this light path.
 - Optional push is **off by default**. When enabled, Cronica queues watchlist, favorite, and rating writes to TMDB.
+- While either SIMKL or TMDB is applying a remote import, **both** push queues suppress enqueue (prevents cross-echo when both push toggles are on). Manual user actions still enqueue.
 - Marking watched removes the title from the TMDB watchlist (TMDB has no watched-history API).
-- Titles removed on TMDB stay in Cronica; nothing is auto-deleted locally.
+- Titles removed on TMDB stay in Cronica; nothing is auto-deleted locally. Partial import failures keep prior fingerprints and surface errors without crashing.
 - No stats, playbacks, or live scrobble — those APIs do not exist for TMDB accounts.
-- Disconnect clears the local session (and best-effort invalidates it on TMDB). **Delete My Data** also clears the session and push queue.
+- Disconnect clears the local session, list cache/fingerprint, and push queue (and best-effort invalidates the session on TMDB). **Delete My Data** does the same.
 - Connect / push UI is available on iOS, iPadOS, macOS, and visionOS. tvOS can show status if already connected; Watch has no Integrations UI.

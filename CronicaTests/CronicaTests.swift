@@ -595,7 +595,51 @@ final class CronicaTests: XCTestCase {
         )
     }
 
-    func testTMDBPushOperationRoundTrip() throws {
+    @MainActor
+    func testIntegrationRemoteApplySuppressesOutboundPush() {
+        XCTAssertFalse(IntegrationRemoteApply.shouldSuppressOutboundPush)
+        IntegrationRemoteApply.begin()
+        XCTAssertTrue(IntegrationRemoteApply.shouldSuppressOutboundPush)
+        IntegrationRemoteApply.begin()
+        XCTAssertTrue(IntegrationRemoteApply.shouldSuppressOutboundPush)
+        IntegrationRemoteApply.end()
+        XCTAssertTrue(IntegrationRemoteApply.shouldSuppressOutboundPush)
+        IntegrationRemoteApply.end()
+        XCTAssertFalse(IntegrationRemoteApply.shouldSuppressOutboundPush)
+    }
+
+    func testTMDBAccountListFingerprintStableAndClears() {
+        defer { TMDBAccountListCache.clear() }
+        TMDBAccountListCache.clear()
+        let items = [
+            TMDBAccountAPIClient.AccountMediaItem(id: 2, title: "B", name: nil, releaseDate: nil, firstAirDate: nil, rating: nil),
+            TMDBAccountAPIClient.AccountMediaItem(id: 1, title: "A", name: nil, releaseDate: nil, firstAirDate: nil, rating: 8)
+        ]
+        let empty: [TMDBAccountAPIClient.AccountMediaItem] = []
+        let fp1 = TMDBAccountListCache.fingerprint(
+            watchlistMovies: items,
+            watchlistTV: empty,
+            ratedMovies: empty,
+            ratedTV: empty,
+            favoriteMovies: empty,
+            favoriteTV: empty
+        )
+        let fp2 = TMDBAccountListCache.fingerprint(
+            watchlistMovies: items.reversed(),
+            watchlistTV: empty,
+            ratedMovies: empty,
+            ratedTV: empty,
+            favoriteMovies: empty,
+            favoriteTV: empty
+        )
+        XCTAssertEqual(fp1, fp2)
+        TMDBAccountListCache.saveFingerprint(fp1)
+        XCTAssertEqual(TMDBAccountListCache.loadFingerprint(), fp1)
+        TMDBAccountListCache.clear()
+        XCTAssertNil(TMDBAccountListCache.loadFingerprint())
+    }
+
+        func testTMDBPushOperationRoundTrip() throws {
         let ops: [TMDBPushService.Operation] = [
             .watchlist(tmdb: 680, media: 0, onList: true),
             .favorite(tmdb: 1396, media: 1, isFavorite: true),

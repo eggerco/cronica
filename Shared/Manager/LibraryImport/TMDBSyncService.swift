@@ -15,9 +15,8 @@ enum TMDBSyncService {
     /// Match SIMKL’s ~20 minute foreground throttle.
     nonisolated static let foregroundThrottleInterval: TimeInterval = 20 * 60
 
-    private static var isApplyingRemote = false
-
-    static var isApplyingRemoteChanges: Bool { isApplyingRemote }
+    /// Prefer `IntegrationRemoteApply`; kept for call-site compatibility.
+    static var isApplyingRemoteChanges: Bool { IntegrationRemoteApply.isApplying }
 
     struct Progress: Equatable {
         var phase: String
@@ -32,12 +31,11 @@ enum TMDBSyncService {
         guard TMDBSessionStore.hasSession else {
             throw LibraryImportError.message("Connect a TMDB account first.")
         }
-        isApplyingRemote = true
-        defer { isApplyingRemote = false }
-
-        let summary = try await TMDBAccountImportService.importLibrary(progress: progress)
-        SettingsStore.shared.markTMDBSyncChecked()
-        return summary
+        return try await IntegrationRemoteApply.whileApplying {
+            let summary = try await TMDBAccountImportService.importLibrary(progress: progress)
+            SettingsStore.shared.markTMDBSyncChecked()
+            return summary
+        }
     }
 
     /// Foreground / wake pull. Skipped when throttled or no session.
@@ -52,7 +50,13 @@ enum TMDBSyncService {
             return
         }
         do {
-            _ = try await syncNow()
+            // Light check: page-1 conditional GETs when ETags exist; skip full pull if unchanged.
+            if TMDBAccountListCache.loadFingerprint() != nil,
+               try await TMDBAccountImportService.probeListsUnchanged() {
+                settings.markTMDBSyncChecked()
+            } else {
+                _ = try await syncNow()
+            }
             if settings.tmdbPushEnabled {
                 await TMDBPushService.shared.flush()
             }

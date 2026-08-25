@@ -40,6 +40,7 @@ enum UserDataDeletionService {
         SimklPushService.shared.clearQueue()
         TMDBSessionStore.delete()
         TMDBPushService.shared.clearQueue()
+        TMDBAccountListCache.clear()
 #endif
 
         resetUserDefaults()
@@ -86,6 +87,7 @@ enum UserDataDeletionService {
             "tmdbPushEnabled",
             "tmdbLastSyncCheck",
             "tmdbPushQueue",
+            "tmdbAccountListFingerprint",
             "simklLastImportTimestamp",
             "simklActivitiesAll",
             "simklRemovedMovies",

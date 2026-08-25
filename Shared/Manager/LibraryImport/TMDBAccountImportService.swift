@@ -7,6 +7,39 @@ import Foundation
 import CronicaCore
 
 enum TMDBAccountImportService {
+    private static let listPaths = [
+        "watchlist/movies",
+        "watchlist/tv",
+        "rated/movies",
+        "rated/tv",
+        "favorite/movies",
+        "favorite/tv"
+    ]
+
+    /// Foreground light probe: page-1 conditional GETs for every account list.
+    /// Returns `true` only when every list page is Not Modified and a prior fingerprint exists.
+    @MainActor
+    static func probeListsUnchanged() async throws -> Bool {
+        guard TMDBAccountListCache.loadFingerprint() != nil else { return false }
+        guard let sessionID = TMDBSessionStore.loadSessionID() else { return false }
+        var accountID = TMDBSessionStore.loadAccountID()
+        if accountID == 0 {
+            let details = try await TMDBAccountAPIClient.shared.accountDetails(sessionID: sessionID)
+            accountID = details.id
+            TMDBSessionStore.saveAccountID(accountID)
+        }
+        for path in listPaths {
+            let unchanged = try await TMDBAccountAPIClient.shared.isAccountListPageUnchanged(
+                path: path,
+                sessionID: sessionID,
+                accountID: accountID,
+                page: 1
+            )
+            if !unchanged { return false }
+        }
+        return true
+    }
+
     @MainActor
     static func importLibrary(
         progress: (@MainActor (LibraryImportService.Progress) -> Void)? = nil
@@ -25,28 +58,40 @@ enum TMDBAccountImportService {
 
         progress?(LibraryImportService.Progress(phase: String(localized: "Fetching TMDB lists…"), processed: 0, total: 0))
 
-        async let watchlistMovies = TMDBAccountAPIClient.shared.pagedAccountList(
+        // Sequential list pulls with per-page pacing (safer for rate limits than 6-way fan-out).
+        let wlMovies = try await TMDBAccountAPIClient.shared.pagedAccountList(
             path: "watchlist/movies", sessionID: sessionID, accountID: accountID
         )
-        async let watchlistTV = TMDBAccountAPIClient.shared.pagedAccountList(
+        let wlTV = try await TMDBAccountAPIClient.shared.pagedAccountList(
             path: "watchlist/tv", sessionID: sessionID, accountID: accountID
         )
-        async let ratedMovies = TMDBAccountAPIClient.shared.pagedAccountList(
+        let rMovies = try await TMDBAccountAPIClient.shared.pagedAccountList(
             path: "rated/movies", sessionID: sessionID, accountID: accountID
         )
-        async let ratedTV = TMDBAccountAPIClient.shared.pagedAccountList(
+        let rTV = try await TMDBAccountAPIClient.shared.pagedAccountList(
             path: "rated/tv", sessionID: sessionID, accountID: accountID
         )
-        async let favoriteMovies = TMDBAccountAPIClient.shared.pagedAccountList(
+        let fMovies = try await TMDBAccountAPIClient.shared.pagedAccountList(
             path: "favorite/movies", sessionID: sessionID, accountID: accountID
         )
-        async let favoriteTV = TMDBAccountAPIClient.shared.pagedAccountList(
+        let fTV = try await TMDBAccountAPIClient.shared.pagedAccountList(
             path: "favorite/tv", sessionID: sessionID, accountID: accountID
         )
 
-        let (wlMovies, wlTV, rMovies, rTV, fMovies, fTV) = try await (
-            watchlistMovies, watchlistTV, ratedMovies, ratedTV, favoriteMovies, favoriteTV
+        let fingerprint = TMDBAccountListCache.fingerprint(
+            watchlistMovies: wlMovies,
+            watchlistTV: wlTV,
+            ratedMovies: rMovies,
+            ratedTV: rTV,
+            favoriteMovies: fMovies,
+            favoriteTV: fTV
         )
+        if fingerprint == TMDBAccountListCache.loadFingerprint() {
+            SettingsStore.shared.tmdbAccountLastImportDate = Date()
+            SettingsStore.shared.isUserConnectedWithTMDb = true
+            SettingsStore.shared.userImportedTMDB = true
+            return LibraryImportSummary(source: .tmdbAccount, unchanged: true)
+        }
 
         var rows: [LibraryImportRow] = []
         rows.append(contentsOf: wlMovies.map {
@@ -113,6 +158,12 @@ enum TMDBAccountImportService {
             }
         }
         PersistenceController.shared.save()
+
+        // Only seal fingerprint when apply completed without item failures,
+        // so a partial failure retries those rows on the next sync.
+        if summary.failed == 0 {
+            TMDBAccountListCache.saveFingerprint(fingerprint)
+        }
 
         return summary
     }

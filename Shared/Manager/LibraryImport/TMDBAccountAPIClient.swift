@@ -76,6 +76,11 @@ actor TMDBAccountAPIClient {
         return try await get(url)
     }
 
+    /// Soft pacing between account-list pages.
+    nonisolated static let pagePaceNanoseconds: UInt64 = 200_000_000
+    /// Safety cap — never infinite-loop on a bad totalPages value.
+    nonisolated static let maxPages = 50
+
     func pagedAccountList(
         path: String,
         sessionID: String,
@@ -84,22 +89,38 @@ actor TMDBAccountAPIClient {
         var page = 1
         var totalPages = 1
         var items: [AccountMediaItem] = []
-        while page <= totalPages {
-            let url = try url(
-                path: "account/\(accountID)/\(path)",
-                query: [
-                    "session_id": sessionID,
-                    "page": "\(page)",
-                    "language": Locale.userLang
-                ]
+        while page <= totalPages && page <= Self.maxPages {
+            let pageResult = try await fetchAccountListPage(
+                path: path,
+                sessionID: sessionID,
+                accountID: accountID,
+                page: page
             )
-            let response: PagedItems = try await get(url)
-            items.append(contentsOf: response.results ?? [])
-            totalPages = max(response.totalPages ?? 1, 1)
+            items.append(contentsOf: pageResult.page.results ?? [])
+            totalPages = max(pageResult.page.totalPages ?? 1, 1)
             page += 1
-            if page > 50 { break } // safety cap
+            if page <= totalPages && page <= Self.maxPages {
+                try await Task.sleep(nanoseconds: Self.pagePaceNanoseconds)
+            }
         }
         return items
+    }
+
+    /// Page-1 conditional probe for foreground light checks.
+    /// Returns `true` only when TMDB returned 304 and a cached body exists.
+    func isAccountListPageUnchanged(
+        path: String,
+        sessionID: String,
+        accountID: Int,
+        page: Int = 1
+    ) async throws -> Bool {
+        let result = try await fetchAccountListPage(
+            path: path,
+            sessionID: sessionID,
+            accountID: accountID,
+            page: page
+        )
+        return result.notModified
     }
 
     // MARK: - Writes (require session)
@@ -160,6 +181,79 @@ actor TMDBAccountAPIClient {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = try JSONSerialization.data(withJSONObject: ["session_id": sessionID])
         let _: StatusResponse = try await send(request)
+    }
+
+    private struct ConditionalPage {
+        let page: PagedItems
+        let notModified: Bool
+    }
+
+    private func fetchAccountListPage(
+        path: String,
+        sessionID: String,
+        accountID: Int,
+        page: Int
+    ) async throws -> ConditionalPage {
+        let url = try url(
+            path: "account/\(accountID)/\(path)",
+            query: [
+                "session_id": sessionID,
+                "page": "\(page)",
+                "language": Locale.userLang
+            ]
+        )
+        var request = URLRequest(url: url)
+        if let etag = TMDBAccountListCache.loadETag(path: path, page: page), !etag.isEmpty {
+            request.setValue(etag, forHTTPHeaderField: "If-None-Match")
+        }
+
+        let (data, response) = try await URLSession.shared.data(for: request)
+        guard let http = response as? HTTPURLResponse else {
+            throw LibraryImportError.invalidResponse
+        }
+
+        if http.statusCode == 304 {
+            guard let cached = TMDBAccountListCache.loadBody(path: path, page: page) else {
+                // Stale ETag without body — clear and refetch once without condition.
+                UserDefaults.standard.removeObject(forKey: TMDBAccountListCache.etagKey(path: path, page: page))
+                return try await fetchAccountListPage(
+                    path: path,
+                    sessionID: sessionID,
+                    accountID: accountID,
+                    page: page
+                )
+            }
+            do {
+                let decoded = try decoder.decode(PagedItems.self, from: cached)
+                return ConditionalPage(page: decoded, notModified: true)
+            } catch {
+                UserDefaults.standard.removeObject(forKey: TMDBAccountListCache.etagKey(path: path, page: page))
+                UserDefaults.standard.removeObject(forKey: TMDBAccountListCache.bodyKey(path: path, page: page))
+                return try await fetchAccountListPage(
+                    path: path,
+                    sessionID: sessionID,
+                    accountID: accountID,
+                    page: page
+                )
+            }
+        }
+
+        guard (200...299).contains(http.statusCode) else {
+            throw LibraryImportError.message("TMDB request failed (\(http.statusCode)).")
+        }
+
+        let decoded: PagedItems
+        do {
+            decoded = try decoder.decode(PagedItems.self, from: data)
+        } catch {
+            throw LibraryImportError.invalidResponse
+        }
+
+        if let etag = http.value(forHTTPHeaderField: "ETag"), !etag.isEmpty {
+            TMDBAccountListCache.saveETag(etag, path: path, page: page)
+            TMDBAccountListCache.saveBody(data, path: path, page: page)
+        }
+        return ConditionalPage(page: decoded, notModified: false)
     }
 
     private func sessionCredentials() throws -> (String, Int) {

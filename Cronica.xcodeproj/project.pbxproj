@@ -280,6 +280,8 @@
 		C0LIBVIEWTM000000002 /* TMDBAccountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0LIBVIEWTM000000001 /* TMDBAccountSettingsView.swift */; };
 		C0TMDBSYNC00000000002 /* TMDBSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0TMDBSYNC00000000001 /* TMDBSyncService.swift */; };
 		C0TMDBPUSH00000000002 /* TMDBPushService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0TMDBPUSH00000000001 /* TMDBPushService.swift */; };
+		C0INTREMOTE0000000002 /* IntegrationRemoteApply.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0INTREMOTE0000000001 /* IntegrationRemoteApply.swift */; };
+		C0TMDBCACHE0000000002 /* TMDBAccountListCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0TMDBCACHE0000000001 /* TMDBAccountListCache.swift */; };
 		C0SIMKLKNOWN000000003 /* SimklKnownItemsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLKNOWN000000001 /* SimklKnownItemsStore.swift */; };
 		C0WLBACKUP000000000002 /* WatchlistItemBackup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WLBACKUP000000000001 /* WatchlistItemBackup.swift */; };
 		C0WLBACKUP000000000003 /* WatchlistItemBackup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WLBACKUP000000000001 /* WatchlistItemBackup.swift */; };
@@ -597,6 +599,8 @@
 		C0LIBVIEWTM000000001 /* TMDBAccountSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAccountSettingsView.swift; sourceTree = "<group>"; };
 		C0TMDBSYNC00000000001 /* TMDBSyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBSyncService.swift; sourceTree = "<group>"; };
 		C0TMDBPUSH00000000001 /* TMDBPushService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBPushService.swift; sourceTree = "<group>"; };
+		C0INTREMOTE0000000001 /* IntegrationRemoteApply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationRemoteApply.swift; sourceTree = "<group>"; };
+		C0TMDBCACHE0000000001 /* TMDBAccountListCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAccountListCache.swift; sourceTree = "<group>"; };
 		C0WLBACKUP000000000001 /* WatchlistItemBackup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistItemBackup.swift; sourceTree = "<group>"; };
 		C0RELCV000000000001 /* ReleaseCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseCalendarView.swift; sourceTree = "<group>"; };
 		C0RELCROUTE000000001 /* ReleaseCalendarRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseCalendarRoute.swift; sourceTree = "<group>"; };
@@ -1334,6 +1338,7 @@
 				C0LIBTMDB00000000001 /* TMDBAccountImportService.swift */,
 				C0TMDBSYNC00000000001 /* TMDBSyncService.swift */,
 				C0TMDBPUSH00000000001 /* TMDBPushService.swift */,
+				C0TMDBCACHE0000000001 /* TMDBAccountListCache.swift */,
 			);
 			path = LibraryImport;
 			sourceTree = "<group>";
@@ -1361,6 +1366,7 @@
 				B87F746228064D3800E94126 /* BackgroundManager.swift */,
 				C0CALMGR000000000001 /* CalendarManager.swift */,
 				C0USERDATA000000000001 /* UserDataDeletionService.swift */,
+				C0INTREMOTE0000000001 /* IntegrationRemoteApply.swift */,
 				C0SIMKLGROUP0000000001 /* Simkl */,
 				C0LIBGROUP0000000001 /* LibraryImport */,
 				B8B94CEE28EB8B8200EDEC85 /* CronicaTelemetry.swift */,
@@ -1898,6 +1904,8 @@
 				C0LIBVIEWTM000000002 /* TMDBAccountSettingsView.swift in Sources */,
 				C0TMDBSYNC00000000002 /* TMDBSyncService.swift in Sources */,
 				C0TMDBPUSH00000000002 /* TMDBPushService.swift in Sources */,
+				C0INTREMOTE0000000002 /* IntegrationRemoteApply.swift in Sources */,
+				C0TMDBCACHE0000000002 /* TMDBAccountListCache.swift in Sources */,
 				C0WLBACKUP000000000002 /* WatchlistItemBackup.swift in Sources */,
 				C0DATAMGMT000000000002 /* DataManagementSettingsView.swift in Sources */,
 				B883A1E32AEF1DB800793EE2 /* SearchItemContentContextMenu.swift in Sources */,

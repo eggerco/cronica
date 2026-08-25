@@ -12,9 +12,8 @@ enum SimklSyncService {
     /// SIMKL recommends throttling wake/startup activity checks to once every 15–30 minutes.
     nonisolated static let foregroundThrottleInterval: TimeInterval = 20 * 60
 
-    private static var isApplyingRemote = false
-
-    static var isApplyingRemoteChanges: Bool { isApplyingRemote }
+    /// Prefer `IntegrationRemoteApply`; kept for call-site compatibility.
+    static var isApplyingRemoteChanges: Bool { IntegrationRemoteApply.isApplying }
 
     struct Progress: Equatable {
         var phase: String
@@ -27,8 +26,8 @@ enum SimklSyncService {
         progress: (@MainActor (Progress) -> Void)? = nil
     ) async throws -> SimklImportSummary {
         guard SimklTokenStore.hasToken else { throw SimklError.notAuthenticated }
-        isApplyingRemote = true
-        defer { isApplyingRemote = false }
+        IntegrationRemoteApply.begin()
+        defer { IntegrationRemoteApply.end() }
 
         var summary = SimklImportSummary()
         let client = SimklAPIClient.shared
@@ -94,8 +93,8 @@ enum SimklSyncService {
             return summary
         }
 
-        isApplyingRemote = true
-        defer { isApplyingRemote = false }
+        IntegrationRemoteApply.begin()
+        defer { IntegrationRemoteApply.end() }
 
         var summary = SimklImportSummary()
         let wantEpisodes = needsEpisodeExtended(
