@@ -7,7 +7,7 @@
 
 import Foundation
 import CoreData
-import CronicaCore
+@preconcurrency import CronicaCore
 
 final class BackgroundManager {
 	private let context = PersistenceController.shared.container.newBackgroundContext()

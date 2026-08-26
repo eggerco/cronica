@@ -176,7 +176,7 @@ enum UserDataDeletionService {
         DataLoader.sharedUrlCache.removeAllCachedResponses()
         ImageCache.shared.removeAll()
         if let dataCache = ImagePipeline.shared.configuration.dataCache as? DataCache {
-            try? dataCache.removeAll()
+            dataCache.removeAll()
         }
     }
 

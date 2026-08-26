@@ -3,7 +3,7 @@
 //  Cronica
 //
 
-import CoreData
+@preconcurrency import CoreData
 import Foundation
 
 #if os(iOS) && !CRONICA_SHARE_EXTENSION
@@ -12,6 +12,12 @@ enum PersistentHistoryMerger {
     private static let lastTokenKey = "persistentHistory.lastToken"
     private static var observer: NSObjectProtocol?
     private static var isMerging = false
+
+    private final class HistoryFetchScratch: @unchecked Sendable {
+        var mergePayloads: [[AnyHashable: Any]] = []
+        var lastToken: NSPersistentHistoryToken?
+        var error: Error?
+    }
 
     static func startObserving(container: NSPersistentCloudKitContainer) {
         guard observer == nil else { return }
@@ -36,6 +42,7 @@ enum PersistentHistoryMerger {
         isMerging = true
         defer { isMerging = false }
 
+        let scratch = HistoryFetchScratch()
         let background = container.newBackgroundContext()
         background.performAndWait {
             do {
@@ -46,28 +53,33 @@ enum PersistentHistoryMerger {
                       !transactions.isEmpty
                 else { return }
 
-                let viewContext = container.viewContext
-                viewContext.performAndWait {
-                    for transaction in transactions {
-                        guard let userInfo = transaction.objectIDNotification().userInfo else { continue }
-                        NSManagedObjectContext.mergeChanges(
-                            fromRemoteContextSave: userInfo,
-                            into: [viewContext]
-                        )
-                    }
-                }
-
-                if let last = transactions.last?.token {
-                    saveToken(last)
-                }
-
-                WidgetSnapshotPublisherBridge.scheduleRefreshIfAvailable()
+                scratch.mergePayloads = transactions.compactMap { $0.objectIDNotification().userInfo }
+                scratch.lastToken = transactions.last?.token
             } catch {
-                AppLogger.persistence.error(
-                    "Persistent history merge failed: \(error.localizedDescription)"
-                )
+                scratch.error = error
             }
         }
+
+        if let error = scratch.error {
+            AppLogger.persistence.error(
+                "Persistent history merge failed: \(error.localizedDescription)"
+            )
+            return
+        }
+        guard !scratch.mergePayloads.isEmpty else { return }
+
+        for userInfo in scratch.mergePayloads {
+            NSManagedObjectContext.mergeChanges(
+                fromRemoteContextSave: userInfo,
+                into: [container.viewContext]
+            )
+        }
+
+        if let lastToken = scratch.lastToken {
+            saveToken(lastToken)
+        }
+
+        WidgetSnapshotPublisherBridge.scheduleRefreshIfAvailable()
     }
 
     private static func loadToken() -> NSPersistentHistoryToken? {

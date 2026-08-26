@@ -10,7 +10,7 @@ import Foundation
 /// The value for the types of schedule supported by ItemContent and WatchlistItem.
 ///
 /// This value is most used to quickly filter out WatchlistItem and handle better fetching in notifications.
-public enum ItemSchedule: String, CaseIterable, Identifiable {
+public enum ItemSchedule: String, CaseIterable, Identifiable, Sendable {
     public var id: String { rawValue }
     case soon, released, production, cancelled, unknown, renewed, ended
     public var toInt: Int16 {

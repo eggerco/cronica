@@ -248,6 +248,7 @@
 		B8D7AEAC28B95F5E0053CE5A /* CronicaWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D7AEAB28B95F5E0053CE5A /* CronicaWidget.swift */; };
 		B8D7AEAE28B95F5F0053CE5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8D7AEAD28B95F5F0053CE5A /* Assets.xcassets */; };
 		B8D7AEB228B95F5F0053CE5A /* Cronica Widget Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B8D7AEA728B95F5D0053CE5A /* Cronica Widget Extension.appex */; platformFilters = (ios, macos, ); settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C0SHAREEXTEMBED00000001 /* Cronica Share Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = C0SHAREEXTPRODUCT000001 /* Cronica Share Extension.appex */; platformFilters = (ios, ); settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C0SHAREWIDGETKIT0000001 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8AD442F284AD42300778275 /* WidgetKit.framework */; };
 		C0SHAREVC000000000000002 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SHAREVC000000000000001 /* ShareViewController.swift */; };
 		C0SHAREVIEW0000000000002 /* ShareExtensionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SHAREVIEW0000000000001 /* ShareExtensionView.swift */; };

@@ -8731,6 +8731,9 @@
         }
       }
     },
+    "Couldn't Load Library" : {
+
+    },
     "Couldn't Load Person" : {
       "localizations" : {
         "de" : {
@@ -8776,6 +8779,9 @@
           }
         }
       }
+    },
+    "Couldn't Open Link" : {
+
     },
     "Couldn't start Lock Screen tracking. Try again in a moment." : {
 
@@ -27078,6 +27084,9 @@
         }
       }
     },
+    "Restart Cronica. If this keeps happening, contact support." : {
+
+    },
     "Restore" : {
       "localizations" : {
         "de" : {
@@ -42598,6 +42607,9 @@
           }
         }
       }
+    },
+    "Watchlist actions" : {
+
     },
     "Watchlist items and custom lists" : {
       "localizations" : {
