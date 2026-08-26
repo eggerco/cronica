@@ -1,0 +1,1 @@
+From bug fixes to polish, this release is full of updates designed to optimise performance and help you stay on top of what matters most.

@@ -21,7 +21,7 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 [bundle exec] fastlane ios sync_release_notes
 ```
 
-Copy fastlane/release_notes/default.txt into every store locale
+Copy fastlane/release_notes/<locale>.txt into fastlane/metadata/
 
 ### ios upload_metadata
 
@@ -37,7 +37,7 @@ Upload metadata only (no binary, no screenshots)
 [bundle exec] fastlane ios upload_release_notes
 ```
 
-Sync default release notes and upload to App Store Connect
+Sync localized release notes and upload to App Store Connect
 
 ### ios download_metadata
 

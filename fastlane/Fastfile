@@ -14,15 +14,20 @@ default_platform(:ios)
 
 STORE_LOCALES = %w[
   en-US
-  de-DE
+  en-AU
+  en-CA
+  en-GB
   fr-FR
+  fr-CA
+  de-DE
   it
   pt-BR
+  pt-PT
   sk
   es-MX
 ].freeze
 
-RELEASE_NOTE_SOURCE = File.expand_path("release_notes/default.txt", __dir__)
+RELEASE_NOTES_DIR = File.expand_path("release_notes", __dir__)
 METADATA_DIR = File.expand_path("metadata", __dir__)
 
 def app_store_api_key
@@ -46,12 +51,15 @@ def app_store_api_key
 end
 
 platform :ios do
-  desc "Copy fastlane/release_notes/default.txt into every store locale"
+  desc "Copy fastlane/release_notes/<locale>.txt into fastlane/metadata/"
   lane :sync_release_notes do
-    note = File.read(RELEASE_NOTE_SOURCE, encoding: "UTF-8").strip
-    UI.message("Syncing release notes to #{STORE_LOCALES.length} locales from #{RELEASE_NOTE_SOURCE}")
+    UI.message("Syncing release notes for #{STORE_LOCALES.length} locales")
 
     STORE_LOCALES.each do |locale|
+      source = File.join(RELEASE_NOTES_DIR, "#{locale}.txt")
+      UI.user_error!("Missing #{source} — add a translated release note for #{locale}.") unless File.exist?(source)
+
+      note = File.read(source, encoding: "UTF-8").strip
       dir = File.join(METADATA_DIR, locale)
       FileUtils.mkdir_p(dir)
       File.write(File.join(dir, "release_notes.txt"), "#{note}\n")
@@ -70,7 +78,7 @@ platform :ios do
     )
   end
 
-  desc "Sync default release notes and upload to App Store Connect"
+  desc "Sync localized release notes and upload to App Store Connect"
   lane :upload_release_notes do
     sync_release_notes
     upload_metadata
