@@ -11,6 +11,7 @@ struct SideBarView: View {
     @SceneStorage("selectedView") private var selectedView: Screens = .home
     @StateObject private var viewModel = SearchViewModel()
     @State private var selectedSearchItem: ItemContent?
+    @State private var shouldFocusSearchField = false
     private let persistence = PersistenceController.shared
     var body: some View {
         NavigationSplitView {
@@ -47,12 +48,18 @@ struct SideBarView: View {
                         .environment(\.managedObjectContext, persistence.container.viewContext)
                 }
             case .search:
-                NavigationStack { SearchView(shouldFocusOnSearchField: .constant(false)) }
+                NavigationStack { SearchView(shouldFocusOnSearchField: $shouldFocusSearchField) }
             default:
                 NavigationStack { HomeView().environment(\.managedObjectContext, persistence.container.viewContext) }
             }
         }
         .navigationSplitViewStyle(.balanced)
+        .task {
+            if SiriNavigationBridge.consumeOpenSearchRequest() {
+                selectedView = .search
+                shouldFocusSearchField = true
+            }
+        }
     }
 }
 

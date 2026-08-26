@@ -65,6 +65,10 @@ enum WatchlistAddService {
         WidgetCenter.shared.reloadAllTimelines()
 #else
         WidgetSnapshotPublisherBridge.scheduleRefreshIfAvailable()
+#if canImport(AppIntents) && !os(watchOS) && !os(tvOS)
+        SiriShortcutRefreshBridge.refreshIfAvailable()
+        Task { await SiriIntentDonation.donateAddedToWatchlist(content) }
+#endif
 #endif
         return .added(content)
     }

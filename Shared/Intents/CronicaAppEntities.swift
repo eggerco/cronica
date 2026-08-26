@@ -134,6 +134,12 @@ struct SearchResultEntity: AppEntity, Identifiable {
         title = summary.title
         subtitle = summary.subtitle
     }
+
+    init(id: String, title: String, subtitle: String) {
+        self.id = id
+        self.title = title
+        self.subtitle = subtitle
+    }
 }
 
 struct SearchResultEntityQuery: EntityStringQuery {

@@ -18,6 +18,16 @@ Use before App Store / TestFlight releases. Code for the items below is in place
 - [ ] Dynamic Type: largest accessibility size on Home row + Settings
 - [ ] Reduce Motion: Welcome dismiss + overview Show More
 
+## Siri (physical iPhone required)
+- [ ] Settings → Siri & Shortcuts opens Shortcuts gallery
+- [ ] Shortcuts app shows 8 Cronica App Shortcuts
+- [ ] “Add [title] to Cronica” adds to watchlist
+- [ ] “What's up next on Cronica?” reads Up Next queue
+- [ ] “Mark my next episode as watched” updates episode progress
+- [ ] “Open search in Cronica” opens Search tab with keyboard
+- [ ] “Open [title] in Cronica” opens title details sheet
+- [ ] Add from Link shortcut works with a TMDb / Letterboxd URL
+
 ## Other platforms
 - [ ] iPad: split/toolbar search, sheets
 - [ ] Mac: sidebar, sheets Done, list delete confirmation

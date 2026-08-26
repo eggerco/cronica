@@ -25,6 +25,9 @@ struct SettingsView: View {
                 settingsNavigationLink(.appearance, title: String(localized: "Appearance"), icon: "paintbrush", color: .blue)
                 settingsNavigationLink(.behavior, title: String(localized: "Behavior"), icon: "hand.tap", color: .gray)
                 settingsNavigationLink(.notifications, title: String(localized: "Notifications"), icon: "bell", color: .red)
+#if canImport(AppIntents) && !os(watchOS) && !os(tvOS)
+                settingsNavigationLink(.siri, title: String(localized: "Siri & Shortcuts"), icon: "mic.fill", color: .pink)
+#endif
             }
             
             Section("Features") {

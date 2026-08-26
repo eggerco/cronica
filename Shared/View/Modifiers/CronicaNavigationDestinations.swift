@@ -101,6 +101,9 @@ extension View {
                 case .season: SeasonUpNextSettingsView()
                 case .dataManagement: DataManagementSettingsView()
                 case .integrations: IntegrationsSettingsView()
+#if canImport(AppIntents) && !os(watchOS) && !os(tvOS)
+                case .siri: SiriSettingsView()
+#endif
                 case .simkl: SimklSettingsView()
                 case .tmdbAccount: TMDBAccountSettingsView()
                 case .homeCustomizer: HomeCustomizerView()

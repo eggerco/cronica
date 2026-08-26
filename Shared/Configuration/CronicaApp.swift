@@ -43,6 +43,9 @@ struct CronicaApp: App {
 #if os(iOS)
         UNUserNotificationCenter.current().delegate = notificationDelegate
 #endif
+#if canImport(AppIntents) && !os(watchOS) && !os(tvOS)
+        SiriShortcutRefreshBridge.refreshIfAvailable()
+#endif
     }
     var body: some Scene {
         WindowGroup {
@@ -61,6 +64,7 @@ struct CronicaApp: App {
                 }
                 .task {
                     await consumePendingSiriDeepLink()
+                    await applyPendingSiriNavigation()
                 }
                 .alert(
                     String(localized: "Couldn't Open Link"),
@@ -244,10 +248,17 @@ struct CronicaApp: App {
 #if canImport(AppIntents) && !os(watchOS) && !os(tvOS)
     @MainActor
     private func consumePendingSiriDeepLink() async {
-        guard let url = SiriDeepLinkBridge.consumePending(),
+        guard let url = SiriNavigationBridge.consumePendingDeepLink(),
               let contentID = Self.contentID(from: url)
         else { return }
         await fetchContent(for: contentID)
+    }
+
+    @MainActor
+    private func applyPendingSiriNavigation() async {
+        if SiriNavigationBridge.consumeOpenSearchRequest() {
+            UserDefaults.standard.set(Screens.search.rawValue, forKey: "lastTabSelected")
+        }
     }
 #endif
     

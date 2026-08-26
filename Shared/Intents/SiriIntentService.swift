@@ -220,6 +220,21 @@ enum SiriIntentService {
         return url
     }
 
+    static func addFromURL(_ url: URL) async throws -> String {
+        switch await WatchlistAddService.add(from: url) {
+        case .added(let content):
+            return content.itemTitle
+        case .alreadyOnWatchlist:
+            throw ServiceError.alreadyOnWatchlist
+        case .notFound:
+            throw ServiceError.titleNotFound
+        case .unsupportedURL:
+            throw ServiceError.titleNotFound
+        case .fetchFailed:
+            throw ServiceError.networkFailure
+        }
+    }
+
     static func watchlistEntities(matching query: String) -> [WatchlistTitleEntity] {
         let items = persistence.fetchWatchlistItems(matching: query, limit: 12)
         return items.map(WatchlistTitleEntity.init(item:))

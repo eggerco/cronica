@@ -55,7 +55,7 @@ python3 Scripts/audit_localization.py
 
 ## Siri & Shortcuts
 
-Cronica registers App Intents on **iOS, iPadOS, macOS, and visionOS** (not watchOS or tvOS).
+Cronica registers App Intents on **iOS, iPadOS, macOS, and visionOS** (not watchOS or tvOS). See **`Docs/SIRI.md`** for architecture, testing, and maintenance.
 
 | Voice command (examples) | Action |
 |--------------------------|--------|
@@ -64,6 +64,8 @@ Cronica registers App Intents on **iOS, iPadOS, macOS, and visionOS** (not watch
 | “Mark *Oppenheimer* as watched” | Mark watched (auto-adds if needed) |
 | “Mark my next episode as watched” | Marks current Up Next episode |
 | “What’s up next on Cronica?” | Reads Up Next queue |
+| “Open search in Cronica” | Opens Search tab |
+| “Add this link to Cronica” | Add from shared URL |
 | “Open *The Bear* in Cronica” | Deep-links into the app |
 
-Intents live in `Shared/Intents/`. After changing phrases or parameters, rebuild so Xcode exports App Intents metadata.
+After changing intents or phrases, rebuild and run `python3 Scripts/check_localization.py`.

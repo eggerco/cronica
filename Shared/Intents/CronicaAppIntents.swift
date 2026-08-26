@@ -26,10 +26,7 @@ struct AddToWatchlistIntent: AppIntent {
             title: title.title,
             mediaType: mediaType.mediaType
         )
-        return .result(dialog: IntentDialog(stringLiteral: String(
-            format: String(localized: "Added %@ to your watchlist."),
-            name
-        )))
+        return .result(dialog: IntentDialog("Added \(name) to your watchlist."))
     }
 }
 
@@ -47,10 +44,7 @@ struct RemoveFromWatchlistIntent: AppIntent {
 
     func perform() async throws -> some IntentResult & ProvidesDialog {
         let name = try await SiriIntentService.removeFromWatchlist(title: title.title)
-        return .result(dialog: IntentDialog(stringLiteral: String(
-            format: String(localized: "Removed %@ from your watchlist."),
-            name
-        )))
+        return .result(dialog: IntentDialog("Removed \(name) from your watchlist."))
     }
 }
 
@@ -68,10 +62,7 @@ struct MarkTitleWatchedIntent: AppIntent {
 
     func perform() async throws -> some IntentResult & ProvidesDialog {
         let name = try await SiriIntentService.markTitleWatched(title: title.title)
-        return .result(dialog: IntentDialog(stringLiteral: String(
-            format: String(localized: "Marked %@ as watched."),
-            name
-        )))
+        return .result(dialog: IntentDialog("Marked \(name) as watched."))
     }
 }
 
@@ -86,10 +77,7 @@ struct MarkUpNextEpisodeWatchedIntent: AppIntent {
 
     func perform() async throws -> some IntentResult & ProvidesDialog {
         let label = try await SiriIntentService.markNextUpNextEpisodeWatched()
-        return .result(dialog: IntentDialog(stringLiteral: String(
-            format: String(localized: "Marked %@ as watched."),
-            label
-        )))
+        return .result(dialog: IntentDialog("Marked \(label) as watched."))
     }
 }
 
@@ -104,6 +92,17 @@ struct GetUpNextIntent: AppIntent {
         let lines = entities.map { "\($0.showTitle): \($0.episodeLabel)" }
         let dialogText = lines.joined(separator: "\n")
         return .result(value: entities, dialog: IntentDialog(stringLiteral: dialogText))
+    }
+}
+
+struct OpenSearchIntent: AppIntent {
+    static var title: LocalizedStringResource = "Open Search"
+    static var description = IntentDescription("Open Cronica search to find movies and TV shows.")
+    static var openAppWhenRun = true
+
+    func perform() async throws -> some IntentResult & ProvidesDialog {
+        await SiriNavigationBridge.requestOpenSearch()
+        return .result(dialog: IntentDialog("Opening search in Cronica."))
     }
 }
 
@@ -127,6 +126,24 @@ struct SearchTitlesIntent: AppIntent {
     }
 }
 
+struct AddFromURLIntent: AppIntent {
+    static var title: LocalizedStringResource = "Add from Link"
+    static var description = IntentDescription("Add a movie or TV show to your watchlist from a shared link.")
+    static var openAppWhenRun = false
+
+    @Parameter(title: "Link")
+    var link: URL
+
+    static var parameterSummary: some ParameterSummary {
+        Summary("Add link to my watchlist")
+    }
+
+    func perform() async throws -> some IntentResult & ProvidesDialog {
+        let name = try await SiriIntentService.addFromURL(link)
+        return .result(dialog: IntentDialog("Added \(name) to your watchlist."))
+    }
+}
+
 struct OpenTitleIntent: AppIntent {
     static var title: LocalizedStringResource = "Open Title"
     static var description = IntentDescription("Open a movie or TV show in Cronica.")
@@ -141,11 +158,8 @@ struct OpenTitleIntent: AppIntent {
 
     func perform() async throws -> some IntentResult & ProvidesDialog {
         let url = try await SiriIntentService.openURL(for: title.title)
-        await SiriDeepLinkBridge.storePending(url)
-        return .result(dialog: IntentDialog(stringLiteral: String(
-            format: String(localized: "Opening %@ in Cronica."),
-            title.title
-        )))
+        await SiriNavigationBridge.storePendingDeepLink(url)
+        return .result(dialog: IntentDialog("Opening \(title.title) in Cronica."))
     }
 }
 #endif

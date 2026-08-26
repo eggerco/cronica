@@ -46,6 +46,7 @@ struct TabBarView: View {
             }
         }
         .onAppear { applyPreferredLaunchScreen() }
+        .task { applyPendingSiriNavigationIfNeeded() }
         .appTint()
         .appTheme()
 #else
@@ -60,6 +61,13 @@ struct TabBarView: View {
         let settings = SettingsStore.shared
         if settings.isPreferredLaunchScreenEnabled {
             tabSelection = settings.preferredLaunchScreen
+        }
+    }
+
+    private func applyPendingSiriNavigationIfNeeded() {
+        if SiriNavigationBridge.consumeOpenSearchRequest() {
+            tabSelection = .search
+            shouldOpenOnSearchField = true
         }
     }
 

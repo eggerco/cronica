@@ -64,13 +64,24 @@ struct CronicaAppShortcuts: AppShortcutsProvider {
         )
 
         AppShortcut(
-            intent: SearchTitlesIntent(),
+            intent: OpenSearchIntent(),
             phrases: [
                 "Search in \(.applicationName)",
                 "Find a title in \(.applicationName)",
+                "Open search in \(.applicationName)",
             ],
-            shortTitle: LocalizedStringResource("Search Titles"),
+            shortTitle: LocalizedStringResource("Open Search"),
             systemImageName: "magnifyingglass"
+        )
+
+        AppShortcut(
+            intent: AddFromURLIntent(),
+            phrases: [
+                "Add this link to \(.applicationName)",
+                "Add link to my watchlist in \(.applicationName)",
+            ],
+            shortTitle: LocalizedStringResource("Add from Link"),
+            systemImageName: "link"
         )
 
         AppShortcut(

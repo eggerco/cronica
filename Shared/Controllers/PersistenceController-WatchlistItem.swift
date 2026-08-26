@@ -187,6 +187,9 @@ extension PersistenceController {
 #endif
         viewContext.delete(item)
         save()
+#if canImport(AppIntents) && !os(watchOS) && !os(tvOS) && !CRONICA_SHARE_EXTENSION
+        SiriShortcutRefreshBridge.refreshIfAvailable()
+#endif
     }
     
     // MARK: Properties updates
@@ -208,6 +211,18 @@ extension PersistenceController {
             item.watchedDate = nil
         }
         save()
+#if canImport(AppIntents) && !os(watchOS) && !os(tvOS) && !CRONICA_SHARE_EXTENSION
+        SiriShortcutRefreshBridge.refreshIfAvailable()
+        if item.isWatched {
+            Task {
+                await SiriIntentDonation.donateMarkedWatched(
+                    title: item.itemTitle,
+                    contentID: item.itemContentID,
+                    media: item.itemMedia
+                )
+            }
+        }
+#endif
 #if !os(watchOS) && !CRONICA_SHARE_EXTENSION
         let tmdb = item.itemId
         let media = item.itemMedia
@@ -463,6 +478,12 @@ extension PersistenceController {
         item.lastValuesUpdated = Date()
         item.isWatching = true
         save()
+#if canImport(AppIntents) && !os(watchOS) && !os(tvOS) && !CRONICA_SHARE_EXTENSION
+        SiriShortcutRefreshBridge.refreshIfAvailable()
+        if !wasWatched {
+            Task { await SiriIntentDonation.donateMarkedUpNextEpisode() }
+        }
+#endif
 #if !os(watchOS) && !CRONICA_SHARE_EXTENSION
         if !wasWatched, let season = episode.seasonNumber, let number = episode.episodeNumber {
             let showID = item.itemId

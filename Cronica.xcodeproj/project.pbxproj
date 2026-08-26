@@ -278,7 +278,10 @@
 		C0INTENTENT0000000002 /* CronicaAppEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0INTENTENT0000000001 /* CronicaAppEntities.swift */; };
 		C0INTENTAPP0000000002 /* CronicaAppIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0INTENTAPP0000000001 /* CronicaAppIntents.swift */; };
 		C0INTENTSHRT000000002 /* CronicaAppShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0INTENTSHRT000000001 /* CronicaAppShortcuts.swift */; };
-		C0SIRIDLBRIDGE00000002 /* SiriDeepLinkBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIRIDLBRIDGE00000001 /* SiriDeepLinkBridge.swift */; };
+		C0SIRINAVBRIDGE00000002 /* SiriNavigationBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIRINAVBRIDGE00000001 /* SiriNavigationBridge.swift */; };
+		C0SIRISHORTCUT00000002 /* SiriShortcutRefreshBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIRISHORTCUT00000001 /* SiriShortcutRefreshBridge.swift */; };
+		C0SIRIDONATE0000000002 /* SiriIntentDonation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIRIDONATE0000000001 /* SiriIntentDonation.swift */; };
+		C0SIRISETVIEW000000002 /* SiriSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIRISETVIEW000000001 /* SiriSettingsView.swift */; };
 		CF267C9C303C3C65001DB342 /* CronicaCore in Frameworks */ = {isa = PBXBuildFile; productRef = C0CRONICACORE00000000005 /* CronicaCore */; };
 
 		B8D7AEE328BA64DF0053CE5A /* DataPlaceholder.json in Resources */ = {isa = PBXBuildFile; fileRef = B8D7AEE228BA64DF0053CE5A /* DataPlaceholder.json */; };
@@ -646,7 +649,10 @@
 		C0INTENTENT0000000001 /* CronicaAppEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaAppEntities.swift; sourceTree = "<group>"; };
 		C0INTENTAPP0000000001 /* CronicaAppIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaAppIntents.swift; sourceTree = "<group>"; };
 		C0INTENTSHRT000000001 /* CronicaAppShortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaAppShortcuts.swift; sourceTree = "<group>"; };
-		C0SIRIDLBRIDGE00000001 /* SiriDeepLinkBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriDeepLinkBridge.swift; sourceTree = "<group>"; };
+		C0SIRINAVBRIDGE00000001 /* SiriNavigationBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriNavigationBridge.swift; sourceTree = "<group>"; };
+		C0SIRISHORTCUT00000001 /* SiriShortcutRefreshBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriShortcutRefreshBridge.swift; sourceTree = "<group>"; };
+		C0SIRIDONATE0000000001 /* SiriIntentDonation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriIntentDonation.swift; sourceTree = "<group>"; };
+		C0SIRISETVIEW000000001 /* SiriSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriSettingsView.swift; sourceTree = "<group>"; };
 
 		B8D7AEAB28B95F5E0053CE5A /* CronicaWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaWidget.swift; sourceTree = "<group>"; };
 		B8D7AEAD28B95F5F0053CE5A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -991,7 +997,9 @@
 				C0INTENTENT0000000001 /* CronicaAppEntities.swift */,
 				C0INTENTAPP0000000001 /* CronicaAppIntents.swift */,
 				C0INTENTSHRT000000001 /* CronicaAppShortcuts.swift */,
-				C0SIRIDLBRIDGE00000001 /* SiriDeepLinkBridge.swift */,
+				C0SIRINAVBRIDGE00000001 /* SiriNavigationBridge.swift */,
+				C0SIRISHORTCUT00000001 /* SiriShortcutRefreshBridge.swift */,
+				C0SIRIDONATE0000000001 /* SiriIntentDonation.swift */,
 			);
 			path = Intents;
 			sourceTree = "<group>";
@@ -1303,6 +1311,7 @@ C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 				B81DD94029BE226E009F73F3 /* NotificationsSettingsView.swift */,
 				B8A2C15A2B62D1F80033CD33 /* SeasonUpNextSettingsView.swift */,
 				B845132927EA514C00F0D4A4 /* SettingsView.swift */,
+				C0SIRISETVIEW000000001 /* SiriSettingsView.swift */,
 				B8A2C1582B62D0D40033CD33 /* WatchlistSettingsView.swift */,
 				C0WATCHSTATSVIEW00001 /* WatchStatisticsView.swift */,
 				B86AA7FB2A3A4C8C009847FE /* WatchProviderSettings.swift */,
@@ -2166,7 +2175,10 @@ C0INTEGVIEW00000000002 /* IntegrationsSettingsView.swift in Sources */,
 				C0INTENTENT0000000002 /* CronicaAppEntities.swift in Sources */,
 				C0INTENTAPP0000000002 /* CronicaAppIntents.swift in Sources */,
 				C0INTENTSHRT000000002 /* CronicaAppShortcuts.swift in Sources */,
-				C0SIRIDLBRIDGE00000002 /* SiriDeepLinkBridge.swift in Sources */,
+				C0SIRINAVBRIDGE00000002 /* SiriNavigationBridge.swift in Sources */,
+				C0SIRISHORTCUT00000002 /* SiriShortcutRefreshBridge.swift in Sources */,
+				C0SIRIDONATE0000000002 /* SiriIntentDonation.swift in Sources */,
+				C0SIRISETVIEW000000002 /* SiriSettingsView.swift in Sources */,
 				C0WIDGETPUB00000000002 /* WidgetSnapshotPublisher.swift in Sources */,
 				C0WIDGETBRIDGE000000002 /* WidgetSnapshotPublisherBridge.swift in Sources */,
 				C0WATCHSESS00000000002 /* WatchingSessionManager.swift in Sources */,
