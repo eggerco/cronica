@@ -67,36 +67,40 @@ struct ItemContentList: View {
 
     private var rowLayout: some View {
         GeometryReader { geo in
+            let gap = WidgetPosterLayout.spacing(for: layoutFamily)
             let size = WidgetPosterLayout.posterSize(
                 columns: max(visibleItems.count, 1),
                 rows: 1,
-                in: geo.size
+                in: geo.size,
+                spacing: gap
             )
 
-            HStack(spacing: WidgetPosterLayout.spacing) {
+            HStack(spacing: gap) {
                 ForEach(visibleItems) { entry in
                     posterCell(for: entry)
                         .frame(width: size.width, height: size.height)
                 }
             }
-            .frame(width: geo.size.width, height: geo.size.height)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
         }
     }
 
     private func gridLayout(columns: Int) -> some View {
         let rows = visibleItems.chunked(into: columns)
         let rowCount = max(rows.count, 1)
+        let gap = WidgetPosterLayout.spacing(for: layoutFamily)
 
         return GeometryReader { geo in
             let size = WidgetPosterLayout.posterSize(
                 columns: columns,
                 rows: rowCount,
-                in: geo.size
+                in: geo.size,
+                spacing: gap
             )
 
-            VStack(spacing: WidgetPosterLayout.spacing) {
+            VStack(spacing: gap) {
                 ForEach(Array(rows.enumerated()), id: \.offset) { _, row in
-                    HStack(spacing: WidgetPosterLayout.spacing) {
+                    HStack(spacing: gap) {
                         ForEach(row) { entry in
                             posterCell(for: entry)
                                 .frame(width: size.width, height: size.height)
@@ -104,7 +108,7 @@ struct ItemContentList: View {
                     }
                 }
             }
-            .frame(width: geo.size.width, height: geo.size.height)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
         }
     }
 
