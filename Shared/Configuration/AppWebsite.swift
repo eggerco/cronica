@@ -6,7 +6,7 @@
 import Foundation
 
 enum AppWebsite {
-    static let baseURL = URL(string: "https://cronica.eggerco.com")!
+    static let baseURL = URL(string: "https://www.cronica.watch")!
 
     static var privacyPolicy: URL {
         baseURL.appending(path: "privacy")

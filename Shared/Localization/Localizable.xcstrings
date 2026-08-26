@@ -36421,48 +36421,48 @@
         }
       }
     },
-    "Anonymous crash reports may be processed by our error monitoring provider. Email support@eggerco.com to request removal.": {
+    "Anonymous crash reports may be processed by our error monitoring provider. Email support@cronica.watch to request removal.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "new",
-            "value": "Anonymous crash reports may be processed by our error monitoring provider. Email support@eggerco.com to request removal."
+            "value": "Anonymous crash reports may be processed by our error monitoring provider. Email support@cronica.watch to request removal."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Anonymous crash reports may be processed by our error monitoring provider. Email support@eggerco.com to request removal."
+            "value": "Anonymous crash reports may be processed by our error monitoring provider. Email support@cronica.watch to request removal."
           }
         },
         "es-MX": {
           "stringUnit": {
             "state": "new",
-            "value": "Anonymous crash reports may be processed by our error monitoring provider. Email support@eggerco.com to request removal."
+            "value": "Anonymous crash reports may be processed by our error monitoring provider. Email support@cronica.watch to request removal."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "new",
-            "value": "Anonymous crash reports may be processed by our error monitoring provider. Email support@eggerco.com to request removal."
+            "value": "Anonymous crash reports may be processed by our error monitoring provider. Email support@cronica.watch to request removal."
           }
         },
         "it": {
           "stringUnit": {
             "state": "new",
-            "value": "Anonymous crash reports may be processed by our error monitoring provider. Email support@eggerco.com to request removal."
+            "value": "Anonymous crash reports may be processed by our error monitoring provider. Email support@cronica.watch to request removal."
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "new",
-            "value": "Anonymous crash reports may be processed by our error monitoring provider. Email support@eggerco.com to request removal."
+            "value": "Anonymous crash reports may be processed by our error monitoring provider. Email support@cronica.watch to request removal."
           }
         },
         "sk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Anonymné hlásenia o pádoch môže spracovať náš poskytovateľ monitorovania chýb. Na odstránenie napíš na support@eggerco.com."
+            "value": "Anonymné hlásenia o pádoch môže spracovať náš poskytovateľ monitorovania chýb. Na odstránenie napíš na support@cronica.watch."
           }
         }
       }

@@ -197,7 +197,7 @@ struct CronicaApp: App {
             return id.isEmpty ? nil : id
         }
 
-        guard url.host()?.lowercased() == "cronica.eggerco.com" else { return nil }
+        guard url.host()?.lowercased() == "www.cronica.watch" else { return nil }
         let path = url.path()
         guard path == "/details" || path == "details" else { return nil }
 

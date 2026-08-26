@@ -2,7 +2,7 @@
 
 ## Reporting a Vulnerability
 
-If you discover a security issue, please email **support@eggerco.com** rather than opening a public issue.
+If you discover a security issue, please email **support@cronica.watch** rather than opening a public issue.
 
 ## Secrets Management
 

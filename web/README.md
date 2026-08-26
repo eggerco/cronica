@@ -4,7 +4,7 @@ Marketing site and universal link handler for [Cronica](https://apps.apple.com/a
 
 Part of the [eggerco/cronica](https://github.com/eggerco/cronica) monorepo. Static site served by a **Cloudflare Worker**.
 
-**Live:** [cronica.eggerco.com](https://cronica.eggerco.com)
+**Live:** [www.cronica.watch](https://www.cronica.watch)
 
 ## Development
 
@@ -22,13 +22,15 @@ Open the local URL shown by Wrangler (usually `http://localhost:8787`).
 1. Install dependencies: `npm install`
 2. Log in to Cloudflare: `npx wrangler login`
 3. Deploy: `npm run deploy`
-4. In the Cloudflare dashboard, attach the custom domain `cronica.eggerco.com` to this Worker
+4. In the Cloudflare dashboard, attach custom domains:
+   - `www.cronica.watch` (primary)
+   - `cronica.watch` (301 redirect to www)
 
-Static files live in `public/`. The Worker adds dynamic HTML for `/details` share links (including Open Graph metadata).
+Static files live in `public/`. The Worker adds dynamic HTML for `/details` share links (including Open Graph metadata) and redirects `cronica.watch` to `www.cronica.watch`.
 
 ## Universal links
 
-`/.well-known/apple-app-site-association` is served for iOS Universal Links to open `/details` in the app. The app also needs the Associated Domains entitlement (`applinks:cronica.eggerco.com`) in `Shared/Configuration/Cronica.entitlements`.
+`/.well-known/apple-app-site-association` is served for iOS Universal Links to open `/details` in the app. The app needs the Associated Domains entitlement (`applinks:www.cronica.watch`) in `Shared/Configuration/Cronica.entitlements`.
 
 ## Pages
 

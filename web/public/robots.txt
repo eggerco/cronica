@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://cronica.eggerco.com/sitemap.xml
+Sitemap: https://www.cronica.watch/sitemap.xml

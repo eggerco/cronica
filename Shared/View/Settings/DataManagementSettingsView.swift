@@ -49,7 +49,7 @@ struct DataManagementSettingsView: View {
             }
 
             Section("Third-Party Data") {
-                Text("Anonymous crash reports may be processed by our error monitoring provider. Email support@eggerco.com to request removal.")
+                Text("Anonymous crash reports may be processed by our error monitoring provider. Email support@cronica.watch to request removal.")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             }

@@ -22,10 +22,10 @@
 </p>
 
 <p align="center">
-  <a href="https://cronica.eggerco.com">Website</a> ·
-  <a href="https://cronica.eggerco.com/privacy">Privacy</a> ·
+  <a href="https://www.cronica.watch">Website</a> ·
+  <a href="https://www.cronica.watch/privacy">Privacy</a> ·
   <a href="https://x.com/CronicaApp">X</a> ·
-  <a href="mailto:support@eggerco.com">Support</a>
+  <a href="mailto:support@cronica.watch">Support</a>
 </p>
 
 ---
@@ -65,7 +65,7 @@ Cronica/
 ├── AppleWatch/             # Watch-specific UI
 ├── CronicaWidget/          # Widgets
 ├── Packages/CronicaCore/   # Shared models & TMDb networking
-├── web/                    # Marketing site (Cloudflare Worker) → cronica.eggerco.com
+├── web/                    # Marketing site (Cloudflare Worker) → www.cronica.watch
 └── Config/                 # Secrets.xcconfig (gitignored) + example
 ```
 
@@ -77,15 +77,15 @@ Cronica/
 
 Issues and pull requests are welcome.
 
-**Translations** — Edit [`Shared/Localization/Localizable.xcstrings`](Shared/Localization/Localizable.xcstrings) and open a PR, or email completed strings to [support@eggerco.com](mailto:support@eggerco.com).
+**Translations** — Edit [`Shared/Localization/Localizable.xcstrings`](Shared/Localization/Localizable.xcstrings) and open a PR, or email completed strings to [support@cronica.watch](mailto:support@cronica.watch).
 
 Before a release, run through [`Docs/QA-SMOKE-TEST.md`](Docs/QA-SMOKE-TEST.md).
 
 ## Security & privacy
 
 - Never commit API keys — use `Config/Secrets.xcconfig` (see [SECURITY.md](SECURITY.md))
-- Privacy policy: [cronica.eggerco.com/privacy](https://cronica.eggerco.com/privacy)
-- Report vulnerabilities privately to [support@eggerco.com](mailto:support@eggerco.com)
+- Privacy policy: [www.cronica.watch/privacy](https://www.cronica.watch/privacy)
+- Report vulnerabilities privately to [support@cronica.watch](mailto:support@cronica.watch)
 
 ## Acknowledgments
 
