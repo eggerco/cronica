@@ -37,6 +37,10 @@ struct PersistenceController {
     }()
 
     let container: NSPersistentCloudKitContainer
+    /// Set when the persistent store fails to load in Release (DEBUG still traps).
+    static private(set) var storeLoadError: NSError?
+
+    var didFailToLoadStore: Bool { Self.storeLoadError != nil }
 
     init(inMemory: Bool = false) {
         container = NSPersistentCloudKitContainer(name: "Watchlist")
@@ -90,10 +94,20 @@ struct PersistenceController {
 #if DEBUG
                 fatalError("Unresolved error \(error), \(error.userInfo)")
 #else
+                PersistenceController.storeLoadError = error
                 AppLogger.persistence.fault("Unresolved error loading persistent store: \(error), \(error.userInfo)")
+#if !os(watchOS) && !CRONICA_SHARE_EXTENSION
+                SentryManager.capture(error, context: ["source": "PersistenceController.loadPersistentStores"])
+#endif
 #endif
             }
         }
+
+#if os(iOS) && !CRONICA_SHARE_EXTENSION
+        if !inMemory {
+            PersistentHistoryMerger.startObserving(container: container)
+        }
+#endif
     }
 
     func save() {

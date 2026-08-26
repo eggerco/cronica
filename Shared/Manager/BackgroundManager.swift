@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+import CronicaCore
 
 final class BackgroundManager {
 	private let context = PersistenceController.shared.container.newBackgroundContext()
@@ -16,8 +17,24 @@ final class BackgroundManager {
 	private static let lastWatchingRefreshKey = "lastWatchingRefreshKey"
 	private static let lastUpcomingRefreshKey = "lastUpcomingRefreshKey"
 	static let shared = BackgroundManager()
+
+	private struct RefreshTarget: Sendable {
+		let contentID: String
+		let itemId: Int
+		let media: MediaType
+		let shouldNotify: Bool
+		let isArchive: Bool
+		let isWatched: Bool
+		let isMovie: Bool
+		let schedule: ItemSchedule
+		let itemDate: Date?
+		let lastUpdate: Date
+	}
 	
-	private init() { }
+	private init() {
+		context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+		context.automaticallyMergesChangesFromParent = true
+	}
 	
 	var lastMaintenance: Date? {
 		get {
@@ -51,23 +68,19 @@ final class BackgroundManager {
 	}
 	
 	func handleUpcomingContentRefresh() async {
-		var items = [WatchlistItem]()
-		let upcomingItems = self.fetchUpcomingItems()
-		items.append(contentsOf: upcomingItems)
+		let items = self.fetchUpcomingItems()
 		if items.isEmpty { return }
 		await self.fetchUpdates(items: items)
 		WidgetSnapshotPublisherBridge.scheduleRefreshIfAvailable()
 	}
 	
 	func handleAppRefreshMaintenance() async {
-		var items = [WatchlistItem]()
-		let releasedAndEndedItems = self.fetchReleasedItems()
-		items.append(contentsOf: releasedAndEndedItems)
+		let items = self.fetchReleasedItems()
 		if items.isEmpty { return }
 		await self.fetchUpdates(items: items)
 	}
 	
-	private func fetchWatchingItems() -> [WatchlistItem] {
+	private func fetchWatchingItems() -> [RefreshTarget] {
 		let request: NSFetchRequest<WatchlistItem> = WatchlistItem.fetchRequest()
 		let watchingPredicate = NSPredicate(format: "isWatching == %d", true)
 		let archivePredicate = NSPredicate(format: "isArchive == %d", false)
@@ -83,11 +96,10 @@ final class BackgroundManager {
 							watchingPredicate]
 		)
 		request.predicate = orPredicate
-		guard let list = try? context.fetch(request) else { return [] }
-		return list
+		return mapTargets(fetching: request)
 	}
 	
-	private func fetchUpcomingItems() -> [WatchlistItem] {
+	private func fetchUpcomingItems() -> [RefreshTarget] {
 		let request: NSFetchRequest<WatchlistItem> = WatchlistItem.fetchRequest()
 		let soonPredicate = NSPredicate(format: "schedule == %d", ItemSchedule.soon.toInt)
 		let renewedPredicate = NSPredicate(format: "schedule == %d", ItemSchedule.renewed.toInt)
@@ -103,11 +115,10 @@ final class BackgroundManager {
 			subpredicates: [schedulePredicate, archivePredicate, watchedPredicate]
 		)
 		request.predicate = filterPredicate
-		guard let list = try? context.fetch(request) else { return [] }
-		return list
+		return mapTargets(fetching: request)
 	}
 	
-	private func fetchReleasedItems() -> [WatchlistItem] {
+	private func fetchReleasedItems() -> [RefreshTarget] {
 		let request: NSFetchRequest<WatchlistItem> = WatchlistItem.fetchRequest()
 		let endedPredicate = NSPredicate(format: "schedule == %d", ItemSchedule.ended.toInt)
 		let archivePredicate = NSPredicate(format: "isArchive == %d", true)
@@ -115,36 +126,50 @@ final class BackgroundManager {
 			type: .or,
 			subpredicates: [endedPredicate, archivePredicate]
 		)
-		guard let list = try? self.context.fetch(request) else { return [] }
-		return list
+		return mapTargets(fetching: request)
+	}
+
+	private func mapTargets(fetching request: NSFetchRequest<WatchlistItem>) -> [RefreshTarget] {
+		var targets: [RefreshTarget] = []
+		context.performAndWait {
+			guard let list = try? context.fetch(request) else { return }
+			targets = list.compactMap { item in
+				guard item.itemId != 0 else { return nil }
+				return RefreshTarget(
+					contentID: item.itemContentID,
+					itemId: item.itemId,
+					media: item.itemMedia,
+					shouldNotify: item.shouldNotify,
+					isArchive: item.isArchive,
+					isWatched: item.isWatched,
+					isMovie: item.isMovie,
+					schedule: item.itemSchedule,
+					itemDate: item.itemDate,
+					lastUpdate: item.itemLastUpdateDate
+				)
+			}
+		}
+		return targets
 	}
 	
 	/// Updates every item in the items array, update it in CoreData if needed, and update notification schedule.
-	private func fetchUpdates(items: [WatchlistItem]) async {
-		if !items.isEmpty {
-			for item in items {
-				// if the item is already released, archive or watched
-				// the need for constant updates are not there.
-				// So, to save resources, they will update less frequently.
-				if item.isMovie {
+	private func fetchUpdates(items: [RefreshTarget]) async {
+		for item in items {
+			if item.isMovie {
+				await update(item)
+			} else if item.isArchive || item.schedule == .ended || item.isWatched {
+				if item.lastUpdate.hasPassedTwoWeek() {
 					await update(item)
-				} else {
-					if item.isArchive || item.itemSchedule == .ended || item.isWatched {
-						if item.itemLastUpdateDate.hasPassedTwoWeek() {
-							await update(item)
-						}
-					} else {
-						await update(item)
-					}
 				}
+			} else {
+				await update(item)
 			}
 		}
 	}
 	
-	private func update(_ item: WatchlistItem) async {
-		if item.id == 0 { return }
+	private func update(_ item: RefreshTarget) async {
 		do {
-			let content = try await self.network.fetchItem(id: item.itemId, type: item.itemMedia)
+			let content = try await self.network.fetchItem(id: item.itemId, type: item.media)
 			if content.itemCanNotify && item.shouldNotify {
                 if item.itemDate.areDifferentDates(with: content.itemFallbackDate) {
                     notifications.removeNotification(identifier: content.itemContentID)
@@ -164,7 +189,10 @@ final class BackgroundManager {
             }
 			PersistenceController.shared.update(item: content)
 		} catch {
-			AppLogger.background.error("Failed to refresh item \(item.itemContentID): \(error.localizedDescription)")
+			AppLogger.background.error("Failed to refresh item \(item.contentID): \(error.localizedDescription)")
+#if !os(watchOS)
+			SentryManager.capture(error, context: ["source": "BackgroundManager.update", "contentID": item.contentID])
+#endif
 		}
 	}
 }

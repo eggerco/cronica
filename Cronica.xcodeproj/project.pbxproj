@@ -212,6 +212,8 @@
 		B8ADAF6A282AFC1B001D72EF /* EpisodeFrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8ADAF69282AFC1B001D72EF /* EpisodeFrameView.swift */; };
 		B8ADAF6F282C42B3001D72EF /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8ADAF6E282C42B3001D72EF /* SettingsStore.swift */; };
 		B8B271A627A5A18C00F6463F /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B271A527A5A18C00F6463F /* PersistenceController.swift */; };
+		C0HISTMERGEBUILD000001 /* PersistentHistoryMerger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0HISTMERGEFILE0000001 /* PersistentHistoryMerger.swift */; };
+		C0HISTMERGEBUILD000002 /* PersistentHistoryMerger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0HISTMERGEFILE0000001 /* PersistentHistoryMerger.swift */; };
 		B8B2F6A32A85D34000FF0246 /* KeywordSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B2F6A22A85D34000FF0246 /* KeywordSectionView.swift */; };
 		B8B2F6A62A85D39000FF0246 /* TrendingKeywordsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B2F6A52A85D39000FF0246 /* TrendingKeywordsListView.swift */; };
 		B8B2F6B42A85DBFD00FF0246 /* ItemContentSearchRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B2F6B32A85DBFD00FF0246 /* ItemContentSearchRowView.swift */; };
@@ -595,6 +597,7 @@
 		B8ADAF6E282C42B3001D72EF /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
 		B8B271A327A59EF400F6463F /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.2.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		B8B271A527A5A18C00F6463F /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		C0HISTMERGEFILE0000001 /* PersistentHistoryMerger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentHistoryMerger.swift; sourceTree = "<group>"; };
 		B8B2F6A22A85D34000FF0246 /* KeywordSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordSectionView.swift; sourceTree = "<group>"; };
 		B8B2F6A52A85D39000FF0246 /* TrendingKeywordsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingKeywordsListView.swift; sourceTree = "<group>"; };
 		B8B2F6AB2A85D57400FF0246 /* SearchItemContent-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchItemContent-Extension.swift"; sourceTree = "<group>"; };
@@ -1312,6 +1315,7 @@ C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 			isa = PBXGroup;
 			children = (
 				B8B271A527A5A18C00F6463F /* PersistenceController.swift */,
+				C0HISTMERGEFILE0000001 /* PersistentHistoryMerger.swift */,
 				B82BE4D8299BF35D005F9990 /* PersistenceController-WatchlistItem.swift */,
 				B82BE4E7299BFEF4005F9990 /* PersistenceController-CustomList.swift */,
 			);
@@ -1943,6 +1947,7 @@ C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 				B81941D12A0861D70057DA04 /* ArchiveButton.swift in Sources */,
 				B83423EB28BA7CCF00D5E2C4 /* ItemContentContextMenu.swift in Sources */,
 				B84043B2289B187900D5CEBF /* PersistenceController.swift in Sources */,
+				C0HISTMERGEBUILD000002 /* PersistentHistoryMerger.swift in Sources */,
 				C0WIDGETBRIDGE000000003 /* WidgetSnapshotPublisherBridge.swift in Sources */,
 				B84043D5289B2ABD00D5CEBF /* ItemContentView.swift in Sources */,
 				B83E3EDB299AB9FB00A3A28B /* CustomList-Extensions.swift in Sources */,
@@ -2166,6 +2171,7 @@ C0INTEGVIEW00000000002 /* IntegrationsSettingsView.swift in Sources */,
 				B8B94CEF28EB8B8200EDEC85 /* CronicaTelemetry.swift in Sources */,
 				B86F7ABF2A08806100AA4855 /* VerticalUpNextListView.swift in Sources */,
 				B8B271A627A5A18C00F6463F /* PersistenceController.swift in Sources */,
+				C0HISTMERGEBUILD000001 /* PersistentHistoryMerger.swift in Sources */,
 				B819419F2A0831EF0057DA04 /* DefaultListRow.swift in Sources */,
 				B824E4362A04945400E385CE /* ItemContentRowView.swift in Sources */,
 				B8991C7D27E4B5D2001055CB /* WelcomeView.swift in Sources */,

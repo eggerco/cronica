@@ -625,47 +625,43 @@ extension ExploreView {
     // some content without image or that contains NSFW keywords.
     
     /// Get the items which recommendations will be based at, these items must be watched OR favorite.
-    /// - Returns: Returns a shuffled array of WatchlistItems that matches the criteria of watched OR favorite.
-    private func fetchBasedRecommendationItems() -> [WatchlistItem] {
+    /// - Returns: Returns a shuffled array of watchlist identities that match watched OR watching.
+    private func fetchBasedRecommendationItems() -> [[Int: MediaType]] {
         let context = PersistenceController.shared.container.newBackgroundContext()
-        let request: NSFetchRequest<WatchlistItem> = WatchlistItem.fetchRequest()
-        let watchedPredicate = NSPredicate(format: "watched == %d", true)
-        let watchingPredicate = NSPredicate(format: "isWatching == %d", true)
-        request.predicate = NSCompoundPredicate(type: .or, subpredicates: [watchingPredicate, watchedPredicate])
-        guard let list = try? context.fetch(request) else { return [] }
-        let items = list.shuffled().prefix(8)
-        return items.shuffled()
+        var results = [[Int: MediaType]]()
+        context.performAndWait {
+            let request: NSFetchRequest<WatchlistItem> = WatchlistItem.fetchRequest()
+            let watchedPredicate = NSPredicate(format: "watched == %d", true)
+            let watchingPredicate = NSPredicate(format: "isWatching == %d", true)
+            request.predicate = NSCompoundPredicate(type: .or, subpredicates: [watchingPredicate, watchedPredicate])
+            guard let list = try? context.fetch(request) else { return }
+            let items = list.shuffled().prefix(8)
+            results = items.map { [$0.itemId: $0.itemMedia] }
+        }
+        return results.shuffled()
     }
     
     /// Gets all the IDs from watched content saved on Core Data.
     private func fetchWatchedIDs() -> Set<String> {
-        do {
-            var watchedIds: Set<String> = []
-            let context = PersistenceController.shared.container.newBackgroundContext()
+        let context = PersistenceController.shared.container.newBackgroundContext()
+        var watchedIds: Set<String> = []
+        context.performAndWait {
             let request: NSFetchRequest<WatchlistItem> = WatchlistItem.fetchRequest()
             let watchedPredicate = NSPredicate(format: "watched == %d", true)
             let watchingPredicate = NSPredicate(format: "isWatching == %d", true)
             request.predicate = NSCompoundPredicate(type: .or,
                                                     subpredicates: [watchedPredicate, watchingPredicate])
-            let list = try context.fetch(request)
-            if !list.isEmpty {
-                for item in list {
-                    watchedIds.insert(item.itemContentID)
-                }
+            guard let list = try? context.fetch(request) else { return }
+            for item in list {
+                watchedIds.insert(item.itemContentID)
             }
-            return watchedIds
-        } catch {
-            return []
         }
+        return watchedIds
     }
     
     private func fetchRecommendations() async {
         var recommendations = [ItemContent]()
-        let itemsWatched = fetchBasedRecommendationItems()
-        var itemsToFetchFrom = [[Int:MediaType]]()
-        for item in itemsWatched {
-            itemsToFetchFrom.append([item.itemId:item.itemMedia])
-        }
+        let itemsToFetchFrom = fetchBasedRecommendationItems()
         for item in itemsToFetchFrom {
             let results = await getRecommendations(for: item)
             if let results {
