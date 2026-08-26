@@ -20,20 +20,6 @@
                ReferencedContainer = "container:Cronica.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B8110EDE279245D100844FEB"
-               BuildableName = "Cronica.app"
-               BlueprintName = "Cronica"
-               ReferencedContainer = "container:Cronica.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction

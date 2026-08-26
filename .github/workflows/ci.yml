@@ -110,7 +110,7 @@ jobs:
           set -o pipefail
           xcodebuild build \
             -project Cronica.xcodeproj \
-            -scheme "Cronica Watch App" \
+            -target "Cronica Watch App" \
             -destination 'platform=watchOS Simulator,name=Apple Watch Series 11 (46mm),OS=latest' \
             -configuration Debug \
             CODE_SIGNING_ALLOWED=NO
