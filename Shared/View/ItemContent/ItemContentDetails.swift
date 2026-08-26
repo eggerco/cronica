@@ -330,23 +330,45 @@ struct ItemContentDetails: View {
                     }
                     
                     // Actions
+#if os(iOS)
+                    watchedDateCaption
+                        .frame(maxWidth: .infinity, alignment: .center)
+
+                    VStack(spacing: 12) {
+                        HStack(spacing: 12) {
+                            watchlistButton
+                                .frame(maxWidth: .infinity)
+                            if type == .movie {
+                                watchButton
+                                    .frame(maxWidth: .infinity)
+                            } else {
+                                favoriteButton
+                                    .frame(maxWidth: .infinity)
+                            }
+                        }
+                        listButton
+                            .frame(maxWidth: .infinity)
+                    }
+                    .padding(.top, 8)
+#else
                     HStack {
                         watchlistButton
                             .padding(.trailing)
-                        
+
                         if viewModel.isInWatchlist {
                             if type == .movie {
                                 watchButton
                             } else {
                                 favoriteButton
                             }
-                            
+
                             listButton
                                 .padding(.horizontal)
                         }
                     }
 
                     watchedDateCaption
+#endif
 
                     TMDBReviewsSection(communityScore: viewModel.content?.itemRating,
                                        averageReviewScore: viewModel.tmdbReviews.averageRatingLabel)
