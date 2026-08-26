@@ -92,7 +92,7 @@ final class CronicaTests: XCTestCase {
         }
         XCTAssertFalse(persistence.isItemSaved(id: content.itemContentID))
 
-        // Mirrors ItemContentViewModel.update(.watched): auto-add then mark watched.
+        // Mirrors ItemContentViewModel.updateWatched when marking watched: auto-add then mark watched.
         persistence.save(content)
         let item = requireItem(for: content.itemContentID)
         persistence.updateWatched(for: item)

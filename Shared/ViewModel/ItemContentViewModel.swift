@@ -156,6 +156,15 @@ class ItemContentViewModel: ObservableObject {
             guard let watchlistItem else { return }
             notification.removeNotification(identifier: item.itemContentID)
             persistence.delete(watchlistItem)
+            isWatched = false
+            watchedDateLabel = nil
+            isFavorite = false
+            isPin = false
+            isArchive = false
+            isNotificationsMuted = false
+            isHiddenFromUpNext = false
+            isHiddenFromWatchlist = false
+            isItemAddedToAnyList = false
         } else {
             // Adds the item to Watchlist
             withAnimation { isInWatchlist.toggle() }
@@ -245,11 +254,15 @@ class ItemContentViewModel: ObservableObject {
 
     func update(_ property: UpdateItemProperties) {
         guard let content else { return }
+        if property == .watched {
+            _ = updateWatched(resetEpisodeProgress: true)
+            return
+        }
         if !isInWatchlist { updateWatchlist(with: content) }
         guard let item = persistence.fetch(for: content.itemContentID) else { return }
         switch property {
         case .watched:
-            _ = updateWatched(resetEpisodeProgress: true)
+            break
         case .favorite:
             persistence.updateFavorite(for: item)
             withAnimation { isFavorite.toggle() }
@@ -262,11 +275,20 @@ class ItemContentViewModel: ObservableObject {
         }
     }
 
-    /// Returns `false` when marking watched is blocked because the title is unreleased.
+    /// Returns `false` when marking watched is blocked because the title is unreleased,
+    /// or when clearing watched on a title that is not in the watchlist.
     @discardableResult
     func updateWatched(resetEpisodeProgress: Bool) -> Bool {
         guard let content else { return false }
-        if !isInWatchlist { updateWatchlist(with: content) }
+        // Marking Watched auto-adds. Unwatched must not resurrect a removed title.
+        if !isInWatchlist {
+            if isWatched {
+                withAnimation { isWatched = false }
+                watchedDateLabel = nil
+                return false
+            }
+            updateWatchlist(with: content)
+        }
         guard let item = persistence.fetch(for: content.itemContentID) else { return false }
         if !item.isWatched && !item.isReleasedForWatching {
             return false
