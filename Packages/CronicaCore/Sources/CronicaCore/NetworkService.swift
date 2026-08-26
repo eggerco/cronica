@@ -148,6 +148,83 @@ public final class NetworkService: Sendable {
         return try await fetch(url: url)
     }
 
+    /// Resolves a parsed share URL into a TMDb watchlist reference.
+    public func resolveContentReference(from hint: MediaURLResolver.Hint) async throws -> TMDBURLParser.ContentReference? {
+        switch hint {
+        case .tmdb(let reference):
+            return reference
+        case .imdb(let id):
+            return try await findByIMDb(id)
+        case .search(let title, let preferredType):
+            return try await resolveSearchTitle(title, preferredType: preferredType)
+        }
+    }
+
+    public func findByIMDb(_ imdbID: String) async throws -> TMDBURLParser.ContentReference? {
+        guard let url = findURL(externalID: imdbID, source: "imdb_id") else {
+            throw NetworkError.invalidEndpoint
+        }
+        let response: FindByExternalIDResponse = try await fetch(url: url)
+        if let movie = response.movieResults?.first {
+            return TMDBURLParser.ContentReference(id: movie.id, type: .movie)
+        }
+        if let tv = response.tvResults?.first {
+            return TMDBURLParser.ContentReference(id: tv.id, type: .tvShow)
+        }
+        return nil
+    }
+
+    public func resolveSearchTitle(_ title: String,
+                                   preferredType: MediaType?) async throws -> TMDBURLParser.ContentReference? {
+        let results = try await search(query: title, page: "1")
+        let mediaResults = results.compactMap { result -> (SearchItemContent, MediaType)? in
+            guard let type = result.resolvedMediaType else { return nil }
+            return (result, type)
+        }
+
+        if let preferredType {
+            if let match = bestSearchMatch(in: mediaResults.filter { $0.1 == preferredType }, query: title) {
+                return TMDBURLParser.ContentReference(id: match.0.id, type: match.1)
+            }
+        }
+
+        if let match = bestSearchMatch(in: mediaResults, query: title) {
+            return TMDBURLParser.ContentReference(id: match.0.id, type: match.1)
+        }
+
+        return nil
+    }
+
+    private func bestSearchMatch(in results: [(SearchItemContent, MediaType)],
+                                 query: String) -> (SearchItemContent, MediaType)? {
+        guard !results.isEmpty else { return nil }
+
+        let normalizedQuery = query.normalizedForMediaMatching
+        let exact = results.first { pair in
+            pair.0.resolvedTitle?.normalizedForMediaMatching == normalizedQuery
+        }
+        if let exact { return exact }
+
+        let prefix = results.first { pair in
+            guard let title = pair.0.resolvedTitle?.normalizedForMediaMatching else { return false }
+            return title.hasPrefix(normalizedQuery) || normalizedQuery.hasPrefix(title)
+        }
+        return prefix ?? results.first
+    }
+
+    private func findURL(externalID: String, source: String) -> URL? {
+        var component = URLComponents()
+        component.scheme = "https"
+        component.host = "api.themoviedb.org"
+        component.path = "/3/find/\(externalID)"
+        component.queryItems = [
+            .init(name: "api_key", value: Key.tmdbApi),
+            .init(name: "external_source", value: source),
+            .init(name: "language", value: Locale.userLang),
+        ]
+        return component.url
+    }
+
     public func fetchLocalizedCredits(id: Int, type: MediaType) async throws -> [Person] {
         guard type != .person else { throw NetworkError.invalidRequest }
         switch type {

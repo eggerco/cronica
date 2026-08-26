@@ -29,6 +29,11 @@ public extension String {
         formatter.dateFormat = "y,MM,dd"
         return formatter.date(from: self)
     }
+
+    var normalizedForMediaMatching: String {
+        folding(options: [.diacriticInsensitive, .caseInsensitive], locale: .current)
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+    }
 }
 
 public extension String? {

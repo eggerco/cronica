@@ -18,15 +18,16 @@ public enum WidgetPosterLayout {
         public var displayLimit: Int {
             switch self {
             case .small: 2
-            case .medium, .large: 4
-            case .extraLarge: 8
+            case .medium: 4
+            case .large: 6
+            case .extraLarge: 12
             }
         }
 
         public var gridColumns: Int {
             switch self {
-            case .large: 2
-            case .extraLarge: 4
+            case .large: 3
+            case .extraLarge: 6
             case .small, .medium: 2
             }
         }
@@ -34,8 +35,18 @@ public enum WidgetPosterLayout {
 
     /// Poster width ÷ height.
     public static let aspectRatio: CGFloat = 2.0 / 3.0
+    /// Spacing between posters; slightly roomier on larger / iPad sizes.
+    public static func spacing(for family: Family) -> CGFloat {
+        switch family {
+        case .small: 6
+        case .medium: 8
+        case .large: 10
+        case .extraLarge: 12
+        }
+    }
+
     public static let spacing: CGFloat = 8
-    public static let maxFetchedItems = 8
+    public static let maxFetchedItems = 12
 
     /// Largest 2∶3 poster that fits an equal `columns` × `rows` grid inside `bounds`.
     public static func posterSize(

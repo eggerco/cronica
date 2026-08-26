@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum MediaType: String, CaseIterable, Identifiable {
+public enum MediaType: String, CaseIterable, Identifiable, Sendable {
     public var id: String { rawValue }
     case movie, person
     case tvShow = "tv"
