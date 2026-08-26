@@ -63,18 +63,6 @@
             ReferencedContainer = "container:Cronica.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "tmdb_api"
-            value = "82d4552bc117872c3342429fc8e4fba1"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "telemetry_client_key"
-            value = "9877F7EC-FCA6-42FE-B21F-7E03E6B0A490"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
       <LocationScenarioReference
          identifier = "com.apple.dt.IDEFoundation.CurrentLocationScenarioIdentifier"
          referenceType = "1">
