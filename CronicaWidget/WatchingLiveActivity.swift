@@ -3,15 +3,13 @@
 //  CronicaWidget
 //
 
+#if os(iOS)
 import ActivityKit
 import SwiftUI
 import WidgetKit
 import CronicaCore
-#if os(iOS)
 import UIKit
-#endif
 
-#if os(iOS)
 struct WatchingLiveActivity: Widget {
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: WatchingActivityAttributes.self) { context in
