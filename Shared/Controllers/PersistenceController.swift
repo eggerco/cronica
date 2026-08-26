@@ -74,6 +74,11 @@ struct PersistenceController {
             description.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
             description.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
 
+#if CRONICA_SHARE_EXTENSION
+            // Share Extension writes only to the App Group SQLite. The main app owns CloudKit sync
+            // so two processes never export the same store concurrently.
+            description.cloudKitContainerOptions = nil
+#else
             if Self.isICloudAccountAvailable() {
                 description.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(
                     containerIdentifier: Self.cloudKitContainerIdentifier
@@ -83,6 +88,7 @@ struct PersistenceController {
                 description.cloudKitContainerOptions = nil
                 AppLogger.persistence.info("iCloud account unavailable; loading watchlist store locally.")
             }
+#endif
         }
 
         // CloudKit schema is managed in CloudKit Console (not in-app). After Core Data

@@ -20,6 +20,7 @@ struct CronicaApp: App {
     private static var hasSyncedCalendarThisLaunch = false
 #endif
     @State private var selectedItem: ItemContent?
+    @State private var deepLinkLoadFailed = false
     @State private var showFeedbackForm = false
     @State private var showAbout = false
     @State private var showNewListView = false
@@ -57,6 +58,14 @@ struct CronicaApp: App {
                     Task {
                         await fetchContent(for: contentID)
                     }
+                }
+                .alert(
+                    String(localized: "Couldn't Open Link"),
+                    isPresented: $deepLinkLoadFailed
+                ) {
+                    Button("OK", role: .cancel) {}
+                } message: {
+                    Text(String(localized: "Check your connection and try again."))
                 }
                 .sheet(item: $selectedItem) { item in
                     NavigationStack {
@@ -217,10 +226,16 @@ struct CronicaApp: App {
 
     private func fetchContent(for id: String) async {
         if selectedItem != nil { selectedItem = nil }
-        guard let reference = TMDBURLParser.parseContentID(id) else { return }
-        let item = try? await NetworkService.shared.fetchItem(id: reference.id, type: reference.type)
-        guard let item else { return }
-        self.selectedItem = item
+        guard let reference = TMDBURLParser.parseContentID(id) else {
+            deepLinkLoadFailed = true
+            return
+        }
+        do {
+            let item = try await NetworkService.shared.fetchItem(id: reference.id, type: reference.type)
+            self.selectedItem = item
+        } catch {
+            deepLinkLoadFailed = true
+        }
     }
     
     private func registerRefreshBGTask() {
@@ -282,6 +297,14 @@ struct CronicaApp: App {
 class NotificationDelegate: NSObject, UNUserNotificationCenterDelegate, ObservableObject {
     
     var notificationID: String?
+    
+    func userNotificationCenter(
+        _ center: UNUserNotificationCenter,
+        willPresent notification: UNNotification,
+        withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
+    ) {
+        completionHandler([.banner, .list, .sound, .badge])
+    }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
