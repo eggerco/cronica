@@ -23,3 +23,12 @@ web/node_modules/
 web/.wrangler/
 web/.env
 web/.env*.local
+
+### Fastlane ###
+vendor/bundle/
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+*.p8
+AuthKey_*.p8

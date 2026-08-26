@@ -1,0 +1,90 @@
+# Fastlane — App Store metadata (especially localized release notes).
+#
+# Setup once:
+#   bundle install
+#   export APP_STORE_CONNECT_KEY_ID / ISSUER_ID / KEY_PATH  (see Appfile)
+#
+# Typical release:
+#   bundle exec fastlane ios upload_release_notes
+#
+# Pull existing metadata from App Store Connect (bootstrap / diff):
+#   bundle exec fastlane ios download_metadata
+
+default_platform(:ios)
+
+STORE_LOCALES = %w[
+  en-US
+  de-DE
+  fr-FR
+  it
+  pt-BR
+  sk
+  es-MX
+].freeze
+
+RELEASE_NOTE_SOURCE = File.expand_path("release_notes/default.txt", __dir__)
+METADATA_DIR = File.expand_path("metadata", __dir__)
+
+def app_store_api_key
+  key_id = ENV["APP_STORE_CONNECT_KEY_ID"]
+  issuer_id = ENV["APP_STORE_CONNECT_ISSUER_ID"]
+  key_path = ENV["APP_STORE_CONNECT_KEY_PATH"]
+
+  if [key_id, issuer_id, key_path].all? { |v| v && !v.empty? }
+    return app_store_connect_api_key(
+      key_id: key_id,
+      issuer_id: issuer_id,
+      key_filepath: key_path,
+      duration: 1200,
+      in_house: false
+    )
+  end
+
+  UI.user_error!(
+    "Set APP_STORE_CONNECT_KEY_ID, APP_STORE_CONNECT_ISSUER_ID, and APP_STORE_CONNECT_KEY_PATH. See fastlane/Appfile."
+  )
+end
+
+platform :ios do
+  desc "Copy fastlane/release_notes/default.txt into every store locale"
+  lane :sync_release_notes do
+    note = File.read(RELEASE_NOTE_SOURCE, encoding: "UTF-8").strip
+    UI.message("Syncing release notes to #{STORE_LOCALES.length} locales from #{RELEASE_NOTE_SOURCE}")
+
+    STORE_LOCALES.each do |locale|
+      dir = File.join(METADATA_DIR, locale)
+      FileUtils.mkdir_p(dir)
+      File.write(File.join(dir, "release_notes.txt"), "#{note}\n")
+    end
+  end
+
+  desc "Upload metadata only (no binary, no screenshots)"
+  lane :upload_metadata do
+    deliver(
+      api_key: app_store_api_key,
+      skip_binary_upload: true,
+      skip_screenshots: true,
+      force: true,
+      run_precheck_before_submit: false,
+      precheck_include_in_app_purchases: false
+    )
+  end
+
+  desc "Sync default release notes and upload to App Store Connect"
+  lane :upload_release_notes do
+    sync_release_notes
+    upload_metadata
+  end
+
+  desc "Download current App Store Connect metadata into fastlane/metadata/"
+  lane :download_metadata do
+    deliver(
+      api_key: app_store_api_key,
+      skip_binary_upload: true,
+      skip_screenshots: true,
+      force: true,
+      run_precheck_before_submit: false,
+      precheck_include_in_app_purchases: false
+    )
+  end
+end

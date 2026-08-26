@@ -1,0 +1,12 @@
+app_identifier("dev.alexandremadeira.Story")
+
+# App Store Connect API key (recommended). Create a key in App Store Connect → Users and Access → Integrations → App Store Connect API.
+# Store the .p8 file outside the repo and point these env vars at it before running fastlane:
+#
+#   export APP_STORE_CONNECT_KEY_ID="XXXXXXXXXX"
+#   export APP_STORE_CONNECT_ISSUER_ID="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+#   export APP_STORE_CONNECT_KEY_PATH="$HOME/.appstoreconnect/AuthKey_XXXXXXXXXX.p8"
+#
+# Optional legacy Apple ID login (not recommended for CI):
+# apple_id("you@example.com")
+# team_id("S5A7774228")
