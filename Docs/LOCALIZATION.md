@@ -52,3 +52,18 @@ python3 Scripts/audit_localization.py
 - Preserve format specifiers (`%lld`, `%@`, positional `%1$@`, etc.).
 - Brand names (TMDB, SIMKL, Cronica) and person names stay untranslated.
 - App Store **release notes** are separate — see `Docs/FASTLANE.md`.
+
+## Siri & Shortcuts
+
+Cronica registers App Intents on **iOS, iPadOS, macOS, and visionOS** (not watchOS or tvOS).
+
+| Voice command (examples) | Action |
+|--------------------------|--------|
+| “Add *Dune* to Cronica” | Search TMDb → add to watchlist |
+| “Remove *Severance* from my watchlist” | Remove local watchlist item |
+| “Mark *Oppenheimer* as watched” | Mark watched (auto-adds if needed) |
+| “Mark my next episode as watched” | Marks current Up Next episode |
+| “What’s up next on Cronica?” | Reads Up Next queue |
+| “Open *The Bear* in Cronica” | Deep-links into the app |
+
+Intents live in `Shared/Intents/`. After changing phrases or parameters, rebuild so Xcode exports App Intents metadata.

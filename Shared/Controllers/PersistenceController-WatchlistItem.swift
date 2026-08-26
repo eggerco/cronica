@@ -316,6 +316,53 @@ extension PersistenceController {
 #endif
     }
     
+    func fetchWatchlistItems(matching query: String, limit: Int = 20) -> [WatchlistItem] {
+        let trimmed = query.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return [] }
+        let request: NSFetchRequest<WatchlistItem> = WatchlistItem.fetchRequest()
+        request.predicate = NSPredicate(
+            format: "title CONTAINS[cd] %@ OR originalTitle CONTAINS[cd] %@",
+            trimmed,
+            trimmed
+        )
+        request.fetchLimit = limit
+        request.sortDescriptors = [NSSortDescriptor(key: "lastValuesUpdated", ascending: false)]
+        return (try? container.viewContext.fetch(request)) ?? []
+    }
+
+    func bestMatchingWatchlistItem(for query: String) -> WatchlistItem? {
+        let normalizedQuery = query.normalizedForMediaMatching
+        guard !normalizedQuery.isEmpty else { return nil }
+        let candidates = fetchWatchlistItems(matching: query, limit: 25)
+        if let exact = candidates.first(where: {
+            $0.itemTitle.normalizedForMediaMatching == normalizedQuery
+                || $0.itemOriginalTitle.normalizedForMediaMatching == normalizedQuery
+        }) {
+            return exact
+        }
+        if let prefix = candidates.first(where: {
+            let title = $0.itemTitle.normalizedForMediaMatching
+            let original = $0.itemOriginalTitle.normalizedForMediaMatching
+            return title.hasPrefix(normalizedQuery)
+                || normalizedQuery.hasPrefix(title)
+                || original.hasPrefix(normalizedQuery)
+                || normalizedQuery.hasPrefix(original)
+        }) {
+            return prefix
+        }
+        return candidates.first
+    }
+
+    func fetchUpNextWatchlistItems() -> [WatchlistItem] {
+        let request: NSFetchRequest<WatchlistItem> = WatchlistItem.fetchRequest()
+        request.predicate = NSPredicate(
+            format: "displayOnUpNext == YES AND hideFromUpNext == NO AND isArchive == NO AND watched == NO AND contentType == %d",
+            MediaType.tvShow.toInt
+        )
+        request.sortDescriptors = [NSSortDescriptor(key: "lastValuesUpdated", ascending: false)]
+        return (try? container.viewContext.fetch(request)) ?? []
+    }
+
     // MARK: Properties read
     func isItemSaved(id: String) -> Bool {
         let viewContext = container.viewContext

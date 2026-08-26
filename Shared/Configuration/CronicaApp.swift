@@ -59,6 +59,9 @@ struct CronicaApp: App {
                         await fetchContent(for: contentID)
                     }
                 }
+                .task {
+                    await consumePendingSiriDeepLink()
+                }
                 .alert(
                     String(localized: "Couldn't Open Link"),
                     isPresented: $deepLinkLoadFailed
@@ -237,6 +240,16 @@ struct CronicaApp: App {
             deepLinkLoadFailed = true
         }
     }
+
+#if canImport(AppIntents) && !os(watchOS) && !os(tvOS)
+    @MainActor
+    private func consumePendingSiriDeepLink() async {
+        guard let url = SiriDeepLinkBridge.consumePending(),
+              let contentID = Self.contentID(from: url)
+        else { return }
+        await fetchContent(for: contentID)
+    }
+#endif
     
     private func registerRefreshBGTask() {
 #if os(iOS)

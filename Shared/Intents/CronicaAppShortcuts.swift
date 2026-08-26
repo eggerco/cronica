@@ -1,0 +1,88 @@
+//
+//  CronicaAppShortcuts.swift
+//  Cronica
+//
+
+#if canImport(AppIntents) && !os(watchOS) && !os(tvOS)
+import AppIntents
+
+struct CronicaAppShortcuts: AppShortcutsProvider {
+    static var appShortcuts: [AppShortcut] {
+        AppShortcut(
+            intent: AddToWatchlistIntent(),
+            phrases: [
+                "Add \(\.$title) to my watchlist in \(.applicationName)",
+                "Add \(\.$title) to \(.applicationName)",
+                "\(.applicationName) add \(\.$title)",
+            ],
+            shortTitle: LocalizedStringResource("Add to Watchlist"),
+            systemImageName: "plus.circle"
+        )
+
+        AppShortcut(
+            intent: RemoveFromWatchlistIntent(),
+            phrases: [
+                "Remove \(\.$title) from my watchlist in \(.applicationName)",
+                "Remove \(\.$title) from \(.applicationName)",
+                "\(.applicationName) remove \(\.$title)",
+            ],
+            shortTitle: LocalizedStringResource("Remove from Watchlist"),
+            systemImageName: "minus.circle"
+        )
+
+        AppShortcut(
+            intent: MarkTitleWatchedIntent(),
+            phrases: [
+                "Mark \(\.$title) as watched in \(.applicationName)",
+                "I watched \(\.$title) on \(.applicationName)",
+                "\(.applicationName) mark \(\.$title) watched",
+            ],
+            shortTitle: LocalizedStringResource("Mark as Watched"),
+            systemImageName: "checkmark.circle"
+        )
+
+        AppShortcut(
+            intent: MarkUpNextEpisodeWatchedIntent(),
+            phrases: [
+                "Mark my next episode as watched in \(.applicationName)",
+                "I finished my next episode on \(.applicationName)",
+                "\(.applicationName) mark next episode watched",
+            ],
+            shortTitle: LocalizedStringResource("Mark Up Next Watched"),
+            systemImageName: "play.circle"
+        )
+
+        AppShortcut(
+            intent: GetUpNextIntent(),
+            phrases: [
+                "What's up next on \(.applicationName)",
+                "What should I watch next on \(.applicationName)",
+                "\(.applicationName) up next",
+            ],
+            shortTitle: LocalizedStringResource("Get Up Next"),
+            systemImageName: "text.line.first.and.arrowtriangle.forward"
+        )
+
+        AppShortcut(
+            intent: SearchTitlesIntent(),
+            phrases: [
+                "Search in \(.applicationName)",
+                "Find a title in \(.applicationName)",
+            ],
+            shortTitle: LocalizedStringResource("Search Titles"),
+            systemImageName: "magnifyingglass"
+        )
+
+        AppShortcut(
+            intent: OpenTitleIntent(),
+            phrases: [
+                "Open \(\.$title) in \(.applicationName)",
+                "Show \(\.$title) in \(.applicationName)",
+                "\(.applicationName) open \(\.$title)",
+            ],
+            shortTitle: LocalizedStringResource("Open Title"),
+            systemImageName: "arrow.up.forward.app"
+        )
+    }
+}
+#endif

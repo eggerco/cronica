@@ -34,6 +34,8 @@
 	</array>
 	<key>NSSupportsLiveActivities</key>
 	<true/>
+	<key>NSSiriUsageDescription</key>
+	<string>Cronica uses Siri to add titles, mark episodes watched, and check what's up next on your watchlist.</string>
 	<key>TMDB_API_KEY</key>
 	<string>$(TMDB_API_KEY)</string>
 	<key>SENTRY_DSN</key>
