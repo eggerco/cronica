@@ -24,7 +24,9 @@ struct SearchItemContentContextMenu: ViewModifier {
             .contextMenu {
 #if os(iOS) || os(macOS)
                 switch settings.shareLinkPreference {
-                case .cronica: if let cronicaUrl { ShareLink(item: cronicaUrl) }
+                case .cronica: if let cronicaUrl {
+                    ShareLink(item: cronicaUrl, subject: Text(item.itemTitle), message: Text(item.itemTitle))
+                }
                 case .tmdb: ShareLink(item: item.itemURL)
                 }
 #endif
@@ -37,6 +39,9 @@ struct SearchItemContentContextMenu: ViewModifier {
                     } label: {
                         Label("Review", systemImage: "note.text")
                     }
+#if os(iOS)
+                    TrackOnLockScreenButton(contentID: item.itemContentID)
+#endif
 #endif
                 }
                 Divider()
@@ -169,7 +174,9 @@ struct SearchItemContentContextMenu: ViewModifier {
     private var shareButton: some View {
 #if !os(tvOS)
         switch settings.shareLinkPreference {
-        case .cronica: if let cronicaUrl { ShareLink(item: cronicaUrl) }
+        case .cronica: if let cronicaUrl {
+            ShareLink(item: cronicaUrl, subject: Text(item.itemTitle), message: Text(item.itemTitle))
+        }
         case .tmdb: ShareLink(item: item.itemURL)
         }
 #else

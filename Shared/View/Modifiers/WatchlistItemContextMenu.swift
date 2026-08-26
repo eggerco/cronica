@@ -99,6 +99,9 @@ struct WatchlistItemContextMenu: ViewModifier {
                 archiveButton
                 customListButton
                 reviewButton
+#if os(iOS)
+                TrackOnLockScreenButton(contentID: item.itemContentID)
+#endif
                 HideFromWatchlistButton(id: item.itemContentID, isHidden: $isHiddenFromWatchlist)
                 if item.isTvShow {
                     HideFromUpNextButton(id: item.itemContentID, isHidden: $isHiddenFromUpNext)
@@ -197,7 +200,7 @@ struct WatchlistItemContextMenu: ViewModifier {
         case .tmdb: ShareLink(item: item.itemLink)
         case .cronica:
             if let cronicaUrl {
-                ShareLink(item: cronicaUrl, message: Text(item.itemTitle))
+                ShareLink(item: cronicaUrl, subject: Text(item.itemTitle), message: Text(item.itemTitle))
             } else {
                 ShareLink(item: item.itemLink)
             }

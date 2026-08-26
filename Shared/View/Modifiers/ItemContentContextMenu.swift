@@ -31,7 +31,9 @@ struct ItemContentContextMenu: ViewModifier {
 #if os(iOS) || os(macOS)
                 Divider()
 				switch settings.shareLinkPreference {
-				case .cronica: if let cronicaUrl { ShareLink(item: cronicaUrl) }
+				case .cronica: if let cronicaUrl {
+					ShareLink(item: cronicaUrl, subject: Text(item.itemTitle), message: Text(item.itemTitle))
+				}
 				case .tmdb: ShareLink(item: item.itemURL)
 				}
 #endif
@@ -47,6 +49,9 @@ struct ItemContentContextMenu: ViewModifier {
 					} label: {
 						Label("Review", systemImage: "note.text")
 					}
+#if os(iOS)
+                    TrackOnLockScreenButton(contentID: item.itemContentID)
+#endif
                     HideFromWatchlistButton(id: item.itemContentID, isHidden: $isHiddenFromWatchlist)
                     if item.itemContentMedia == .tvShow {
                         HideFromUpNextButton(id: item.itemContentID, isHidden: $isHiddenFromUpNext)
@@ -202,7 +207,9 @@ struct ItemContentContextMenu: ViewModifier {
 	private var shareButton: some View {
 #if !os(tvOS)
 		switch settings.shareLinkPreference {
-		case .cronica: if let cronicaUrl { ShareLink(item: cronicaUrl) }
+		case .cronica: if let cronicaUrl {
+			ShareLink(item: cronicaUrl, subject: Text(item.itemTitle), message: Text(item.itemTitle))
+		}
 		case .tmdb: ShareLink(item: item.itemURL)
 		}
 #else

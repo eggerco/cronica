@@ -1068,7 +1068,7 @@ extension ItemContentDetails {
         switch store.shareLinkPreference {
         case .tmdb: if let url = viewModel.content?.itemURL { ShareLink(item: url) }
         case .cronica: if let cronicaUrl {
-            ShareLink(item: cronicaUrl, message: Text(title))
+            ShareLink(item: cronicaUrl, subject: Text(title), message: Text(title))
         }
         }
     }
@@ -1114,6 +1114,9 @@ extension ItemContentDetails {
                 muteNotificationsToolbar
                 hideFromWatchlistToolbar
                 hideFromUpNextToolbar
+#if os(iOS)
+                TrackOnLockScreenButton(contentID: "\(id)@\(type.toInt)")
+#endif
             }
             openInMenu
         }
@@ -1136,6 +1139,9 @@ extension ItemContentDetails {
                 muteNotificationsToolbar
                 hideFromWatchlistToolbar
                 hideFromUpNextToolbar
+#if os(iOS)
+                TrackOnLockScreenButton(contentID: "\(id)@\(type.toInt)")
+#endif
             }
             openInMenu
 #else
@@ -1152,11 +1158,17 @@ extension ItemContentDetails {
                     muteNotificationsToolbar
                     hideFromWatchlistToolbar
                     hideFromUpNextToolbar
+#if os(iOS)
+                    TrackOnLockScreenButton(contentID: "\(id)@\(type.toInt)")
+#endif
                 }
             } else if viewModel.isInWatchlist {
                 muteNotificationsToolbar
                 hideFromWatchlistToolbar
                 hideFromUpNextToolbar
+#if os(iOS)
+                TrackOnLockScreenButton(contentID: "\(id)@\(type.toInt)")
+#endif
             }
             openInMenu
 #endif
