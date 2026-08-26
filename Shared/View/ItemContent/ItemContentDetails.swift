@@ -331,9 +331,6 @@ struct ItemContentDetails: View {
                     
                     // Actions
 #if os(iOS)
-                    watchedDateCaption
-                        .frame(maxWidth: .infinity, alignment: .center)
-
                     VStack(spacing: 12) {
                         HStack(spacing: 12) {
                             watchlistButton
@@ -350,6 +347,9 @@ struct ItemContentDetails: View {
                             .frame(maxWidth: .infinity)
                     }
                     .padding(.top, 8)
+
+                    watchedDateCaption
+                        .frame(maxWidth: .infinity, alignment: .center)
 #else
                     HStack {
                         watchlistButton

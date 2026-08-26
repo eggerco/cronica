@@ -12740,7 +12740,14 @@
       }
     },
     "Featured" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Featured"
+          }
+        }
+      }
     },
     "Features" : {
       "localizations" : {
@@ -23523,7 +23530,14 @@
       }
     },
     "Popular and trending titles" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Popular and trending titles"
+          }
+        }
+      }
     },
     "Popular Movies" : {
 
@@ -41370,7 +41384,14 @@
       }
     },
     "Upcoming Movies" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upcoming Movies"
+          }
+        }
+      }
     },
     "Upcoming Notifications" : {
       "localizations" : {
@@ -41934,7 +41955,14 @@
       }
     },
     "Voice Cast" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Voice Cast"
+          }
+        }
+      }
     },
     "War" : {
       "localizations" : {
