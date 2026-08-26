@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "wrangler dev",
     "deploy": "wrangler deploy",
-    "check": "tsc --noEmit"
+    "check": "tsc --noEmit",
+    "test": "node --experimental-strip-types --test src/details.test.ts"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^5.20260825.1",
