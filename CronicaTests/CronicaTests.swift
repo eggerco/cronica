@@ -1028,6 +1028,28 @@ final class CronicaTests: XCTestCase {
         XCTAssertEqual(stats.weeklyActivity.last?.count, 1)
     }
 
+    @MainActor
+    func testPrivacyDeletionClearsHomeSectionPreferences() {
+        let store = HomeSectionStore.shared
+        if let first = store.order.first {
+            store.setVisible(first, visible: false)
+        }
+        SettingsStore.shared.displayOnboard = false
+
+        UserDataDeletionService.resetUserDefaultsForTesting()
+
+        XCTAssertEqual(store.order, HomeSectionKind.defaultOrder)
+        XCTAssertEqual(
+            store.hidden,
+            Set(HomeSectionKind.allCases.filter { !HomeSectionKind.defaultVisible.contains($0) })
+        )
+#if os(iOS)
+        XCTAssertTrue(SettingsStore.shared.displayOnboard)
+#elseif os(macOS)
+        XCTAssertFalse(SettingsStore.shared.displayOnboard)
+#endif
+    }
+
     private func requireItem(for contentID: String,
                              file: StaticString = #filePath,
                              line: UInt = #line) -> WatchlistItem {

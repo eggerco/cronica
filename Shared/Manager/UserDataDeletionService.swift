@@ -55,6 +55,12 @@ enum UserDataDeletionService {
         applyFreshAppDefaults()
     }
 
+    /// Visible to tests — clears prefs without touching Core Data / Keychain.
+    static func resetUserDefaultsForTesting() {
+        resetUserDefaults()
+        applyFreshAppDefaults()
+    }
+
     private static func resetUserDefaults() {
         let keys = [
             "showOnboarding",
@@ -154,7 +160,11 @@ enum UserDataDeletionService {
             "customListMediaTypeFilter",
             "customListSmartFilter",
             "customListSortOrder",
-            "selectedView"
+            "selectedView",
+            "homeSectionOrder",
+            "homeSectionHidden",
+            "homePinnedListSortOrder",
+            "persistentHistory.lastToken"
         ]
 
         for key in keys {
@@ -165,6 +175,9 @@ enum UserDataDeletionService {
     private static func clearCaches() {
         DataLoader.sharedUrlCache.removeAllCachedResponses()
         ImageCache.shared.removeAll()
+        if let dataCache = ImagePipeline.shared.configuration.dataCache as? DataCache {
+            try? dataCache.removeAll()
+        }
     }
 
     private static func reloadWidgets() {
@@ -198,5 +211,12 @@ enum UserDataDeletionService {
         settings.tmdbAccountLastImportDate = nil
         settings.tmdbPushEnabled = false
         settings.markTMDBSyncChecked(Date(timeIntervalSince1970: 0))
+#if os(macOS)
+        // Mac has no Welcome sheet — avoid leaving a dead onboarding flag.
+        settings.displayOnboard = false
+#endif
+#if !os(watchOS)
+        HomeSectionStore.shared.resetToDefaults()
+#endif
     }
 }

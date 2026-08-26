@@ -209,7 +209,16 @@ struct DefaultWatchlist: View {
                 }
             }
 #elseif os(macOS)
-            filterButton
+            ToolbarItem(placement: .primaryAction) {
+                HStack {
+                    if !items.isEmpty {
+                        Button("Select", systemImage: "checkmark.circle") {
+                            showBatchEdit = true
+                        }
+                    }
+                    filterButton
+                }
+            }
 #endif
         }
 #if os(iOS)

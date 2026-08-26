@@ -72,7 +72,7 @@ struct WatchlistSettingsView: View {
             }
 #if !os(tvOS)
             Section {
-#if os(iOS)
+#if os(iOS) || os(macOS)
                 importButton
                 if let exportUrl {
                     ShareLink(item: exportUrl) {
@@ -84,15 +84,13 @@ struct WatchlistSettingsView: View {
                 }
 #endif
             } header: {
-#if !os(macOS)
                 Text("Backup & Restore")
-#endif
             } footer: {
-#if os(iOS)
+#if os(iOS) || os(macOS)
                 Text("Export creates a JSON backup of your watchlist. Restore merges by item — existing titles are updated, new ones are added. Custom lists are not included.")
 #endif
             }
-#if os(iOS)
+#if os(iOS) || os(macOS)
             .fileImporter(isPresented: $showFilePicker, allowedContentTypes: [.json]) { result in
                 switch result {
                 case .success(let success):
@@ -116,7 +114,7 @@ struct WatchlistSettingsView: View {
 #endif
     }
     
-#if os(iOS)
+#if os(iOS) || os(macOS)
     private var importButton: some View {
         Button {
             showFilePicker.toggle()
@@ -124,6 +122,9 @@ struct WatchlistSettingsView: View {
             Text("Restore")
         }
         .disabled(hasImported)
+#if os(macOS)
+        .buttonStyle(.plain)
+#endif
     }
     
     private var exportButton: some View {
@@ -139,6 +140,9 @@ struct WatchlistSettingsView: View {
             }
         }
         .disabled(isGeneratingExport)
+#if os(macOS)
+        .buttonStyle(.plain)
+#endif
     }
 #endif
 }
@@ -167,7 +171,7 @@ extension WatchlistSettingsView {
         }
     }
     
-#if os(iOS)
+#if os(iOS) || os(macOS)
     private func export() {
         do {
             isGeneratingExport = true

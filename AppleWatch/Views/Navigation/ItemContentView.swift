@@ -78,7 +78,7 @@ struct ItemContentView: View {
                 
                 HStack {
                     if viewModel.isInWatchlist {
-                        //customListButton
+                        customListButton
                         Button {
                             showMoreOptions.toggle()
                         } label: {
@@ -100,6 +100,8 @@ struct ItemContentView: View {
                     }
                 }
                 .padding([.bottom, .horizontal])
+                .accessibilityElement(children: .contain)
+                .accessibilityLabel(String(localized: "Watchlist actions"))
                 
                 AboutSectionView(about: viewModel.content?.itemOverview)
                 

@@ -206,7 +206,16 @@ struct CustomWatchlist: View {
                 }
             }
 #elseif os(macOS)
-            filterButton
+            ToolbarItem(placement: .primaryAction) {
+                HStack {
+                    if !(selectedList?.itemsArray.isEmpty ?? true) {
+                        Button("Select", systemImage: "checkmark.circle") {
+                            showBatchEdit = true
+                        }
+                    }
+                    filterButton
+                }
+            }
 #else
             filterButton
 #endif

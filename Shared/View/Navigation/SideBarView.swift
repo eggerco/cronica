@@ -11,7 +11,6 @@ struct SideBarView: View {
     @SceneStorage("selectedView") private var selectedView: Screens = .home
     @StateObject private var viewModel = SearchViewModel()
     @State private var selectedSearchItem: ItemContent?
-	@State private var showNotifications = false
     private let persistence = PersistenceController.shared
     var body: some View {
         NavigationSplitView {
@@ -54,12 +53,6 @@ struct SideBarView: View {
             }
         }
         .navigationSplitViewStyle(.balanced)
-        .sheet(isPresented: $showNotifications) {
-            NavigationStack {
-                NotificationListView(showNotification: $showNotifications)
-                    .cronicaWatchlistNavigationDestinations()
-            }
-        }
     }
 }
 
