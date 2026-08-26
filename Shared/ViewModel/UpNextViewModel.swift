@@ -49,6 +49,7 @@ class UpNextViewModel: ObservableObject {
                 self.isLoaded = true
             }
         }
+        WidgetSnapshotPublisherBridge.scheduleRefreshIfAvailable()
     }
 
     func skipEpisode(for item: UpNextEpisode) async {

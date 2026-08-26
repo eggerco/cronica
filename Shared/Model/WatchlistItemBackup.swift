@@ -71,7 +71,7 @@ struct WatchlistItemBackup: Codable, Equatable {
         isPin = item.isPin
         lastEpisodeNumber = item.lastEpisodeNumber
         lastSelectedSeason = item.lastSelectedSeason
-        userNotes = item.userNotes ?? ""
+        userNotes = item.userNotes
         userRating = item.userRating
         isWatching = item.isWatching
         posterPath = item.posterPath

@@ -229,7 +229,9 @@ struct ItemContentView: View {
 	private var shareButton: some View {
 		switch store.shareLinkPreference {
 		case .tmdb: if let url = viewModel.content?.itemURL { ShareLink(item: url) }
-		case .cronica: if let cronicaUrl { ShareLink(item: cronicaUrl) }
+		case .cronica: if let cronicaUrl {
+			ShareLink(item: cronicaUrl, subject: Text(viewModel.content?.itemTitle ?? title), message: Text(viewModel.content?.itemTitle ?? title))
+		}
 		}
 	}
 	

@@ -4,6 +4,7 @@
 //
 
 import CoreData
+import CronicaCore
 import Foundation
 import Nuke
 #if canImport(WidgetKit) && !os(watchOS)
@@ -45,6 +46,11 @@ enum UserDataDeletionService {
 
         resetUserDefaults()
         clearCaches()
+        WidgetSnapshotStore.removeAllSnapshots()
+        LiveActivityPosterStore.removeAll()
+#if os(iOS)
+        await WatchingSessionManager.shared.endSession()
+#endif
         reloadWidgets()
         applyFreshAppDefaults()
     }

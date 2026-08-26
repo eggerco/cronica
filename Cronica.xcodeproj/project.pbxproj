@@ -246,6 +246,36 @@
 		B8D7AEAC28B95F5E0053CE5A /* CronicaWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D7AEAB28B95F5E0053CE5A /* CronicaWidget.swift */; };
 		B8D7AEAE28B95F5F0053CE5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8D7AEAD28B95F5F0053CE5A /* Assets.xcassets */; };
 		B8D7AEB228B95F5F0053CE5A /* Cronica Widget Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B8D7AEA728B95F5D0053CE5A /* Cronica Widget Extension.appex */; platformFilters = (ios, macos, ); settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C0SHAREWIDGETKIT0000001 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8AD442F284AD42300778275 /* WidgetKit.framework */; };
+		C0SHAREVC000000000000002 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SHAREVC000000000000001 /* ShareViewController.swift */; };
+		C0SHAREVIEW0000000000002 /* ShareExtensionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SHAREVIEW0000000000001 /* ShareExtensionView.swift */; };
+		C0WATCHADDSVC0000000002 /* WatchlistAddService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WATCHADDSVC0000000001 /* WatchlistAddService.swift */; };
+		C0WATCHADDSVC0000000003 /* WatchlistAddService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WATCHADDSVC0000000001 /* WatchlistAddService.swift */; };
+		C0SHAREPERSIST0000000001 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B271A527A5A18C00F6463F /* PersistenceController.swift */; };
+		C0SHAREPERSISTSHARE0001 /* PersistenceController-WatchlistItem+ShareExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SHAREPERSISTSHARE002 /* PersistenceController-WatchlistItem+ShareExtension.swift */; };
+		C0SHARECOREDATA0000001 /* Watchlist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B8E6D64027B6B106002E7A63 /* Watchlist.xcdatamodeld */; };
+		C0SHAREWLCLASS00000001 /* WatchlistItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81DD92429BD149D009F73F3 /* WatchlistItem+CoreDataClass.swift */; };
+		C0SHAREWLPROPS00000001 /* WatchlistItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81DD92529BD149D009F73F3 /* WatchlistItem+CoreDataProperties.swift */; };
+		C0SHARECLCLASS00000001 /* CustomList+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81DD93229BD14EE009F73F3 /* CustomList+CoreDataClass.swift */; };
+		C0SHARECLPROPS00000001 /* CustomList+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81DD93329BD14EE009F73F3 /* CustomList+CoreDataProperties.swift */; };
+		C0SHAREWLITEMEXT000001 /* WatchlistItem-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B878E83427BC85BC0021A981 /* WatchlistItem-Extension.swift */; };
+		C0SHAREEPISODEEXT0001 /* Episode-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B890C58427FE4442006BE5E1 /* Episode-Extension.swift */; };
+		C0SHARECLLISTEXT000001 /* CustomList-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83E3ED9299AB9FB00A3A28B /* CustomList-Extensions.swift */; };
+		C0SHAREWATCHADD0000001 /* WatchlistAddService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WATCHADDSVC0000000001 /* WatchlistAddService.swift */; };
+		C0WIDGETPUB00000000002 /* WidgetSnapshotPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WIDGETPUB00000000001 /* WidgetSnapshotPublisher.swift */; };
+		C0WIDGETBRIDGE000000002 /* WidgetSnapshotPublisherBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WIDGETBRIDGE000000001 /* WidgetSnapshotPublisherBridge.swift */; };
+		C0WIDGETBRIDGE000000003 /* WidgetSnapshotPublisherBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WIDGETBRIDGE000000001 /* WidgetSnapshotPublisherBridge.swift */; };
+		C0WATCHSESS00000000002 /* WatchingSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WATCHSESS00000000001 /* WatchingSessionManager.swift */; };
+		C0WATCHATTR00000000002 /* WatchingActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WATCHATTR00000000001 /* WatchingActivityAttributes.swift */; };
+		C0WATCHATTR00000000003 /* WatchingActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WATCHATTR00000000001 /* WatchingActivityAttributes.swift */; };
+		C0TRACKLOCK00000000002 /* TrackOnLockScreenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0TRACKLOCK00000000001 /* TrackOnLockScreenButton.swift */; };
+		C0TRENDWIDGET000000002 /* CronicaTrendingWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0TRENDWIDGET000000001 /* CronicaTrendingWidget.swift */; };
+		C0UPNEXTWIDGET000000002 /* CronicaUpNextWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0UPNEXTWIDGET000000001 /* CronicaUpNextWidget.swift */; };
+		C0WATCHLWIDGET000000002 /* CronicaWatchlistWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WATCHLWIDGET000000001 /* CronicaWatchlistWidget.swift */; };
+		C0LIVEACTIVITY000000002 /* WatchingLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0LIVEACTIVITY000000001 /* WatchingLiveActivity.swift */; };
+		C0WIDGETSNAPVIEW000002 /* WidgetSnapshotViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WIDGETSNAPVIEW000001 /* WidgetSnapshotViews.swift */; };
+		CF267C9C303C3C65001DB342 /* CronicaCore in Frameworks */ = {isa = PBXBuildFile; productRef = C0CRONICACORE00000000005 /* CronicaCore */; };
+
 		B8D7AEE328BA64DF0053CE5A /* DataPlaceholder.json in Resources */ = {isa = PBXBuildFile; fileRef = B8D7AEE228BA64DF0053CE5A /* DataPlaceholder.json */; };
 		B8D8AF9227D4DB720042AEB6 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D8AF9127D4DB720042AEB6 /* SearchViewModel.swift */; };
 		B8DA5CC62B0E432200678592 /* UpNextMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DA5CC52B0E432200678592 /* UpNextMenuBar.swift */; };
@@ -376,6 +406,13 @@
 			remoteGlobalIDString = B8110EDE279245D100844FEB;
 			remoteInfo = "Story (iOS)";
 		};
+		C0SHAREEXTPROXY00000001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B8110ED3279245D000844FEB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C0SHAREEXTTARGET00000001;
+			remoteInfo = CronicaShareExtension;
+		};
 		C0UITESTCONTAINER000000001 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B8110ED3279245D000844FEB /* Project object */;
@@ -404,6 +441,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				B8D7AEB228B95F5F0053CE5A /* Cronica Widget Extension.appex in Embed Foundation Extensions */,
+				C0SHAREEXTEMBED00000001 /* Cronica Share Extension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -581,6 +619,24 @@
 		B8CC953527D05E4A00B6757C /* Cronica-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Cronica-Info.plist"; sourceTree = "<group>"; };
 		B8D1A2F32A4A0DC5001BACDC /* HorizontalPinnedLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalPinnedLists.swift; sourceTree = "<group>"; };
 		B8D7AEA728B95F5D0053CE5A /* Cronica Widget Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Cronica Widget Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0SHAREEXTPRODUCT000001 /* Cronica Share Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Cronica Share Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0SHAREVC000000000000001 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		C0SHAREVIEW0000000000001 /* ShareExtensionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareExtensionView.swift; sourceTree = "<group>"; };
+		C0SHAREINFO0000000000001 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0SHAREPERSISTSHARE002 /* PersistenceController-WatchlistItem+ShareExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PersistenceController-WatchlistItem+ShareExtension.swift"; sourceTree = "<group>"; };
+		C0SHAREENT0000000000001 /* CronicaShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CronicaShareExtension.entitlements; sourceTree = "<group>"; };
+		C0WATCHADDSVC0000000001 /* WatchlistAddService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistAddService.swift; sourceTree = "<group>"; };
+		C0WIDGETPUB00000000001 /* WidgetSnapshotPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSnapshotPublisher.swift; sourceTree = "<group>"; };
+		C0WIDGETBRIDGE000000001 /* WidgetSnapshotPublisherBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSnapshotPublisherBridge.swift; sourceTree = "<group>"; };
+		C0WATCHSESS00000000001 /* WatchingSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchingSessionManager.swift; sourceTree = "<group>"; };
+		C0WATCHATTR00000000001 /* WatchingActivityAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchingActivityAttributes.swift; sourceTree = "<group>"; };
+		C0TRACKLOCK00000000001 /* TrackOnLockScreenButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackOnLockScreenButton.swift; sourceTree = "<group>"; };
+		C0TRENDWIDGET000000001 /* CronicaTrendingWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaTrendingWidget.swift; sourceTree = "<group>"; };
+		C0UPNEXTWIDGET000000001 /* CronicaUpNextWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaUpNextWidget.swift; sourceTree = "<group>"; };
+		C0WATCHLWIDGET000000001 /* CronicaWatchlistWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaWatchlistWidget.swift; sourceTree = "<group>"; };
+		C0LIVEACTIVITY000000001 /* WatchingLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchingLiveActivity.swift; sourceTree = "<group>"; };
+		C0WIDGETSNAPVIEW000001 /* WidgetSnapshotViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSnapshotViews.swift; sourceTree = "<group>"; };
+
 		B8D7AEAB28B95F5E0053CE5A /* CronicaWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaWidget.swift; sourceTree = "<group>"; };
 		B8D7AEAD28B95F5F0053CE5A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B8D7AEAF28B95F5F0053CE5A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -721,6 +777,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C0SHAREEXTFRAMEWORK0001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF267C9C303C3C65001DB342 /* CronicaCore in Frameworks */,
+				C0SHAREWIDGETKIT0000001 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -758,6 +823,7 @@
 				C0NF1G000000000000000001 /* Config */,
 				B806C4DF2899BE2800A5330E /* AppleWatch */,
 				B8D7AEAA28B95F5E0053CE5A /* CronicaWidget */,
+			C0SHAREEXTGROUP00000001 /* CronicaShareExtension */,
 				B88B88FC29DF194A00497058 /* CronicaTests */,
 				B8FCAE902AED9CE300F688FE /* CronicaTests */,
 				C0UITESTGROUP000000000001 /* CronicaUITests */,
@@ -779,6 +845,7 @@
 				B8B981E329F42B000001CF0B /* Helpers */,
 				B8CC954E27D132CB00B6757C /* Localization */,
 				B8EC463D27D84C45009389FC /* Manager */,
+				C0LIVEACTGROUP00000001 /* LiveActivity */,
 				B8110F0E2792677F00844FEB /* Model */,
 				B87B5CCE27999CCB00632648 /* Preview Data */,
 				B8ADAF6D282C42A9001D72EF /* Store */,
@@ -795,6 +862,7 @@
 				B8110EDF279245D100844FEB /* Cronica.app */,
 				B806C4DE2899BE2800A5330E /* Cronica.app */,
 				B8D7AEA728B95F5D0053CE5A /* Cronica Widget Extension.appex */,
+			C0SHAREEXTPRODUCT000001 /* Cronica Share Extension.appex */,
 				B8FCAE8F2AED9CE300F688FE /* Cronica Tests.xctest */,
 				C0UITESTPRODUCT000000001 /* CronicaUITests.xctest */,
 			);
@@ -891,8 +959,17 @@
 				B81941BF2A0861C80057DA04 /* WatchedButton.swift */,
 				B81941C12A0861C80057DA04 /* WatchEpisodeButton.swift */,
 				B81941BA2A0861C70057DA04 /* WatchlistButton.swift */,
+				C0TRACKLOCK00000000001 /* TrackOnLockScreenButton.swift */,
 			);
 			path = Buttons;
+			sourceTree = "<group>";
+		};
+		C0LIVEACTGROUP00000001 /* LiveActivity */ = {
+			isa = PBXGroup;
+			children = (
+				C0WATCHATTR00000000001 /* WatchingActivityAttributes.swift */,
+			);
+			path = LiveActivity;
 			sourceTree = "<group>";
 		};
 		B81941D22A0867E50057DA04 /* Up Next */ = {
@@ -1315,6 +1392,27 @@ C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 			path = Localization;
 			sourceTree = "<group>";
 		};
+
+		C0SHAREEXTGROUP00000001 /* CronicaShareExtension */ = {
+			isa = PBXGroup;
+			children = (
+				C0SHAREEXTCONFIGGRP00001 /* Configuration */,
+				C0SHAREVC000000000000001 /* ShareViewController.swift */,
+				C0SHAREVIEW0000000000001 /* ShareExtensionView.swift */,
+				C0SHAREPERSISTSHARE002 /* PersistenceController-WatchlistItem+ShareExtension.swift */,
+			);
+			path = CronicaShareExtension;
+			sourceTree = "<group>";
+		};
+		C0SHAREEXTCONFIGGRP00001 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				C0SHAREENT0000000000001 /* CronicaShareExtension.entitlements */,
+				C0SHAREINFO0000000000001 /* Info.plist */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
 		B8D7AEAA28B95F5E0053CE5A /* CronicaWidget */ = {
 			isa = PBXGroup;
 			children = (
@@ -1324,6 +1422,10 @@ C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 				B8D7AEBD28B9610C0053CE5A /* Extensions */,
 				B8D7AEB728B95F770053CE5A /* Model */,
 				B8D7AEAB28B95F5E0053CE5A /* CronicaWidget.swift */,
+				C0TRENDWIDGET000000001 /* CronicaTrendingWidget.swift */,
+				C0UPNEXTWIDGET000000001 /* CronicaUpNextWidget.swift */,
+				C0WATCHLWIDGET000000001 /* CronicaWatchlistWidget.swift */,
+				C0LIVEACTIVITY000000001 /* WatchingLiveActivity.swift */,
 				B8D7AEAD28B95F5F0053CE5A /* Assets.xcassets */,
 				B86AAD0B28BD2D6B00D135B1 /* PlaceholderMedia.xcassets */,
 			);
@@ -1348,6 +1450,7 @@ C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 			isa = PBXGroup;
 			children = (
 				B8D7AED628B963700053CE5A /* ItemContentList.swift */,
+				C0WIDGETSNAPVIEW000001 /* WidgetSnapshotViews.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1418,6 +1521,10 @@ C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 			isa = PBXGroup;
 			children = (
 				B87F746228064D3800E94126 /* BackgroundManager.swift */,
+				C0WATCHADDSVC0000000001 /* WatchlistAddService.swift */,
+				C0WIDGETPUB00000000001 /* WidgetSnapshotPublisher.swift */,
+				C0WIDGETBRIDGE000000001 /* WidgetSnapshotPublisherBridge.swift */,
+				C0WATCHSESS00000000001 /* WatchingSessionManager.swift */,
 				C0CALMGR000000000001 /* CalendarManager.swift */,
 				C0USERDATA000000000001 /* UserDataDeletionService.swift */,
 				C0INTREMOTE0000000001 /* IntegrationRemoteApply.swift */,
@@ -1544,6 +1651,7 @@ C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 			dependencies = (
 				B806C4EA2899BE2900A5330E /* PBXTargetDependency */,
 				B8D7AEB128B95F5F0053CE5A /* PBXTargetDependency */,
+				C0SHAREEXTDEP0000000001 /* PBXTargetDependency */,
 			);
 			name = Cronica;
 			packageProductDependencies = (
@@ -1598,6 +1706,27 @@ C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 			productName = CronicaTests;
 			productReference = B8FCAE8F2AED9CE300F688FE /* Cronica Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
+		};
+
+		C0SHAREEXTTARGET00000001 /* Cronica Share Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C0SHAREEXTCONFIGLIST0001 /* Build configuration list for PBXNativeTarget "Cronica Share Extension" */;
+			buildPhases = (
+				C0SHAREEXTSOURCES000001 /* Sources */,
+				C0SHAREEXTFRAMEWORK0001 /* Frameworks */,
+				C0SHAREEXTRESOURCES0001 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Cronica Share Extension";
+			packageProductDependencies = (
+				C0CRONICACORE00000000005 /* CronicaCore */,
+			);
+			productName = CronicaShareExtension;
+			productReference = C0SHAREEXTPRODUCT000001 /* Cronica Share Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 		C0UITESTTARGET00000000001 /* CronicaUITests */ = {
 			isa = PBXNativeTarget;
@@ -1671,6 +1800,7 @@ C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 				B8110EDE279245D100844FEB /* Cronica */,
 				B806C4DD2899BE2800A5330E /* Cronica Watch App */,
 				B8D7AEA628B95F5D0053CE5A /* Cronica Widget Extension */,
+				C0SHAREEXTTARGET00000001 /* Cronica Share Extension */,
 				B8FCAE8E2AED9CE300F688FE /* Cronica Tests */,
 				C0UITESTTARGET00000000001 /* CronicaUITests */,
 			);
@@ -1721,6 +1851,13 @@ C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		C0UITESTRESOURCES0000001 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0SHAREEXTRESOURCES000001 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1806,6 +1943,7 @@ C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 				B81941D12A0861D70057DA04 /* ArchiveButton.swift in Sources */,
 				B83423EB28BA7CCF00D5E2C4 /* ItemContentContextMenu.swift in Sources */,
 				B84043B2289B187900D5CEBF /* PersistenceController.swift in Sources */,
+				C0WIDGETBRIDGE000000003 /* WidgetSnapshotPublisherBridge.swift in Sources */,
 				B84043D5289B2ABD00D5CEBF /* ItemContentView.swift in Sources */,
 				B83E3EDB299AB9FB00A3A28B /* CustomList-Extensions.swift in Sources */,
 				B801070829F24499008A4551 /* ItemContentCustomListSelector.swift in Sources */,
@@ -1836,6 +1974,7 @@ C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 				B8152EC42B716E550032836A /* RatingView.swift in Sources */,
 				B83D567E2A962DFA009E5FE0 /* MediaTypeFilters.swift in Sources */,
 				B81941CD2A0861D70057DA04 /* WatchlistButton.swift in Sources */,
+				C0WATCHADDSVC0000000003 /* WatchlistAddService.swift in Sources */,
 				B883A1E12AEED78900793EE2 /* SearchStage.swift in Sources */,
 				B801070F29F25615008A4551 /* EmptyListView.swift in Sources */,
 			);
@@ -1972,6 +2111,12 @@ C0INTEGVIEW00000000002 /* IntegrationsSettingsView.swift in Sources */,
 				C0SIMKLKNOWN000000002 /* SimklKnownItemsStore.swift in Sources */,
 				C0LIBMOD000000000002 /* LibraryImportModels.swift in Sources */,
 				C0LIBSVC000000000002 /* LibraryImportService.swift in Sources */,
+				C0WATCHADDSVC0000000002 /* WatchlistAddService.swift in Sources */,
+				C0WIDGETPUB00000000002 /* WidgetSnapshotPublisher.swift in Sources */,
+				C0WIDGETBRIDGE000000002 /* WidgetSnapshotPublisherBridge.swift in Sources */,
+				C0WATCHSESS00000000002 /* WatchingSessionManager.swift in Sources */,
+				C0WATCHATTR00000000002 /* WatchingActivityAttributes.swift in Sources */,
+				C0TRACKLOCK00000000002 /* TrackOnLockScreenButton.swift in Sources */,
 				C0LIBSESS00000000002 /* TMDBSessionStore.swift in Sources */,
 				C0LIBAPI000000000002 /* TMDBAccountAPIClient.swift in Sources */,
 				C0LIBAUTH00000000002 /* TMDBAccountAuthService.swift in Sources */,
@@ -2054,7 +2199,13 @@ C0INTEGVIEW00000000002 /* IntegrationsSettingsView.swift in Sources */,
 			buildActionMask = 2147483647;
 			files = (
 				B821A2022A4A2B3F00EB0AF0 /* ItemContentList.swift in Sources */,
+				C0WIDGETSNAPVIEW000002 /* WidgetSnapshotViews.swift in Sources */,
 				B8D7AEAC28B95F5E0053CE5A /* CronicaWidget.swift in Sources */,
+				C0TRENDWIDGET000000002 /* CronicaTrendingWidget.swift in Sources */,
+				C0UPNEXTWIDGET000000002 /* CronicaUpNextWidget.swift in Sources */,
+				C0WATCHLWIDGET000000002 /* CronicaWatchlistWidget.swift in Sources */,
+				C0LIVEACTIVITY000000002 /* WatchingLiveActivity.swift in Sources */,
+				C0WATCHATTR00000000003 /* WatchingActivityAttributes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2076,6 +2227,23 @@ C0INTEGVIEW00000000002 /* IntegrationsSettingsView.swift in Sources */,
 				C0UITESTBUILD00000000000004 /* HomeUITests.swift in Sources */,
 				C0UITESTBUILD00000000000005 /* ItemContentDetailsUITests.swift in Sources */,
 				C0UITESTBUILD00000000000006 /* SettingsUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0SHAREEXTSOURCES000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0SHAREVC000000000000002 /* ShareViewController.swift in Sources */,
+				C0SHAREVIEW0000000000002 /* ShareExtensionView.swift in Sources */,
+				C0SHAREPERSIST0000000001 /* PersistenceController.swift in Sources */,
+				C0SHARECOREDATA0000001 /* Watchlist.xcdatamodeld in Sources */,
+				C0SHAREPERSISTSHARE0001 /* PersistenceController-WatchlistItem+ShareExtension.swift in Sources */,
+				C0SHAREWLCLASS00000001 /* WatchlistItem+CoreDataClass.swift in Sources */,
+				C0SHAREWLPROPS00000001 /* WatchlistItem+CoreDataProperties.swift in Sources */,
+				C0SHARECLCLASS00000001 /* CustomList+CoreDataClass.swift in Sources */,
+				C0SHARECLPROPS00000001 /* CustomList+CoreDataProperties.swift in Sources */,
+				C0SHAREWATCHADD0000001 /* WatchlistAddService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2106,6 +2274,11 @@ C0INTEGVIEW00000000002 /* IntegrationsSettingsView.swift in Sources */,
 			isa = PBXTargetDependency;
 			target = B8110EDE279245D100844FEB /* Cronica */;
 			targetProxy = C0UITESTCONTAINER000000001 /* PBXContainerItemProxy */;
+		};
+		C0SHAREEXTDEP0000000001 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C0SHAREEXTTARGET00000001 /* Cronica Share Extension */;
+			targetProxy = C0SHAREEXTPROXY00000001 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2532,6 +2705,70 @@ C0INTEGVIEW00000000002 /* IntegrationsSettingsView.swift in Sources */,
 			};
 			name = Release;
 		};
+
+		C0SHAREEXTDEBUG00000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = CronicaShareExtension/Configuration/CronicaShareExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CronicaShareExtension/Configuration/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Add to Cronica";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 2.7.10;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.alexandremadeira.Story.ShareExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG CRONICA_SHARE_EXTENSION $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C0SHAREEXTRELEASE0000001 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = CronicaShareExtension/Configuration/CronicaShareExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CronicaShareExtension/Configuration/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Add to Cronica";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 2.7.10;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.alexandremadeira.Story.ShareExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "CRONICA_SHARE_EXTENSION $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		C0UITESTDEBUG00000000001 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2618,6 +2855,16 @@ C0INTEGVIEW00000000002 /* IntegrationsSettingsView.swift in Sources */,
 			buildConfigurations = (
 				C0UITESTDEBUG00000000001 /* Debug */,
 				C0UITESTRELEASE00000000001 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+
+		C0SHAREEXTCONFIGLIST0001 /* Build configuration list for PBXNativeTarget "Cronica Share Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0SHAREEXTDEBUG00000001 /* Debug */,
+				C0SHAREEXTRELEASE0000001 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2713,6 +2960,11 @@ C0INTEGVIEW00000000002 /* IntegrationsSettingsView.swift in Sources */,
 			productName = CronicaCore;
 		};
 		C0CRONICACORE00000000004 /* CronicaCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C0LOCALPKG00000000000001 /* XCLocalSwiftPackageReference "Packages/CronicaCore" */;
+			productName = CronicaCore;
+		};
+		C0CRONICACORE00000000005 /* CronicaCore */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C0LOCALPKG00000000000001 /* XCLocalSwiftPackageReference "Packages/CronicaCore" */;
 			productName = CronicaCore;

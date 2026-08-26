@@ -65,7 +65,7 @@ final class TMDBPushService {
         isFlushing = true
         defer { isFlushing = false }
 
-        var queue = loadQueue()
+        let queue = loadQueue()
         guard !queue.isEmpty else { return }
 
         var index = 0

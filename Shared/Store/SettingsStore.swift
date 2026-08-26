@@ -109,7 +109,7 @@ final class SettingsStore: ObservableObject {
     @AppStorage("removeFromPinOnWatched") var removeFromPinOnWatched = false
     @AppStorage("autoOpenCustomListSelector") var openListSelectorOnAdding = false
     @AppStorage("alwaysUsePosterAsCover") var usePostersAsCover = true
-    @AppStorage("shareLinkPreference") var shareLinkPreference: ShareLinkPreference = .tmdb
+    @AppStorage("shareLinkPreference") var shareLinkPreference: ShareLinkPreference = .cronica
     @AppStorage("upNextStyle") var upNextStyle: UpNextDetailsPreferredStyle = .card
     @AppStorage("upNextSortOrder") var upNextSortOrder: UpNextSortOrder = .recentActivity
     @AppStorage("hideUnstartedUpNext") var hideUnstartedUpNext = false

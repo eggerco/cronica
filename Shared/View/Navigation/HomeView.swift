@@ -29,20 +29,17 @@ struct HomeView: View {
     @State private var showSettings = false
 #endif
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading) {
-#if os(iOS)
-                if showReviewBanner { CallToReviewAppView(showView: $showReviewBanner).unredacted() }
-#endif
-                ForEach(homeSections.visibleOrderedSections) { section in
-                    homeSectionView(section)
-                }
-                AttributionView()
+        Group {
+            if shouldShowRemoteLoadFailure {
+                homeLoadFailureView
+            } else {
+                homeContentView
             }
         }
         .accessibilityIdentifier("Home View")
 #if os(iOS)
         .refreshable {
+            guard !shouldShowRemoteLoadFailure else { return }
             reloadHome = true
             viewModel.reload()
         }
@@ -51,22 +48,6 @@ struct HomeView: View {
         }
 #endif
         .cronicaLoadingOverlay(!viewModel.isLoaded)
-        .overlay {
-            if shouldShowRemoteLoadFailure {
-                ContentUnavailableView {
-                    Label("Couldn't Load Home", systemImage: "wifi.exclamationmark")
-                } description: {
-#if os(iOS)
-                    Text("Pull to refresh or try again.")
-#else
-                    Text("Check your connection and try again.")
-#endif
-                } actions: {
-                    Button("Retry") { viewModel.reload() }
-                        .buttonStyle(.borderedProminent)
-                }
-            }
-        }
         .actionPopup(isShowing: $showPopup, for: popupType)
 #if os(tvOS)
         .ignoresSafeArea(.all, edges: .horizontal)
@@ -129,6 +110,41 @@ struct HomeView: View {
         }
         .task(id: homeSections.visibleOrderedSections.map(\.rawValue).joined(separator: ",")) {
             await viewModel.load(visibleKinds: homeSections.visibleOrderedSections)
+        }
+    }
+
+    private var homeContentView: some View {
+        ScrollView {
+            VStack(alignment: .leading) {
+#if os(iOS)
+                if showReviewBanner { CallToReviewAppView(showView: $showReviewBanner).unredacted() }
+#endif
+                ForEach(homeSections.visibleOrderedSections) { section in
+                    homeSectionView(section)
+                }
+                if viewModel.isLoaded {
+                    AttributionView()
+                }
+            }
+        }
+    }
+
+    private var homeLoadFailureView: some View {
+        ScrollView {
+            ContentUnavailableView {
+                Label("Couldn't Load Home", systemImage: "wifi.exclamationmark")
+            } description: {
+#if os(iOS)
+                Text("Pull to refresh or try again.")
+#else
+                Text("Check your connection and try again.")
+#endif
+            } actions: {
+                Button("Retry") { viewModel.reload() }
+                    .buttonStyle(.borderedProminent)
+            }
+            .frame(maxWidth: .infinity)
+            .containerRelativeFrame(.vertical)
         }
     }
 

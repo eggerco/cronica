@@ -54,24 +54,17 @@ struct WatchlistButton: View {
     
     private func add() {
         Task {
-            let identifier = id
-            let type = identifier.last ?? "0"
-            var media: MediaType = .movie
-            if type == "1" {
-                media = .tvShow
+            switch await WatchlistAddService.add(contentID: id, persistence: persistence) {
+            case .added(let content):
+                registerNotification(content)
+                displayConfirmation()
+                if SettingsStore.shared.openListSelectorOnAdding {
+                    showListSelector.toggle()
+                }
+                popupType = .addedWatchlist
+            case .alreadyOnWatchlist, .unsupportedURL, .notFound, .fetchFailed:
+                break
             }
-            let contentID = identifier.dropLast(2)
-            guard let itemId = Int(contentID) else { return }
-            let content = try? await NetworkService.shared.fetchItem(id: itemId, type: media)
-            guard let content else { return }
-            persistence.save(content)
-            registerNotification(content)
-            displayConfirmation()
-            if content.itemContentMedia == .tvShow { addFirstEpisodeToUpNext(content) }
-            if SettingsStore.shared.openListSelectorOnAdding {
-                showListSelector.toggle()
-            }
-            popupType = .addedWatchlist
         }
     }
     
@@ -90,15 +83,6 @@ struct WatchlistButton: View {
         }
     }
     
-    private func addFirstEpisodeToUpNext(_ item: ItemContent) {
-        Task {
-            let firstSeason = try? await NetworkService.shared.fetchSeason(id: item.id, season: 1)
-            guard let firstEpisode = firstSeason?.episodes?.first,
-                  let content = persistence.fetch(for: item.itemContentID)
-            else { return }
-            persistence.updateUpNext(content, episode: firstEpisode)
-        }
-    }
 }
 
 #Preview {

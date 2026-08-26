@@ -22,14 +22,14 @@ enum ItemContentListPreferredDisplayType: String, CaseIterable, Identifiable {
 
 enum ShareLinkPreference: String, CaseIterable, Identifiable {
     var id: String { rawValue }
-    case tmdb, cronica
+    case cronica, tmdb
     
     var title: String {
         switch self {
-        case .tmdb:
-            return "TMDB"
         case .cronica:
             return "Cronica"
+        case .tmdb:
+            return "TMDB"
         }
     }
 }

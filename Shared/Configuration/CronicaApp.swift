@@ -6,6 +6,7 @@
 //
 import SwiftUI
 import BackgroundTasks
+import CronicaCore
 #if os(iOS)
 import NotificationCenter
 #endif
@@ -115,6 +116,11 @@ struct CronicaApp: App {
             if phase == .active {
                 Task { await SimklSyncService.syncIfNeededOnForeground() }
                 Task { await TMDBSyncService.syncIfNeededOnForeground() }
+#if os(iOS)
+                WatchingSessionManagerBridge.restoreIfAvailable()
+                WatchingSessionManagerBridge.endCompletedIfAvailable()
+                WidgetSnapshotPublisherBridge.scheduleRefreshIfAvailable()
+#endif
             }
 #endif
 #if !os(watchOS) && !os(tvOS)
@@ -209,14 +215,8 @@ struct CronicaApp: App {
 
     private func fetchContent(for id: String) async {
         if selectedItem != nil { selectedItem = nil }
-        let type = id.last ?? "0"
-        var media: MediaType = .movie
-        if type == "1" {
-            media = .tvShow
-        }
-        let contentID = id.dropLast(2)
-        guard let contentIDNumber = Int(contentID) else { return }
-        let item = try? await NetworkService.shared.fetchItem(id: contentIDNumber, type: media)
+        guard let reference = TMDBURLParser.parseContentID(id) else { return }
+        let item = try? await NetworkService.shared.fetchItem(id: reference.id, type: reference.type)
         guard let item else { return }
         self.selectedItem = item
     }

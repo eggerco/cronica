@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CronicaCore
 
 extension Episode {
 	// MARK: Strings

@@ -839,6 +839,68 @@ final class CronicaTests: XCTestCase {
         XCTAssertEqual(stats.estimatedMinutes, 120)
         XCTAssertEqual(stats.watchedLast7Days, 1)
         XCTAssertEqual(stats.watchedLast30Days, 1)
+        XCTAssertEqual(stats.weeklyActivity.count, 8)
+        XCTAssertEqual(stats.weeklyActivity.last?.count, 1)
+    }
+
+    func testWatchStatisticsWeeklyActivityGroupsByWeek() {
+        let now = Date()
+        let calendar = Calendar.current
+        let lastWeek = calendar.date(byAdding: .day, value: -10, to: now)!
+
+        let recent = requireItem(for: ItemContent.examples[0].itemContentID)
+        recent.watched = true
+        recent.watchedDate = now
+        recent.runtimeMinutes = 90
+        recent.contentType = MediaType.movie.toInt
+
+        let older = requireItem(for: ItemContent.examples[1].itemContentID)
+        older.watched = true
+        older.watchedDate = lastWeek
+        older.runtimeMinutes = 60
+        older.contentType = MediaType.movie.toInt
+        persistence.save()
+
+        let activity = WatchStatistics.weeklyActivity(from: [recent, older], now: now, weekCount: 8)
+        XCTAssertEqual(activity.count, 8)
+        XCTAssertEqual(activity.reduce(0) { $0 + $1.count }, 2)
+    }
+
+    func testWatchStatisticsMediaBreakdown() {
+        let movie = requireItem(for: ItemContent.examples[0].itemContentID)
+        movie.watched = true
+        movie.watchedDate = Date()
+        movie.runtimeMinutes = 120
+        movie.contentType = MediaType.movie.toInt
+
+        let show = requireItem(for: ItemContent.examples[1].itemContentID)
+        show.watched = true
+        show.watchedDate = Date()
+        show.runtimeMinutes = 45
+        show.contentType = MediaType.tvShow.toInt
+        show.watchedEpisodes = "-1@1-2@1"
+        persistence.save()
+
+        let breakdown = WatchStatistics.mediaBreakdown(from: [movie, show])
+        XCTAssertEqual(breakdown.count, 2)
+        XCTAssertEqual(breakdown.first(where: { $0.kind == .movie })?.count, 1)
+        XCTAssertEqual(breakdown.first(where: { $0.kind == .movie })?.estimatedMinutes, 120)
+        XCTAssertEqual(breakdown.first(where: { $0.kind == .tvShow })?.count, 1)
+        XCTAssertEqual(breakdown.first(where: { $0.kind == .tvShow })?.estimatedMinutes, 90)
+    }
+
+    func testWatchStatisticsWeeklyHoursUsesWatchedDate() {
+        let now = Date()
+        let movie = requireItem(for: ItemContent.examples[0].itemContentID)
+        movie.watched = true
+        movie.watchedDate = now
+        movie.runtimeMinutes = 120
+        movie.contentType = MediaType.movie.toInt
+        persistence.save()
+
+        let hours = WatchStatistics.weeklyHours(from: [movie], now: now, weekCount: 8)
+        XCTAssertEqual(hours.last?.estimatedMinutes, 120)
+        XCTAssertEqual(hours.dropLast().allSatisfy { $0.estimatedMinutes == 0 }, true)
     }
 
     func testHomeSectionKindMigratesTrendingToFeatured() {
@@ -919,6 +981,51 @@ final class CronicaTests: XCTestCase {
         XCTAssertFalse(item.displayOnUpNext)
         XCTAssertFalse(item.isWatching)
         XCTAssertFalse(item.hasStartedWatching)
+    }
+
+    func testAppWebsiteDetailsURLEncodesTitleOnce() {
+        let url = AppWebsite.detailsURL(
+            contentID: "969681@0",
+            posterPath: "/bjiS5ipwxb9JFy3XRRN4OAilSeX.jpg",
+            title: "Spider-Man: Brand New Day"
+        )
+        XCTAssertNotNil(url)
+        let components = URLComponents(url: url!, resolvingAgainstBaseURL: false)
+        XCTAssertEqual(components?.queryItems?.first(where: { $0.name == "id" })?.value, "969681@0")
+        XCTAssertEqual(components?.queryItems?.first(where: { $0.name == "title" })?.value, "Spider-Man: Brand New Day")
+        XCTAssertEqual(components?.queryItems?.first(where: { $0.name == "img" })?.value, "bjiS5ipwxb9JFy3XRRN4OAilSeX.jpg")
+        XCTAssertFalse(url!.absoluteString.contains("%2520"))
+    }
+
+    func testContentIDFromCronicaDeepLink() {
+        XCTAssertEqual(
+            CronicaApp.contentID(from: URL(string: "cronica://550@0")!),
+            "550@0"
+        )
+        XCTAssertEqual(
+            CronicaApp.contentID(from: URL(string: "cronica://1399@1?season=2&episode=5")!),
+            "1399@1"
+        )
+        XCTAssertNil(CronicaApp.contentID(from: URL(string: "cronica://tmdb/callback")!))
+    }
+
+    func testWatchStatisticsFallsBackToLastValuesUpdated() {
+        let now = Date()
+        let item = WatchlistItem(context: managedContext)
+        item.title = "Legacy Watched"
+        item.id = 777
+        item.contentID = "777@0"
+        item.contentType = MediaType.movie.toInt
+        item.watched = true
+        item.watchedDate = nil
+        item.runtimeMinutes = 90
+        item.lastValuesUpdated = now
+        persistence.save()
+
+        let stats = WatchStatistics.compute(from: [item], now: now)
+        XCTAssertEqual(stats.watchedCount, 1)
+        XCTAssertEqual(stats.watchedLast7Days, 1)
+        XCTAssertEqual(stats.weeklyActivity.last?.count, 1)
     }
 
     private func requireItem(for contentID: String,

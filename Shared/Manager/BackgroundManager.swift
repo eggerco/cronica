@@ -47,6 +47,7 @@ final class BackgroundManager {
 	func handleWatchingContentRefresh() async {
 		let items = self.fetchWatchingItems()
 		await self.fetchUpdates(items: items)
+		WidgetSnapshotPublisherBridge.scheduleRefreshIfAvailable()
 	}
 	
 	func handleUpcomingContentRefresh() async {
@@ -55,6 +56,7 @@ final class BackgroundManager {
 		items.append(contentsOf: upcomingItems)
 		if items.isEmpty { return }
 		await self.fetchUpdates(items: items)
+		WidgetSnapshotPublisherBridge.scheduleRefreshIfAvailable()
 	}
 	
 	func handleAppRefreshMaintenance() async {

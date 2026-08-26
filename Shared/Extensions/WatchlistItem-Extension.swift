@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+import CronicaCore
 
 extension WatchlistItem {
 	var itemTitle: String {
