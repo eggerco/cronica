@@ -30,6 +30,11 @@ jobs:
           fi
           xcodebuild -version
 
+      # Cancelled/reused runners leave partial Sentry XCFramework downloads that make
+      # SwiftPM fail with "already exists in file system".
+      - name: Clear stale SwiftPM binary artifacts
+        run: rm -rf "${HOME}/Library/Caches/org.swift.swiftpm/artifacts"
+
       - name: Prepare secrets config
         run: |
           cp Config/Secrets.xcconfig.example Config/Secrets.xcconfig
@@ -39,6 +44,13 @@ jobs:
 
       - name: Build CronicaCore package
         run: swift test --package-path Packages/CronicaCore
+
+      - name: Resolve Xcode package dependencies
+        run: |
+          set -o pipefail
+          xcodebuild -resolvePackageDependencies \
+            -project Cronica.xcodeproj \
+            -scheme "Cronica (EN-US)"
 
       - name: Build Cronica (iOS Simulator)
         run: |
@@ -58,6 +70,9 @@ jobs:
             -scheme "Cronica (EN-US)" \
             -destination 'platform=iOS Simulator,name=iPhone 17,OS=latest' \
             -configuration Debug \
+            -only-testing:'Cronica Tests' \
+            -parallel-testing-enabled NO \
+            -resultBundlePath "$RUNNER_TEMP/CronicaTests.xcresult" \
             CODE_SIGNING_ALLOWED=NO
 
       - name: Build Cronica Widget Extension
