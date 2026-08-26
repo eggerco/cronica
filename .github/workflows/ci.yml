@@ -80,6 +80,26 @@ jobs:
             -configuration Debug \
             CODE_SIGNING_ALLOWED=NO
 
+      - name: Build Cronica (macOS)
+        run: |
+          set -o pipefail
+          xcodebuild build \
+            -project Cronica.xcodeproj \
+            -scheme "Cronica (EN-US)" \
+            -destination 'platform=macOS' \
+            -configuration Debug \
+            CODE_SIGNING_ALLOWED=NO
+
+      - name: Build Cronica Watch App
+        run: |
+          set -o pipefail
+          xcodebuild build \
+            -project Cronica.xcodeproj \
+            -scheme "CronicaWatch Watch App" \
+            -destination 'platform=watchOS Simulator,name=Apple Watch Series 11 (46mm),OS=latest' \
+            -configuration Debug \
+            CODE_SIGNING_ALLOWED=NO
+
   web:
     runs-on: ubuntu-latest
     defaults:
