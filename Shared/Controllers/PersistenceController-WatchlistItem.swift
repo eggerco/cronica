@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+import CronicaCore
 
 extension PersistenceController {
     // MARK: Basic CRUD
@@ -53,7 +54,7 @@ extension PersistenceController {
             item.formattedDate = content.itemTheatricalString
             item.runtimeMinutes = content.itemRuntimeMinutes
             save()
-#if !os(watchOS)
+#if !os(watchOS) && !CRONICA_SHARE_EXTENSION
             if let saved = fetch(for: content.itemContentID) {
                 let tmdb = saved.itemId
                 let media = saved.itemMedia
@@ -170,7 +171,7 @@ extension PersistenceController {
         let viewContext = container.viewContext
         let item = try? viewContext.existingObject(with: content.objectID)
         guard let item else { return }
-#if !os(watchOS)
+#if !os(watchOS) && !CRONICA_SHARE_EXTENSION
         let tmdb = content.itemId
         let media = content.itemMedia
         let imdb = content.imdbID
@@ -179,9 +180,11 @@ extension PersistenceController {
             TMDBPushService.shared.enqueueWatchlist(tmdb: tmdb, media: media, onList: false)
         }
 #endif
+#if !CRONICA_SHARE_EXTENSION
         let notification = NotificationManager.shared
         notification.removeNotification(identifier: content.itemContentID)
         CalendarManager.shared.removeEvent(identifier: content.itemContentID)
+#endif
         viewContext.delete(item)
         save()
     }
@@ -196,14 +199,16 @@ extension PersistenceController {
             if item.watchedDate == nil {
                 item.watchedDate = Date()
             }
+#if !CRONICA_SHARE_EXTENSION
             if SettingsStore.shared.removeFromPinOnWatched {
                 item.isPin = false
             }
+#endif
         } else {
             item.watchedDate = nil
         }
         save()
-#if !os(watchOS)
+#if !os(watchOS) && !CRONICA_SHARE_EXTENSION
         let tmdb = item.itemId
         let media = item.itemMedia
         let imdb = item.imdbID
@@ -229,7 +234,7 @@ extension PersistenceController {
         }
         item.watchedDate = date
         save()
-#if !os(watchOS)
+#if !os(watchOS) && !CRONICA_SHARE_EXTENSION
         if let date {
             let tmdb = item.itemId
             let media = item.itemMedia
@@ -244,7 +249,7 @@ extension PersistenceController {
     func updateFavorite(for item: WatchlistItem) {
         item.favorite.toggle()
         save()
-#if !os(watchOS)
+#if !os(watchOS) && !CRONICA_SHARE_EXTENSION
         let tmdb = item.itemId
         let media = item.itemMedia
         let isFavorite = item.favorite
@@ -262,8 +267,10 @@ extension PersistenceController {
     func updateArchive(for item: WatchlistItem) {
         item.isArchive.toggle()
         if item.isArchive {
+#if !CRONICA_SHARE_EXTENSION
             NotificationManager.shared.removeNotification(identifier: item.itemContentID)
             CalendarManager.shared.removeEvent(identifier: item.itemContentID)
+#endif
         }
         item.shouldNotify.toggle()
         if item.isTvShow {
@@ -271,7 +278,7 @@ extension PersistenceController {
             item.displayOnUpNext.toggle()
         }
         save()
-#if !os(watchOS)
+#if !os(watchOS) && !CRONICA_SHARE_EXTENSION
         if item.isArchive {
             let tmdb = item.itemId
             let media = item.itemMedia
@@ -287,7 +294,9 @@ extension PersistenceController {
                                                                      type: item.itemMedia)
                 guard let newValues else { return }
                 self.update(item: newValues)
+#if !CRONICA_SHARE_EXTENSION
                 CalendarManager.shared.schedule(newValues)
+#endif
             }
         }
     }
@@ -296,7 +305,7 @@ extension PersistenceController {
         item.userNotes = notes
         item.userRating = Int64(rating)
         save()
-#if !os(watchOS)
+#if !os(watchOS) && !CRONICA_SHARE_EXTENSION
         let tmdb = item.itemId
         let media = item.itemMedia
         let imdb = item.imdbID
@@ -407,7 +416,7 @@ extension PersistenceController {
         item.lastValuesUpdated = Date()
         item.isWatching = true
         save()
-#if !os(watchOS)
+#if !os(watchOS) && !CRONICA_SHARE_EXTENSION
         if !wasWatched, let season = episode.seasonNumber, let number = episode.episodeNumber {
             let showID = item.itemId
             let imdb = item.imdbID
@@ -458,9 +467,11 @@ extension PersistenceController {
         let willMute = muted ?? !currentlyMuted
         item.shouldNotify = !willMute
         save()
+#if !CRONICA_SHARE_EXTENSION
         if willMute {
             NotificationManager.shared.removeNotification(identifier: item.itemContentID)
         }
+#endif
     }
 
     func areNotificationsMuted(id: String) -> Bool {
