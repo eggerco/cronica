@@ -1719,7 +1719,7 @@ C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 			buildPhases = (
 				C0SHAREEXTSOURCES000001 /* Sources */,
 				C0SHAREEXTFRAMEWORK0001 /* Frameworks */,
-				C0SHAREEXTRESOURCES0001 /* Resources */,
+				C0SHAREEXTRESOURCES000001 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -2284,6 +2284,9 @@ C0INTEGVIEW00000000002 /* IntegrationsSettingsView.swift in Sources */,
 		};
 		C0SHAREEXTDEP0000000001 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilters = (
+				ios,
+			);
 			target = C0SHAREEXTTARGET00000001 /* Cronica Share Extension */;
 			targetProxy = C0SHAREEXTPROXY00000001 /* PBXContainerItemProxy */;
 		};
