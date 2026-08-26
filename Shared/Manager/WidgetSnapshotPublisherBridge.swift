@@ -7,7 +7,7 @@ import Foundation
 
 enum WidgetSnapshotPublisherBridge {
     static func scheduleRefreshIfAvailable() {
-#if os(iOS)
+#if os(iOS) || os(macOS)
         Task { @MainActor in
             WidgetSnapshotPublisher.shared.scheduleRefresh()
         }

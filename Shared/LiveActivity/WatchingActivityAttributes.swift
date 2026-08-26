@@ -4,11 +4,11 @@
 //
 
 import Foundation
-#if canImport(ActivityKit)
+#if os(iOS)
 import ActivityKit
 #endif
 
-#if canImport(ActivityKit)
+#if os(iOS)
 struct WatchingActivityAttributes: ActivityAttributes {
     struct ContentState: Codable, Hashable {
         var title: String

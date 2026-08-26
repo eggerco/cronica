@@ -39,7 +39,9 @@ struct HomeCustomizerView: View {
                 }
             }
         }
+#if os(iOS) || os(visionOS)
         .environment(\.editMode, .constant(.active))
+#endif
         .navigationTitle("Customize Home")
 #if os(iOS) || os(visionOS)
         .navigationBarTitleDisplayMode(.inline)

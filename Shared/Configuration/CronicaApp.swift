@@ -119,6 +119,8 @@ struct CronicaApp: App {
 #if os(iOS)
                 WatchingSessionManagerBridge.restoreIfAvailable()
                 WatchingSessionManagerBridge.endCompletedIfAvailable()
+#endif
+#if os(iOS) || os(macOS)
                 WidgetSnapshotPublisherBridge.scheduleRefreshIfAvailable()
 #endif
             }

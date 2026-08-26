@@ -179,11 +179,20 @@ enum CronicaWidgetFamilies {
 
     static let homeAndLockScreen: [WidgetFamily] = homeScreen + lockScreen
 #endif
-}
 
+    static var upNextFamilies: [WidgetFamily] {
 #if os(iOS)
-extension CronicaWidgetFamilies {
-    static var upNextFamilies: [WidgetFamily] { homeAndLockScreen }
-    static var watchlistFamilies: [WidgetFamily] { homeAndLockScreen }
-}
+        homeAndLockScreen
+#else
+        homeScreen
 #endif
+    }
+
+    static var watchlistFamilies: [WidgetFamily] {
+#if os(iOS)
+        homeAndLockScreen
+#else
+        homeScreen
+#endif
+    }
+}

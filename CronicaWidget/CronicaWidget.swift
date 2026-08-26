@@ -11,10 +11,12 @@ import CronicaCore
 struct CronicaWidgetBundle: WidgetBundle {
     var body: some Widget {
         CronicaTrendingWidget()
+#if os(iOS) || os(macOS)
+        CronicaUpNextWidget()
+        CronicaWatchlistWidget()
+#endif
 #if os(iOS)
         if #available(iOS 16.2, *) {
-            CronicaUpNextWidget()
-            CronicaWatchlistWidget()
             WatchingLiveActivity()
         }
 #endif

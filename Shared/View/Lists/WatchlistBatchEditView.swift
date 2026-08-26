@@ -29,7 +29,9 @@ struct WatchlistBatchEditView: View {
                     .tag(item.objectID)
                 }
             }
+#if os(iOS) || os(visionOS)
             .environment(\.editMode, .constant(.active))
+#endif
             .navigationTitle("Select Items")
 #if os(iOS) || os(visionOS)
             .navigationBarTitleDisplayMode(.inline)
@@ -38,28 +40,15 @@ struct WatchlistBatchEditView: View {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Done") { isPresented = false }
                 }
+#if os(iOS) || os(visionOS)
                 ToolbarItemGroup(placement: .bottomBar) {
-                    Button {
-                        applyWatched(true)
-                    } label: {
-                        Label("Watched", systemImage: "checkmark.circle")
-                    }
-                    .disabled(selection.isEmpty)
-
-                    Button {
-                        applyArchive()
-                    } label: {
-                        Label("Archive", systemImage: "archivebox")
-                    }
-                    .disabled(selection.isEmpty)
-
-                    Button(role: .destructive) {
-                        showDeleteConfirm = true
-                    } label: {
-                        Label("Delete", systemImage: "trash")
-                    }
-                    .disabled(selection.isEmpty)
+                    batchActionButtons
                 }
+#else
+                ToolbarItemGroup(placement: .primaryAction) {
+                    batchActionButtons
+                }
+#endif
             }
             .confirmationDialog("Delete Selected?", isPresented: $showDeleteConfirm, titleVisibility: .visible) {
                 Button("Delete \(selection.count) Items", role: .destructive, action: applyDelete)
@@ -67,6 +56,30 @@ struct WatchlistBatchEditView: View {
                 Text("This removes the selected titles from your watchlist.")
             }
         }
+    }
+
+    @ViewBuilder
+    private var batchActionButtons: some View {
+        Button {
+            applyWatched(true)
+        } label: {
+            Label("Watched", systemImage: "checkmark.circle")
+        }
+        .disabled(selection.isEmpty)
+
+        Button {
+            applyArchive()
+        } label: {
+            Label("Archive", systemImage: "archivebox")
+        }
+        .disabled(selection.isEmpty)
+
+        Button(role: .destructive) {
+            showDeleteConfirm = true
+        } label: {
+            Label("Delete", systemImage: "trash")
+        }
+        .disabled(selection.isEmpty)
     }
 
     private var selectedItems: [WatchlistItem] {

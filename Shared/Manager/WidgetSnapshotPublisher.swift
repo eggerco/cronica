@@ -9,7 +9,12 @@ import Foundation
 #if os(iOS)
 import UIKit
 import WidgetKit
+#elseif os(macOS)
+import AppKit
+import WidgetKit
+#endif
 
+#if os(iOS) || os(macOS)
 @MainActor
 final class WidgetSnapshotPublisher {
     static let shared = WidgetSnapshotPublisher()
@@ -209,8 +214,24 @@ final class WidgetSnapshotPublisher {
     }
 
     private static func jpegData(from data: Data) -> Data? {
+#if os(iOS)
         guard let image = UIImage(data: data) else { return data }
         return image.jpegData(compressionQuality: WidgetSnapshotLayout.posterJPEGQuality)
+#elseif os(macOS)
+        guard let image = NSImage(data: data) else { return data }
+        guard let tiff = image.tiffRepresentation,
+              let bitmap = NSBitmapImageRep(data: tiff),
+              let jpeg = bitmap.representation(
+                using: .jpeg,
+                properties: [.compressionFactor: WidgetSnapshotLayout.posterJPEGQuality]
+              )
+        else {
+            return data
+        }
+        return jpeg
+#else
+        return data
+#endif
     }
 
     private func reloadWidgetTimelines() {
