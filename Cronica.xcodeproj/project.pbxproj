@@ -261,9 +261,6 @@
 		C0SHAREWLPROPS00000001 /* WatchlistItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81DD92529BD149D009F73F3 /* WatchlistItem+CoreDataProperties.swift */; };
 		C0SHARECLCLASS00000001 /* CustomList+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81DD93229BD14EE009F73F3 /* CustomList+CoreDataClass.swift */; };
 		C0SHARECLPROPS00000001 /* CustomList+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81DD93329BD14EE009F73F3 /* CustomList+CoreDataProperties.swift */; };
-		C0SHAREWLITEMEXT000001 /* WatchlistItem-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B878E83427BC85BC0021A981 /* WatchlistItem-Extension.swift */; };
-		C0SHAREEPISODEEXT0001 /* Episode-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B890C58427FE4442006BE5E1 /* Episode-Extension.swift */; };
-		C0SHARECLLISTEXT000001 /* CustomList-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83E3ED9299AB9FB00A3A28B /* CustomList-Extensions.swift */; };
 		C0SHAREWATCHADD0000001 /* WatchlistAddService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WATCHADDSVC0000000001 /* WatchlistAddService.swift */; };
 		C0WIDGETPUB00000000002 /* WidgetSnapshotPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WIDGETPUB00000000001 /* WidgetSnapshotPublisher.swift */; };
 		C0WIDGETBRIDGE000000002 /* WidgetSnapshotPublisherBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WIDGETBRIDGE000000001 /* WidgetSnapshotPublisherBridge.swift */; };
