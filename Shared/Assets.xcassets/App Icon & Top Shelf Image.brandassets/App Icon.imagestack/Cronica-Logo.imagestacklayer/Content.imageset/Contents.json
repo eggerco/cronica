@@ -1,11 +1,12 @@
 {
   "images" : [
     {
-      "filename" : "Cronica_BG-01.png",
+      "filename" : "Cronica-Logo.png",
       "idiom" : "tv",
       "scale" : "1x"
     },
     {
+      "filename" : "Cronica-Logo@2x.png",
       "idiom" : "tv",
       "scale" : "2x"
     }
