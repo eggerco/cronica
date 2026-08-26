@@ -205,6 +205,7 @@ export function renderDetailsPage(url: URL): string {
     <nav>
       <a href="/privacy/">Privacy</a>
       <a href="https://x.com/CronicaApp">X</a>
+      <a href="mailto:support@cronica.watch">Support</a>
     </nav>
   </header>
 

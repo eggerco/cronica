@@ -24,8 +24,26 @@ export default {
       });
     }
 
-    if (url.pathname === "/apple-app-site-association") {
-      return Response.redirect(`${siteConfig.url}/.well-known/apple-app-site-association`, 301);
+    if (
+      url.pathname === "/.well-known/apple-app-site-association" ||
+      url.pathname === "/apple-app-site-association"
+    ) {
+      const assetURL = new URL(
+        "/.well-known/apple-app-site-association",
+        request.url
+      );
+      const assetResponse = await env.ASSETS.fetch(new Request(assetURL, request));
+      if (!assetResponse.ok) {
+        return assetResponse;
+      }
+      const body = await assetResponse.arrayBuffer();
+      return new Response(body, {
+        status: 200,
+        headers: {
+          "content-type": "application/json",
+          "cache-control": "public, max-age=3600",
+        },
+      });
     }
 
     return env.ASSETS.fetch(request);

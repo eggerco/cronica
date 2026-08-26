@@ -1,6 +1,6 @@
 name = "cronica"
 main = "src/worker.ts"
-compatibility_date = "2025-02-24"
+compatibility_date = "2026-08-26"
 workers_dev = false
 preview_urls = false
 
