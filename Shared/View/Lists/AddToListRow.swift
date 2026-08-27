@@ -22,7 +22,7 @@ struct AddToListRow: View {
         } label: {
             HStack {
                 Image(systemName: isItemAdded ? "checkmark.circle.fill" : "circle")
-                    .foregroundColor(SettingsStore.shared.appTheme.color)
+                    .foregroundColor(SettingsStore.shared.accentColor)
                     .padding(.leading, 4)
                 VStack(alignment: .leading) {
                     HStack(spacing: 4) {

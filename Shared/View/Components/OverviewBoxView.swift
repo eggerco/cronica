@@ -74,7 +74,7 @@ struct OverviewBoxView: View {
                             .font(.caption2.weight(.semibold))
                     }
                     .font(.subheadline.weight(.medium))
-                    .foregroundStyle(settings.appTheme.color)
+                    .foregroundStyle(settings.accentColor)
                 }
                 .buttonStyle(.plain)
             }
@@ -125,7 +125,7 @@ struct OverviewBoxView: View {
                         if isTruncated {
                             Text(showFullText ? "Collapse" : "Show More")
                                 .font(.caption.weight(.medium))
-                                .foregroundStyle(settings.appTheme.color)
+                                .foregroundStyle(settings.accentColor)
                                 .padding(.top, 4)
                                 .accessibilityAddTraits(.isButton)
                                 .accessibilityHint(showFullText

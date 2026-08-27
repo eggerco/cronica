@@ -372,7 +372,7 @@ struct ExploreView: View {
                         CenterHorizontalView {
                             ProgressView("Loading")
                                 .progressViewStyle(.circular)
-                                .tint(settings.appTheme.color)
+                                .tint(settings.accentColor)
                                 .padding(.horizontal)
                                 .onAppear { loadMoreItems() }
                         }

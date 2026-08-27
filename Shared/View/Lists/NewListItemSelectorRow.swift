@@ -26,7 +26,7 @@ struct NewListItemSelectorRow: View {
         } label: {
             HStack {
                 Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
-                    .foregroundColor(isSelected ? SettingsStore.shared.appTheme.color : nil)
+                    .foregroundColor(isSelected ? SettingsStore.shared.accentColor : nil)
                     .imageScale(.medium)
                     .padding(.trailing, 4)
                 LazyImage(url: item.backCompatibleCardImage) { state in

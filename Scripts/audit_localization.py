@@ -83,20 +83,22 @@ def main() -> int:
         for _, ks in sorted(dupes.items(), key=lambda x: x[1][0]):
             print(f"  {ks}")
 
-  # stale Scripts artifacts
     stale_scripts = [
         p for p in (ROOT / "Scripts").rglob("*")
         if p.is_file()
-        and p.name.startswith("_")
-        or p.suffix in {".txt"}
-        or p.name in {
-            "build_missing_translations.py",
-            "generate_missing_translations.py",
-            "generate_locale_translations.py",
-            "locale_translation_data.py",
-            "localization_stale_export.json",
-            "localization_remaining_export.json",
-        }
+        and (
+            p.name.startswith("_")
+            or p.suffix in {".txt"}
+            or p.name in {
+                "apply_siri_localizations.py",
+                "build_missing_translations.py",
+                "generate_missing_translations.py",
+                "generate_locale_translations.py",
+                "locale_translation_data.py",
+                "localization_stale_export.json",
+                "localization_remaining_export.json",
+            }
+        )
     ]
     stale_scripts = sorted({p.relative_to(ROOT) for p in stale_scripts})
 

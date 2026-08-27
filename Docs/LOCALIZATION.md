@@ -59,15 +59,13 @@ python3 Scripts/audit_localization.py
 
 ### Platform surfaces (Siri, Controls, Reminders)
 
-`Scripts/localize_platform_surfaces.py` is the source of truth for App Shortcut phrases, Info.plist usage strings, and platform UI copy across all 31 locales.
+`Scripts/localize_platform_surfaces.py` (with `Scripts/siri_dialog_localizations.py`) is the source of truth for App Shortcut phrases, Info.plist usage strings, intent dialogs, and platform UI copy across all 31 locales.
 
 When adding a **new** Siri phrase or platform UI string:
 
 1. Add the English phrase/title in Swift.
-2. Add translations for all `LOCALES` in `Scripts/localize_platform_surfaces.py`.
+2. Add translations for all `LOCALES` in `Scripts/localize_platform_surfaces.py` / `Scripts/siri_dialog_localizations.py`.
 3. Re-run the script and commit the catalogs.
-
-`Scripts/apply_siri_localizations.py` fills missing keys and runs the platform script — it no longer marks English placeholders as translated.
 
 ## Notes
 

@@ -39,7 +39,7 @@ struct DefaultListRow: View {
     private var checkStage: some View {
         if selectedList == nil {
             Image(systemName: "checkmark.circle.fill")
-                .foregroundColor(SettingsStore.shared.appTheme.color)
+                .foregroundColor(SettingsStore.shared.accentColor)
         } else {
             Image(systemName: "circle")
         }

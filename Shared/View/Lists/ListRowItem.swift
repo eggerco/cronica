@@ -60,7 +60,7 @@ struct ListRowItem: View {
     private var checkStage: some View {
         if isSelected {
             Image(systemName: "checkmark.circle.fill")
-                .foregroundColor(SettingsStore.shared.appTheme.color)
+                .foregroundColor(SettingsStore.shared.accentColor)
         } else {
             Image(systemName: "circle")
         }

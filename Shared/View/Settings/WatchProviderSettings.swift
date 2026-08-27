@@ -130,7 +130,7 @@ private struct WatchProviderItemSelector: View {
     var body: some View {
         HStack {
             Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
-                .foregroundColor(isSelected ? SettingsStore.shared.appTheme.color : nil)
+                .foregroundColor(isSelected ? SettingsStore.shared.accentColor : nil)
                 .fontWeight(.semibold)
                 .padding(.trailing)
             LazyImage(url: item.providerImage) { state in

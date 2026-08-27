@@ -98,7 +98,7 @@ struct EpisodeDetailsView: View {
 #if os(iOS)
                     .buttonBorderShape(.roundedRectangle(radius: 12))
                     .padding(isUpNext ? .leading : .horizontal)
-                    .tint(settings.appTheme.color)
+                    .tint(settings.accentColor)
 #elseif os(macOS)
                     .padding(.horizontal)
                     .controlSize(.large)

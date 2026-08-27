@@ -59,11 +59,11 @@ struct AppearanceSetting: View {
                     }
                 }
 
-                Picker("Accent Color", selection: $store.appTheme) {
-                    ForEach(AppThemeColors.allCases) { item in
-                        Text(item.title).tag(item)
-                    }
-                }
+                ColorPicker(
+                    String(localized: "Accent Color"),
+                    selection: store.accentColorBinding,
+                    supportsOpacity: false
+                )
             } header: {
                 Text("Appearance")
             }
@@ -79,7 +79,7 @@ struct AppearanceSetting: View {
 #if os(macOS)
         .formStyle(.grouped)
 #endif
-        .tint(store.appTheme.color)
+        .tint(store.accentColor)
     }
 }
 

@@ -8,11 +8,28 @@
 import SwiftUI
 
 final class SettingsStore: ObservableObject {
-    private init() { }
+    private init() {
+        AccentColorStorage.migrateLegacyIfNeeded()
+    }
     static var shared = SettingsStore()
     @AppStorage("showOnboarding") var displayOnboard = true
     @AppStorage("gesture") var gesture: UpdateItemProperties = .favorite
-    @AppStorage("appThemeColor") var appTheme: AppThemeColors = .blue
+    @AppStorage(AccentColorStorage.hexDefaultsKey) var accentColorHex: String = AccentColorStorage.defaultHex
+
+    var accentColor: Color {
+        get { Color(cronicaHex: accentColorHex) ?? AccentColorStorage.defaultColor }
+        set { accentColorHex = newValue.cronicaHex ?? AccentColorStorage.defaultHex }
+    }
+
+    var accentColorBinding: Binding<Color> {
+        Binding(
+            get: { self.accentColor },
+            set: {
+                self.accentColor = $0
+                self.objectWillChange.send()
+            }
+        )
+    }
 #if os(iOS)
     @AppStorage("watchlistStyle") var watchlistStyle: SectionDetailsPreferredStyle = .list
 #else

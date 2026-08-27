@@ -67,7 +67,7 @@ See also `Docs/QA-SMOKE-TEST.md` (Siri section).
 Siri UI strings live in `Shared/Localization/Localizable.xcstrings`. After adding new intent copy:
 
 ```bash
-python3 Scripts/apply_siri_localizations.py   # seed new keys
+python3 Scripts/localize_platform_surfaces.py
 python3 Scripts/check_localization.py
 ```
 

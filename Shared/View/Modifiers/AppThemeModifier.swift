@@ -19,10 +19,10 @@ struct AppThemeModifier: ViewModifier {
 }
 
 struct AppTintModifier: ViewModifier {
-    static let defaultsKey = "user_theme"
-    @AppStorage("appThemeColor") var appTheme: AppThemeColors = .blue
+    @AppStorage(AccentColorStorage.hexDefaultsKey) private var accentColorHex = AccentColorStorage.defaultHex
+
     func body(content: Content) -> some View {
         content
-            .tint(appTheme.color)
+            .tint(Color(cronicaHex: accentColorHex) ?? AccentColorStorage.defaultColor)
     }
 }

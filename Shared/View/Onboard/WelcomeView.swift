@@ -65,7 +65,7 @@ struct WelcomeView: View {
                     }
                     .buttonStyle(.borderedProminent)
                     .controlSize(.large)
-                    .tint(settings.appTheme.color)
+                    .tint(settings.accentColor)
                     .accessibilityIdentifier("Continue")
 
                     Button {
@@ -120,7 +120,7 @@ struct WelcomeView: View {
         HStack(alignment: .top, spacing: 16) {
             Image(systemName: systemImage)
                 .font(.title2)
-                .foregroundStyle(settings.appTheme.color)
+                .foregroundStyle(settings.accentColor)
                 .frame(width: 36, alignment: .center)
                 .accessibilityHidden(true)
 

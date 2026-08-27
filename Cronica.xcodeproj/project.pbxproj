@@ -329,6 +329,8 @@
 		B8FB2A8629524D9A006DAC8E /* View-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FB2A8329524D6E006DAC8E /* View-Extensions.swift */; };
 		C0OPENURLSYS000000000002 /* OpenURLAction+SystemSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0OPENURLSYS000000000001 /* OpenURLAction+SystemSettings.swift */; };
 		C0OPENURLSYS000000000003 /* OpenURLAction+SystemSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0OPENURLSYS000000000001 /* OpenURLAction+SystemSettings.swift */; };
+		C0COLORSTORAGE00000000002 /* Color+Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0COLORSTORAGE00000000001 /* Color+Storage.swift */; };
+		C0COLORSTORAGE00000000003 /* Color+Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0COLORSTORAGE00000000001 /* Color+Storage.swift */; };
 		C0USERDATA000000000002 /* UserDataDeletionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0USERDATA000000000001 /* UserDataDeletionService.swift */; };
 		C0USERDATA000000000003 /* UserDataDeletionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0USERDATA000000000001 /* UserDataDeletionService.swift */; };
 		C0DATAMGMT000000000002 /* DataManagementSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DATAMGMT000000000001 /* DataManagementSettingsView.swift */; };
@@ -721,6 +723,7 @@
 		B8FB2A8129524C37006DAC8E /* WatchlistItemPosterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistItemPosterView.swift; sourceTree = "<group>"; };
 		B8FB2A8329524D6E006DAC8E /* View-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View-Extensions.swift"; sourceTree = "<group>"; };
 		C0OPENURLSYS000000000001 /* OpenURLAction+SystemSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OpenURLAction+SystemSettings.swift"; sourceTree = "<group>"; };
+		C0COLORSTORAGE00000000001 /* Color+Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Storage.swift"; sourceTree = "<group>"; };
 		C0CALMGR000000000001 /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
 		C0USERDATA000000000001 /* UserDataDeletionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataDeletionService.swift; sourceTree = "<group>"; };
 		C0DATAMGMT000000000001 /* DataManagementSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagementSettingsView.swift; sourceTree = "<group>"; };
@@ -1228,6 +1231,7 @@
 				B818483629C286C300650763 /* UserDefaults-Extensions.swift */,
 				B8FB2A8329524D6E006DAC8E /* View-Extensions.swift */,
 				C0OPENURLSYS000000000001 /* OpenURLAction+SystemSettings.swift */,
+				C0COLORSTORAGE00000000001 /* Color+Storage.swift */,
 				B878E83427BC85BC0021A981 /* WatchlistItem-Extension.swift */,
 			);
 			path = Extensions;
@@ -2094,6 +2098,7 @@ C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 				B81DD93629BD14EE009F73F3 /* CustomList+CoreDataClass.swift in Sources */,
 				B8FB2A8629524D9A006DAC8E /* View-Extensions.swift in Sources */,
 				C0OPENURLSYS000000000003 /* OpenURLAction+SystemSettings.swift in Sources */,
+				C0COLORSTORAGE00000000003 /* Color+Storage.swift in Sources */,
 				B82BE4E9299BFEF4005F9990 /* PersistenceController-CustomList.swift in Sources */,
 				B8152EC72B718FA60032836A /* WatchlistSortOrder.swift in Sources */,
 				C0UPNEXTSORT000000000003 /* UpNextSortOrder.swift in Sources */,
@@ -2167,6 +2172,7 @@ C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 				B8C0215529E0D027006E9D82 /* ExplorePreferredDisplayType.swift in Sources */,
 				B8FB2A8429524D6E006DAC8E /* View-Extensions.swift in Sources */,
 				C0OPENURLSYS000000000002 /* OpenURLAction+SystemSettings.swift in Sources */,
+				C0COLORSTORAGE00000000002 /* Color+Storage.swift in Sources */,
 				B8D8AF9227D4DB720042AEB6 /* SearchViewModel.swift in Sources */,
 				B81941A52A0833450057DA04 /* AddToListRow.swift in Sources */,
 				B84C53FD27B1F1DD00425524 /* WatchlistItemRowView.swift in Sources */,

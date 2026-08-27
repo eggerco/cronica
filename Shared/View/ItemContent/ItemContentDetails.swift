@@ -766,7 +766,7 @@ extension ItemContentDetails {
 #if os(iOS)
         Color(uiColor: .label)
 #else
-        store.appTheme.color
+        store.accentColor
 #endif
     }
 
@@ -894,7 +894,7 @@ extension ItemContentDetails {
         .controlSize(.regular)
         .modifier(BorderedProminentWhen(isProminent: viewModel.isWatched))
         .buttonBorderShape(.capsule)
-        .tint(viewModel.isWatched ? store.appTheme.color : .primary)
+        .tint(viewModel.isWatched ? store.accentColor : .primary)
 #endif
 #if os(iOS)
         .applyHoverEffect()

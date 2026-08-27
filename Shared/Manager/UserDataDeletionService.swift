@@ -72,6 +72,7 @@ enum UserDataDeletionService {
             "showOnboarding",
             "gesture",
             "appThemeColor",
+            AccentColorStorage.hexDefaultsKey,
             "watchlistStyle",
             "disableTranslucentBackground",
             "user_theme",
