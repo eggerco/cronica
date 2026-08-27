@@ -46,13 +46,13 @@ enum SpotlightIndexManager {
         let items = (try? context.fetch(request)) ?? []
         let searchableItems = items.map(searchableItem(for:))
 
-        CSSearchableIndex.default().deleteSearchableItems(withDomainIdentifiers: [domainIdentifier]) { _ in
-            CSSearchableIndex.default().indexSearchableItems(searchableItems) { error in
-                if let error {
-                    AppLogger.persistence.error("Spotlight rebuild failed: \(error.localizedDescription)")
-                } else {
-                    UserDefaults.standard.set(Date(), forKey: lastFullRebuildKey)
-                }
+        Task { @MainActor in
+            do {
+                try await CSSearchableIndex.default().deleteSearchableItems(withDomainIdentifiers: [domainIdentifier])
+                try await CSSearchableIndex.default().indexSearchableItems(searchableItems)
+                UserDefaults.standard.set(Date(), forKey: lastFullRebuildKey)
+            } catch {
+                AppLogger.persistence.error("Spotlight rebuild failed: \(error.localizedDescription)")
             }
         }
     }
