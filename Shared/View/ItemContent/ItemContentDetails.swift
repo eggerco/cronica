@@ -1090,7 +1090,7 @@ extension ItemContentDetails {
         switch store.shareLinkPreference {
         case .tmdb: if let url = viewModel.content?.itemURL { ShareLink(item: url) }
         case .cronica: if let cronicaUrl {
-            ShareLink(item: cronicaUrl, subject: Text(title), message: Text(title))
+            ShareLink(item: cronicaUrl, subject: Text(title))
         }
         }
     }

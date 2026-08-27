@@ -61,7 +61,12 @@ export function normalizeTitle(raw: string | null): string {
 
 export function posterImageUrl(img: string | null | undefined): string | null {
   if (!img) return null;
-  const path = decodeQueryValue(img).replace(/^\/+/, "");
+  let path = decodeQueryValue(img).replace(/^\/+/, "");
+  // Share targets sometimes append the title after the URL, so it lands in `img`.
+  const fileMatch = path.match(/^([^\s?]+\.(?:jpe?g|png|webp|gif))/i);
+  if (fileMatch) {
+    path = fileMatch[1];
+  }
   if (!path) return null;
   return `https://image.tmdb.org/t/p/w780/${path}`;
 }

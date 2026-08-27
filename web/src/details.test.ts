@@ -37,6 +37,13 @@ test("posterImageUrl normalizes leading slash", () => {
   );
 });
 
+test("posterImageUrl strips title accidentally appended by share targets", () => {
+  assert.equal(
+    posterImageUrl("7WsyChQLEftFiDOVTGkv3hFpyyt.jpg Avengers: Infinity War"),
+    "https://image.tmdb.org/t/p/w780/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg"
+  );
+});
+
 test("parseDetailsSearchParams renders clean title and poster", () => {
   const params = new URLSearchParams(
     "id=969681@0&img=/bjiS5ipwxb9JFy3XRRN4OAilSeX.jpg&title=Spider-Man:%2520Brand%2520New%2520Day%20Spider-Man:%20Brand%20New%20Day"

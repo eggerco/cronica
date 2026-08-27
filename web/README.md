@@ -28,6 +28,8 @@ Open the local URL shown by Wrangler (usually `http://localhost:8787`).
 
 Static files live in `public/`. The Worker adds dynamic HTML for `/details` share links (including Open Graph metadata) and redirects `cronica.watch` to `www.cronica.watch`.
 
+`run_worker_first` in `wrangler.toml` must include `/details` so asset `404-page` handling does not swallow those requests before the Worker runs.
+
 ## Universal links
 
 `/.well-known/apple-app-site-association` is served for iOS Universal Links to open `/details` in the app. The app needs the Associated Domains entitlement (`applinks:www.cronica.watch`) in `Shared/Configuration/Cronica.entitlements`.

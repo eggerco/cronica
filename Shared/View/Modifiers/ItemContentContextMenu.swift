@@ -32,7 +32,7 @@ struct ItemContentContextMenu: ViewModifier {
                 Divider()
 				switch settings.shareLinkPreference {
 				case .cronica: if let cronicaUrl {
-					ShareLink(item: cronicaUrl, subject: Text(item.itemTitle), message: Text(item.itemTitle))
+					ShareLink(item: cronicaUrl, subject: Text(item.itemTitle))
 				}
 				case .tmdb: ShareLink(item: item.itemURL)
 				}
@@ -208,7 +208,7 @@ struct ItemContentContextMenu: ViewModifier {
 #if !os(tvOS)
 		switch settings.shareLinkPreference {
 		case .cronica: if let cronicaUrl {
-			ShareLink(item: cronicaUrl, subject: Text(item.itemTitle), message: Text(item.itemTitle))
+			ShareLink(item: cronicaUrl, subject: Text(item.itemTitle))
 		}
 		case .tmdb: ShareLink(item: item.itemURL)
 		}

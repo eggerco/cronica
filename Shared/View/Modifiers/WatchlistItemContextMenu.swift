@@ -200,7 +200,7 @@ struct WatchlistItemContextMenu: ViewModifier {
         case .tmdb: ShareLink(item: item.itemLink)
         case .cronica:
             if let cronicaUrl {
-                ShareLink(item: cronicaUrl, subject: Text(item.itemTitle), message: Text(item.itemTitle))
+                ShareLink(item: cronicaUrl, subject: Text(item.itemTitle))
             } else {
                 ShareLink(item: item.itemLink)
             }
