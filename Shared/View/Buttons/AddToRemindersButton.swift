@@ -15,7 +15,7 @@ struct AddToRemindersButton: View {
         Button {
             Task { await addReminder() }
         } label: {
-            Label("Add to Reminders", systemImage: "checklist")
+            Label(String(localized: "Add to Reminders"), systemImage: "checklist")
         }
         .alert(String(localized: "Couldn't Add Reminder"), isPresented: $showError) {
             Button("OK", role: .cancel) {}

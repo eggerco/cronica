@@ -15,11 +15,11 @@ struct OpenUpNextControl: ControlWidget {
     var body: some ControlWidgetConfiguration {
         StaticControlConfiguration(kind: Self.kind) {
             ControlWidgetButton(action: OpenUpNextControlIntent()) {
-                Label("Up Next", systemImage: "play.tv")
+                Label(String(localized: "Up Next"), systemImage: "play.tv")
             }
         }
-        .displayName("Up Next")
-        .description("Open your Up Next list in Cronica.")
+        .displayName(LocalizedStringResource("Up Next"))
+        .description(LocalizedStringResource("Open your Up Next list in Cronica."))
     }
 }
 
@@ -30,11 +30,11 @@ struct MarkNextEpisodeControl: ControlWidget {
     var body: some ControlWidgetConfiguration {
         StaticControlConfiguration(kind: Self.kind) {
             ControlWidgetButton(action: MarkNextUpNextControlIntent()) {
-                Label("Mark Watched", systemImage: "checkmark.rectangle")
+                Label(String(localized: "Mark Watched"), systemImage: "checkmark.rectangle")
             }
         }
-        .displayName("Mark Up Next")
-        .description("Mark your next episode as watched.")
+        .displayName(LocalizedStringResource("Mark Up Next"))
+        .description(LocalizedStringResource("Mark your next episode as watched."))
     }
 }
 #endif

@@ -145,6 +145,8 @@
 		B84C53FD27B1F1DD00425524 /* WatchlistItemRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84C53FC27B1F1DD00425524 /* WatchlistItemRowView.swift */; };
 		B85C65AC27A6307C0080121E /* PersonDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85C65AB27A6307C0080121E /* PersonDetailsView.swift */; };
 		B86670B92B600CAE00CBA595 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B86670B82B600CAE00CBA595 /* Localizable.xcstrings */; };
+		C0APPSHORTCUTS00000002 /* AppShortcuts.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = C0APPSHORTCUTS00000001 /* AppShortcuts.xcstrings */; };
+		C0INFOPLISTSTR00000002 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = C0INFOPLISTSTR00000001 /* InfoPlist.xcstrings */; };
 		B86A3A8B2B509C8200BDE432 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = B86A3A8A2B509C8200BDE432 /* Nuke */; };
 		B86A3A8D2B509C8200BDE432 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = B86A3A8C2B509C8200BDE432 /* NukeUI */; };
 		B86A3A902B509C9B00BDE432 /* Pow in Frameworks */ = {isa = PBXBuildFile; platformFilters = (ios, macos, xros, ); productRef = B86A3A8F2B509C9B00BDE432 /* Pow */; };
@@ -569,6 +571,8 @@
 		B84C53FC27B1F1DD00425524 /* WatchlistItemRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistItemRowView.swift; sourceTree = "<group>"; };
 		B85C65AB27A6307C0080121E /* PersonDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailsView.swift; sourceTree = "<group>"; };
 		B86670B82B600CAE00CBA595 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		C0APPSHORTCUTS00000001 /* AppShortcuts.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = AppShortcuts.xcstrings; sourceTree = "<group>"; };
+		C0INFOPLISTSTR00000001 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		B86AA7FB2A3A4C8C009847FE /* WatchProviderSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchProviderSettings.swift; sourceTree = "<group>"; };
 		B86AAD0B28BD2D6B00D135B1 /* PlaceholderMedia.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = PlaceholderMedia.xcassets; sourceTree = "<group>"; };
 		B86E7A22290AB68000459E41 /* WatchlistItemContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistItemContextMenu.swift; sourceTree = "<group>"; };
@@ -1480,6 +1484,8 @@ C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 			isa = PBXGroup;
 			children = (
 				B86670B82B600CAE00CBA595 /* Localizable.xcstrings */,
+				C0APPSHORTCUTS00000001 /* AppShortcuts.xcstrings */,
+				C0INFOPLISTSTR00000001 /* InfoPlist.xcstrings */,
 			);
 			path = Localization;
 			sourceTree = "<group>";
@@ -1948,6 +1954,8 @@ C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 				B8F253BE2BC9CBDB003F27E8 /* PrivacyInfo.xcprivacy in Resources */,
 				B87B5CD42799AF3600632648 /* Attribution.xcassets in Resources */,
 				B86670B92B600CAE00CBA595 /* Localizable.xcstrings in Resources */,
+				C0APPSHORTCUTS00000002 /* AppShortcuts.xcstrings in Resources */,
+				C0INFOPLISTSTR00000002 /* InfoPlist.xcstrings in Resources */,
 				B87B5CCC27999C5700632648 /* content.json in Resources */,
 				B8110EEC279245D100844FEB /* Assets.xcassets in Resources */,
 			);

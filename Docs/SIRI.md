@@ -28,7 +28,7 @@ On first use, enable Cronica under **Settings → Siri & Search** on device.
 | `Shared/Intents/SiriIntentService.swift` | Business logic (watchlist, TMDb, Up Next) |
 | `Shared/Intents/CronicaAppIntents.swift` | Intent definitions |
 | `Shared/Intents/CronicaAppEntities.swift` | Siri entity queries (watchlist, search) |
-| `Shared/Intents/CronicaAppShortcuts.swift` | App Shortcuts provider (8 shortcuts) |
+| `Shared/Intents/CronicaAppShortcuts.swift` | App Shortcuts provider (10 shortcuts) |
 | `Shared/Intents/SiriNavigationBridge.swift` | Pending deep links + open-search flag |
 | `Shared/Intents/SiriShortcutRefreshBridge.swift` | Calls `updateAppShortcutParameters()` |
 | `Shared/Intents/SiriIntentDonation.swift` | Donates intents after in-app actions |
@@ -71,7 +71,7 @@ python3 Scripts/apply_siri_localizations.py   # seed new keys
 python3 Scripts/check_localization.py
 ```
 
-Voice recognition uses the system language; phrase templates use your localized app name via `\(.applicationName)`.
+Voice recognition uses the system language. Spoken phrase templates are localized in `Shared/Localization/AppShortcuts.xcstrings` for all 31 app locales (keep `${applicationName}` / `${title}` tokens). Regenerate with `python3 Scripts/localize_platform_surfaces.py`.
 
 ## Info.plist
 

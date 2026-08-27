@@ -26,7 +26,7 @@ struct AddToWatchlistIntent: AppIntent {
             title: title.title,
             mediaType: mediaType.mediaType
         )
-        return .result(dialog: IntentDialog("Added \(name) to your watchlist."))
+        return .result(dialog: IntentDialog(stringLiteral: String(format: String(localized: "Added %@ to your watchlist."), name)))
     }
 }
 
@@ -44,7 +44,7 @@ struct RemoveFromWatchlistIntent: AppIntent {
 
     func perform() async throws -> some IntentResult & ProvidesDialog {
         let name = try await SiriIntentService.removeFromWatchlist(title: title.title)
-        return .result(dialog: IntentDialog("Removed \(name) from your watchlist."))
+        return .result(dialog: IntentDialog(stringLiteral: String(format: String(localized: "Removed %@ from your watchlist."), name)))
     }
 }
 
@@ -62,7 +62,7 @@ struct MarkTitleWatchedIntent: AppIntent {
 
     func perform() async throws -> some IntentResult & ProvidesDialog {
         let name = try await SiriIntentService.markTitleWatched(title: title.title)
-        return .result(dialog: IntentDialog("Marked \(name) as watched."))
+        return .result(dialog: IntentDialog(stringLiteral: String(format: String(localized: "Marked %@ as watched."), name)))
     }
 }
 
@@ -77,7 +77,7 @@ struct MarkUpNextEpisodeWatchedIntent: AppIntent {
 
     func perform() async throws -> some IntentResult & ProvidesDialog {
         let label = try await SiriIntentService.markNextUpNextEpisodeWatched()
-        return .result(dialog: IntentDialog("Marked \(label) as watched."))
+        return .result(dialog: IntentDialog(stringLiteral: String(format: String(localized: "Marked %@ as watched."), label)))
     }
 }
 
@@ -102,7 +102,7 @@ struct OpenSearchIntent: AppIntent {
 
     func perform() async throws -> some IntentResult & ProvidesDialog {
         await SiriNavigationBridge.requestOpenSearch()
-        return .result(dialog: IntentDialog("Opening search in Cronica."))
+        return .result(dialog: IntentDialog(stringLiteral: String(localized: "Opening search in Cronica.")))
     }
 }
 
@@ -113,7 +113,7 @@ struct OpenWatchlistIntent: AppIntent {
 
     func perform() async throws -> some IntentResult & ProvidesDialog {
         await SiriNavigationBridge.publishPendingNavigation(.watchlist)
-        return .result(dialog: IntentDialog("Opening your watchlist in Cronica."))
+        return .result(dialog: IntentDialog(stringLiteral: String(localized: "Opening your watchlist in Cronica.")))
     }
 }
 
@@ -124,7 +124,7 @@ struct OpenUpNextIntent: AppIntent {
 
     func perform() async throws -> some IntentResult & ProvidesDialog {
         await SiriNavigationBridge.publishPendingNavigation(.upNext)
-        return .result(dialog: IntentDialog("Opening Up Next in Cronica."))
+        return .result(dialog: IntentDialog(stringLiteral: String(localized: "Opening Up Next in Cronica.")))
     }
 }
 
@@ -162,7 +162,7 @@ struct AddFromURLIntent: AppIntent {
 
     func perform() async throws -> some IntentResult & ProvidesDialog {
         let name = try await SiriIntentService.addFromURL(link)
-        return .result(dialog: IntentDialog("Added \(name) to your watchlist."))
+        return .result(dialog: IntentDialog(stringLiteral: String(format: String(localized: "Added %@ to your watchlist."), name)))
     }
 }
 
@@ -181,7 +181,7 @@ struct OpenTitleIntent: AppIntent {
     func perform() async throws -> some IntentResult & ProvidesDialog {
         let url = try await SiriIntentService.openURL(for: title.title)
         await SiriNavigationBridge.storePendingDeepLink(url)
-        return .result(dialog: IntentDialog("Opening \(title.title) in Cronica."))
+        return .result(dialog: IntentDialog(stringLiteral: String(format: String(localized: "Opening %@ in Cronica."), title.title)))
     }
 }
 #endif
