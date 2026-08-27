@@ -27,6 +27,7 @@ struct CronicaApp: App {
     @ObservedObject private var settings = SettingsStore.shared
     @AppStorage("showMenuBarApp") var showMenuBar = true
 #if os(iOS)
+    @UIApplicationDelegateAdaptor(QuickActionAppDelegate.self) private var quickActionDelegate
     @ObservedObject private var notificationDelegate = NotificationDelegate()
     @State private var lastNotificationID = String()
 #endif
@@ -34,12 +35,10 @@ struct CronicaApp: App {
         CronicaTelemetry.shared.setup()
         SentryManager.setup()
         registerRefreshBGTask()
-#if DEBUG
-        if ProcessInfo.processInfo.arguments.contains("-ui-testing") {
+        if UITestingConfiguration.isUITesting {
             UserDefaults.standard.set(false, forKey: "showOnboarding")
             UserDefaults.standard.set(false, forKey: "showRemoveConfirmation")
         }
-#endif
 #if os(iOS)
         UNUserNotificationCenter.current().delegate = notificationDelegate
 #endif
@@ -63,8 +62,12 @@ struct CronicaApp: App {
                     }
                 }
                 .task {
+#if canImport(AppIntents) && !os(watchOS) && !os(tvOS)
                     await consumePendingSiriDeepLink()
-                    await applyPendingSiriNavigation()
+#endif
+#if os(iOS)
+                    stagePendingNavigationForTabs()
+#endif
                 }
                 .alert(
                     String(localized: "Couldn't Open Link"),
@@ -253,11 +256,20 @@ struct CronicaApp: App {
         else { return }
         await fetchContent(for: contentID)
     }
+#endif
 
+#if os(iOS)
     @MainActor
-    private func applyPendingSiriNavigation() async {
+    private func stagePendingNavigationForTabs() {
+        QuickActionManager.applyUITestLaunchActionIfNeeded()
+
+        if let action = SiriNavigationBridge.peekPendingNavigation() {
+            QuickActionCoordinator.shared.stage(action)
+            return
+        }
+
         if SiriNavigationBridge.consumeOpenSearchRequest() {
-            UserDefaults.standard.set(Screens.search.rawValue, forKey: "lastTabSelected")
+            QuickActionCoordinator.shared.deliver(.search)
         }
     }
 #endif

@@ -281,6 +281,13 @@
 		C0SIRINAVBRIDGE00000002 /* SiriNavigationBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIRINAVBRIDGE00000001 /* SiriNavigationBridge.swift */; };
 		C0SIRISHORTCUT00000002 /* SiriShortcutRefreshBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIRISHORTCUT00000001 /* SiriShortcutRefreshBridge.swift */; };
 		C0SIRIDONATE0000000002 /* SiriIntentDonation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIRIDONATE0000000001 /* SiriIntentDonation.swift */; };
+		C0QUICKHOME0000000002 /* HomeScreenQuickAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0QUICKHOME0000000001 /* HomeScreenQuickAction.swift */; };
+		C0QUICKMGR00000000002 /* QuickActionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0QUICKMGR00000000001 /* QuickActionManager.swift */; };
+		C0QUICKCOORD00000000002 /* QuickActionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0QUICKCOORD00000000001 /* QuickActionCoordinator.swift */; };
+		C0QUICKDEBUG00000000002 /* QuickActionDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0QUICKDEBUG00000000001 /* QuickActionDebug.swift */; };
+		C0QUICKDEL00000000002 /* QuickActionAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0QUICKDEL00000000001 /* QuickActionAppDelegate.swift */; };
+		C0QUICKREF00000000002 /* QuickActionRefreshBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0QUICKREF00000000001 /* QuickActionRefreshBridge.swift */; };
+		C0APPNAVROUTE00000002 /* AppNavigationRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0APPNAVROUTE00000001 /* AppNavigationRoute.swift */; };
 		C0SIRISETVIEW000000002 /* SiriSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIRISETVIEW000000001 /* SiriSettingsView.swift */; };
 		CF267C9C303C3C65001DB342 /* CronicaCore in Frameworks */ = {isa = PBXBuildFile; productRef = C0CRONICACORE00000000005 /* CronicaCore */; };
 
@@ -379,6 +386,7 @@
 		C0UITESTBUILD00000000000004 /* HomeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0UITESTFILE00000000000003 /* HomeUITests.swift */; };
 		C0UITESTBUILD00000000000005 /* ItemContentDetailsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0UITESTFILE00000000000004 /* ItemContentDetailsUITests.swift */; };
 		C0UITESTBUILD00000000000006 /* SettingsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0UITESTFILE00000000000005 /* SettingsUITests.swift */; };
+		C0UITESTBUILD00000000000007 /* QuickActionNavigationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0UITESTFILE00000000000006 /* QuickActionNavigationUITests.swift */; };
 		C1A1NAV128A9BD31003025B /* CronicaNavigationDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A1NAV028A9BD31003025B /* CronicaNavigationDestinations.swift */; };
 		C1EMP00228A9BD31003025C /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EMP00128A9BD31003025C /* EmptyListView.swift */; };
 		C1PAGE00228A9BD31003025D /* PaginationFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1PAGE00128A9BD31003025D /* PaginationFooter.swift */; };
@@ -652,6 +660,14 @@
 		C0SIRINAVBRIDGE00000001 /* SiriNavigationBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriNavigationBridge.swift; sourceTree = "<group>"; };
 		C0SIRISHORTCUT00000001 /* SiriShortcutRefreshBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriShortcutRefreshBridge.swift; sourceTree = "<group>"; };
 		C0SIRIDONATE0000000001 /* SiriIntentDonation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriIntentDonation.swift; sourceTree = "<group>"; };
+		C0QUICKHOME0000000001 /* HomeScreenQuickAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenQuickAction.swift; sourceTree = "<group>"; };
+		C0QUICKMGR00000000001 /* QuickActionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActionManager.swift; sourceTree = "<group>"; };
+		C0QUICKCOORD00000000001 /* QuickActionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActionCoordinator.swift; sourceTree = "<group>"; };
+		C0QUICKDEBUG00000000001 /* QuickActionDebug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActionDebug.swift; sourceTree = "<group>"; };
+		C0UITESTFILE00000000000006 /* QuickActionNavigationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActionNavigationUITests.swift; sourceTree = "<group>"; };
+		C0QUICKDEL00000000001 /* QuickActionAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActionAppDelegate.swift; sourceTree = "<group>"; };
+		C0QUICKREF00000000001 /* QuickActionRefreshBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActionRefreshBridge.swift; sourceTree = "<group>"; };
+		C0APPNAVROUTE00000001 /* AppNavigationRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigationRoute.swift; sourceTree = "<group>"; };
 		C0SIRISETVIEW000000001 /* SiriSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriSettingsView.swift; sourceTree = "<group>"; };
 
 		B8D7AEAB28B95F5E0053CE5A /* CronicaWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaWidget.swift; sourceTree = "<group>"; };
@@ -864,6 +880,7 @@
 				B8EC463D27D84C45009389FC /* Manager */,
 				C0LIVEACTGROUP00000001 /* LiveActivity */,
 				C0INTENTSGROUP00000001 /* Intents */,
+				C0QUICKACTGRP000000001 /* QuickActions */,
 				B8110F0E2792677F00844FEB /* Model */,
 				B87B5CCE27999CCB00632648 /* Preview Data */,
 				B8ADAF6D282C42A9001D72EF /* Store */,
@@ -1002,6 +1019,19 @@
 				C0SIRIDONATE0000000001 /* SiriIntentDonation.swift */,
 			);
 			path = Intents;
+			sourceTree = "<group>";
+		};
+		C0QUICKACTGRP000000001 /* QuickActions */ = {
+			isa = PBXGroup;
+			children = (
+				C0QUICKHOME0000000001 /* HomeScreenQuickAction.swift */,
+				C0QUICKMGR00000000001 /* QuickActionManager.swift */,
+				C0QUICKCOORD00000000001 /* QuickActionCoordinator.swift */,
+				C0QUICKDEBUG00000000001 /* QuickActionDebug.swift */,
+				C0QUICKDEL00000000001 /* QuickActionAppDelegate.swift */,
+				C0QUICKREF00000000001 /* QuickActionRefreshBridge.swift */,
+			);
+			path = QuickActions;
 			sourceTree = "<group>";
 		};
 		B81941D22A0867E50057DA04 /* Up Next */ = {
@@ -1201,8 +1231,17 @@
 								C0HOMESECKIND000000001 /* HomeSectionKind.swift */,
 B8152EC52B718F9A0032836A /* WatchlistSortOrder.swift */,
 				C0UPNEXTSORT000000000001 /* UpNextSortOrder.swift */,
+				C0NAVENUMGRP000000001 /* Navigation */,
 			);
 			path = Enums;
+			sourceTree = "<group>";
+		};
+		C0NAVENUMGRP000000001 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				C0APPNAVROUTE00000001 /* AppNavigationRoute.swift */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 		B8469DB32B712C9C00196364 /* Components */ = {
@@ -1641,6 +1680,7 @@ C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 				C0UITESTFILE00000000000003 /* HomeUITests.swift */,
 				C0UITESTFILE00000000000004 /* ItemContentDetailsUITests.swift */,
 				C0UITESTFILE00000000000005 /* SettingsUITests.swift */,
+				C0UITESTFILE00000000000006 /* QuickActionNavigationUITests.swift */,
 			);
 			path = CronicaUITests;
 			sourceTree = "<group>";
@@ -2178,6 +2218,13 @@ C0INTEGVIEW00000000002 /* IntegrationsSettingsView.swift in Sources */,
 				C0SIRINAVBRIDGE00000002 /* SiriNavigationBridge.swift in Sources */,
 				C0SIRISHORTCUT00000002 /* SiriShortcutRefreshBridge.swift in Sources */,
 				C0SIRIDONATE0000000002 /* SiriIntentDonation.swift in Sources */,
+				C0QUICKHOME0000000002 /* HomeScreenQuickAction.swift in Sources */,
+				C0QUICKMGR00000000002 /* QuickActionManager.swift in Sources */,
+				C0QUICKCOORD00000000002 /* QuickActionCoordinator.swift in Sources */,
+				C0QUICKDEBUG00000000002 /* QuickActionDebug.swift in Sources */,
+				C0QUICKDEL00000000002 /* QuickActionAppDelegate.swift in Sources */,
+				C0QUICKREF00000000002 /* QuickActionRefreshBridge.swift in Sources */,
+				C0APPNAVROUTE00000002 /* AppNavigationRoute.swift in Sources */,
 				C0SIRISETVIEW000000002 /* SiriSettingsView.swift in Sources */,
 				C0WIDGETPUB00000000002 /* WidgetSnapshotPublisher.swift in Sources */,
 				C0WIDGETBRIDGE000000002 /* WidgetSnapshotPublisherBridge.swift in Sources */,
@@ -2295,6 +2342,7 @@ C0INTEGVIEW00000000002 /* IntegrationsSettingsView.swift in Sources */,
 				C0UITESTBUILD00000000000004 /* HomeUITests.swift in Sources */,
 				C0UITESTBUILD00000000000005 /* ItemContentDetailsUITests.swift in Sources */,
 				C0UITESTBUILD00000000000006 /* SettingsUITests.swift in Sources */,
+				C0UITESTBUILD00000000000007 /* QuickActionNavigationUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2849,6 +2897,7 @@ C0INTEGVIEW00000000002 /* IntegrationsSettingsView.swift in Sources */,
 				MARKETING_VERSION = 2.7.10;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.alexandremadeira.Story.UITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2865,6 +2914,7 @@ C0INTEGVIEW00000000002 /* IntegrationsSettingsView.swift in Sources */,
 				MARKETING_VERSION = 2.7.10;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.alexandremadeira.Story.UITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

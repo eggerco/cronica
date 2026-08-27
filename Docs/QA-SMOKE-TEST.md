@@ -28,6 +28,18 @@ Use before App Store / TestFlight releases. Code for the items below is in place
 - [ ] “Open [title] in Cronica” opens title details sheet
 - [ ] Add from Link shortcut works with a TMDb / Letterboxd URL
 
+## Home Screen quick actions (physical iPhone required)
+- [ ] Long-press app icon shows Search, Watchlist, and Up Next
+- [ ] With Up Next content, dynamic “Mark Next Episode Watched” appears
+- [ ] Search opens Search tab with keyboard (cold + warm launch)
+- [ ] Watchlist opens Watchlist tab
+- [ ] Up Next opens full episode list from Home
+- [ ] Mark Next Episode Watched updates progress and refreshes shortcut menu
+- [ ] Mark Next Episode Watched with empty Up Next shows alert
+
+## Automated (Simulator)
+- [ ] `QuickActionNavigationUITests` pass (search + watchlist launch arguments)
+
 ## Other platforms
 - [ ] iPad: split/toolbar search, sheets
 - [ ] Mac: sidebar, sheets Done, list delete confirmation

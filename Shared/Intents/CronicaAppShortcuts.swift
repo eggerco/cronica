@@ -7,6 +7,9 @@
 import AppIntents
 
 struct CronicaAppShortcuts: AppShortcutsProvider {
+    static var shortcutTileColor: ShortcutTileColor { .blue }
+
+    @AppShortcutsBuilder
     static var appShortcuts: [AppShortcut] {
         AppShortcut(
             intent: AddToWatchlistIntent(),

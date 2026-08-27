@@ -190,6 +190,9 @@ extension PersistenceController {
 #if canImport(AppIntents) && !os(watchOS) && !os(tvOS) && !CRONICA_SHARE_EXTENSION
         SiriShortcutRefreshBridge.refreshIfAvailable()
 #endif
+#if os(iOS) && !CRONICA_SHARE_EXTENSION
+        QuickActionRefreshBridge.refreshIfAvailable()
+#endif
     }
     
     // MARK: Properties updates
@@ -222,6 +225,9 @@ extension PersistenceController {
                 )
             }
         }
+#endif
+#if os(iOS) && !CRONICA_SHARE_EXTENSION
+        QuickActionRefreshBridge.refreshIfAvailable()
 #endif
 #if !os(watchOS) && !CRONICA_SHARE_EXTENSION
         let tmdb = item.itemId
@@ -483,6 +489,9 @@ extension PersistenceController {
         if !wasWatched {
             Task { await SiriIntentDonation.donateMarkedUpNextEpisode() }
         }
+#endif
+#if os(iOS) && !CRONICA_SHARE_EXTENSION
+        QuickActionRefreshBridge.refreshIfAvailable()
 #endif
 #if !os(watchOS) && !CRONICA_SHARE_EXTENSION
         if !wasWatched, let season = episode.seasonNumber, let number = episode.episodeNumber {

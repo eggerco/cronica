@@ -8,7 +8,9 @@ import AppIntents
 
 enum SiriShortcutRefreshBridge {
     static func refreshIfAvailable() {
+#if !targetEnvironment(simulator)
         CronicaAppShortcuts.updateAppShortcutParameters()
+#endif
     }
 }
 #endif

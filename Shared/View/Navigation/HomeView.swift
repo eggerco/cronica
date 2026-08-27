@@ -53,6 +53,14 @@ struct HomeView: View {
         .ignoresSafeArea(.all, edges: .horizontal)
 #endif
         .cronicaHomeNavigationDestinations(showNotifications: $showNotifications)
+#if !os(tvOS) && !os(watchOS)
+        .navigationDestination(for: AppNavigationRoute.self) { route in
+            switch route {
+            case .upNextList:
+                VerticalUpNextListView().environmentObject(UpNextViewModel.shared)
+            }
+        }
+#endif
         .redacted(reason: !viewModel.isLoaded ? .placeholder : [] )
         .onAppear {
             checkVersion()
