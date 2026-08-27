@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CronicaCore
 #if !os(macOS)
 extension Notification.Name {
     /// Posted when the user taps the already-selected tab bar item. Object is a `Screens` value.
@@ -14,6 +15,10 @@ extension Notification.Name {
 
 /// A TabBar for switching views, only used on iPhone.
 struct TabBarView: View {
+#if os(iOS)
+    @ObservedObject private var quickActions = QuickActionCoordinator.shared
+    @Environment(\.scenePhase) private var scenePhase
+#endif
     @AppStorage("lastTabSelected") private var tabSelection: Screens?
     var persistence = PersistenceController.shared
 
@@ -35,6 +40,11 @@ struct TabBarView: View {
     @State private var watchlistPath: NavigationPath = .init()
     @State private var searchPath: NavigationPath = .init()
     @State private var shouldOpenOnSearchField = false
+#if os(iOS)
+    @State private var showQuickActionPopup = false
+    @State private var quickActionPopupType: ActionPopupItems?
+    @State private var showNoUpNextAlert = false
+#endif
 
     var body: some View {
 #if os(iOS)
@@ -45,8 +55,29 @@ struct TabBarView: View {
                 details
             }
         }
-        .onAppear { applyPreferredLaunchScreen() }
-        .task { applyPendingSiriNavigationIfNeeded() }
+        .task { await bootstrapNavigationWhenReady(applyLaunchPreference: true) }
+        .onChange(of: quickActions.pending) { _, pending in
+            guard pending != nil else { return }
+            Task { await bootstrapNavigationWhenReady(applyLaunchPreference: false) }
+        }
+        .onChange(of: scenePhase) { _, phase in
+            guard phase == .active else { return }
+            Task { await bootstrapNavigationWhenReady(applyLaunchPreference: false) }
+        }
+        .onChange(of: quickActions.feedback) { _, feedback in
+            handleQuickActionFeedback(feedback)
+        }
+        .actionPopup(isShowing: $showQuickActionPopup, for: quickActionPopupType)
+        .alert(
+            String(localized: "Nothing Up Next"),
+            isPresented: $showNoUpNextAlert
+        ) {
+            Button("OK", role: .cancel) {
+                quickActions.clearFeedback()
+            }
+        } message: {
+            Text(String(localized: "You don't have any episodes up next."))
+        }
         .appTint()
         .appTheme()
 #else
@@ -57,6 +88,42 @@ struct TabBarView: View {
 #endif
     }
 
+#if os(iOS)
+    private func bootstrapNavigationWhenReady(applyLaunchPreference: Bool) async {
+        let maxAttempts = UITestingConfiguration.isUITesting ? 40 : 6
+        let retryDelay: Duration = UITestingConfiguration.isUITesting
+            ? .milliseconds(100)
+            : .milliseconds(50)
+
+        for attempt in 0..<maxAttempts {
+            QuickActionManager.applyUITestLaunchActionIfNeeded()
+            if let action = quickActions.consumePending() {
+                applyPendingNavigation(action)
+                return
+            }
+            if attempt < maxAttempts - 1 {
+                try? await Task.sleep(for: retryDelay)
+            }
+        }
+
+        if applyLaunchPreference {
+            applyPreferredLaunchScreen()
+        }
+    }
+
+    private func handleQuickActionFeedback(_ feedback: QuickActionFeedback?) {
+        guard let feedback else { return }
+        switch feedback {
+        case .markedEpisodeWatched:
+            quickActionPopupType = .markedEpisodeWatched
+            showQuickActionPopup = true
+        case .noUpNext:
+            showNoUpNextAlert = true
+        }
+        quickActions.clearFeedback()
+    }
+#endif
+
     private func applyPreferredLaunchScreen() {
         let settings = SettingsStore.shared
         if settings.isPreferredLaunchScreenEnabled {
@@ -64,10 +131,28 @@ struct TabBarView: View {
         }
     }
 
-    private func applyPendingSiriNavigationIfNeeded() {
-        if SiriNavigationBridge.consumeOpenSearchRequest() {
+    private func applyPendingNavigation(_ action: PendingAppNavigation) {
+        QuickActionDebug.log("apply \(action.rawValue)")
+
+        switch action {
+        case .search:
             tabSelection = .search
-            shouldOpenOnSearchField = true
+            Task { @MainActor in
+                try? await Task.sleep(for: .milliseconds(150))
+                shouldOpenOnSearchField = true
+            }
+        case .watchlist:
+            tabSelection = .watchlist
+        case .upNext:
+            tabSelection = .home
+            Task { @MainActor in
+                try? await Task.sleep(for: .milliseconds(150))
+                homePath.append(AppNavigationRoute.upNextList)
+            }
+        case .markUpNextEpisode:
+#if os(iOS)
+            Task { await QuickActionManager.performMarkUpNextEpisodeWatched() }
+#endif
         }
     }
 

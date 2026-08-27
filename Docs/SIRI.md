@@ -88,3 +88,69 @@ Voice recognition uses the system language; phrase templates use your localized 
 
 - In-app strings: `Docs/LOCALIZATION.md`
 - App Store release notes (separate): `Docs/FASTLANE.md`
+
+## Home Screen quick actions (iPhone / iPad)
+
+Long-press the Cronica app icon on the Home Screen to jump into common flows:
+
+| Action | Behavior |
+|--------|----------|
+| **Search** | Opens the Search tab with the keyboard |
+| **Watchlist** | Opens the Watchlist tab |
+| **Up Next** | Opens Home → full Up Next episode list |
+| **Mark Next Episode Watched** *(dynamic)* | Marks the first Up Next episode watched; appears only when Up Next has content |
+
+### Architecture
+
+| File | Role |
+|------|------|
+| `Shared/QuickActions/QuickActionCoordinator.swift` | In-memory + persisted navigation queue for quick actions and Siri |
+| `Shared/QuickActions/QuickActionDebug.swift` | DEBUG console logging for shortcut delivery |
+| `Shared/QuickActions/QuickActionManager.swift` | Registers static + dynamic shortcuts, handles selection |
+| `Shared/QuickActions/QuickActionAppDelegate.swift` | App + scene delegate for cold/warm shortcut delivery |
+| `Shared/QuickActions/QuickActionRefreshBridge.swift` | Refreshes shortcuts when watchlist / Up Next changes |
+| `Shared/QuickActions/HomeScreenQuickAction.swift` | Shortcut type identifiers |
+| `Shared/Intents/SiriNavigationBridge.swift` | Shared pending navigation queue (also used by Siri) |
+| `Shared/Enums/Navigation/AppNavigationRoute.swift` | Home → Up Next list navigation route |
+
+Dynamic shortcut titles refresh on **launch** and whenever the watchlist or episode progress changes (same hooks as Siri shortcut parameter refresh).
+
+Shortcut delivery uses **both** app-delegate and scene-delegate entry points (`configurationForConnecting`, `sceneWillConnect`, `windowScenePerformAction`) so cold and warm launches work on scene-based SwiftUI lifecycle. `TabBarView` observes `QuickActionCoordinator` and retries navigation briefly on launch.
+
+Mark Next Episode Watched shows haptic + success feedback, or an alert when Up Next is empty.
+
+### UI tests
+
+`CronicaUITests/QuickActionNavigationUITests.swift` simulates navigation via launch arguments:
+
+```bash
+-ui-testing -ui-test-quick-action search
+```
+
+### DEBUG logging
+
+In Debug builds, watch Xcode console for `[Cronica QuickAction]` lines when shortcuts fire.
+
+### Testing (physical device)
+
+1. Build & run on iPhone.
+2. Long-press the Cronica icon → confirm **Search**, **Watchlist**, and **Up Next** appear.
+3. With TV shows in Up Next, confirm **Mark Next Episode Watched** appears with the show name as subtitle.
+4. Tap each action (cold launch and while app is in background).
+5. Confirm **Mark Next Episode Watched** updates episode progress and removes/refreshes the dynamic shortcut when Up Next is empty.
+
+See `Docs/QA-SMOKE-TEST.md` (Home Screen quick actions section).
+
+### Harmless Simulator console noise
+
+These are **not app bugs** and usually do not appear on physical devices:
+
+| Message | Cause |
+|---------|--------|
+| `iCloud account unavailable` | Simulator not signed into iCloud |
+| `nw_connection_*` / `quic_*` | Network stack retries (TMDb, etc.) |
+| `Attempted to fetch Auto Shortcuts… AppShortcutsProvider` | `linkd` unavailable in Simulator |
+| `CHHapticPattern` / `hapticpatternlibrary.plist` | Simulator has no haptic library (keyboard focus) |
+| `Snapshotting a view (UIKeyboardImpl)` | Simulator keyboard snapshot |
+
+Successful quick actions log `[Cronica QuickAction] handle → deliver → consume → apply` in Debug builds.

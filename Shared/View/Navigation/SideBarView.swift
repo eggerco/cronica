@@ -54,11 +54,30 @@ struct SideBarView: View {
             }
         }
         .navigationSplitViewStyle(.balanced)
-        .task {
+        .task { applyPendingNavigationIfNeeded() }
+    }
+
+    private func applyPendingNavigationIfNeeded() {
+        guard let action = SiriNavigationBridge.consumePendingNavigation() else {
             if SiriNavigationBridge.consumeOpenSearchRequest() {
                 selectedView = .search
                 shouldFocusSearchField = true
             }
+            return
+        }
+
+        switch action {
+        case .search:
+            selectedView = .search
+            shouldFocusSearchField = true
+        case .watchlist:
+            selectedView = .watchlist
+        case .upNext:
+            selectedView = .home
+        case .markUpNextEpisode:
+#if canImport(AppIntents)
+            Task { try? await SiriIntentService.markNextUpNextEpisodeWatched() }
+#endif
         }
     }
 }

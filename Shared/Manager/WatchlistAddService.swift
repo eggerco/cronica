@@ -69,6 +69,9 @@ enum WatchlistAddService {
         SiriShortcutRefreshBridge.refreshIfAvailable()
         Task { await SiriIntentDonation.donateAddedToWatchlist(content) }
 #endif
+#if os(iOS) && !CRONICA_SHARE_EXTENSION
+        QuickActionRefreshBridge.refreshIfAvailable()
+#endif
 #endif
         return .added(content)
     }

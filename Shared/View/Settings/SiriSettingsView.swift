@@ -13,9 +13,8 @@ struct SiriSettingsView: View {
         List {
             Section {
 #if os(iOS) || os(visionOS)
-                ShortcutsLink {
-                    Label(String(localized: "Browse Cronica Shortcuts"), systemImage: "square.grid.2x2")
-                }
+                ShortcutsLink()
+                    .shortcutsLinkStyle(.automaticOutline)
 #else
                 Text(String(localized: "Open the Shortcuts app to browse Cronica actions and add them to Siri."))
 #endif
@@ -34,6 +33,9 @@ struct SiriSettingsView: View {
 #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
 #endif
+        .onAppear {
+            SiriShortcutRefreshBridge.refreshIfAvailable()
+        }
     }
 }
 #endif

@@ -11,7 +11,7 @@ import AppIntents
 @MainActor
 enum SiriIntentDonation {
     static func donateAddedToWatchlist(_ content: ItemContent) async {
-        var intent = AddToWatchlistIntent()
+        let intent = AddToWatchlistIntent()
         let subtitle: String
         switch content.itemContentMedia {
         case .movie: subtitle = String(localized: "Movie")
@@ -28,11 +28,11 @@ enum SiriIntentDonation {
         case .tvShow: intent.mediaType = .tvShow
         case .person: intent.mediaType = .any
         }
-        try? await intent.donate()
+        _ = try? await intent.donate()
     }
 
     static func donateMarkedWatched(title: String, contentID: String, media: MediaType) async {
-        var intent = MarkTitleWatchedIntent()
+        let intent = MarkTitleWatchedIntent()
         let subtitle: String
         switch media {
         case .movie: subtitle = String(localized: "Movie")
@@ -40,11 +40,11 @@ enum SiriIntentDonation {
         case .person: subtitle = String(localized: "Person")
         }
         intent.title = SearchResultEntity(id: contentID, title: title, subtitle: subtitle)
-        try? await intent.donate()
+        _ = try? await intent.donate()
     }
 
     static func donateMarkedUpNextEpisode() async {
-        try? await MarkUpNextEpisodeWatchedIntent().donate()
+        _ = try? await MarkUpNextEpisodeWatchedIntent().donate()
     }
 }
 #endif

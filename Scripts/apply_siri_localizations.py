@@ -62,6 +62,11 @@ SIRI_STRINGS: dict[str, str] = {
     "“Open Severance in Cronica”": "“Open Severance in Cronica”",
     "Mark Up Next Watched": "Mark Up Next Watched",
     "Open the Shortcuts app to browse Cronica actions and add them to Siri.": "Open the Shortcuts app to browse Cronica actions and add them to Siri.",
+    "Mark Next Episode Watched": "Mark Next Episode Watched",
+    "Find movies and TV shows.": "Find movies and TV shows.",
+    "Open your saved titles.": "Open your saved titles.",
+    "See what's up next.": "See what's up next.",
+    "Nothing Up Next": "Nothing Up Next",
 }
 
 
