@@ -1,576 +1,1194 @@
 {
-  "sourceLanguage": "en",
-  "strings": {
-    "NSSiriUsageDescription": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica uses Siri to add titles, mark episodes watched, and check what's up next on your watchlist."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica nutzt Siri, um Titel hinzuzufügen, Episoden als gesehen zu markieren und Als Nächstes auf deiner Watchlist zu prüfen."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica utilise Siri pour ajouter des titres, marquer des épisodes comme vus et vérifier À suivre dans votre liste."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica usa Siri per aggiungere titoli, segnare episodi come visti e controllare In programma nella watchlist."
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "O Cronica usa a Siri para adicionar títulos, marcar episódios como assistidos e ver A seguir na sua lista."
-          }
-        },
-        "sk": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica používa Siri na pridávanie titulov, označovanie epizód a kontrolu Ďalej vo vašom zozname."
-          }
-        },
-        "es-MX": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica usa Siri para agregar títulos, marcar episodios como vistos y ver A continuación en tu lista."
-          }
-        },
-        "ar": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "يستخدم Cronica Siri لإضافة عناوين وتعليم الحلقات كمشاهَدة والاطلاع على التالي في قائمة المشاهدة."
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica používá Siri k přidávání titulů, označování epizod a kontrole Další ve vašem seznamu."
-          }
-        },
-        "da": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica bruger Siri til at tilføje titler, markere episoder som set og tjekke Næste på din watchlist."
-          }
-        },
-        "el": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Το Cronica χρησιμοποιεί το Siri για προσθήκη τίτλων, σήμανση επεισοδίων και έλεγχο των Επόμενων στη λίστα σου."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica usa Siri para añadir títulos, marcar episodios como vistos y ver A continuación en tu lista."
-          }
-        },
-        "fi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica käyttää Siriä nimien lisäämiseen, jaksojen merkitsemiseen ja Seuraavaksi-listan tarkistamiseen."
-          }
-        },
-        "he": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica משתמש ב־Siri כדי להוסיף כותרות, לסמן פרקים כנצפים ולבדוק את הבא בתור ברשימה שלך."
-          }
-        },
-        "hi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica शीर्षक जोड़ने, एपिसोड देखा गया चिह्नित करने और वॉचलिस्ट पर आगे क्या जाँचने के लिए Siri का उपयोग करता है।"
-          }
-        },
-        "hr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica koristi Siri za dodavanje naslova, označavanje epizoda i pregled Sljedećeg na tvojoj listi."
-          }
-        },
-        "hu": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "A Cronica a Sirit használja címek hozzáadásához, epizódok megjelöléséhez és a Következők ellenőrzéséhez a listádon."
-          }
-        },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica menggunakan Siri untuk menambahkan judul, menandai episode ditonton, dan memeriksa Selanjutnya di watchlist Anda."
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "CronicaはSiriを使って作品の追加、エピソードの視聴済み、ウォッチリストの次に観る確認を行います。"
-          }
-        },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica는 Siri로 작품을 추가하고, 에피소드를 시청함으로 표시하며, 관심 목록의 다음에 볼 것을 확인합니다."
-          }
-        },
-        "ms": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica menggunakan Siri untuk menambah tajuk, menanda episod ditonton, dan menyemak Seterusnya dalam senarai tontonan anda."
-          }
-        },
-        "nb": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica bruker Siri til å legge til titler, merke episoder som sett og sjekke Neste på ønskelisten din."
-          }
-        },
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica gebruikt Siri om titels toe te voegen, afleveringen als bekeken te markeren en Hierna op je watchlist te controleren."
-          }
-        },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica używa Siri do dodawania tytułów, oznaczania odcinków i sprawdzania Dalej na Twojej liście."
-          }
-        },
-        "ro": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica folosește Siri pentru a adăuga titluri, a marca episoade și a verifica Urmează pe lista ta."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica использует Siri, чтобы добавлять названия, отмечать эпизоды и проверять «Дальше» в вашем списке."
-          }
-        },
-        "sv": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica använder Siri för att lägga till titlar, markera avsnitt som sett och kolla Härnäst på din watchlist."
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica; başlık eklemek, bölümleri izlendi işaretlemek ve izleme listendeki Sıradakiler’e bakmak için Siri’yi kullanır."
-          }
-        },
-        "uk": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica використовує Siri, щоб додавати назви, позначати епізоди та перевіряти «Далі» у вашому списку."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica 使用 Siri 添加作品、标记已看剧集，并查看片单中的接下来内容。"
-          }
-        },
-        "zh-Hant": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica 使用 Siri 加入作品、標記已看劇集，並查看片單中的接下來內容。"
+  "sourceLanguage" : "en",
+  "strings" : {
+    "CFBundleDisplayName" : {
+      "comment" : "Bundle display name",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Cronica"
           }
         }
       }
     },
-    "NSRemindersUsageDescription": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica can add a reminder for the next release or episode of a watchlist title."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica kann eine Erinnerung für die nächste Veröffentlichung oder Episode eines Watchlist-Titels hinzufügen."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica peut ajouter un rappel pour la prochaine sortie ou le prochain épisode d’un titre de votre liste."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica può aggiungere un promemoria per la prossima uscita o episodio di un titolo della watchlist."
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "O Cronica pode adicionar um lembrete para o próximo lançamento ou episódio de um título da lista."
-          }
-        },
-        "sk": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica môže pridať pripomienku na nasledujúce vydanie alebo epizódu titulu zo zoznamu."
-          }
-        },
-        "es-MX": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica puede agregar un recordatorio para el próximo estreno o episodio de un título de tu lista."
-          }
-        },
-        "ar": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "يمكن لـ Cronica إضافة تذكير بالإصدار أو الحلقة التالية لعنوان في قائمة المشاهدة."
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica může přidat připomínku dalšího vydání nebo epizody titulu ze seznamu."
-          }
-        },
-        "da": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica kan tilføje en påmindelse om næste udgivelse eller episode for en titel på watchlisten."
-          }
-        },
-        "el": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Το Cronica μπορεί να προσθέσει υπενθύμιση για την επόμενη κυκλοφορία ή επεισόδιο ενός τίτλου της λίστας."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica puede añadir un recordatorio para el próximo estreno o episodio de un título de tu lista."
-          }
-        },
-        "fi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica voi lisätä muistutuksen katselulistan nimen seuraavasta julkaisusta tai jaksosta."
-          }
-        },
-        "he": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica יכול להוסיף תזכורת להפצה או לפרק הבא של כותרת ברשימת הצפייה."
-          }
-        },
-        "hi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica वॉचलिस्ट शीर्षक की अगली रिलीज़ या एपिसोड के लिए रिमाइंडर जोड़ सकता है।"
-          }
-        },
-        "hr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica može dodati podsjetnik za sljedeće izdanje ili epizodu naslova s liste."
-          }
-        },
-        "hu": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "A Cronica emlékeztetőt adhat a listán szereplő cím következő megjelenéséhez vagy epizódjához."
-          }
-        },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica dapat menambahkan pengingat untuk rilis atau episode berikutnya dari judul di watchlist."
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronicaはウォッチリストの作品の次の公開またはエピソードのリマインダーを追加できます。"
-          }
-        },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica는 관심 목록 작품의 다음 출시 또는 에피소드에 대한 미리 알림을 추가할 수 있습니다."
-          }
-        },
-        "ms": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica boleh menambah peringatan untuk keluaran atau episod seterusnya bagi tajuk dalam senarai tontonan."
-          }
-        },
-        "nb": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica kan legge til en påminnelse for neste utgivelse eller episode for en tittel på ønskelisten."
-          }
-        },
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica kan een herinnering toevoegen voor de volgende release of aflevering van een titel op je watchlist."
-          }
-        },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica może dodać przypomnienie o kolejnej premierze lub odcinku tytułu z listy."
-          }
-        },
-        "ro": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica poate adăuga un memento pentru următoarea lansare sau episod al unui titlu de pe listă."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica может добавить напоминание о следующем релизе или эпизоде названия из списка."
-          }
-        },
-        "sv": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica kan lägga till en påminnelse om nästa premiär eller avsnitt för en titel i watchlisten."
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica, izleme listesindeki bir yapımın sonraki yayın veya bölümü için anımsatıcı ekleyebilir."
-          }
-        },
-        "uk": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica може додати нагадування про наступний реліз або епізод назви зі списку."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica 可为片单中作品的下次上映或下一集添加提醒。"
-          }
-        },
-        "zh-Hant": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica 可為片單中作品的下次上映或下一集加入提醒。"
+    "CFBundleName" : {
+      "comment" : "Bundle name",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Cronica"
           }
         }
       }
     },
-    "NSRemindersFullAccessUsageDescription": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica can add a reminder for the next release or episode of a watchlist title."
+    "Chronica" : {
+
+    },
+    "chrono ca" : {
+
+    },
+    "ItemContent" : {
+
+    },
+    "NSCalendarsFullAccessUsageDescription" : {
+      "comment" : "Privacy - Calendars Full Access Usage Description",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يضيف Cronica الإصدارات القادمة من قائمة المشاهدة إلى تقويم مخصص."
           }
         },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica kann eine Erinnerung für die nächste Veröffentlichung oder Episode eines Watchlist-Titels hinzufügen."
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica přidává nadcházející vydání ze seznamu do vyhrazeného kalendáře."
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica peut ajouter un rappel pour la prochaine sortie ou le prochain épisode d’un titre de votre liste."
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica tilføjer kommende udgivelser fra din watchlist til en dedikeret kalender."
           }
         },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica può aggiungere un promemoria per la prossima uscita o episodio di un titolo della watchlist."
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica fügt bevorstehende Veröffentlichungen von deiner Watchlist einem eigenen Kalender hinzu."
           }
         },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "O Cronica pode adicionar um lembrete para o próximo lançamento ou episódio de um título da lista."
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Το Cronica προσθέτει επερχόμενες κυκλοφορίες από τη λίστα σου σε αποκλειστικό ημερολόγιο."
           }
         },
-        "sk": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica môže pridať pripomienku na nasledujúce vydanie alebo epizódu titulu zo zoznamu."
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica adds upcoming releases from your watchlist to a dedicated calendar."
           }
         },
-        "es-MX": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica puede agregar un recordatorio para el próximo estreno o episodio de un título de tu lista."
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica añade los próximos estrenos de tu lista a un calendario dedicado."
           }
         },
-        "ar": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "يمكن لـ Cronica إضافة تذكير بالإصدار أو الحلقة التالية لعنوان في قائمة المشاهدة."
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica agrega los próximos estrenos de tu lista a un calendario dedicado."
           }
         },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica může přidat připomínku dalšího vydání nebo epizody titulu ze seznamu."
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica lisää katselulistan tulevat julkaisut erilliseen kalenteriin."
           }
         },
-        "da": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica kan tilføje en påmindelse om næste udgivelse eller episode for en titel på watchlisten."
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica ajoute les prochaines sorties de votre liste à un calendrier dédié."
           }
         },
-        "el": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Το Cronica μπορεί να προσθέσει υπενθύμιση για την επόμενη κυκλοφορία ή επεισόδιο ενός τίτλου της λίστας."
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica מוסיף הפצות קרובות מרשימת הצפייה ללוח שנה ייעודי."
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica puede añadir un recordatorio para el próximo estreno o episodio de un título de tu lista."
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica आपकी वॉचलिस्ट से आगामी रिलीज़ एक समर्पित कैलेंडर में जोड़ता है।"
           }
         },
-        "fi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica voi lisätä muistutuksen katselulistan nimen seuraavasta julkaisusta tai jaksosta."
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica dodaje nadolazeća izdanja s tvoje liste u poseban kalendar."
           }
         },
-        "he": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica יכול להוסיף תזכורת להפצה או לפרק הבא של כותרת ברשימת הצפייה."
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A Cronica a listádon lévő közelgő megjelenéseket egy külön naptárhoz adja."
           }
         },
-        "hi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica वॉचलिस्ट शीर्षक की अगली रिलीज़ या एपिसोड के लिए रिमाइंडर जोड़ सकता है।"
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica menambahkan rilis mendatang dari watchlist Anda ke kalender khusus."
           }
         },
-        "hr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica može dodati podsjetnik za sljedeće izdanje ili epizodu naslova s liste."
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica aggiunge le prossime uscite della watchlist a un calendario dedicato."
           }
         },
-        "hu": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "A Cronica emlékeztetőt adhat a listán szereplő cím következő megjelenéséhez vagy epizódjához."
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronicaはウォッチリストの今後の公開予定を専用カレンダーに追加します。"
           }
         },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica dapat menambahkan pengingat untuk rilis atau episode berikutnya dari judul di watchlist."
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica는 관심 목록의 예정된 출시를 전용 캘린더에 추가합니다."
           }
         },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronicaはウォッチリストの作品の次の公開またはエピソードのリマインダーを追加できます。"
+        "ms" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica menambah keluaran akan datang dari senarai tontonan anda ke kalendar khas."
           }
         },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica는 관심 목록 작품의 다음 출시 또는 에피소드에 대한 미리 알림을 추가할 수 있습니다."
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica legger kommende utgivelser fra ønskelisten din til en egen kalender."
           }
         },
-        "ms": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica boleh menambah peringatan untuk keluaran atau episod seterusnya bagi tajuk dalam senarai tontonan."
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica voegt aankomende releases van je watchlist toe aan een speciale kalender."
           }
         },
-        "nb": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica kan legge til en påminnelse for neste utgivelse eller episode for en tittel på ønskelisten."
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica dodaje nadchodzące premiery z Twojej listy do osobnego kalendarza."
           }
         },
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica kan een herinnering toevoegen voor de volgende release of aflevering van een titel op je watchlist."
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O Cronica adiciona os próximos lançamentos da sua lista a um calendário dedicado."
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica może dodać przypomnienie o kolejnej premierze lub odcinku tytułu z listy."
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica adaugă lansările viitoare de pe listă într-un calendar dedicat."
           }
         },
-        "ro": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica poate adăuga un memento pentru următoarea lansare sau episod al unui titlu de pe listă."
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica добавляет ближайшие релизы из вашего списка в отдельный календарь."
           }
         },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica может добавить напоминание о следующем релизе или эпизоде названия из списка."
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica pridáva nadchádzajúce vydania zo zoznamu do vyhradeného kalendára."
           }
         },
-        "sv": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica kan lägga till en påminnelse om nästa premiär eller avsnitt för en titel i watchlisten."
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica lägger till kommande premiärer från din watchlist i en särskild kalender."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica, izleme listesindeki bir yapımın sonraki yayın veya bölümü için anımsatıcı ekleyebilir."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica, izleme listenizdeki yaklaşan yayınları özel bir takvime ekler."
           }
         },
-        "uk": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica може додати нагадування про наступний реліз або епізод назви зі списку."
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica додає найближчі релізи з вашого списку до окремого календаря."
           }
         },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica 可为片单中作品的下次上映或下一集添加提醒。"
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica 会将片单中的即将上映内容添加到专用日历。"
           }
         },
-        "zh-Hant": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cronica 可為片單中作品的下次上映或下一集加入提醒。"
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica 會將片單中的即將上映內容加入專用日曆。"
           }
         }
       }
+    },
+    "NSCalendarsUsageDescription" : {
+      "comment" : "Privacy - Calendars Usage Description",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يضيف Cronica الإصدارات القادمة من قائمة المشاهدة إلى تقويم مخصص."
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica přidává nadcházející vydání ze seznamu do vyhrazeného kalendáře."
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica tilføjer kommende udgivelser fra din watchlist til en dedikeret kalender."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica fügt bevorstehende Veröffentlichungen von deiner Watchlist einem eigenen Kalender hinzu."
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Το Cronica προσθέτει επερχόμενες κυκλοφορίες από τη λίστα σου σε αποκλειστικό ημερολόγιο."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica adds upcoming releases from your watchlist to a dedicated calendar."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica añade los próximos estrenos de tu lista a un calendario dedicado."
+          }
+        },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica agrega los próximos estrenos de tu lista a un calendario dedicado."
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica lisää katselulistan tulevat julkaisut erilliseen kalenteriin."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica ajoute les prochaines sorties de votre liste à un calendrier dédié."
+          }
+        },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica מוסיף הפצות קרובות מרשימת הצפייה ללוח שנה ייעודי."
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica आपकी वॉचलिस्ट से आगामी रिलीज़ एक समर्पित कैलेंडर में जोड़ता है।"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica dodaje nadolazeća izdanja s tvoje liste u poseban kalendar."
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A Cronica a listádon lévő közelgő megjelenéseket egy külön naptárhoz adja."
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica menambahkan rilis mendatang dari watchlist Anda ke kalender khusus."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica aggiunge le prossime uscite della watchlist a un calendario dedicato."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronicaはウォッチリストの今後の公開予定を専用カレンダーに追加します。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica는 관심 목록의 예정된 출시를 전용 캘린더에 추가합니다."
+          }
+        },
+        "ms" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica menambah keluaran akan datang dari senarai tontonan anda ke kalendar khas."
+          }
+        },
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica legger kommende utgivelser fra ønskelisten din til en egen kalender."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica voegt aankomende releases van je watchlist toe aan een speciale kalender."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica dodaje nadchodzące premiery z Twojej listy do osobnego kalendarza."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O Cronica adiciona os próximos lançamentos da sua lista a um calendário dedicado."
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica adaugă lansările viitoare de pe listă într-un calendar dedicat."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica добавляет ближайшие релизы из вашего списка в отдельный календарь."
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica pridáva nadchádzajúce vydania zo zoznamu do vyhradeného kalendára."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica lägger till kommande premiärer från din watchlist i en särskild kalender."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica, izleme listenizdeki yaklaşan yayınları özel bir takvime ekler."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica додає найближчі релізи з вашого списку до окремого календаря."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica 会将片单中的即将上映内容添加到专用日历。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica 會將片單中的即將上映內容加入專用日曆。"
+          }
+        }
+      }
+    },
+    "NSPhotoLibraryAddUsageDescription" : {
+      "comment" : "Privacy - Photo Library Additions Usage Description",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يمكن لـ Cronica حفظ الصور في مكتبة الصور."
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica může ukládat obrázky do knihovny fotografií."
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica kan gemme billeder i dit fotobibliotek."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica kann Bilder in deiner Mediathek speichern."
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Το Cronica μπορεί να αποθηκεύει εικόνες στη βιβλιοθήκη φωτογραφιών."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica can save images to your photo library."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica puede guardar imágenes en tu biblioteca de fotos."
+          }
+        },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica puede guardar imágenes en tu biblioteca de fotos."
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica voi tallentaa kuvia valokuvakirjastoosi."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica peut enregistrer des images dans votre photothèque."
+          }
+        },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica יכול לשמור תמונות בספריית התמונות שלך."
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica आपकी फ़ोटो लाइब्रेरी में चित्र सहेज सकता है।"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica može spremati slike u tvoju biblioteku fotografija."
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A Cronica képeket menthet a fotókönyvtáradba."
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica dapat menyimpan gambar ke perpustakaan foto Anda."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica può salvare immagini nella libreria foto."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronicaは写真ライブラリに画像を保存できます。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica는 사진 보관함에 이미지를 저장할 수 있습니다."
+          }
+        },
+        "ms" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica boleh menyimpan imej ke pustaka foto anda."
+          }
+        },
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica kan lagre bilder i bildebiblioteket ditt."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica kan afbeeldingen opslaan in je fotobibliotheek."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica może zapisywać obrazy w bibliotece zdjęć."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O Cronica pode salvar imagens na sua biblioteca de fotos."
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica poate salva imagini în biblioteca foto."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica может сохранять изображения в медиатеке."
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica môže ukladať obrázky do knižnice fotiek."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica kan spara bilder i ditt fotobibliotek."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica görselleri fotoğraf kitaplığınıza kaydedebilir."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica може зберігати зображення у вашій медіатеці."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica 可将图片保存到你的照片图库。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica 可將圖片儲存到你的照片圖庫。"
+          }
+        }
+      }
+    },
+    "NSRemindersFullAccessUsageDescription" : {
+      "comment" : "Privacy - Reminders Full Access Usage Description",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يمكن لـ Cronica إضافة تذكير بالإصدار أو الحلقة التالية لعنوان في قائمة المشاهدة."
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica může přidat připomínku dalšího vydání nebo epizody titulu ze seznamu."
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica kan tilføje en påmindelse om næste udgivelse eller episode for en titel på watchlisten."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica kann eine Erinnerung für die nächste Veröffentlichung oder Episode eines Watchlist-Titels hinzufügen."
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Το Cronica μπορεί να προσθέσει υπενθύμιση για την επόμενη κυκλοφορία ή επεισόδιο ενός τίτλου της λίστας."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica can add a reminder for the next release or episode of a watchlist title."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica puede añadir un recordatorio para el próximo estreno o episodio de un título de tu lista."
+          }
+        },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica puede agregar un recordatorio para el próximo estreno o episodio de un título de tu lista."
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica voi lisätä muistutuksen katselulistan nimen seuraavasta julkaisusta tai jaksosta."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica peut ajouter un rappel pour la prochaine sortie ou le prochain épisode d’un titre de votre liste."
+          }
+        },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica יכול להוסיף תזכורת להפצה או לפרק הבא של כותרת ברשימת הצפייה."
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica वॉचलिस्ट शीर्षक की अगली रिलीज़ या एपिसोड के लिए रिमाइंडर जोड़ सकता है।"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica može dodati podsjetnik za sljedeće izdanje ili epizodu naslova s liste."
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A Cronica emlékeztetőt adhat a listán szereplő cím következő megjelenéséhez vagy epizódjához."
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica dapat menambahkan pengingat untuk rilis atau episode berikutnya dari judul di watchlist."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica può aggiungere un promemoria per la prossima uscita o episodio di un titolo della watchlist."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronicaはウォッチリストの作品の次の公開またはエピソードのリマインダーを追加できます。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica는 관심 목록 작품의 다음 출시 또는 에피소드에 대한 미리 알림을 추가할 수 있습니다."
+          }
+        },
+        "ms" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica boleh menambah peringatan untuk keluaran atau episod seterusnya bagi tajuk dalam senarai tontonan."
+          }
+        },
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica kan legge til en påminnelse for neste utgivelse eller episode for en tittel på ønskelisten."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica kan een herinnering toevoegen voor de volgende release of aflevering van een titel op je watchlist."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica może dodać przypomnienie o kolejnej premierze lub odcinku tytułu z listy."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O Cronica pode adicionar um lembrete para o próximo lançamento ou episódio de um título da lista."
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica poate adăuga un memento pentru următoarea lansare sau episod al unui titlu de pe listă."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica может добавить напоминание о следующем релизе или эпизоде названия из списка."
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica môže pridať pripomienku na nasledujúce vydanie alebo epizódu titulu zo zoznamu."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica kan lägga till en påminnelse om nästa premiär eller avsnitt för en titel i watchlisten."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica, izleme listesindeki bir yapımın sonraki yayın veya bölümü için anımsatıcı ekleyebilir."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica може додати нагадування про наступний реліз або епізод назви зі списку."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica 可为片单中作品的下次上映或下一集添加提醒。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica 可為片單中作品的下次上映或下一集加入提醒。"
+          }
+        }
+      }
+    },
+    "NSRemindersUsageDescription" : {
+      "comment" : "Privacy - Reminders Usage Description",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يمكن لـ Cronica إضافة تذكير بالإصدار أو الحلقة التالية لعنوان في قائمة المشاهدة."
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica může přidat připomínku dalšího vydání nebo epizody titulu ze seznamu."
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica kan tilføje en påmindelse om næste udgivelse eller episode for en titel på watchlisten."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica kann eine Erinnerung für die nächste Veröffentlichung oder Episode eines Watchlist-Titels hinzufügen."
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Το Cronica μπορεί να προσθέσει υπενθύμιση για την επόμενη κυκλοφορία ή επεισόδιο ενός τίτλου της λίστας."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica can add a reminder for the next release or episode of a watchlist title."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica puede añadir un recordatorio para el próximo estreno o episodio de un título de tu lista."
+          }
+        },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica puede agregar un recordatorio para el próximo estreno o episodio de un título de tu lista."
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica voi lisätä muistutuksen katselulistan nimen seuraavasta julkaisusta tai jaksosta."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica peut ajouter un rappel pour la prochaine sortie ou le prochain épisode d’un titre de votre liste."
+          }
+        },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica יכול להוסיף תזכורת להפצה או לפרק הבא של כותרת ברשימת הצפייה."
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica वॉचलिस्ट शीर्षक की अगली रिलीज़ या एपिसोड के लिए रिमाइंडर जोड़ सकता है।"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica može dodati podsjetnik za sljedeće izdanje ili epizodu naslova s liste."
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A Cronica emlékeztetőt adhat a listán szereplő cím következő megjelenéséhez vagy epizódjához."
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica dapat menambahkan pengingat untuk rilis atau episode berikutnya dari judul di watchlist."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica può aggiungere un promemoria per la prossima uscita o episodio di un titolo della watchlist."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronicaはウォッチリストの作品の次の公開またはエピソードのリマインダーを追加できます。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica는 관심 목록 작품의 다음 출시 또는 에피소드에 대한 미리 알림을 추가할 수 있습니다."
+          }
+        },
+        "ms" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica boleh menambah peringatan untuk keluaran atau episod seterusnya bagi tajuk dalam senarai tontonan."
+          }
+        },
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica kan legge til en påminnelse for neste utgivelse eller episode for en tittel på ønskelisten."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica kan een herinnering toevoegen voor de volgende release of aflevering van een titel op je watchlist."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica może dodać przypomnienie o kolejnej premierze lub odcinku tytułu z listy."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O Cronica pode adicionar um lembrete para o próximo lançamento ou episódio de um título da lista."
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica poate adăuga un memento pentru următoarea lansare sau episod al unui titlu de pe listă."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica может добавить напоминание о следующем релизе или эпизоде названия из списка."
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica môže pridať pripomienku na nasledujúce vydanie alebo epizódu titulu zo zoznamu."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica kan lägga till en påminnelse om nästa premiär eller avsnitt för en titel i watchlisten."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica, izleme listesindeki bir yapımın sonraki yayın veya bölümü için anımsatıcı ekleyebilir."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica може додати нагадування про наступний реліз або епізод назви зі списку."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica 可为片单中作品的下次上映或下一集添加提醒。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica 可為片單中作品的下次上映或下一集加入提醒。"
+          }
+        }
+      }
+    },
+    "NSSiriUsageDescription" : {
+      "comment" : "Privacy - Siri Usage Description",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يستخدم Cronica Siri لإضافة عناوين وتعليم الحلقات كمشاهَدة والاطلاع على التالي في قائمة المشاهدة."
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica používá Siri k přidávání titulů, označování epizod a kontrole Další ve vašem seznamu."
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica bruger Siri til at tilføje titler, markere episoder som set og tjekke Næste på din watchlist."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica nutzt Siri, um Titel hinzuzufügen, Episoden als gesehen zu markieren und Als Nächstes auf deiner Watchlist zu prüfen."
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Το Cronica χρησιμοποιεί το Siri για προσθήκη τίτλων, σήμανση επεισοδίων και έλεγχο των Επόμενων στη λίστα σου."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica uses Siri to add titles, mark episodes watched, and check what's up next on your watchlist."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica usa Siri para añadir títulos, marcar episodios como vistos y ver A continuación en tu lista."
+          }
+        },
+        "es-MX" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica usa Siri para agregar títulos, marcar episodios como vistos y ver A continuación en tu lista."
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica käyttää Siriä nimien lisäämiseen, jaksojen merkitsemiseen ja Seuraavaksi-listan tarkistamiseen."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica utilise Siri pour ajouter des titres, marquer des épisodes comme vus et vérifier À suivre dans votre liste."
+          }
+        },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica משתמש ב־Siri כדי להוסיף כותרות, לסמן פרקים כנצפים ולבדוק את הבא בתור ברשימה שלך."
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica शीर्षक जोड़ने, एपिसोड देखा गया चिह्नित करने और वॉचलिस्ट पर आगे क्या जाँचने के लिए Siri का उपयोग करता है।"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica koristi Siri za dodavanje naslova, označavanje epizoda i pregled Sljedećeg na tvojoj listi."
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A Cronica a Sirit használja címek hozzáadásához, epizódok megjelöléséhez és a Következők ellenőrzéséhez a listádon."
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica menggunakan Siri untuk menambahkan judul, menandai episode ditonton, dan memeriksa Selanjutnya di watchlist Anda."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica usa Siri per aggiungere titoli, segnare episodi come visti e controllare In programma nella watchlist."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CronicaはSiriを使って作品の追加、エピソードの視聴済み、ウォッチリストの次に観る確認を行います。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica는 Siri로 작품을 추가하고, 에피소드를 시청함으로 표시하며, 관심 목록의 다음에 볼 것을 확인합니다."
+          }
+        },
+        "ms" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica menggunakan Siri untuk menambah tajuk, menanda episod ditonton, dan menyemak Seterusnya dalam senarai tontonan anda."
+          }
+        },
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica bruker Siri til å legge til titler, merke episoder som sett og sjekke Neste på ønskelisten din."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica gebruikt Siri om titels toe te voegen, afleveringen als bekeken te markeren en Hierna op je watchlist te controleren."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica używa Siri do dodawania tytułów, oznaczania odcinków i sprawdzania Dalej na Twojej liście."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O Cronica usa a Siri para adicionar títulos, marcar episódios como assistidos e ver A seguir na sua lista."
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica folosește Siri pentru a adăuga titluri, a marca episoade și a verifica Urmează pe lista ta."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica использует Siri, чтобы добавлять названия, отмечать эпизоды и проверять «Дальше» в вашем списке."
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica používa Siri na pridávanie titulov, označovanie epizód a kontrolu Ďalej vo vašom zozname."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica använder Siri för att lägga till titlar, markera avsnitt som sett och kolla Härnäst på din watchlist."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica; başlık eklemek, bölümleri izlendi işaretlemek ve izleme listendeki Sıradakiler’e bakmak için Siri’yi kullanır."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica використовує Siri, щоб додавати назви, позначати епізоди та перевіряти «Далі» у вашому списку."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica 使用 Siri 添加作品、标记已看剧集，并查看片单中的接下来内容。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronica 使用 Siri 加入作品、標記已看劇集，並查看片單中的接下來內容。"
+          }
+        }
+      }
+    },
+    "Person" : {
+
+    },
+    "trailerItem" : {
+
+    },
+    "WatchlistItem" : {
+
     }
   },
-  "version": "1.0"
+  "version" : "1.0"
 }

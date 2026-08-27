@@ -2680,7 +2680,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription = "Cronica adds upcoming releases from your watchlist to a dedicated calendar.";
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "Cronica adds upcoming releases from your watchlist to a dedicated calendar.";
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Save image to Photos?";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Cronica can save images to your photo library.";
 				INFOPLIST_KEY_NSRemindersFullAccessUsageDescription = "Cronica can add a reminder for the next release or episode of a watchlist title.";
 				INFOPLIST_KEY_NSRemindersUsageDescription = "Cronica can add a reminder for the next release or episode of a watchlist title.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -2729,7 +2729,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription = "Cronica adds upcoming releases from your watchlist to a dedicated calendar.";
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "Cronica adds upcoming releases from your watchlist to a dedicated calendar.";
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Save image to Photos?";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Cronica can save images to your photo library.";
 				INFOPLIST_KEY_NSRemindersFullAccessUsageDescription = "Cronica can add a reminder for the next release or episode of a watchlist title.";
 				INFOPLIST_KEY_NSRemindersUsageDescription = "Cronica can add a reminder for the next release or episode of a watchlist title.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

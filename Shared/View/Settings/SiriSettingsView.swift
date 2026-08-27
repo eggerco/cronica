@@ -18,6 +18,8 @@ struct SiriSettingsView: View {
 #else
                 Text(String(localized: "Open the Shortcuts app to browse Cronica actions and add them to Siri."))
 #endif
+            } header: {
+                Text(String(localized: "Shortcuts"))
             } footer: {
                 Text(String(localized: "Use Siri and the Shortcuts app to add titles, mark episodes watched, check what's up next, and open movies or shows in Cronica."))
             }
