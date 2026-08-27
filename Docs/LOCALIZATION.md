@@ -42,7 +42,7 @@ Cronica localizes **31 languages** in `Shared/Localization/Localizable.xcstrings
 |------|---------|
 | `Shared/Localization/Localizable.xcstrings` | In-app UI, intent titles/descriptions, Settings |
 | `Shared/Localization/AppShortcuts.xcstrings` | Spoken Siri / App Shortcut phrases |
-| `Shared/Localization/InfoPlist.xcstrings` | Privacy usage descriptions (Siri, Reminders, Calendars, Photos, …) |
+| `Shared/Localization/InfoPlist.xcstrings` | Privacy usage descriptions (Siri, Reminders, Calendars, Photos, …). Brand / UTType / alternate Siri names are kept with `shouldTranslate: false` because Xcode re-extracts them from Info.plist on build. |
 
 ## Adding or updating strings
 

@@ -13,8 +13,7 @@ struct SiriSettingsView: View {
         List {
             Section {
 #if os(iOS) || os(visionOS)
-                ShortcutsLink()
-                    .shortcutsLinkStyle(.automaticOutline)
+                CronicaShortcutsLink()
 #else
                 Text(String(localized: "Open the Shortcuts app to browse Cronica actions and add them to Siri."))
 #endif
@@ -46,6 +45,27 @@ struct SiriSettingsView: View {
         .onAppear {
             SiriShortcutRefreshBridge.refreshIfAvailable()
         }
+    }
+}
+
+/// Apple’s `ShortcutsLink` always renders lowercase “shortcuts” with no title API.
+/// Keep its navigation behavior, show our own capitalized label on top.
+private struct CronicaShortcutsLink: View {
+    var body: some View {
+        ZStack {
+            Label(String(localized: "Shortcuts"), systemImage: "square.stack.3d.up.fill")
+                .font(.body.weight(.medium))
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .allowsHitTesting(false)
+
+            ShortcutsLink()
+                .shortcutsLinkStyle(.automaticOutline)
+                .opacity(0.02)
+        }
+        .accessibilityElement(children: .ignore)
+        .accessibilityAddTraits(.isButton)
+        .accessibilityLabel(String(localized: "Shortcuts"))
+        .accessibilityHint(String(localized: "Open the Shortcuts app to browse Cronica actions and add them to Siri."))
     }
 }
 #endif

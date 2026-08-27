@@ -2107,6 +2107,20 @@ def build_entry(translations: dict[str, str]) -> dict:
     return {"localizations": locs}
 
 
+# Xcode auto-extracts these from Info.plist into InfoPlist.xcstrings on every build.
+# Keep them marked non-translatable so they don't look like unfinished localization.
+INFO_PLIST_DO_NOT_TRANSLATE: dict[str, str] = {
+    "CFBundleDisplayName": "Cronica",
+    "CFBundleName": "Cronica",
+    "Chronica": "Chronica",
+    "chrono ca": "chrono ca",
+    "ItemContent": "ItemContent",
+    "trailerItem": "trailerItem",
+    "WatchlistItem": "WatchlistItem",
+    "Person": "Person",
+}
+
+
 def write_catalog(path: Path, entries: dict[str, dict[str, str]]) -> None:
     data = {
         "sourceLanguage": "en",
@@ -2114,6 +2128,26 @@ def write_catalog(path: Path, entries: dict[str, dict[str, str]]) -> None:
         "version": "1.0",
     }
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
+def write_info_plist_catalog() -> None:
+    strings: dict[str, dict] = {
+        key: build_entry(trans) for key, trans in INFO_PLIST_STRINGS.items()
+    }
+    for key, value in INFO_PLIST_DO_NOT_TRANSLATE.items():
+        strings[key] = {
+            "shouldTranslate": False,
+            "extractionState": "manual",
+            "localizations": {
+                "en": unit(value),
+            },
+        }
+    data = {
+        "sourceLanguage": "en",
+        "strings": strings,
+        "version": "1.0",
+    }
+    INFO_PLIST.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
 def merge_into_localizable(entries: dict[str, dict[str, str]]) -> int:
@@ -2136,7 +2170,7 @@ def merge_into_localizable(entries: dict[str, dict[str, str]]) -> int:
 
 def main() -> int:
     write_catalog(APP_SHORTCUTS, APP_SHORTCUT_PHRASES)
-    write_catalog(INFO_PLIST, INFO_PLIST_STRINGS)
+    write_info_plist_catalog()
 
     ui = {}
     ui.update(UI_STRINGS)
@@ -2150,7 +2184,10 @@ def main() -> int:
     updated = merge_into_localizable(ui)
 
     print(f"Wrote {APP_SHORTCUTS.relative_to(ROOT)} ({len(APP_SHORTCUT_PHRASES)} phrases)")
-    print(f"Wrote {INFO_PLIST.relative_to(ROOT)} ({len(INFO_PLIST_STRINGS)} keys)")
+    print(
+        f"Wrote {INFO_PLIST.relative_to(ROOT)} "
+        f"({len(INFO_PLIST_STRINGS)} translated, {len(INFO_PLIST_DO_NOT_TRANSLATE)} non-translatable)"
+    )
     print(f"Updated Localizable entries: {updated}")
     return 0
 
