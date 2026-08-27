@@ -5,7 +5,7 @@
 
 #if canImport(CoreSpotlight) && !os(watchOS) && !os(tvOS)
 import CoreData
-import CoreSpotlight
+@preconcurrency import CoreSpotlight
 import CronicaCore
 
 enum SpotlightIndexManager {
@@ -37,8 +37,7 @@ enum SpotlightIndexManager {
 
     @MainActor
     static func rebuildIndexIfNeeded(force: Bool = false) {
-        let defaults = UserDefaults.standard
-        let lastRebuild = defaults.object(forKey: lastFullRebuildKey) as? Date ?? .distantPast
+        let lastRebuild = UserDefaults.standard.object(forKey: lastFullRebuildKey) as? Date ?? .distantPast
         guard force || Date().timeIntervalSince(lastRebuild) > fullRebuildInterval else { return }
 
         let context = PersistenceController.shared.container.viewContext
@@ -52,7 +51,7 @@ enum SpotlightIndexManager {
                 if let error {
                     AppLogger.persistence.error("Spotlight rebuild failed: \(error.localizedDescription)")
                 } else {
-                    defaults.set(Date(), forKey: lastFullRebuildKey)
+                    UserDefaults.standard.set(Date(), forKey: lastFullRebuildKey)
                 }
             }
         }

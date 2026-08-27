@@ -32,7 +32,7 @@ enum AccentColorStorage {
 
 extension Color {
     init?(cronicaHex: String) {
-        var hex = cronicaHex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
+        let hex = cronicaHex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         guard hex.count == 6, let int = UInt64(hex, radix: 16) else { return nil }
         self.init(
             red: Double((int >> 16) & 0xFF) / 255,

@@ -7,19 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C0WATCHPROGRING0000004 /* WatchProgressRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WATCHPROGRING0000001 /* WatchProgressRing.swift */; };
-		C0NSFWKW000000000002 /* NSFWKeywords.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0NSFWKW000000000001 /* NSFWKeywords.swift */; };
-		C0NSFWKW000000000003 /* NSFWKeywords.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0NSFWKW000000000001 /* NSFWKeywords.swift */; };
-		C0WATCHPROGRING0000002 /* WatchProgressRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WATCHPROGRING0000001 /* WatchProgressRing.swift */; };
-		C0HIDEWATCHBTN00000002 /* HideFromWatchlistButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0HIDEWATCHBTN00000001 /* HideFromWatchlistButton.swift */; };
-		C0HIDEWATCHBTN00000003 /* HideFromWatchlistButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0HIDEWATCHBTN00000001 /* HideFromWatchlistButton.swift */; };
-		C0WATCHSTATSVIEW00002 /* WatchStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WATCHSTATSVIEW00001 /* WatchStatisticsView.swift */; };
-		C0WATCHSTATSHELP00002 /* WatchStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WATCHSTATSHELP00001 /* WatchStatistics.swift */; };
-		C0WATCHSTATSHELP00003 /* WatchStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WATCHSTATSHELP00001 /* WatchStatistics.swift */; };
-		C0WATCHBATCHEDIT00002 /* WatchlistBatchEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WATCHBATCHEDIT00001 /* WatchlistBatchEditView.swift */; };
-		C0HOMECUSTVIEW0000002 /* HomeCustomizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0HOMECUSTVIEW0000001 /* HomeCustomizerView.swift */; };
-		C0HOMESECSTORE00000002 /* HomeSectionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0HOMESECSTORE00000001 /* HomeSectionStore.swift */; };
-		C0HOMESECKIND000000002 /* HomeSectionKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0HOMESECKIND000000001 /* HomeSectionKind.swift */; };
+		1053847DAC5346CBA1498E0C /* MuteNotificationsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2DA843FC344EF2B8F8D0A2 /* MuteNotificationsButton.swift */; };
+		8E52BB2210E84E05A27D0D62 /* MuteNotificationsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2DA843FC344EF2B8F8D0A2 /* MuteNotificationsButton.swift */; };
 		B801070829F24499008A4551 /* ItemContentCustomListSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A2C88029CA6ED100FDBB33 /* ItemContentCustomListSelector.swift */; };
 		B801070929F244DE008A4551 /* NewCustomListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B812C7B3299480620096E806 /* NewCustomListView.swift */; };
 		B801070D29F255F3008A4551 /* DefaultListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B801070C29F255F3008A4551 /* DefaultListView.swift */; };
@@ -43,6 +32,8 @@
 		B8110EE8279245D100844FEB /* CronicaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8110ED8279245D000844FEB /* CronicaApp.swift */; };
 		B8110EEA279245D100844FEB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8110ED9279245D000844FEB /* ContentView.swift */; };
 		B8110EEC279245D100844FEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8110EDA279245D100844FEB /* Assets.xcassets */; };
+		CF7CE3183040DCCF00F3964B /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = CF7CE3183040DCCF00F3964A /* AppIcon.icon */; };
+		CF7CE3183040DCCF00F3964C /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = CF7CE3183040DCCF00F3964A /* AppIcon.icon */; };
 		B812529828A407120062B0C9 /* DefaultListTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B812529728A407120062B0C9 /* DefaultListTypes.swift */; };
 		B812C7B4299480620096E806 /* NewCustomListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B812C7B3299480620096E806 /* NewCustomListView.swift */; };
 		B812C7B62996C2DB0096E806 /* SelectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B812C7B52996C2DB0096E806 /* SelectListView.swift */; };
@@ -53,8 +44,6 @@
 		B8152EC42B716E550032836A /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88789D129F8A44C00680FD3 /* RatingView.swift */; };
 		B8152EC62B718F9A0032836A /* WatchlistSortOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8152EC52B718F9A0032836A /* WatchlistSortOrder.swift */; };
 		B8152EC72B718FA60032836A /* WatchlistSortOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8152EC52B718F9A0032836A /* WatchlistSortOrder.swift */; };
-		C0UPNEXTSORT000000000002 /* UpNextSortOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0UPNEXTSORT000000000001 /* UpNextSortOrder.swift */; };
-		C0UPNEXTSORT000000000003 /* UpNextSortOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0UPNEXTSORT000000000001 /* UpNextSortOrder.swift */; };
 		B818483729C286C300650763 /* UserDefaults-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B818483629C286C300650763 /* UserDefaults-Extensions.swift */; };
 		B818483829C286C300650763 /* UserDefaults-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B818483629C286C300650763 /* UserDefaults-Extensions.swift */; };
 		B81941892A081B840057DA04 /* HorizontalWatchlistList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81941882A081B840057DA04 /* HorizontalWatchlistList.swift */; };
@@ -75,11 +64,6 @@
 		B81941C62A0861C80057DA04 /* PinButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81941BE2A0861C70057DA04 /* PinButton.swift */; };
 		B81941C72A0861C80057DA04 /* WatchedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81941BF2A0861C80057DA04 /* WatchedButton.swift */; };
 		B81941C82A0861C80057DA04 /* ArchiveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81941C02A0861C80057DA04 /* ArchiveButton.swift */; };
-		1053847DAC5346CBA1498E0C /* MuteNotificationsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2DA843FC344EF2B8F8D0A2 /* MuteNotificationsButton.swift */; };
-		8E52BB2210E84E05A27D0D62 /* MuteNotificationsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2DA843FC344EF2B8F8D0A2 /* MuteNotificationsButton.swift */; };
-		D881F08A8D584E998F39E43A /* HideFromUpNextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29764BB1EA6843FEBC04BC32 /* HideFromUpNextButton.swift */; };
-		E2D5308DD9924C62B277E58C /* HideFromUpNextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29764BB1EA6843FEBC04BC32 /* HideFromUpNextButton.swift */; };
-		C9A3356771B9412783A78C42 /* WhatsNewYearListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACFB154E98E46D29714A42A /* WhatsNewYearListView.swift */; };
 		B81941C92A0861C80057DA04 /* WatchEpisodeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81941C12A0861C80057DA04 /* WatchEpisodeButton.swift */; };
 		B81941CA2A0861D70057DA04 /* WatchedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81941BF2A0861C80057DA04 /* WatchedButton.swift */; };
 		B81941CB2A0861D70057DA04 /* PinButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81941BE2A0861C70057DA04 /* PinButton.swift */; };
@@ -145,8 +129,6 @@
 		B84C53FD27B1F1DD00425524 /* WatchlistItemRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84C53FC27B1F1DD00425524 /* WatchlistItemRowView.swift */; };
 		B85C65AC27A6307C0080121E /* PersonDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85C65AB27A6307C0080121E /* PersonDetailsView.swift */; };
 		B86670B92B600CAE00CBA595 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B86670B82B600CAE00CBA595 /* Localizable.xcstrings */; };
-		C0APPSHORTCUTS00000002 /* AppShortcuts.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = C0APPSHORTCUTS00000001 /* AppShortcuts.xcstrings */; };
-		C0INFOPLISTSTR00000002 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = C0INFOPLISTSTR00000001 /* InfoPlist.xcstrings */; };
 		B86A3A8B2B509C8200BDE432 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = B86A3A8A2B509C8200BDE432 /* Nuke */; };
 		B86A3A8D2B509C8200BDE432 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = B86A3A8C2B509C8200BDE432 /* NukeUI */; };
 		B86A3A902B509C9B00BDE432 /* Pow in Frameworks */ = {isa = PBXBuildFile; platformFilters = (ios, macos, xros, ); productRef = B86A3A8F2B509C9B00BDE432 /* Pow */; };
@@ -167,7 +149,6 @@
 		B876DE5C281B2B04005558DD /* Screens.swift in Sources */ = {isa = PBXBuildFile; fileRef = B876DE5B281B2B04005558DD /* Screens.swift */; };
 		B8779375281E2CE700174F32 /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8779374281E2CE700174F32 /* ExploreView.swift */; };
 		B8779377281E319D00174F32 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8779376281E319D00174F32 /* TabBarView.swift */; };
-		C1TABRESEL000000000002 /* TabBarReselectDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1TABRESEL000000000001 /* TabBarReselectDetector.swift */; };
 		B878E83527BC85BC0021A981 /* WatchlistItem-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B878E83427BC85BC0021A981 /* WatchlistItem-Extension.swift */; };
 		B879B70228B12201005EADCE /* TrailerItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B879B70128B12201005EADCE /* TrailerItemView.swift */; };
 		B87B5CCC27999C5700632648 /* content.json in Resources */ = {isa = PBXBuildFile; fileRef = B87B5CCB27999C5700632648 /* content.json */; };
@@ -195,7 +176,6 @@
 		B890C57927FC999F006BE5E1 /* HeroImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B890C57827FC999F006BE5E1 /* HeroImage.swift */; };
 		B890C57B27FCB54D006BE5E1 /* TrailerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B890C57A27FCB54D006BE5E1 /* TrailerListView.swift */; };
 		B890C58527FE4442006BE5E1 /* Episode-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B890C58427FE4442006BE5E1 /* Episode-Extension.swift */; };
-		C0PEOPLELISTDEST00002 /* PeopleListDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0PEOPLELISTDEST00001 /* PeopleListDestination.swift */; };
 		B89429C9297C94CD0029646F /* DetailedPeopleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89429C8297C94CD0029646F /* DetailedPeopleList.swift */; };
 		B89429CC297E076E0029646F /* SupportEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89429CB297E076E0029646F /* SupportEmail.swift */; };
 		B89446BF294FDACA008974BA /* AppThemeColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89446BE294FDACA008974BA /* AppThemeColors.swift */; };
@@ -214,8 +194,6 @@
 		B8ADAF6A282AFC1B001D72EF /* EpisodeFrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8ADAF69282AFC1B001D72EF /* EpisodeFrameView.swift */; };
 		B8ADAF6F282C42B3001D72EF /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8ADAF6E282C42B3001D72EF /* SettingsStore.swift */; };
 		B8B271A627A5A18C00F6463F /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B271A527A5A18C00F6463F /* PersistenceController.swift */; };
-		C0HISTMERGEBUILD000001 /* PersistentHistoryMerger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0HISTMERGEFILE0000001 /* PersistentHistoryMerger.swift */; };
-		C0HISTMERGEBUILD000002 /* PersistentHistoryMerger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0HISTMERGEFILE0000001 /* PersistentHistoryMerger.swift */; };
 		B8B2F6A32A85D34000FF0246 /* KeywordSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B2F6A22A85D34000FF0246 /* KeywordSectionView.swift */; };
 		B8B2F6A62A85D39000FF0246 /* TrendingKeywordsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B2F6A52A85D39000FF0246 /* TrendingKeywordsListView.swift */; };
 		B8B2F6B42A85DBFD00FF0246 /* ItemContentSearchRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B2F6B32A85DBFD00FF0246 /* ItemContentSearchRowView.swift */; };
@@ -250,58 +228,6 @@
 		B8D7AEAC28B95F5E0053CE5A /* CronicaWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D7AEAB28B95F5E0053CE5A /* CronicaWidget.swift */; };
 		B8D7AEAE28B95F5F0053CE5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8D7AEAD28B95F5F0053CE5A /* Assets.xcassets */; };
 		B8D7AEB228B95F5F0053CE5A /* Cronica Widget Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B8D7AEA728B95F5D0053CE5A /* Cronica Widget Extension.appex */; platformFilters = (ios, macos, ); settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		C0SHAREEXTEMBED00000001 /* Cronica Share Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = C0SHAREEXTPRODUCT000001 /* Cronica Share Extension.appex */; platformFilters = (ios, ); settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		C0SHAREWIDGETKIT0000001 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8AD442F284AD42300778275 /* WidgetKit.framework */; };
-		C0SHAREVC000000000000002 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SHAREVC000000000000001 /* ShareViewController.swift */; };
-		C0SHAREVIEW0000000000002 /* ShareExtensionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SHAREVIEW0000000000001 /* ShareExtensionView.swift */; };
-		C0WATCHADDSVC0000000002 /* WatchlistAddService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WATCHADDSVC0000000001 /* WatchlistAddService.swift */; };
-		C0WATCHADDSVC0000000003 /* WatchlistAddService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WATCHADDSVC0000000001 /* WatchlistAddService.swift */; };
-		C0SHAREPERSIST0000000001 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B271A527A5A18C00F6463F /* PersistenceController.swift */; };
-		C0SHAREPERSISTSHARE0001 /* PersistenceController-WatchlistItem+ShareExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SHAREPERSISTSHARE002 /* PersistenceController-WatchlistItem+ShareExtension.swift */; };
-		C0SHARECOREDATA0000001 /* Watchlist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B8E6D64027B6B106002E7A63 /* Watchlist.xcdatamodeld */; };
-		C0SHAREWLCLASS00000001 /* WatchlistItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81DD92429BD149D009F73F3 /* WatchlistItem+CoreDataClass.swift */; };
-		C0SHAREWLPROPS00000001 /* WatchlistItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81DD92529BD149D009F73F3 /* WatchlistItem+CoreDataProperties.swift */; };
-		C0SHARECLCLASS00000001 /* CustomList+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81DD93229BD14EE009F73F3 /* CustomList+CoreDataClass.swift */; };
-		C0SHARECLPROPS00000001 /* CustomList+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81DD93329BD14EE009F73F3 /* CustomList+CoreDataProperties.swift */; };
-		C0SHAREWATCHADD0000001 /* WatchlistAddService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WATCHADDSVC0000000001 /* WatchlistAddService.swift */; };
-		C0WIDGETPUB00000000002 /* WidgetSnapshotPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WIDGETPUB00000000001 /* WidgetSnapshotPublisher.swift */; };
-		C0WIDGETBRIDGE000000002 /* WidgetSnapshotPublisherBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WIDGETBRIDGE000000001 /* WidgetSnapshotPublisherBridge.swift */; };
-		C0WIDGETBRIDGE000000003 /* WidgetSnapshotPublisherBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WIDGETBRIDGE000000001 /* WidgetSnapshotPublisherBridge.swift */; };
-		C0WATCHSESS00000000002 /* WatchingSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WATCHSESS00000000001 /* WatchingSessionManager.swift */; };
-		C0WATCHATTR00000000002 /* WatchingActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WATCHATTR00000000001 /* WatchingActivityAttributes.swift */; };
-		C0WATCHATTR00000000003 /* WatchingActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WATCHATTR00000000001 /* WatchingActivityAttributes.swift */; };
-		C0TRACKLOCK00000000002 /* TrackOnLockScreenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0TRACKLOCK00000000001 /* TrackOnLockScreenButton.swift */; };
-		C0TRENDWIDGET000000002 /* CronicaTrendingWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0TRENDWIDGET000000001 /* CronicaTrendingWidget.swift */; };
-		C0UPNEXTWIDGET000000002 /* CronicaUpNextWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0UPNEXTWIDGET000000001 /* CronicaUpNextWidget.swift */; };
-		C0WATCHLWIDGET000000002 /* CronicaWatchlistWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WATCHLWIDGET000000001 /* CronicaWatchlistWidget.swift */; };
-		C0LIVEACTIVITY000000002 /* WatchingLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0LIVEACTIVITY000000001 /* WatchingLiveActivity.swift */; };
-		C0WIDGETSNAPVIEW000002 /* WidgetSnapshotViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WIDGETSNAPVIEW000001 /* WidgetSnapshotViews.swift */; };
-		C0SIRISVC000000000002 /* SiriIntentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIRISVC000000000001 /* SiriIntentService.swift */; };
-		C0INTENTENT0000000002 /* CronicaAppEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0INTENTENT0000000001 /* CronicaAppEntities.swift */; };
-		C0INTENTAPP0000000002 /* CronicaAppIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0INTENTAPP0000000001 /* CronicaAppIntents.swift */; };
-		C0EXTINTENT0000000002 /* ExtensionAppIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EXTINTENT0000000001 /* ExtensionAppIntents.swift */; };
-		C0EXTINTENT0000000003 /* ExtensionAppIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EXTINTENT0000000001 /* ExtensionAppIntents.swift */; };
-		C0ENTPOSTER0000000002 /* EntityPosterImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ENTPOSTER0000000001 /* EntityPosterImage.swift */; };
-		C0UPNEXTMARK000000002 /* UpNextMarkActionRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0UPNEXTMARK000000001 /* UpNextMarkActionRunner.swift */; };
-		C0SPOTLIGHT0000000002 /* SpotlightIndexManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SPOTLIGHT0000000001 /* SpotlightIndexManager.swift */; };
-		C0REMINDERS0000000002 /* RemindersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0REMINDERS0000000001 /* RemindersManager.swift */; };
-		C0ADDREMIND0000000002 /* AddToRemindersButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ADDREMIND0000000001 /* AddToRemindersButton.swift */; };
-		C0CRONCTRL0000000002 /* CronicaControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CRONCTRL0000000001 /* CronicaControls.swift */; };
-		C0SIRINAVBRIDGE00000003 /* SiriNavigationBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIRINAVBRIDGE00000001 /* SiriNavigationBridge.swift */; };
-		C0INTENTSHRT000000002 /* CronicaAppShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0INTENTSHRT000000001 /* CronicaAppShortcuts.swift */; };
-		C0SIRINAVBRIDGE00000002 /* SiriNavigationBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIRINAVBRIDGE00000001 /* SiriNavigationBridge.swift */; };
-		C0SIRISHORTCUT00000002 /* SiriShortcutRefreshBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIRISHORTCUT00000001 /* SiriShortcutRefreshBridge.swift */; };
-		C0SIRIDONATE0000000002 /* SiriIntentDonation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIRIDONATE0000000001 /* SiriIntentDonation.swift */; };
-		C0QUICKHOME0000000002 /* HomeScreenQuickAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0QUICKHOME0000000001 /* HomeScreenQuickAction.swift */; };
-		C0QUICKMGR00000000002 /* QuickActionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0QUICKMGR00000000001 /* QuickActionManager.swift */; };
-		C0QUICKCOORD00000000002 /* QuickActionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0QUICKCOORD00000000001 /* QuickActionCoordinator.swift */; };
-		C0QUICKDEBUG00000000002 /* QuickActionDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0QUICKDEBUG00000000001 /* QuickActionDebug.swift */; };
-		C0QUICKDEL00000000002 /* QuickActionAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0QUICKDEL00000000001 /* QuickActionAppDelegate.swift */; };
-		C0QUICKREF00000000002 /* QuickActionRefreshBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0QUICKREF00000000001 /* QuickActionRefreshBridge.swift */; };
-		C0APPNAVROUTE00000002 /* AppNavigationRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0APPNAVROUTE00000001 /* AppNavigationRoute.swift */; };
-		C0SIRISETVIEW000000002 /* SiriSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIRISETVIEW000000001 /* SiriSettingsView.swift */; };
-		CF267C9C303C3C65001DB342 /* CronicaCore in Frameworks */ = {isa = PBXBuildFile; productRef = C0CRONICACORE00000000005 /* CronicaCore */; };
-
 		B8D7AEE328BA64DF0053CE5A /* DataPlaceholder.json in Resources */ = {isa = PBXBuildFile; fileRef = B8D7AEE228BA64DF0053CE5A /* DataPlaceholder.json */; };
 		B8D8AF9227D4DB720042AEB6 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D8AF9127D4DB720042AEB6 /* SearchViewModel.swift */; };
 		B8DA5CC62B0E432200678592 /* UpNextMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DA5CC52B0E432200678592 /* UpNextMenuBar.swift */; };
@@ -311,7 +237,6 @@
 		B8E6D64227B6B106002E7A63 /* Watchlist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B8E6D64027B6B106002E7A63 /* Watchlist.xcdatamodeld */; };
 		B8E6EF672A044E5A000A3617 /* ContextMenuPreviewImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E6EF662A044E5A000A3617 /* ContextMenuPreviewImage.swift */; };
 		B8EC462F27D7AA99009389FC /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EC462E27D7AA99009389FC /* NotificationManager.swift */; };
-		C0FEATHOME000000000002 /* FeaturedHomeSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FEATHOME000000000001 /* FeaturedHomeSectionView.swift */; };
 		B8ED4C3D27B4B9680045C68F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8ED4C3C27B4B9680045C68F /* HomeView.swift */; };
 		B8EFB257281720E900F7CBD0 /* OverviewBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EFB256281720E900F7CBD0 /* OverviewBoxView.swift */; };
 		B8F253BB2BC8688A003F27E8 /* SeasonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F253BA2BC8688A003F27E8 /* SeasonDetailView.swift */; };
@@ -327,47 +252,6 @@
 		B8FB2A8229524C37006DAC8E /* WatchlistItemPosterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FB2A8129524C37006DAC8E /* WatchlistItemPosterView.swift */; };
 		B8FB2A8429524D6E006DAC8E /* View-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FB2A8329524D6E006DAC8E /* View-Extensions.swift */; };
 		B8FB2A8629524D9A006DAC8E /* View-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FB2A8329524D6E006DAC8E /* View-Extensions.swift */; };
-		C0OPENURLSYS000000000002 /* OpenURLAction+SystemSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0OPENURLSYS000000000001 /* OpenURLAction+SystemSettings.swift */; };
-		C0OPENURLSYS000000000003 /* OpenURLAction+SystemSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0OPENURLSYS000000000001 /* OpenURLAction+SystemSettings.swift */; };
-		C0COLORSTORAGE00000000002 /* Color+Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0COLORSTORAGE00000000001 /* Color+Storage.swift */; };
-		C0COLORSTORAGE00000000003 /* Color+Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0COLORSTORAGE00000000001 /* Color+Storage.swift */; };
-		C0USERDATA000000000002 /* UserDataDeletionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0USERDATA000000000001 /* UserDataDeletionService.swift */; };
-		C0USERDATA000000000003 /* UserDataDeletionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0USERDATA000000000001 /* UserDataDeletionService.swift */; };
-		C0DATAMGMT000000000002 /* DataManagementSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DATAMGMT000000000001 /* DataManagementSettingsView.swift */; };
-		C0SIMKLMODEL0000000002 /* SimklModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLMODEL0000000001 /* SimklModels.swift */; };
-		C0SIMKLMODEL0000000003 /* SimklModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLMODEL0000000001 /* SimklModels.swift */; };
-		C0SIMKLTOKEN0000000002 /* SimklTokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLTOKEN0000000001 /* SimklTokenStore.swift */; };
-		C0SIMKLTOKEN0000000003 /* SimklTokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLTOKEN0000000001 /* SimklTokenStore.swift */; };
-		C0TMDBREVUI00000000002 /* TMDBReviewsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0TMDBREVUI00000000001 /* TMDBReviewsSection.swift */; };
-		C0ITEMHERO000000000002 /* ItemContentHeroHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ITEMHERO000000000001 /* ItemContentHeroHeader.swift */; };
-		C0SIMKLAPI000000000002 /* SimklAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLAPI000000000001 /* SimklAPIClient.swift */; };
-		C0SIMKLAUTH00000000002 /* SimklAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLAUTH00000000001 /* SimklAuthService.swift */; };
-		C0SIMKLIMP000000000002 /* SimklImportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLIMP000000000001 /* SimklImportService.swift */; };
-		C0SIMKLMAP000000000002 /* SimklImportMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLMAP000000000001 /* SimklImportMapper.swift */; };
-		C0SIMKLVIEW00000000002 /* SimklSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLVIEW00000000001 /* SimklSettingsView.swift */; };
-		C0INTEGVIEW00000000002 /* IntegrationsSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */; };
-		C0SIMKLSYNC0000000002 /* SimklSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLSYNC0000000001 /* SimklSyncService.swift */; };
-		C0SIMKLACCT0000000002 /* SimklAccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLACCT0000000001 /* SimklAccountService.swift */; };
-		C0SIMKLPUSH0000000002 /* SimklPushService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLPUSH0000000001 /* SimklPushService.swift */; };
-		C0SIMKLKNOWN000000002 /* SimklKnownItemsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLKNOWN000000001 /* SimklKnownItemsStore.swift */; };
-		C0LIBMOD000000000002 /* LibraryImportModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0LIBMOD000000000001 /* LibraryImportModels.swift */; };
-		C0LIBSVC000000000002 /* LibraryImportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0LIBSVC000000000001 /* LibraryImportService.swift */; };
-		C0LIBSESS00000000002 /* TMDBSessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0LIBSESS00000000001 /* TMDBSessionStore.swift */; };
-		C0LIBAPI000000000002 /* TMDBAccountAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0LIBAPI000000000001 /* TMDBAccountAPIClient.swift */; };
-		C0LIBAUTH00000000002 /* TMDBAccountAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0LIBAUTH00000000001 /* TMDBAccountAuthService.swift */; };
-		C0LIBTMDB00000000002 /* TMDBAccountImportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0LIBTMDB00000000001 /* TMDBAccountImportService.swift */; };
-		C0LIBVIEWTM000000002 /* TMDBAccountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0LIBVIEWTM000000001 /* TMDBAccountSettingsView.swift */; };
-		C0TMDBSYNC00000000002 /* TMDBSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0TMDBSYNC00000000001 /* TMDBSyncService.swift */; };
-		C0TMDBPUSH00000000002 /* TMDBPushService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0TMDBPUSH00000000001 /* TMDBPushService.swift */; };
-		C0INTREMOTE0000000002 /* IntegrationRemoteApply.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0INTREMOTE0000000001 /* IntegrationRemoteApply.swift */; };
-		C0TMDBCACHE0000000002 /* TMDBAccountListCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0TMDBCACHE0000000001 /* TMDBAccountListCache.swift */; };
-		C0SIMKLKNOWN000000003 /* SimklKnownItemsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLKNOWN000000001 /* SimklKnownItemsStore.swift */; };
-		C0WLBACKUP000000000002 /* WatchlistItemBackup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WLBACKUP000000000001 /* WatchlistItemBackup.swift */; };
-		C0WLBACKUP000000000003 /* WatchlistItemBackup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WLBACKUP000000000001 /* WatchlistItemBackup.swift */; };
-		C0CALMGR000000000002 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CALMGR000000000001 /* CalendarManager.swift */; };
-		C0CALMGR000000000003 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CALMGR000000000001 /* CalendarManager.swift */; };
-		C0RELCV000000000002 /* ReleaseCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0RELCV000000000001 /* ReleaseCalendarView.swift */; };
-		C0RELCROUTE000000002 /* ReleaseCalendarRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0RELCROUTE000000001 /* ReleaseCalendarRoute.swift */; };
 		B8FB2A8929524FAD006DAC8E /* WatchlistPosterSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FB2A8829524FAD006DAC8E /* WatchlistPosterSection.swift */; };
 		B8FB2A8B2952606A006DAC8E /* AppThemeColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89446BE294FDACA008974BA /* AppThemeColors.swift */; };
 		B8FB2A8E29526341006DAC8E /* BehaviorSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FB2A8D29526341006DAC8E /* BehaviorSetting.swift */; };
@@ -380,37 +264,154 @@
 		B8FCAE982AEDA38E00F688FE /* SeasonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FF4DBA27F91A4900C7DE9F /* SeasonListView.swift */; };
 		B8FF4DBB27F91A4900C7DE9F /* SeasonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FF4DBA27F91A4900C7DE9F /* SeasonListView.swift */; };
 		B8FF4DBF27FA511A00C7DE9F /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FF4DBE27FA511A00C7DE9F /* TitleView.swift */; };
+		C0ADDREMIND0000000002 /* AddToRemindersButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ADDREMIND0000000001 /* AddToRemindersButton.swift */; };
 		C0APPCONTENTREGION00002 /* AppContentRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84457D22973987E009CB21F /* AppContentRegion.swift */; };
 		C0APPCONTENTREGIONW0002 /* AppContentRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84457D22973987E009CB21F /* AppContentRegion.swift */; };
+		C0APPNAVROUTE00000002 /* AppNavigationRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0APPNAVROUTE00000001 /* AppNavigationRoute.swift */; };
+		C0APPSHORTCUTS00000002 /* AppShortcuts.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = C0APPSHORTCUTS00000001 /* AppShortcuts.xcstrings */; };
 		C0APPWEBSITE000000000002 /* AppWebsite.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0APPWEBSITE000000000001 /* AppWebsite.swift */; };
 		C0APPWEBSITEWATCH00000002 /* AppWebsite.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0APPWEBSITE000000000001 /* AppWebsite.swift */; };
 		C0ATTRIBUTIONVIEW000002 /* AttributionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D8AF8E27D4D0550042AEB6 /* AttributionView.swift */; };
 		C0ATTRIBUTIONVIEWW00002 /* AttributionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D8AF8E27D4D0550042AEB6 /* AttributionView.swift */; };
+		C0CALMGR000000000002 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CALMGR000000000001 /* CalendarManager.swift */; };
+		C0CALMGR000000000003 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CALMGR000000000001 /* CalendarManager.swift */; };
+		C0COLORSTORAGE00000000002 /* Color+Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0COLORSTORAGE00000000001 /* Color+Storage.swift */; };
+		C0COLORSTORAGE00000000003 /* Color+Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0COLORSTORAGE00000000001 /* Color+Storage.swift */; };
 		C0COREIMPORT000000000002 /* CronicaCoreImport.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0COREIMPORT000000000001 /* CronicaCoreImport.swift */; };
 		C0COREIMPORTWATCH000000002 /* CronicaCoreImport.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0COREIMPORT000000000001 /* CronicaCoreImport.swift */; };
+		C0CRONCTRL0000000002 /* CronicaControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CRONCTRL0000000001 /* CronicaControls.swift */; };
+		C0DATAMGMT000000000002 /* DataManagementSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DATAMGMT000000000001 /* DataManagementSettingsView.swift */; };
+		C0ENTPOSTER0000000002 /* EntityPosterImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ENTPOSTER0000000001 /* EntityPosterImage.swift */; };
+		C0EXTINTENT0000000002 /* ExtensionAppIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EXTINTENT0000000001 /* ExtensionAppIntents.swift */; };
+		C0EXTINTENT0000000003 /* ExtensionAppIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EXTINTENT0000000001 /* ExtensionAppIntents.swift */; };
+		C0FEATHOME000000000002 /* FeaturedHomeSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FEATHOME000000000001 /* FeaturedHomeSectionView.swift */; };
+		C0HIDEWATCHBTN00000002 /* HideFromWatchlistButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0HIDEWATCHBTN00000001 /* HideFromWatchlistButton.swift */; };
+		C0HIDEWATCHBTN00000003 /* HideFromWatchlistButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0HIDEWATCHBTN00000001 /* HideFromWatchlistButton.swift */; };
+		C0HISTMERGEBUILD000001 /* PersistentHistoryMerger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0HISTMERGEFILE0000001 /* PersistentHistoryMerger.swift */; };
+		C0HISTMERGEBUILD000002 /* PersistentHistoryMerger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0HISTMERGEFILE0000001 /* PersistentHistoryMerger.swift */; };
+		C0HOMECUSTVIEW0000002 /* HomeCustomizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0HOMECUSTVIEW0000001 /* HomeCustomizerView.swift */; };
+		C0HOMESECKIND000000002 /* HomeSectionKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0HOMESECKIND000000001 /* HomeSectionKind.swift */; };
+		C0HOMESECSTORE00000002 /* HomeSectionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0HOMESECSTORE00000001 /* HomeSectionStore.swift */; };
+		C0INFOPLISTSTR00000002 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = C0INFOPLISTSTR00000001 /* InfoPlist.xcstrings */; };
+		C0INTEGVIEW00000000002 /* IntegrationsSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */; };
+		C0INTENTAPP0000000002 /* CronicaAppIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0INTENTAPP0000000001 /* CronicaAppIntents.swift */; };
+		C0INTENTENT0000000002 /* CronicaAppEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0INTENTENT0000000001 /* CronicaAppEntities.swift */; };
+		C0INTENTSHRT000000002 /* CronicaAppShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0INTENTSHRT000000001 /* CronicaAppShortcuts.swift */; };
+		C0INTREMOTE0000000002 /* IntegrationRemoteApply.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0INTREMOTE0000000001 /* IntegrationRemoteApply.swift */; };
 		C0INTTEST00000000000002 /* CronicaIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0INTTEST00000000000001 /* CronicaIntegrationTests.swift */; };
+		C0ITEMHERO000000000002 /* ItemContentHeroHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ITEMHERO000000000001 /* ItemContentHeroHeader.swift */; };
 		C0ITEMSECTION00000000002 /* ItemContentSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ITEMSECTION00000000001 /* ItemContentSection.swift */; };
 		C0ITEMSECTIONWATCH000002 /* ItemContentSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ITEMSECTION00000000001 /* ItemContentSection.swift */; };
+		C0LIBAPI000000000002 /* TMDBAccountAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0LIBAPI000000000001 /* TMDBAccountAPIClient.swift */; };
+		C0LIBAUTH00000000002 /* TMDBAccountAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0LIBAUTH00000000001 /* TMDBAccountAuthService.swift */; };
+		C0LIBMOD000000000002 /* LibraryImportModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0LIBMOD000000000001 /* LibraryImportModels.swift */; };
+		C0LIBSESS00000000002 /* TMDBSessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0LIBSESS00000000001 /* TMDBSessionStore.swift */; };
+		C0LIBSVC000000000002 /* LibraryImportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0LIBSVC000000000001 /* LibraryImportService.swift */; };
+		C0LIBTMDB00000000002 /* TMDBAccountImportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0LIBTMDB00000000001 /* TMDBAccountImportService.swift */; };
+		C0LIBVIEWTM000000002 /* TMDBAccountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0LIBVIEWTM000000001 /* TMDBAccountSettingsView.swift */; };
+		C0LIVEACTIVITY000000002 /* WatchingLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0LIVEACTIVITY000000001 /* WatchingLiveActivity.swift */; };
+		C0NSFWKW000000000002 /* NSFWKeywords.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0NSFWKW000000000001 /* NSFWKeywords.swift */; };
+		C0NSFWKW000000000003 /* NSFWKeywords.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0NSFWKW000000000001 /* NSFWKeywords.swift */; };
+		C0OPENURLSYS000000000002 /* OpenURLAction+SystemSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0OPENURLSYS000000000001 /* OpenURLAction+SystemSettings.swift */; };
+		C0OPENURLSYS000000000003 /* OpenURLAction+SystemSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0OPENURLSYS000000000001 /* OpenURLAction+SystemSettings.swift */; };
+		C0PEOPLELISTDEST00002 /* PeopleListDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0PEOPLELISTDEST00001 /* PeopleListDestination.swift */; };
+		C0QUICKCOORD00000000002 /* QuickActionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0QUICKCOORD00000000001 /* QuickActionCoordinator.swift */; };
+		C0QUICKDEBUG00000000002 /* QuickActionDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0QUICKDEBUG00000000001 /* QuickActionDebug.swift */; };
+		C0QUICKDEL00000000002 /* QuickActionAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0QUICKDEL00000000001 /* QuickActionAppDelegate.swift */; };
+		C0QUICKHOME0000000002 /* HomeScreenQuickAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0QUICKHOME0000000001 /* HomeScreenQuickAction.swift */; };
+		C0QUICKMGR00000000002 /* QuickActionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0QUICKMGR00000000001 /* QuickActionManager.swift */; };
+		C0QUICKREF00000000002 /* QuickActionRefreshBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0QUICKREF00000000001 /* QuickActionRefreshBridge.swift */; };
+		C0RELCROUTE000000002 /* ReleaseCalendarRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0RELCROUTE000000001 /* ReleaseCalendarRoute.swift */; };
+		C0RELCV000000000002 /* ReleaseCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0RELCV000000000001 /* ReleaseCalendarView.swift */; };
+		C0REMINDERS0000000002 /* RemindersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0REMINDERS0000000001 /* RemindersManager.swift */; };
 		C0SEARCHITEMEXT00000002 /* SearchItemContent-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B2F6AB2A85D57400FF0246 /* SearchItemContent-Extension.swift */; };
 		C0SEARCHITEMEXTWATCH0002 /* SearchItemContent-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B2F6AB2A85D57400FF0246 /* SearchItemContent-Extension.swift */; };
 		C0SENTRYMGR000000000002 /* SentryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SENTRYMGR000000000001 /* SentryManager.swift */; };
+		C0SHARECLCLASS00000001 /* CustomList+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81DD93229BD14EE009F73F3 /* CustomList+CoreDataClass.swift */; };
+		C0SHARECLPROPS00000001 /* CustomList+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81DD93329BD14EE009F73F3 /* CustomList+CoreDataProperties.swift */; };
+		C0SHARECOREDATA0000001 /* Watchlist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B8E6D64027B6B106002E7A63 /* Watchlist.xcdatamodeld */; };
+		C0SHAREEXTEMBED00000001 /* Cronica Share Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = C0SHAREEXTPRODUCT000001 /* Cronica Share Extension.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C0SHAREPERSIST0000000001 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B271A527A5A18C00F6463F /* PersistenceController.swift */; };
+		C0SHAREPERSISTSHARE0001 /* PersistenceController-WatchlistItem+ShareExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SHAREPERSISTSHARE002 /* PersistenceController-WatchlistItem+ShareExtension.swift */; };
+		C0SHAREVC000000000000002 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SHAREVC000000000000001 /* ShareViewController.swift */; };
+		C0SHAREVIEW0000000000002 /* ShareExtensionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SHAREVIEW0000000000001 /* ShareExtensionView.swift */; };
+		C0SHAREWATCHADD0000001 /* WatchlistAddService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WATCHADDSVC0000000001 /* WatchlistAddService.swift */; };
+		C0SHAREWIDGETKIT0000001 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8AD442F284AD42300778275 /* WidgetKit.framework */; };
+		C0SHAREWLCLASS00000001 /* WatchlistItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81DD92429BD149D009F73F3 /* WatchlistItem+CoreDataClass.swift */; };
+		C0SHAREWLPROPS00000001 /* WatchlistItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81DD92529BD149D009F73F3 /* WatchlistItem+CoreDataProperties.swift */; };
+		C0SIMKLACCT0000000002 /* SimklAccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLACCT0000000001 /* SimklAccountService.swift */; };
+		C0SIMKLAPI000000000002 /* SimklAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLAPI000000000001 /* SimklAPIClient.swift */; };
+		C0SIMKLAUTH00000000002 /* SimklAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLAUTH00000000001 /* SimklAuthService.swift */; };
+		C0SIMKLIMP000000000002 /* SimklImportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLIMP000000000001 /* SimklImportService.swift */; };
+		C0SIMKLKNOWN000000002 /* SimklKnownItemsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLKNOWN000000001 /* SimklKnownItemsStore.swift */; };
+		C0SIMKLKNOWN000000003 /* SimklKnownItemsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLKNOWN000000001 /* SimklKnownItemsStore.swift */; };
+		C0SIMKLMAP000000000002 /* SimklImportMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLMAP000000000001 /* SimklImportMapper.swift */; };
+		C0SIMKLMODEL0000000002 /* SimklModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLMODEL0000000001 /* SimklModels.swift */; };
+		C0SIMKLMODEL0000000003 /* SimklModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLMODEL0000000001 /* SimklModels.swift */; };
+		C0SIMKLPUSH0000000002 /* SimklPushService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLPUSH0000000001 /* SimklPushService.swift */; };
+		C0SIMKLSYNC0000000002 /* SimklSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLSYNC0000000001 /* SimklSyncService.swift */; };
+		C0SIMKLTOKEN0000000002 /* SimklTokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLTOKEN0000000001 /* SimklTokenStore.swift */; };
+		C0SIMKLTOKEN0000000003 /* SimklTokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLTOKEN0000000001 /* SimklTokenStore.swift */; };
+		C0SIMKLVIEW00000000002 /* SimklSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIMKLVIEW00000000001 /* SimklSettingsView.swift */; };
+		C0SIRIDONATE0000000002 /* SiriIntentDonation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIRIDONATE0000000001 /* SiriIntentDonation.swift */; };
+		C0SIRINAVBRIDGE00000002 /* SiriNavigationBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIRINAVBRIDGE00000001 /* SiriNavigationBridge.swift */; };
+		C0SIRINAVBRIDGE00000003 /* SiriNavigationBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIRINAVBRIDGE00000001 /* SiriNavigationBridge.swift */; };
+		C0SIRISETVIEW000000002 /* SiriSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIRISETVIEW000000001 /* SiriSettingsView.swift */; };
+		C0SIRISHORTCUT00000002 /* SiriShortcutRefreshBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIRISHORTCUT00000001 /* SiriShortcutRefreshBridge.swift */; };
+		C0SIRISVC000000000002 /* SiriIntentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIRISVC000000000001 /* SiriIntentService.swift */; };
+		C0SPOTLIGHT0000000002 /* SpotlightIndexManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SPOTLIGHT0000000001 /* SpotlightIndexManager.swift */; };
+		C0TMDBCACHE0000000002 /* TMDBAccountListCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0TMDBCACHE0000000001 /* TMDBAccountListCache.swift */; };
+		C0TMDBPUSH00000000002 /* TMDBPushService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0TMDBPUSH00000000001 /* TMDBPushService.swift */; };
+		C0TMDBREVUI00000000002 /* TMDBReviewsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0TMDBREVUI00000000001 /* TMDBReviewsSection.swift */; };
+		C0TMDBSYNC00000000002 /* TMDBSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0TMDBSYNC00000000001 /* TMDBSyncService.swift */; };
+		C0TRACKLOCK00000000002 /* TrackOnLockScreenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0TRACKLOCK00000000001 /* TrackOnLockScreenButton.swift */; };
+		C0TRENDWIDGET000000002 /* CronicaTrendingWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0TRENDWIDGET000000001 /* CronicaTrendingWidget.swift */; };
 		C0UITESTBUILD00000000000002 /* CronicaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0UITESTFILE00000000000001 /* CronicaUITests.swift */; };
 		C0UITESTBUILD00000000000003 /* AppNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0UITESTFILE00000000000002 /* AppNavigator.swift */; };
 		C0UITESTBUILD00000000000004 /* HomeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0UITESTFILE00000000000003 /* HomeUITests.swift */; };
 		C0UITESTBUILD00000000000005 /* ItemContentDetailsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0UITESTFILE00000000000004 /* ItemContentDetailsUITests.swift */; };
 		C0UITESTBUILD00000000000006 /* SettingsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0UITESTFILE00000000000005 /* SettingsUITests.swift */; };
 		C0UITESTBUILD00000000000007 /* QuickActionNavigationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0UITESTFILE00000000000006 /* QuickActionNavigationUITests.swift */; };
+		C0UPNEXTMARK000000002 /* UpNextMarkActionRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0UPNEXTMARK000000001 /* UpNextMarkActionRunner.swift */; };
+		C0UPNEXTSORT000000000002 /* UpNextSortOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0UPNEXTSORT000000000001 /* UpNextSortOrder.swift */; };
+		C0UPNEXTSORT000000000003 /* UpNextSortOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0UPNEXTSORT000000000001 /* UpNextSortOrder.swift */; };
+		C0UPNEXTWIDGET000000002 /* CronicaUpNextWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0UPNEXTWIDGET000000001 /* CronicaUpNextWidget.swift */; };
+		C0USERDATA000000000002 /* UserDataDeletionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0USERDATA000000000001 /* UserDataDeletionService.swift */; };
+		C0USERDATA000000000003 /* UserDataDeletionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0USERDATA000000000001 /* UserDataDeletionService.swift */; };
+		C0WATCHADDSVC0000000002 /* WatchlistAddService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WATCHADDSVC0000000001 /* WatchlistAddService.swift */; };
+		C0WATCHADDSVC0000000003 /* WatchlistAddService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WATCHADDSVC0000000001 /* WatchlistAddService.swift */; };
+		C0WATCHATTR00000000002 /* WatchingActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WATCHATTR00000000001 /* WatchingActivityAttributes.swift */; };
+		C0WATCHATTR00000000003 /* WatchingActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WATCHATTR00000000001 /* WatchingActivityAttributes.swift */; };
+		C0WATCHBATCHEDIT00002 /* WatchlistBatchEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WATCHBATCHEDIT00001 /* WatchlistBatchEditView.swift */; };
+		C0WATCHLWIDGET000000002 /* CronicaWatchlistWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WATCHLWIDGET000000001 /* CronicaWatchlistWidget.swift */; };
+		C0WATCHPROGRING0000002 /* WatchProgressRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WATCHPROGRING0000001 /* WatchProgressRing.swift */; };
+		C0WATCHPROGRING0000004 /* WatchProgressRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WATCHPROGRING0000001 /* WatchProgressRing.swift */; };
+		C0WATCHSESS00000000002 /* WatchingSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WATCHSESS00000000001 /* WatchingSessionManager.swift */; };
+		C0WATCHSTATSHELP00002 /* WatchStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WATCHSTATSHELP00001 /* WatchStatistics.swift */; };
+		C0WATCHSTATSHELP00003 /* WatchStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WATCHSTATSHELP00001 /* WatchStatistics.swift */; };
+		C0WATCHSTATSVIEW00002 /* WatchStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WATCHSTATSVIEW00001 /* WatchStatisticsView.swift */; };
+		C0WIDGETBRIDGE000000002 /* WidgetSnapshotPublisherBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WIDGETBRIDGE000000001 /* WidgetSnapshotPublisherBridge.swift */; };
+		C0WIDGETBRIDGE000000003 /* WidgetSnapshotPublisherBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WIDGETBRIDGE000000001 /* WidgetSnapshotPublisherBridge.swift */; };
+		C0WIDGETPUB00000000002 /* WidgetSnapshotPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WIDGETPUB00000000001 /* WidgetSnapshotPublisher.swift */; };
+		C0WIDGETSNAPVIEW000002 /* WidgetSnapshotViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WIDGETSNAPVIEW000001 /* WidgetSnapshotViews.swift */; };
+		C0WLBACKUP000000000002 /* WatchlistItemBackup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WLBACKUP000000000001 /* WatchlistItemBackup.swift */; };
+		C0WLBACKUP000000000003 /* WatchlistItemBackup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0WLBACKUP000000000001 /* WatchlistItemBackup.swift */; };
 		C1A1NAV128A9BD31003025B /* CronicaNavigationDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A1NAV028A9BD31003025B /* CronicaNavigationDestinations.swift */; };
 		C1EMP00228A9BD31003025C /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EMP00128A9BD31003025C /* EmptyListView.swift */; };
 		C1PAGE00228A9BD31003025D /* PaginationFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1PAGE00128A9BD31003025D /* PaginationFooter.swift */; };
+		C1SRCH00228A9BD31003025E /* SearchContentUnavailableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1SRCH00128A9BD31003025E /* SearchContentUnavailableView.swift */; };
+		C1TABRESEL000000000002 /* TabBarReselectDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1TABRESEL000000000001 /* TabBarReselectDetector.swift */; };
 		C1WPSTOVLY128A9BD31000002 /* WatchlistPosterStatusOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1WPSTOVLY128A9BD31000001 /* WatchlistPosterStatusOverlay.swift */; };
 		C1WPSTOVLY128A9BD31000003 /* WatchlistPosterStatusOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1WPSTOVLY128A9BD31000001 /* WatchlistPosterStatusOverlay.swift */; };
-		C1SRCH00228A9BD31003025E /* SearchContentUnavailableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1SRCH00128A9BD31003025E /* SearchContentUnavailableView.swift */; };
+		C9A3356771B9412783A78C42 /* WhatsNewYearListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACFB154E98E46D29714A42A /* WhatsNewYearListView.swift */; };
 		CF267C97303C3C65001DB342 /* CronicaCore in Frameworks */ = {isa = PBXBuildFile; productRef = C0CRONICACORE00000000001 /* CronicaCore */; };
 		CF267C98303C3C65001DB342 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = C0SENTRYPROD000000000001 /* Sentry */; };
 		CF267C99303C3C65001DB342 /* CronicaCore in Frameworks */ = {isa = PBXBuildFile; productRef = C0CRONICACORE00000000004 /* CronicaCore */; };
 		CF267C9A303C3C65001DB342 /* CronicaCore in Frameworks */ = {isa = PBXBuildFile; productRef = C0CRONICACORE00000000002 /* CronicaCore */; };
 		CF267C9B303C3C65001DB342 /* CronicaCore in Frameworks */ = {isa = PBXBuildFile; productRef = C0CRONICACORE00000000003 /* CronicaCore */; };
+		CF267C9C303C3C65001DB342 /* CronicaCore in Frameworks */ = {isa = PBXBuildFile; productRef = C0CRONICACORE00000000005 /* CronicaCore */; };
+		D881F08A8D584E998F39E43A /* HideFromUpNextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29764BB1EA6843FEBC04BC32 /* HideFromUpNextButton.swift */; };
+		E2D5308DD9924C62B277E58C /* HideFromUpNextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29764BB1EA6843FEBC04BC32 /* HideFromUpNextButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -478,15 +479,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C0NSFWKW000000000001 /* NSFWKeywords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSFWKeywords.swift; sourceTree = "<group>"; };
-		C0WATCHPROGRING0000001 /* WatchProgressRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchProgressRing.swift; sourceTree = "<group>"; };
-		C0HIDEWATCHBTN00000001 /* HideFromWatchlistButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideFromWatchlistButton.swift; sourceTree = "<group>"; };
-		C0WATCHSTATSVIEW00001 /* WatchStatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchStatisticsView.swift; sourceTree = "<group>"; };
-		C0WATCHSTATSHELP00001 /* WatchStatistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchStatistics.swift; sourceTree = "<group>"; };
-		C0WATCHBATCHEDIT00001 /* WatchlistBatchEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistBatchEditView.swift; sourceTree = "<group>"; };
-		C0HOMECUSTVIEW0000001 /* HomeCustomizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCustomizerView.swift; sourceTree = "<group>"; };
-		C0HOMESECSTORE00000001 /* HomeSectionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSectionStore.swift; sourceTree = "<group>"; };
-		C0HOMESECKIND000000001 /* HomeSectionKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSectionKind.swift; sourceTree = "<group>"; };
+		1ACFB154E98E46D29714A42A /* WhatsNewYearListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewYearListView.swift; sourceTree = "<group>"; };
+		29764BB1EA6843FEBC04BC32 /* HideFromUpNextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideFromUpNextButton.swift; sourceTree = "<group>"; };
+		3A2DA843FC344EF2B8F8D0A2 /* MuteNotificationsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuteNotificationsButton.swift; sourceTree = "<group>"; };
+		4D1CBB5EC636413B89C4775F /* Watchlist 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Watchlist 3.xcdatamodel"; sourceTree = "<group>"; };
+		5EDAFB5B97814CCAA33BAF20 /* Watchlist 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Watchlist 2.xcdatamodel"; sourceTree = "<group>"; };
+		626D958D716E4738B4CE9577 /* Watchlist 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Watchlist 4.xcdatamodel"; sourceTree = "<group>"; };
 		B801070C29F255F3008A4551 /* DefaultListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultListView.swift; sourceTree = "<group>"; };
 		B801070E29F25615008A4551 /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
 		B801071029F2562C008A4551 /* WatchlistSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistSectionView.swift; sourceTree = "<group>"; };
@@ -515,7 +513,6 @@
 		B8152EBE2B71564F0032836A /* VerticalUpNextCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalUpNextCardView.swift; sourceTree = "<group>"; };
 		B8152EC02B71571F0032836A /* VerticalUpNextListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalUpNextListRowView.swift; sourceTree = "<group>"; };
 		B8152EC52B718F9A0032836A /* WatchlistSortOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistSortOrder.swift; sourceTree = "<group>"; };
-		C0UPNEXTSORT000000000001 /* UpNextSortOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpNextSortOrder.swift; sourceTree = "<group>"; };
 		B818483629C286C300650763 /* UserDefaults-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults-Extensions.swift"; sourceTree = "<group>"; };
 		B81941882A081B840057DA04 /* HorizontalWatchlistList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalWatchlistList.swift; sourceTree = "<group>"; };
 		B819418C2A0822C30057DA04 /* UpNextEpisode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpNextEpisode.swift; sourceTree = "<group>"; };
@@ -530,9 +527,6 @@
 		B81941BE2A0861C70057DA04 /* PinButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinButton.swift; sourceTree = "<group>"; };
 		B81941BF2A0861C80057DA04 /* WatchedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchedButton.swift; sourceTree = "<group>"; };
 		B81941C02A0861C80057DA04 /* ArchiveButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArchiveButton.swift; sourceTree = "<group>"; };
-		3A2DA843FC344EF2B8F8D0A2 /* MuteNotificationsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuteNotificationsButton.swift; sourceTree = "<group>"; };
-		29764BB1EA6843FEBC04BC32 /* HideFromUpNextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideFromUpNextButton.swift; sourceTree = "<group>"; };
-		1ACFB154E98E46D29714A42A /* WhatsNewYearListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewYearListView.swift; sourceTree = "<group>"; };
 		B81941C12A0861C80057DA04 /* WatchEpisodeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchEpisodeButton.swift; sourceTree = "<group>"; };
 		B81DD92429BD149D009F73F3 /* WatchlistItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WatchlistItem+CoreDataClass.swift"; sourceTree = "<group>"; };
 		B81DD92529BD149D009F73F3 /* WatchlistItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WatchlistItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -573,8 +567,6 @@
 		B84C53FC27B1F1DD00425524 /* WatchlistItemRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistItemRowView.swift; sourceTree = "<group>"; };
 		B85C65AB27A6307C0080121E /* PersonDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailsView.swift; sourceTree = "<group>"; };
 		B86670B82B600CAE00CBA595 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
-		C0APPSHORTCUTS00000001 /* AppShortcuts.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = AppShortcuts.xcstrings; sourceTree = "<group>"; };
-		C0INFOPLISTSTR00000001 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		B86AA7FB2A3A4C8C009847FE /* WatchProviderSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchProviderSettings.swift; sourceTree = "<group>"; };
 		B86AAD0B28BD2D6B00D135B1 /* PlaceholderMedia.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = PlaceholderMedia.xcassets; sourceTree = "<group>"; };
 		B86E7A22290AB68000459E41 /* WatchlistItemContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistItemContextMenu.swift; sourceTree = "<group>"; };
@@ -585,7 +577,6 @@
 		B876DE5B281B2B04005558DD /* Screens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screens.swift; sourceTree = "<group>"; };
 		B8779374281E2CE700174F32 /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
 		B8779376281E319D00174F32 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
-		C1TABRESEL000000000001 /* TabBarReselectDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarReselectDetector.swift; sourceTree = "<group>"; };
 		B878E83427BC85BC0021A981 /* WatchlistItem-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WatchlistItem-Extension.swift"; sourceTree = "<group>"; };
 		B879B70128B12201005EADCE /* TrailerItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailerItemView.swift; sourceTree = "<group>"; };
 		B87B5CCB27999C5700632648 /* content.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = content.json; sourceTree = "<group>"; };
@@ -607,7 +598,6 @@
 		B890C57827FC999F006BE5E1 /* HeroImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroImage.swift; sourceTree = "<group>"; };
 		B890C57A27FCB54D006BE5E1 /* TrailerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailerListView.swift; sourceTree = "<group>"; };
 		B890C58427FE4442006BE5E1 /* Episode-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Episode-Extension.swift"; sourceTree = "<group>"; };
-		C0PEOPLELISTDEST00001 /* PeopleListDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleListDestination.swift; sourceTree = "<group>"; };
 		B89429C8297C94CD0029646F /* DetailedPeopleList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedPeopleList.swift; sourceTree = "<group>"; };
 		B89429CB297E076E0029646F /* SupportEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportEmail.swift; sourceTree = "<group>"; };
 		B89446BE294FDACA008974BA /* AppThemeColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppThemeColors.swift; sourceTree = "<group>"; };
@@ -626,7 +616,6 @@
 		B8ADAF6E282C42B3001D72EF /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
 		B8B271A327A59EF400F6463F /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.2.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		B8B271A527A5A18C00F6463F /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
-		C0HISTMERGEFILE0000001 /* PersistentHistoryMerger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentHistoryMerger.swift; sourceTree = "<group>"; };
 		B8B2F6A22A85D34000FF0246 /* KeywordSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordSectionView.swift; sourceTree = "<group>"; };
 		B8B2F6A52A85D39000FF0246 /* TrendingKeywordsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingKeywordsListView.swift; sourceTree = "<group>"; };
 		B8B2F6AB2A85D57400FF0246 /* SearchItemContent-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchItemContent-Extension.swift"; sourceTree = "<group>"; };
@@ -651,47 +640,6 @@
 		B8CC953527D05E4A00B6757C /* Cronica-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Cronica-Info.plist"; sourceTree = "<group>"; };
 		B8D1A2F32A4A0DC5001BACDC /* HorizontalPinnedLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalPinnedLists.swift; sourceTree = "<group>"; };
 		B8D7AEA728B95F5D0053CE5A /* Cronica Widget Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Cronica Widget Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C0SHAREEXTPRODUCT000001 /* Cronica Share Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Cronica Share Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C0SHAREVC000000000000001 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
-		C0SHAREVIEW0000000000001 /* ShareExtensionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareExtensionView.swift; sourceTree = "<group>"; };
-		C0SHAREINFO0000000000001 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C0SHAREPERSISTSHARE002 /* PersistenceController-WatchlistItem+ShareExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PersistenceController-WatchlistItem+ShareExtension.swift"; sourceTree = "<group>"; };
-		C0SHAREENT0000000000001 /* CronicaShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CronicaShareExtension.entitlements; sourceTree = "<group>"; };
-		C0WATCHADDSVC0000000001 /* WatchlistAddService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistAddService.swift; sourceTree = "<group>"; };
-		C0WIDGETPUB00000000001 /* WidgetSnapshotPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSnapshotPublisher.swift; sourceTree = "<group>"; };
-		C0WIDGETBRIDGE000000001 /* WidgetSnapshotPublisherBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSnapshotPublisherBridge.swift; sourceTree = "<group>"; };
-		C0WATCHSESS00000000001 /* WatchingSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchingSessionManager.swift; sourceTree = "<group>"; };
-		C0WATCHATTR00000000001 /* WatchingActivityAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchingActivityAttributes.swift; sourceTree = "<group>"; };
-		C0TRACKLOCK00000000001 /* TrackOnLockScreenButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackOnLockScreenButton.swift; sourceTree = "<group>"; };
-		C0TRENDWIDGET000000001 /* CronicaTrendingWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaTrendingWidget.swift; sourceTree = "<group>"; };
-		C0UPNEXTWIDGET000000001 /* CronicaUpNextWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaUpNextWidget.swift; sourceTree = "<group>"; };
-		C0WATCHLWIDGET000000001 /* CronicaWatchlistWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaWatchlistWidget.swift; sourceTree = "<group>"; };
-		C0LIVEACTIVITY000000001 /* WatchingLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchingLiveActivity.swift; sourceTree = "<group>"; };
-		C0WIDGETSNAPVIEW000001 /* WidgetSnapshotViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSnapshotViews.swift; sourceTree = "<group>"; };
-		C0SIRISVC000000000001 /* SiriIntentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriIntentService.swift; sourceTree = "<group>"; };
-		C0INTENTENT0000000001 /* CronicaAppEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaAppEntities.swift; sourceTree = "<group>"; };
-		C0INTENTAPP0000000001 /* CronicaAppIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaAppIntents.swift; sourceTree = "<group>"; };
-		C0EXTINTENT0000000001 /* ExtensionAppIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionAppIntents.swift; sourceTree = "<group>"; };
-		C0ENTPOSTER0000000001 /* EntityPosterImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityPosterImage.swift; sourceTree = "<group>"; };
-		C0UPNEXTMARK000000001 /* UpNextMarkActionRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpNextMarkActionRunner.swift; sourceTree = "<group>"; };
-		C0SPOTLIGHT0000000001 /* SpotlightIndexManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotlightIndexManager.swift; sourceTree = "<group>"; };
-		C0REMINDERS0000000001 /* RemindersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersManager.swift; sourceTree = "<group>"; };
-		C0ADDREMIND0000000001 /* AddToRemindersButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToRemindersButton.swift; sourceTree = "<group>"; };
-		C0CRONCTRL0000000001 /* CronicaControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaControls.swift; sourceTree = "<group>"; };
-		C0INTENTSHRT000000001 /* CronicaAppShortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaAppShortcuts.swift; sourceTree = "<group>"; };
-		C0SIRINAVBRIDGE00000001 /* SiriNavigationBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriNavigationBridge.swift; sourceTree = "<group>"; };
-		C0SIRISHORTCUT00000001 /* SiriShortcutRefreshBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriShortcutRefreshBridge.swift; sourceTree = "<group>"; };
-		C0SIRIDONATE0000000001 /* SiriIntentDonation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriIntentDonation.swift; sourceTree = "<group>"; };
-		C0QUICKHOME0000000001 /* HomeScreenQuickAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenQuickAction.swift; sourceTree = "<group>"; };
-		C0QUICKMGR00000000001 /* QuickActionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActionManager.swift; sourceTree = "<group>"; };
-		C0QUICKCOORD00000000001 /* QuickActionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActionCoordinator.swift; sourceTree = "<group>"; };
-		C0QUICKDEBUG00000000001 /* QuickActionDebug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActionDebug.swift; sourceTree = "<group>"; };
-		C0UITESTFILE00000000000006 /* QuickActionNavigationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActionNavigationUITests.swift; sourceTree = "<group>"; };
-		C0QUICKDEL00000000001 /* QuickActionAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActionAppDelegate.swift; sourceTree = "<group>"; };
-		C0QUICKREF00000000001 /* QuickActionRefreshBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActionRefreshBridge.swift; sourceTree = "<group>"; };
-		C0APPNAVROUTE00000001 /* AppNavigationRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigationRoute.swift; sourceTree = "<group>"; };
-		C0SIRISETVIEW000000001 /* SiriSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriSettingsView.swift; sourceTree = "<group>"; };
-
 		B8D7AEAB28B95F5E0053CE5A /* CronicaWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaWidget.swift; sourceTree = "<group>"; };
 		B8D7AEAD28B95F5F0053CE5A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B8D7AEAF28B95F5F0053CE5A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -706,12 +654,8 @@
 		B8E3ABF52955361C00CA0945 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS9.1.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		B8E3ABF72955362A00CA0945 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS16.1.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		B8E6D64127B6B106002E7A63 /* Watchlist.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Watchlist.xcdatamodel; sourceTree = "<group>"; };
-		5EDAFB5B97814CCAA33BAF20 /* Watchlist 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Watchlist 2.xcdatamodel"; sourceTree = "<group>"; };
-		4D1CBB5EC636413B89C4775F /* Watchlist 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Watchlist 3.xcdatamodel"; sourceTree = "<group>"; };
-		626D958D716E4738B4CE9577 /* Watchlist 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Watchlist 4.xcdatamodel"; sourceTree = "<group>"; };
 		B8E6EF662A044E5A000A3617 /* ContextMenuPreviewImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMenuPreviewImage.swift; sourceTree = "<group>"; };
 		B8EC462E27D7AA99009389FC /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
-		C0FEATHOME000000000001 /* FeaturedHomeSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedHomeSectionView.swift; sourceTree = "<group>"; };
 		B8ED4C3C27B4B9680045C68F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		B8EFB256281720E900F7CBD0 /* OverviewBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewBoxView.swift; sourceTree = "<group>"; };
 		B8F253BA2BC8688A003F27E8 /* SeasonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonDetailView.swift; sourceTree = "<group>"; };
@@ -722,39 +666,6 @@
 		B8FB2A7F295235E2006DAC8E /* WatchlistCardSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistCardSection.swift; sourceTree = "<group>"; };
 		B8FB2A8129524C37006DAC8E /* WatchlistItemPosterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistItemPosterView.swift; sourceTree = "<group>"; };
 		B8FB2A8329524D6E006DAC8E /* View-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View-Extensions.swift"; sourceTree = "<group>"; };
-		C0OPENURLSYS000000000001 /* OpenURLAction+SystemSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OpenURLAction+SystemSettings.swift"; sourceTree = "<group>"; };
-		C0COLORSTORAGE00000000001 /* Color+Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Storage.swift"; sourceTree = "<group>"; };
-		C0CALMGR000000000001 /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
-		C0USERDATA000000000001 /* UserDataDeletionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataDeletionService.swift; sourceTree = "<group>"; };
-		C0DATAMGMT000000000001 /* DataManagementSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagementSettingsView.swift; sourceTree = "<group>"; };
-		C0SIMKLMODEL0000000001 /* SimklModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimklModels.swift; sourceTree = "<group>"; };
-		C0SIMKLTOKEN0000000001 /* SimklTokenStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimklTokenStore.swift; sourceTree = "<group>"; };
-		C0TMDBREVUI00000000001 /* TMDBReviewsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBReviewsSection.swift; sourceTree = "<group>"; };
-		C0ITEMHERO000000000001 /* ItemContentHeroHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemContentHeroHeader.swift; sourceTree = "<group>"; };
-		C0SIMKLAPI000000000001 /* SimklAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimklAPIClient.swift; sourceTree = "<group>"; };
-		C0SIMKLAUTH00000000001 /* SimklAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimklAuthService.swift; sourceTree = "<group>"; };
-		C0SIMKLIMP000000000001 /* SimklImportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimklImportService.swift; sourceTree = "<group>"; };
-		C0SIMKLMAP000000000001 /* SimklImportMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimklImportMapper.swift; sourceTree = "<group>"; };
-		C0SIMKLVIEW00000000001 /* SimklSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimklSettingsView.swift; sourceTree = "<group>"; };
-		C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationsSettingsView.swift; sourceTree = "<group>"; };
-		C0SIMKLSYNC0000000001 /* SimklSyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimklSyncService.swift; sourceTree = "<group>"; };
-		C0SIMKLACCT0000000001 /* SimklAccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimklAccountService.swift; sourceTree = "<group>"; };
-		C0SIMKLPUSH0000000001 /* SimklPushService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimklPushService.swift; sourceTree = "<group>"; };
-		C0SIMKLKNOWN000000001 /* SimklKnownItemsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimklKnownItemsStore.swift; sourceTree = "<group>"; };
-		C0LIBMOD000000000001 /* LibraryImportModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryImportModels.swift; sourceTree = "<group>"; };
-		C0LIBSVC000000000001 /* LibraryImportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryImportService.swift; sourceTree = "<group>"; };
-		C0LIBSESS00000000001 /* TMDBSessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBSessionStore.swift; sourceTree = "<group>"; };
-		C0LIBAPI000000000001 /* TMDBAccountAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAccountAPIClient.swift; sourceTree = "<group>"; };
-		C0LIBAUTH00000000001 /* TMDBAccountAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAccountAuthService.swift; sourceTree = "<group>"; };
-		C0LIBTMDB00000000001 /* TMDBAccountImportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAccountImportService.swift; sourceTree = "<group>"; };
-		C0LIBVIEWTM000000001 /* TMDBAccountSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAccountSettingsView.swift; sourceTree = "<group>"; };
-		C0TMDBSYNC00000000001 /* TMDBSyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBSyncService.swift; sourceTree = "<group>"; };
-		C0TMDBPUSH00000000001 /* TMDBPushService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBPushService.swift; sourceTree = "<group>"; };
-		C0INTREMOTE0000000001 /* IntegrationRemoteApply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationRemoteApply.swift; sourceTree = "<group>"; };
-		C0TMDBCACHE0000000001 /* TMDBAccountListCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAccountListCache.swift; sourceTree = "<group>"; };
-		C0WLBACKUP000000000001 /* WatchlistItemBackup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistItemBackup.swift; sourceTree = "<group>"; };
-		C0RELCV000000000001 /* ReleaseCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseCalendarView.swift; sourceTree = "<group>"; };
-		C0RELCROUTE000000001 /* ReleaseCalendarRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseCalendarRoute.swift; sourceTree = "<group>"; };
 		B8FB2A8829524FAD006DAC8E /* WatchlistPosterSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistPosterSection.swift; sourceTree = "<group>"; };
 		B8FB2A8D29526341006DAC8E /* BehaviorSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BehaviorSetting.swift; sourceTree = "<group>"; };
 		B8FB2A8F295263AB006DAC8E /* AboutSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutSettings.swift; sourceTree = "<group>"; };
@@ -762,24 +673,114 @@
 		B8FCAE912AED9CE300F688FE /* CronicaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaTests.swift; sourceTree = "<group>"; };
 		B8FF4DBA27F91A4900C7DE9F /* SeasonListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonListView.swift; sourceTree = "<group>"; };
 		B8FF4DBE27FA511A00C7DE9F /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
+		C0ADDREMIND0000000001 /* AddToRemindersButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToRemindersButton.swift; sourceTree = "<group>"; };
+		C0APPNAVROUTE00000001 /* AppNavigationRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigationRoute.swift; sourceTree = "<group>"; };
+		C0APPSHORTCUTS00000001 /* AppShortcuts.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = AppShortcuts.xcstrings; sourceTree = "<group>"; };
 		C0APPWEBSITE000000000001 /* AppWebsite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppWebsite.swift; sourceTree = "<group>"; };
+		C0CALMGR000000000001 /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
+		C0COLORSTORAGE00000000001 /* Color+Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Storage.swift"; sourceTree = "<group>"; };
 		C0COREIMPORT000000000001 /* CronicaCoreImport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaCoreImport.swift; sourceTree = "<group>"; };
+		C0CRONCTRL0000000001 /* CronicaControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaControls.swift; sourceTree = "<group>"; };
+		C0DATAMGMT000000000001 /* DataManagementSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagementSettingsView.swift; sourceTree = "<group>"; };
+		C0ENTPOSTER0000000001 /* EntityPosterImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityPosterImage.swift; sourceTree = "<group>"; };
+		C0EXTINTENT0000000001 /* ExtensionAppIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionAppIntents.swift; sourceTree = "<group>"; };
+		C0FEATHOME000000000001 /* FeaturedHomeSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedHomeSectionView.swift; sourceTree = "<group>"; };
+		C0HIDEWATCHBTN00000001 /* HideFromWatchlistButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideFromWatchlistButton.swift; sourceTree = "<group>"; };
+		C0HISTMERGEFILE0000001 /* PersistentHistoryMerger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentHistoryMerger.swift; sourceTree = "<group>"; };
+		C0HOMECUSTVIEW0000001 /* HomeCustomizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCustomizerView.swift; sourceTree = "<group>"; };
+		C0HOMESECKIND000000001 /* HomeSectionKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSectionKind.swift; sourceTree = "<group>"; };
+		C0HOMESECSTORE00000001 /* HomeSectionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSectionStore.swift; sourceTree = "<group>"; };
+		C0INFOPLISTSTR00000001 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationsSettingsView.swift; sourceTree = "<group>"; };
+		C0INTENTAPP0000000001 /* CronicaAppIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaAppIntents.swift; sourceTree = "<group>"; };
+		C0INTENTENT0000000001 /* CronicaAppEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaAppEntities.swift; sourceTree = "<group>"; };
+		C0INTENTSHRT000000001 /* CronicaAppShortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaAppShortcuts.swift; sourceTree = "<group>"; };
+		C0INTREMOTE0000000001 /* IntegrationRemoteApply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationRemoteApply.swift; sourceTree = "<group>"; };
 		C0INTTEST00000000000001 /* CronicaIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaIntegrationTests.swift; sourceTree = "<group>"; };
+		C0ITEMHERO000000000001 /* ItemContentHeroHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemContentHeroHeader.swift; sourceTree = "<group>"; };
 		C0ITEMSECTION00000000001 /* ItemContentSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemContentSection.swift; sourceTree = "<group>"; };
+		C0LIBAPI000000000001 /* TMDBAccountAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAccountAPIClient.swift; sourceTree = "<group>"; };
+		C0LIBAUTH00000000001 /* TMDBAccountAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAccountAuthService.swift; sourceTree = "<group>"; };
+		C0LIBMOD000000000001 /* LibraryImportModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryImportModels.swift; sourceTree = "<group>"; };
+		C0LIBSESS00000000001 /* TMDBSessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBSessionStore.swift; sourceTree = "<group>"; };
+		C0LIBSVC000000000001 /* LibraryImportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryImportService.swift; sourceTree = "<group>"; };
+		C0LIBTMDB00000000001 /* TMDBAccountImportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAccountImportService.swift; sourceTree = "<group>"; };
+		C0LIBVIEWTM000000001 /* TMDBAccountSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAccountSettingsView.swift; sourceTree = "<group>"; };
+		C0LIVEACTIVITY000000001 /* WatchingLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchingLiveActivity.swift; sourceTree = "<group>"; };
 		C0NF1G000000000000000002 /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		C0NF1G000000000000000003 /* Secrets.xcconfig.example */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig.example; sourceTree = "<group>"; };
+		C0NSFWKW000000000001 /* NSFWKeywords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSFWKeywords.swift; sourceTree = "<group>"; };
+		C0OPENURLSYS000000000001 /* OpenURLAction+SystemSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OpenURLAction+SystemSettings.swift"; sourceTree = "<group>"; };
+		C0PEOPLELISTDEST00001 /* PeopleListDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleListDestination.swift; sourceTree = "<group>"; };
+		C0QUICKCOORD00000000001 /* QuickActionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActionCoordinator.swift; sourceTree = "<group>"; };
+		C0QUICKDEBUG00000000001 /* QuickActionDebug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActionDebug.swift; sourceTree = "<group>"; };
+		C0QUICKDEL00000000001 /* QuickActionAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActionAppDelegate.swift; sourceTree = "<group>"; };
+		C0QUICKHOME0000000001 /* HomeScreenQuickAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenQuickAction.swift; sourceTree = "<group>"; };
+		C0QUICKMGR00000000001 /* QuickActionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActionManager.swift; sourceTree = "<group>"; };
+		C0QUICKREF00000000001 /* QuickActionRefreshBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActionRefreshBridge.swift; sourceTree = "<group>"; };
+		C0RELCROUTE000000001 /* ReleaseCalendarRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseCalendarRoute.swift; sourceTree = "<group>"; };
+		C0RELCV000000000001 /* ReleaseCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseCalendarView.swift; sourceTree = "<group>"; };
+		C0REMINDERS0000000001 /* RemindersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersManager.swift; sourceTree = "<group>"; };
 		C0SENTRYMGR000000000001 /* SentryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentryManager.swift; sourceTree = "<group>"; };
+		C0SHAREENT0000000000001 /* CronicaShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CronicaShareExtension.entitlements; sourceTree = "<group>"; };
+		C0SHAREEXTPRODUCT000001 /* Cronica Share Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Cronica Share Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0SHAREINFO0000000000001 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0SHAREPERSISTSHARE002 /* PersistenceController-WatchlistItem+ShareExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PersistenceController-WatchlistItem+ShareExtension.swift"; sourceTree = "<group>"; };
+		C0SHAREVC000000000000001 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		C0SHAREVIEW0000000000001 /* ShareExtensionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareExtensionView.swift; sourceTree = "<group>"; };
+		C0SIMKLACCT0000000001 /* SimklAccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimklAccountService.swift; sourceTree = "<group>"; };
+		C0SIMKLAPI000000000001 /* SimklAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimklAPIClient.swift; sourceTree = "<group>"; };
+		C0SIMKLAUTH00000000001 /* SimklAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimklAuthService.swift; sourceTree = "<group>"; };
+		C0SIMKLIMP000000000001 /* SimklImportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimklImportService.swift; sourceTree = "<group>"; };
+		C0SIMKLKNOWN000000001 /* SimklKnownItemsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimklKnownItemsStore.swift; sourceTree = "<group>"; };
+		C0SIMKLMAP000000000001 /* SimklImportMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimklImportMapper.swift; sourceTree = "<group>"; };
+		C0SIMKLMODEL0000000001 /* SimklModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimklModels.swift; sourceTree = "<group>"; };
+		C0SIMKLPUSH0000000001 /* SimklPushService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimklPushService.swift; sourceTree = "<group>"; };
+		C0SIMKLSYNC0000000001 /* SimklSyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimklSyncService.swift; sourceTree = "<group>"; };
+		C0SIMKLTOKEN0000000001 /* SimklTokenStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimklTokenStore.swift; sourceTree = "<group>"; };
+		C0SIMKLVIEW00000000001 /* SimklSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimklSettingsView.swift; sourceTree = "<group>"; };
+		C0SIRIDONATE0000000001 /* SiriIntentDonation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriIntentDonation.swift; sourceTree = "<group>"; };
+		C0SIRINAVBRIDGE00000001 /* SiriNavigationBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriNavigationBridge.swift; sourceTree = "<group>"; };
+		C0SIRISETVIEW000000001 /* SiriSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriSettingsView.swift; sourceTree = "<group>"; };
+		C0SIRISHORTCUT00000001 /* SiriShortcutRefreshBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriShortcutRefreshBridge.swift; sourceTree = "<group>"; };
+		C0SIRISVC000000000001 /* SiriIntentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriIntentService.swift; sourceTree = "<group>"; };
+		C0SPOTLIGHT0000000001 /* SpotlightIndexManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotlightIndexManager.swift; sourceTree = "<group>"; };
+		C0TMDBCACHE0000000001 /* TMDBAccountListCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAccountListCache.swift; sourceTree = "<group>"; };
+		C0TMDBPUSH00000000001 /* TMDBPushService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBPushService.swift; sourceTree = "<group>"; };
+		C0TMDBREVUI00000000001 /* TMDBReviewsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBReviewsSection.swift; sourceTree = "<group>"; };
+		C0TMDBSYNC00000000001 /* TMDBSyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBSyncService.swift; sourceTree = "<group>"; };
+		C0TRACKLOCK00000000001 /* TrackOnLockScreenButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackOnLockScreenButton.swift; sourceTree = "<group>"; };
+		C0TRENDWIDGET000000001 /* CronicaTrendingWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaTrendingWidget.swift; sourceTree = "<group>"; };
 		C0UITESTFILE00000000000001 /* CronicaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaUITests.swift; sourceTree = "<group>"; };
 		C0UITESTFILE00000000000002 /* AppNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigator.swift; sourceTree = "<group>"; };
 		C0UITESTFILE00000000000003 /* HomeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUITests.swift; sourceTree = "<group>"; };
 		C0UITESTFILE00000000000004 /* ItemContentDetailsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemContentDetailsUITests.swift; sourceTree = "<group>"; };
 		C0UITESTFILE00000000000005 /* SettingsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsUITests.swift; sourceTree = "<group>"; };
+		C0UITESTFILE00000000000006 /* QuickActionNavigationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActionNavigationUITests.swift; sourceTree = "<group>"; };
 		C0UITESTPRODUCT000000001 /* CronicaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CronicaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0UPNEXTMARK000000001 /* UpNextMarkActionRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpNextMarkActionRunner.swift; sourceTree = "<group>"; };
+		C0UPNEXTSORT000000000001 /* UpNextSortOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpNextSortOrder.swift; sourceTree = "<group>"; };
+		C0UPNEXTWIDGET000000001 /* CronicaUpNextWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaUpNextWidget.swift; sourceTree = "<group>"; };
+		C0USERDATA000000000001 /* UserDataDeletionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataDeletionService.swift; sourceTree = "<group>"; };
+		C0WATCHADDSVC0000000001 /* WatchlistAddService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistAddService.swift; sourceTree = "<group>"; };
+		C0WATCHATTR00000000001 /* WatchingActivityAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchingActivityAttributes.swift; sourceTree = "<group>"; };
+		C0WATCHBATCHEDIT00001 /* WatchlistBatchEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistBatchEditView.swift; sourceTree = "<group>"; };
+		C0WATCHLWIDGET000000001 /* CronicaWatchlistWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaWatchlistWidget.swift; sourceTree = "<group>"; };
+		C0WATCHPROGRING0000001 /* WatchProgressRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchProgressRing.swift; sourceTree = "<group>"; };
+		C0WATCHSESS00000000001 /* WatchingSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchingSessionManager.swift; sourceTree = "<group>"; };
+		C0WATCHSTATSHELP00001 /* WatchStatistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchStatistics.swift; sourceTree = "<group>"; };
+		C0WATCHSTATSVIEW00001 /* WatchStatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchStatisticsView.swift; sourceTree = "<group>"; };
+		C0WIDGETBRIDGE000000001 /* WidgetSnapshotPublisherBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSnapshotPublisherBridge.swift; sourceTree = "<group>"; };
+		C0WIDGETPUB00000000001 /* WidgetSnapshotPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSnapshotPublisher.swift; sourceTree = "<group>"; };
+		C0WIDGETSNAPVIEW000001 /* WidgetSnapshotViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSnapshotViews.swift; sourceTree = "<group>"; };
+		C0WLBACKUP000000000001 /* WatchlistItemBackup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistItemBackup.swift; sourceTree = "<group>"; };
 		C1A1NAV028A9BD31003025B /* CronicaNavigationDestinations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaNavigationDestinations.swift; sourceTree = "<group>"; };
 		C1EMP00128A9BD31003025C /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
 		C1PAGE00128A9BD31003025D /* PaginationFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationFooter.swift; sourceTree = "<group>"; };
-		C1WPSTOVLY128A9BD31000001 /* WatchlistPosterStatusOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistPosterStatusOverlay.swift; sourceTree = "<group>"; };
 		C1SRCH00128A9BD31003025E /* SearchContentUnavailableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchContentUnavailableView.swift; sourceTree = "<group>"; };
+		C1TABRESEL000000000001 /* TabBarReselectDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarReselectDetector.swift; sourceTree = "<group>"; };
+		C1WPSTOVLY128A9BD31000001 /* WatchlistPosterStatusOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistPosterStatusOverlay.swift; sourceTree = "<group>"; };
+		CF7CE3183040DCCF00F3964A /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -826,19 +827,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C0UITESTFRAMEWORKS0000001 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		C0SHAREEXTFRAMEWORK0001 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				CF267C9C303C3C65001DB342 /* CronicaCore in Frameworks */,
 				C0SHAREWIDGETKIT0000001 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0UITESTFRAMEWORKS0000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -876,10 +877,11 @@
 		B8110ED2279245D000844FEB = {
 			isa = PBXGroup;
 			children = (
+				CF7CE3183040DCCF00F3964A /* AppIcon.icon */,
 				C0NF1G000000000000000001 /* Config */,
 				B806C4DF2899BE2800A5330E /* AppleWatch */,
 				B8D7AEAA28B95F5E0053CE5A /* CronicaWidget */,
-			C0SHAREEXTGROUP00000001 /* CronicaShareExtension */,
+				C0SHAREEXTGROUP00000001 /* CronicaShareExtension */,
 				B88B88FC29DF194A00497058 /* CronicaTests */,
 				B8FCAE902AED9CE300F688FE /* CronicaTests */,
 				C0UITESTGROUP000000000001 /* CronicaUITests */,
@@ -920,7 +922,7 @@
 				B8110EDF279245D100844FEB /* Cronica.app */,
 				B806C4DE2899BE2800A5330E /* Cronica.app */,
 				B8D7AEA728B95F5D0053CE5A /* Cronica Widget Extension.appex */,
-			C0SHAREEXTPRODUCT000001 /* Cronica Share Extension.appex */,
+				C0SHAREEXTPRODUCT000001 /* Cronica Share Extension.appex */,
 				B8FCAE8F2AED9CE300F688FE /* Cronica Tests.xctest */,
 				C0UITESTPRODUCT000000001 /* CronicaUITests.xctest */,
 			);
@@ -1021,43 +1023,6 @@
 				C0ADDREMIND0000000001 /* AddToRemindersButton.swift */,
 			);
 			path = Buttons;
-			sourceTree = "<group>";
-		};
-		C0LIVEACTGROUP00000001 /* LiveActivity */ = {
-			isa = PBXGroup;
-			children = (
-				C0WATCHATTR00000000001 /* WatchingActivityAttributes.swift */,
-			);
-			path = LiveActivity;
-			sourceTree = "<group>";
-		};
-		C0INTENTSGROUP00000001 /* Intents */ = {
-			isa = PBXGroup;
-			children = (
-				C0SIRISVC000000000001 /* SiriIntentService.swift */,
-				C0INTENTENT0000000001 /* CronicaAppEntities.swift */,
-				C0INTENTAPP0000000001 /* CronicaAppIntents.swift */,
-				C0EXTINTENT0000000001 /* ExtensionAppIntents.swift */,
-				C0ENTPOSTER0000000001 /* EntityPosterImage.swift */,
-				C0INTENTSHRT000000001 /* CronicaAppShortcuts.swift */,
-				C0SIRINAVBRIDGE00000001 /* SiriNavigationBridge.swift */,
-				C0SIRISHORTCUT00000001 /* SiriShortcutRefreshBridge.swift */,
-				C0SIRIDONATE0000000001 /* SiriIntentDonation.swift */,
-			);
-			path = Intents;
-			sourceTree = "<group>";
-		};
-		C0QUICKACTGRP000000001 /* QuickActions */ = {
-			isa = PBXGroup;
-			children = (
-				C0QUICKHOME0000000001 /* HomeScreenQuickAction.swift */,
-				C0QUICKMGR00000000001 /* QuickActionManager.swift */,
-				C0QUICKCOORD00000000001 /* QuickActionCoordinator.swift */,
-				C0QUICKDEBUG00000000001 /* QuickActionDebug.swift */,
-				C0QUICKDEL00000000001 /* QuickActionAppDelegate.swift */,
-				C0QUICKREF00000000001 /* QuickActionRefreshBridge.swift */,
-			);
-			path = QuickActions;
 			sourceTree = "<group>";
 		};
 		B81941D22A0867E50057DA04 /* Up Next */ = {
@@ -1237,14 +1202,6 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		C0CALVIEWGRP00000000001 /* Calendar */ = {
-			isa = PBXGroup;
-			children = (
-				C0RELCV000000000001 /* ReleaseCalendarView.swift */,
-			);
-			path = Calendar;
-			sourceTree = "<group>";
-		};
 		B845132C27ECB33E00F0D4A4 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
@@ -1255,20 +1212,12 @@
 				B8389ED128AB46E3003025BC /* WatchlistSearchScope.swift */,
 				B88AA92229DF781000F80EE4 /* MediaTypeFilters.swift */,
 				B883A1DF2AEED78900793EE2 /* SearchStage.swift */,
-								C0HOMESECKIND000000001 /* HomeSectionKind.swift */,
-B8152EC52B718F9A0032836A /* WatchlistSortOrder.swift */,
+				C0HOMESECKIND000000001 /* HomeSectionKind.swift */,
+				B8152EC52B718F9A0032836A /* WatchlistSortOrder.swift */,
 				C0UPNEXTSORT000000000001 /* UpNextSortOrder.swift */,
 				C0NAVENUMGRP000000001 /* Navigation */,
 			);
 			path = Enums;
-			sourceTree = "<group>";
-		};
-		C0NAVENUMGRP000000001 /* Navigation */ = {
-			isa = PBXGroup;
-			children = (
-				C0APPNAVROUTE00000001 /* AppNavigationRoute.swift */,
-			);
-			path = Navigation;
 			sourceTree = "<group>";
 		};
 		B8469DB32B712C9C00196364 /* Components */ = {
@@ -1369,8 +1318,8 @@ B8152EC52B718F9A0032836A /* WatchlistSortOrder.swift */,
 				C0DATAMGMT000000000001 /* DataManagementSettingsView.swift */,
 				C0SIMKLVIEW00000000001 /* SimklSettingsView.swift */,
 				C0LIBVIEWTM000000001 /* TMDBAccountSettingsView.swift */,
-								C0HOMECUSTVIEW0000001 /* HomeCustomizerView.swift */,
-C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
+				C0HOMECUSTVIEW0000001 /* HomeCustomizerView.swift */,
+				C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 				B80BBE572949665A00958876 /* AppearanceSetting.swift */,
 				B8FB2A8D29526341006DAC8E /* BehaviorSetting.swift */,
 				B80318A729256AE700714B3E /* FeedbackSettingsView.swift */,
@@ -1494,27 +1443,6 @@ C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 			path = Localization;
 			sourceTree = "<group>";
 		};
-
-		C0SHAREEXTGROUP00000001 /* CronicaShareExtension */ = {
-			isa = PBXGroup;
-			children = (
-				C0SHAREEXTCONFIGGRP00001 /* Configuration */,
-				C0SHAREVC000000000000001 /* ShareViewController.swift */,
-				C0SHAREVIEW0000000000001 /* ShareExtensionView.swift */,
-				C0SHAREPERSISTSHARE002 /* PersistenceController-WatchlistItem+ShareExtension.swift */,
-			);
-			path = CronicaShareExtension;
-			sourceTree = "<group>";
-		};
-		C0SHAREEXTCONFIGGRP00001 /* Configuration */ = {
-			isa = PBXGroup;
-			children = (
-				C0SHAREENT0000000000001 /* CronicaShareExtension.entitlements */,
-				C0SHAREINFO0000000000001 /* Info.plist */,
-			);
-			path = Configuration;
-			sourceTree = "<group>";
-		};
 		B8D7AEAA28B95F5E0053CE5A /* CronicaWidget */ = {
 			isa = PBXGroup;
 			children = (
@@ -1585,39 +1513,6 @@ C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 				B8E6D64027B6B106002E7A63 /* Watchlist.xcdatamodeld */,
 			);
 			path = Configuration;
-			sourceTree = "<group>";
-		};
-		C0LIBGROUP0000000001 /* LibraryImport */ = {
-			isa = PBXGroup;
-			children = (
-				C0LIBMOD000000000001 /* LibraryImportModels.swift */,
-				C0LIBSVC000000000001 /* LibraryImportService.swift */,
-				C0LIBSESS00000000001 /* TMDBSessionStore.swift */,
-				C0LIBAPI000000000001 /* TMDBAccountAPIClient.swift */,
-				C0LIBAUTH00000000001 /* TMDBAccountAuthService.swift */,
-				C0LIBTMDB00000000001 /* TMDBAccountImportService.swift */,
-				C0TMDBSYNC00000000001 /* TMDBSyncService.swift */,
-				C0TMDBPUSH00000000001 /* TMDBPushService.swift */,
-				C0TMDBCACHE0000000001 /* TMDBAccountListCache.swift */,
-			);
-			path = LibraryImport;
-			sourceTree = "<group>";
-		};
-		C0SIMKLGROUP0000000001 /* Simkl */ = {
-			isa = PBXGroup;
-			children = (
-				C0SIMKLMODEL0000000001 /* SimklModels.swift */,
-				C0SIMKLTOKEN0000000001 /* SimklTokenStore.swift */,
-				C0SIMKLAPI000000000001 /* SimklAPIClient.swift */,
-				C0SIMKLAUTH00000000001 /* SimklAuthService.swift */,
-				C0SIMKLIMP000000000001 /* SimklImportService.swift */,
-				C0SIMKLMAP000000000001 /* SimklImportMapper.swift */,
-				C0SIMKLSYNC0000000001 /* SimklSyncService.swift */,
-				C0SIMKLACCT0000000001 /* SimklAccountService.swift */,
-				C0SIMKLPUSH0000000001 /* SimklPushService.swift */,
-				C0SIMKLKNOWN000000001 /* SimklKnownItemsStore.swift */,
-			);
-			path = Simkl;
 			sourceTree = "<group>";
 		};
 		B8EC463D27D84C45009389FC /* Manager */ = {
@@ -1696,6 +1591,62 @@ C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 			path = CronicaTests;
 			sourceTree = "<group>";
 		};
+		C0CALVIEWGRP00000000001 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				C0RELCV000000000001 /* ReleaseCalendarView.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		C0INTENTSGROUP00000001 /* Intents */ = {
+			isa = PBXGroup;
+			children = (
+				C0SIRISVC000000000001 /* SiriIntentService.swift */,
+				C0INTENTENT0000000001 /* CronicaAppEntities.swift */,
+				C0INTENTAPP0000000001 /* CronicaAppIntents.swift */,
+				C0EXTINTENT0000000001 /* ExtensionAppIntents.swift */,
+				C0ENTPOSTER0000000001 /* EntityPosterImage.swift */,
+				C0INTENTSHRT000000001 /* CronicaAppShortcuts.swift */,
+				C0SIRINAVBRIDGE00000001 /* SiriNavigationBridge.swift */,
+				C0SIRISHORTCUT00000001 /* SiriShortcutRefreshBridge.swift */,
+				C0SIRIDONATE0000000001 /* SiriIntentDonation.swift */,
+			);
+			path = Intents;
+			sourceTree = "<group>";
+		};
+		C0LIBGROUP0000000001 /* LibraryImport */ = {
+			isa = PBXGroup;
+			children = (
+				C0LIBMOD000000000001 /* LibraryImportModels.swift */,
+				C0LIBSVC000000000001 /* LibraryImportService.swift */,
+				C0LIBSESS00000000001 /* TMDBSessionStore.swift */,
+				C0LIBAPI000000000001 /* TMDBAccountAPIClient.swift */,
+				C0LIBAUTH00000000001 /* TMDBAccountAuthService.swift */,
+				C0LIBTMDB00000000001 /* TMDBAccountImportService.swift */,
+				C0TMDBSYNC00000000001 /* TMDBSyncService.swift */,
+				C0TMDBPUSH00000000001 /* TMDBPushService.swift */,
+				C0TMDBCACHE0000000001 /* TMDBAccountListCache.swift */,
+			);
+			path = LibraryImport;
+			sourceTree = "<group>";
+		};
+		C0LIVEACTGROUP00000001 /* LiveActivity */ = {
+			isa = PBXGroup;
+			children = (
+				C0WATCHATTR00000000001 /* WatchingActivityAttributes.swift */,
+			);
+			path = LiveActivity;
+			sourceTree = "<group>";
+		};
+		C0NAVENUMGRP000000001 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				C0APPNAVROUTE00000001 /* AppNavigationRoute.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
 		C0NF1G000000000000000001 /* Config */ = {
 			isa = PBXGroup;
 			children = (
@@ -1703,6 +1654,56 @@ C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 				C0NF1G000000000000000002 /* Secrets.xcconfig */,
 			);
 			path = Config;
+			sourceTree = "<group>";
+		};
+		C0QUICKACTGRP000000001 /* QuickActions */ = {
+			isa = PBXGroup;
+			children = (
+				C0QUICKHOME0000000001 /* HomeScreenQuickAction.swift */,
+				C0QUICKMGR00000000001 /* QuickActionManager.swift */,
+				C0QUICKCOORD00000000001 /* QuickActionCoordinator.swift */,
+				C0QUICKDEBUG00000000001 /* QuickActionDebug.swift */,
+				C0QUICKDEL00000000001 /* QuickActionAppDelegate.swift */,
+				C0QUICKREF00000000001 /* QuickActionRefreshBridge.swift */,
+			);
+			path = QuickActions;
+			sourceTree = "<group>";
+		};
+		C0SHAREEXTCONFIGGRP00001 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				C0SHAREENT0000000000001 /* CronicaShareExtension.entitlements */,
+				C0SHAREINFO0000000000001 /* Info.plist */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		C0SHAREEXTGROUP00000001 /* CronicaShareExtension */ = {
+			isa = PBXGroup;
+			children = (
+				C0SHAREEXTCONFIGGRP00001 /* Configuration */,
+				C0SHAREVC000000000000001 /* ShareViewController.swift */,
+				C0SHAREVIEW0000000000001 /* ShareExtensionView.swift */,
+				C0SHAREPERSISTSHARE002 /* PersistenceController-WatchlistItem+ShareExtension.swift */,
+			);
+			path = CronicaShareExtension;
+			sourceTree = "<group>";
+		};
+		C0SIMKLGROUP0000000001 /* Simkl */ = {
+			isa = PBXGroup;
+			children = (
+				C0SIMKLMODEL0000000001 /* SimklModels.swift */,
+				C0SIMKLTOKEN0000000001 /* SimklTokenStore.swift */,
+				C0SIMKLAPI000000000001 /* SimklAPIClient.swift */,
+				C0SIMKLAUTH00000000001 /* SimklAuthService.swift */,
+				C0SIMKLIMP000000000001 /* SimklImportService.swift */,
+				C0SIMKLMAP000000000001 /* SimklImportMapper.swift */,
+				C0SIMKLSYNC0000000001 /* SimklSyncService.swift */,
+				C0SIMKLACCT0000000001 /* SimklAccountService.swift */,
+				C0SIMKLPUSH0000000001 /* SimklPushService.swift */,
+				C0SIMKLKNOWN000000001 /* SimklKnownItemsStore.swift */,
+			);
+			path = Simkl;
 			sourceTree = "<group>";
 		};
 		C0UITESTGROUP000000000001 /* CronicaUITests */ = {
@@ -1814,7 +1815,6 @@ C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 			productReference = B8FCAE8F2AED9CE300F688FE /* Cronica Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-
 		C0SHAREEXTTARGET00000001 /* Cronica Share Extension */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C0SHAREEXTCONFIGLIST0001 /* Build configuration list for PBXNativeTarget "Cronica Share Extension" */;
@@ -1948,6 +1948,7 @@ C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 				B86F02652B63FB8900F8EA82 /* Localizable.xcstrings in Resources */,
 				B8F253BF2BC9CBDB003F27E8 /* PrivacyInfo.xcprivacy in Resources */,
 				B806C4E52899BE2900A5330E /* Assets.xcassets in Resources */,
+				CF7CE3183040DCCF00F3964C /* AppIcon.icon in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1962,6 +1963,7 @@ C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 				C0INFOPLISTSTR00000002 /* InfoPlist.xcstrings in Resources */,
 				B87B5CCC27999C5700632648 /* content.json in Resources */,
 				B8110EEC279245D100844FEB /* Assets.xcassets in Resources */,
+				CF7CE3183040DCCF00F3964B /* AppIcon.icon in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1983,14 +1985,14 @@ C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C0UITESTRESOURCES0000001 /* Resources */ = {
+		C0SHAREEXTRESOURCES000001 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C0SHAREEXTRESOURCES000001 /* Resources */ = {
+		C0UITESTRESOURCES0000001 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2235,12 +2237,12 @@ C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 				C0SIMKLIMP000000000002 /* SimklImportService.swift in Sources */,
 				C0SIMKLMAP000000000002 /* SimklImportMapper.swift in Sources */,
 				C0SIMKLVIEW00000000002 /* SimklSettingsView.swift in Sources */,
-								C0HOMESECKIND000000002 /* HomeSectionKind.swift in Sources */,
+				C0HOMESECKIND000000002 /* HomeSectionKind.swift in Sources */,
 				C0HOMESECSTORE00000002 /* HomeSectionStore.swift in Sources */,
 				C0HOMECUSTVIEW0000002 /* HomeCustomizerView.swift in Sources */,
-								C0WATCHPROGRING0000002 /* WatchProgressRing.swift in Sources */,
-C0WATCHBATCHEDIT00002 /* WatchlistBatchEditView.swift in Sources */,
-C0INTEGVIEW00000000002 /* IntegrationsSettingsView.swift in Sources */,
+				C0WATCHPROGRING0000002 /* WatchProgressRing.swift in Sources */,
+				C0WATCHBATCHEDIT00002 /* WatchlistBatchEditView.swift in Sources */,
+				C0INTEGVIEW00000000002 /* IntegrationsSettingsView.swift in Sources */,
 				C0SIMKLSYNC0000000002 /* SimklSyncService.swift in Sources */,
 				C0SIMKLACCT0000000002 /* SimklAccountService.swift in Sources */,
 				C0SIMKLPUSH0000000002 /* SimklPushService.swift in Sources */,
@@ -2379,19 +2381,6 @@ C0INTEGVIEW00000000002 /* IntegrationsSettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C0UITESTSOURCES00000000001 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C0UITESTBUILD00000000000002 /* CronicaUITests.swift in Sources */,
-				C0UITESTBUILD00000000000003 /* AppNavigator.swift in Sources */,
-				C0UITESTBUILD00000000000004 /* HomeUITests.swift in Sources */,
-				C0UITESTBUILD00000000000005 /* ItemContentDetailsUITests.swift in Sources */,
-				C0UITESTBUILD00000000000006 /* SettingsUITests.swift in Sources */,
-				C0UITESTBUILD00000000000007 /* QuickActionNavigationUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		C0SHAREEXTSOURCES000001 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2406,6 +2395,19 @@ C0INTEGVIEW00000000002 /* IntegrationsSettingsView.swift in Sources */,
 				C0SHARECLCLASS00000001 /* CustomList+CoreDataClass.swift in Sources */,
 				C0SHARECLPROPS00000001 /* CustomList+CoreDataProperties.swift in Sources */,
 				C0SHAREWATCHADD0000001 /* WatchlistAddService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0UITESTSOURCES00000000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0UITESTBUILD00000000000002 /* CronicaUITests.swift in Sources */,
+				C0UITESTBUILD00000000000003 /* AppNavigator.swift in Sources */,
+				C0UITESTBUILD00000000000004 /* HomeUITests.swift in Sources */,
+				C0UITESTBUILD00000000000005 /* ItemContentDetailsUITests.swift in Sources */,
+				C0UITESTBUILD00000000000006 /* SettingsUITests.swift in Sources */,
+				C0UITESTBUILD00000000000007 /* QuickActionNavigationUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2432,18 +2434,16 @@ C0INTEGVIEW00000000002 /* IntegrationsSettingsView.swift in Sources */,
 			target = B8110EDE279245D100844FEB /* Cronica */;
 			targetProxy = B8FCAE932AED9CE300F688FE /* PBXContainerItemProxy */;
 		};
+		C0SHAREEXTDEP0000000001 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = ios;
+			target = C0SHAREEXTTARGET00000001 /* Cronica Share Extension */;
+			targetProxy = C0SHAREEXTPROXY00000001 /* PBXContainerItemProxy */;
+		};
 		C0UITESTDEP00000000000001 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B8110EDE279245D100844FEB /* Cronica */;
 			targetProxy = C0UITESTCONTAINER000000001 /* PBXContainerItemProxy */;
-		};
-		C0SHAREEXTDEP0000000001 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			platformFilters = (
-				ios,
-			);
-			target = C0SHAREEXTTARGET00000001 /* Cronica Share Extension */;
-			targetProxy = C0SHAREEXTPROXY00000001 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2664,8 +2664,8 @@ C0INTEGVIEW00000000002 /* IntegrationsSettingsView.swift in Sources */,
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=appletvos*]" = "App Icon & Top Shelf Image";
-				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=macosx*]" = MacAppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
 				CODE_SIGN_ENTITLEMENTS = Shared/Configuration/Cronica.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -2678,9 +2678,9 @@ C0INTEGVIEW00000000002 /* IntegrationsSettingsView.swift in Sources */,
 				INFOPLIST_KEY_CFBundleDisplayName = Cronica;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Save image to Photos?";
 				INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription = "Cronica adds upcoming releases from your watchlist to a dedicated calendar.";
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "Cronica adds upcoming releases from your watchlist to a dedicated calendar.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Save image to Photos?";
 				INFOPLIST_KEY_NSRemindersFullAccessUsageDescription = "Cronica can add a reminder for the next release or episode of a watchlist title.";
 				INFOPLIST_KEY_NSRemindersUsageDescription = "Cronica can add a reminder for the next release or episode of a watchlist title.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -2713,9 +2713,8 @@ C0INTEGVIEW00000000002 /* IntegrationsSettingsView.swift in Sources */,
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=appletvos*]" = "App Icon & Top Shelf Image";
-				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=iphoneos*]" = AppIcon;
-				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=macosx*]" = MacAppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
 				CODE_SIGN_ENTITLEMENTS = Shared/Configuration/Cronica.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -2728,9 +2727,9 @@ C0INTEGVIEW00000000002 /* IntegrationsSettingsView.swift in Sources */,
 				INFOPLIST_KEY_CFBundleDisplayName = Cronica;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Save image to Photos?";
 				INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription = "Cronica adds upcoming releases from your watchlist to a dedicated calendar.";
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "Cronica adds upcoming releases from your watchlist to a dedicated calendar.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Save image to Photos?";
 				INFOPLIST_KEY_NSRemindersFullAccessUsageDescription = "Cronica can add a reminder for the next release or episode of a watchlist title.";
 				INFOPLIST_KEY_NSRemindersUsageDescription = "Cronica can add a reminder for the next release or episode of a watchlist title.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -2788,8 +2787,8 @@ C0INTEGVIEW00000000002 /* IntegrationsSettingsView.swift in Sources */,
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG CRONICA_WIDGET_EXTENSION $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -2824,8 +2823,8 @@ C0INTEGVIEW00000000002 /* IntegrationsSettingsView.swift in Sources */,
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "CRONICA_WIDGET_EXTENSION $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -2876,7 +2875,6 @@ C0INTEGVIEW00000000002 /* IntegrationsSettingsView.swift in Sources */,
 			};
 			name = Release;
 		};
-
 		C0SHAREEXTDEBUG00000001 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -3023,21 +3021,20 @@ C0INTEGVIEW00000000002 /* IntegrationsSettingsView.swift in Sources */,
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C0UITESTCONFIGLIST0000001 /* Build configuration list for PBXNativeTarget "CronicaUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C0UITESTDEBUG00000000001 /* Debug */,
-				C0UITESTRELEASE00000000001 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-
 		C0SHAREEXTCONFIGLIST0001 /* Build configuration list for PBXNativeTarget "Cronica Share Extension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C0SHAREEXTDEBUG00000001 /* Debug */,
 				C0SHAREEXTRELEASE0000001 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C0UITESTCONFIGLIST0000001 /* Build configuration list for PBXNativeTarget "CronicaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0UITESTDEBUG00000000001 /* Debug */,
+				C0UITESTRELEASE00000000001 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
