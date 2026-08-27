@@ -7,6 +7,7 @@ import SwiftUI
 import WidgetKit
 import CronicaCore
 #if os(iOS)
+import AppIntents
 import UIKit
 #elseif os(macOS)
 import AppKit
@@ -57,6 +58,7 @@ struct WidgetSnapshotHomeView: View {
     @Environment(\.widgetFamily) private var family
     let items: [WidgetSnapshotItem]
     let emptyMessage: String
+    var showsMarkWatchedButton = false
 
     private var layoutFamily: WidgetPosterLayout.Family {
         switch family {
@@ -81,11 +83,33 @@ struct WidgetSnapshotHomeView: View {
                     .multilineTextAlignment(.center)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
-                layout
+                VStack(spacing: 8) {
+                    layout
+#if os(iOS)
+                    if showsMarkWatchedButton, family == .systemMedium || family == .systemLarge || family == .systemExtraLarge {
+                        markWatchedButton
+                    }
+#endif
+                }
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
+
+#if os(iOS)
+    @ViewBuilder
+    private var markWatchedButton: some View {
+        if #available(iOS 17.0, *) {
+            Button(intent: MarkNextUpNextControlIntent()) {
+                Label(String(localized: "Mark Watched"), systemImage: "checkmark.rectangle")
+                    .font(.caption.weight(.semibold))
+                    .frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(.accentColor)
+        }
+    }
+#endif
 
     @ViewBuilder
     private var layout: some View {

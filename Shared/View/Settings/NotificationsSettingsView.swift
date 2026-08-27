@@ -98,7 +98,10 @@ struct NotificationsSettingsView: View {
             } header: {
                 Text("Calendar Sync")
             } footer: {
-                Text("Events are saved to a dedicated Cronica calendar in the Calendar app.")
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Events are saved to a dedicated Cronica calendar in the Calendar app.")
+                    Text("To reminder yourself about a specific title, use Add to Reminders on its detail page.")
+                }
             }
             .onChange(of: settings.allowCalendarSync) { _, enabled in
                 Task {

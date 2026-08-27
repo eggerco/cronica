@@ -46,5 +46,13 @@ enum SiriIntentDonation {
     static func donateMarkedUpNextEpisode() async {
         _ = try? await MarkUpNextEpisodeWatchedIntent().donate()
     }
+
+    static func donateOpenedWatchlist() async {
+        _ = try? await OpenWatchlistIntent().donate()
+    }
+
+    static func donateOpenedUpNext() async {
+        _ = try? await OpenUpNextIntent().donate()
+    }
 }
 #endif

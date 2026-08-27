@@ -277,6 +277,15 @@
 		C0SIRISVC000000000002 /* SiriIntentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIRISVC000000000001 /* SiriIntentService.swift */; };
 		C0INTENTENT0000000002 /* CronicaAppEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0INTENTENT0000000001 /* CronicaAppEntities.swift */; };
 		C0INTENTAPP0000000002 /* CronicaAppIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0INTENTAPP0000000001 /* CronicaAppIntents.swift */; };
+		C0EXTINTENT0000000002 /* ExtensionAppIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EXTINTENT0000000001 /* ExtensionAppIntents.swift */; };
+		C0EXTINTENT0000000003 /* ExtensionAppIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EXTINTENT0000000001 /* ExtensionAppIntents.swift */; };
+		C0ENTPOSTER0000000002 /* EntityPosterImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ENTPOSTER0000000001 /* EntityPosterImage.swift */; };
+		C0UPNEXTMARK000000002 /* UpNextMarkActionRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0UPNEXTMARK000000001 /* UpNextMarkActionRunner.swift */; };
+		C0SPOTLIGHT0000000002 /* SpotlightIndexManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SPOTLIGHT0000000001 /* SpotlightIndexManager.swift */; };
+		C0REMINDERS0000000002 /* RemindersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0REMINDERS0000000001 /* RemindersManager.swift */; };
+		C0ADDREMIND0000000002 /* AddToRemindersButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ADDREMIND0000000001 /* AddToRemindersButton.swift */; };
+		C0CRONCTRL0000000002 /* CronicaControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CRONCTRL0000000001 /* CronicaControls.swift */; };
+		C0SIRINAVBRIDGE00000003 /* SiriNavigationBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIRINAVBRIDGE00000001 /* SiriNavigationBridge.swift */; };
 		C0INTENTSHRT000000002 /* CronicaAppShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0INTENTSHRT000000001 /* CronicaAppShortcuts.swift */; };
 		C0SIRINAVBRIDGE00000002 /* SiriNavigationBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIRINAVBRIDGE00000001 /* SiriNavigationBridge.swift */; };
 		C0SIRISHORTCUT00000002 /* SiriShortcutRefreshBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0SIRISHORTCUT00000001 /* SiriShortcutRefreshBridge.swift */; };
@@ -656,6 +665,13 @@
 		C0SIRISVC000000000001 /* SiriIntentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriIntentService.swift; sourceTree = "<group>"; };
 		C0INTENTENT0000000001 /* CronicaAppEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaAppEntities.swift; sourceTree = "<group>"; };
 		C0INTENTAPP0000000001 /* CronicaAppIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaAppIntents.swift; sourceTree = "<group>"; };
+		C0EXTINTENT0000000001 /* ExtensionAppIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionAppIntents.swift; sourceTree = "<group>"; };
+		C0ENTPOSTER0000000001 /* EntityPosterImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityPosterImage.swift; sourceTree = "<group>"; };
+		C0UPNEXTMARK000000001 /* UpNextMarkActionRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpNextMarkActionRunner.swift; sourceTree = "<group>"; };
+		C0SPOTLIGHT0000000001 /* SpotlightIndexManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotlightIndexManager.swift; sourceTree = "<group>"; };
+		C0REMINDERS0000000001 /* RemindersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersManager.swift; sourceTree = "<group>"; };
+		C0ADDREMIND0000000001 /* AddToRemindersButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToRemindersButton.swift; sourceTree = "<group>"; };
+		C0CRONCTRL0000000001 /* CronicaControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaControls.swift; sourceTree = "<group>"; };
 		C0INTENTSHRT000000001 /* CronicaAppShortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaAppShortcuts.swift; sourceTree = "<group>"; };
 		C0SIRINAVBRIDGE00000001 /* SiriNavigationBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriNavigationBridge.swift; sourceTree = "<group>"; };
 		C0SIRISHORTCUT00000001 /* SiriShortcutRefreshBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriShortcutRefreshBridge.swift; sourceTree = "<group>"; };
@@ -995,6 +1011,7 @@
 				B81941C12A0861C80057DA04 /* WatchEpisodeButton.swift */,
 				B81941BA2A0861C70057DA04 /* WatchlistButton.swift */,
 				C0TRACKLOCK00000000001 /* TrackOnLockScreenButton.swift */,
+				C0ADDREMIND0000000001 /* AddToRemindersButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -1013,6 +1030,8 @@
 				C0SIRISVC000000000001 /* SiriIntentService.swift */,
 				C0INTENTENT0000000001 /* CronicaAppEntities.swift */,
 				C0INTENTAPP0000000001 /* CronicaAppIntents.swift */,
+				C0EXTINTENT0000000001 /* ExtensionAppIntents.swift */,
+				C0ENTPOSTER0000000001 /* EntityPosterImage.swift */,
 				C0INTENTSHRT000000001 /* CronicaAppShortcuts.swift */,
 				C0SIRINAVBRIDGE00000001 /* SiriNavigationBridge.swift */,
 				C0SIRISHORTCUT00000001 /* SiriShortcutRefreshBridge.swift */,
@@ -1499,6 +1518,7 @@ C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 				C0UPNEXTWIDGET000000001 /* CronicaUpNextWidget.swift */,
 				C0WATCHLWIDGET000000001 /* CronicaWatchlistWidget.swift */,
 				C0LIVEACTIVITY000000001 /* WatchingLiveActivity.swift */,
+				C0CRONCTRL0000000001 /* CronicaControls.swift */,
 				B8D7AEAD28B95F5F0053CE5A /* Assets.xcassets */,
 				B86AAD0B28BD2D6B00D135B1 /* PlaceholderMedia.xcassets */,
 			);
@@ -1597,6 +1617,9 @@ C0INTEGVIEW00000000001 /* IntegrationsSettingsView.swift */,
 				C0WATCHADDSVC0000000001 /* WatchlistAddService.swift */,
 				C0WIDGETPUB00000000001 /* WidgetSnapshotPublisher.swift */,
 				C0WIDGETBRIDGE000000001 /* WidgetSnapshotPublisherBridge.swift */,
+				C0UPNEXTMARK000000001 /* UpNextMarkActionRunner.swift */,
+				C0SPOTLIGHT0000000001 /* SpotlightIndexManager.swift */,
+				C0REMINDERS0000000001 /* RemindersManager.swift */,
 				C0WATCHSESS00000000001 /* WatchingSessionManager.swift */,
 				C0CALMGR000000000001 /* CalendarManager.swift */,
 				C0USERDATA000000000001 /* UserDataDeletionService.swift */,
@@ -2214,6 +2237,12 @@ C0INTEGVIEW00000000002 /* IntegrationsSettingsView.swift in Sources */,
 				C0SIRISVC000000000002 /* SiriIntentService.swift in Sources */,
 				C0INTENTENT0000000002 /* CronicaAppEntities.swift in Sources */,
 				C0INTENTAPP0000000002 /* CronicaAppIntents.swift in Sources */,
+				C0EXTINTENT0000000002 /* ExtensionAppIntents.swift in Sources */,
+				C0ENTPOSTER0000000002 /* EntityPosterImage.swift in Sources */,
+				C0UPNEXTMARK000000002 /* UpNextMarkActionRunner.swift in Sources */,
+				C0SPOTLIGHT0000000002 /* SpotlightIndexManager.swift in Sources */,
+				C0REMINDERS0000000002 /* RemindersManager.swift in Sources */,
+				C0ADDREMIND0000000002 /* AddToRemindersButton.swift in Sources */,
 				C0INTENTSHRT000000002 /* CronicaAppShortcuts.swift in Sources */,
 				C0SIRINAVBRIDGE00000002 /* SiriNavigationBridge.swift in Sources */,
 				C0SIRISHORTCUT00000002 /* SiriShortcutRefreshBridge.swift in Sources */,
@@ -2321,6 +2350,9 @@ C0INTEGVIEW00000000002 /* IntegrationsSettingsView.swift in Sources */,
 				C0WATCHLWIDGET000000002 /* CronicaWatchlistWidget.swift in Sources */,
 				C0LIVEACTIVITY000000002 /* WatchingLiveActivity.swift in Sources */,
 				C0WATCHATTR00000000003 /* WatchingActivityAttributes.swift in Sources */,
+				C0CRONCTRL0000000002 /* CronicaControls.swift in Sources */,
+				C0EXTINTENT0000000003 /* ExtensionAppIntents.swift in Sources */,
+				C0SIRINAVBRIDGE00000003 /* SiriNavigationBridge.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2635,6 +2667,8 @@ C0INTEGVIEW00000000002 /* IntegrationsSettingsView.swift in Sources */,
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Save image to Photos?";
 				INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription = "Cronica adds upcoming releases from your watchlist to a dedicated calendar.";
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "Cronica adds upcoming releases from your watchlist to a dedicated calendar.";
+				INFOPLIST_KEY_NSRemindersFullAccessUsageDescription = "Cronica can add a reminder for the next release or episode of a watchlist title.";
+				INFOPLIST_KEY_NSRemindersUsageDescription = "Cronica can add a reminder for the next release or episode of a watchlist title.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -2683,6 +2717,8 @@ C0INTEGVIEW00000000002 /* IntegrationsSettingsView.swift in Sources */,
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Save image to Photos?";
 				INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription = "Cronica adds upcoming releases from your watchlist to a dedicated calendar.";
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "Cronica adds upcoming releases from your watchlist to a dedicated calendar.";
+				INFOPLIST_KEY_NSRemindersFullAccessUsageDescription = "Cronica can add a reminder for the next release or episode of a watchlist title.";
+				INFOPLIST_KEY_NSRemindersUsageDescription = "Cronica can add a reminder for the next release or episode of a watchlist title.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -2739,6 +2775,7 @@ C0INTEGVIEW00000000002 /* IntegrationsSettingsView.swift in Sources */,
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG CRONICA_WIDGET_EXTENSION $(inherited)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -2774,6 +2811,7 @@ C0INTEGVIEW00000000002 /* IntegrationsSettingsView.swift in Sources */,
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "CRONICA_WIDGET_EXTENSION $(inherited)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;

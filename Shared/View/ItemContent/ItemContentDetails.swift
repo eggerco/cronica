@@ -1138,6 +1138,7 @@ extension ItemContentDetails {
                 hideFromUpNextToolbar
 #if os(iOS)
                 TrackOnLockScreenButton(contentID: "\(id)@\(type.toInt)")
+                AddToRemindersButton(contentID: "\(id)@\(type.toInt)")
 #endif
             }
             openInMenu
@@ -1163,6 +1164,7 @@ extension ItemContentDetails {
                 hideFromUpNextToolbar
 #if os(iOS)
                 TrackOnLockScreenButton(contentID: "\(id)@\(type.toInt)")
+                AddToRemindersButton(contentID: "\(id)@\(type.toInt)")
 #endif
             }
             openInMenu
@@ -1190,6 +1192,7 @@ extension ItemContentDetails {
                 hideFromUpNextToolbar
 #if os(iOS)
                 TrackOnLockScreenButton(contentID: "\(id)@\(type.toInt)")
+                AddToRemindersButton(contentID: "\(id)@\(type.toInt)")
 #endif
             }
             openInMenu

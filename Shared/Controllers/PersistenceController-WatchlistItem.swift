@@ -184,6 +184,9 @@ extension PersistenceController {
         let notification = NotificationManager.shared
         notification.removeNotification(identifier: content.itemContentID)
         CalendarManager.shared.removeEvent(identifier: content.itemContentID)
+#if canImport(CoreSpotlight) && !os(watchOS) && !os(tvOS)
+        SpotlightRefreshBridge.removeIfAvailable(contentID: content.itemContentID)
+#endif
 #endif
         viewContext.delete(item)
         save()
@@ -291,6 +294,9 @@ extension PersistenceController {
 #if !CRONICA_SHARE_EXTENSION
             NotificationManager.shared.removeNotification(identifier: item.itemContentID)
             CalendarManager.shared.removeEvent(identifier: item.itemContentID)
+#if canImport(CoreSpotlight) && !os(watchOS) && !os(tvOS)
+            SpotlightRefreshBridge.removeIfAvailable(contentID: item.itemContentID)
+#endif
 #endif
         }
         item.shouldNotify.toggle()
@@ -299,6 +305,11 @@ extension PersistenceController {
             item.displayOnUpNext.toggle()
         }
         save()
+#if !CRONICA_SHARE_EXTENSION && !os(watchOS) && canImport(CoreSpotlight) && !os(tvOS)
+        if !item.isArchive {
+            SpotlightRefreshBridge.indexIfAvailable(item)
+        }
+#endif
 #if !os(watchOS) && !CRONICA_SHARE_EXTENSION
         if item.isArchive {
             let tmdb = item.itemId

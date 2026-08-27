@@ -19,6 +19,10 @@ struct CronicaWidgetBundle: WidgetBundle {
         if #available(iOS 16.2, *) {
             WatchingLiveActivity()
         }
+        if #available(iOS 18.0, *) {
+            OpenUpNextControl()
+            MarkNextEpisodeControl()
+        }
 #endif
     }
 }

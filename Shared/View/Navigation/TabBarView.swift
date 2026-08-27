@@ -143,8 +143,14 @@ struct TabBarView: View {
             }
         case .watchlist:
             tabSelection = .watchlist
+#if canImport(AppIntents) && !os(watchOS) && !os(tvOS)
+            Task { await SiriIntentDonation.donateOpenedWatchlist() }
+#endif
         case .upNext:
             tabSelection = .home
+#if canImport(AppIntents) && !os(watchOS) && !os(tvOS)
+            Task { await SiriIntentDonation.donateOpenedUpNext() }
+#endif
             Task { @MainActor in
                 try? await Task.sleep(for: .milliseconds(150))
                 homePath.append(AppNavigationRoute.upNextList)

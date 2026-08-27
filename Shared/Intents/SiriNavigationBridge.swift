@@ -44,7 +44,7 @@ enum SiriNavigationBridge {
     @MainActor
     static func publishPendingNavigation(_ action: PendingAppNavigation) {
         storePendingNavigation(action)
-#if os(iOS)
+#if os(iOS) && !CRONICA_WIDGET_EXTENSION
         QuickActionCoordinator.shared.stage(action)
 #endif
     }

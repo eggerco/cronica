@@ -133,47 +133,19 @@ enum SiriIntentService {
     }
 
     static func markNextUpNextEpisodeWatched() async throws -> String {
-        guard let summary = try await firstUpNextSummary() else {
-            throw ServiceError.noUpNext
-        }
-
-        guard let item = persistence.fetch(for: summary.contentID) else {
-            throw ServiceError.noUpNext
-        }
-
-        let showID = item.itemId
-        let episode = try await network.fetchEpisode(
-            tvID: Int64(showID),
-            season: Int64(summary.seasonNumber),
-            episodeNumber: Int64(summary.episodeNumber)
-        )
-
-        persistence.updateWatchedEpisodes(for: item, with: episode)
-        let helper = EpisodeHelper()
-        if let nextEpisode = await helper.fetchNextEpisode(for: episode, show: showID) {
-            persistence.updateUpNext(item, episode: nextEpisode)
-        }
-        WidgetSnapshotPublisherBridge.scheduleRefreshIfAvailable()
-
-        let episodeLabel = summary.episodeName ?? String(
-            format: String(localized: "S%d · E%d"),
-            summary.seasonNumber,
-            summary.episodeNumber
-        )
-        return "\(summary.showTitle) — \(episodeLabel)"
+        try await UpNextMarkActionRunner.markNextEpisodeWatched()
     }
 
     static func upNextSummaries(limit: Int = 5) async throws -> [UpNextSummary] {
-        var summaries: [UpNextSummary] = []
-        let items = persistence.fetchUpNextWatchlistItems()
-        for item in items where summaries.count < limit {
-            guard let summary = await upNextSummary(for: item) else { continue }
-            summaries.append(summary)
+        try await UpNextMarkActionRunner.upNextSummaries(limit: limit).map {
+            UpNextSummary(
+                showTitle: $0.showTitle,
+                seasonNumber: $0.seasonNumber,
+                episodeNumber: $0.episodeNumber,
+                episodeName: $0.episodeName,
+                contentID: $0.contentID
+            )
         }
-        if summaries.isEmpty {
-            throw ServiceError.noUpNext
-        }
-        return summaries
     }
 
     static func searchTitles(query: String, limit: Int = 5) async throws -> [SearchSummary] {
@@ -249,28 +221,6 @@ enum SiriIntentService {
     }
 
     // MARK: - Private
-
-    private static func firstUpNextSummary() async throws -> UpNextSummary? {
-        try await upNextSummaries(limit: 1).first
-    }
-
-    private static func upNextSummary(for item: WatchlistItem) async -> UpNextSummary? {
-        let result = try? await network.fetchEpisode(
-            tvID: Int64(item.itemId),
-            season: item.itemNextUpNextSeason,
-            episodeNumber: item.itemNextUpNextEpisode
-        )
-        guard let result else { return nil }
-        let seasonNumber = result.seasonNumber ?? Int(item.itemNextUpNextSeason)
-        let episodeNumber = result.episodeNumber ?? Int(item.itemNextUpNextEpisode)
-        return UpNextSummary(
-            showTitle: item.itemTitle,
-            seasonNumber: seasonNumber,
-            episodeNumber: episodeNumber,
-            episodeName: result.name,
-            contentID: item.itemContentID
-        )
-    }
 
     private static func scheduleSideEffects(for content: ItemContent) {
         if content.itemCanNotify && content.itemFallbackDate.isLessThanTwoWeeksAway() {

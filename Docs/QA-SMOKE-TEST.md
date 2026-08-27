@@ -20,13 +20,33 @@ Use before App Store / TestFlight releases. Code for the items below is in place
 
 ## Siri (physical iPhone required)
 - [ ] Settings → Siri & Shortcuts opens Shortcuts gallery
-- [ ] Shortcuts app shows 8 Cronica App Shortcuts
+- [ ] Shortcuts app shows 10 Cronica App Shortcuts
 - [ ] “Add [title] to Cronica” adds to watchlist
 - [ ] “What's up next on Cronica?” reads Up Next queue
 - [ ] “Mark my next episode as watched” updates episode progress
 - [ ] “Open search in Cronica” opens Search tab with keyboard
 - [ ] “Open [title] in Cronica” opens title details sheet
+- [ ] “Open my watchlist in Cronica” opens Watchlist tab
+- [ ] “Open up next in Cronica” opens Up Next list
 - [ ] Add from Link shortcut works with a TMDb / Letterboxd URL
+
+## Control Center (iOS 18+, physical iPhone)
+- [ ] Settings → Control Center → add Cronica **Up Next** and **Mark Watched**
+- [ ] Up Next control opens Up Next list
+- [ ] Mark Watched control marks next episode (or opens app to complete)
+
+## Interactive Up Next widget (iOS)
+- [ ] Medium/large Up Next widget shows **Mark Watched** when queue has items
+- [ ] Mark Watched refreshes widget content after episode is marked
+- [ ] Poster tap still opens title in app
+
+## Spotlight (physical iPhone)
+- [ ] Add a watchlist title → wait briefly → find it in Spotlight search
+- [ ] Tap Spotlight result → Cronica opens title details
+
+## Reminders (physical iPhone)
+- [ ] Item detail → Add to Reminders creates reminder with due date
+- [ ] Reminder includes deep link back to title
 
 ## Home Screen quick actions (physical iPhone required)
 - [ ] Long-press app icon shows Search, Watchlist, and Up Next

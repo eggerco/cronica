@@ -27,6 +27,12 @@ enum UserDataDeletionService {
     static func deleteAllUserData() async throws {
         NotificationManager.shared.removeAllNotifications()
         CalendarManager.shared.removeAllCalendarData()
+#if canImport(EventKit) && !os(tvOS) && !os(watchOS)
+        RemindersManager.shared.removeAllReminders()
+#endif
+#if canImport(CoreSpotlight) && !os(watchOS) && !os(tvOS)
+        SpotlightRefreshBridge.clearIfAvailable()
+#endif
 
         let persistence = PersistenceController.shared
         do {

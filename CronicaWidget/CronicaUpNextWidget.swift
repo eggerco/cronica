@@ -24,7 +24,11 @@ struct CronicaUpNextWidgetEntryView: View {
             case .accessoryInline, .accessoryRectangular, .accessoryCircular:
                 WidgetSnapshotLockScreenView(items: entry.items, emptyMessage: entry.emptyMessage)
             default:
-                WidgetSnapshotHomeView(items: entry.items, emptyMessage: entry.emptyMessage)
+                WidgetSnapshotHomeView(
+                    items: entry.items,
+                    emptyMessage: entry.emptyMessage,
+                    showsMarkWatchedButton: true
+                )
             }
 #else
             WidgetSnapshotHomeView(items: entry.items, emptyMessage: entry.emptyMessage)

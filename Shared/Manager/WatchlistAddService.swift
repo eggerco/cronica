@@ -59,6 +59,12 @@ enum WatchlistAddService {
             await addFirstEpisodeToUpNext(content, persistence: persistence)
         }
 
+        if let saved = persistence.fetch(for: content.itemContentID) {
+#if canImport(CoreSpotlight) && !os(watchOS) && !os(tvOS) && !CRONICA_SHARE_EXTENSION
+            SpotlightRefreshBridge.indexIfAvailable(saved)
+#endif
+        }
+
 #if CRONICA_SHARE_EXTENSION
         // Snapshot JSON is published by the main app; reload so Lock Screen /
         // Home widgets pick up updates as soon as the host app refreshes them.

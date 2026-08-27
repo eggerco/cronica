@@ -106,6 +106,28 @@ struct OpenSearchIntent: AppIntent {
     }
 }
 
+struct OpenWatchlistIntent: AppIntent {
+    static var title: LocalizedStringResource = "Open Watchlist"
+    static var description = IntentDescription("Open your Cronica watchlist.")
+    static var openAppWhenRun = true
+
+    func perform() async throws -> some IntentResult & ProvidesDialog {
+        await SiriNavigationBridge.publishPendingNavigation(.watchlist)
+        return .result(dialog: IntentDialog("Opening your watchlist in Cronica."))
+    }
+}
+
+struct OpenUpNextIntent: AppIntent {
+    static var title: LocalizedStringResource = "Open Up Next"
+    static var description = IntentDescription("Open your Up Next list in Cronica.")
+    static var openAppWhenRun = true
+
+    func perform() async throws -> some IntentResult & ProvidesDialog {
+        await SiriNavigationBridge.publishPendingNavigation(.upNext)
+        return .result(dialog: IntentDialog("Opening Up Next in Cronica."))
+    }
+}
+
 struct SearchTitlesIntent: AppIntent {
     static var title: LocalizedStringResource = "Search Titles"
     static var description = IntentDescription("Search for movies and TV shows in Cronica.")

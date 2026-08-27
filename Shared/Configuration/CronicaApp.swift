@@ -9,6 +9,7 @@ import BackgroundTasks
 import CronicaCore
 #if os(iOS)
 import NotificationCenter
+import CoreSpotlight
 #endif
 
 @main
@@ -61,12 +62,21 @@ struct CronicaApp: App {
                         await fetchContent(for: contentID)
                     }
                 }
+#if os(iOS)
+                .onContinueUserActivity(CSSearchableItemActionType) { activity in
+                    guard let contentID = SpotlightIndexManager.contentID(from: activity) else { return }
+                    Task {
+                        await fetchContent(for: contentID)
+                    }
+                }
+#endif
                 .task {
 #if canImport(AppIntents) && !os(watchOS) && !os(tvOS)
                     await consumePendingSiriDeepLink()
 #endif
 #if os(iOS)
                     stagePendingNavigationForTabs()
+                    SpotlightIndexManager.rebuildIndexIfNeeded()
 #endif
                 }
                 .alert(

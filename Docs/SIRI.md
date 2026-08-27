@@ -154,3 +154,24 @@ These are **not app bugs** and usually do not appear on physical devices:
 | `Snapshotting a view (UIKeyboardImpl)` | Simulator keyboard snapshot |
 
 Successful quick actions log `[Cronica QuickAction] handle → deliver → consume → apply` in Debug builds.
+
+## Control Center (iOS 18+)
+
+| Control | Action |
+|---------|--------|
+| **Up Next** | Opens Home → Up Next list |
+| **Mark Watched** | Marks next Up Next episode (opens app from widget extension; in-app mark without opening when run from Shortcuts) |
+
+Add from **Settings → Control Center → Cronica**.
+
+## Interactive Up Next widget
+
+Medium/large Up Next widgets include a **Mark Watched** button. Posters still open the title via deep link.
+
+## Spotlight
+
+Watchlist titles are indexed for system Spotlight search. Tapping a result opens the title in Cronica via `onContinueUserActivity`. Index rebuilds on launch (daily) and on watchlist add/remove/archive.
+
+## Reminders
+
+Per-title **Add to Reminders** on item detail creates one `EKReminder` for the next release/episode date. Bulk calendar sync remains under Settings → Notifications → Calendar Sync.

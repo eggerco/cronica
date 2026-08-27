@@ -97,6 +97,28 @@ struct CronicaAppShortcuts: AppShortcutsProvider {
             shortTitle: LocalizedStringResource("Open Title"),
             systemImageName: "arrow.up.forward.app"
         )
+
+        AppShortcut(
+            intent: OpenWatchlistIntent(),
+            phrases: [
+                "Open my watchlist in \(.applicationName)",
+                "Show my watchlist in \(.applicationName)",
+                "\(.applicationName) watchlist",
+            ],
+            shortTitle: LocalizedStringResource("Open Watchlist"),
+            systemImageName: "rectangle.on.rectangle"
+        )
+
+        AppShortcut(
+            intent: OpenUpNextIntent(),
+            phrases: [
+                "Open up next in \(.applicationName)",
+                "Show up next in \(.applicationName)",
+                "\(.applicationName) open up next",
+            ],
+            shortTitle: LocalizedStringResource("Open Up Next"),
+            systemImageName: "play.tv"
+        )
     }
 }
 #endif

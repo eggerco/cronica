@@ -38,7 +38,10 @@ struct WatchlistTitleEntity: AppEntity, Identifiable {
     let mediaLabel: String
 
     var displayRepresentation: DisplayRepresentation {
-        DisplayRepresentation(title: "\(title)", subtitle: "\(mediaLabel)")
+        if let image = EntityPosterImage.intentImage(for: id) {
+            return DisplayRepresentation(title: "\(title)", subtitle: "\(mediaLabel)", image: image)
+        }
+        return DisplayRepresentation(title: "\(title)", subtitle: "\(mediaLabel)")
     }
 
     init(item: WatchlistItem) {
@@ -54,6 +57,9 @@ struct WatchlistTitleEntity: AppEntity, Identifiable {
         }
     }
 }
+
+@available(iOS 18.0, *)
+extension WatchlistTitleEntity: IndexedEntity {}
 
 struct WatchlistTitleEntityQuery: EntityQuery {
     func entities(for identifiers: [WatchlistTitleEntity.ID]) async throws -> [WatchlistTitleEntity] {
@@ -85,7 +91,16 @@ struct UpNextEpisodeEntity: AppEntity, Identifiable {
     let episodeLabel: String
 
     var displayRepresentation: DisplayRepresentation {
-        DisplayRepresentation(title: "\(showTitle)", subtitle: "\(episodeLabel)")
+        if let image = EntityPosterImage.intentImage(for: posterContentID) {
+            return DisplayRepresentation(title: "\(showTitle)", subtitle: "\(episodeLabel)", image: image)
+        }
+        return DisplayRepresentation(title: "\(showTitle)", subtitle: "\(episodeLabel)")
+    }
+
+    private var posterContentID: String {
+        let parts = id.split(separator: "-")
+        guard parts.count >= 3 else { return id }
+        return parts.dropLast(2).joined(separator: "-")
     }
 
     init(summary: SiriIntentService.UpNextSummary) {
@@ -102,6 +117,9 @@ struct UpNextEpisodeEntity: AppEntity, Identifiable {
         }
     }
 }
+
+@available(iOS 18.0, *)
+extension UpNextEpisodeEntity: IndexedEntity {}
 
 struct UpNextEpisodeEntityQuery: EntityQuery {
     func entities(for identifiers: [UpNextEpisodeEntity.ID]) async throws -> [UpNextEpisodeEntity] {
@@ -126,7 +144,10 @@ struct SearchResultEntity: AppEntity, Identifiable {
     let subtitle: String
 
     var displayRepresentation: DisplayRepresentation {
-        DisplayRepresentation(title: "\(title)", subtitle: "\(subtitle)")
+        if let image = EntityPosterImage.intentImage(for: id) {
+            return DisplayRepresentation(title: "\(title)", subtitle: "\(subtitle)", image: image)
+        }
+        return DisplayRepresentation(title: "\(title)", subtitle: "\(subtitle)")
     }
 
     init(summary: SiriIntentService.SearchSummary) {
@@ -144,7 +165,21 @@ struct SearchResultEntity: AppEntity, Identifiable {
 
 struct SearchResultEntityQuery: EntityStringQuery {
     func entities(for identifiers: [SearchResultEntity.ID]) async throws -> [SearchResultEntity] {
-        []
+        await MainActor.run {
+            identifiers.compactMap { identifier in
+                if let item = PersistenceController.shared.fetch(for: identifier) {
+                    let subtitle: String
+                    switch item.itemMedia {
+                    case .movie: subtitle = String(localized: "Movie")
+                    case .tvShow: subtitle = String(localized: "TV Show")
+                    case .person: subtitle = String(localized: "Person")
+                    }
+                    return SearchResultEntity(id: identifier, title: item.itemTitle, subtitle: subtitle)
+                }
+                guard TMDBURLParser.parseContentID(identifier) != nil else { return nil }
+                return SearchResultEntity(id: identifier, title: identifier, subtitle: String(localized: "Title"))
+            }
+        }
     }
 
     func entities(matching string: String) async throws -> [SearchResultEntity] {

@@ -78,6 +78,8 @@ struct PersistenceController {
             // Share Extension writes only to the App Group SQLite. The main app owns CloudKit sync
             // so two processes never export the same store concurrently.
             description.cloudKitContainerOptions = nil
+#elseif CRONICA_WIDGET_EXTENSION
+            description.cloudKitContainerOptions = nil
 #else
             if Self.isICloudAccountAvailable() {
                 description.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(
@@ -102,14 +104,14 @@ struct PersistenceController {
 #else
                 PersistenceController.storeLoadError = error
                 AppLogger.persistence.fault("Unresolved error loading persistent store: \(error), \(error.userInfo)")
-#if !os(watchOS) && !CRONICA_SHARE_EXTENSION
+#if !os(watchOS) && !CRONICA_SHARE_EXTENSION && !CRONICA_WIDGET_EXTENSION
                 SentryManager.capture(error, context: ["source": "PersistenceController.loadPersistentStores"])
 #endif
 #endif
             }
         }
 
-#if os(iOS) && !CRONICA_SHARE_EXTENSION
+#if os(iOS) && !CRONICA_SHARE_EXTENSION && !CRONICA_WIDGET_EXTENSION
         if !inMemory {
             PersistentHistoryMerger.startObserving(container: container)
         }
