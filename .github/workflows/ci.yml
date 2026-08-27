@@ -32,6 +32,40 @@ jobs:
           sudo xcode-select -s /Applications/Xcode_26.6.app/Contents/Developer
           xcodebuild -version
 
+      # Xcode 26.6 may advertise OS=latest as 26.6 even when that simulator runtime isn't installed.
+      - name: Resolve simulator destinations
+        id: sims
+        run: |
+          python3 <<'PY'
+          import json
+          import os
+          import subprocess
+          import sys
+
+          runtimes = json.loads(
+              subprocess.check_output(["xcrun", "simctl", "list", "runtimes", "-j"], text=True)
+          )["runtimes"]
+
+          def newest(prefix: str) -> str:
+              versions = [
+                  tuple(int(part) for part in runtime["version"].split("."))
+                  for runtime in runtimes
+                  if runtime.get("isAvailable") and runtime["name"].startswith(prefix)
+              ]
+              if not versions:
+                  raise SystemExit(f"No available {prefix} simulator runtimes")
+              return ".".join(str(part) for part in max(versions))
+
+          ios = newest("iOS ")
+          watch = newest("watchOS ")
+          print(f"Resolved destinations → iOS {ios}, watchOS {watch}", file=sys.stderr)
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as output:
+              output.write(f"ios=platform=iOS Simulator,name=iPhone 17,OS={ios}\n")
+              output.write(
+                  f"watch=platform=watchOS Simulator,name=Apple Watch Series 11 (46mm),OS={watch}\n"
+              )
+          PY
+
       # Cancelled/reused runners leave partial Sentry XCFramework downloads that make
       # SwiftPM fail with "already exists in file system".
       - name: Clear stale SwiftPM binary artifacts
@@ -60,7 +94,7 @@ jobs:
           xcodebuild build \
             -project Cronica.xcodeproj \
             -scheme "Cronica (EN-US)" \
-            -destination 'platform=iOS Simulator,name=iPhone 17,OS=latest' \
+            -destination '${{ steps.sims.outputs.ios }}' \
             -configuration Debug \
             CODE_SIGNING_ALLOWED=NO
 
@@ -70,7 +104,7 @@ jobs:
           xcodebuild test \
             -project Cronica.xcodeproj \
             -scheme "Cronica (EN-US)" \
-            -destination 'platform=iOS Simulator,name=iPhone 17,OS=latest' \
+            -destination '${{ steps.sims.outputs.ios }}' \
             -configuration Debug \
             -only-testing:'Cronica Tests' \
             -parallel-testing-enabled NO \
@@ -83,7 +117,7 @@ jobs:
           xcodebuild build \
             -project Cronica.xcodeproj \
             -scheme CronicaWidgetExtension \
-            -destination 'platform=iOS Simulator,name=iPhone 17,OS=latest' \
+            -destination '${{ steps.sims.outputs.ios }}' \
             -configuration Debug \
             CODE_SIGNING_ALLOWED=NO
 
@@ -93,7 +127,7 @@ jobs:
           xcodebuild build \
             -project Cronica.xcodeproj \
             -scheme CronicaShareExtension \
-            -destination 'platform=iOS Simulator,name=iPhone 17,OS=latest' \
+            -destination '${{ steps.sims.outputs.ios }}' \
             -configuration Debug \
             CODE_SIGNING_ALLOWED=NO
 
@@ -113,7 +147,7 @@ jobs:
           xcodebuild build \
             -project Cronica.xcodeproj \
             -scheme "Cronica Watch App" \
-            -destination 'platform=watchOS Simulator,name=Apple Watch Series 11 (46mm),OS=latest' \
+            -destination '${{ steps.sims.outputs.watch }}' \
             -configuration Debug \
             CODE_SIGNING_ALLOWED=NO
 
