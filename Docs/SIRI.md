@@ -17,7 +17,7 @@ Cronica uses **App Intents** (iOS 17+) for Siri and the Shortcuts app on **iPhon
 
 ## In-app setup
 
-**Settings → Siri & Shortcuts** lists example phrases and opens the Shortcuts gallery via `ShortcutsLink`.
+**Settings → Siri & Shortcuts** lists example phrases and includes an **Open Shortcuts** button that launches the Shortcuts app (`shortcuts://`).
 
 On first use, enable Cronica under **Settings → Siri & Search** on device.
 
