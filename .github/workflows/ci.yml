@@ -33,6 +33,7 @@ jobs:
           xcodebuild -version
 
       # Xcode 26.6 may advertise OS=latest as 26.6 even when that simulator runtime isn't installed.
+      # Prefer concrete UDIDs so paired Watch sims don't make name+OS destinations ambiguous.
       - name: Resolve simulator destinations
         id: sims
         run: |
@@ -42,28 +43,38 @@ jobs:
           import subprocess
           import sys
 
-          runtimes = json.loads(
-              subprocess.check_output(["xcrun", "simctl", "list", "runtimes", "-j"], text=True)
-          )["runtimes"]
-
-          def newest(prefix: str) -> str:
-              versions = [
-                  tuple(int(part) for part in runtime["version"].split("."))
-                  for runtime in runtimes
-                  if runtime.get("isAvailable") and runtime["name"].startswith(prefix)
-              ]
-              if not versions:
-                  raise SystemExit(f"No available {prefix} simulator runtimes")
-              return ".".join(str(part) for part in max(versions))
-
-          ios = newest("iOS ")
-          watch = newest("watchOS ")
-          print(f"Resolved destinations → iOS {ios}, watchOS {watch}", file=sys.stderr)
-          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as output:
-              output.write(f"ios=platform=iOS Simulator,name=iPhone 17,OS={ios}\n")
-              output.write(
-                  f"watch=platform=watchOS Simulator,name=Apple Watch Series 11 (46mm),OS={watch}\n"
+          devices = json.loads(
+              subprocess.check_output(
+                  ["xcrun", "simctl", "list", "devices", "available", "-j"], text=True
               )
+          )["devices"]
+
+          def version_key(runtime_key: str) -> tuple[int, ...]:
+              # com.apple.CoreSimulator.SimRuntime.iOS-26-5 → (26, 5)
+              suffix = runtime_key.rsplit(".", 1)[-1]
+              parts = suffix.replace("iOS-", "").replace("watchOS-", "").split("-")
+              return tuple(int(part) for part in parts if part.isdigit())
+
+          def pick(name: str, runtime_prefix: str) -> str:
+              matches: list[tuple[tuple[int, ...], str]] = []
+              for runtime, entries in devices.items():
+                  if runtime_prefix not in runtime:
+                      continue
+                  for device in entries:
+                      if device.get("name") != name or device.get("isAvailable") is False:
+                          continue
+                      matches.append((version_key(runtime), device["udid"]))
+              if not matches:
+                  raise SystemExit(f"No available simulator named {name!r} for {runtime_prefix}")
+              matches.sort()
+              return matches[-1][1]
+
+          ios_id = pick("iPhone 17", "SimRuntime.iOS-")
+          watch_id = pick("Apple Watch Series 11 (46mm)", "SimRuntime.watchOS-")
+          print(f"Resolved destinations → iOS={ios_id}, watchOS={watch_id}", file=sys.stderr)
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as output:
+              output.write(f"ios=platform=iOS Simulator,id={ios_id}\n")
+              output.write(f"watch=platform=watchOS Simulator,id={watch_id}\n")
           PY
 
       # Cancelled/reused runners leave partial Sentry XCFramework downloads that make
