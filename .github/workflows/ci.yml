@@ -12,7 +12,8 @@ concurrency:
 
 jobs:
   build-and-test:
-    runs-on: macos-15
+    # Icon Composer (.icon) needs Xcode 26.6; macos-15 only ships ≤26.3 whose actool crashes on .icon.
+    runs-on: macos-26
     env:
       TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
       SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
@@ -21,19 +22,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Select Xcode
+      - name: Select Xcode 26.6
         run: |
-          # Icon Composer (.icon) needs Xcode 26+. Prefer 26.6 (matches local); keep
-          # classic AppIcon.appiconsets so Xcode 16.4 can still compile Watch/iOS.
-          if [ -d "/Applications/Xcode_26.6.app" ]; then
-            sudo xcode-select -s /Applications/Xcode_26.6.app/Contents/Developer
-          elif XCODE26="$(ls -d /Applications/Xcode_26*.app 2>/dev/null | sort -V | tail -1)" && [ -n "$XCODE26" ]; then
-            sudo xcode-select -s "$XCODE26/Contents/Developer"
-          elif [ -d "/Applications/Xcode_16.4.app" ]; then
-            sudo xcode-select -s /Applications/Xcode_16.4.app/Contents/Developer
-          elif [ -d "/Applications/Xcode.app" ]; then
-            sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+          if [ ! -d "/Applications/Xcode_26.6.app" ]; then
+            echo "Xcode 26.6 is required to compile AppIcon.icon"
+            ls /Applications/Xcode*.app || true
+            exit 1
           fi
+          sudo xcode-select -s /Applications/Xcode_26.6.app/Contents/Developer
           xcodebuild -version
 
       # Cancelled/reused runners leave partial Sentry XCFramework downloads that make
