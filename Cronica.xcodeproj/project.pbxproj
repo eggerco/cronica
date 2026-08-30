@@ -2897,7 +2897,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 2.8.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.alexandremadeira.Story.ShareExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.alexandremadeira.Story.Share;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -2928,7 +2928,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 2.8.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.alexandremadeira.Story.ShareExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.alexandremadeira.Story.Share;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
