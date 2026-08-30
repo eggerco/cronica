@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
-"""Sequentially fill new-locale JSON maps via MyMemory (+ Google fallback).
+"""Fill new-locale JSON maps via Google Cloud Translation API (official).
 
 Resumes from Scripts/translations/new_locales/<locale>.json checkpoints.
 Protects format tokens and brand names. Does not store English stubs on failure.
+
+Requires a Cloud Translation API key — see Scripts/cloud_translate.py / Docs/LOCALIZATION.md.
 """
 
 from __future__ import annotations
@@ -14,7 +16,12 @@ import time
 from pathlib import Path
 from typing import Optional
 
-import requests
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from cloud_translate import (  # noqa: E402
+    DEFAULT_BATCH_SIZE,
+    require_api_key,
+    translate_batch,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 XCSTRINGS = ROOT / "Shared/Localization/Localizable.xcstrings"
@@ -43,7 +50,7 @@ BRANDS = [
     "Apple TV", "Apple Watch", "Apple ID", "Apple", "IMDb", "Trakt",
     "Secrets.xcconfig", "SIMKL_CLIENT_ID", "TMDB_API_KEY",
     "support@cronica.watch", "simkl.com/pin", "SwiftUI", "Live Activities",
-    "Control Center", "App Store",
+    "Control Center", "App Store", "Share Sheet",
 ]
 
 FMT_RE = re.compile(r"(\$\{[A-Za-z0-9_]+\}|%[\d]*\$?[a-zA-Z@.]+|%[\d.]*[a-zA-Z])")
@@ -69,6 +76,8 @@ ALLOW_IDENTICAL = {
     "%@ Seasons • %@ Episodes", "%lld Seasons • %lld Episodes",
     "SIMKL request failed (%lld).", "Rating star %@ of 5.",
     "Rating star %lld of 5.", "Rated %1$lld of 5", "Icon Designer",
+    "Control Center", "App Store", "Live Activities", "Share Sheet",
+    "%lld hr", "Croatia", "Hungary", "Ireland", "New Zealand",
 }
 
 
@@ -109,33 +118,6 @@ def is_format_only(value: str) -> bool:
     return len(stripped.strip()) < 2
 
 
-def mymemory_translate(text: str, tl: str) -> str:
-    url = "https://api.mymemory.translated.net/get"
-    chunk = text if len(text) <= 450 else text[:447] + "..."
-    r = requests.get(url, params={"q": chunk, "langpair": f"en|{tl}"}, timeout=20)
-    r.raise_for_status()
-    data = r.json()
-    if int(data.get("responseStatus", 0)) != 200:
-        raise RuntimeError(data.get("responseDetails") or "mymemory error")
-    translated = (data.get("responseData") or {}).get("translatedText") or ""
-    if not translated:
-        raise RuntimeError("empty mymemory translation")
-    if translated.upper().startswith("MYMEMORY WARNING"):
-        raise RuntimeError(translated)
-    return translated
-
-
-def google_translate(text: str, tl: str) -> str:
-    url = "https://translate.googleapis.com/translate_a/single"
-    params = {"client": "gtx", "sl": "en", "tl": tl, "dt": "t", "q": text}
-    r = requests.get(url, params=params, timeout=20)
-    if r.status_code == 429:
-        raise requests.HTTPError("429", response=r)
-    r.raise_for_status()
-    data = r.json()
-    return "".join(part[0] for part in data[0] if part and part[0])
-
-
 def english_strings() -> list:
     data = json.loads(XCSTRINGS.read_text(encoding="utf-8"))
     out = []
@@ -150,33 +132,6 @@ def english_strings() -> list:
     return out
 
 
-def translate_one(en: str, tl: str) -> Optional[str]:
-    if en in ALLOW_IDENTICAL or is_format_only(en):
-        return en
-    protected, tokens = protect(en)
-    last_err = None
-    backoff = 2.0
-    for attempt in range(8):
-        try:
-            if attempt % 2 == 0:
-                translated = mymemory_translate(protected, tl)
-            else:
-                translated = google_translate(protected, tl)
-            if translated:
-                return restore(translated, tokens).replace("  ", " ").strip()
-        except Exception as exc:  # noqa: BLE001
-            last_err = exc
-            msg = str(exc)
-            if "429" in msg or "WARNING" in msg.upper() or "QUOTA" in msg.upper():
-                print(f"  rate-limit {tl}, sleep {backoff:.0f}s ({exc})", flush=True)
-                time.sleep(backoff)
-                backoff = min(backoff * 1.7, 90)
-            else:
-                time.sleep(1.2)
-    print(f"  FAIL {tl}: {en[:50]!r} ({last_err})", flush=True)
-    return None
-
-
 def needs_work(en: str, current: Optional[str]) -> bool:
     if current is None:
         return True
@@ -184,10 +139,10 @@ def needs_work(en: str, current: Optional[str]) -> bool:
         return False
     if en in ALLOW_IDENTICAL or is_format_only(en):
         return False
-    return True  # English copy left from prior failure
+    return True
 
 
-def fill_locale(locale: str, gcode: str, strings: list) -> tuple:
+def fill_locale(locale: str, gcode: str, strings: list, api_key: str) -> tuple:
     out_path = OUT_DIR / f"{locale}.json"
     result = {}
     if out_path.exists():
@@ -195,21 +150,40 @@ def fill_locale(locale: str, gcode: str, strings: list) -> tuple:
 
     pending = [s for s in strings if needs_work(s, result.get(s))]
     print(f"[{locale}] have={len(result)} pending={len(pending)}", flush=True)
+    if not pending:
+        return len(result), 0
 
-    for i, en in enumerate(pending, 1):
-        translated = translate_one(en, gcode)
-        if translated is None:
-            time.sleep(5.0)
-            continue
-        result[en] = translated
-        if i % 15 == 0 or i == len(pending):
-            out_path.write_text(
-                json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
-            )
-            print(f"[{locale}] progress {i}/{len(pending)} (total keys {len(result)})", flush=True)
-        time.sleep(0.55)
+    # Translate in batches (protect tokens per string).
+    for start in range(0, len(pending), DEFAULT_BATCH_SIZE):
+        chunk = pending[start : start + DEFAULT_BATCH_SIZE]
+        protected_list = []
+        token_lists = []
+        passthrough = []  # indices that should stay English
+        for en in chunk:
+            if en in ALLOW_IDENTICAL or is_format_only(en):
+                protected_list.append(en)
+                token_lists.append([])
+                passthrough.append(True)
+            else:
+                protected, tokens = protect(en)
+                protected_list.append(protected)
+                token_lists.append(tokens)
+                passthrough.append(False)
 
-    out_path.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        translated = translate_batch(protected_list, gcode, api_key=api_key)
+        for en, raw, tokens, skip in zip(chunk, translated, token_lists, passthrough):
+            if skip:
+                result[en] = en
+            else:
+                result[en] = restore(raw, tokens).replace("  ", " ").strip()
+
+        out_path.write_text(
+            json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+        )
+        done = min(start + len(chunk), len(pending))
+        print(f"[{locale}] progress {done}/{len(pending)} (total keys {len(result)})", flush=True)
+        time.sleep(0.2)
+
     identical = sum(
         1 for k, v in result.items()
         if v == k and k not in ALLOW_IDENTICAL and not is_format_only(k)
@@ -223,9 +197,10 @@ def fill_locale(locale: str, gcode: str, strings: list) -> tuple:
 
 
 def main() -> int:
+    api_key = require_api_key()
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     strings = english_strings()
-    only = sys.argv[1:]
+    only = [a for a in sys.argv[1:] if not a.startswith("--")]
     locales = [k for k in LOCALES if not only or k in only]
 
     def pending_count(loc: str) -> int:
@@ -234,10 +209,11 @@ def main() -> int:
         return sum(1 for s in strings if needs_work(s, result.get(s)))
 
     locales = sorted(locales, key=pending_count, reverse=True)
+    print("Using Google Cloud Translation API", flush=True)
     print("Order:", ", ".join(f"{l}:{pending_count(l)}" for l in locales), flush=True)
 
     for locale in locales:
-        fill_locale(locale, LOCALES[locale], strings)
+        fill_locale(locale, LOCALES[locale], strings, api_key)
     return 0
 
 

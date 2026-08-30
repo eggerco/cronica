@@ -1,0 +1,40 @@
+Memperkenalkan Cronica — daftar pantauan film dan acara TV yang ramping dan minimalis.
+
+Lacak apa yang Anda tonton, jangan pernah kehilangan posisi terakhir, dan tetap siap untuk episode selanjutnya — di seluruh iPhone, iPad, Mac, Apple Watch, Apple TV, dan Apple Vision Pro. Baik Anda menonton banyak episode berturut-turut atau hanya sesekali, Cronica menjaga perpustakaan Anda tetap terorganisir dan episode berikutnya hanya dengan satu ketukan.
+
+Fitur Cronica:
+
+Up Next: Tetap Unggul dalam Serial TV Anda
+Saksikan episode selanjutnya dari serial favorit Anda di Home dan lanjutkan menonton tanpa perlu mencari-cari bagian terakhir yang Anda tonton.
+
+Tandai sebagai Sudah Ditonton: Pantau Kemajuan Anda
+Tandai film dan episode yang sudah ditonton, dengan kemajuan yang disinkronkan dengan daftar tontonan Anda.
+
+Notifikasi Rilis: Jadilah yang Pertama Tahu
+Dapatkan notifikasi saat judul-judul di daftar pantauan Anda dirilis atau saat episode baru tayang — agar Anda tidak melewatkan penayangan perdananya.
+
+iCloud Sync: Data Anda, Sesuai Keinginan Anda
+Daftar pantauan, peringkat, catatan, dan preferensi Anda tetap tersimpan di perangkat Anda dan dapat disinkronkan secara pribadi melalui iCloud di seluruh perangkat Apple.
+
+Siri & Shortcuts: Kontrol Bebas Genggam
+Tambahkan judul, tandai sudah ditonton, periksa Up Next, buka Pencarian, dan banyak lagi dengan Siri dan aplikasi Shortcuts (hingga 10 App Shortcuts).
+
+Widgets & Kontrol
+Lihat sekilas Up Next atau judul-judul yang sedang tren dari widget Home Screen, dan gunakan Control Center jika tersedia.
+
+Bagikan & Temukan Tautan
+Tambahkan dari IMDb, Letterboxd, TMDb, JustWatch, dan lainnya melalui Share Sheet atau Shortcuts — dan bagikan tautan cronica.watch yang terbuka di aplikasi atau di web.
+
+Cuplikan & Detail: Pratinjau Sebelum Anda Menonton
+Tonton trailer dan telusuri daftar pemain, musim, dan detailnya agar Anda dapat memutuskan sebelum menekan tombol putar.
+
+Watch Providers: Temukan di Mana Serial Ini Tayang
+Lihat di mana judul-judul tersedia untuk ditonton secara streaming, didukung oleh data JustWatch melalui TMDb — filter berdasarkan layanan pilihan Anda.
+
+Daftar Kustom, Filter & Personalisasi
+Buat daftar khusus, saring dan urutkan daftar pantauan Anda, pilih warna aksen, dan sesuaikan Beranda dengan cara Anda menonton.
+
+Sinkronisasi Perpustakaan Opsional
+Hubungkan sinkronisasi akun SIMKL atau TMDb jika Anda mau — Cronica tidak pernah memerlukan akun sendiri.
+
+Penafian: Cronica bukanlah layanan streaming. Data film dan TV berasal dari TMDb. Produk ini menggunakan API TMDb tetapi tidak didukung atau disertifikasi oleh TMDb. Data Watch provider disediakan oleh JustWatch melalui TMDb.

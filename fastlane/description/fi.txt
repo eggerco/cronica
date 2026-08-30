@@ -1,0 +1,40 @@
+Esittelyssä Cronica – tyylikäs ja minimalistinen katselulista elokuville ja TV-ohjelmille.
+
+Seuraa katsomiasi ohjelmia, pysy aina ajan tasalla ja pysy valmiina seuraavaan – iPhone:ssä, iPad:ssä, Mac:ssä, Apple Watch:ssä, Apple TV:ssä ja Apple Vision Pro:ssä. Katsotpa sitten useita jaksoja peräkkäin tai vain satunnaisesti, Cronica pitää kirjastosi järjestyksessä ja seuraavan jaksosi yhden napautuksen päässä.
+
+Cronica:n ominaisuudet:
+
+Up Next: Pysy TV-sarjojesi edellä
+Katso sarjasi seuraavat jaksot Etusivulla ja palaa takaisin katsomaan ilman, että sinun tarvitsee vain etsiä siitä, mihin jäit.
+
+Merkitse katsotuksi: Pysy ajan tasalla edistymisestäsi
+Merkitse katsomasi elokuvat ja jaksot sitä mukaa, kun etenet, ja edistyminen synkronoituu katselulistasi kanssa.
+
+Julkaisuilmoitukset: Ole ensimmäisenä tietoinen
+Saat ilmoituksen, kun katselulistallasi olevia nimikkeitä julkaistaan tai kun uusia jaksoja ilmestyy – niin et missaa ensi-iltaa.
+
+iCloud-synkronointi: Sinun tietosi, sinun tavallasi
+Katselulistasi, arvioisi, muistiinpanosi ja asetuksesi pysyvät laitteillasi ja ne voidaan synkronoida yksityisesti iCloud:n kautta Apple-laitteiden välillä.
+
+Siri ja Shortcuts: Handsfree-ohjaus
+Lisää nimikkeitä, merkitse katsotuiksi, tarkista Up Next, avaa haku ja paljon muuta Siri:n ja Shortcuts-sovelluksen avulla (jopa 10 App Shortcuts).
+
+Widgets ja hallintalaitteet
+Vilkaise Up Next:ää tai trendaavia nimikkeitä Home Screen-widgettien kautta ja käytä Control Center:ää, jos se on saatavilla.
+
+Jaa ja löydä linkkejä
+Lisää IMDb:stä, Letterboxd:stä, TMDb:stä, JustWatch:stä ja muista Share Sheet:n tai Shortcuts:n kautta — ja jaa cronica.watch-linkkejä, jotka avautuvat sovelluksessa tai verkossa.
+
+Trailerit ja tiedot: Esikatselu ennen katsomista
+Katso trailereita ja selaa näyttelijöitä, tuotantokausia ja tietoja, jotta voit tehdä päätöksen ennen toiston painamista.
+
+Watch Providers: Löydä, mistä se striimaa
+Katso, missä nimikkeitä on saatavilla suoratoistona JustWatch-datan avulla TMDb:n kautta — suodata suosikkipalveluidesi mukaan.
+
+Mukautetut listat, suodattimet ja personointi
+Luo mukautettuja listoja, suodata ja lajittele katselulistasi, valitse korostusväri ja räätälöi Koti-valikko katselutyyliisi sopivaksi.
+
+Valinnainen kirjaston synkronointi
+Yhdistä SIMKL- tai TMDb-tilin synkronointi, jos haluat — Cronica ei koskaan vaadi omaa tiliä.
+
+Vastuuvapauslauseke: Cronica ei ole suoratoistopalvelu. Elokuva- ja TV-tiedot TMDb:ltä. Tämä tuote käyttää TMDb-rajapintaa, mutta TMDb ei ole hyväksynyt tai sertifioinut sitä. Watch provider-tiedot tarjoaa JustWatch TMDb:n kautta.

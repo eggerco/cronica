@@ -33,6 +33,12 @@
             "value": "Adicionar ${title} à minha lista em ${applicationName}"
           }
         },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adicionar ${title} à minha lista de observação em ${applicationName}"
+          }
+        },
         "sk": {
           "stringUnit": {
             "state": "translated",
@@ -49,6 +55,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "أضف ${title} إلى قائمة المشاهدة في ${applicationName}"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}-এ আমার ওয়াচলিস্টে ${title} যোগ করুন"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Afegeix ${title} a la meva llista de seguiment a ${applicationName}"
           }
         },
         "cs": {
@@ -79,6 +97,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Lisää ${title} katselulistaani sovelluksessa ${applicationName}"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} માં મારી વોચલિસ્ટમાં ${title} ઉમેરો"
           }
         },
         "he": {
@@ -117,10 +141,28 @@
             "value": "${applicationName}のウォッチリストに${title}を追加"
           }
         },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ನಲ್ಲಿ ನನ್ನ ವೀಕ್ಷಣಾ ಪಟ್ಟಿಗೆ ${title} ಸೇರಿಸಿ"
+          }
+        },
         "ko": {
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} 관심 목록에 ${title} 추가"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ലെ എന്റെ വാച്ച് ലിസ്റ്റിൽ ${title} ചേർക്കുക"
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} मध्ये ${title} माझ्या वॉचलिस्टमध्ये जोडा"
           }
         },
         "ms": {
@@ -141,6 +183,18 @@
             "value": "Voeg ${title} toe aan mijn watchlist in ${applicationName}"
           }
         },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ରେ ମୋର ୱାଚଲିଷ୍ଟରେ ${title} ଯୋଡନ୍ତୁ।"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ਵਿੱਚ ਮੇਰੀ ਵਾਚਲਿਸਟ ਵਿੱਚ ${title} ਸ਼ਾਮਲ ਕਰੋ"
+          }
+        },
         "pl": {
           "stringUnit": {
             "state": "translated",
@@ -159,10 +213,34 @@
             "value": "Добавь ${title} в мой список в ${applicationName}"
           }
         },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dodaj ${title} na moj seznam za spremljanje v ${applicationName}"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
             "value": "Lägg till ${title} i min watchlist i ${applicationName}"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} இல் ${title} ஐ எனது கண்காணிப்புப் பட்டியலில் சேர்க்கவும்."
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}లో నా వాచ్‌లిస్ట్‌కి ${title}ని జోడించండి"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เพิ่ม ${title} ลงในรายการเฝ้าดูของฉันใน ${applicationName}"
           }
         },
         "tr": {
@@ -175,6 +253,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Додай ${title} до мого списку в ${applicationName}"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${title} کو میری واچ لسٹ میں ${applicationName} میں شامل کریں۔"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Thêm ${title} vào danh sách theo dõi của tôi trong ${applicationName}"
           }
         },
         "zh-Hans": {
@@ -223,6 +313,12 @@
             "value": "Adicionar ${title} ao ${applicationName}"
           }
         },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adicione ${title} a ${applicationName}"
+          }
+        },
         "sk": {
           "stringUnit": {
             "state": "translated",
@@ -239,6 +335,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "أضف ${title} إلى ${applicationName}"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}-এর সাথে ${title} যোগ করুন"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Afegeix ${title} a ${applicationName}"
           }
         },
         "cs": {
@@ -269,6 +377,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Lisää ${title} sovellukseen ${applicationName}"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${title} ને ${applicationName} માં ઉમેરો"
           }
         },
         "he": {
@@ -307,10 +421,28 @@
             "value": "${applicationName}に${title}を追加"
           }
         },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${title} ಅನ್ನು ${applicationName} ಗೆ ಸೇರಿಸಿ"
+          }
+        },
         "ko": {
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName}에 ${title} 추가"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${title}, ${applicationName} എന്നിവയിലേക്ക് ചേർക്കുക"
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} मध्ये ${title} जोडा"
           }
         },
         "ms": {
@@ -331,6 +463,18 @@
             "value": "Voeg ${title} toe aan ${applicationName}"
           }
         },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${title} କୁ ${applicationName} ରେ ଯୋଡନ୍ତୁ"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${title} ਨੂੰ ${applicationName} ਵਿੱਚ ਸ਼ਾਮਲ ਕਰੋ"
+          }
+        },
         "pl": {
           "stringUnit": {
             "state": "translated",
@@ -349,10 +493,34 @@
             "value": "Добавь ${title} в ${applicationName}"
           }
         },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dodaj ${title} k ${applicationName}"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
             "value": "Lägg till ${title} i ${applicationName}"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${title}-ஐ ${applicationName}-இல் சேர்க்கவும்"
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} కు ${title} ను జోడించండి"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เพิ่ม ${title} ลงใน ${applicationName}"
           }
         },
         "tr": {
@@ -365,6 +533,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Додай ${title} до ${applicationName}"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${title} کو ${applicationName} میں شامل کریں۔"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Thêm ${title} vào ${applicationName}"
           }
         },
         "zh-Hans": {
@@ -413,6 +593,12 @@
             "value": "${applicationName} adicionar ${title}"
           }
         },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} adicionar ${title}"
+          }
+        },
         "sk": {
           "stringUnit": {
             "state": "translated",
@@ -429,6 +615,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} أضف ${title}"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} এর সাথে ${title} যোগ করুন"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} afegeix ${title}"
           }
         },
         "cs": {
@@ -459,6 +657,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} lisää ${title}"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ${title} ઉમેરો"
           }
         },
         "he": {
@@ -497,10 +701,28 @@
             "value": "${applicationName} ${title}を追加"
           }
         },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ${title} ಸೇರಿಸಿ"
+          }
+        },
         "ko": {
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} ${title} 추가"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ${title} ചേർക്കുക"
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} मध्ये ${title} जोडा"
           }
         },
         "ms": {
@@ -521,6 +743,18 @@
             "value": "${applicationName} voeg ${title} toe"
           }
         },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ${title} ଯୋଡ଼ନ୍ତୁ"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ਵਿੱਚ ${title} ਸ਼ਾਮਲ ਕਰੋ"
+          }
+        },
         "pl": {
           "stringUnit": {
             "state": "translated",
@@ -539,10 +773,34 @@
             "value": "${applicationName} добавь ${title}"
           }
         },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} dodaj ${title}"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} lägg till ${title}"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} உடன் ${title}-ஐச் சேர்க்கவும்"
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ను ${title} తో కలపండి"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} เพิ่ม ${title}"
           }
         },
         "tr": {
@@ -555,6 +813,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} додай ${title}"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ${title} شامل کریں۔"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} thêm ${title}"
           }
         },
         "zh-Hans": {
@@ -603,6 +873,12 @@
             "value": "Remover ${title} da minha lista em ${applicationName}"
           }
         },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remover ${title} da minha lista de observação em ${applicationName}"
+          }
+        },
         "sk": {
           "stringUnit": {
             "state": "translated",
@@ -619,6 +895,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "أزل ${title} من قائمة المشاهدة في ${applicationName}"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}-এ আমার ওয়াচলিস্ট থেকে ${title} সরান"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Elimina ${title} de la meva llista de seguiment a ${applicationName}"
           }
         },
         "cs": {
@@ -649,6 +937,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Poista ${title} katselulistastani sovelluksessa ${applicationName}"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} માં મારી વોચલિસ્ટમાંથી ${title} દૂર કરો"
           }
         },
         "he": {
@@ -687,10 +981,28 @@
             "value": "${applicationName}のウォッチリストから${title}を削除"
           }
         },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ನಲ್ಲಿ ನನ್ನ ವೀಕ್ಷಣಾ ಪಟ್ಟಿಯಿಂದ ${title} ಅನ್ನು ತೆಗೆದುಹಾಕಿ"
+          }
+        },
         "ko": {
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} 관심 목록에서 ${title} 제거"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ലെ എന്റെ വാച്ച് ലിസ്റ്റിൽ നിന്ന് ${title} നീക്കം ചെയ്യുക."
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} मध्ये माझ्या वॉचलिस्टमधून ${title} काढून टाका"
           }
         },
         "ms": {
@@ -711,6 +1023,18 @@
             "value": "Verwijder ${title} uit mijn watchlist in ${applicationName}"
           }
         },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ରେ ଥିବା ମୋର ୱାଚଲିଷ୍ଟରୁ ${title} କୁ ହଟାନ୍ତୁ।"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ਵਿੱਚ ਮੇਰੀ ਵਾਚਲਿਸਟ ਵਿੱਚੋਂ ${title} ਨੂੰ ਹਟਾਓ"
+          }
+        },
         "pl": {
           "stringUnit": {
             "state": "translated",
@@ -729,10 +1053,34 @@
             "value": "Удали ${title} из моего списка в ${applicationName}"
           }
         },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Odstrani ${title} z mojega seznama za spremljanje v ${applicationName}"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
             "value": "Ta bort ${title} från min watchlist i ${applicationName}"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} இல் எனது கண்காணிப்புப் பட்டியலிலிருந்து ${title} ஐ அகற்றவும்"
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}లో నా వాచ్‌లిస్ట్ నుండి ${title}ని తొలగించండి"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ลบ ${title} ออกจากรายการเฝ้าดูของฉันใน ${applicationName}"
           }
         },
         "tr": {
@@ -745,6 +1093,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Видали ${title} з мого списку в ${applicationName}"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} میں میری واچ لسٹ سے ${title} کو ہٹا دیں۔"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Xóa ${title} khỏi danh sách theo dõi của tôi trong ${applicationName}"
           }
         },
         "zh-Hans": {
@@ -793,6 +1153,12 @@
             "value": "Remover ${title} do ${applicationName}"
           }
         },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remova ${title} de ${applicationName}"
+          }
+        },
         "sk": {
           "stringUnit": {
             "state": "translated",
@@ -809,6 +1175,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "أزل ${title} من ${applicationName}"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} থেকে ${title} সরান"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Elimina ${title} de ${applicationName}"
           }
         },
         "cs": {
@@ -839,6 +1217,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Poista ${title} sovelluksesta ${applicationName}"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} માંથી ${title} દૂર કરો"
           }
         },
         "he": {
@@ -877,10 +1261,28 @@
             "value": "${applicationName}から${title}を削除"
           }
         },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ನಿಂದ ${title} ತೆಗೆದುಹಾಕಿ"
+          }
+        },
         "ko": {
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName}에서 ${title} 제거"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}-ൽ നിന്ന് ${title} നീക്കം ചെയ്യുക"
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} मधून ${title} काढून टाका"
           }
         },
         "ms": {
@@ -901,6 +1303,18 @@
             "value": "Verwijder ${title} uit ${applicationName}"
           }
         },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ରୁ ${title} କାଢ଼ିଦିଅନ୍ତୁ"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ਤੋਂ ${title} ਹਟਾਓ"
+          }
+        },
         "pl": {
           "stringUnit": {
             "state": "translated",
@@ -919,10 +1333,34 @@
             "value": "Удали ${title} из ${applicationName}"
           }
         },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Odstrani ${title} iz ${applicationName}"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
             "value": "Ta bort ${title} från ${applicationName}"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} இலிருந்து ${title} ஐ அகற்றவும்"
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} నుండి ${title}ని తొలగించండి"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ลบ ${title} ออกจาก ${applicationName}"
           }
         },
         "tr": {
@@ -935,6 +1373,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Видали ${title} з ${applicationName}"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${title} کو ${applicationName} سے ہٹا دیں۔"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Xóa ${title} khỏi ${applicationName}"
           }
         },
         "zh-Hans": {
@@ -983,6 +1433,12 @@
             "value": "${applicationName} remover ${title}"
           }
         },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} remover ${title}"
+          }
+        },
         "sk": {
           "stringUnit": {
             "state": "translated",
@@ -999,6 +1455,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} أزل ${title}"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} থেকে ${title} অপসারণ করুন"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Elimina ${applicationName} i ${title}"
           }
         },
         "cs": {
@@ -1029,6 +1497,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} poista ${title}"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ${title} દૂર કરો"
           }
         },
         "he": {
@@ -1067,10 +1541,28 @@
             "value": "${applicationName} ${title}を削除"
           }
         },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ${title} ತೆಗೆದುಹಾಕಿ"
+          }
+        },
         "ko": {
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} ${title} 제거"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ${title} നീക്കം ചെയ്യുക"
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} काढून टाका ${title}"
           }
         },
         "ms": {
@@ -1091,6 +1583,18 @@
             "value": "${applicationName} verwijder ${title}"
           }
         },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ${title} କୁ ବାହାର କରନ୍ତୁ"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ${title} ਨੂੰ ਹਟਾਓ"
+          }
+        },
         "pl": {
           "stringUnit": {
             "state": "translated",
@@ -1109,10 +1613,34 @@
             "value": "${applicationName} удали ${title}"
           }
         },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} odstrani ${title}"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} ta bort ${title}"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} இலிருந்து ${title} ஐ அகற்றவும்"
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ${title}ని తొలగించండి"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ลบ ${title}"
           }
         },
         "tr": {
@@ -1125,6 +1653,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} видали ${title}"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ${title} کو ہٹا دیں۔"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} gỡ bỏ ${title}"
           }
         },
         "zh-Hans": {
@@ -1173,6 +1713,12 @@
             "value": "Marcar ${title} como assistido no ${applicationName}"
           }
         },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Marque ${title} como assistido em ${applicationName}"
+          }
+        },
         "sk": {
           "stringUnit": {
             "state": "translated",
@@ -1189,6 +1735,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "علّم ${title} كمشاهَد في ${applicationName}"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}-এ ${title}-কে পর্যবেক্ষণাধীন হিসেবে চিহ্নিত করুন।"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Marca ${title} com a vist a ${applicationName}"
           }
         },
         "cs": {
@@ -1219,6 +1777,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Merkitse ${title} katsotuksi sovelluksessa ${applicationName}"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${title} ને ${applicationName} માં જોયેલા તરીકે ચિહ્નિત કરો"
           }
         },
         "he": {
@@ -1257,10 +1821,28 @@
             "value": "${applicationName}で${title}を視聴済みにする"
           }
         },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ನಲ್ಲಿ ${title} ಅನ್ನು ವೀಕ್ಷಿಸಿದಂತೆ ಗುರುತಿಸಿ"
+          }
+        },
         "ko": {
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName}에서 ${title}을(를) 시청함으로 표시"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}-ൽ ${title} കണ്ടതായി അടയാളപ്പെടുത്തുക"
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} मध्ये पाहिलेले म्हणून मार्क ${title}"
           }
         },
         "ms": {
@@ -1281,6 +1863,18 @@
             "value": "Markeer ${title} als bekeken in ${applicationName}"
           }
         },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${title} କୁ ${applicationName} ରେ ଦେଖାଯାଇଥିବା ଭାବରେ ଚିହ୍ନିତ କରନ୍ତୁ"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${title} ਨੂੰ ${applicationName} ਵਿੱਚ ਦੇਖੇ ਗਏ ਵਜੋਂ ਮਾਰਕ ਕਰੋ"
+          }
+        },
         "pl": {
           "stringUnit": {
             "state": "translated",
@@ -1299,10 +1893,34 @@
             "value": "Отметь ${title} как просмотренное в ${applicationName}"
           }
         },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Označi ${title} kot gledanega v ${applicationName}"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
             "value": "Markera ${title} som sett i ${applicationName}"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${title}-ஐ ${applicationName}-இல் பார்த்ததாகக் குறிக்கவும்."
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}లో చూసినట్లుగా మార్క్ ${title}"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mark ${title} ตามที่รับชมใน ${applicationName}"
           }
         },
         "tr": {
@@ -1315,6 +1933,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Познач ${title} як переглянуте в ${applicationName}"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${title} کو ${applicationName} میں دیکھا گیا کے طور پر نشان زد کریں۔"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Đánh dấu ${title} như đã xem trong ${applicationName}"
           }
         },
         "zh-Hans": {
@@ -1363,6 +1993,12 @@
             "value": "Eu assisti ${title} no ${applicationName}"
           }
         },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eu assisti ${title} em ${applicationName}"
+          }
+        },
         "sk": {
           "stringUnit": {
             "state": "translated",
@@ -1379,6 +2015,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "شاهدت ${title} في ${applicationName}"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আমি ${applicationName}-এ ${title} দেখেছিলাম।"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vaig veure ${title} a ${applicationName}"
           }
         },
         "cs": {
@@ -1409,6 +2057,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Katsoin ${title} sovelluksessa ${applicationName}"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "મેં ${applicationName} પર ${title} જોયું."
           }
         },
         "he": {
@@ -1447,10 +2101,28 @@
             "value": "${applicationName}で${title}を見た"
           }
         },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ನಾನು ${applicationName} ನಲ್ಲಿ ${title} ವೀಕ್ಷಿಸಿದೆ."
+          }
+        },
         "ko": {
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName}에서 ${title}을(를) 봤어"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ഞാൻ ${applicationName}-ൽ ${title} കണ്ടു."
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "मी ${applicationName} वर ${title} पाहिला"
           }
         },
         "ms": {
@@ -1471,6 +2143,18 @@
             "value": "Ik heb ${title} bekeken in ${applicationName}"
           }
         },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ମୁଁ ${applicationName} ରେ ${title} ଦେଖିଲି।"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ਮੈਂ ${applicationName} ਤੇ ${title} ਦੇਖਿਆ।"
+          }
+        },
         "pl": {
           "stringUnit": {
             "state": "translated",
@@ -1489,10 +2173,34 @@
             "value": "Я посмотрел ${title} в ${applicationName}"
           }
         },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gledal/a sem ${title} na ${applicationName}."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
             "value": "Jag såg ${title} i ${applicationName}"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "நான் ${title}-ஐ ${applicationName}-இல் பார்த்தேன்."
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "నేను ${applicationName}లో ${title}ని చూశాను"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ฉันดู ${title} ทาง ${applicationName}"
           }
         },
         "tr": {
@@ -1505,6 +2213,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Я подивився ${title} у ${applicationName}"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "میں نے ${title} کو ${applicationName} پر دیکھا"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tôi đã xem ${title} trên ${applicationName}."
           }
         },
         "zh-Hans": {
@@ -1553,6 +2273,12 @@
             "value": "${applicationName} marcar ${title} como assistido"
           }
         },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} marca ${title} assistido"
+          }
+        },
         "sk": {
           "stringUnit": {
             "state": "translated",
@@ -1569,6 +2295,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} علّم ${title} كمشاهَد"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} মার্ক ${title} দেখেছে"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} marca ${title} vist"
           }
         },
         "cs": {
@@ -1599,6 +2337,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} merkitse ${title} katsotuksi"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} માર્ક ${title} જોયું"
           }
         },
         "he": {
@@ -1637,10 +2381,28 @@
             "value": "${applicationName} ${title}を視聴済みに"
           }
         },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ಗುರುತು ${title} ವೀಕ್ಷಿಸಲಾಗಿದೆ"
+          }
+        },
         "ko": {
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} ${title} 시청함 표시"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} മാർക്കിൽ ${title} കണ്ടു"
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} मार्क ${title} ने पाहिले"
           }
         },
         "ms": {
@@ -1661,6 +2423,18 @@
             "value": "${applicationName} markeer ${title} als bekeken"
           }
         },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ଚିହ୍ନ ${title} ଦେଖାଯାଇଛି"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ਮਾਰਕ ${title} ਦੇਖਿਆ ਗਿਆ"
+          }
+        },
         "pl": {
           "stringUnit": {
             "state": "translated",
@@ -1679,10 +2453,34 @@
             "value": "${applicationName} отметь ${title} как просмотренное"
           }
         },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} oznaka ${title} je gledal/a"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} markera ${title} som sett"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} குறி ${title} பார்த்தது"
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} మార్క్ ${title} చూశారు"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ทำเครื่องหมาย ${title} รับชม"
           }
         },
         "tr": {
@@ -1695,6 +2493,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} познач ${title} як переглянуте"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} مارک ${title} دیکھا گیا۔"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} đánh dấu ${title} đã xem"
           }
         },
         "zh-Hans": {
@@ -1743,6 +2553,12 @@
             "value": "Marcar meu próximo episódio como assistido no ${applicationName}"
           }
         },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Marque meu próximo episódio como assistido em ${applicationName}"
+          }
+        },
         "sk": {
           "stringUnit": {
             "state": "translated",
@@ -1759,6 +2575,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "علّم الحلقة التالية كمشاهَدة في ${applicationName}"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আমার পরবর্তী পর্বটি ${applicationName}-এ দেখা হয়েছে হিসেবে চিহ্নিত করুন।"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Marca el meu proper episodi com vist a ${applicationName}"
           }
         },
         "cs": {
@@ -1789,6 +2617,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Merkitse seuraava jaksoni katsotuksi sovelluksessa ${applicationName}"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "મારા આગામી એપિસોડને ${applicationName} માં જોયેલા તરીકે ચિહ્નિત કરો."
           }
         },
         "he": {
@@ -1827,10 +2661,28 @@
             "value": "${applicationName}で次のエピソードを視聴済みにする"
           }
         },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ನನ್ನ ಮುಂದಿನ ಸಂಚಿಕೆಯನ್ನು ${applicationName} ನಲ್ಲಿ ನೋಡಿದಂತೆ ಗುರುತಿಸಿ."
+          }
+        },
         "ko": {
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName}에서 다음 에피소드를 시청함으로 표시"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "എന്റെ അടുത്ത എപ്പിസോഡ് ${applicationName}-ൽ കണ്ടതായി അടയാളപ്പെടുത്തുക"
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "माझा पुढचा एपिसोड ${applicationName} मध्ये पाहिला म्हणून चिन्हांकित करा."
           }
         },
         "ms": {
@@ -1851,6 +2703,18 @@
             "value": "Markeer mijn volgende aflevering als bekeken in ${applicationName}"
           }
         },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ମୋର ପରବର୍ତ୍ତୀ ଏପିସୋଡ୍ ${applicationName} ରେ ଦେଖାଯାଇଛି ଭାବରେ ଚିହ୍ନିତ କରନ୍ତୁ।"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ਮੇਰੇ ਅਗਲੇ ਐਪੀਸੋਡ ਨੂੰ ${applicationName} ਵਿੱਚ ਦੇਖੇ ਗਏ ਵਜੋਂ ਚਿੰਨ੍ਹਿਤ ਕਰੋ।"
+          }
+        },
         "pl": {
           "stringUnit": {
             "state": "translated",
@@ -1869,10 +2733,34 @@
             "value": "Отметь следующий эпизод как просмотренный в ${applicationName}"
           }
         },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Označi mojo naslednjo epizodo kot ogledano v ${applicationName}"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
             "value": "Markera mitt nästa avsnitt som sett i ${applicationName}"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "எனது அடுத்த அத்தியாயத்தை ${applicationName}-இல் பார்த்ததாகக் குறித்துக்கொள்ளுங்கள்."
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "నా తదుపరి ఎపిసోడ్‌ను ${applicationName}లో చూసినట్లుగా గుర్తించండి"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ทำเครื่องหมายตอนต่อไปว่ารับชมแล้วใน ${applicationName}"
           }
         },
         "tr": {
@@ -1885,6 +2773,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Познач наступний епізод як переглянутий у ${applicationName}"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "میری اگلی ایپی سوڈ کو ${applicationName} میں دیکھے گئے کے طور پر نشان زد کریں۔"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Đánh dấu tập tiếp theo của tôi là đã xem trên ${applicationName}"
           }
         },
         "zh-Hans": {
@@ -1933,6 +2833,12 @@
             "value": "Terminei meu próximo episódio no ${applicationName}"
           }
         },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Terminei meu próximo episódio no ${applicationName}."
+          }
+        },
         "sk": {
           "stringUnit": {
             "state": "translated",
@@ -1949,6 +2855,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "أنهيت الحلقة التالية في ${applicationName}"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আমি ${applicationName}-এ আমার পরবর্তী পর্বটি শেষ করেছি।"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "He acabat el meu següent episodi a ${applicationName}"
           }
         },
         "cs": {
@@ -1979,6 +2897,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Katsoin seuraavan jaksoni loppuun sovelluksessa ${applicationName}"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "મેં ${applicationName} પર મારો આગામી એપિસોડ પૂર્ણ કર્યો."
           }
         },
         "he": {
@@ -2017,10 +2941,28 @@
             "value": "${applicationName}で次のエピソードを見終えた"
           }
         },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ನಾನು ${applicationName} ನಲ್ಲಿ ನನ್ನ ಮುಂದಿನ ಸಂಚಿಕೆಯನ್ನು ಮುಗಿಸಿದೆ."
+          }
+        },
         "ko": {
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName}에서 다음 에피소드를 다 봤어"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}-ലെ എന്റെ അടുത്ത എപ്പിസോഡ് ഞാൻ പൂർത്തിയാക്കി."
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "मी ${applicationName} वरील माझा पुढचा एपिसोड पूर्ण केला."
           }
         },
         "ms": {
@@ -2041,6 +2983,18 @@
             "value": "Ik heb mijn volgende aflevering afgemaakt in ${applicationName}"
           }
         },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ମୁଁ ${applicationName} ରେ ମୋର ପରବର୍ତ୍ତୀ ଏପିସୋଡ୍ ସମାପ୍ତ କରିଛି।"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ਮੈਂ ${applicationName} 'ਤੇ ਆਪਣਾ ਅਗਲਾ ਐਪੀਸੋਡ ਪੂਰਾ ਕਰ ਲਿਆ ਹੈ।"
+          }
+        },
         "pl": {
           "stringUnit": {
             "state": "translated",
@@ -2059,10 +3013,34 @@
             "value": "Я досмотрел следующий эпизод в ${applicationName}"
           }
         },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Naslednjo epizodo sem končal na ${applicationName}"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
             "value": "Jag klarade mitt nästa avsnitt i ${applicationName}"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} பற்றிய எனது அடுத்த அத்தியாயத்தை முடித்துவிட்டேன்."
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "నేను XTKO0Xలో నా తదుపరి ఎపిసోడ్‌ను పూర్తి చేసాను"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ฉันทำตอนต่อไปของ ${applicationName} เสร็จแล้ว"
           }
         },
         "tr": {
@@ -2075,6 +3053,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Я додивився наступний епізод у ${applicationName}"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "میں نے اپنی اگلی قسط ${applicationName} پر ختم کی۔"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tôi đã hoàn thành tập tiếp theo của mình trên ${applicationName}."
           }
         },
         "zh-Hans": {
@@ -2123,6 +3113,12 @@
             "value": "${applicationName} marcar próximo episódio como assistido"
           }
         },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} marcou o próximo episódio assistido"
+          }
+        },
         "sk": {
           "stringUnit": {
             "state": "translated",
@@ -2139,6 +3135,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} علّم الحلقة التالية كمشاهَدة"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} পরবর্তী পর্ব দেখা হয়েছে চিহ্নিত করুন"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} marca el següent episodi vist"
           }
         },
         "cs": {
@@ -2169,6 +3177,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} merkitse seuraava jakso katsotuksi"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} એપિસોડ જોયો છે"
           }
         },
         "he": {
@@ -2207,10 +3221,28 @@
             "value": "${applicationName} 次のエピソードを視聴済みに"
           }
         },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ಮುಂದಿನ ಸಂಚಿಕೆಯನ್ನು ವೀಕ್ಷಿಸಲಾಗಿದೆ ಎಂದು ಗುರುತಿಸಿ"
+          }
+        },
         "ko": {
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} 다음 에피소드 시청함 표시"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "അടുത്ത എപ്പിസോഡ് കാണാൻ ${applicationName} അടയാളപ്പെടുത്തുക"
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "XTKOK0X पुढील भाग पाहिला असे चिन्हांकित करा"
           }
         },
         "ms": {
@@ -2231,6 +3263,18 @@
             "value": "${applicationName} markeer volgende aflevering als bekeken"
           }
         },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ପରବର୍ତ୍ତୀ ଏପିସୋଡ୍ ଦେଖିସାରିଛି"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ਨੇ ਅਗਲਾ ਐਪੀਸੋਡ ਦੇਖਿਆ"
+          }
+        },
         "pl": {
           "stringUnit": {
             "state": "translated",
@@ -2249,10 +3293,34 @@
             "value": "${applicationName} отметь следующий эпизод как просмотренный"
           }
         },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} oznaka naslednja epizoda ogledana"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} markera nästa avsnitt som sett"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} அடுத்த அத்தியாயத்தைப் பார்த்ததாகக் குறிக்கிறார்"
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "XTKO0X తదుపరి ఎపిసోడ్ చూసినట్లు గుర్తు"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ทำเครื่องหมายตอนต่อไปที่รับชม"
           }
         },
         "tr": {
@@ -2265,6 +3333,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} познач наступний епізод як переглянутий"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} نشان اگلی قسط دیکھی گئی۔"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} đánh dấu tập tiếp theo đã xem"
           }
         },
         "zh-Hans": {
@@ -2313,6 +3393,12 @@
             "value": "O que vem a seguir no ${applicationName}"
           }
         },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O que vem a seguir no ${applicationName}?"
+          }
+        },
         "sk": {
           "stringUnit": {
             "state": "translated",
@@ -2329,6 +3415,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "ما التالي في ${applicationName}"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}-এ এরপর কী আসছে?"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Què passarà després a ${applicationName}?"
           }
         },
         "cs": {
@@ -2359,6 +3457,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Mitä seuraavaksi sovelluksessa ${applicationName}"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} પર આગળ શું છે?"
           }
         },
         "he": {
@@ -2397,10 +3501,28 @@
             "value": "${applicationName}の次は何"
           }
         },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ನಲ್ಲಿ ಮುಂದೇನು?"
+          }
+        },
         "ko": {
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName}에서 다음에 뭐 있어"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}-ൽ അടുത്തതായി എന്താണുള്ളത്?"
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} वर पुढे काय आहे?"
           }
         },
         "ms": {
@@ -2421,6 +3543,18 @@
             "value": "Wat staat er als volgende in ${applicationName}"
           }
         },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ରେ ଆଗକୁ କ'ଣ ଅଛି?"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} 'ਤੇ ਅੱਗੇ ਕੀ ਹੈ?"
+          }
+        },
         "pl": {
           "stringUnit": {
             "state": "translated",
@@ -2439,10 +3573,34 @@
             "value": "Что дальше в ${applicationName}"
           }
         },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kaj sledi na ${applicationName}"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
             "value": "Vad är nästa i ${applicationName}"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}-இல் அடுத்து என்ன வரவிருக்கிறது?"
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}లో తదుపరి ఏమిటి?"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "อะไรต่อไปบน ${applicationName}"
           }
         },
         "tr": {
@@ -2455,6 +3613,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Що далі в ${applicationName}"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} پر آگے کیا ہو رہا ہے۔"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Điều gì sẽ xảy ra tiếp theo trên ${applicationName}?"
           }
         },
         "zh-Hans": {
@@ -2503,6 +3673,12 @@
             "value": "O que eu deveria assistir a seguir no ${applicationName}"
           }
         },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O que devo assistir a seguir no ${applicationName}?"
+          }
+        },
         "sk": {
           "stringUnit": {
             "state": "translated",
@@ -2519,6 +3695,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "ماذا أشاهد تاليًا في ${applicationName}"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}-এ এরপর আমার কী দেখা উচিত?"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Què hauria de veure a continuació a ${applicationName}?"
           }
         },
         "cs": {
@@ -2549,6 +3737,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Mitä minun pitäisi katsoa seuraavaksi sovelluksessa ${applicationName}"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} પર મારે આગળ શું જોવું જોઈએ?"
           }
         },
         "he": {
@@ -2587,10 +3781,28 @@
             "value": "${applicationName}で次に何を見るべき"
           }
         },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ನಲ್ಲಿ ಮುಂದೆ ನಾನು ಏನು ನೋಡಬೇಕು"
+          }
+        },
         "ko": {
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName}에서 다음에 뭘 볼까"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}-ൽ അടുത്തതായി ഞാൻ എന്താണ് കാണേണ്ടത്?"
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "मी ${applicationName} वर पुढे काय पाहू?"
           }
         },
         "ms": {
@@ -2611,6 +3823,18 @@
             "value": "Wat moet ik hierna kijken in ${applicationName}"
           }
         },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ରେ ମୁଁ ପରବର୍ତ୍ତୀ କ’ଣ ଦେଖିବା ଉଚିତ?"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ਮੈਨੂੰ ${applicationName} 'ਤੇ ਅੱਗੇ ਕੀ ਦੇਖਣਾ ਚਾਹੀਦਾ ਹੈ?"
+          }
+        },
         "pl": {
           "stringUnit": {
             "state": "translated",
@@ -2629,10 +3853,34 @@
             "value": "Что мне посмотреть дальше в ${applicationName}"
           }
         },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kaj naj si ogledam naslednje na ${applicationName}"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
             "value": "Vad ska jag titta på härnäst i ${applicationName}"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}-ல் அடுத்து நான் என்ன பார்க்க வேண்டும்?"
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}లో నేను తర్వాత ఏమి చూడాలి?"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ฉันควรดูอะไรต่อดีในช่อง ${applicationName}"
           }
         },
         "tr": {
@@ -2645,6 +3893,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Що мені дивитися далі в ${applicationName}"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مجھے ${applicationName} پر آگے کیا دیکھنا چاہیے۔"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tôi nên xem gì tiếp theo trên ${applicationName}?"
           }
         },
         "zh-Hans": {
@@ -2693,6 +3953,12 @@
             "value": "${applicationName} a seguir"
           }
         },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} a seguir"
+          }
+        },
         "sk": {
           "stringUnit": {
             "state": "translated",
@@ -2709,6 +3975,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} التالي"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "এরপরে আসছে ${applicationName}"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} a continuació"
           }
         },
         "cs": {
@@ -2739,6 +4017,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} seuraavaksi"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "આગળ ${applicationName}"
           }
         },
         "he": {
@@ -2777,10 +4061,28 @@
             "value": "${applicationName} 次に観る"
           }
         },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ಮುಂದೆ ${applicationName}"
+          }
+        },
         "ko": {
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} 다음에 볼 것"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "അടുത്തതായി ${applicationName}"
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "यानंतर ${applicationName}"
           }
         },
         "ms": {
@@ -2801,6 +4103,18 @@
             "value": "${applicationName} hierna"
           }
         },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ପରବର୍ତ୍ତୀ ${applicationName}"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ਅੱਗੇ ${applicationName}"
+          }
+        },
         "pl": {
           "stringUnit": {
             "state": "translated",
@@ -2819,10 +4133,34 @@
             "value": "${applicationName} дальше"
           }
         },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} naslednji"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} härnäst"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "அடுத்து ${applicationName}"
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "తరువాత ${applicationName}"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ต่อไป"
           }
         },
         "tr": {
@@ -2835,6 +4173,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} далі"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} اگلا"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} sẽ là sản phẩm tiếp theo."
           }
         },
         "zh-Hans": {
@@ -2883,6 +4233,12 @@
             "value": "Pesquisar no ${applicationName}"
           }
         },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pesquisar em ${applicationName}"
+          }
+        },
         "sk": {
           "stringUnit": {
             "state": "translated",
@@ -2899,6 +4255,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "ابحث في ${applicationName}"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}-এ অনুসন্ধান করুন"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cerca a ${applicationName}"
           }
         },
         "cs": {
@@ -2929,6 +4297,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Hae sovelluksesta ${applicationName}"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} માં શોધો"
           }
         },
         "he": {
@@ -2967,10 +4341,28 @@
             "value": "${applicationName}で検索"
           }
         },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ನಲ್ಲಿ ಹುಡುಕಿ"
+          }
+        },
         "ko": {
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName}에서 검색"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}-ൽ തിരയുക"
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} मध्ये शोधा"
           }
         },
         "ms": {
@@ -2991,6 +4383,18 @@
             "value": "Zoek in ${applicationName}"
           }
         },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ରେ ଖୋଜନ୍ତୁ"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ਵਿੱਚ ਖੋਜ ਕਰੋ"
+          }
+        },
         "pl": {
           "stringUnit": {
             "state": "translated",
@@ -3009,10 +4413,34 @@
             "value": "Ищи в ${applicationName}"
           }
         },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Iskanje v ${applicationName}"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
             "value": "Sök i ${applicationName}"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} இல் தேடு"
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "XTKO0Xలో శోధించండి"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ค้นหาใน ${applicationName}"
           }
         },
         "tr": {
@@ -3025,6 +4453,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Шукай у ${applicationName}"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} میں تلاش کریں۔"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tìm kiếm trong ${applicationName}"
           }
         },
         "zh-Hans": {
@@ -3073,6 +4513,12 @@
             "value": "Encontrar um título no ${applicationName}"
           }
         },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Encontre um título em ${applicationName}"
+          }
+        },
         "sk": {
           "stringUnit": {
             "state": "translated",
@@ -3089,6 +4535,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "اعثر على عنوان في ${applicationName}"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}-এ একটি শিরোনাম খুঁজুন"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Troba un títol a ${applicationName}"
           }
         },
         "cs": {
@@ -3119,6 +4577,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Etsi nimi sovelluksesta ${applicationName}"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} માં શીર્ષક શોધો"
           }
         },
         "he": {
@@ -3157,10 +4621,28 @@
             "value": "${applicationName}で作品を探す"
           }
         },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ನಲ್ಲಿ ಶೀರ್ಷಿಕೆಯನ್ನು ಹುಡುಕಿ"
+          }
+        },
         "ko": {
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName}에서 작품 찾기"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}-ൽ ഒരു ശീർഷകം കണ്ടെത്തുക"
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} मध्ये शीर्षक शोधा"
           }
         },
         "ms": {
@@ -3181,6 +4663,18 @@
             "value": "Zoek een titel in ${applicationName}"
           }
         },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ରେ ଏକ ଶୀର୍ଷକ ଖୋଜନ୍ତୁ"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ਵਿੱਚ ਇੱਕ ਸਿਰਲੇਖ ਲੱਭੋ"
+          }
+        },
         "pl": {
           "stringUnit": {
             "state": "translated",
@@ -3199,10 +4693,34 @@
             "value": "Найди название в ${applicationName}"
           }
         },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Poiščite naslov v ${applicationName}"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
             "value": "Hitta en titel i ${applicationName}"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} இல் ஒரு தலைப்பைக் கண்டறியவும்"
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "XTKO0Xలో ఒక శీర్షికను కనుగొనండి"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ค้นหาชื่อเรื่องใน ${applicationName}"
           }
         },
         "tr": {
@@ -3215,6 +4733,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Знайди назву в ${applicationName}"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} میں عنوان تلاش کریں۔"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tìm tiêu đề trong ${applicationName}"
           }
         },
         "zh-Hans": {
@@ -3263,6 +4793,12 @@
             "value": "Abrir a pesquisa no ${applicationName}"
           }
         },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abrir pesquisa em ${applicationName}"
+          }
+        },
         "sk": {
           "stringUnit": {
             "state": "translated",
@@ -3279,6 +4815,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "افتح البحث في ${applicationName}"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}-এ অনুসন্ধান খুলুন"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Obre la cerca a ${applicationName}"
           }
         },
         "cs": {
@@ -3309,6 +4857,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Avaa haku sovelluksessa ${applicationName}"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} માં શોધ ખોલો"
           }
         },
         "he": {
@@ -3347,10 +4901,28 @@
             "value": "${applicationName}の検索を開く"
           }
         },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ನಲ್ಲಿ ಹುಡುಕಾಟ ತೆರೆಯಿರಿ"
+          }
+        },
         "ko": {
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} 검색 열기"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}-ൽ തിരയൽ തുറക്കുക"
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} मध्ये शोध उघडा"
           }
         },
         "ms": {
@@ -3371,6 +4943,18 @@
             "value": "Open zoeken in ${applicationName}"
           }
         },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ରେ ସନ୍ଧାନ ଖୋଲନ୍ତୁ"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ਵਿੱਚ ਖੋਜ ਖੋਲ੍ਹੋ"
+          }
+        },
         "pl": {
           "stringUnit": {
             "state": "translated",
@@ -3389,10 +4973,34 @@
             "value": "Открой поиск в ${applicationName}"
           }
         },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Odpri iskanje v ${applicationName}"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
             "value": "Öppna sökningen i ${applicationName}"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} இல் தேடலைத் திறக்கவும்"
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "XTKO0Xలో శోధనను తెరవండి"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เปิดการค้นหาใน ${applicationName}"
           }
         },
         "tr": {
@@ -3405,6 +5013,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Відкрий пошук у ${applicationName}"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} میں تلاش کھولیں۔"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mở tìm kiếm trong ${applicationName}"
           }
         },
         "zh-Hans": {
@@ -3453,6 +5073,12 @@
             "value": "Adicionar este link ao ${applicationName}"
           }
         },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adicione este link ao ${applicationName}"
+          }
+        },
         "sk": {
           "stringUnit": {
             "state": "translated",
@@ -3469,6 +5095,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "أضف هذا الرابط إلى ${applicationName}"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "এই লিঙ্কটি ${applicationName}-এ যোগ করুন"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Afegeix aquest enllaç a ${applicationName}"
           }
         },
         "cs": {
@@ -3499,6 +5137,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Lisää tämä linkki sovellukseen ${applicationName}"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "આ લિંકને ${applicationName} માં ઉમેરો"
           }
         },
         "he": {
@@ -3537,10 +5181,28 @@
             "value": "このリンクを${applicationName}に追加"
           }
         },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ಈ ಲಿಂಕ್ ಅನ್ನು ${applicationName} ಗೆ ಸೇರಿಸಿ"
+          }
+        },
         "ko": {
           "stringUnit": {
             "state": "translated",
             "value": "이 링크를 ${applicationName}에 추가"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ഈ ലിങ്ക് ${applicationName}-ലേക്ക് ചേർക്കുക"
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ही लिंक ${applicationName} मध्ये जोडा"
           }
         },
         "ms": {
@@ -3561,6 +5223,18 @@
             "value": "Voeg deze link toe aan ${applicationName}"
           }
         },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ଏହି ଲିଙ୍କକୁ ${applicationName} ରେ ଯୋଡନ୍ତୁ।"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ਇਸ ਲਿੰਕ ਨੂੰ ${applicationName} ਵਿੱਚ ਸ਼ਾਮਲ ਕਰੋ"
+          }
+        },
         "pl": {
           "stringUnit": {
             "state": "translated",
@@ -3579,10 +5253,34 @@
             "value": "Добавь эту ссылку в ${applicationName}"
           }
         },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dodaj to povezavo do ${applicationName}"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
             "value": "Lägg till den här länken i ${applicationName}"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "இந்த இணைப்பை ${applicationName} இல் சேர்க்கவும்"
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ఈ లింక్‌ను ${applicationName}కు జోడించండి"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เพิ่มลิงก์นี้ลงใน ${applicationName}"
           }
         },
         "tr": {
@@ -3595,6 +5293,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Додай це посилання до ${applicationName}"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اس لنک کو ${applicationName} میں شامل کریں۔"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Thêm liên kết này vào ${applicationName}"
           }
         },
         "zh-Hans": {
@@ -3643,6 +5353,12 @@
             "value": "Adicionar link à minha lista no ${applicationName}"
           }
         },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adicionar link à minha lista de observação em ${applicationName}"
+          }
+        },
         "sk": {
           "stringUnit": {
             "state": "translated",
@@ -3659,6 +5375,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "أضف الرابط إلى قائمة المشاهدة في ${applicationName}"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}-এ আমার ওয়াচলিস্টে লিঙ্ক যোগ করুন"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Afegeix un enllaç a la meva llista de seguiment a ${applicationName}"
           }
         },
         "cs": {
@@ -3689,6 +5417,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Lisää linkki katselulistaani sovelluksessa ${applicationName}"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} માં મારી વોચલિસ્ટમાં લિંક ઉમેરો"
           }
         },
         "he": {
@@ -3727,10 +5461,28 @@
             "value": "リンクを${applicationName}のウォッチリストに追加"
           }
         },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ನಲ್ಲಿ ನನ್ನ ವೀಕ್ಷಣಾ ಪಟ್ಟಿಗೆ ಲಿಂಕ್ ಸೇರಿಸಿ"
+          }
+        },
         "ko": {
           "stringUnit": {
             "state": "translated",
             "value": "링크를 ${applicationName} 관심 목록에 추가"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}-ലെ എന്റെ വാച്ച് ലിസ്റ്റിലേക്ക് ലിങ്ക് ചേർക്കുക."
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} मध्ये माझ्या वॉचलिस्टमध्ये लिंक जोडा"
           }
         },
         "ms": {
@@ -3751,6 +5503,18 @@
             "value": "Voeg link toe aan mijn watchlist in ${applicationName}"
           }
         },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ରେ ମୋର ୱାଚଲିଷ୍ଟରେ ଲିଙ୍କ୍ ଯୋଡନ୍ତୁ।"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ਵਿੱਚ ਮੇਰੀ ਵਾਚਲਿਸਟ ਵਿੱਚ ਲਿੰਕ ਸ਼ਾਮਲ ਕਰੋ"
+          }
+        },
         "pl": {
           "stringUnit": {
             "state": "translated",
@@ -3769,10 +5533,34 @@
             "value": "Добавь ссылку в мой список в ${applicationName}"
           }
         },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dodaj povezavo na moj seznam za spremljanje v ${applicationName}"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
             "value": "Lägg till länk i min watchlist i ${applicationName}"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} இல் எனது கண்காணிப்புப் பட்டியலில் இணைப்பைச் சேர்க்கவும்"
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "XTKO0Xలో నా వాచ్‌లిస్ట్‌కి లింక్‌ను జోడించండి"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เพิ่มลิงก์ไปยังรายการเฝ้าดูของฉันใน ${applicationName}"
           }
         },
         "tr": {
@@ -3785,6 +5573,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Додай посилання до мого списку в ${applicationName}"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} میں میری واچ لسٹ میں لنک شامل کریں۔"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Thêm liên kết vào danh sách theo dõi của tôi trên ${applicationName}"
           }
         },
         "zh-Hans": {
@@ -3833,6 +5633,12 @@
             "value": "Abrir ${title} no ${applicationName}"
           }
         },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abra ${title} em ${applicationName}"
+          }
+        },
         "sk": {
           "stringUnit": {
             "state": "translated",
@@ -3849,6 +5655,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "افتح ${title} في ${applicationName}"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}-এ ${title} খুলুন"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Obre ${title} a ${applicationName}"
           }
         },
         "cs": {
@@ -3879,6 +5697,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Avaa ${title} sovelluksessa ${applicationName}"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${title} ને ${applicationName} માં ખોલો"
           }
         },
         "he": {
@@ -3917,10 +5741,28 @@
             "value": "${applicationName}で${title}を開く"
           }
         },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ನಲ್ಲಿ ${title} ತೆರೆಯಿರಿ"
+          }
+        },
         "ko": {
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName}에서 ${title} 열기"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}-ൽ ${title} തുറക്കുക"
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} मध्ये ${title} उघडा"
           }
         },
         "ms": {
@@ -3941,6 +5783,18 @@
             "value": "Open ${title} in ${applicationName}"
           }
         },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${title} କୁ ${applicationName} ରେ ଖୋଲନ୍ତୁ"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${title} ਨੂੰ ${applicationName} ਵਿੱਚ ਖੋਲ੍ਹੋ"
+          }
+        },
         "pl": {
           "stringUnit": {
             "state": "translated",
@@ -3959,10 +5813,34 @@
             "value": "Открой ${title} в ${applicationName}"
           }
         },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Odpri ${title} v ${applicationName}"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
             "value": "Öppna ${title} i ${applicationName}"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${title}-ஐ ${applicationName}-இல் திறக்கவும்"
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}లో ${title}ను తెరవండి"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เปิด ${title} ใน ${applicationName}"
           }
         },
         "tr": {
@@ -3975,6 +5853,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Відкрий ${title} у ${applicationName}"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${title} کو ${applicationName} میں کھولیں۔"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mở ${title} trong ${applicationName}"
           }
         },
         "zh-Hans": {
@@ -4023,6 +5913,12 @@
             "value": "Mostrar ${title} no ${applicationName}"
           }
         },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exibir ${title} em ${applicationName}"
+          }
+        },
         "sk": {
           "stringUnit": {
             "state": "translated",
@@ -4039,6 +5935,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "اعرض ${title} في ${applicationName}"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}-এ ${title} দেখান"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mostra ${title} a ${applicationName}"
           }
         },
         "cs": {
@@ -4069,6 +5977,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Näytä ${title} sovelluksessa ${applicationName}"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${title} ને ${applicationName} માં બતાવો"
           }
         },
         "he": {
@@ -4107,10 +6021,28 @@
             "value": "${applicationName}で${title}を表示"
           }
         },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ನಲ್ಲಿ ${title} ತೋರಿಸಿ"
+          }
+        },
         "ko": {
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName}에서 ${title} 표시"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}-ൽ ${title} കാണിക്കുക"
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} मध्ये ${title} दाखवा"
           }
         },
         "ms": {
@@ -4131,6 +6063,18 @@
             "value": "Toon ${title} in ${applicationName}"
           }
         },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${title} କୁ ${applicationName} ରେ ଦେଖାନ୍ତୁ"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${title} ਨੂੰ ${applicationName} ਵਿੱਚ ਦਿਖਾਓ"
+          }
+        },
         "pl": {
           "stringUnit": {
             "state": "translated",
@@ -4149,10 +6093,34 @@
             "value": "Покажи ${title} в ${applicationName}"
           }
         },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prikaži ${title} v ${applicationName}"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
             "value": "Visa ${title} i ${applicationName}"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${title}-ஐ ${applicationName}-இல் காட்டு"
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}లో ${title}ను చూపించు"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "แสดง ${title} ใน ${applicationName}"
           }
         },
         "tr": {
@@ -4165,6 +6133,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Покажи ${title} у ${applicationName}"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${title} کو ${applicationName} میں دکھائیں۔"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hiển thị ${title} trong ${applicationName}"
           }
         },
         "zh-Hans": {
@@ -4213,6 +6193,12 @@
             "value": "${applicationName} abrir ${title}"
           }
         },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} aberto ${title}"
+          }
+        },
         "sk": {
           "stringUnit": {
             "state": "translated",
@@ -4229,6 +6215,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} افتح ${title}"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} খোলা ${title}"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} obert ${title}"
           }
         },
         "cs": {
@@ -4259,6 +6257,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} avaa ${title}"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ખોલો ${title}"
           }
         },
         "he": {
@@ -4297,10 +6301,28 @@
             "value": "${applicationName} ${title}を開く"
           }
         },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ತೆರೆದಿದೆ ${title}"
+          }
+        },
         "ko": {
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} ${title} 열기"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} തുറന്നിരിക്കുന്നു ${title}"
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} उघडल्यावर ${title}"
           }
         },
         "ms": {
@@ -4321,6 +6343,18 @@
             "value": "${applicationName} open ${title}"
           }
         },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ଖୋଲନ୍ତୁ ${title}"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ${title} ਖੋਲ੍ਹੋ"
+          }
+        },
         "pl": {
           "stringUnit": {
             "state": "translated",
@@ -4339,10 +6373,34 @@
             "value": "${applicationName} открой ${title}"
           }
         },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} odprto ${title}"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} öppna ${title}"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} திற ${title}"
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ఓపెన్ ${title}"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} เปิด ${title}"
           }
         },
         "tr": {
@@ -4355,6 +6413,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} відкрий ${title}"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ${title} کھولیں۔"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} mở ${title}"
           }
         },
         "zh-Hans": {
@@ -4403,6 +6473,12 @@
             "value": "Abrir minha lista no ${applicationName}"
           }
         },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abra minha lista de observação em ${applicationName}"
+          }
+        },
         "sk": {
           "stringUnit": {
             "state": "translated",
@@ -4419,6 +6495,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "افتح قائمة المشاهدة في ${applicationName}"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}-এ আমার ওয়াচলিস্ট খুলুন"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Obre la meva llista de seguiment a ${applicationName}"
           }
         },
         "cs": {
@@ -4449,6 +6537,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Avaa katselulistani sovelluksessa ${applicationName}"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} માં મારી વોચલિસ્ટ ખોલો"
           }
         },
         "he": {
@@ -4487,10 +6581,28 @@
             "value": "${applicationName}のウォッチリストを開く"
           }
         },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ನಲ್ಲಿ ನನ್ನ ವೀಕ್ಷಣಾ ಪಟ್ಟಿಯನ್ನು ತೆರೆಯಿರಿ"
+          }
+        },
         "ko": {
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} 관심 목록 열기"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}-ൽ എന്റെ വാച്ച് ലിസ്റ്റ് തുറക്കുക"
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} मध्ये माझी वॉचलिस्ट उघडा"
           }
         },
         "ms": {
@@ -4511,6 +6623,18 @@
             "value": "Open mijn watchlist in ${applicationName}"
           }
         },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ରେ ମୋର ୱାଚଲିଷ୍ଟ ଖୋଲନ୍ତୁ।"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ਮੇਰੀ ਵਾਚਲਿਸਟ ${applicationName} ਵਿੱਚ ਖੋਲ੍ਹੋ"
+          }
+        },
         "pl": {
           "stringUnit": {
             "state": "translated",
@@ -4529,10 +6653,34 @@
             "value": "Открой мой список в ${applicationName}"
           }
         },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Odpri moj seznam za spremljanje v ${applicationName}"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
             "value": "Öppna min watchlist i ${applicationName}"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} இல் எனது கண்காணிப்புப் பட்டியலைத் திறக்கவும்"
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "XTKO0Xలో నా వాచ్‌లిస్ట్‌ను తెరవండి"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เปิดรายการเฝ้าดูของฉันใน ${applicationName}"
           }
         },
         "tr": {
@@ -4545,6 +6693,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Відкрий мій список у ${applicationName}"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "میری واچ لسٹ کو ${applicationName} میں کھولیں۔"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mở danh sách theo dõi của tôi trên ${applicationName}"
           }
         },
         "zh-Hans": {
@@ -4593,6 +6753,12 @@
             "value": "Mostrar minha lista no ${applicationName}"
           }
         },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mostrar minha lista de observação em ${applicationName}"
+          }
+        },
         "sk": {
           "stringUnit": {
             "state": "translated",
@@ -4609,6 +6775,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "اعرض قائمة المشاهدة في ${applicationName}"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}-এ আমার ওয়াচলিস্ট দেখান"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mostra la meva llista de seguiment a ${applicationName}"
           }
         },
         "cs": {
@@ -4639,6 +6817,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Näytä katselulistani sovelluksessa ${applicationName}"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} માં મારી વોચલિસ્ટ બતાવો"
           }
         },
         "he": {
@@ -4677,10 +6861,28 @@
             "value": "${applicationName}のウォッチリストを表示"
           }
         },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ನಲ್ಲಿ ನನ್ನ ವೀಕ್ಷಣಾ ಪಟ್ಟಿಯನ್ನು ತೋರಿಸಿ"
+          }
+        },
         "ko": {
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} 관심 목록 표시"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}-ൽ എന്റെ വാച്ച് ലിസ്റ്റ് കാണിക്കുക"
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} मध्ये माझी वॉचलिस्ट दाखवा"
           }
         },
         "ms": {
@@ -4701,6 +6903,18 @@
             "value": "Toon mijn watchlist in ${applicationName}"
           }
         },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ରେ ମୋର ୱାଚଲିଷ୍ଟ ଦେଖାନ୍ତୁ"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ਵਿੱਚ ਮੇਰੀ ਵਾਚਲਿਸਟ ਦਿਖਾਓ"
+          }
+        },
         "pl": {
           "stringUnit": {
             "state": "translated",
@@ -4719,10 +6933,34 @@
             "value": "Покажи мой список в ${applicationName}"
           }
         },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prikaži moj seznam za spremljanje v ${applicationName}"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
             "value": "Visa min watchlist i ${applicationName}"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} இல் எனது கண்காணிப்புப் பட்டியலைக் காட்டு"
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}లో నా వాచ్‌లిస్ట్‌ను చూపించు"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "แสดงรายการที่ฉันสนใจใน ${applicationName}"
           }
         },
         "tr": {
@@ -4735,6 +6973,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Покажи мій список у ${applicationName}"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} میں میری واچ لسٹ دکھائیں۔"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hiển thị danh sách theo dõi của tôi trên ${applicationName}"
           }
         },
         "zh-Hans": {
@@ -4783,6 +7033,12 @@
             "value": "Lista ${applicationName}"
           }
         },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lista de observação ${applicationName}"
+          }
+        },
         "sk": {
           "stringUnit": {
             "state": "translated",
@@ -4799,6 +7055,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "قائمة ${applicationName}"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ওয়াচলিস্ট"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Llista de seguiment de ${applicationName}"
           }
         },
         "cs": {
@@ -4829,6 +7097,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName}-katselulista"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} વોચલિસ્ટ"
           }
         },
         "he": {
@@ -4867,10 +7141,28 @@
             "value": "${applicationName}のウォッチリスト"
           }
         },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ವೀಕ್ಷಣೆ ಪಟ್ಟಿ"
+          }
+        },
         "ko": {
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} 관심 목록"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} വാച്ച് ലിസ്റ്റ്"
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} वॉचलिस्ट"
           }
         },
         "ms": {
@@ -4891,6 +7183,18 @@
             "value": "${applicationName}-watchlist"
           }
         },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ୱାଚଲିଷ୍ଟ"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ਵਾਚਲਿਸਟ"
+          }
+        },
         "pl": {
           "stringUnit": {
             "state": "translated",
@@ -4909,10 +7213,34 @@
             "value": "Список ${applicationName}"
           }
         },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seznam za spremljanje ${applicationName}"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName}-watchlist"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} கண்காணிப்புப் பட்டியல்"
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "XTKO0X వాచ్‌లిస్ట్"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "รายการเฝ้าดู ${applicationName}"
           }
         },
         "tr": {
@@ -4925,6 +7253,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Список ${applicationName}"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} واچ لسٹ"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Danh sách theo dõi ${applicationName}"
           }
         },
         "zh-Hans": {
@@ -4973,6 +7313,12 @@
             "value": "Abrir A seguir no ${applicationName}"
           }
         },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abra em seguida em ${applicationName}"
+          }
+        },
         "sk": {
           "stringUnit": {
             "state": "translated",
@@ -4989,6 +7335,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "افتح التالي في ${applicationName}"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "এরপর ${applicationName}-এ খুলুন।"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Obre a continuació a ${applicationName}"
           }
         },
         "cs": {
@@ -5019,6 +7377,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Avaa Seuraavaksi sovelluksessa ${applicationName}"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} માં આગળ ખોલો"
           }
         },
         "he": {
@@ -5057,10 +7421,28 @@
             "value": "${applicationName}の次に観るを開く"
           }
         },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ಮುಂದೆ ${applicationName} ನಲ್ಲಿ ತೆರೆಯಿರಿ"
+          }
+        },
         "ko": {
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} 다음에 볼 것 열기"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "അടുത്തതായി ${applicationName}-ൽ തുറക്കും"
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} मध्ये पुढे उघडा"
           }
         },
         "ms": {
@@ -5081,6 +7463,18 @@
             "value": "Open Hierna in ${applicationName}"
           }
         },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ରେ ପରବର୍ତ୍ତୀ ଖୋଲନ୍ତୁ"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ਅੱਗੇ ${applicationName} ਵਿੱਚ ਖੋਲ੍ਹੋ"
+          }
+        },
         "pl": {
           "stringUnit": {
             "state": "translated",
@@ -5099,10 +7493,34 @@
             "value": "Открой Дальше в ${applicationName}"
           }
         },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Odprite naslednjič v ${applicationName}"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
             "value": "Öppna Härnäst i ${applicationName}"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "அடுத்து ${applicationName}-ல் திறக்கவும்"
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}లో తదుపరి తెరవండి"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เปิดถัดไปใน ${applicationName}"
           }
         },
         "tr": {
@@ -5115,6 +7533,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Відкрий Далі в ${applicationName}"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اگلا ${applicationName} میں کھولیں۔"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mở tiếp theo trong ${applicationName}"
           }
         },
         "zh-Hans": {
@@ -5163,6 +7593,12 @@
             "value": "Mostrar A seguir no ${applicationName}"
           }
         },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aparecerá em seguida em ${applicationName}"
+          }
+        },
         "sk": {
           "stringUnit": {
             "state": "translated",
@@ -5179,6 +7615,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "اعرض التالي في ${applicationName}"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "পরবর্তীতে ${applicationName}-এ উপস্থিত হন।"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apareix a continuació a ${applicationName}"
           }
         },
         "cs": {
@@ -5209,6 +7657,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Näytä Seuraavaksi sovelluksessa ${applicationName}"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} માં આગળ બતાવો"
           }
         },
         "he": {
@@ -5247,10 +7701,28 @@
             "value": "${applicationName}の次に観るを表示"
           }
         },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ನಲ್ಲಿ ಮುಂದೆ ತೋರಿಸಿ"
+          }
+        },
         "ko": {
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} 다음에 볼 것 표시"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "അടുത്തതായി ${applicationName}-ൽ കാണിക്കുക"
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} मध्ये पुढे हजर व्हा"
           }
         },
         "ms": {
@@ -5271,6 +7743,18 @@
             "value": "Toon Hierna in ${applicationName}"
           }
         },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ରେ ପରବର୍ତ୍ତୀ ଦେଖାନ୍ତୁ"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ਅੱਗੇ ${applicationName} ਵਿੱਚ ਦਿਖਾਓ"
+          }
+        },
         "pl": {
           "stringUnit": {
             "state": "translated",
@@ -5289,10 +7773,34 @@
             "value": "Покажи Дальше в ${applicationName}"
           }
         },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Naslednjič se pojavi v ${applicationName}"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
             "value": "Visa Härnäst i ${applicationName}"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "அடுத்து ${applicationName}-ல் தோன்றுங்கள்"
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName}లో తదుపరి కనిపించండి"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "พบกันใหม่ใน ${applicationName}"
           }
         },
         "tr": {
@@ -5305,6 +7813,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Покажи Далі в ${applicationName}"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اگلا ${applicationName} میں دکھائیں۔"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sẽ xuất hiện tiếp theo trong ${applicationName}"
           }
         },
         "zh-Hans": {
@@ -5353,6 +7873,12 @@
             "value": "${applicationName} abrir A seguir"
           }
         },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} abrir em seguida"
+          }
+        },
         "sk": {
           "stringUnit": {
             "state": "translated",
@@ -5369,6 +7895,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} افتح التالي"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} এরপর খুলবে"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} obre a continuació"
           }
         },
         "cs": {
@@ -5399,6 +7937,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} avaa Seuraavaksi"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} આગળ ખુલશે"
           }
         },
         "he": {
@@ -5437,10 +7981,28 @@
             "value": "${applicationName} 次に観るを開く"
           }
         },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ಮುಂದೆ ${applicationName} ತೆರೆಯುತ್ತದೆ"
+          }
+        },
         "ko": {
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} 다음에 볼 것 열기"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "അടുത്തതായി ${applicationName} തുറക്കും"
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} पुढील सुरुवात करतील"
           }
         },
         "ms": {
@@ -5461,6 +8023,18 @@
             "value": "${applicationName} open Hierna"
           }
         },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ପରବର୍ତ୍ତୀ ସମୟରେ ଖୋଲନ୍ତୁ"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} ਅੱਗੇ ਖੁੱਲ੍ਹਦਾ ਹੈ"
+          }
+        },
         "pl": {
           "stringUnit": {
             "state": "translated",
@@ -5479,10 +8053,34 @@
             "value": "${applicationName} открой Дальше"
           }
         },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} se odpre naslednji"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} öppna Härnäst"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} அடுத்து திறக்கும்"
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "XTKO0X తదుపరి తెరుచుకుంటుంది"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} เปิดใช้งานถัดไป"
           }
         },
         "tr": {
@@ -5495,6 +8093,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "${applicationName} відкрий Далі"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} اگلا کھلتا ہے۔"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} sẽ mở tiếp theo"
           }
         },
         "zh-Hans": {

@@ -1,0 +1,40 @@
+Przedstawiamy Cronica — elegancką, minimalistyczną listę do obejrzenia filmów i programów telewizyjnych.
+
+Śledź, co oglądasz, nigdy nie gubisz miejsca i bądź gotowy na to, co będzie dalej — w iPhone, iPad, Mac, Apple Watch, Apple TV i Apple Vision Pro. Niezależnie od tego, czy oglądasz wiele odcinków z rzędu, czy tylko okazjonalnie, Cronica utrzymuje porządek w Twojej bibliotece, a kolejny odcinek jest zawsze na wyciągnięcie ręki.
+
+Funkcje Cronica:
+
+Up Next: Wyprzedź swoich fanów w serialach telewizyjnych
+Zobacz kolejne odcinki swojego serialu na stronie głównej i wracaj do niego bez konieczności szukania miejsca, w którym skończyłeś.
+
+Oznacz jako obejrzane: Bądź na bieżąco ze swoimi postępami
+Oznaczaj obejrzane filmy i odcinki na bieżąco, a postępy będą synchronizowane z listą obserwowanych.
+
+Powiadomienia o wydaniach: Bądź pierwszy, który się dowie
+Otrzymuj powiadomienia o premierach tytułów z Twojej listy obserwowanych lub o nowych odcinkach, aby nie przegapić premiery.
+
+Synchronizacja iCloud: Twoje dane, po Twojemu
+Twoja lista obserwowanych, oceny, notatki i preferencje pozostają na Twoich urządzeniach i mogą być prywatnie synchronizowane za pośrednictwem iCloud na urządzeniach Apple.
+
+Siri i Shortcuts: sterowanie bez użycia rąk
+Dodawaj tytuły, oznaczaj obejrzane, zaznaczaj Up Next, otwieraj wyszukiwanie i wiele więcej za pomocą Siri i aplikacji Shortcuts (do 10 App Shortcuts).
+
+Widgets i sterowanie
+Sprawdź Up Next lub popularne tytuły w widżetach Home Screen i używaj Control Center, jeśli jest dostępny.
+
+Udostępniaj i odkrywaj linki
+Dodawaj z IMDb, Letterboxd, TMDb, JustWatch i innych za pośrednictwem Share Sheet lub Shortcuts — i udostępniaj linki cronica.watch, które otwierają się w aplikacji lub w sieci.
+
+Zwiastuny i szczegóły: zobacz podgląd przed obejrzeniem
+Obejrzyj zwiastuny i zapoznaj się z obsadą, sezonami i szczegółami, aby móc podjąć decyzję przed naciśnięciem przycisku odtwarzania.
+
+Watch Providers: Znajdź miejsce, w którym można go oglądać
+Sprawdź, gdzie są dostępne tytuły do strumieniowania dzięki danym JustWatch za pośrednictwem TMDb — filtruj według preferowanych usług.
+
+Niestandardowe listy, filtry i personalizacja
+Twórz niestandardowe listy, filtruj i sortuj listę obserwowanych, wybierz kolor akcentowy i dostosuj ekran główny do swojego sposobu oglądania.
+
+Opcjonalna synchronizacja biblioteki
+Jeśli chcesz, połącz synchronizację konta SIMKL lub TMDb — Cronica nigdy nie wymaga własnego konta.
+
+Zastrzeżenie: Cronica nie jest usługą strumieniową. Dane dotyczące filmów i programów telewizyjnych pochodzą z TMDb. Ten produkt korzysta z interfejsu API TMDb, ale nie jest przez niego wspierany ani certyfikowany. Dane Watch provider są dostarczane przez JustWatch za pośrednictwem TMDb.

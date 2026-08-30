@@ -1,0 +1,40 @@
+Xin giới thiệu Cronica — một danh sách theo dõi phim và chương trình truyền hình với thiết kế tối giản, tinh tế.
+
+Theo dõi những gì bạn xem, không bao giờ bị mất dấu và luôn sẵn sàng cho những gì tiếp theo — trên iPhone, iPad, Mac, Apple Watch, Apple TV và Apple Vision Pro. Cho dù bạn xem nhiều tập liên tiếp hay chỉ thỉnh thoảng, Cronica giúp thư viện của bạn được sắp xếp gọn gàng và tập tiếp theo luôn sẵn sàng chỉ với một lần chạm.
+
+Tính năng của Cronica:
+
+Up Next: Luôn đi trước đón đầu các loạt phim truyền hình của bạn
+Xem các tập tiếp theo của loạt phim yêu thích trên Trang chủ và tiếp tục xem mà không cần phải tìm lại chỗ đã dừng.
+
+Đánh dấu đã xem: Theo dõi tiến độ của bạn
+Đánh dấu các bộ phim và tập phim đã xem khi bạn xem xong, tiến trình này sẽ được đồng bộ hóa với danh sách xem của bạn.
+
+Thông báo phát hành: Hãy là người đầu tiên biết
+Nhận thông báo khi các tựa phim trong danh sách theo dõi của bạn được phát hành hoặc khi các tập mới ra mắt — để bạn không bỏ lỡ buổi ra mắt.
+
+iCloud Sync: Dữ liệu của bạn, theo cách của bạn
+Danh sách theo dõi, xếp hạng, ghi chú và tùy chọn của bạn vẫn được lưu trên thiết bị và có thể đồng bộ riêng tư thông qua iCloud trên các thiết bị Apple.
+
+Siri & Shortcuts: Điều khiển rảnh tay
+Thêm tiêu đề, đánh dấu đã xem, kiểm tra Up Next, mở Tìm kiếm và nhiều hơn nữa với Siri và ứng dụng Shortcuts (tối đa 10 App Shortcuts).
+
+Widgets & Điều khiển
+Hãy xem qua Up Next hoặc các tiêu đề thịnh hành từ tiện ích Home Screen, và sử dụng Control Center nếu có sẵn.
+
+Chia sẻ & Khám phá các liên kết
+Thêm từ IMDb, Letterboxd, TMDb, JustWatch và nhiều thiết bị khác thông qua Share Sheet hoặc Shortcuts — và chia sẻ các liên kết cronica.watch mở trong ứng dụng hoặc trên web.
+
+Xem trước và thông tin chi tiết trước khi xem!
+Hãy xem trailer và tìm hiểu về dàn diễn viên, các mùa phim và thông tin chi tiết để bạn có thể quyết định trước khi bấm nút phát.
+
+Watch Providers: Tìm nơi phát trực tuyến
+Xem các tựa phim có sẵn để xem trực tuyến, được cung cấp bởi dữ liệu JustWatch thông qua TMDb — lọc theo các dịch vụ bạn ưa thích.
+
+Danh sách tùy chỉnh, bộ lọc và cá nhân hóa
+Tạo danh sách tùy chỉnh, lọc và sắp xếp danh sách xem của bạn, chọn màu chủ đạo và tùy chỉnh Home theo cách bạn xem.
+
+Đồng bộ hóa thư viện tùy chọn
+Bạn có thể kết nối đồng bộ tài khoản SIMKL hoặc TMDb nếu muốn — Cronica không bao giờ yêu cầu tài khoản riêng.
+
+Lưu ý: Cronica không phải là dịch vụ phát trực tuyến. Dữ liệu phim và chương trình truyền hình được lấy từ TMDb. Sản phẩm này sử dụng API của TMDb nhưng không được TMDb xác nhận hoặc chứng nhận. Dữ liệu Watch provider được cung cấp bởi JustWatch thông qua TMDb.

@@ -1,0 +1,40 @@
+Vi presenterar Cronica — en elegant, minimalistisk bevakningslista för filmer och TV-program.
+
+Håll koll på vad du tittar på, tappa aldrig bort din plats och var redo för vad som komma skall – på iPhone, iPad, Mac, Apple Watch, Apple TV och Apple Vision Pro. Oavsett om du tittar på många avsnitt i rad eller bara då och då, håller Cronica ditt bibliotek organiserat och ditt nästa avsnitt är bara ett tryck bort.
+
+Cronica-funktioner:
+
+Up Next: Ligg steget före dina TV-serier
+Se nästa avsnitt av din serie på Hem och hoppa in i det igen utan att behöva leta efter var du slutade.
+
+Markera som sett: Håll koll på dina framsteg
+Markera filmer och avsnitt som du tittat på allt eftersom, med förlopp som synkroniseras med din bevakningslista.
+
+Släppmeddelanden: Var först med att veta
+Få meddelanden när titlar på din bevakningslista släpps eller när nya avsnitt släpps – så att du inte missar premiären.
+
+iCloud Sync: Dina data, på ditt sätt
+Din bevakningslista, dina betyg, dina anteckningar och dina inställningar finns kvar på dina enheter och kan synkroniseras privat via iCloud mellan Apple-enheter.
+
+Siri och Shortcuts: Handsfree-kontroll
+Lägg till titlar, markera som sedda, kontrollera Up Next, öppna Sök och mer med Siri och Shortcuts-appen (upp till 10 App Shortcuts).
+
+Widgets och kontroller
+Titta på Up Next eller trendtitlar från Home Screen-widgetar och använd Control Center där det är tillgängligt.
+
+Dela och upptäck länkar
+Lägg till från IMDb, Letterboxd, TMDb, JustWatch och fler via Share Sheet eller Shortcuts – och dela cronica.watch-länkar som öppnas i appen eller på webben.
+
+Trailers och detaljer: Förhandsgranska innan du tittar
+Titta på trailers och bläddra bland skådespelare, säsonger och detaljer så att du kan bestämma dig innan du trycker på play.
+
+Watch Providers: Hitta var det streamas
+Se var titlar finns tillgängliga att streama, med JustWatch-data via TMDb – filtrera efter dina föredragna tjänster.
+
+Anpassade listor, filter och personalisering
+Skapa anpassade listor, filtrera och sortera din bevakningslista, välj en accentfärg och anpassa Hem efter hur du tittar.
+
+Valfri bibliotekssynkronisering
+Anslut SIMKL- eller TMDb-kontosynkronisering om du vill — Cronica kräver aldrig ett eget konto.
+
+Friskrivning: Cronica är inte en streamingtjänst. Film- och TV-data från TMDb. Denna produkt använder TMDb API men är inte godkänd eller certifierad av TMDb. Watch provider-data tillhandahålls av JustWatch via TMDb.

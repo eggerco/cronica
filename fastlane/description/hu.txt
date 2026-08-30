@@ -1,0 +1,40 @@
+Bemutatkozik az Cronica — egy letisztult, minimalista film- és tévéműsorlistás lista.
+
+Kövesd nyomon, mit nézel, sose veszítsd el a helyed, és készülj fel a következőre – az iPhone, iPad, Mac, Apple Watch, Apple TV és Apple Vision Pro csatornáin. Akár sok epizódot nézel meg egymás után, akár csak alkalmanként, az Cronica rendszerezi a könyvtáradat, és a következő epizód egyetlen koppintásnyira van.
+
+Cronica Jellemzők:
+
+Up Next: Maradj lépést a tévésorozataiddal
+Nézd meg a sorozatod következő epizódjait a Kezdőlapon, és ugorj vissza anélkül, hogy ott hagynád abba, ahol abbahagytad.
+
+Megjelölés megtekintettként: Tartsa szemmel a haladását
+Jelöld meg a megtekintett filmeket és epizódokat menet közben, a haladás pedig szinkronizálódik a figyelőlistáddal.
+
+Kiadási értesítések: Értesüljön elsőként a legfrissebb hírekről
+Értesítést kaphatsz, amikor a figyelőlistádon szereplő címek megjelennek, vagy amikor új epizódok érkeznek – így nem maradsz le a premierről.
+
+iCloud szinkronizálás: Az Ön adatai, az Ön uta
+A figyelőlistád, az értékeléseid, a jegyzeteid és a beállításaid az eszközeiden maradnak, és privát módon szinkronizálhatók az iCloud segítségével az Apple-eszközök között.
+
+Siri és Shortcuts: Kézhasználat nélküli vezérlés
+Címek hozzáadása, megtekintettként megjelölése, Up Next ellenőrzése, keresés megnyitása és sok más az Siri és az Shortcuts alkalmazás segítségével (akár 10 App Shortcuts).
+
+Widgets és vezérlés
+Vess egy pillantást az Up Next-re vagy az Home Screen widgetek trendi címeire, és használd az Control Center-et, ahol elérhető.
+
+Megosztási és felfedezési linkek
+Tölts fel tartalmakat IMDb, Letterboxd, TMDb, JustWatch és más platformokról Share Sheet vagy Shortcuts platformokon keresztül – és oszd meg az cronica.watch linkeket, amelyek az alkalmazásban vagy a weben nyílnak meg.
+
+Előzetesek és részletek: Előzetesek a megtekintés előtt
+Nézz előzeteseket, böngéssz a szereplők, évadok és részletek között, hogy a lejátszás megnyomása előtt dönthess.
+
+Watch Providers: Hol streamelhető?
+Nézd meg, hol érhetők el streamelhető címek az JustWatch adatainak köszönhetően az TMDb-en keresztül – szűrj a kívánt szolgáltatások szerint.
+
+Egyéni listák, szűrők és személyre szabás
+Hozz létre egyéni listákat, szűrd és rendezd a figyelőlistádat, válassz egy kiemelő színt, és szabd testre a Kezdőlapot a nézési szokásaidhoz.
+
+Opcionális könyvtárszinkronizálás
+Csatlakoztasd az SIMKL vagy TMDb fiókszinkronizálást, ha szeretnéd — az Cronica-nek soha nincs szüksége saját fiókra.
+
+Jogi nyilatkozat: Az Cronica nem streaming szolgáltatás. Film- és tévéadatok az TMDb-től. Ez a termék az TMDb API-t használja, de az TMDb nem hagyta jóvá vagy tanúsította. Az Watch provider adatokat az JustWatch biztosítja az TMDb-en keresztül.

@@ -45,3 +45,5 @@ AuthKey_*.p8
 Scripts/_en_*.json
 Scripts/_en_*.txt
 Scripts/translations/
+Scripts/google_translate_api_key
+Scripts/google_translate_api_key.json

@@ -1,0 +1,40 @@
+Presentem Cronica: una llista de seguiment elegant i minimalista de pel·lícules i programes de televisió.
+
+Fes un seguiment del que mires, no perdis mai el lloc i estigues preparat per al que vindrà després, a iPhone, iPad, Mac, Apple Watch, Apple TV i Apple Vision Pro. Tant si mires molts episodis seguits com si només ho fas de tant en tant, Cronica manté la teva biblioteca organitzada i el teu següent episodi a un sol toc de distància.
+
+Característiques de Cronica:
+
+Up Next: Estigues al dia de les teves sèries de televisió
+Mira els propers episodis de la teva sèrie a Inici i torna-hi sense haver de buscar on ho havies deixat.
+
+Marca com a vist: estigues al corrent del teu progrés
+Marca les pel·lícules i els episodis que has vist a mesura que avances, amb un progrés que es sincronitza amb la teva llista de seguiment.
+
+Notificacions de llançament: sigues el primer a saber-ho
+Rep notificacions quan es publiquin títols de la teva llista de seguiment o quan surtin nous episodis, per no perdre't l'estrena.
+
+iCloud Sync: Les teves dades, a la teva manera
+La teva llista de seguiment, les valoracions, les notes i les preferències es queden als teus dispositius i es poden sincronitzar de forma privada mitjançant iCloud entre dispositius Apple.
+
+Siri i Shortcuts: Control de mans lliures
+Afegeix títols, marca com a vists, comprova Up Next, obre la Cerca i molt més amb Siri i l'aplicació Shortcuts (fins a 10 App Shortcuts).
+
+Widgets i controls
+Fes una ullada a Up Next o als títols de moda dels widgets Home Screen i fes servir Control Center on estigui disponible.
+
+Comparteix i descobreix enllaços
+Afegeix des de IMDb, Letterboxd, TMDb, JustWatch i més a través de Share Sheet o Shortcuts, i comparteix enllaços cronica.watch que s'obren a l'aplicació o al web.
+
+Tràilers i detalls: vista prèvia abans de mirar-los
+Mira tràilers i navega pel repartiment, les temporades i els detalls per poder decidir abans de prémer Reproduir.
+
+Watch Providers: Troba on s'està emetent en streaming
+Consulta on hi ha títols disponibles per reproduir en streaming, amb tecnologia de dades JustWatch via TMDb: filtra pels teus serveis preferits.
+
+Llistes personalitzades, filtres i personalització
+Crea llistes personalitzades, filtra i ordena la teva llista de seguiment, tria un color d'accent i adapta la pàgina d'inici a com mires el contingut.
+
+Sincronització opcional de la biblioteca
+Connecta la sincronització de comptes de SIMKL o TMDb si vols; Cronica no requereix mai un compte propi.
+
+Avís: Cronica no és un servei de streaming. Dades de pel·lícules i televisió de TMDb. Aquest producte utilitza l'API de TMDb, però no està avalat ni certificat per TMDb. Les dades de Watch provider les proporciona JustWatch a través de TMDb.

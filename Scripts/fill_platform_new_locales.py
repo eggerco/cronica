@@ -83,43 +83,12 @@ def restore(text: str, tokens: list[str]) -> str:
     return out
 
 
-def mymemory_translate(text: str, tl: str) -> str:
-    url = "https://api.mymemory.translated.net/get"
-    chunk = text if len(text) <= 450 else text[:447] + "..."
-    r = requests.get(url, params={"q": chunk, "langpair": f"en|{tl}"}, timeout=20)
-    r.raise_for_status()
-    data = r.json()
-    if int(data.get("responseStatus", 0)) != 200:
-        raise RuntimeError(data.get("responseDetails") or "mymemory error")
-    translated = (data.get("responseData") or {}).get("translatedText") or ""
-    if not translated or translated.upper().startswith("MYMEMORY WARNING"):
-        raise RuntimeError(translated or "empty mymemory translation")
-    return translated
-
-
-def google_translate(text: str, tl: str) -> str:
-    url = "https://translate.googleapis.com/translate_a/single"
-    params = {"client": "gtx", "sl": "en", "tl": tl, "dt": "t", "q": text}
-    r = requests.get(url, params=params, timeout=12)
-    r.raise_for_status()
-    data = r.json()
-    return "".join(part[0] for part in data[0] if part and part[0])
-
-
 def translate_one(en: str, tl: str) -> str:
+    from cloud_translate import translate_batch
+
     protected, tokens = protect(en)
-    for attempt in range(6):
-        try:
-            translated = (
-                mymemory_translate(protected, tl)
-                if attempt % 2 == 0
-                else google_translate(protected, tl)
-            )
-            if translated:
-                return restore(translated, tokens).replace("  ", " ").strip()
-        except Exception:  # noqa: BLE001
-            time.sleep(1.2 * (attempt + 1))
-    return en
+    raw = translate_batch([protected], tl)[0]
+    return restore(raw, tokens).replace("  ", " ").strip()
 
 
 def load_maps(locales: list[str]) -> dict[str, dict[str, str]]:
@@ -148,6 +117,9 @@ def all_phrase_dicts() -> dict[str, dict[str, str]]:
 
 
 def main() -> int:
+    from cloud_translate import require_api_key
+
+    require_api_key()
     only = sys.argv[1:]
     locales = [loc for loc in NEW_LOCALES if loc in LOCALES and (not only or loc in only)]
     maps = load_maps(locales)

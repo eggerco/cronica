@@ -12,17 +12,26 @@ ROOT = Path(__file__).resolve().parents[1]
 XCSTRINGS = ROOT / "Shared/Localization/Localizable.xcstrings"
 
 CATALOG_LOCALES = (
-    "en", "de", "fr", "it", "pt-BR", "sk", "es-MX",
-    "ar", "cs", "da", "el", "es", "fi", "he", "hi", "hr", "hu", "id",
-    "ja", "ko", "ms", "nb", "nl", "pl", "ro", "ru", "sv", "tr", "uk",
+    "en", "de", "fr", "it", "pt-BR", "pt-PT", "sk", "es-MX",
+    "ar", "bn", "ca", "cs", "da", "el", "es", "fi", "gu", "he", "hi", "hr",
+    "hu", "id", "ja", "kn", "ko", "ml", "mr", "ms", "nb", "nl", "or", "pa",
+    "pl", "ro", "ru", "sl", "sv", "ta", "te", "th", "tr", "uk", "ur", "vi",
     "zh-Hans", "zh-Hant",
 )
 
 ALLOW_IDENTICAL = {
     "TMDB", "SIMKL", "Cronica", "iCloud", "iPhone", "iPad", "Apple", "JSON", "API",
+    "SIMKL API Rules", "SIMKL Website", "TMDB API Terms", "TMDB Terms", "TMDB Website",
+    "Link", "Person", "Information", "Details", "Filters", "Week", "Card", "Query",
+    "Episode %lld", "Version %@ • %@", "%lld items", "Trending", "Presentation",
+    "iCloud Sync", "Fireball", "Mint", "Lavender", "Teal", "Pink", "Superhero", "Slovak",
+    "Belgium", "Croatia", "Denmark", "Finland", "Hungary", "Ireland", "Lithuania",
+    "New Zealand", "Norway", "Poland", "Sweden", "Switzerland", "United Kingdom",
+    "Open ${title} in Cronica", "“Open Severance in Cronica”",
     "TV", "OK", "URL", "CloudKit", "YouTubePlayerKit", "The Movie Database", "SIMKL API",
     "X (Twitter)", "An Egger & Co Product", "Kevin Manca", "Luis Felipe Lerma Alvarez",
     "Pierre Quéré", "Simon Boer", "Tomáš Švec", "Egger", "Nuke", "ID", "Anime", "🛠️",
+    "Control Center", "SwiftUI Preview", "Live Activities", "Icon Designer",
     "Hong Kong", "Portugal", "Argentina", "Canada", "India", "Israel", "France",
     "Australia", "Austria", "Bulgaria", "Estonia", "Indonesia", "Philippines",
     "Serbia", "Slovakia", "Japan", "Italy", "Mexico", "Brazil", "Spain",

@@ -86,12 +86,8 @@ ACTIVE_STORE_LOCALES = %w[
 ].freeze
 
 # App Store Connect platforms for this universal app (Watch ships with the iOS companion).
-STORE_PLATFORMS = %w[
-  ios
-  osx
-  appletvos
-  xros
-].freeze
+# Override with comma-separated STORE_PLATFORMS=ios,xros for partial retries.
+STORE_PLATFORMS = (ENV["STORE_PLATFORMS"] || "ios,osx,appletvos,xros").split(",").map(&:strip).reject(&:empty?).freeze
 
 RELEASE_NOTES_DIR = File.expand_path("release_notes", __dir__)
 DESCRIPTION_DIR = File.expand_path("description", __dir__)

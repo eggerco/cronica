@@ -23,9 +23,10 @@ APP_SHORTCUTS = ROOT / "Shared/Localization/AppShortcuts.xcstrings"
 INFO_PLIST = ROOT / "Shared/Localization/InfoPlist.xcstrings"
 
 LOCALES = (
-    "en", "de", "fr", "it", "pt-BR", "sk", "es-MX",
-    "ar", "cs", "da", "el", "es", "fi", "he", "hi", "hr", "hu", "id",
-    "ja", "ko", "ms", "nb", "nl", "pl", "ro", "ru", "sv", "tr", "uk",
+    "en", "de", "fr", "it", "pt-BR", "pt-PT", "sk", "es-MX",
+    "ar", "bn", "ca", "cs", "da", "el", "es", "fi", "gu", "he", "hi", "hr",
+    "hu", "id", "ja", "kn", "ko", "ml", "mr", "ms", "nb", "nl", "or", "pa",
+    "pl", "ro", "ru", "sl", "sv", "ta", "te", "th", "tr", "uk", "ur", "vi",
     "zh-Hans", "zh-Hant",
 )
 
@@ -2150,8 +2151,12 @@ def load_platform_overlay() -> dict[str, dict[str, str]]:
 def merge_overlay_into(
     entries: dict[str, dict[str, str]], overlay: dict[str, dict[str, str]]
 ) -> None:
+    # Only fill locales on keys that already belong to this bag — never invent
+    # App Shortcut keys inside UI_STRINGS (or vice versa) from a shared overlay.
     for key, locs in overlay.items():
-        bag = entries.setdefault(key, {})
+        if key not in entries:
+            continue
+        bag = entries[key]
         for loc, value in locs.items():
             bag.setdefault(loc, value)
 

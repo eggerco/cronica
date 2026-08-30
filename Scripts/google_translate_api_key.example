@@ -1,0 +1,10 @@
+# Google Cloud Translation API key (single line).
+# Create at: https://console.cloud.google.com/apis/credentials
+# Enable "Cloud Translation API" on the project first.
+#
+# Copy to Scripts/google_translate_api_key (gitignored):
+#   cp Scripts/google_translate_api_key.example Scripts/google_translate_api_key
+#   # then paste your key as the only line
+#
+# Or: export GOOGLE_TRANSLATE_API_KEY=YOUR_KEY
+YOUR_GOOGLE_CLOUD_TRANSLATION_API_KEY

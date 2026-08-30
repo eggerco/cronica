@@ -1,40 +1,40 @@
-Predstavujeme Cronica — elegantný, minimalistický zoznam na sledovanie filmov a seriálov.
+Predstavujeme Cronica – elegantný, minimalistický zoznam filmov a televíznych relácií na sledovanie.
 
-Sledujte, čo pozeráte, nikdy nestratte miesto a buďte pripravení na ďalšie — na iPhone, iPad, Mac, Apple Watch, Apple TV a Apple Vision Pro. Či už ste vášnivý divák alebo príležitostný, Cronica udrží vašu knižnicu v poriadku a ďalšiu epizódu na jedno ťuknutie.
+Sledujte, čo pozeráte, nikdy nestraťte miesto, kde ste, a buďte pripravení na to, čo bude ďalej – v iPhone, iPad, Mac, Apple Watch, Apple TV a Apple Vision Pro. Či už pozeráte viac epizód za sebou alebo len príležitostne, Cronica udržiava vašu knižnicu organizovanú a vašu ďalšiu epizódu máte na dosah ruky.
 
 Funkcie Cronica:
 
-Up Next: buďte o krok vpred pri seriáloch
-Na Domovskej obrazovke uvidíte ďalšie epizódy svojich seriálov a pokračujte bez hľadania, kde ste skončili.
+Up Next: Zostaňte o krok pred svojimi televíznymi seriálmi
+Pozrite si ďalšie epizódy vášho seriálu na Domovskej stránke a vráťte sa k nim bez toho, aby ste museli hľadať tam, kde ste prestali.
 
-Označiť ako videné: sledujte svoj pokrok
-Označujte filmy a epizódy ako videné priebežne — pokrok sa synchronizuje s vaším zoznamom.
+Označiť ako sledované: Majte prehľad o svojom pokroku
+Označujte si filmy a epizódy, ktoré ste si pozreli počas sledovania, a ich priebeh sa synchronizuje s vaším zoznamom sledovaných.
 
-Upozornenia na vydanie: buďte prví, kto vie
-Dostávajte upozornenia, keď vyjdu tituly z vášho zoznamu alebo nové epizódy — a nenechajte si ujsť premiéru.
+Oznámenia o vydaní: Buďte prvý, kto sa o nich dozvie
+Dostávajte upozornenia, keď budú vydané tituly z vášho zoznamu na sledovanie alebo keď vyjdú nové epizódy – aby ste nezmeškali premiéru.
 
-iCloud synchronizácia: vaše dáta, váš spôsob
-Zoznam, hodnotenia, poznámky a preferencie zostávajú na vašich zariadeniach a môžu sa súkromne synchronizovať cez iCloud medzi zariadeniami Apple.
+Synchronizácia iCloud: Vaše dáta, vaša cesta
+Váš zoznam sledovaných položiek, hodnotenia, poznámky a preferencie zostávajú na vašich zariadeniach a môžu sa súkromne synchronizovať cez iCloud naprieč zariadeniami Apple.
 
-Siri a Skrátené príkazy: ovládanie bez rúk
-Pridávajte tituly, označujte ako videné, kontrolujte Up Next, otvárajte Hľadanie a ďalšie cez Siri a aplikáciu Skrátené príkazy (až 10 App Shortcuts).
+Siri a Shortcuts: Ovládanie bez použitia rúk
+Pridávajte tituly, označujte ako pozreté, kontrolujte Up Next, otvárajte vyhľadávanie a mnoho ďalšieho pomocou Siri a aplikácie Shortcuts (až 10 App Shortcuts).
 
-Widgety a ovládacie prvky
-Prezrite si Up Next alebo trendy tituly z widgetov na Domovskej obrazovke a použite Control Center, kde je k dispozícii.
+Widgets a ovládacie prvky
+Pozrite sa na Up Next alebo trendové tituly z widgetov Home Screen a použite Control Center, kde je to možné.
 
-Zdieľanie a odkazy
-Pridávajte z IMDb, Letterboxd, TMDb, JustWatch a ďalších cez Share Sheet alebo Skrátené príkazy — a zdieľajte odkazy cronica.watch, ktoré sa otvoria v aplikácii alebo na webe.
+Zdieľať a objavovať odkazy
+Pridajte z IMDb, Letterboxd, TMDb, JustWatch a ďalších cez Share Sheet alebo Shortcuts – a zdieľajte odkazy cronica.watch, ktoré sa otvoria v aplikácii alebo na webe.
 
-Trailery a detaily: náhľad pred sledovaním
-Pozrite si trailery a prehliadajte herecké obsadenie, série a detaily skôr, než stlačíte prehrávanie.
+Trailery a podrobnosti: Ukážka pred sledovaním
+Pozrite si upútavky a prehliadnite si obsadenie, série a podrobnosti, aby ste sa mohli rozhodnúť ešte pred stlačením tlačidla prehrávania.
 
-Watch Providers: nájdite, kde streamovať
-Zistite, kde sú tituly dostupné na streamovanie — dáta JustWatch cez TMDb — a filtrujte podľa svojich služieb.
+Watch Providers: Nájdite, kde sa to streamuje
+Pozrite sa, kde sú tituly dostupné na streamovanie, vďaka dátam JustWatch cez TMDb – filtrujte podľa preferovaných služieb.
 
-Vlastné zoznamy, filtre a personalizácia
-Vytvárajte vlastné zoznamy, filtrujte a zoraďujte watchlist, vyberte accent farbu a prispôsobte Domov svojmu štýlu sledovania.
+Vlastné zoznamy, filtre a prispôsobenie
+Vytvorte si vlastné zoznamy, filtrujte a triedte si zoznam sledovaných videí, vyberte si zvýrazňovaciu farbu a prispôsobte si domovskú stránku svojmu spôsobu sledovania.
 
 Voliteľná synchronizácia knižnice
-Pripojte synchronizáciu SIMKL alebo TMDb, ak chcete — Cronica nevyžaduje vlastný účet.
+Ak chcete, pripojte synchronizáciu účtov SIMKL alebo TMDb – Cronica nikdy nevyžaduje vlastný účet.
 
-Upozornenie: Cronica nie je streamovacia služba. Filmové a seriálové dáta od TMDb. Tento produkt používa TMDb API, ale nie je schválený ani certifikovaný spoločnosťou TMDb. Údaje o poskytovateľoch streamovania poskytuje JustWatch cez TMDb.
+Vyhlásenie: Cronica nie je streamovacia služba. Dáta o filmoch a televíznych programoch pochádzajú od TMDb. Tento produkt používa rozhranie TMDb API, ale nie je schválený ani certifikovaný spoločnosťou TMDb. Dáta Watch provider poskytuje JustWatch prostredníctvom TMDb.

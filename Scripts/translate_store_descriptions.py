@@ -147,55 +147,12 @@ def restore(text: str, tokens) -> str:
     return out
 
 
-def mymemory_translate(text: str, tl: str) -> str:
-    url = "https://api.mymemory.translated.net/get"
-    chunk = text if len(text) <= 450 else text[:447] + "..."
-    r = requests.get(url, params={"q": chunk, "langpair": f"en|{tl}"}, timeout=25)
-    r.raise_for_status()
-    data = r.json()
-    if int(data.get("responseStatus", 0)) != 200:
-        raise RuntimeError(data.get("responseDetails") or "mymemory error")
-    translated = (data.get("responseData") or {}).get("translatedText") or ""
-    if not translated or translated.upper().startswith("MYMEMORY WARNING"):
-        raise RuntimeError(translated or "empty mymemory")
-    return translated
-
-
-def google_translate(text: str, tl: str) -> str:
-    # Google uses short codes; map zh-CN/zh-TW.
-    gcode = {"zh-CN": "zh-CN", "zh-TW": "zh-TW", "pt-PT": "pt"}.get(tl, tl)
-    url = "https://translate.googleapis.com/translate_a/single"
-    params = {"client": "gtx", "sl": "en", "tl": gcode, "dt": "t", "q": text}
-    r = requests.get(url, params=params, timeout=25)
-    r.raise_for_status()
-    data = r.json()
-    return "".join(part[0] for part in data[0] if part and part[0])
-
-
 def translate_chunk(text: str, tl: str) -> str:
+    from cloud_translate import translate_batch
+
     protected, tokens = protect(text)
-    last_err: Optional[Exception] = None
-    backoff = 3.0
-    # Keep trying — free APIs rate-limit; do not abort mid-document.
-    for attempt in range(20):
-        try:
-            # Prefer MyMemory; alternate to Google occasionally.
-            if attempt % 3 == 2:
-                raw = google_translate(protected, tl)
-            else:
-                raw = mymemory_translate(protected, tl)
-            if raw:
-                return restore(raw, tokens).replace("  ", " ").strip()
-        except Exception as exc:  # noqa: BLE001
-            last_err = exc
-            msg = str(exc)
-            if "429" in msg or "WARNING" in msg.upper() or "QUOTA" in msg.upper():
-                print(f"    rate-limit ({tl}), sleep {backoff:.0f}s", flush=True)
-                time.sleep(backoff)
-                backoff = min(backoff * 1.6, 120)
-            else:
-                time.sleep(1.5)
-    raise RuntimeError(f"failed after retries: {last_err}")
+    raw = translate_batch([protected], tl)[0]
+    return restore(raw, tokens).replace("  ", " ").strip()
 
 
 def translate_document(en: str, tl: str) -> str:
@@ -227,6 +184,9 @@ def derive_pt_pt(pt_br: str) -> str:
 
 
 def main() -> int:
+    from cloud_translate import require_api_key
+
+    require_api_key()
     if not EN_PATH.exists():
         raise SystemExit(f"Missing {EN_PATH}")
     en = EN_PATH.read_text(encoding="utf-8")

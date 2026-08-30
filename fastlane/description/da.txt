@@ -1,0 +1,40 @@
+Introduktion af Cronica — en elegant, minimalistisk overvågningsliste til film og tv-serier.
+
+Hold styr på, hvad du ser, miste aldrig din plads, og vær klar til det, der kommer – på tværs af iPhone, iPad, Mac, Apple Watch, Apple TV og Apple Vision Pro. Uanset om du ser mange episoder i træk eller bare lejlighedsvis, holder Cronica dit bibliotek organiseret, og din næste episode er et tryk væk.
+
+Cronica Funktioner:
+
+Up Next: Vær på forkant med dine tv-serier
+Se de næste afsnit af din serie på Hjem, og vend tilbage uden at skulle lede efter, hvor du slap.
+
+Markér som set: Hold dig opdateret på dine fremskridt
+Marker film og episoder, du har set, undervejs, med status, der synkroniseres med din overvågningsliste.
+
+Udgivelsesmeddelelser: Vær den første til at vide det
+Få besked, når titler på din overvågningsliste udgives, eller når nye episoder kommer – så du ikke går glip af premieren.
+
+iCloud Sync: Dine data, din måde
+Din overvågningsliste, dine vurderinger, noter og præferencer forbliver på dine enheder og kan synkroniseres privat via iCloud på tværs af Apple-enheder.
+
+Siri & Shortcuts: Håndfri betjening
+Tilføj titler, marker som set, tjek Up Next, åbn Søg og meget mere med Siri og Shortcuts-appen (op til 10 App Shortcuts).
+
+Widgets & Betjeningselementer
+Kig på Up Next eller populære titler fra Home Screen-widgets, og brug Control Center, hvor det er muligt.
+
+Del og opdag links
+Tilføj fra IMDb, Letterboxd, TMDb, JustWatch og mere via Share Sheet eller Shortcuts — og del cronica.watch-links, der åbnes i appen eller på nettet.
+
+Trailere og detaljer: Forhåndsvisning før du ser
+Se trailere og gennemse rollebesætning, sæsoner og detaljer, så du kan beslutte dig, før du trykker på afspil.
+
+Watch Providers: Find hvor det streames
+Se hvor titler er tilgængelige til streaming, drevet af JustWatch-data via TMDb — filtrer efter dine foretrukne tjenester.
+
+Brugerdefinerede lister, filtre og personalisering
+Opret brugerdefinerede lister, filtrer og sorter din overvågningsliste, vælg en accentfarve, og tilpas Hjem til din måde at se indhold på.
+
+Valgfri bibliotekssynkronisering
+Forbind SIMKL- eller TMDb-kontosynkronisering, hvis du ønsker det — Cronica kræver aldrig sin egen konto.
+
+Ansvarsfraskrivelse: Cronica er ikke en streamingtjeneste. Film- og tv-data fra TMDb. Dette produkt bruger TMDb API, men er ikke godkendt eller certificeret af TMDb. Watch provider-data leveres af JustWatch via TMDb.
