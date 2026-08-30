@@ -9,7 +9,7 @@ enum QuickActionDebug {
         print("[Cronica QuickAction] \(message)")
     }
 }
-#elseif os(iOS)
+#else
 enum QuickActionDebug {
     static func log(_ message: String) {}
 }

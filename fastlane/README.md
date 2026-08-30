@@ -15,6 +15,14 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 ## iOS
 
+### ios sync_store_urls
+
+```sh
+[bundle exec] fastlane ios sync_store_urls
+```
+
+Write marketing_url / support_url for every store locale
+
 ### ios sync_release_notes
 
 ```sh
@@ -23,13 +31,21 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 Copy fastlane/release_notes/<locale>.txt into fastlane/metadata/
 
+### ios sync_descriptions
+
+```sh
+[bundle exec] fastlane ios sync_descriptions
+```
+
+Copy fastlane/description/<locale>.txt into fastlane/metadata/<locale>/description.txt
+
 ### ios upload_metadata
 
 ```sh
 [bundle exec] fastlane ios upload_metadata
 ```
 
-Upload metadata only (no binary, no screenshots)
+Upload metadata to iOS, macOS, tvOS, and visionOS (no binary, no screenshots)
 
 ### ios upload_release_notes
 
@@ -37,7 +53,15 @@ Upload metadata only (no binary, no screenshots)
 [bundle exec] fastlane ios upload_release_notes
 ```
 
-Sync localized release notes and upload to App Store Connect
+Sync localized release notes and upload to all App Store platforms
+
+### ios upload_descriptions
+
+```sh
+[bundle exec] fastlane ios upload_descriptions
+```
+
+Sync localized descriptions (+ release notes / URLs) and upload to all App Store platforms
 
 ### ios download_metadata
 
@@ -45,7 +69,7 @@ Sync localized release notes and upload to App Store Connect
 [bundle exec] fastlane ios download_metadata
 ```
 
-Download current App Store Connect metadata into fastlane/metadata/
+Download current App Store Connect metadata (iOS) into fastlane/metadata/
 
 ----
 

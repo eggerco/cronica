@@ -154,9 +154,9 @@ struct ExploreView: View {
                 .navigationBarTitleDisplayMode(.inline)
 #endif
                 .nativeSheetDismissToolbar { showFilters = false }
-                .sensoryFeedback(.selection, trigger: selectedMedia)
-                .sensoryFeedback(.selection, trigger: selectedGenre)
-                .sensoryFeedback(.selection, trigger: hideAddedItems)
+                .cronicaSensoryFeedback(.selection, trigger: selectedMedia)
+                .cronicaSensoryFeedback(.selection, trigger: selectedGenre)
+                .cronicaSensoryFeedback(.selection, trigger: hideAddedItems)
                 .scrollBounceBehavior(.basedOnSize)
 #if os(macOS)
                 .formStyle(.grouped)
@@ -225,7 +225,7 @@ struct ExploreView: View {
                 }
                 .frame(width: 200)
                 .pickerStyle(.segmented)
-                .sensoryFeedback(.selection, trigger: selectedForYouTab)
+                .cronicaSensoryFeedback(.selection, trigger: selectedForYouTab)
             }
             if selectedForYouTab != .recommendations {
 #if !os(macOS)

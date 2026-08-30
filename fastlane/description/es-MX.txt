@@ -1,0 +1,40 @@
+Conoce Cronica: una watchlist elegante y minimalista para películas y series.
+
+Lleva el control de lo que ves, nunca pierdas el hilo y prepárate para lo siguiente — en iPhone, iPad, Mac, Apple Watch, Apple TV y Apple Vision Pro. Seas un binge-watcher o un espectador casual, Cronica organiza tu biblioteca y deja el próximo episodio a un toque.
+
+Funciones de Cronica:
+
+Up Next: no te atrasés con tus series
+Mirá los próximos episodios de tus series en Inicio y retomá sin buscar dónde te quedaste.
+
+Marcar como visto: seguí tu progreso
+Marcá películas y episodios como vistos sobre la marcha, con progreso sincronizado a tu watchlist.
+
+Notificaciones de estreno: enterate primero
+Recibí avisos cuando salgan títulos de tu watchlist o nuevos episodios — así no te perdés el estreno.
+
+Sincronización con iCloud: tus datos, a tu manera
+Watchlist, calificaciones, notas y preferencias se quedan en tus dispositivos y pueden sincronizarse en privado vía iCloud entre dispositivos Apple.
+
+Siri y Atajos: control manos libres
+Agregá títulos, marcá como visto, consultá Up Next, abrí Buscar y más con Siri y la app Atajos (hasta 10 App Shortcuts).
+
+Widgets y Controles
+Consultá Up Next o títulos en tendencia desde widgets de la pantalla de inicio y usá el Centro de control cuando esté disponible.
+
+Compartir y enlaces
+Agregá desde IMDb, Letterboxd, TMDb, JustWatch y más con la hoja para compartir o Atajos — y compartí enlaces cronica.watch que se abren en la app o en la web.
+
+Tráilers y detalles: mirá antes de ver
+Reproducí tráilers y explorá el elenco, temporadas y detalles antes de darle play.
+
+Watch Providers: encontrá dónde se transmite
+Mirá dónde están disponibles los títulos para streaming, con datos de JustWatch vía TMDb — filtrá por tus servicios.
+
+Listas propias, filtros y personalización
+Creá listas, filtrá y ordená tu watchlist, elegí un color de acento y adaptá Inicio a cómo mirás.
+
+Sincronización opcional de biblioteca
+Conectá la sync de SIMKL o TMDb si querés — Cronica nunca exige una cuenta propia.
+
+Aviso: Cronica no es un servicio de streaming. Datos de películas y series de TMDb. Este producto usa la API de TMDb pero no está respaldado ni certificado por TMDb. Los datos de proveedores de streaming los proporciona JustWatch a través de TMDb.

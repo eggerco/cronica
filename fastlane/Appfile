@@ -1,8 +1,14 @@
 app_identifier("dev.alexandremadeira.Story")
 
-# App Store Connect API key. Create in App Store Connect → Users and Access → Integrations → App Store Connect API.
-# Store the .p8 file outside the repo and export:
+# Authentication: App Store Connect API key only (no Apple ID).
 #
-#   export APP_STORE_CONNECT_KEY_ID="XXXXXXXXXX"
-#   export APP_STORE_CONNECT_ISSUER_ID="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-#   export APP_STORE_CONNECT_KEY_PATH="$HOME/.appstoreconnect/AuthKey_XXXXXXXXXX.p8"
+# Copy fastlane/api_key.json.example → fastlane/api_key.json and set:
+#   key_id, issuer_id, key_filepath (absolute path to AuthKey_*.p8)
+#
+# Or export:
+#   APP_STORE_CONNECT_API_KEY_KEY_ID
+#   APP_STORE_CONNECT_API_KEY_ISSUER_ID
+#   APP_STORE_CONNECT_API_KEY_KEY_FILEPATH
+#
+# Create the key in App Store Connect → Users and Access → Integrations → App Store Connect API.
+# Keep AuthKey_*.p8 outside the repo (*.p8 is gitignored).

@@ -1,0 +1,7 @@
+{
+  "key_id": "XXXXXXXXXX",
+  "issuer_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "key_filepath": "/Users/YOU/.appstoreconnect/AuthKey_XXXXXXXXXX.p8",
+  "duration": 1200,
+  "in_house": false
+}

@@ -7,6 +7,15 @@
 
 import SwiftUI
 
+#if !os(watchOS)
+/// Cronica-local feedback kinds so call sites never reference `SensoryFeedback` directly
+/// (required for visionOS deployment targets below 26.0).
+enum CronicaSensoryFeedback {
+    case selection
+    case success
+}
+#endif
+
 extension View {
     /// This function is responsible for creating an action popup in SwiftUI.
     /// - Parameters:
@@ -128,4 +137,38 @@ extension View {
 #endif
         }
     }
+
+#if !os(watchOS)
+    @ViewBuilder
+    func cronicaSensoryFeedback<T: Equatable>(_ feedback: CronicaSensoryFeedback, trigger: T) -> some View {
+        if #available(iOS 17.0, macOS 14.0, tvOS 17.0, visionOS 26.0, *) {
+            switch feedback {
+            case .selection:
+                self.sensoryFeedback(.selection, trigger: trigger)
+            case .success:
+                self.sensoryFeedback(.success, trigger: trigger)
+            }
+        } else {
+            self
+        }
+    }
+
+    @ViewBuilder
+    func cronicaSensoryFeedback<T: Equatable>(
+        _ feedback: CronicaSensoryFeedback,
+        trigger: T,
+        condition: @escaping (T, T) -> Bool
+    ) -> some View {
+        if #available(iOS 17.0, macOS 14.0, tvOS 17.0, visionOS 26.0, *) {
+            switch feedback {
+            case .selection:
+                self.sensoryFeedback(.selection, trigger: trigger, condition: condition)
+            case .success:
+                self.sensoryFeedback(.success, trigger: trigger, condition: condition)
+            }
+        } else {
+            self
+        }
+    }
+#endif
 }

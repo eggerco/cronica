@@ -1,0 +1,40 @@
+Introducing Cronica — a sleek, minimalist watchlist for movies and TV shows.
+
+Track what you watch, never lose your place, and stay ready for what’s next — across iPhone, iPad, Mac, Apple Watch, Apple TV, and Apple Vision Pro. Whether you’re a binge-watcher or a casual viewer, Cronica keeps your library organized and your next episode one tap away.
+
+Cronica Features:
+
+Up Next: Stay Ahead of Your Shows
+See the next episodes of your series on Home and jump back in without hunting for where you left off.
+
+Mark as Watched: Stay on Top of Your Progress
+Mark movies and episodes watched as you go, with progress that syncs with your watchlist.
+
+Release Notifications: Be the First to Know
+Get notified when titles on your watchlist are released or when new episodes drop — so you don’t miss the premiere.
+
+iCloud Sync: Your Data, Your Way
+Your watchlist, ratings, notes, and preferences stay on your devices and can sync privately via iCloud across Apple devices.
+
+Siri & Shortcuts: Hands-Free Control
+Add titles, mark watched, check Up Next, open Search, and more with Siri and the Shortcuts app (up to 10 App Shortcuts).
+
+Widgets & Controls
+Glance at Up Next or trending titles from Home Screen widgets, and use Control Center where available.
+
+Share & Discover Links
+Add from IMDb, Letterboxd, TMDb, JustWatch, and more via Share Sheet or Shortcuts — and share cronica.watch links that open in the app or on the web.
+
+Trailers & Details: Preview Before You Watch
+Watch trailers and browse cast, seasons, and details so you can decide before you press play.
+
+Watch Providers: Find Where It’s Streaming
+See where titles are available to stream, powered by JustWatch data via TMDb — filter by your preferred services.
+
+Custom Lists, Filters & Personalization
+Build custom lists, filter and sort your watchlist, pick an accent color, and tailor Home to how you watch.
+
+Optional Library Sync
+Connect SIMKL or TMDb account sync if you want — Cronica never requires an account of its own.
+
+Disclaimer: Cronica is not a streaming service. Movie and TV data from TMDb. This product uses the TMDb API but is not endorsed or certified by TMDb. Watch provider data is provided by JustWatch via TMDb.

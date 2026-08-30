@@ -51,9 +51,9 @@ struct ListFilterView: View {
             .navigationBarTitleDisplayMode(.inline)
 #endif
             .nativeSheetDismissToolbar { showView = false }
-            .sensoryFeedback(.selection, trigger: filter)
-            .sensoryFeedback(.selection, trigger: sortOrder)
-            .sensoryFeedback(.selection, trigger: showAllItems)
+            .cronicaSensoryFeedback(.selection, trigger: filter)
+            .cronicaSensoryFeedback(.selection, trigger: sortOrder)
+            .cronicaSensoryFeedback(.selection, trigger: showAllItems)
             .scrollBounceBehavior(.basedOnSize)
             .onChange(of: filter) {
                 showView = false

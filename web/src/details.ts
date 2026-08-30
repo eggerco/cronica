@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Cronica",
   description:
-    "Track what you watch. Never lose your place. A watchlist for movies and TV with release reminders and iCloud sync across Apple devices.",
+    "Track what you watch. Never lose your place. A watchlist for movies and TV shows with release reminders and iCloud sync across Apple devices.",
   url: "https://www.cronica.watch",
   appStoreUrl: "https://apps.apple.com/app/cronica/id1614950275",
   githubUrl: "https://github.com/eggerco/cronica",
@@ -132,7 +132,7 @@ export function renderDetailsPage(url: URL): string {
   const documentTitle = details.hasContent ? `${details.title} — Cronica` : "Open in Cronica";
   const socialTitle = details.hasContent ? details.title : "Cronica";
   const description = details.hasContent
-    ? `Open ${details.title} in Cronica — your personal watchlist for movies and TV.`
+    ? `Open ${details.title} in Cronica — your personal watchlist for movies and TV shows.`
     : siteConfig.description;
   const canonical = details.hasContent
     ? buildDetailsPageUrl({
@@ -161,7 +161,7 @@ export function renderDetailsPage(url: URL): string {
 
   const fallbackCopy = details.hasContent
     ? ""
-    : `<p class="details-copy">Your personal watchlist for movies and TV — with release reminders and iCloud sync.</p>`;
+    : `<p class="details-copy">Your personal watchlist for movies and TV shows — with release reminders and iCloud sync.</p>`;
 
   const hint = details.hasContent
     ? ""

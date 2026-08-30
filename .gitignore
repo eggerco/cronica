@@ -30,5 +30,18 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
+fastlane/api_key.json
+fastlane/metadata_upload/
+fastlane/.env
+fastlane/.env.*
+!fastlane/.env*.example
 *.p8
 AuthKey_*.p8
+.env
+.env.*
+!.env*.example
+
+### Localization scratch / machine-translation caches ###
+Scripts/_en_*.json
+Scripts/_en_*.txt
+Scripts/translations/

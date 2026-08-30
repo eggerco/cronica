@@ -275,7 +275,7 @@ struct CustomWatchlist: View {
         .labelsHidden()
         .padding(.horizontal)
         .padding(.vertical, 8)
-        .sensoryFeedback(.selection, trigger: mediaTypeFilter)
+        .cronicaSensoryFeedback(.selection, trigger: mediaTypeFilter)
         .accessibilityIdentifier("Custom List Media Type Filter")
     }
     

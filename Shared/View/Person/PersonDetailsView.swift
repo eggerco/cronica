@@ -95,7 +95,7 @@ struct PersonDetailsView: View {
                 .labelsHidden()
                 .padding(.horizontal)
                 .padding(.vertical, 8)
-                .sensoryFeedback(.selection, trigger: scope)
+                .cronicaSensoryFeedback(.selection, trigger: scope)
             }
         }
 #endif

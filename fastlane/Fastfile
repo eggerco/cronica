@@ -2,7 +2,7 @@
 #
 # Setup once:
 #   bundle install
-#   export APP_STORE_CONNECT_KEY_ID / ISSUER_ID / KEY_PATH  (see Appfile)
+#   Create an App Store Connect API key and export credentials (see Appfile / Docs/FASTLANE.md)
 #
 # Typical release:
 #   bundle exec fastlane ios upload_release_notes
@@ -12,7 +12,65 @@
 
 default_platform(:ios)
 
+# All App Store Connect metadata locales (deliver language codes) — source files live under release_notes/.
 STORE_LOCALES = %w[
+  en-US
+  ar-SA
+  bn-BD
+  ca
+  zh-Hans
+  zh-Hant
+  hr
+  cs
+  da
+  nl-NL
+  en-AU
+  en-CA
+  en-GB
+  fi
+  fr-FR
+  fr-CA
+  de-DE
+  el
+  gu-IN
+  he
+  hi
+  hu
+  id
+  it
+  ja
+  kn-IN
+  ko
+  ms
+  ml-IN
+  mr-IN
+  no
+  or-IN
+  pl
+  pt-BR
+  pt-PT
+  pa-IN
+  ro
+  ru
+  sk
+  sl-SI
+  es-MX
+  es-ES
+  sv
+  ta-IN
+  te-IN
+  th
+  tr
+  uk
+  ur-PK
+  vi
+].freeze
+
+# Locales already activated on this App Store listing.
+# Enabling a new language in ASC requires a unique localized app name; until then, deliver
+# fails with "Cannot add localization due to app name". Expand this list after enabling
+# each language under App Store Connect → App Information → Localizations.
+ACTIVE_STORE_LOCALES = %w[
   en-US
   en-AU
   en-CA
@@ -27,30 +85,184 @@ STORE_LOCALES = %w[
   es-MX
 ].freeze
 
+# App Store Connect platforms for this universal app (Watch ships with the iOS companion).
+STORE_PLATFORMS = %w[
+  ios
+  osx
+  appletvos
+  xros
+].freeze
+
 RELEASE_NOTES_DIR = File.expand_path("release_notes", __dir__)
+DESCRIPTION_DIR = File.expand_path("description", __dir__)
 METADATA_DIR = File.expand_path("metadata", __dir__)
+API_KEY_JSON = File.expand_path("api_key.json", __dir__)
 
-def app_store_api_key
-  key_id = ENV["APP_STORE_CONNECT_KEY_ID"]
-  issuer_id = ENV["APP_STORE_CONNECT_ISSUER_ID"]
-  key_path = ENV["APP_STORE_CONNECT_KEY_PATH"]
+# Same for every App Store locale.
+MARKETING_URL = "https://www.cronica.watch"
+SUPPORT_URL = "https://www.cronica.watch/support"
 
-  if [key_id, issuer_id, key_path].all? { |v| v && !v.empty? }
-    return app_store_connect_api_key(
-      key_id: key_id,
-      issuer_id: issuer_id,
-      key_filepath: key_path,
-      duration: 1200,
-      in_house: false
+# Accept short aliases and map them to Fastlane's official ASC API key env names.
+def normalize_asc_api_key_env!
+  ENV["APP_STORE_CONNECT_API_KEY_KEY_ID"] ||= ENV["APP_STORE_CONNECT_KEY_ID"]
+  ENV["APP_STORE_CONNECT_API_KEY_ISSUER_ID"] ||= ENV["APP_STORE_CONNECT_ISSUER_ID"]
+  ENV["APP_STORE_CONNECT_API_KEY_KEY_FILEPATH"] ||= ENV["APP_STORE_CONNECT_KEY_PATH"]
+end
+
+# Auth is App Store Connect API key only (no Apple ID / password / 2FA).
+def ensure_app_store_api_key!
+  normalize_asc_api_key_env!
+
+  json_path = ENV["APP_STORE_CONNECT_API_KEY_PATH"]
+  json_path = API_KEY_JSON if (json_path.nil? || json_path.empty?) && File.exist?(API_KEY_JSON)
+
+  if json_path && !json_path.empty?
+    data = JSON.parse(File.read(json_path))
+    filepath = data["key_filepath"] || data["key_file"] || data["filepath"]
+
+    if filepath && !filepath.to_s.empty?
+      expanded = File.expand_path(filepath)
+      UI.user_error!("API key file not found at #{expanded} (from #{json_path})") unless File.exist?(expanded)
+      UI.message("Using App Store Connect API key file #{expanded}")
+      return app_store_connect_api_key(
+        key_id: data.fetch("key_id"),
+        issuer_id: data.fetch("issuer_id"),
+        key_filepath: expanded,
+        duration: (data["duration"] || 1200).to_i,
+        in_house: data.fetch("in_house", false)
+      )
+    end
+
+    # Standard Fastlane JSON with inline "key" PEM content.
+    UI.message("Using App Store Connect API key JSON at #{json_path}")
+    return json_path
+  end
+
+  key_id = ENV["APP_STORE_CONNECT_API_KEY_KEY_ID"]
+  issuer_id = ENV["APP_STORE_CONNECT_API_KEY_ISSUER_ID"]
+  key_filepath = ENV["APP_STORE_CONNECT_API_KEY_KEY_FILEPATH"]
+  key_content = ENV["APP_STORE_CONNECT_API_KEY_KEY"]
+
+  unless key_id && !key_id.empty? && issuer_id && !issuer_id.empty? && ((key_filepath && !key_filepath.empty?) || (key_content && !key_content.empty?))
+    UI.user_error!(
+      "App Store Connect API key required. Either put credentials in fastlane/api_key.json " \
+      "(prefer key_filepath to your .p8), set APP_STORE_CONNECT_API_KEY_PATH, or export " \
+      "APP_STORE_CONNECT_API_KEY_KEY_ID, APP_STORE_CONNECT_API_KEY_ISSUER_ID, and " \
+      "APP_STORE_CONNECT_API_KEY_KEY_FILEPATH. See Docs/FASTLANE.md."
     )
   end
 
-  UI.user_error!(
-    "Set APP_STORE_CONNECT_KEY_ID, APP_STORE_CONNECT_ISSUER_ID, and APP_STORE_CONNECT_KEY_PATH. See fastlane/Appfile."
+  app_store_connect_api_key(
+    key_id: key_id,
+    issuer_id: issuer_id,
+    key_filepath: key_filepath,
+    key_content: key_content,
+    is_key_content_base64: ENV["APP_STORE_CONNECT_API_KEY_IS_KEY_CONTENT_BASE64"] == "true",
+    duration: 1200,
+    in_house: false
   )
 end
 
+def write_store_urls!
+  STORE_LOCALES.each do |locale|
+    dir = File.join(METADATA_DIR, locale)
+    FileUtils.mkdir_p(dir)
+    File.write(File.join(dir, "marketing_url.txt"), "#{MARKETING_URL}\n")
+    File.write(File.join(dir, "support_url.txt"), "#{SUPPORT_URL}\n")
+  end
+end
+
+def deliver_options(api:, download: false, platform:, metadata_path: nil)
+  options = {
+    platform: platform,
+    skip_binary_upload: true,
+    skip_screenshots: true,
+    force: true,
+    run_precheck_before_submit: false,
+    precheck_include_in_app_purchases: false,
+    submit_for_review: false,
+    automatic_release: false,
+    # Don't sit in long ASC retries when a platform has no editable version yet.
+    version_check_wait_retry_limit: 1
+  }
+  options[:metadata_path] = metadata_path if metadata_path
+
+  if api.is_a?(String)
+    options[:api_key_path] = api
+  else
+    options[:api_key] = api
+  end
+
+  options[:download_metadata] = true if download
+  options
+end
+
+# Stage only already-activated locales so deliver does not try to create new App Store languages
+# (that fails when the localized app name "Cronica" is already taken).
+def stage_active_metadata_dir!
+  staging = File.expand_path("metadata_upload", __dir__)
+  FileUtils.rm_rf(staging)
+  FileUtils.mkdir_p(staging)
+
+  ACTIVE_STORE_LOCALES.each do |locale|
+    source = File.join(METADATA_DIR, locale)
+    UI.user_error!("Missing staged metadata for #{locale} at #{source} — run sync_release_notes first.") unless Dir.exist?(source)
+    FileUtils.cp_r(source, File.join(staging, locale))
+  end
+
+  staging
+end
+
+def deliver_metadata!(download: false)
+  api = ensure_app_store_api_key!
+
+  if download
+    # Pull from iOS only so platforms don't overwrite the same local metadata folder.
+    UI.message("Downloading App Store metadata for platform=ios")
+    deliver(deliver_options(api: api, download: true, platform: "ios"))
+    return
+  end
+
+  pending = STORE_LOCALES - ACTIVE_STORE_LOCALES
+  unless pending.empty?
+    UI.important(
+      "#{pending.length} locale(s) have translated release notes locally but are not in " \
+      "ACTIVE_STORE_LOCALES yet (enable each language in App Store Connect with a unique " \
+      "app name if needed, then add its code to ACTIVE_STORE_LOCALES): #{pending.join(', ')}"
+    )
+  end
+
+  staging = stage_active_metadata_dir!
+  failures = []
+  begin
+    STORE_PLATFORMS.each do |platform|
+      UI.message("Uploading App Store metadata for platform=#{platform} (#{ACTIVE_STORE_LOCALES.length} active locales)")
+      begin
+        deliver(deliver_options(api: api, platform: platform, metadata_path: staging))
+      rescue => error
+        UI.error("Failed metadata upload for #{platform}: #{error.message}")
+        failures << platform
+      end
+    end
+  ensure
+    FileUtils.rm_rf(staging)
+  end
+
+  unless failures.empty?
+    UI.user_error!(
+      "Metadata upload incomplete for: #{failures.join(', ')}. " \
+      "Prepare an editable App Store version for those platforms (or upload a build), then re-run."
+    )
+  end
+end
+
 platform :ios do
+  desc "Write marketing_url / support_url for every store locale"
+  lane :sync_store_urls do
+    UI.message("Syncing store URLs for #{STORE_LOCALES.length} locales")
+    write_store_urls!
+  end
+
   desc "Copy fastlane/release_notes/<locale>.txt into fastlane/metadata/"
   lane :sync_release_notes do
     UI.message("Syncing release notes for #{STORE_LOCALES.length} locales")
@@ -64,35 +276,53 @@ platform :ios do
       FileUtils.mkdir_p(dir)
       File.write(File.join(dir, "release_notes.txt"), "#{note}\n")
     end
+
+    write_store_urls!
   end
 
-  desc "Upload metadata only (no binary, no screenshots)"
+  desc "Copy fastlane/description/<locale>.txt into fastlane/metadata/<locale>/description.txt"
+  lane :sync_descriptions do
+    UI.message("Syncing App Store descriptions")
+
+    # Active locales must be present for upload; remaining store locales sync when files exist.
+    ACTIVE_STORE_LOCALES.each do |locale|
+      source = File.join(DESCRIPTION_DIR, "#{locale}.txt")
+      UI.user_error!("Missing #{source} required for ACTIVE_STORE_LOCALES.") unless File.exist?(source)
+    end
+
+    STORE_LOCALES.each do |locale|
+      source = File.join(DESCRIPTION_DIR, "#{locale}.txt")
+      next unless File.exist?(source)
+
+      body = File.read(source, encoding: "UTF-8").strip
+      UI.user_error!("#{source} exceeds App Store 4000-character limit (#{body.length}).") if body.length > 4000
+
+      dir = File.join(METADATA_DIR, locale)
+      FileUtils.mkdir_p(dir)
+      File.write(File.join(dir, "description.txt"), "#{body}\n")
+    end
+  end
+
+  desc "Upload metadata to iOS, macOS, tvOS, and visionOS (no binary, no screenshots)"
   lane :upload_metadata do
-    deliver(
-      api_key: app_store_api_key,
-      skip_binary_upload: true,
-      skip_screenshots: true,
-      force: true,
-      run_precheck_before_submit: false,
-      precheck_include_in_app_purchases: false
-    )
+    deliver_metadata!
   end
 
-  desc "Sync localized release notes and upload to App Store Connect"
+  desc "Sync localized release notes and upload to all App Store platforms"
   lane :upload_release_notes do
     sync_release_notes
     upload_metadata
   end
 
-  desc "Download current App Store Connect metadata into fastlane/metadata/"
+  desc "Sync localized descriptions (+ release notes / URLs) and upload to all App Store platforms"
+  lane :upload_descriptions do
+    sync_descriptions
+    sync_release_notes
+    upload_metadata
+  end
+
+  desc "Download current App Store Connect metadata (iOS) into fastlane/metadata/"
   lane :download_metadata do
-    deliver(
-      api_key: app_store_api_key,
-      skip_binary_upload: true,
-      skip_screenshots: true,
-      force: true,
-      run_precheck_before_submit: false,
-      precheck_include_in_app_purchases: false
-    )
+    deliver_metadata!(download: true)
   end
 end

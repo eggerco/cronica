@@ -1,8 +1,1 @@
-Cronica 2.8 brings richer Apple platform surfaces and polish throughout.
-
-• Siri & Shortcuts — add, remove, mark watched, Up Next, search, open titles, and more (10 App Shortcuts)
-• Home Screen quick actions, Control Center controls, Spotlight indexing, and Add to Reminders
-• Share titles with cronica.watch links that open in the app or on the web
-• Custom accent color with ColorPicker
-• Updated app icons (Icon Composer) across devices
-• Localization improvements for Siri, privacy strings, and settings
+Desde correcciones de errores hasta mejoras, esta versión incluye muchas actualizaciones diseñadas para optimizar el rendimiento y ayudarte a estar al día con lo que más importa.

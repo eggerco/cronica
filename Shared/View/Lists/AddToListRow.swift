@@ -51,7 +51,7 @@ struct AddToListRow: View {
         }
         .buttonStyle(.plain)
 #if os(iOS)
-        .sensoryFeedback(.selection, trigger: selectionTrigger) { _, _ in
+        .cronicaSensoryFeedback(.selection, trigger: selectionTrigger) { _, _ in
             SettingsStore.shared.hapticFeedback
         }
 #endif

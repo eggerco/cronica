@@ -403,7 +403,7 @@
 		C1WPSTOVLY128A9BD31000003 /* WatchlistPosterStatusOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1WPSTOVLY128A9BD31000001 /* WatchlistPosterStatusOverlay.swift */; };
 		C9A3356771B9412783A78C42 /* WhatsNewYearListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACFB154E98E46D29714A42A /* WhatsNewYearListView.swift */; };
 		CF267C97303C3C65001DB342 /* CronicaCore in Frameworks */ = {isa = PBXBuildFile; productRef = C0CRONICACORE00000000001 /* CronicaCore */; };
-		CF267C98303C3C65001DB342 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = C0SENTRYPROD000000000001 /* Sentry */; };
+		CF267C98303C3C65001DB342 /* Sentry-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = C0SENTRYPROD000000000001 /* Sentry-Dynamic */; };
 		CF267C99303C3C65001DB342 /* CronicaCore in Frameworks */ = {isa = PBXBuildFile; productRef = C0CRONICACORE00000000004 /* CronicaCore */; };
 		CF267C9A303C3C65001DB342 /* CronicaCore in Frameworks */ = {isa = PBXBuildFile; productRef = C0CRONICACORE00000000002 /* CronicaCore */; };
 		CF267C9B303C3C65001DB342 /* CronicaCore in Frameworks */ = {isa = PBXBuildFile; productRef = C0CRONICACORE00000000003 /* CronicaCore */; };
@@ -799,7 +799,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF267C98303C3C65001DB342 /* Sentry in Frameworks */,
+				CF267C98303C3C65001DB342 /* Sentry-Dynamic in Frameworks */,
 				CF267C97303C3C65001DB342 /* CronicaCore in Frameworks */,
 				B86A3A902B509C9B00BDE432 /* Pow in Frameworks */,
 				B8424FB02C7A01500098BFFB /* YouTubePlayerKit in Frameworks */,
@@ -1764,7 +1764,7 @@
 			name = Cronica;
 			packageProductDependencies = (
 				C0CRONICACORE00000000001 /* CronicaCore */,
-				C0SENTRYPROD000000000001 /* Sentry */,
+				C0SENTRYPROD000000000001 /* Sentry-Dynamic */,
 				B86A3A8A2B509C8200BDE432 /* Nuke */,
 				B86A3A8C2B509C8200BDE432 /* NukeUI */,
 				B86A3A8F2B509C9B00BDE432 /* Pow */,
@@ -2457,7 +2457,7 @@
 				CODE_SIGN_ENTITLEMENTS = "AppleWatch/Configuration/Cronica Watch App.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 622;
 				DEVELOPMENT_ASSET_PATHS = "\"AppleWatch/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -2471,7 +2471,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.8.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.alexandremadeira.Story.WatchKitApp;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.alexandremadeira.Story.watchkitapp;
 				PRODUCT_NAME = Cronica;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
@@ -2492,7 +2492,7 @@
 				CODE_SIGN_ENTITLEMENTS = "AppleWatch/Configuration/Cronica Watch App.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 622;
 				DEVELOPMENT_ASSET_PATHS = "\"AppleWatch/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -2506,7 +2506,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.8.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.alexandremadeira.Story.WatchKitApp;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.alexandremadeira.Story.watchkitapp;
 				PRODUCT_NAME = Cronica;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
@@ -2671,7 +2671,7 @@
 				CODE_SIGN_ENTITLEMENTS = Shared/Configuration/Cronica.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 622;
 				DEVELOPMENT_TEAM = S5A7774228;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
@@ -2722,7 +2722,7 @@
 				CODE_SIGN_ENTITLEMENTS = Shared/Configuration/Cronica.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 622;
 				DEVELOPMENT_TEAM = S5A7774228;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
@@ -2769,9 +2769,10 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = CronicaWidget/Configuration/CronicaWidgetExtension.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 622;
+				DEVELOPMENT_TEAM = S5A7774228;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CronicaWidget/Configuration/Info.plist;
@@ -2786,6 +2787,7 @@
 				MARKETING_VERSION = 2.8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.alexandremadeira.Story.Widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -2805,9 +2807,10 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = CronicaWidget/Configuration/CronicaWidgetExtension.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 622;
+				DEVELOPMENT_TEAM = S5A7774228;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CronicaWidget/Configuration/Info.plist;
@@ -2822,6 +2825,7 @@
 				MARKETING_VERSION = 2.8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.alexandremadeira.Story.Widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -2841,7 +2845,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 622;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
@@ -2863,7 +2867,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 622;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
@@ -2885,7 +2889,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = CronicaShareExtension/Configuration/CronicaShareExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 622;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CronicaShareExtension/Configuration/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Add to Cronica";
@@ -2916,7 +2920,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = CronicaShareExtension/Configuration/CronicaShareExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 622;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CronicaShareExtension/Configuration/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Add to Cronica";
@@ -3143,10 +3147,10 @@
 			package = C0LOCALPKG00000000000001 /* XCLocalSwiftPackageReference "Packages/CronicaCore" */;
 			productName = CronicaCore;
 		};
-		C0SENTRYPROD000000000001 /* Sentry */ = {
+		C0SENTRYPROD000000000001 /* Sentry-Dynamic */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C0SENTRYPKG0000000000001 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
-			productName = Sentry;
+			productName = "Sentry-Dynamic";
 		};
 /* End XCSwiftPackageProductDependency section */
 

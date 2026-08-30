@@ -189,7 +189,9 @@ enum UserDataDeletionService {
 
     private static func reloadWidgets() {
 #if canImport(WidgetKit) && !os(watchOS)
-        WidgetCenter.shared.reloadAllTimelines()
+        if #available(iOS 14.0, macOS 11.0, tvOS 14.0, visionOS 26.0, *) {
+            WidgetCenter.shared.reloadAllTimelines()
+        }
 #endif
     }
 

@@ -2126,14 +2126,45 @@ EXAMPLE_PHRASES: dict[str, dict[str, str]] = {
 }
 
 
+PLATFORM_OVERLAY_PATH = (
+    Path(__file__).resolve().parent / "translations" / "new_locales" / "platform_new_locales.json"
+)
+
+
+def load_platform_overlay() -> dict[str, dict[str, str]]:
+    if not PLATFORM_OVERLAY_PATH.exists():
+        return {}
+    try:
+        data = json.loads(PLATFORM_OVERLAY_PATH.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return {}
+    if not isinstance(data, dict):
+        return {}
+    out: dict[str, dict[str, str]] = {}
+    for key, locs in data.items():
+        if isinstance(locs, dict):
+            out[str(key)] = {str(loc): str(val) for loc, val in locs.items()}
+    return out
+
+
+def merge_overlay_into(
+    entries: dict[str, dict[str, str]], overlay: dict[str, dict[str, str]]
+) -> None:
+    for key, locs in overlay.items():
+        bag = entries.setdefault(key, {})
+        for loc, value in locs.items():
+            bag.setdefault(loc, value)
+
+
 def unit(value: str) -> dict:
     return {"stringUnit": {"state": "translated", "value": value}}
 
 
 def build_entry(translations: dict[str, str]) -> dict:
+    # Only emit locales that have a real translation — never copy English as "translated".
     locs = {}
     for locale in LOCALES:
-        value = translations.get(locale) or translations.get("en")
+        value = translations.get(locale)
         if value is None:
             continue
         locs[locale] = unit(value)
@@ -2190,9 +2221,10 @@ def merge_into_localizable(entries: dict[str, dict[str, str]]) -> int:
     for key, translations in entries.items():
         entry = strings.setdefault(key, {})
         locs = entry.setdefault("localizations", {})
-        en_value = translations.get("en", key)
         for locale in LOCALES:
-            value = translations.get(locale, en_value)
+            if locale not in translations:
+                continue
+            value = translations[locale]
             current = locs.get(locale, {}).get("stringUnit", {}).get("value")
             if current != value:
                 locs[locale] = unit(value)
@@ -2202,6 +2234,14 @@ def merge_into_localizable(entries: dict[str, dict[str, str]]) -> int:
 
 
 def main() -> int:
+    overlay = load_platform_overlay()
+    merge_overlay_into(APP_SHORTCUT_PHRASES, overlay)
+    merge_overlay_into(INFO_PLIST_STRINGS, overlay)
+    merge_overlay_into(UI_STRINGS, overlay)
+    merge_overlay_into(MORE_UI, overlay)
+    merge_overlay_into(EXAMPLE_PHRASES, overlay)
+    merge_overlay_into(SIRI_DIALOG_STRINGS, overlay)
+
     write_catalog(APP_SHORTCUTS, APP_SHORTCUT_PHRASES)
     write_info_plist_catalog()
 

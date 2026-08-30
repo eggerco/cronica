@@ -1,0 +1,40 @@
+Predstavujeme Cronica — elegantný, minimalistický zoznam na sledovanie filmov a seriálov.
+
+Sledujte, čo pozeráte, nikdy nestratte miesto a buďte pripravení na ďalšie — na iPhone, iPad, Mac, Apple Watch, Apple TV a Apple Vision Pro. Či už ste vášnivý divák alebo príležitostný, Cronica udrží vašu knižnicu v poriadku a ďalšiu epizódu na jedno ťuknutie.
+
+Funkcie Cronica:
+
+Up Next: buďte o krok vpred pri seriáloch
+Na Domovskej obrazovke uvidíte ďalšie epizódy svojich seriálov a pokračujte bez hľadania, kde ste skončili.
+
+Označiť ako videné: sledujte svoj pokrok
+Označujte filmy a epizódy ako videné priebežne — pokrok sa synchronizuje s vaším zoznamom.
+
+Upozornenia na vydanie: buďte prví, kto vie
+Dostávajte upozornenia, keď vyjdu tituly z vášho zoznamu alebo nové epizódy — a nenechajte si ujsť premiéru.
+
+iCloud synchronizácia: vaše dáta, váš spôsob
+Zoznam, hodnotenia, poznámky a preferencie zostávajú na vašich zariadeniach a môžu sa súkromne synchronizovať cez iCloud medzi zariadeniami Apple.
+
+Siri a Skrátené príkazy: ovládanie bez rúk
+Pridávajte tituly, označujte ako videné, kontrolujte Up Next, otvárajte Hľadanie a ďalšie cez Siri a aplikáciu Skrátené príkazy (až 10 App Shortcuts).
+
+Widgety a ovládacie prvky
+Prezrite si Up Next alebo trendy tituly z widgetov na Domovskej obrazovke a použite Control Center, kde je k dispozícii.
+
+Zdieľanie a odkazy
+Pridávajte z IMDb, Letterboxd, TMDb, JustWatch a ďalších cez Share Sheet alebo Skrátené príkazy — a zdieľajte odkazy cronica.watch, ktoré sa otvoria v aplikácii alebo na webe.
+
+Trailery a detaily: náhľad pred sledovaním
+Pozrite si trailery a prehliadajte herecké obsadenie, série a detaily skôr, než stlačíte prehrávanie.
+
+Watch Providers: nájdite, kde streamovať
+Zistite, kde sú tituly dostupné na streamovanie — dáta JustWatch cez TMDb — a filtrujte podľa svojich služieb.
+
+Vlastné zoznamy, filtre a personalizácia
+Vytvárajte vlastné zoznamy, filtrujte a zoraďujte watchlist, vyberte accent farbu a prispôsobte Domov svojmu štýlu sledovania.
+
+Voliteľná synchronizácia knižnice
+Pripojte synchronizáciu SIMKL alebo TMDb, ak chcete — Cronica nevyžaduje vlastný účet.
+
+Upozornenie: Cronica nie je streamovacia služba. Filmové a seriálové dáta od TMDb. Tento produkt používa TMDb API, ale nie je schválený ani certifikovaný spoločnosťou TMDb. Údaje o poskytovateľoch streamovania poskytuje JustWatch cez TMDb.
