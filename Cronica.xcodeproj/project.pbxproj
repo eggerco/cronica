@@ -2471,7 +2471,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.8.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.alexandremadeira.Story.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.alexandremadeira.Story.WatchKitApp;
 				PRODUCT_NAME = Cronica;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
@@ -2506,7 +2506,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.8.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.alexandremadeira.Story.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.alexandremadeira.Story.WatchKitApp;
 				PRODUCT_NAME = Cronica;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
