@@ -14,6 +14,8 @@ Cronica uses **App Intents** (iOS 17+) for Siri and the Shortcuts app on **iPhon
 | “Open search in Cronica” | Open Search tab |
 | “Add this link to Cronica” | Add from shared URL (Shortcuts / Siri) |
 | “Open *The Bear* in Cronica” | Deep-link into title details |
+| “Open my watchlist in Cronica” | Open Watchlist tab |
+| “Open up next in Cronica” | Open Home → Up Next list |
 
 ## In-app setup
 
@@ -28,7 +30,7 @@ On first use, enable Cronica under **Settings → Siri & Search** on device.
 | `Shared/Intents/SiriIntentService.swift` | Business logic (watchlist, TMDb, Up Next) |
 | `Shared/Intents/CronicaAppIntents.swift` | Intent definitions |
 | `Shared/Intents/CronicaAppEntities.swift` | Siri entity queries (watchlist, search) |
-| `Shared/Intents/CronicaAppShortcuts.swift` | App Shortcuts provider (10 shortcuts) |
+| `Shared/Intents/CronicaAppShortcuts.swift` | App Shortcuts provider (**10** shortcuts — Apple’s per-app max) |
 | `Shared/Intents/SiriNavigationBridge.swift` | Pending deep links + open-search flag |
 | `Shared/Intents/SiriShortcutRefreshBridge.swift` | Calls `updateAppShortcutParameters()` |
 | `Shared/Intents/SiriIntentDonation.swift` | Donates intents after in-app actions |
@@ -56,9 +58,9 @@ Siri does not fully work in Simulator. Use a real iPhone:
 1. Build & run a Debug or TestFlight build.
 2. **Settings → Siri & Search → Cronica** → enable Learn from this App / Show App in Search.
 3. Try each phrase in the table above.
-4. Open **Shortcuts** → App Shortcuts → confirm all 8 Cronica shortcuts appear.
+4. Open **Shortcuts** → App Shortcuts → confirm all **10** Cronica shortcuts appear.
 5. Run **Add from Link** with a TMDb / Letterboxd / IMDb URL.
-6. Confirm **Settings → Siri & Shortcuts** opens the Shortcuts gallery.
+6. Confirm **Settings → Siri & Shortcuts** → **Open Shortcuts** launches the Shortcuts app.
 
 See also `Docs/QA-SMOKE-TEST.md` (Siri section).
 
@@ -76,11 +78,11 @@ Voice recognition uses the system language. Spoken phrase templates are localize
 ## Info.plist
 
 - `NSSiriUsageDescription` — permission string
-- `INAlternativeAppNames` — “Chronica” pronunciation fallback
+- `INAlternativeAppNames` — “Chronica” / “chrono ca” pronunciation fallbacks (kept non-translatable in `InfoPlist.xcstrings`)
 
 ## Limits
 
-- **10 app shortcuts max** per app (Cronica uses 8).
+- **10 app shortcuts max** per app (Cronica uses all **10**).
 - Parameterized phrases require **AppEntity** parameters (not raw `String`).
 - **Open Title** stores a pending `cronica://` URL in the App Group; the app consumes it on launch.
 
@@ -152,6 +154,7 @@ These are **not app bugs** and usually do not appear on physical devices:
 | `Attempted to fetch Auto Shortcuts… AppShortcutsProvider` | `linkd` unavailable in Simulator |
 | `CHHapticPattern` / `hapticpatternlibrary.plist` | Simulator has no haptic library (keyboard focus) |
 | `Snapshotting a view (UIKeyboardImpl)` | Simulator keyboard snapshot |
+| `Cannot issue sandbox extension for URL:https://…` | Share sheet noise for https links (not a bug) |
 
 Successful quick actions log `[Cronica QuickAction] handle → deliver → consume → apply` in Debug builds.
 
