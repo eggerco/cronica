@@ -19,8 +19,11 @@ enum SpotlightIndexManager {
             removeWatchlistItem(contentID: item.itemContentID)
             return
         }
-        CSSearchableIndex.default().indexSearchableItems([searchableItem(for: item)]) { error in
-            if let error {
+        let searchable = searchableItem(for: item)
+        Task { @MainActor in
+            do {
+                try await CSSearchableIndex.default().indexSearchableItems([searchable])
+            } catch {
                 AppLogger.persistence.error("Spotlight index failed: \(error.localizedDescription)")
             }
         }
@@ -28,8 +31,10 @@ enum SpotlightIndexManager {
 
     @MainActor
     static func removeWatchlistItem(contentID: String) {
-        CSSearchableIndex.default().deleteSearchableItems(withIdentifiers: [contentID]) { error in
-            if let error {
+        Task { @MainActor in
+            do {
+                try await CSSearchableIndex.default().deleteSearchableItems(withIdentifiers: [contentID])
+            } catch {
                 AppLogger.persistence.error("Spotlight remove failed: \(error.localizedDescription)")
             }
         }
@@ -44,7 +49,8 @@ enum SpotlightIndexManager {
         let request = WatchlistItem.fetchRequest()
         request.predicate = NSPredicate(format: "isArchive == NO")
         let items = (try? context.fetch(request)) ?? []
-        let searchableItems = items.map(searchableItem(for:))
+        // CoreSpotlight types are not Sendable; keep indexing on the MainActor via async APIs.
+        nonisolated(unsafe) let searchableItems = items.map(searchableItem(for:))
 
         Task { @MainActor in
             do {
@@ -59,8 +65,14 @@ enum SpotlightIndexManager {
 
     @MainActor
     static func clearAll() {
-        CSSearchableIndex.default().deleteSearchableItems(withDomainIdentifiers: [domainIdentifier]) { _ in }
-        UserDefaults.standard.removeObject(forKey: lastFullRebuildKey)
+        Task { @MainActor in
+            do {
+                try await CSSearchableIndex.default().deleteSearchableItems(withDomainIdentifiers: [domainIdentifier])
+            } catch {
+                AppLogger.persistence.error("Spotlight clear failed: \(error.localizedDescription)")
+            }
+            UserDefaults.standard.removeObject(forKey: lastFullRebuildKey)
+        }
     }
 
     static func contentID(from userActivity: NSUserActivity) -> String? {
