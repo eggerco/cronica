@@ -6,7 +6,7 @@
 import Foundation
 
 public enum WidgetAppGroup {
-    public static let identifier = "group.dev.alexandremadeira.Story.shared"
+    public static let identifier = "group.cronica"
 
     public static var containerURL: URL? {
         FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: identifier)

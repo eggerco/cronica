@@ -32,8 +32,6 @@
 		B8110EE8279245D100844FEB /* CronicaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8110ED8279245D000844FEB /* CronicaApp.swift */; };
 		B8110EEA279245D100844FEB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8110ED9279245D000844FEB /* ContentView.swift */; };
 		B8110EEC279245D100844FEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8110EDA279245D100844FEB /* Assets.xcassets */; };
-		CF7CE3183040DCCF00F3964B /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = CF7CE3183040DCCF00F3964A /* AppIcon.icon */; };
-		CF7CE3183040DCCF00F3964C /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = CF7CE3183040DCCF00F3964A /* AppIcon.icon */; };
 		B812529828A407120062B0C9 /* DefaultListTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B812529728A407120062B0C9 /* DefaultListTypes.swift */; };
 		B812C7B4299480620096E806 /* NewCustomListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B812C7B3299480620096E806 /* NewCustomListView.swift */; };
 		B812C7B62996C2DB0096E806 /* SelectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B812C7B52996C2DB0096E806 /* SelectListView.swift */; };
@@ -410,6 +408,8 @@
 		CF267C9A303C3C65001DB342 /* CronicaCore in Frameworks */ = {isa = PBXBuildFile; productRef = C0CRONICACORE00000000002 /* CronicaCore */; };
 		CF267C9B303C3C65001DB342 /* CronicaCore in Frameworks */ = {isa = PBXBuildFile; productRef = C0CRONICACORE00000000003 /* CronicaCore */; };
 		CF267C9C303C3C65001DB342 /* CronicaCore in Frameworks */ = {isa = PBXBuildFile; productRef = C0CRONICACORE00000000005 /* CronicaCore */; };
+		CF7CE3183040DCCF00F3964B /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = CF7CE3183040DCCF00F3964A /* AppIcon.icon */; };
+		CF7CE3183040DCCF00F3964C /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = CF7CE3183040DCCF00F3964A /* AppIcon.icon */; };
 		D881F08A8D584E998F39E43A /* HideFromUpNextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29764BB1EA6843FEBC04BC32 /* HideFromUpNextButton.swift */; };
 		E2D5308DD9924C62B277E58C /* HideFromUpNextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29764BB1EA6843FEBC04BC32 /* HideFromUpNextButton.swift */; };
 /* End PBXBuildFile section */
@@ -2672,6 +2672,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S5A7774228;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -2722,6 +2723,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S5A7774228;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
