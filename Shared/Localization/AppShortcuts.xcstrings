@@ -3034,7 +3034,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "నేను XTKO0Xలో నా తదుపరి ఎపిసోడ్‌ను పూర్తి చేసాను"
+            "value": "నేను ${applicationName}లో నా తదుపరి ఎపిసోడ్‌ను పూర్తి చేసాను"
           }
         },
         "th": {
@@ -3242,7 +3242,7 @@
         "mr": {
           "stringUnit": {
             "state": "translated",
-            "value": "XTKOK0X पुढील भाग पाहिला असे चिन्हांकित करा"
+            "value": "${applicationName} पुढील भाग पाहिला असे चिन्हांकित करा"
           }
         },
         "ms": {
@@ -3314,7 +3314,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "XTKO0X తదుపరి ఎపిసోడ్ చూసినట్లు గుర్తు"
+            "value": "${applicationName} తదుపరి ఎపిసోడ్ చూసినట్లు గుర్తు"
           }
         },
         "th": {
@@ -4434,7 +4434,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "XTKO0Xలో శోధించండి"
+            "value": "${applicationName}లో శోధించండి"
           }
         },
         "th": {
@@ -4714,7 +4714,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "XTKO0Xలో ఒక శీర్షికను కనుగొనండి"
+            "value": "${applicationName}లో ఒక శీర్షికను కనుగొనండి"
           }
         },
         "th": {
@@ -4994,7 +4994,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "XTKO0Xలో శోధనను తెరవండి"
+            "value": "${applicationName}లో శోధనను తెరవండి"
           }
         },
         "th": {
@@ -5554,7 +5554,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "XTKO0Xలో నా వాచ్‌లిస్ట్‌కి లింక్‌ను జోడించండి"
+            "value": "${applicationName}లో నా వాచ్‌లిస్ట్‌కి లింక్‌ను జోడించండి"
           }
         },
         "th": {
@@ -6674,7 +6674,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "XTKO0Xలో నా వాచ్‌లిస్ట్‌ను తెరవండి"
+            "value": "${applicationName}లో నా వాచ్‌లిస్ట్‌ను తెరవండి"
           }
         },
         "th": {
@@ -7234,7 +7234,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "XTKO0X వాచ్‌లిస్ట్"
+            "value": "${applicationName} వాచ్‌లిస్ట్"
           }
         },
         "th": {
@@ -8074,7 +8074,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "XTKO0X తదుపరి తెరుచుకుంటుంది"
+            "value": "${applicationName} తదుపరి తెరుచుకుంటుంది"
           }
         },
         "th": {

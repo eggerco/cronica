@@ -67,19 +67,44 @@ def protect(text: str) -> tuple[str, list[str]]:
     return out, tokens
 
 
+# MT sometimes mangles XTOK0X → XTKO0X / XTKOK0X / xtko0x.
+CORRUPT_TOKEN_RE = re.compile(r"X\s*T\s*K\s*O+K?\s*\d+\s*X", re.I)
+
+
 def restore(text: str, tokens: list[str]) -> str:
     out = text
     for i, tok in enumerate(tokens):
-        for pattern in (f"XTOK{i}X", f"XTOK{i}x", f"xtok{i}x"):
+        patterns = (
+            f"XTOK{i}X",
+            f"XTOK{i}x",
+            f"xtok{i}x",
+            f"XTKO{i}X",
+            f"XTKOK{i}X",
+            f"xtko{i}x",
+            f"xtkok{i}x",
+        )
+        replaced = False
+        for pattern in patterns:
             if pattern in out:
                 out = out.replace(pattern, tok)
+                replaced = True
                 break
-        else:
-            low = out.lower()
-            needle = f"xtok{i}x"
+        if replaced:
+            continue
+        low = out.lower()
+        for needle in (f"xtok{i}x", f"xtko{i}x", f"xtkok{i}x"):
             idx = low.find(needle)
             if idx >= 0:
                 out = out[:idx] + tok + out[idx + len(needle) :]
+                low = out.lower()
+                break
+    # Sweep leftover mangled protect tokens.
+    remaining = [t for t in tokens if t not in out]
+    while remaining:
+        match = CORRUPT_TOKEN_RE.search(out)
+        if not match:
+            break
+        out = out[: match.start()] + remaining.pop(0) + out[match.end() :]
     return out
 
 

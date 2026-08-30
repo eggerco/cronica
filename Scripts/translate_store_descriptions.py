@@ -134,16 +134,28 @@ def protect(text: str):
 def restore(text: str, tokens) -> str:
     out = text
     for i, tok in enumerate(tokens):
-        for pattern in (f"XTOK{i}X", f"XTOK{i}x", f"xtok{i}x"):
+        patterns = (
+            f"XTOK{i}X",
+            f"XTOK{i}x",
+            f"xtok{i}x",
+            f"XTKO{i}X",
+            f"XTKOK{i}X",
+            f"xtko{i}x",
+            f"xtkok{i}x",
+        )
+        replaced = False
+        for pattern in patterns:
             if pattern in out:
                 out = out.replace(pattern, tok)
+                replaced = True
                 break
-        else:
-            low = out.lower()
-            needle = f"xtok{i}x"
-            idx = low.find(needle)
-            if idx >= 0:
-                out = out[:idx] + tok + out[idx + len(needle) :]
+        if replaced:
+            continue
+        low = out.lower()
+        needle = f"xtok{i}x"
+        idx = low.find(needle)
+        if idx >= 0:
+            out = out[:idx] + tok + out[idx + len(needle) :]
     return out
 
 

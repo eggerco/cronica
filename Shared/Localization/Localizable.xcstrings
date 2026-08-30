@@ -94944,7 +94944,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "మార్క్ XTKO0X చూసినట్లుగా"
+            "value": "మార్క్ ${title} చూసినట్లుగా"
           }
         },
         "th": {
@@ -133328,7 +133328,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "XTKO0Xలో ప్రదర్శించబడింది"
+            "value": "%@లో ప్రదర్శించబడింది"
           }
         },
         "ur": {
@@ -136413,7 +136413,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "XTKO0X ద్వారా అందించబడింది"
+            "value": "JustWatch ద్వారా అందించబడింది"
           }
         },
         "ur": {
@@ -144952,7 +144952,7 @@
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Uitgave: %@"
+            "value": "Release: %@"
           }
         },
         "pl": {
@@ -146765,7 +146765,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "నా వాచ్‌లిస్ట్ నుండి XTKO0Xని తొలగించండి"
+            "value": "నా వాచ్‌లిస్ట్ నుండి ${title}ని తొలగించండి"
           }
         },
         "th": {
@@ -149017,7 +149017,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "XTKO0Xలో తొలగించబడింది"
+            "value": "SIMKLలో తొలగించబడింది"
           }
         },
         "ur": {
@@ -152099,7 +152099,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "XTKO0X పై సమీక్ష"
+            "value": "App Store పై సమీక్ష"
           }
         },
         "ur": {
@@ -156299,7 +156299,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "XTKO0Xని శోధించండి"
+            "value": "%@ని శోధించండి"
           }
         },
         "ur": {
@@ -156567,7 +156567,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "XTKO0X కోసం శోధించండి"
+            "value": "${query} కోసం శోధించండి"
           }
         },
         "th": {
@@ -159379,7 +159379,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "సీజన్ XTKO0X"
+            "value": "సీజన్ %@"
           }
         },
         "ur": {
@@ -159659,7 +159659,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "సీజన్ XTKO0X"
+            "value": "సీజన్ %lld"
           }
         },
         "ur": {
@@ -171980,7 +171980,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "XTKO0X API నియమాలు"
+            "value": "SIMKL API నియమాలు"
           }
         },
         "ur": {
@@ -173380,7 +173380,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "XTKO0X వెబ్‌సైట్"
+            "value": "SIMKL వెబ్‌సైట్"
           }
         },
         "ur": {
@@ -196914,7 +196914,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "XTKO0X API నిబంధనలు"
+            "value": "TMDB API నిబంధనలు"
           }
         },
         "ur": {
@@ -198034,7 +198034,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "XTKO0X నిబంధనలు"
+            "value": "TMDB నిబంధనలు"
           }
         },
         "ur": {
@@ -198314,7 +198314,7 @@
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "XTKO0X వెబ్‌సైట్"
+            "value": "TMDB వెబ్‌సైట్"
           }
         },
         "ur": {

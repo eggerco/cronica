@@ -2199,6 +2199,28 @@ def write_catalog(path: Path, entries: dict[str, dict[str, str]]) -> None:
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+def validate_app_shortcut_phrases(entries: dict[str, dict[str, str]]) -> None:
+    """Xcode requires exactly one ${applicationName} per App Shortcut utterance."""
+    required = "${applicationName}"
+    errors: list[str] = []
+    for key, translations in entries.items():
+        for locale, value in translations.items():
+            count = value.count(required)
+            if count != 1:
+                errors.append(f"{locale}:{key!r} has {count}× {required} → {value!r}")
+            for token in ("${title}", "${query}"):
+                if key.count(token) != value.count(token):
+                    errors.append(
+                        f"{locale}:{key!r} placeholder {token} mismatch → {value!r}"
+                    )
+    if errors:
+        preview = "\n".join(f"  • {e}" for e in errors[:20])
+        more = f"\n  … and {len(errors) - 20} more" if len(errors) > 20 else ""
+        raise SystemExit(
+            f"Invalid App Shortcut utterances ({len(errors)}):\n{preview}{more}"
+        )
+
+
 def write_info_plist_catalog() -> None:
     strings: dict[str, dict] = {
         key: build_entry(trans) for key, trans in INFO_PLIST_STRINGS.items()
@@ -2247,6 +2269,7 @@ def main() -> int:
     merge_overlay_into(EXAMPLE_PHRASES, overlay)
     merge_overlay_into(SIRI_DIALOG_STRINGS, overlay)
 
+    validate_app_shortcut_phrases(APP_SHORTCUT_PHRASES)
     write_catalog(APP_SHORTCUTS, APP_SHORTCUT_PHRASES)
     write_info_plist_catalog()
 
