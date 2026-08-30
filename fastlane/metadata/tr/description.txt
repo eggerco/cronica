@@ -1,0 +1,40 @@
+Filmler ve diziler için şık ve minimalist bir izleme listesi olan Cronica ile tanışın.
+
+iPhone, iPad, Mac, Apple Watch, Apple TV ve Apple Vision Pro'te izlediklerinizi takip edin, kaldığınız yeri asla kaybetmeyin ve bir sonraki bölüme hazır olun. İster birçok bölümü arka arkaya izleyin ister sadece ara sıra, Cronica kütüphanenizi düzenli tutar ve bir dokunuşla bir sonraki bölüme ulaşmanızı sağlar.
+
+Cronica Özellikleri:
+
+Up Next: Dizi Dünyasının Önünde Kalın
+Dizinizin sonraki bölümlerini Home üzerinden izleyin ve kaldığınız yeri aramak zorunda kalmadan kaldığınız yerden devam edin.
+
+İzlendi Olarak İşaretle: İlerlemenizi Takip Edin
+İzlediğiniz filmleri ve bölümleri, izleme listenizle senkronize olacak şekilde kaydedin.
+
+Yayın Bildirimleri: İlk Siz Haberdar Olun
+İzleme listenizdeki yapımların yeni bölümleri yayınlandığında veya ilk gösterimler geldiğinde bildirim alın, böylece hiçbir bölümü kaçırmayın.
+
+iCloud Sync: Verileriniz, Sizin Yolunuz
+İzleme listeniz, puanlarınız, notlarınız ve tercihleriniz cihazlarınızda kalır ve iCloud aracılığıyla Apple cihazlarınız arasında özel olarak senkronize edilebilir.
+
+Siri ve Shortcuts: Eller Serbest Kontrol
+Siri ve Shortcuts uygulamasıyla (en fazla 10 App Shortcuts) başlık ekleyin, izlenenleri işaretleyin, Up Next'i kontrol edin, Aramayı açın ve daha fazlasını yapın.
+
+Widgets ve Kontrolleri
+Up Next veya Home Screen widget'larından trend olan başlıklara göz atın ve mümkün olduğunda Control Center'i kullanın.
+
+Bağlantıları Paylaş ve Keşfet
+Share Sheet veya Shortcuts aracılığıyla IMDb, Letterboxd, TMDb, JustWatch ve daha fazlasından içerik ekleyin ve uygulamada veya web'de açılan cronica.watch bağlantılarını paylaşın.
+
+Fragmanlar ve Detaylar: İzlemeden Önce Önizleme
+Fragmanları izleyin, oyuncu kadrosuna, sezonlara ve detaylara göz atın, böylece oynat düğmesine basmadan önce kararınızı verebilirsiniz.
+
+Watch Providers: Nerede Yayınlandığını Bulun
+TMDb aracılığıyla JustWatch verileriyle desteklenen içeriklerin nerede yayınlanabileceğini görün — tercih ettiğiniz hizmetlere göre filtreleyin.
+
+Özel Listeler, Filtreler ve Kişiselleştirme
+Özel listeler oluşturun, izleme listenizi filtreleyin ve sıralayın, bir vurgu rengi seçin ve Ana Ekranınızı izleme tarzınıza göre özelleştirin.
+
+İsteğe bağlı Kütüphane Senkronizasyonu
+İsterseniz SIMKL veya TMDb hesap senkronizasyonunu bağlayın — Cronica asla kendi hesabına ihtiyaç duymaz.
+
+Yasal Uyarı: Cronica bir yayın hizmeti değildir. Film ve dizi verileri TMDb'ten alınmıştır. Bu ürün TMDb API'sini kullanmaktadır ancak TMDb tarafından onaylanmamış veya sertifikalandırılmamıştır. Watch provider verileri JustWatch tarafından TMDb aracılığıyla sağlanmaktadır.

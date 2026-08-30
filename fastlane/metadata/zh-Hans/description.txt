@@ -1,0 +1,40 @@
+隆重推出 Cronica——一款简洁时尚的电影和电视节目观看列表。
+
+追踪您的观看记录，永不丢失观看位置，随时准备观看下一集——适用于 iPhone、iPad、Mac、Apple Watch、Apple TV 和 Apple Vision Pro。无论您是连续观看多集还是偶尔观看，Cronica 都能让您的片库井然有序，只需轻轻一点即可观看下一集。
+
+Cronica 功能：
+
+Up Next：让你的电视剧保持领先
+在主页上观看您喜爱的剧集的下一集，无需费力寻找上次观看的位置，即可继续观看。
+
+标记为已观看：随时掌握您的观看进度
+观看电影和剧集时可随时标记，进度会与您的观看列表同步。
+
+发布通知：抢先了解最新资讯
+当您关注列表中的影片上映或新剧集播出时，您将收到通知——这样您就不会错过首播。
+
+iCloud 同步：您的数据，由您掌控
+您的观看列表、评分、笔记和偏好设置将保留在您的设备上，并且可以通过 iCloud 在 Apple 设备之间私密同步。
+
+Siri 和 Shortcuts：免提控制
+使用 Siri 和 Shortcuts 应用（最多 10 个 App Shortcuts），您可以添加标题、标记已观看、查看 Up Next、打开搜索等等。
+
+Widgets 和控制器
+从 Home Screen 小部件浏览 Up Next 或热门标题，并在可用时使用 Control Center。
+
+分享与发现链接
+通过 Share Sheet 或 Shortcuts 添加来自 IMDb、Letterboxd、TMDb、JustWatch 等的内容，并分享可在应用程序或网页上打开的 cronica.watch 链接。
+
+预告片及详情：观看前预览
+观看预告片，浏览演员阵容、剧集季数和详细信息，以便在按下播放键之前做出决定。
+
+Watch Providers：查找其流媒体播放平台
+通过 TMDb 和 JustWatch 数据，查看哪些影片可供流媒体播放——按您喜欢的服务进行筛选。
+
+自定义列表、筛选器和个性化设置
+创建自定义列表，筛选和排序您的观看列表，选择强调色，并根据您的观看方式定制主页。
+
+可选的库同步
+如果需要，可以连接 SIMKL 或 TMDb 帐户进行同步 — Cronica 本身不需要帐户。
+
+免责声明：Cronica并非流媒体服务。电影和电视节目数据来自TMDb。本产品使用TMDb API，但未获得TMDb的认可或认证。Watch provider数据由JustWatch通过TMDb提供。

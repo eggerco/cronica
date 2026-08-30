@@ -1,0 +1,40 @@
+Apresentamos o Cronica — uma lista de favoritos elegante e minimalista para filmes e séries de TV.
+
+Acompanhe o que você assiste, nunca perca seu ponto de vista e esteja sempre pronto para o próximo episódio — em todos os dispositivos iPhone, iPad, Mac, Apple Watch, Apple TV e Apple Vision Pro. Seja para assistir a vários episódios seguidos ou apenas ocasionalmente, o Cronica mantém sua biblioteca organizada e seu próximo episódio a apenas um toque de distância.
+
+Características do Cronica:
+
+Up Next: Fique um passo à frente da sua série de TV
+Veja os próximos episódios da sua série favorita na página inicial e retome a visualização sem precisar procurar de onde parou.
+
+Marcar como assistido: acompanhe seu progresso
+Marque os filmes e episódios assistidos à medida que os vê, com o progresso sincronizado com a sua lista de filmes/episódios assistidos.
+
+Notificações de lançamento: Seja o primeiro a saber
+Receba notificações quando os títulos da sua lista de favoritos forem lançados ou quando novos episódios forem publicados — assim você não perde a estreia.
+
+iCloud Sync: Seus dados, do seu jeito
+Sua lista de favoritos, avaliações, notas e preferências permanecem em seus dispositivos e podem ser sincronizadas de forma privada via iCloud em todos os dispositivos Apple.
+
+Siri e Shortcuts: Controle mãos-livres
+Adicione títulos, marque como assistidos, verifique o Up Next, abra a Pesquisa e muito mais com o Siri e o aplicativo Shortcuts (até 10 App Shortcuts).
+
+Widgets e controles
+Dê uma olhada nos widgets Up Next ou nos títulos em alta do Home Screen e use o Control Center quando disponível.
+
+Compartilhe e descubra links
+Adicione dispositivos IMDb, Letterboxd, TMDb, JustWatch e outros através de Share Sheet ou Shortcuts — e compartilhe links cronica.watch que abrem no aplicativo ou na web.
+
+Trailers e detalhes: veja uma prévia antes de assistir.
+Veja os trailers e confira o elenco, as temporadas e os detalhes para que você possa decidir antes de dar o play.
+
+Watch Providers: Descubra onde está disponível para streaming.
+Veja onde os títulos estão disponíveis para streaming, com base nos dados JustWatch via TMDb — filtre pelos seus serviços preferidos.
+
+Listas personalizadas, filtros e personalização
+Crie listas personalizadas, filtre e classifique sua lista de favoritos, escolha uma cor de destaque e adapte a tela inicial à sua forma de assistir.
+
+Sincronização opcional da biblioteca
+Conecte a sincronização de conta SIMKL ou TMDb se desejar — o Cronica nunca requer uma conta própria.
+
+Aviso: Cronica não é um serviço de streaming. Os dados de filmes e séries são provenientes do TMDb. Este produto utiliza a API do TMDb, mas não é endossado nem certificado pelo TMDb. Os dados do Watch provider são fornecidos pelo JustWatch através do TMDb.
