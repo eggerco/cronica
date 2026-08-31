@@ -113,9 +113,9 @@ python3 Scripts/translate_store_descriptions.py --force
 bundle exec fastlane ios upload_descriptions
 ```
 
-`upload_descriptions` syncs `description.txt` (+ release notes / URLs) into `metadata/` and uploads the locales listed in `ACTIVE_STORE_LOCALES`.
+`upload_descriptions` syncs `description.txt` (+ release notes / URLs) into `metadata/` and uploads the locales listed in `ACTIVE_STORE_LOCALES` (48 languages enabled on App Store Connect as of 2.8.0).
 
-**Activating new store languages:** App Store Connect only accepts metadata for languages enabled under **App Information → Localizations**. Enabling a language requires a unique localized app name; if “Cronica” is taken in that language, pick an available variant in ASC, then add that locale code to `ACTIVE_STORE_LOCALES` in `fastlane/Fastfile` and re-run upload. Translated files for all 50 languages already live in `fastlane/release_notes/` and `fastlane/description/`.
+**Activating new store languages:** App Store Connect only accepts metadata for languages enabled under **App Information → Localizations**. Enabling a language requires a unique localized app name; if “Cronica” is taken in that language, pick an available variant in ASC, then add that locale code to `ACTIVE_STORE_LOCALES` in `fastlane/Fastfile` and re-run upload. Translated files for all 50 languages already live in `fastlane/release_notes/` and `fastlane/description/`; **Japanese (`ja`)** and **Spanish (Spain) (`es-ES`)** are prepared locally but not enabled in ASC yet.
 
 In-app UI localization (`Localizable.xcstrings`) is separate — see `Docs/LOCALIZATION.md`.
 

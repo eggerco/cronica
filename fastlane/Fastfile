@@ -66,23 +66,57 @@ STORE_LOCALES = %w[
   vi
 ].freeze
 
-# Locales already activated on this App Store listing.
-# Enabling a new language in ASC requires a unique localized app name; until then, deliver
-# fails with "Cannot add localization due to app name". Expand this list after enabling
-# each language under App Store Connect → App Information → Localizations.
+# Locales activated on this App Store listing (App Store Connect → App Information).
+# Keep in sync with enabled localizations; deliver fails for locales not yet enabled in ASC.
 ACTIVE_STORE_LOCALES = %w[
   en-US
+  ar-SA
+  bn-BD
+  ca
+  zh-Hans
+  zh-Hant
+  hr
+  cs
+  da
+  nl-NL
   en-AU
   en-CA
   en-GB
+  fi
   fr-FR
   fr-CA
   de-DE
+  el
+  gu-IN
+  he
+  hi
+  hu
+  id
   it
+  kn-IN
+  ko
+  ms
+  ml-IN
+  mr-IN
+  no
+  or-IN
+  pl
   pt-BR
   pt-PT
+  pa-IN
+  ro
+  ru
   sk
+  sl-SI
   es-MX
+  sv
+  ta-IN
+  te-IN
+  th
+  tr
+  uk
+  ur-PK
+  vi
 ].freeze
 
 # App Store Connect platforms for this universal app (Watch ships with the iOS companion).
