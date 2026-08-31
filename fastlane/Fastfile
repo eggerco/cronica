@@ -177,7 +177,8 @@ def deliver_options(api:, download: false, platform:, metadata_path: nil)
     run_precheck_before_submit: false,
     precheck_include_in_app_purchases: false,
     submit_for_review: false,
-    automatic_release: false,
+    # "Automatically release this version" once Apple approves.
+    automatic_release: true,
     # Don't sit in long ASC retries when a platform has no editable version yet.
     version_check_wait_retry_limit: 1
   }

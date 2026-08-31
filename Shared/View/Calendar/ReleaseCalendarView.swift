@@ -10,10 +10,18 @@ import UIKit
 #endif
 
 #if !os(watchOS)
-/// UICalendarView peeks adjacent months when stretched wider than one month (common on iPad).
+/// UICalendarView peeks adjacent months when stretched wider than one month (common on iPad / visionOS).
 private enum ReleaseCalendarMetrics {
+#if os(visionOS)
+    /// visionOS UICalendarView needs extra vertical room so the last week / selection ring is not clipped.
+    static let maxWidth: CGFloat = 420
+    static let minHeight: CGFloat = 460
+    static let emptyStateMinHeight: CGFloat = 220
+#else
     static let maxWidth: CGFloat = 360
     static let minHeight: CGFloat = 340
+    static let emptyStateMinHeight: CGFloat = 160
+#endif
 }
 
 struct ReleaseCalendarView: View {
@@ -56,6 +64,44 @@ struct ReleaseCalendarView: View {
     }
 
     var body: some View {
+#if os(visionOS)
+        visionOSBody
+#else
+        listBody
+#endif
+    }
+
+#if os(visionOS)
+    /// List + UICalendarView layout is unreliable in wide visionOS windows; use a centered stack.
+    private var visionOSBody: some View {
+        ScrollView {
+            VStack(spacing: 32) {
+                calendarPicker
+                    .padding(.top, 8)
+                    .padding(.bottom, 8)
+
+                VStack(alignment: .leading, spacing: 12) {
+                    Text(releasesSectionTitle)
+                        .font(.headline)
+                        .foregroundStyle(.secondary)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+
+                    releasesContent
+                        .frame(maxWidth: .infinity, minHeight: ReleaseCalendarMetrics.emptyStateMinHeight)
+                        .padding(24)
+                        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+                }
+            }
+            .padding(.horizontal, 24)
+            .padding(.bottom, 24)
+            .frame(maxWidth: 720)
+            .frame(maxWidth: .infinity)
+        }
+        .navigationTitle("Release Calendar")
+    }
+#endif
+
+    private var listBody: some View {
         List {
             Section {
                 calendarPicker
@@ -64,23 +110,7 @@ struct ReleaseCalendarView: View {
             .listRowBackground(Color.clear)
 
             Section(releasesSectionTitle) {
-                if upcomingItems.isEmpty {
-                    ContentUnavailableView {
-                        Label("No Upcoming Releases", systemImage: "calendar")
-                    } description: {
-                        Text("Add items with future release dates to your watchlist to see them here.")
-                            .foregroundStyle(.secondary)
-                    }
-                } else if selectedDayItems.isEmpty {
-                    Text("No watchlist releases on this date.")
-                        .foregroundStyle(.secondary)
-                } else {
-                    ForEach(selectedDayItems) { item in
-                        NavigationLink(value: item) {
-                            ReleaseCalendarRow(item: item)
-                        }
-                    }
-                }
+                releasesContent
             }
         }
 #if os(iOS)
@@ -89,6 +119,45 @@ struct ReleaseCalendarView: View {
 #else
         .navigationTitle("Release Calendar")
 #endif
+    }
+
+    @ViewBuilder
+    private var releasesContent: some View {
+        if upcomingItems.isEmpty {
+            emptyUpcomingReleases
+        } else if selectedDayItems.isEmpty {
+            Text("No watchlist releases on this date.")
+                .foregroundStyle(.secondary)
+                .multilineTextAlignment(.center)
+                .frame(maxWidth: .infinity, minHeight: 80, alignment: .center)
+        } else {
+            ForEach(selectedDayItems) { item in
+                NavigationLink(value: item) {
+                    ReleaseCalendarRow(item: item)
+                }
+            }
+        }
+    }
+
+    private var emptyUpcomingReleases: some View {
+        VStack(spacing: 10) {
+            Spacer(minLength: 0)
+            Image(systemName: "calendar")
+                .font(.system(size: 40, weight: .regular))
+                .foregroundStyle(.secondary)
+                .accessibilityHidden(true)
+            Text("No Upcoming Releases")
+                .font(.title3.weight(.semibold))
+                .multilineTextAlignment(.center)
+            Text("Add items with future release dates to your watchlist to see them here.")
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+                .multilineTextAlignment(.center)
+                .frame(maxWidth: 420)
+            Spacer(minLength: 0)
+        }
+        .frame(maxWidth: .infinity, minHeight: ReleaseCalendarMetrics.emptyStateMinHeight)
+        .accessibilityElement(children: .combine)
     }
 
     private var releasesSectionTitle: String {
@@ -101,11 +170,15 @@ struct ReleaseCalendarView: View {
     @ViewBuilder
     private var calendarPicker: some View {
 #if canImport(UIKit) && !os(tvOS)
-        NativeReleaseCalendarPicker(selectedDate: $selectedDate, releaseDays: releaseDays)
-            .frame(maxWidth: ReleaseCalendarMetrics.maxWidth)
-            .frame(maxWidth: .infinity, alignment: .center)
-            .frame(minHeight: ReleaseCalendarMetrics.minHeight)
-            .clipped()
+        HStack {
+            Spacer(minLength: 0)
+            NativeReleaseCalendarPicker(selectedDate: $selectedDate, releaseDays: releaseDays)
+                .frame(width: ReleaseCalendarMetrics.maxWidth)
+                .frame(minHeight: ReleaseCalendarMetrics.minHeight)
+                // Do not `.clipped()` — visionOS selection rings / last week get cut off.
+            Spacer(minLength: 0)
+        }
+        .frame(maxWidth: .infinity)
 #else
         DatePicker(
             "Release Date",
@@ -137,17 +210,19 @@ private struct NativeReleaseCalendarPicker: UIViewRepresentable {
 
     func makeUIView(context: Context) -> UIView {
         let container = UIView()
-        container.clipsToBounds = true
+        // Keep overflow visible so selection highlights on the last row are not cropped.
+        container.clipsToBounds = false
         container.backgroundColor = .clear
 
         let calendarView = UICalendarView()
         calendarView.calendar = Calendar.current
         calendarView.locale = Locale.current
         calendarView.delegate = context.coordinator
-        calendarView.clipsToBounds = true
+        calendarView.clipsToBounds = false
         calendarView.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
-        calendarView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
-        calendarView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        calendarView.setContentCompressionResistancePriority(.required, for: .vertical)
+        calendarView.setContentHuggingPriority(.required, for: .horizontal)
+        calendarView.setContentHuggingPriority(.required, for: .vertical)
 
         let selection = UICalendarSelectionSingleDate(delegate: context.coordinator)
         calendarView.selectionBehavior = selection
@@ -160,10 +235,9 @@ private struct NativeReleaseCalendarPicker: UIViewRepresentable {
         NSLayoutConstraint.activate([
             calendarView.topAnchor.constraint(equalTo: container.topAnchor),
             calendarView.bottomAnchor.constraint(equalTo: container.bottomAnchor),
-            calendarView.centerXAnchor.constraint(equalTo: container.centerXAnchor),
-            calendarView.widthAnchor.constraint(lessThanOrEqualToConstant: ReleaseCalendarMetrics.maxWidth),
-            calendarView.widthAnchor.constraint(lessThanOrEqualTo: container.widthAnchor),
-            calendarView.widthAnchor.constraint(equalTo: container.widthAnchor).withPriority(.defaultHigh)
+            calendarView.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+            calendarView.trailingAnchor.constraint(equalTo: container.trailingAnchor),
+            calendarView.widthAnchor.constraint(equalToConstant: ReleaseCalendarMetrics.maxWidth)
         ])
 
         return container
@@ -185,17 +259,18 @@ private struct NativeReleaseCalendarPicker: UIViewRepresentable {
     }
 
     func sizeThatFits(_ proposal: ProposedViewSize, uiView: UIView, context: Context) -> CGSize? {
-        guard let width = proposal.width else { return nil }
-        let fittedWidth = min(width, ReleaseCalendarMetrics.maxWidth)
+        let fittedWidth = ReleaseCalendarMetrics.maxWidth
         guard let calendarView = context.coordinator.calendarView else {
             return CGSize(width: fittedWidth, height: ReleaseCalendarMetrics.minHeight)
         }
         let size = calendarView.systemLayoutSizeFitting(
-            CGSize(width: fittedWidth, height: UIView.layoutFittingCompressedSize.height),
+            CGSize(width: fittedWidth, height: UIView.layoutFittingExpandedSize.height),
             withHorizontalFittingPriority: .required,
             verticalFittingPriority: .fittingSizeLevel
         )
-        return CGSize(width: width, height: max(size.height, ReleaseCalendarMetrics.minHeight))
+        // Extra bottom slack for selection rings on the last week.
+        let height = max(size.height, ReleaseCalendarMetrics.minHeight) + 12
+        return CGSize(width: fittedWidth, height: height)
     }
 
     final class Coordinator: NSObject, UICalendarViewDelegate, UICalendarSelectionSingleDateDelegate {
@@ -227,13 +302,6 @@ private struct NativeReleaseCalendarPicker: UIViewRepresentable {
             guard releaseDays.contains(day) else { return nil }
             return .default(color: UIColor.tintColor, size: .small)
         }
-    }
-}
-
-private extension NSLayoutConstraint {
-    func withPriority(_ priority: UILayoutPriority) -> NSLayoutConstraint {
-        self.priority = priority
-        return self
     }
 }
 #endif

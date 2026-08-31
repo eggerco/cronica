@@ -134,6 +134,8 @@ Watch App Store listing metadata ships with the iOS companion — there is no se
 
 If a platform has no editable version yet in App Store Connect (common before the first build for that OS is prepared), that platform fails the lane — fix ASC or upload a build, then re-run.
 
+Deliver sets **`automatic_release: true`** (“Automatically release this version”) so once Apple approves the version it goes live without a manual release tap. Metadata upload lanes still use `submit_for_review: false` — they only update listing copy unless you change that.
+
 ## Store URLs
 
 Every locale gets the same App Store Connect URLs (written into `metadata/<locale>/`):

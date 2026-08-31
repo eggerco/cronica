@@ -890,6 +890,12 @@ extension ItemContentDetails {
         .buttonStyle(.bordered)
         .buttonBorderShape(.roundedRectangle(radius: DrawingConstants.buttonRadius))
         .tint(.primary)
+#elseif os(visionOS)
+        // `.tint(.primary)` on visionOS glass makes an unwatched bordered button solid white.
+        .controlSize(.regular)
+        .modifier(BorderedProminentWhen(isProminent: viewModel.isWatched))
+        .buttonBorderShape(.capsule)
+        .tint(store.accentColor)
 #elseif !os(tvOS)
         .controlSize(.regular)
         .modifier(BorderedProminentWhen(isProminent: viewModel.isWatched))
@@ -1096,9 +1102,7 @@ extension ItemContentDetails {
     }
     
     private var openInMenu: some View {
-        Menu("Open in",
-             systemImage: "ellipsis.circle") {
-            
+        Menu {
             if let homepage = viewModel.content?.homepage, let url = URL(string: homepage) {
                 Button("Official Website") {
                     openUrl(for: url)
@@ -1108,11 +1112,25 @@ extension ItemContentDetails {
                 guard let url = viewModel.content?.itemURL else { return }
                 openUrl(for: url)
             }
-        }
-             .labelStyle(.titleOnly)
+        } label: {
 #if os(visionOS)
-             .menuStyle(.button)
-             .buttonStyle(.bordered)
+            Text("Open in")
+                .font(.body.weight(.medium))
+                .multilineTextAlignment(.center)
+                .frame(minWidth: 72)
+#else
+            Label("Open in", systemImage: "ellipsis.circle")
+#endif
+        }
+#if !os(visionOS)
+        .labelStyle(.titleOnly)
+#endif
+#if os(visionOS)
+        .menuStyle(.button)
+        .menuIndicator(.hidden)
+        .buttonStyle(.bordered)
+        .buttonBorderShape(.capsule)
+        .controlSize(.regular)
 #endif
     }
     
