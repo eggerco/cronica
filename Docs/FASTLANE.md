@@ -113,9 +113,26 @@ python3 Scripts/translate_store_descriptions.py --force
 bundle exec fastlane ios upload_descriptions
 ```
 
-`upload_descriptions` syncs `description.txt` (+ release notes / URLs) into `metadata/` and uploads the locales listed in `ACTIVE_STORE_LOCALES` (48 languages enabled on App Store Connect as of 2.8.0).
+`upload_descriptions` syncs `description.txt`, `keywords.txt`, and release notes / URLs into `metadata/` and uploads the locales listed in `ACTIVE_STORE_LOCALES` (48 languages enabled on App Store Connect as of 2.8.0).
 
-**Activating new store languages:** App Store Connect only accepts metadata for languages enabled under **App Information → Localizations**. Enabling a language requires a unique localized app name; if “Cronica” is taken in that language, pick an available variant in ASC, then add that locale code to `ACTIVE_STORE_LOCALES` in `fastlane/Fastfile` and re-run upload. Translated files for all 50 languages already live in `fastlane/release_notes/` and `fastlane/description/`; **Japanese (`ja`)** and **Spanish (Spain) (`es-ES`)** are prepared locally but not enabled in ASC yet.
+### App Store keywords
+
+Source list (English, deduplicated, ≤100 characters):
+
+```text
+watchlist,list,episode,tracker,movie,release,trailer,tmdb,watch,tvshow
+```
+
+Regenerate translations for every store locale with Cloud Translation:
+
+```bash
+python3 Scripts/translate_store_keywords.py
+bundle exec fastlane ios upload_keywords
+```
+
+Files live in `fastlane/keywords/<locale>.txt` and are copied to `fastlane/metadata/<locale>/keywords.txt` by `sync_keywords` (also run from `upload_descriptions`). Brand token `tmdb` is kept as-is. Ambiguous ASO loanwords (`watchlist`, `trailer`, `tracker`, `watch`, `release`) stay English unless a locale glossary override exists — Cloud Translate often maps those to the wrong sense (vehicle / clock / liberate). English originals are also appended when they still fit under Apple’s 100-character limit.
+
+**Activating new store languages:** App Store Connect only accepts metadata for languages enabled under **App Information → Localizations**. Enabling a language requires a unique localized app name; if “Cronica” is taken in that language, pick an available variant in ASC, then add that locale code to `ACTIVE_STORE_LOCALES` in `fastlane/Fastfile` and re-run upload. Translated files for all 50 languages already live in `fastlane/release_notes/`, `fastlane/description/`, and `fastlane/keywords/`; **Japanese (`ja`)** and **Spanish (Spain) (`es-ES`)** are prepared locally but not enabled in ASC yet.
 
 In-app UI localization (`Localizable.xcstrings`) is separate — see `Docs/LOCALIZATION.md`.
 

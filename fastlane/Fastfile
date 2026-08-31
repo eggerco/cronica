@@ -125,6 +125,7 @@ STORE_PLATFORMS = (ENV["STORE_PLATFORMS"] || "ios,osx,appletvos,xros").split(","
 
 RELEASE_NOTES_DIR = File.expand_path("release_notes", __dir__)
 DESCRIPTION_DIR = File.expand_path("description", __dir__)
+KEYWORDS_DIR = File.expand_path("keywords", __dir__)
 METADATA_DIR = File.expand_path("metadata", __dir__)
 API_KEY_JSON = File.expand_path("api_key.json", __dir__)
 
@@ -334,6 +335,28 @@ platform :ios do
     end
   end
 
+  desc "Copy fastlane/keywords/<locale>.txt into fastlane/metadata/<locale>/keywords.txt"
+  lane :sync_keywords do
+    UI.message("Syncing App Store keywords")
+
+    ACTIVE_STORE_LOCALES.each do |locale|
+      source = File.join(KEYWORDS_DIR, "#{locale}.txt")
+      UI.user_error!("Missing #{source} required for ACTIVE_STORE_LOCALES.") unless File.exist?(source)
+    end
+
+    STORE_LOCALES.each do |locale|
+      source = File.join(KEYWORDS_DIR, "#{locale}.txt")
+      next unless File.exist?(source)
+
+      body = File.read(source, encoding: "UTF-8").strip
+      UI.user_error!("#{source} exceeds App Store 100-character keywords limit (#{body.length}).") if body.length > 100
+
+      dir = File.join(METADATA_DIR, locale)
+      FileUtils.mkdir_p(dir)
+      File.write(File.join(dir, "keywords.txt"), "#{body}\n")
+    end
+  end
+
   desc "Upload metadata to iOS, macOS, tvOS, and visionOS (no binary, no screenshots)"
   lane :upload_metadata do
     deliver_metadata!
@@ -345,10 +368,17 @@ platform :ios do
     upload_metadata
   end
 
-  desc "Sync localized descriptions (+ release notes / URLs) and upload to all App Store platforms"
+  desc "Sync localized descriptions (+ keywords / release notes / URLs) and upload to all App Store platforms"
   lane :upload_descriptions do
     sync_descriptions
+    sync_keywords
     sync_release_notes
+    upload_metadata
+  end
+
+  desc "Sync localized keywords and upload to all App Store platforms"
+  lane :upload_keywords do
+    sync_keywords
     upload_metadata
   end
 

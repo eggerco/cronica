@@ -1,0 +1,1 @@
+watchlist,llista,episodi,tracker,pellícula,release,trailer,tmdb,watch,programatelevisió,list,episode
