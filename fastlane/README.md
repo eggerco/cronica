@@ -39,6 +39,14 @@ Copy fastlane/release_notes/<locale>.txt into fastlane/metadata/
 
 Copy fastlane/description/<locale>.txt into fastlane/metadata/<locale>/description.txt
 
+### ios sync_keywords
+
+```sh
+[bundle exec] fastlane ios sync_keywords
+```
+
+Copy fastlane/keywords/<locale>.txt into fastlane/metadata/<locale>/keywords.txt
+
 ### ios upload_metadata
 
 ```sh
@@ -61,7 +69,15 @@ Sync localized release notes and upload to all App Store platforms
 [bundle exec] fastlane ios upload_descriptions
 ```
 
-Sync localized descriptions (+ release notes / URLs) and upload to all App Store platforms
+Sync localized descriptions (+ keywords / release notes / URLs) and upload to all App Store platforms
+
+### ios upload_keywords
+
+```sh
+[bundle exec] fastlane ios upload_keywords
+```
+
+Sync localized keywords and upload to all App Store platforms
 
 ### ios download_metadata
 
