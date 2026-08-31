@@ -2457,7 +2457,7 @@
 				CODE_SIGN_ENTITLEMENTS = "AppleWatch/Configuration/Cronica Watch App.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 623;
+				CURRENT_PROJECT_VERSION = 624;
 				DEVELOPMENT_ASSET_PATHS = "\"AppleWatch/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -2493,7 +2493,7 @@
 				CODE_SIGN_ENTITLEMENTS = "AppleWatch/Configuration/Cronica Watch App.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 623;
+				CURRENT_PROJECT_VERSION = 624;
 				DEVELOPMENT_ASSET_PATHS = "\"AppleWatch/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -2672,7 +2672,7 @@
 				CODE_SIGN_ENTITLEMENTS = Shared/Configuration/Cronica.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 623;
+				CURRENT_PROJECT_VERSION = 624;
 				DEVELOPMENT_TEAM = S5A7774228;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
@@ -2724,7 +2724,7 @@
 				CODE_SIGN_ENTITLEMENTS = Shared/Configuration/Cronica.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 623;
+				CURRENT_PROJECT_VERSION = 624;
 				DEVELOPMENT_TEAM = S5A7774228;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
@@ -2773,7 +2773,7 @@
 				CODE_SIGN_ENTITLEMENTS = CronicaWidget/Configuration/CronicaWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 623;
+				CURRENT_PROJECT_VERSION = 624;
 				DEVELOPMENT_TEAM = S5A7774228;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -2811,7 +2811,7 @@
 				CODE_SIGN_ENTITLEMENTS = CronicaWidget/Configuration/CronicaWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 623;
+				CURRENT_PROJECT_VERSION = 624;
 				DEVELOPMENT_TEAM = S5A7774228;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -2847,7 +2847,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 623;
+				CURRENT_PROJECT_VERSION = 624;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
@@ -2869,7 +2869,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 623;
+				CURRENT_PROJECT_VERSION = 624;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
@@ -2891,7 +2891,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = CronicaShareExtension/Configuration/CronicaShareExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 623;
+				CURRENT_PROJECT_VERSION = 624;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CronicaShareExtension/Configuration/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Add to Cronica";
@@ -2922,7 +2922,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = CronicaShareExtension/Configuration/CronicaShareExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 623;
+				CURRENT_PROJECT_VERSION = 624;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CronicaShareExtension/Configuration/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Add to Cronica";
