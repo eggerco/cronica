@@ -20,7 +20,9 @@ final class TMDBAccountAuthService: NSObject {
     static let redirectURI = "cronica://tmdb/callback"
 
     private var session: ASWebAuthenticationSession?
+#if os(iOS) || os(macOS) || os(visionOS)
     private var presentationContext = TMDBAuthPresentationContext()
+#endif
 
     private override init() {
         super.init()
@@ -97,6 +99,7 @@ final class TMDBAccountAuthService: NSObject {
 #endif
 }
 
+#if os(iOS) || os(macOS) || os(visionOS)
 private final class TMDBAuthPresentationContext: NSObject, ASWebAuthenticationPresentationContextProviding {
     func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
 #if os(macOS)
@@ -112,3 +115,4 @@ private final class TMDBAuthPresentationContext: NSObject, ASWebAuthenticationPr
 #endif
     }
 }
+#endif

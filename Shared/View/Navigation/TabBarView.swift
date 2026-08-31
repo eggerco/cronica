@@ -218,6 +218,7 @@ struct TabBarView: View {
     }
 #endif
 
+#if os(iOS)
     @available(iOS 18, *)
     private var newTabView: some View {
         TabView(selection: selectedTab) {
@@ -253,6 +254,7 @@ struct TabBarView: View {
         .appTheme()
         .appTint()
     }
+#endif
 
 #if os(iOS) || os(visionOS)
     private var details: some View {

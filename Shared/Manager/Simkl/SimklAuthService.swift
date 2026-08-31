@@ -21,7 +21,9 @@ final class SimklAuthService: NSObject {
     static let redirectURI = "cronica://simkl/callback"
 
     private var session: ASWebAuthenticationSession?
+#if os(iOS) || os(macOS) || os(visionOS)
     private var presentationContext = SimklAuthPresentationContext()
+#endif
 
     private override init() {
         super.init()
@@ -169,6 +171,7 @@ final class SimklAuthService: NSObject {
     }
 }
 
+#if os(iOS) || os(macOS) || os(visionOS)
 private final class SimklAuthPresentationContext: NSObject, ASWebAuthenticationPresentationContextProviding {
     func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
 #if os(macOS)
@@ -182,6 +185,7 @@ private final class SimklAuthPresentationContext: NSObject, ASWebAuthenticationP
 #endif
     }
 }
+#endif
 
 private extension Data {
     func base64URLEncodedString() -> String {

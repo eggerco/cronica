@@ -179,6 +179,26 @@ struct ReleaseCalendarView: View {
             Spacer(minLength: 0)
         }
         .frame(maxWidth: .infinity)
+#elseif os(tvOS)
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 12) {
+                ForEach(Array(releaseDays).sorted(), id: \.self) { day in
+                    let isSelected = calendar.isDate(day, inSameDayAs: selectedDate)
+                    Button {
+                        selectedDate = day
+                    } label: {
+                        Text(day.formatted(date: .abbreviated, time: .omitted))
+                            .font(.caption.weight(isSelected ? .semibold : .regular))
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 8)
+                    }
+                    .buttonStyle(.bordered)
+                    .tint(isSelected ? .primary : .secondary)
+                }
+            }
+            .padding(.horizontal, 4)
+        }
+        .frame(maxWidth: .infinity)
 #else
         DatePicker(
             "Release Date",

@@ -103,6 +103,8 @@ extension View {
                 case .integrations: IntegrationsSettingsView()
 #if canImport(AppIntents) && !os(watchOS) && !os(tvOS)
                 case .siri: SiriSettingsView()
+#else
+                case .siri: EmptyView()
 #endif
                 case .simkl: SimklSettingsView()
                 case .tmdbAccount: TMDBAccountSettingsView()
