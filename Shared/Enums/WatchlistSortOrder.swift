@@ -10,7 +10,7 @@ import Foundation
 enum WatchlistSortOrder: String, Identifiable, CaseIterable {
     var id: String { rawValue }
     case titleAsc, titleDesc, dateAsc, dateDesc, watchedDateAsc, watchedDateDesc, ratingAsc, ratingDesc
-    case dateAddedAsc, dateAddedDesc
+    case dateAddedAsc, dateAddedDesc, manual
 
     var localizableName: String {
         switch self {
@@ -24,11 +24,16 @@ enum WatchlistSortOrder: String, Identifiable, CaseIterable {
         case .ratingDesc: String(localized: "Rating (Desc)")
         case .dateAddedAsc: String(localized: "Date Added (Asc)")
         case .dateAddedDesc: String(localized: "Date Added (Desc)")
+        case .manual: String(localized: "Manual Order")
         }
     }
 
     /// Sorts items in this order. When `pinnedFirst` is set, pinned items keep this order but come first.
-    func sort(_ items: some Sequence<WatchlistItem>, pinnedFirst: Bool = false) -> [WatchlistItem] {
+    /// - Parameter manualRank: position of an item in `.manual` order, nil when it was never placed.
+    ///   Defaults to the watchlist's own order (`WatchlistItem.manualOrder`).
+    func sort(_ items: some Sequence<WatchlistItem>,
+              pinnedFirst: Bool = false,
+              manualRank: ((WatchlistItem) -> Int?)? = nil) -> [WatchlistItem] {
         let sorted: [WatchlistItem]
         switch self {
         case .titleAsc:
@@ -51,9 +56,38 @@ enum WatchlistSortOrder: String, Identifiable, CaseIterable {
             sorted = items.sorted { Self.addedBefore($0, $1, ascending: true) }
         case .dateAddedDesc:
             sorted = items.sorted { Self.addedBefore($0, $1, ascending: false) }
+        case .manual:
+            let defaultRank: (WatchlistItem) -> Int? = { $0.manualOrder > 0 ? Int($0.manualOrder) : nil }
+            let rank = manualRank ?? defaultRank
+            sorted = items.sorted { Self.rankedBefore($0, $1, rank: rank) }
         }
         guard pinnedFirst else { return sorted }
         return sorted.filter(\.isPin) + sorted.filter { !$0.isPin }
+    }
+
+    /// Rebuilds a full order after `subset` (the visible items) was reordered: visible items take
+    /// their former slots in the new order, items hidden by filters keep their place.
+    static func merge<Item: AnyObject>(_ subset: [Item], into full: [Item]) -> [Item] {
+        let moved = Set(subset.map(ObjectIdentifier.init))
+        var reordered = subset.makeIterator()
+        let merged = full.map { moved.contains(ObjectIdentifier($0)) ? (reordered.next() ?? $0) : $0 }
+        let placed = Set(merged.map(ObjectIdentifier.init))
+        return merged + subset.filter { !placed.contains(ObjectIdentifier($0)) }
+    }
+
+    /// Items never placed by hand (no rank) go after placed ones, by title.
+    private static func rankedBefore(_ lhs: WatchlistItem, _ rhs: WatchlistItem,
+                                     rank: (WatchlistItem) -> Int?) -> Bool {
+        switch (rank(lhs), rank(rhs)) {
+        case let (left?, right?):
+            return left < right
+        case (.some, nil):
+            return true
+        case (nil, .some):
+            return false
+        case (nil, nil):
+            return lhs.itemTitle < rhs.itemTitle
+        }
     }
 
     /// Items saved before the date was recorded have no `dateAdded`: they go last, by title.

@@ -6,6 +6,7 @@
         <attribute name="idOnTMDb" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="isPin" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="isSyncEnabledTMDB" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="itemOrder" optional="YES" attributeType="String"/>
         <attribute name="notes" optional="YES" attributeType="String"/>
         <attribute name="title" attributeType="String" defaultValueString=""/>
         <attribute name="updatedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -36,6 +37,7 @@
         <attribute name="lastEpisodeNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="lastSelectedSeason" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="lastValuesUpdated" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="manualOrder" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="lastWatchedEpisode" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="mediumPosterImage" optional="YES" attributeType="URI"/>
         <attribute name="movieReleaseDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>

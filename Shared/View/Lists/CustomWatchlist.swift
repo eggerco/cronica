@@ -261,7 +261,12 @@ struct CustomWatchlist: View {
                            showAllItems: $showAllItems)
         }
         .sheet(isPresented: $showBatchEdit) {
-            WatchlistBatchEditView(items: displayedItems, isPresented: $showBatchEdit)
+            WatchlistBatchEditView(items: displayedItems, isPresented: $showBatchEdit) { reordered in
+                guard let selectedList else { return }
+                PersistenceController.shared.saveManualOrder(WatchlistSortOrder.merge(reordered, into: sortedItems),
+                                                             in: selectedList)
+                sortOrder = .manual
+            }
         }
     }
 

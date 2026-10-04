@@ -20,6 +20,8 @@ extension WatchlistItem {
     @NSManaged public var contentType: Int64
     @NSManaged public var date: Date?
     @NSManaged public var dateAdded: Date?
+    /// 1-based position in the watchlist's manual order; 0 when never ordered.
+    @NSManaged public var manualOrder: Int64
     @NSManaged public var favorite: Bool
     @NSManaged public var formattedDate: String?
     @NSManaged public var genre: String?
