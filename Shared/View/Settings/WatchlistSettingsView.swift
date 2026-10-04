@@ -41,6 +41,11 @@ struct WatchlistSettingsView: View {
                     Text("Watchlist's Item Style")
                 }
 #if !os(tvOS)
+                if store.watchlistStyle == .card {
+                    columnsPicker("Cards per Row", selection: $store.watchlistCardColumns, range: 1...4)
+                } else if store.watchlistStyle == .poster {
+                    columnsPicker("Posters per Row", selection: $store.watchlistPosterColumns, range: 2...5)
+                }
                 Toggle("Show Date in Watchlist", isOn: $store.showDateOnWatchlist)
                 Picker("Favorite Lists Sort on Home", selection: $homePinnedListSortOrder) {
                     ForEach(WatchlistSortOrder.allCases) { item in
@@ -143,6 +148,20 @@ struct WatchlistSettingsView: View {
 #if os(macOS)
         .buttonStyle(.plain)
 #endif
+    }
+#endif
+
+#if !os(tvOS)
+    /// Picker for a fixed number of grid columns; 0 means "Automatic" (adaptive layout).
+    private func columnsPicker(_ title: LocalizedStringKey,
+                               selection: Binding<Int>,
+                               range: ClosedRange<Int>) -> some View {
+        Picker(title, selection: selection) {
+            Text("Automatic").tag(0)
+            ForEach(Array(range), id: \.self) { count in
+                Text(count, format: .number).tag(count)
+            }
+        }
     }
 #endif
 }

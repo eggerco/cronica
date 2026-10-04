@@ -12,12 +12,13 @@ struct WatchlistCardSection: View {
     let items: [WatchlistItem]
     let title: String
     var emptyFilter: SmartFiltersTypes? = nil
+    @StateObject private var settings = SettingsStore.shared
     @Binding var showPopup: Bool
     @Binding var popupType: ActionPopupItems?
     var body: some View {
         if !items.isEmpty { 
             ScrollView {
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: DrawingConstants.columns ))],
+                LazyVGrid(columns: columns,
                           spacing: DrawingConstants.spacing) {
 #if os(tvOS)
                     Section {
@@ -28,7 +29,8 @@ struct WatchlistCardSection: View {
 #else
                     Section {
                         ForEach(items, id: \.itemContentID) { item in
-                            WatchlistItemCardView(content: item, showPopup: $showPopup, popupType: $popupType)
+                            WatchlistItemCardView(content: item, showPopup: $showPopup, popupType: $popupType,
+                                                  fillsColumn: fixedColumnCount != nil)
                                 .buttonStyle(.plain)
                         }
                         .onDelete(perform: delete)
@@ -52,6 +54,22 @@ struct WatchlistCardSection: View {
         }
     }
     
+    /// User-chosen column count, or nil to keep the adaptive layout.
+    private var fixedColumnCount: Int? {
+#if os(tvOS)
+        nil
+#else
+        settings.watchlistCardColumns > 0 ? settings.watchlistCardColumns : nil
+#endif
+    }
+
+    private var columns: [GridItem] {
+        if let count = fixedColumnCount {
+            return Array(repeating: GridItem(.flexible(), spacing: DrawingConstants.spacing), count: count)
+        }
+        return [GridItem(.adaptive(minimum: DrawingConstants.columns))]
+    }
+
     private func delete(offsets: IndexSet) {
         withAnimation {
             offsets.map { items[$0] }.forEach(context.delete)

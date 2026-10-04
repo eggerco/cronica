@@ -19,6 +19,8 @@ struct WatchlistItemPosterView: View {
     @State private var showCustomListView = false
     @Binding var showPopup: Bool
     @Binding var popupType: ActionPopupItems?
+    /// Stretches the poster to its grid column instead of using the fixed width.
+    var fillsColumn = false
     var body: some View {
         NavigationLink(value: content) {
             if settings.isCompactUI {
@@ -55,8 +57,9 @@ struct WatchlistItemPosterView: View {
     
     private var image: some View {
         WatchlistPosterImageView(item: content)
-            .frame(width: settings.isCompactUI ? DrawingConstants.compactPosterWidth : DrawingConstants.posterWidth,
-                   height: settings.isCompactUI ? DrawingConstants.compactPosterHeight : DrawingConstants.posterHeight)
+            .watchlistTileFrame(width: settings.isCompactUI ? DrawingConstants.compactPosterWidth : DrawingConstants.posterWidth,
+                                height: settings.isCompactUI ? DrawingConstants.compactPosterHeight : DrawingConstants.posterHeight,
+                                fillsColumn: fillsColumn)
             .clipShape(RoundedRectangle(cornerRadius: settings.isCompactUI ? DrawingConstants.compactPosterRadius : DrawingConstants.posterRadius,
                                         style: .continuous))
             .shadow(color: .black.opacity(0.2), radius: 5, x: 0, y: 5)
@@ -94,7 +97,7 @@ struct WatchlistItemPosterView: View {
             }
             Spacer()
         }
-        .frame(maxWidth: DrawingConstants.compactPosterWidth)
+        .frame(maxWidth: fillsColumn ? .infinity : DrawingConstants.compactPosterWidth)
     }
 }
 
