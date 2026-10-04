@@ -316,6 +316,47 @@ final class CronicaTests: XCTestCase {
         XCTAssertEqual(list.sortedItems(by: .watchedDateAsc).map(\.itemTitle), ["Older", "Newer"])
     }
 
+    func testWatchlistSortByDateAddedKeepsUndatedItemsLast() {
+        func makeItem(_ title: String, id: Int64, added: Date?) -> WatchlistItem {
+            let item = WatchlistItem(context: managedContext)
+            item.title = title
+            item.id = id
+            item.contentID = "\(id)@0"
+            item.contentType = MediaType.movie.toInt
+            item.dateAdded = added
+            return item
+        }
+        let items = [
+            makeItem("Undated B", id: 1, added: nil),
+            makeItem("First", id: 2, added: Date(timeIntervalSince1970: 1_000)),
+            makeItem("Undated A", id: 3, added: nil),
+            makeItem("Second", id: 4, added: Date(timeIntervalSince1970: 2_000))
+        ]
+
+        XCTAssertEqual(WatchlistSortOrder.dateAddedAsc.sort(items).map(\.itemTitle),
+                       ["First", "Second", "Undated A", "Undated B"])
+        XCTAssertEqual(WatchlistSortOrder.dateAddedDesc.sort(items).map(\.itemTitle),
+                       ["Second", "First", "Undated A", "Undated B"])
+    }
+
+    func testWatchlistSortPinnedFirstKeepsSortOrder() {
+        let titles = ["Delta", "Alpha", "Charlie", "Bravo"]
+        let items = titles.enumerated().map { index, title in
+            let item = WatchlistItem(context: managedContext)
+            item.title = title
+            item.id = Int64(index)
+            item.contentID = "\(index)@0"
+            item.contentType = MediaType.movie.toInt
+            item.isPin = title == "Delta" || title == "Bravo"
+            return item
+        }
+
+        XCTAssertEqual(WatchlistSortOrder.titleAsc.sort(items, pinnedFirst: true).map(\.itemTitle),
+                       ["Bravo", "Delta", "Alpha", "Charlie"])
+        XCTAssertEqual(WatchlistSortOrder.titleAsc.sort(items).map(\.itemTitle),
+                       ["Alpha", "Bravo", "Charlie", "Delta"])
+    }
+
     @MainActor
     func testSimklTimestampIsISO8601() {
         let date = Date(timeIntervalSince1970: 1_724_000_000)

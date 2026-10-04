@@ -28,6 +28,7 @@ extension PersistenceController {
             item.schedule = content.itemStatus.toInt
             item.notify = content.itemCanNotify
             item.lastValuesUpdated = Date()
+            item.dateAdded = Date()
 			if content.itemContentMedia == .movie {
 				item.date = content.itemFallbackDate
 			} else {

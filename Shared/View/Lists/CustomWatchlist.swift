@@ -33,7 +33,7 @@ struct CustomWatchlist: View {
 #endif
     private var sortedItems: [WatchlistItem] {
         guard let list = selectedList else { return [] }
-        return list.sortedItems(by: sortOrder)
+        return list.sortedItems(by: sortOrder, pinnedFirst: settings.showPinnedOnTop)
     }
     private var smartFiltersItems: [WatchlistItem] {
         let visible = sortedItems.filter { !$0.hideFromWatchlist }
@@ -327,6 +327,7 @@ struct CustomWatchlist: View {
 #else
                    .pickerStyle(.inline)
 #endif
+            Toggle("Pinned Items on Top", isOn: $settings.showPinnedOnTop)
         } label: {
             Image(systemName: "line.3.horizontal.decrease.circle")
                 .accessibilityLabel("Sort List")

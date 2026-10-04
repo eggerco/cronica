@@ -32,30 +32,8 @@ extension CustomList {
         sortedItems(by: .titleAsc)
     }
 
-    func sortedItems(by order: WatchlistSortOrder) -> [WatchlistItem] {
-        let set = items as? Set<WatchlistItem> ?? []
-        switch order {
-        case .titleAsc:
-            return set.sorted { $0.itemTitle < $1.itemTitle }
-        case .titleDesc:
-            return set.sorted { $0.itemTitle > $1.itemTitle }
-        case .ratingAsc:
-            return set.sorted { $0.userRating < $1.userRating }
-        case .ratingDesc:
-            return set.sorted { $0.userRating > $1.userRating }
-        case .dateAsc:
-            return set.sorted { $0.itemSortDate < $1.itemSortDate }
-        case .dateDesc:
-            return set.sorted { $0.itemSortDate > $1.itemSortDate }
-        case .watchedDateAsc:
-            return set.sorted {
-                ($0.watchedDate ?? .distantPast) < ($1.watchedDate ?? .distantPast)
-            }
-        case .watchedDateDesc:
-            return set.sorted {
-                ($0.watchedDate ?? .distantPast) > ($1.watchedDate ?? .distantPast)
-            }
-        }
+    func sortedItems(by order: WatchlistSortOrder, pinnedFirst: Bool = false) -> [WatchlistItem] {
+        order.sort(itemsSet, pinnedFirst: pinnedFirst)
     }
 
     var itemIDToString: String {

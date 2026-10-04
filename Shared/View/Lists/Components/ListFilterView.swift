@@ -12,6 +12,7 @@ struct ListFilterView: View {
     @Binding var sortOrder: WatchlistSortOrder
     @Binding var filter: SmartFiltersTypes
     @Binding var showAllItems: Bool
+    @StateObject private var settings = SettingsStore.shared
     var body: some View {
         NavigationStack {
             Form {
@@ -21,11 +22,14 @@ struct ListFilterView: View {
                     Text("Basic Filter")
                 }
                 
-                Picker("Sort Order",
-                       selection: $sortOrder) {
-                    ForEach(WatchlistSortOrder.allCases) { item in
-                        Text(item.localizableName).tag(item)
+                Section {
+                    Picker("Sort Order",
+                           selection: $sortOrder) {
+                        ForEach(WatchlistSortOrder.allCases) { item in
+                            Text(item.localizableName).tag(item)
+                        }
                     }
+                    Toggle("Pinned Items on Top", isOn: $settings.showPinnedOnTop)
                 }
                 
                 Section {
@@ -56,6 +60,7 @@ struct ListFilterView: View {
             .cronicaSensoryFeedback(.selection, trigger: filter)
             .cronicaSensoryFeedback(.selection, trigger: sortOrder)
             .cronicaSensoryFeedback(.selection, trigger: showAllItems)
+            .cronicaSensoryFeedback(.selection, trigger: settings.showPinnedOnTop)
             .scrollBounceBehavior(.basedOnSize)
             .onChange(of: filter) {
                 showView = false
