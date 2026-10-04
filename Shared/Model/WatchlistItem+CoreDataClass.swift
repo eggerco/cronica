@@ -53,6 +53,7 @@ public class WatchlistItem: NSManagedObject, Codable {
 			firstAirDate = try values.decode(Date?.self, forKey: .firstAirDate)
 			movieReleaseDate = try values.decode(Date?.self, forKey: .movieReleaseDate)
             numberOfEpisodes = try values.decodeIfPresent(Int64.self, forKey: .numberOfEpisodes) ?? 0
+            dateAdded = try values.decodeIfPresent(Date.self, forKey: .dateAdded)
         } catch {
             AppLogger.persistence.error("Failed to decode WatchlistItem: \(error.localizedDescription)")
             throw error
@@ -94,6 +95,7 @@ public class WatchlistItem: NSManagedObject, Codable {
 		try values.encode(firstAirDate, forKey: .firstAirDate)
 		try values.encode(movieReleaseDate, forKey: .movieReleaseDate)
         try values.encode(numberOfEpisodes, forKey: .numberOfEpisodes)
+        try values.encodeIfPresent(dateAdded, forKey: .dateAdded)
     }
     
     enum CodingKeys: CodingKey {
@@ -102,7 +104,7 @@ public class WatchlistItem: NSManagedObject, Codable {
              isArchive, nextEpisodeNumber, nextSeasonNumber, nextEpisodeNumberUpNext,
              seasonNumberUpNext, displayOnUpNext, hideFromUpNext, hideFromWatchlist, runtimeMinutes, isPin, lastEpisodeNumber, lastSelectedSeason,
              userNotes, userRating, isWatching, posterPath, backdropPath, firstAirDate, movieReleaseDate,
-             numberOfEpisodes
+             numberOfEpisodes, dateAdded
     }
 }
 

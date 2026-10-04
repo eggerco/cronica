@@ -19,6 +19,7 @@ extension WatchlistItem {
     @NSManaged public var contentID: String?
     @NSManaged public var contentType: Int64
     @NSManaged public var date: Date?
+    @NSManaged public var dateAdded: Date?
     @NSManaged public var favorite: Bool
     @NSManaged public var formattedDate: String?
     @NSManaged public var genre: String?

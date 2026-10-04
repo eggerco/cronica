@@ -14,24 +14,7 @@ struct DefaultListView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \WatchlistItem.title, ascending: true)],
         animation: .default) private var items: FetchedResults<WatchlistItem>
 	private var sortedItems: [WatchlistItem] {
-		switch sortOrder {
-		case .titleAsc:
-			return items.sorted { $0.itemTitle < $1.itemTitle }
-		case .titleDesc:
-			return items.sorted { $0.itemTitle > $1.itemTitle }
-		case .ratingAsc:
-			return items.sorted { $0.userRating < $1.userRating }
-		case .ratingDesc:
-			return items.sorted { $0.userRating > $1.userRating }
-		case .dateAsc:
-			return items.sorted { $0.itemSortDate < $1.itemSortDate }
-		case .dateDesc:
-			return items.sorted { $0.itemSortDate > $1.itemSortDate }
-		case .watchedDateAsc:
-			return items.sorted { ($0.watchedDate ?? .distantPast) < ($1.watchedDate ?? .distantPast) }
-		case .watchedDateDesc:
-			return items.sorted { ($0.watchedDate ?? .distantPast) > ($1.watchedDate ?? .distantPast) }
-		}
+		sortOrder.sort(items)
 	}
 	private var smartFiltersItems: [WatchlistItem] {
 		let visible = sortedItems.filter { !$0.hideFromWatchlist }

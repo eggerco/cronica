@@ -124,6 +124,8 @@ final class SettingsStore: ObservableObject {
     @AppStorage("preferredLaunchScreen") var preferredLaunchScreen: Screens = .watchlist
 #endif
     @AppStorage("removeFromPinOnWatched") var removeFromPinOnWatched = false
+    /// Shows pinned items above the others in the watchlist and custom lists, whatever the sort order.
+    @AppStorage("watchlistPinnedOnTop") var showPinnedOnTop = false
     @AppStorage("autoOpenCustomListSelector") var openListSelectorOnAdding = false
     @AppStorage("alwaysUsePosterAsCover") var usePostersAsCover = true
     @AppStorage("shareLinkPreference") var shareLinkPreference: ShareLinkPreference = .cronica
