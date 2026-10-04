@@ -17,6 +17,7 @@ struct WatchlistItemBackup: Codable, Equatable {
     var watched: Bool
     var watchedDate: Date?
     var dateAdded: Date?
+    var manualOrder: Int64
     var favorite: Bool
     var contentType: Int64
     var schedule: Int16
@@ -54,6 +55,7 @@ struct WatchlistItemBackup: Codable, Equatable {
         watched = item.watched
         watchedDate = item.watchedDate
         dateAdded = item.dateAdded
+        manualOrder = item.manualOrder
         favorite = item.favorite
         contentType = item.contentType
         schedule = item.schedule
@@ -93,6 +95,7 @@ struct WatchlistItemBackup: Codable, Equatable {
         watched = try values.decodeIfPresent(Bool.self, forKey: .watched) ?? false
         watchedDate = try values.decodeIfPresent(Date.self, forKey: .watchedDate)
         dateAdded = try values.decodeIfPresent(Date.self, forKey: .dateAdded)
+        manualOrder = try values.decodeIfPresent(Int64.self, forKey: .manualOrder) ?? 0
         favorite = try values.decodeIfPresent(Bool.self, forKey: .favorite) ?? false
         contentType = try values.decode(Int64.self, forKey: .contentType)
         schedule = try values.decodeIfPresent(Int16.self, forKey: .schedule) ?? 0
@@ -135,6 +138,9 @@ extension WatchlistItem {
         // Older backups have no date added: keep the one already stored.
         if let dateAdded = backup.dateAdded {
             self.dateAdded = dateAdded
+        }
+        if backup.manualOrder > 0 {
+            manualOrder = backup.manualOrder
         }
         favorite = backup.favorite
         contentType = backup.contentType

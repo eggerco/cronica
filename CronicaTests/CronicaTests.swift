@@ -339,6 +339,39 @@ final class CronicaTests: XCTestCase {
                        ["Second", "First", "Undated A", "Undated B"])
     }
 
+    func testManualOrderMergeKeepsHiddenItemsInPlace() {
+        final class Box {
+            let name: String
+            init(_ name: String) { self.name = name }
+        }
+        let a = Box("A"), b = Box("B"), c = Box("C"), d = Box("D")
+        // B and D are visible and swapped; A and C are hidden by a filter.
+        let merged = WatchlistSortOrder.merge([d, b], into: [a, b, c, d])
+        XCTAssertEqual(merged.map(\.name), ["A", "D", "C", "B"])
+    }
+
+    func testManualOrderForWatchlistAndCustomList() {
+        let titles = ["Alpha", "Bravo", "Charlie"]
+        let items = titles.enumerated().map { index, title in
+            let item = WatchlistItem(context: managedContext)
+            item.title = title
+            item.id = Int64(index)
+            item.contentID = "\(index)@0"
+            item.contentType = MediaType.movie.toInt
+            return item
+        }
+        let list = CustomList(context: managedContext)
+        list.id = UUID()
+        list.title = "Manual Test"
+        list.items = NSSet(array: items)
+
+        persistence.saveManualOrder([items[2], items[0]])
+        XCTAssertEqual(WatchlistSortOrder.manual.sort(items).map(\.itemTitle), ["Charlie", "Alpha", "Bravo"])
+
+        persistence.saveManualOrder([items[1], items[2], items[0]], in: list)
+        XCTAssertEqual(list.sortedItems(by: .manual).map(\.itemTitle), ["Bravo", "Charlie", "Alpha"])
+    }
+
     func testWatchlistSortPinnedFirstKeepsSortOrder() {
         let titles = ["Delta", "Alpha", "Charlie", "Bravo"]
         let items = titles.enumerated().map { index, title in

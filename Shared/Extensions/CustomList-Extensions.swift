@@ -33,7 +33,11 @@ extension CustomList {
     }
 
     func sortedItems(by order: WatchlistSortOrder, pinnedFirst: Bool = false) -> [WatchlistItem] {
-        order.sort(itemsSet, pinnedFirst: pinnedFirst)
+        let ids = itemOrder?.split(separator: ",").map(String.init) ?? []
+        let positions = Dictionary(ids.enumerated().map { ($1, $0) }, uniquingKeysWith: { first, _ in first })
+        return order.sort(itemsSet, pinnedFirst: pinnedFirst) { item in
+            item.contentID.flatMap { positions[$0] }
+        }
     }
 
     var itemIDToString: String {

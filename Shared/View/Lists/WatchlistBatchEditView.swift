@@ -10,6 +10,9 @@ import CoreData
 struct WatchlistBatchEditView: View {
     let items: [WatchlistItem]
     @Binding var isPresented: Bool
+    /// Called with the visible items in their new order after a drag; nil disables reordering.
+    var onReorder: (([WatchlistItem]) -> Void)?
+    @State private var orderedItems: [WatchlistItem] = []
     @State private var selection = Set<NSManagedObjectID>()
     @State private var showDeleteConfirm = false
     private let persistence = PersistenceController.shared
@@ -17,18 +20,27 @@ struct WatchlistBatchEditView: View {
     var body: some View {
         NavigationStack {
             List(selection: $selection) {
-                ForEach(items, id: \.objectID) { item in
-                    HStack {
-                        Text(item.itemTitle)
-                        Spacer()
-                        if item.isWatched {
-                            Image(systemName: "checkmark.circle.fill")
-                                .foregroundStyle(.secondary)
+                Section {
+                    ForEach(orderedItems, id: \.objectID) { item in
+                        HStack {
+                            Text(item.itemTitle)
+                            Spacer()
+                            if item.isWatched {
+                                Image(systemName: "checkmark.circle.fill")
+                                    .foregroundStyle(.secondary)
+                            }
                         }
+                        .tag(item.objectID)
                     }
-                    .tag(item.objectID)
+                    .onMove(perform: onReorder == nil ? nil : move)
+                } footer: {
+                    if onReorder != nil {
+                        Text("Drag to reorder. The list then uses Manual Order.")
+                    }
                 }
             }
+            .onAppear { orderedItems = items }
+            .onChange(of: items.map(\.objectID)) { orderedItems = items }
 #if os(iOS) || os(visionOS)
             .environment(\.editMode, .constant(.active))
 #endif
@@ -80,6 +92,11 @@ struct WatchlistBatchEditView: View {
             Label("Delete", systemImage: "trash")
         }
         .disabled(selection.isEmpty)
+    }
+
+    private func move(from source: IndexSet, to destination: Int) {
+        orderedItems.move(fromOffsets: source, toOffset: destination)
+        onReorder?(orderedItems)
     }
 
     private var selectedItems: [WatchlistItem] {

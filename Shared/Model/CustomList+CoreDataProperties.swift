@@ -25,6 +25,8 @@ extension CustomList {
     @NSManaged public var isSyncEnabledTMDB: Bool
     @NSManaged public var idOnTMDb: Int64
     @NSManaged public var isPin: Bool
+    /// Content IDs in the user's manual order, comma separated.
+    @NSManaged public var itemOrder: String?
 
 }
 
