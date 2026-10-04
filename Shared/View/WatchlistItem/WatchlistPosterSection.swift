@@ -18,11 +18,12 @@ struct WatchlistPosterSection: View {
     var body: some View {
         if !items.isEmpty {
             ScrollView {
-                LazyVGrid(columns: settings.isCompactUI ? DrawingConstants.compactColumns : DrawingConstants.posterColumns,
+                LazyVGrid(columns: columns,
                           spacing: settings.isCompactUI ? 10 : 20) {
                     Section {
                         ForEach(items, id: \.itemContentID) { item in
-                            WatchlistItemPosterView(content: item, showPopup: $showPopup, popupType: $popupType)
+                            WatchlistItemPosterView(content: item, showPopup: $showPopup, popupType: $popupType,
+                                                    fillsColumn: fixedColumnCount != nil)
                                 .buttonStyle(.plain)
 #if os(tvOS)
                                 .padding(.vertical)
@@ -50,6 +51,22 @@ struct WatchlistPosterSection: View {
         }
     }
     
+    /// User-chosen column count, or nil to keep the adaptive layout.
+    private var fixedColumnCount: Int? {
+#if os(tvOS)
+        nil
+#else
+        settings.watchlistPosterColumns > 0 ? settings.watchlistPosterColumns : nil
+#endif
+    }
+
+    private var columns: [GridItem] {
+        if let count = fixedColumnCount {
+            return Array(repeating: GridItem(.flexible(), spacing: settings.isCompactUI ? 10 : 20), count: count)
+        }
+        return settings.isCompactUI ? DrawingConstants.compactColumns : DrawingConstants.posterColumns
+    }
+
     private func delete(offsets: IndexSet) {
         withAnimation {
             offsets.map { items[$0] }.forEach(context.delete)

@@ -73,6 +73,9 @@ final class SettingsStore: ObservableObject {
     @AppStorage("exploreDisplayType") var sectionStyleType: SectionDetailsPreferredStyle = .card
 #endif
     @AppStorage("preferCompactUI") var isCompactUI = false
+    /// Fixed number of columns for the watchlist card and poster grids; 0 keeps the adaptive layout.
+    @AppStorage("watchlistCardColumns") var watchlistCardColumns = 0
+    @AppStorage("watchlistPosterColumns") var watchlistPosterColumns = 0
     @AppStorage("selectedWatchProviderEnabled") var isSelectedWatchProviderEnabled = false
     @AppStorage("selectedWatchProviders") var selectedWatchProviders = ""
     @AppStorage("userHasImportedFromTMDB") var userImportedTMDB = false

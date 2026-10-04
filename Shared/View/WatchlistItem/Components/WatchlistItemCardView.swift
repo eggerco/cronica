@@ -18,6 +18,8 @@ struct WatchlistItemCardView: View {
     @State private var showCustomListView = false
     @Binding var showPopup: Bool
     @Binding var popupType: ActionPopupItems?
+    /// Stretches the card to its grid column instead of using the fixed width.
+    var fillsColumn = false
 #if os(tvOS)
     @FocusState var isStackFocused: Bool
 #elseif os(macOS)
@@ -36,8 +38,9 @@ struct WatchlistItemCardView: View {
                     }
                 }
                 .transition(.opacity)
-                .frame(width: DrawingConstants.imageWidth,
-                       height: DrawingConstants.imageHeight)
+                .watchlistTileFrame(width: DrawingConstants.imageWidth,
+                                    height: DrawingConstants.imageHeight,
+                                    fillsColumn: fillsColumn)
                 .clipShape(RoundedRectangle(cornerRadius: DrawingConstants.imageRadius,
                                             style: .continuous))
                 .shadow(color: .black.opacity(0.2), radius: 5, x: 0, y: 5)
@@ -64,7 +67,8 @@ struct WatchlistItemCardView: View {
             }
             Spacer()
         }
-        .frame(width: DrawingConstants.imageWidth)
+        .frame(width: fillsColumn ? nil : DrawingConstants.imageWidth)
+        .frame(maxWidth: fillsColumn ? .infinity : nil)
         .task {
             isWatched = content.isWatched
             isFavorite = content.isFavorite
@@ -152,9 +156,24 @@ struct WatchlistItemCardView: View {
             }
             .padding()
         }
-        .frame(width: DrawingConstants.imageWidth,
-               height: DrawingConstants.imageHeight)
+        .frame(width: fillsColumn ? nil : DrawingConstants.imageWidth,
+               height: fillsColumn ? nil : DrawingConstants.imageHeight)
         .clipShape(RoundedRectangle(cornerRadius: DrawingConstants.imageRadius, style: .continuous))
+    }
+}
+
+extension View {
+    /// Fixed-size frame for a watchlist tile, or a column-wide frame keeping the same aspect ratio.
+    @ViewBuilder
+    func watchlistTileFrame(width: CGFloat, height: CGFloat, fillsColumn: Bool) -> some View {
+        if fillsColumn {
+            Color.clear
+                .aspectRatio(width / height, contentMode: .fit)
+                .overlay { self }
+                .clipped()
+        } else {
+            frame(width: width, height: height)
+        }
     }
 }
 
