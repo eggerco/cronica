@@ -33,6 +33,8 @@ public struct ItemContent: Identifiable, Codable, Hashable, Sendable {
     public let episodeRunTime: [Int]?
     /// Asset catalog placeholder key used by the widget extension.
     public var placeholderImagePath: String?
+    /// Crew job of a person's credit (e.g. "Director"), only set in combined credits.
+    public var job: String?
 
     public init(
         adult: Bool?, id: Int, title: String?, name: String?, overview: String?, originalTitle: String?,
@@ -91,6 +93,7 @@ public struct ItemContent: Identifiable, Codable, Hashable, Sendable {
         case recommendations, releaseDates, contentRatings, mediaType, videos
         case nextEpisodeToAir, lastEpisodeToAir
         case originalName, firstAirDate, homepage, episodeRunTime
+        case job
     }
 }
 public struct ProductionCompany: Identifiable, Codable, Hashable {
