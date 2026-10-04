@@ -13,24 +13,7 @@ struct CustomListView: View {
     @State private var showPopup = false
     @State private var popupType: ActionPopupItems?
 	private var sortedItems: [WatchlistItem] {
-		switch sortOrder {
-		case .titleAsc:
-			return list?.itemsArray.sorted { $0.itemTitle < $1.itemTitle } ?? []
-		case .titleDesc:
-			return list?.itemsArray.sorted { $0.itemTitle > $1.itemTitle } ?? []
-		case .ratingAsc:
-			return list?.itemsArray.sorted { $0.userRating < $1.userRating } ?? []
-		case .ratingDesc:
-			return list?.itemsArray.sorted { $0.userRating > $1.userRating } ?? []
-		case .dateAsc:
-			return list?.itemsArray.sorted { $0.itemSortDate < $1.itemSortDate } ?? []
-		case .dateDesc:
-			return list?.itemsArray.sorted { $0.itemSortDate > $1.itemSortDate } ?? []
-		case .watchedDateAsc:
-			return list?.sortedItems(by: .watchedDateAsc) ?? []
-		case .watchedDateDesc:
-			return list?.sortedItems(by: .watchedDateDesc) ?? []
-		}
+		list?.sortedItems(by: sortOrder) ?? []
 	}
     var body: some View {
         if let list {

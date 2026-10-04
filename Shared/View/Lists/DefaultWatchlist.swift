@@ -26,24 +26,7 @@ struct DefaultWatchlist: View {
     @State private var showFilters = false
     @State private var showBatchEdit = false
     private var sortedItems: [WatchlistItem] {
-        switch sortOrder {
-        case .titleAsc:
-            items.sorted { $0.itemTitle < $1.itemTitle }
-        case .titleDesc:
-            items.sorted { $0.itemTitle > $1.itemTitle }
-        case .ratingAsc:
-            items.sorted { $0.userRating < $1.userRating }
-        case .ratingDesc:
-            items.sorted { $0.userRating > $1.userRating }
-        case .dateAsc:
-            items.sorted { $0.itemSortDate < $1.itemSortDate }
-        case .dateDesc:
-            items.sorted { $0.itemSortDate > $1.itemSortDate }
-        case .watchedDateAsc:
-            items.sorted { ($0.watchedDate ?? .distantPast) < ($1.watchedDate ?? .distantPast) }
-        case .watchedDateDesc:
-            items.sorted { ($0.watchedDate ?? .distantPast) > ($1.watchedDate ?? .distantPast) }
-        }
+        sortOrder.sort(items, pinnedFirst: settings.showPinnedOnTop)
     }
     private var smartFiltersItems: [WatchlistItem] {
         let visible = sortedItems.filter { !$0.hideFromWatchlist }
@@ -333,6 +316,7 @@ struct DefaultWatchlist: View {
 #else
                    .pickerStyle(.inline)
 #endif
+            Toggle("Pinned Items on Top", isOn: $settings.showPinnedOnTop)
         } label: {
             Image(systemName: "line.3.horizontal.decrease.circle")
                 .accessibilityLabel("Sort List")

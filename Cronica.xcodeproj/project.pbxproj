@@ -490,6 +490,7 @@
 		4D1CBB5EC636413B89C4775F /* Watchlist 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Watchlist 3.xcdatamodel"; sourceTree = "<group>"; };
 		5EDAFB5B97814CCAA33BAF20 /* Watchlist 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Watchlist 2.xcdatamodel"; sourceTree = "<group>"; };
 		626D958D716E4738B4CE9577 /* Watchlist 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Watchlist 4.xcdatamodel"; sourceTree = "<group>"; };
+		C0MODELV5000000000000001 /* Watchlist 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Watchlist 5.xcdatamodel"; sourceTree = "<group>"; };
 		B801070C29F255F3008A4551 /* DefaultListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultListView.swift; sourceTree = "<group>"; };
 		B801070E29F25615008A4551 /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
 		B801071029F2562C008A4551 /* WatchlistSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistSectionView.swift; sourceTree = "<group>"; };
@@ -3182,8 +3183,9 @@
 				5EDAFB5B97814CCAA33BAF20 /* Watchlist 2.xcdatamodel */,
 				4D1CBB5EC636413B89C4775F /* Watchlist 3.xcdatamodel */,
 				626D958D716E4738B4CE9577 /* Watchlist 4.xcdatamodel */,
+				C0MODELV5000000000000001 /* Watchlist 5.xcdatamodel */,
 			);
-			currentVersion = 626D958D716E4738B4CE9577 /* Watchlist 4.xcdatamodel */;
+			currentVersion = C0MODELV5000000000000001 /* Watchlist 5.xcdatamodel */;
 			path = Watchlist.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

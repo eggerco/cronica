@@ -18,6 +18,7 @@ extension PersistenceController {
         item.id = Int64(content.id)
         item.tmdbID = Int64(content.id)
         item.contentID = content.itemContentID
+        item.dateAdded = Date()
         item.imdbID = content.imdbId
         item.posterPath = content.posterPath
         item.backdropPath = content.backdropPath
