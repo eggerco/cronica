@@ -21,6 +21,9 @@ struct PersonDetailsView: View {
     @State private var catalogFailure: TMDBConnectionFailure?
     @State private var person: Person?
     @State private var credits = [ItemContent]()
+    @State private var actingCredits = [ItemContent]()
+    @State private var directingCredits = [ItemContent]()
+    @State private var creditFilter: PersonCreditFilter = .all
     @State private var query: String = ""
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     var body: some View {
@@ -62,7 +65,21 @@ struct PersonDetailsView: View {
                     }
                 }
                 
-                FilmographyListView(filmography: credits,
+                if !directingCredits.isEmpty {
+                    Picker("Filmography", selection: $creditFilter) {
+                        ForEach(availableCreditFilters) { filter in
+                            Text(filter.title).tag(filter)
+                        }
+                    }
+                    .labelsHidden()
+                    .padding(.horizontal)
+#if !os(watchOS)
+                    .pickerStyle(.segmented)
+                    .cronicaSensoryFeedback(.selection, trigger: creditFilter)
+#endif
+                }
+
+                FilmographyListView(filmography: filteredCredits,
                                     showPopup: $showPopup,
                                     popupType: $popupType)
                 .padding(.bottom)
@@ -224,6 +241,27 @@ private struct DrawingConstants {
 }
 
 private extension PersonDetailsView {
+    /// Hides "Acting" for people with no on-screen credits.
+    var availableCreditFilters: [PersonCreditFilter] {
+        PersonCreditFilter.allCases.filter { $0 != .acting || !actingCredits.isEmpty }
+    }
+
+    var filteredCredits: [ItemContent] {
+        switch creditFilter {
+        case .all: credits
+        case .acting: actingCredits
+        case .directing: directingCredits
+        }
+    }
+
+    /// A title can appear several times in combined credits (cast and crew, or several jobs).
+    static func uniqueByPopularity(_ items: [ItemContent]) -> [ItemContent] {
+        var seen = Set<String>()
+        return items
+            .sorted { $0.itemPopularity > $1.itemPopularity }
+            .filter { seen.insert($0.itemContentID).inserted }
+    }
+
     func load() {
         Task {
             if Task.isCancelled { return }
@@ -236,10 +274,12 @@ private extension PersonDetailsView {
                     if let person {
                         let cast = person.combinedCredits?.cast?.filter { $0.itemIsAdult == false } ?? []
                         let crew = person.combinedCredits?.crew?.filter { $0.itemIsAdult == false } ?? []
-                        let combinedCredits = cast + crew
-                        if !combinedCredits.isEmpty {
-                            let combined = Array(Set(combinedCredits))
-                            credits = combined.sorted(by: { $0.itemPopularity > $1.itemPopularity })
+                        credits = Self.uniqueByPopularity(cast + crew)
+                        actingCredits = Self.uniqueByPopularity(cast)
+                        directingCredits = Self.uniqueByPopularity(crew.filter { $0.job == "Director" })
+                        // Open directors' pages on the titles they directed.
+                        if person.knownForDepartment == "Directing", !directingCredits.isEmpty {
+                            creditFilter = .directing
                         }
                     }
                     await MainActor.run {
@@ -291,5 +331,19 @@ private struct PersonImageProfileView: View {
         .frame(width: DrawingConstants.imageWidth, height: DrawingConstants.imageHeight)
         .shadow(color: .black.opacity(0.2), radius: 10, x: 0, y: 10)
         .accessibilityHidden(true)
+    }
+}
+
+/// Which credits the person page lists.
+enum PersonCreditFilter: String, CaseIterable, Identifiable {
+    case all, acting, directing
+    var id: String { rawValue }
+
+    var title: String {
+        switch self {
+        case .all: String(localized: "All")
+        case .acting: String(localized: "Acting")
+        case .directing: String(localized: "Directing")
+        }
     }
 }
