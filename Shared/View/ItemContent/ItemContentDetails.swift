@@ -211,10 +211,15 @@ struct ItemContentDetails: View {
                     .padding(.horizontal, DrawingConstants.contentHorizontalInset)
             }
 
+            directorCredit
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, DrawingConstants.contentHorizontalInset)
+                .padding(.top, 2)
+
             watchedDateCaption
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.horizontal, DrawingConstants.contentHorizontalInset)
-            
+
             VStack(spacing: 12) {
                 HStack(spacing: 12) {
                     watchlistButton
@@ -306,7 +311,10 @@ struct ItemContentDetails: View {
                     Text(title)
                         .fontWeight(.semibold)
                         .font(.title)
-                        .padding(.bottom)
+                        .padding(.bottom, 2)
+                    directorCredit
+                    Spacer()
+                        .frame(height: 12)
                     HStack {
                         Text(viewModel.content?.itemOverview ?? "")
                             .lineLimit(10)
@@ -768,6 +776,42 @@ extension ItemContentDetails {
 #else
         store.accentColor
 #endif
+    }
+
+    /// "Directed by …" line for movies; opens the director's page, or a list when there are several.
+    @ViewBuilder
+    private var directorCredit: some View {
+        let directors = type == .movie ? viewModel.content?.itemDirectors ?? [] : []
+        if let first = directors.first {
+            let names = directors.map(\.name).formatted(.list(type: .and))
+            Group {
+                if directors.count == 1 {
+                    NavigationLink(value: first) {
+                        directorCreditLabel(names)
+                    }
+                } else {
+                    NavigationLink(value: PeopleListDestination(title: String(localized: "Directors"),
+                                                                people: directors)) {
+                        directorCreditLabel(names)
+                    }
+                }
+            }
+            .buttonStyle(.plain)
+        }
+    }
+
+    private func directorCreditLabel(_ names: String) -> some View {
+        HStack(spacing: 2) {
+            Text("Directed by \(names)")
+                .lineLimit(2)
+            Image(systemName: "chevron.forward")
+                .font(.caption2.weight(.semibold))
+                .accessibilityHidden(true)
+        }
+        .font(.subheadline)
+        .foregroundStyle(.secondary)
+        .fontDesign(.rounded)
+        .contentShape(Rectangle())
     }
 
     private var detailMetadataSubtitle: String? {

@@ -40,6 +40,11 @@ public extension ItemContent {
         let output = genreTitles.joined(separator: ", ")
         return output
     }
+    /// Crew members credited with the "Director" job, without duplicates, in credits order.
+    var itemDirectors: [Person] {
+        var seen = Set<Int>()
+        return (credits?.crew ?? []).filter { $0.job == "Director" && seen.insert($0.id).inserted }
+    }
     var itemCountry: String {
         if let country = productionCountries?.first?.name { return country }
         return String(localized: "Not Available", bundle: .main)
