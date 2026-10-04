@@ -87,6 +87,18 @@ extension PersistenceController {
         list.isPin.toggle()
         save()
     }
+
+    /// Saves `ordered` as the manual order of `list`, or of the watchlist when `list` is nil.
+    func saveManualOrder(_ ordered: [WatchlistItem], in list: CustomList? = nil) {
+        if let list {
+            list.itemOrder = ordered.compactMap(\.contentID).joined(separator: ",")
+        } else {
+            for (index, item) in ordered.enumerated() where item.manualOrder != Int64(index + 1) {
+                item.manualOrder = Int64(index + 1)
+            }
+        }
+        save()
+    }
     
     func addItemsToList(items: Set<WatchlistItem>, list: CustomList) {
         var set = Set<WatchlistItem>()
