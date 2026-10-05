@@ -207,9 +207,22 @@ actor TMDBAccountAPIClient {
             request.setValue(etag, forHTTPHeaderField: "If-None-Match")
         }
 
-        let (data, response) = try await URLSession.shared.data(for: request)
-        guard let http = response as? HTTPURLResponse else {
-            throw LibraryImportError.invalidResponse
+        let data: Data
+        let http: HTTPURLResponse
+        do {
+            let result = try await URLSession.shared.data(for: request)
+            data = result.0
+            guard let response = result.1 as? HTTPURLResponse else {
+                throw LibraryImportError.invalidResponse
+            }
+            http = response
+        } catch let error as LibraryImportError {
+            throw error
+        } catch {
+            if let failure = TMDBConnectionFailure.classify(error) {
+                throw failure
+            }
+            throw error
         }
 
         if http.statusCode == 304 {
@@ -239,6 +252,9 @@ actor TMDBAccountAPIClient {
         }
 
         guard (200...299).contains(http.statusCode) else {
+            if http.statusCode == 403 {
+                throw TMDBConnectionFailure.accessDenied
+            }
             throw LibraryImportError.message("TMDB request failed (\(http.statusCode)).")
         }
 
@@ -302,11 +318,23 @@ actor TMDBAccountAPIClient {
     }
 
     private func send<T: Decodable>(_ request: URLRequest) async throws -> T {
-        let (data, response) = try await URLSession.shared.data(for: request)
+        let data: Data
+        let response: URLResponse
+        do {
+            (data, response) = try await URLSession.shared.data(for: request)
+        } catch {
+            if let failure = TMDBConnectionFailure.classify(error) {
+                throw failure
+            }
+            throw error
+        }
         guard let http = response as? HTTPURLResponse else {
             throw LibraryImportError.invalidResponse
         }
         guard (200...299).contains(http.statusCode) else {
+            if http.statusCode == 403 {
+                throw TMDBConnectionFailure.accessDenied
+            }
             throw LibraryImportError.message("TMDB request failed (\(http.statusCode)).")
         }
         do {

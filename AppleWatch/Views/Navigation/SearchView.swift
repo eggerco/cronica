@@ -13,17 +13,14 @@ struct TrendingView: View {
     @State private var trending = [ItemContent]()
     @State private var isLoaded = false
     @State private var showError = false
+    @State private var catalogFailure: TMDBConnectionFailure?
     var body: some View {
         NavigationStack {
             Form {
                 Section {
                     if showError && trending.isEmpty {
-                        ContentUnavailableView {
-                            Label("Couldn't Load", systemImage: "wifi.exclamationmark")
-                        } description: {
-                            Text("Check your connection and try again.")
-                        } actions: {
-                            Button("Retry") { load(force: true) }
+                        TMDBCatalogUnavailableView(failure: catalogFailure) {
+                            load(force: true)
                         }
                     } else {
                         List {
@@ -54,6 +51,7 @@ struct TrendingView: View {
         Task {
             if isLoaded && !force { return }
             showError = false
+            catalogFailure = nil
             if force {
                 isLoaded = false
             }
@@ -65,6 +63,7 @@ struct TrendingView: View {
             } catch {
                 if Task.isCancelled { return }
                 showError = trending.isEmpty
+                catalogFailure = TMDBConnectionFailure.classify(error)
                 isLoaded = true
             }
         }

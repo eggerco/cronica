@@ -25,6 +25,7 @@ struct ExploreView: View {
     @State private var isLoaded: Bool = false
     @State private var isLoadingMore = false
     @State private var showErrorDialog: Bool = false
+    @State private var catalogErrorMessage = String(localized: "Check your connection and try again.")
     @AppStorage("exploreViewHideAddedItems") private var hideAddedItems = false
     // MARK: Pagination Properties
     @State private var currentPage: Int = 0
@@ -173,7 +174,7 @@ struct ExploreView: View {
 #endif
         }
         .cronicaLoadingOverlay(!isLoaded)
-        .cronicaErrorAlert(isPresented: $showErrorDialog) {
+        .cronicaErrorAlert(isPresented: $showErrorDialog, message: catalogErrorMessage) {
             Task { await load() }
         }
         .actionPopup(isShowing: $showPopup, for: popupType)
@@ -596,6 +597,7 @@ extension ExploreView {
             if Task.isCancelled { return }
             CronicaTelemetry.shared.handleMessage(error.localizedDescription,
                                                   for: "ExploreView.fetch()")
+            catalogErrorMessage = TMDBConnectionFailure.userFacingMessage(for: error)
             withAnimation { isLoaded = true }
             showErrorDialog = true
         }

@@ -114,6 +114,7 @@ class ItemContentViewModel: ObservableObject {
                 if Task.isCancelled { return }
                 withAnimation { isLoading = false }
                 showErrorAlert = true
+                errorMessage = TMDBConnectionFailure.userFacingMessage(for: error)
                 content = nil
                 let message = "ID: \(id), type: \(type.title), error: \(error.localizedDescription)"
                 CronicaTelemetry.shared.handleMessage(message, for: "ItemContentViewModel.load()")

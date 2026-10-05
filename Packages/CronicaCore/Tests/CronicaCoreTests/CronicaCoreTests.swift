@@ -9,6 +9,26 @@ final class CronicaCoreTests: XCTestCase {
     func testNetworkErrorDescriptions() {
         XCTAssertFalse(NetworkError.invalidApi.localizedName.isEmpty)
         XCTAssertFalse(NetworkError.decodingError.localizedName.isEmpty)
+        XCTAssertFalse(NetworkError.unreachable.localizedName.isEmpty)
+        XCTAssertFalse(NetworkError.accessDenied.localizedName.isEmpty)
+    }
+
+    func testTMDBConnectionFailureClassifiesTransportErrors() {
+        XCTAssertEqual(TMDBConnectionFailure.classify(URLError(.cannotConnectToHost)), .unreachable)
+        XCTAssertEqual(TMDBConnectionFailure.classify(URLError(.cannotFindHost)), .unreachable)
+        XCTAssertEqual(TMDBConnectionFailure.classify(URLError(.dnsLookupFailed)), .unreachable)
+        XCTAssertEqual(TMDBConnectionFailure.classify(URLError(.timedOut)), .unreachable)
+        XCTAssertEqual(TMDBConnectionFailure.classify(URLError(.notConnectedToInternet)), .offline)
+        XCTAssertEqual(TMDBConnectionFailure.classify(NetworkError.accessDenied), .accessDenied)
+        XCTAssertNil(TMDBConnectionFailure.classify(NetworkError.decodingError))
+        XCTAssertNil(TMDBConnectionFailure.classify(NetworkError.contentRemoved))
+        XCTAssertTrue(TMDBConnectionFailure.unreachable.showsRegionHelp)
+        XCTAssertFalse(TMDBConnectionFailure.offline.showsRegionHelp)
+        XCTAssertFalse(TMDBConnectionFailure.unreachable.message.isEmpty)
+        XCTAssertEqual(
+            TMDBConnectionFailure.userFacingMessage(for: URLError(.cannotConnectToHost)),
+            TMDBConnectionFailure.unreachable.message
+        )
     }
 
     func testItemContentIDFormat() {

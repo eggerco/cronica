@@ -6,11 +6,14 @@
 //
 
 import Foundation
-import SwiftUI
 
-public enum NetworkError: Error, CustomNSError {
+public enum NetworkError: Error, Equatable, CustomNSError, LocalizedError {
     case invalidResponse, invalidRequest, invalidEndpoint, decodingError
     case invalidApi, internalError, maintenanceApi, contentRemoved
+    case offline, unreachable, accessDenied
+
+    public var errorDescription: String? { localizedName }
+
     public var localizedName: String {
         switch self {
         case .invalidResponse:
@@ -29,6 +32,12 @@ public enum NetworkError: Error, CustomNSError {
             return String(localized: "The API is undergoing maintenance. Try again later.", bundle: .main)
         case .contentRemoved:
             return String(localized: "This content has been removed from TMDB, you can delete it.", bundle: .main)
+        case .offline:
+            return TMDBConnectionFailure.offline.message
+        case .unreachable:
+            return TMDBConnectionFailure.unreachable.message
+        case .accessDenied:
+            return TMDBConnectionFailure.accessDenied.message
         }
     }
 }

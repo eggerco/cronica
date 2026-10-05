@@ -16,8 +16,10 @@ class HomeViewModel: ObservableObject {
     /// Remote TMDB rails keyed by endpoint.
     @Published var sectionResults: [Endpoints: [ItemContent]] = [:]
     @Published var isLoaded = false
+    @Published private(set) var catalogFailure: TMDBConnectionFailure?
 
     func load(visibleKinds: [HomeSectionKind]) async {
+        catalogFailure = nil
         let needsFeatured = visibleKinds.contains(.featured)
         if needsFeatured, featured.isEmpty {
             do {
@@ -25,6 +27,7 @@ class HomeViewModel: ObservableObject {
                 featured = Self.filterFeaturedItems(result)
             } catch {
                 if Task.isCancelled { return }
+                rememberCatalogFailure(error)
                 CronicaTelemetry.shared.handleMessage(error.localizedDescription, for: "HomeViewModel.load.featured")
             }
         }
@@ -60,8 +63,15 @@ class HomeViewModel: ObservableObject {
             return .init(results: filtered, endpoint: endpoint)
         } catch {
             if Task.isCancelled { return nil }
+            rememberCatalogFailure(error)
             CronicaTelemetry.shared.handleMessage(error.localizedDescription, for: "HomeViewModel.fetchSection.\(endpoint)")
             return nil
+        }
+    }
+
+    private func rememberCatalogFailure(_ error: Error) {
+        if let classified = TMDBConnectionFailure.classify(error) {
+            catalogFailure = classified
         }
     }
 

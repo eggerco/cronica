@@ -69,6 +69,9 @@ struct AboutSettings: View {
                     title: "The Movie Database",
                     url: "https://www.themoviedb.org"
                 )
+                NavigationLink("Can't load titles from TMDB?") {
+                    TMDBUnavailableHelpView()
+                }
                 aboutButton(
                     title: "SIMKL",
                     url: "https://simkl.com"

@@ -301,7 +301,17 @@ public final class NetworkService: Sendable {
             AppLogger.network.error("TMDb API key is not configured")
             throw NetworkError.invalidApi
         }
-        let (data, response) = try await URLSession.shared.data(from: url)
+        let data: Data
+        let response: URLResponse
+        do {
+            (data, response) = try await URLSession.shared.data(from: url)
+        } catch {
+            if let failure = TMDBConnectionFailure.classify(error) {
+                AppLogger.network.error("TMDB unreachable: \(error.localizedDescription)")
+                throw failure.asNetworkError
+            }
+            throw error
+        }
         guard let httpResponse = response as? HTTPURLResponse else { throw NetworkError.invalidResponse }
         if ignoreStatusCodes.contains(httpResponse.statusCode) {
             return nil
@@ -341,6 +351,7 @@ public final class NetworkService: Sendable {
         switch response.statusCode {
         case 200...299: return nil
         case 401: return .invalidApi
+        case 403: return .accessDenied
         case 404: return .contentRemoved
         case 429: return .maintenanceApi
         case 503: return .maintenanceApi

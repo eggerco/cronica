@@ -39,7 +39,6 @@ struct HomeView: View {
         .accessibilityIdentifier("Home View")
 #if os(iOS)
         .refreshable {
-            guard !shouldShowRemoteLoadFailure else { return }
             reloadHome = true
             viewModel.reload()
         }
@@ -139,21 +138,23 @@ struct HomeView: View {
 
     private var homeLoadFailureView: some View {
         ScrollView {
-            ContentUnavailableView {
-                Label("Couldn't Load Home", systemImage: "wifi.exclamationmark")
-            } description: {
-#if os(iOS)
-                Text("Pull to refresh or try again.")
-#else
-                Text("Check your connection and try again.")
-#endif
-            } actions: {
-                Button("Retry") { viewModel.reload() }
-                    .buttonStyle(.borderedProminent)
-            }
+            TMDBCatalogUnavailableView(
+                title: String(localized: "Couldn't Load Home"),
+                failure: viewModel.catalogFailure,
+                fallbackMessage: homeLoadFailureFallbackMessage,
+                retry: { viewModel.reload() }
+            )
             .frame(maxWidth: .infinity)
             .containerRelativeFrame(.vertical)
         }
+    }
+
+    private var homeLoadFailureFallbackMessage: String {
+#if os(iOS)
+        String(localized: "Pull to refresh or try again.")
+#else
+        String(localized: "Check your connection and try again.")
+#endif
     }
 
     /// Show failure UI only when visible remote rails failed to load, not when local rails still have content.

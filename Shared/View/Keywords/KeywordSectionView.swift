@@ -21,6 +21,7 @@ struct KeywordSectionView: View {
     @State private var startPagination = false
     @State private var endPagination = false
     @State private var showError = false
+    @State private var catalogFailure: TMDBConnectionFailure?
     // Network service
     private let network = NetworkService.shared
     var body: some View {
@@ -52,20 +53,29 @@ struct KeywordSectionView: View {
             if !isLoaded {
                 ProgressView().unredacted()
             } else if items.isEmpty {
-                ContentUnavailableView {
-                    Label(showError ? "Couldn't Load" : "Nothing Here",
-                          systemImage: showError ? "wifi.exclamationmark" : "popcorn")
-                } description: {
-                    Text(showError ? "Check your connection and try again." : "Try again later.")
-                } actions: {
-                    Button("Retry") {
+                if showError {
+                    TMDBCatalogUnavailableView(failure: catalogFailure) {
                         showError = false
+                        catalogFailure = nil
                         isLoaded = false
                         page = 1
                         endPagination = false
                         Task { await load(keyword.id, sortBy: sortBy, reload: true) }
                     }
-                    .buttonStyle(.borderedProminent)
+                } else {
+                    ContentUnavailableView {
+                        Label("Nothing Here", systemImage: "popcorn")
+                    } description: {
+                        Text("Try again later.")
+                    } actions: {
+                        Button("Retry") {
+                            isLoaded = false
+                            page = 1
+                            endPagination = false
+                            Task { await load(keyword.id, sortBy: sortBy, reload: true) }
+                        }
+                        .buttonStyle(.borderedProminent)
+                    }
                 }
             }
         }
@@ -219,6 +229,8 @@ extension KeywordSectionView {
             let result = movies + shows
             if result.isEmpty {
                 endPagination = true
+                showError = false
+                catalogFailure = nil
                 isLoaded = true
                 return
             } else {
@@ -228,10 +240,13 @@ extension KeywordSectionView {
                 items.append(contentsOf: result.sorted { $0.itemPopularity > $1.itemPopularity })
             }
             if !startPagination { startPagination = true }
+            showError = false
+            catalogFailure = nil
             isLoaded = true
         } catch {
             if Task.isCancelled { return }
             showError = items.isEmpty
+            catalogFailure = TMDBConnectionFailure.classify(error)
             isLoaded = true
             let message = "Keyword ID: \(id), error: \(error.localizedDescription)"
             CronicaTelemetry.shared.handleMessage(message, for: "KeywordSection.load()")

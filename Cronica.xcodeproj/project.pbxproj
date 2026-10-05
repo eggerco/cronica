@@ -271,6 +271,10 @@
 		C0APPWEBSITEWATCH00000002 /* AppWebsite.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0APPWEBSITE000000000001 /* AppWebsite.swift */; };
 		C0ATTRIBUTIONVIEW000002 /* AttributionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D8AF8E27D4D0550042AEB6 /* AttributionView.swift */; };
 		C0ATTRIBUTIONVIEWW00002 /* AttributionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D8AF8E27D4D0550042AEB6 /* AttributionView.swift */; };
+		C0TMDBCATUNAV000000002 /* TMDBCatalogUnavailableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0TMDBCATUNAV000000001 /* TMDBCatalogUnavailableView.swift */; };
+		C0TMDBCATUNAVWATCH00002 /* TMDBCatalogUnavailableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0TMDBCATUNAV000000001 /* TMDBCatalogUnavailableView.swift */; };
+		C0TMDBHELPVIEW00000002 /* TMDBUnavailableHelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0TMDBHELPVIEW00000001 /* TMDBUnavailableHelpView.swift */; };
+		C0TMDBHELPVIEWWATCH0002 /* TMDBUnavailableHelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0TMDBHELPVIEW00000001 /* TMDBUnavailableHelpView.swift */; };
 		C0CALMGR000000000002 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CALMGR000000000001 /* CalendarManager.swift */; };
 		C0CALMGR000000000003 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CALMGR000000000001 /* CalendarManager.swift */; };
 		C0COLORSTORAGE00000000002 /* Color+Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0COLORSTORAGE00000000001 /* Color+Storage.swift */; };
@@ -746,6 +750,8 @@
 		C0SIRISVC000000000001 /* SiriIntentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriIntentService.swift; sourceTree = "<group>"; };
 		C0SPOTLIGHT0000000001 /* SpotlightIndexManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotlightIndexManager.swift; sourceTree = "<group>"; };
 		C0TMDBCACHE0000000001 /* TMDBAccountListCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAccountListCache.swift; sourceTree = "<group>"; };
+		C0TMDBCATUNAV000000001 /* TMDBCatalogUnavailableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBCatalogUnavailableView.swift; sourceTree = "<group>"; };
+		C0TMDBHELPVIEW00000001 /* TMDBUnavailableHelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBUnavailableHelpView.swift; sourceTree = "<group>"; };
 		C0TMDBPUSH00000000001 /* TMDBPushService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBPushService.swift; sourceTree = "<group>"; };
 		C0TMDBREVUI00000000001 /* TMDBReviewsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBReviewsSection.swift; sourceTree = "<group>"; };
 		C0TMDBSYNC00000000001 /* TMDBSyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBSyncService.swift; sourceTree = "<group>"; };
@@ -1413,6 +1419,8 @@
 			isa = PBXGroup;
 			children = (
 				B8D8AF8E27D4D0550042AEB6 /* AttributionView.swift */,
+				C0TMDBCATUNAV000000001 /* TMDBCatalogUnavailableView.swift */,
+				C0TMDBHELPVIEW00000001 /* TMDBUnavailableHelpView.swift */,
 			);
 			path = TMDB;
 			sourceTree = "<group>";
@@ -2066,6 +2074,8 @@
 				C0APPCONTENTREGIONW0002 /* AppContentRegion.swift in Sources */,
 				C0SEARCHITEMEXTWATCH0002 /* SearchItemContent-Extension.swift in Sources */,
 				C0ATTRIBUTIONVIEWW00002 /* AttributionView.swift in Sources */,
+				C0TMDBCATUNAVWATCH00002 /* TMDBCatalogUnavailableView.swift in Sources */,
+				C0TMDBHELPVIEWWATCH0002 /* TMDBUnavailableHelpView.swift in Sources */,
 				B8C0215B29E0D56C006E9D82 /* ItemContentListPreferredDisplayType.swift in Sources */,
 				B819418E2A0822C30057DA04 /* UpNextEpisode.swift in Sources */,
 				B8FB2A8B2952606A006DAC8E /* AppThemeColors.swift in Sources */,
@@ -2127,6 +2137,8 @@
 				C0APPCONTENTREGION00002 /* AppContentRegion.swift in Sources */,
 				C0SEARCHITEMEXT00000002 /* SearchItemContent-Extension.swift in Sources */,
 				C0ATTRIBUTIONVIEW000002 /* AttributionView.swift in Sources */,
+				C0TMDBCATUNAV000000002 /* TMDBCatalogUnavailableView.swift in Sources */,
+				C0TMDBHELPVIEW00000002 /* TMDBUnavailableHelpView.swift in Sources */,
 				C0SENTRYMGR000000000002 /* SentryManager.swift in Sources */,
 				B8389ED228AB46E3003025BC /* WatchlistSearchScope.swift in Sources */,
 				B8B2F6B72A85E5E700FF0246 /* SearchContentPosterView.swift in Sources */,

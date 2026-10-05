@@ -21,6 +21,7 @@ struct EndpointDetails: View {
     @State private var isLoading = true
     @State private var isLoadingMore = false
     @State private var showError = false
+    @State private var catalogFailure: TMDBConnectionFailure?
     var body: some View {
         VStack {
 #if os(tvOS)
@@ -36,18 +37,26 @@ struct EndpointDetails: View {
         .cronicaLoadingOverlay(isLoading)
         .overlay {
             if !isLoading && items.isEmpty {
-                ContentUnavailableView {
-                    Label(showError ? "Couldn't Load" : "Nothing Here",
-                          systemImage: showError ? "wifi.exclamationmark" : "popcorn")
-                } description: {
-                    Text(showError ? "Check your connection and try again." : "Try again later.")
-                } actions: {
-                    Button("Retry") {
+                if showError {
+                    TMDBCatalogUnavailableView(failure: catalogFailure) {
                         showError = false
+                        catalogFailure = nil
                         isLoading = true
                         Task { await loadMoreItems(for: endpoint) }
                     }
-                    .buttonStyle(.borderedProminent)
+                } else {
+                    ContentUnavailableView {
+                        Label("Nothing Here", systemImage: "popcorn")
+                    } description: {
+                        Text("Try again later.")
+                    } actions: {
+                        Button("Retry") {
+                            showError = false
+                            isLoading = true
+                            Task { await loadMoreItems(for: endpoint) }
+                        }
+                        .buttonStyle(.borderedProminent)
+                    }
                 }
             }
         }
@@ -152,10 +161,12 @@ extension EndpointDetails {
             }
             if result.isEmpty { endPagination = true }
             showError = false
+            catalogFailure = nil
             withAnimation { isLoading = false }
         } catch {
             if Task.isCancelled { return }
             showError = items.isEmpty
+            catalogFailure = TMDBConnectionFailure.classify(error)
             withAnimation { isLoading = false }
         }
     }

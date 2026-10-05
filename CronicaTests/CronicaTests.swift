@@ -200,7 +200,8 @@ final class CronicaTests: XCTestCase {
     func testNetworkErrorDescriptionsAreNonEmpty() {
         let errors: [NetworkError] = [
             .invalidResponse, .invalidRequest, .invalidEndpoint, .decodingError,
-            .invalidApi, .internalError, .maintenanceApi, .contentRemoved
+            .invalidApi, .internalError, .maintenanceApi, .contentRemoved,
+            .offline, .unreachable, .accessDenied
         ]
         for error in errors {
             XCTAssertFalse(error.localizedName.isEmpty)

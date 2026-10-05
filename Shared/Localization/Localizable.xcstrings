@@ -29413,6 +29413,182 @@
         }
       }
     },
+    "Can't Reach TMDB": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB nicht erreichbar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Can't Reach TMDB"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не удаётся связаться с TMDB"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не вдається зв’язатися з TMDB"
+          }
+        }
+      }
+    },
+    "Can't load titles from TMDB?": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Titel von TMDB werden nicht geladen?"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Can't load titles from TMDB?"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не загружаются названия из TMDB?"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не завантажуються назви з TMDB?"
+          }
+        }
+      }
+    },
+    "Cronica couldn't connect to The Movie Database. TMDB may be blocked on your network or in your region.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica konnte The Movie Database nicht erreichen. TMDB ist in deinem Netzwerk oder deiner Region möglicherweise gesperrt."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica couldn't connect to The Movie Database. TMDB may be blocked on your network or in your region."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica не удалось подключиться к The Movie Database. TMDB может быть заблокирован в вашей сети или регионе."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica не вдалося підключитися до The Movie Database. TMDB може бути заблокований у вашій мережі або регіоні."
+          }
+        }
+      }
+    },
+    "Cronica loads movies, TV shows, and artwork from The Movie Database (TMDB). If Home is empty or connecting a TMDB account fails, this device cannot reach TMDB — even when other apps work.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica lädt Filme, Serien und Artwork von The Movie Database (TMDB). Wenn die Startseite leer bleibt oder die TMDB-Anmeldung fehlschlägt, erreicht dieses Gerät TMDB nicht — auch wenn andere Apps funktionieren."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica loads movies, TV shows, and artwork from The Movie Database (TMDB). If Home is empty or connecting a TMDB account fails, this device cannot reach TMDB — even when other apps work."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica загружает фильмы, сериалы и постеры из The Movie Database (TMDB). Если главная пустая или не удаётся подключить аккаунт TMDB, это устройство не может связаться с TMDB — даже когда другие приложения работают."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica завантажує фільми, серіали та постери з The Movie Database (TMDB). Якщо головна порожня або не вдається підключити обліковий запис TMDB, цей пристрій не може зв’язатися з TMDB — навіть коли інші програми працюють."
+          }
+        }
+      }
+    },
+    "Open TMDB Website": {
+      "localizations": {
+        "de": { "stringUnit": { "state": "translated", "value": "TMDB-Website öffnen" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Open TMDB Website" } },
+        "ru": { "stringUnit": { "state": "translated", "value": "Открыть сайт TMDB" } },
+        "uk": { "stringUnit": { "state": "translated", "value": "Відкрити сайт TMDB" } }
+      }
+    },
+    "Open themoviedb.org in Safari on this device. If the site does not load, Cronica cannot load the catalog on this network.": {
+      "localizations": {
+        "de": { "stringUnit": { "state": "translated", "value": "Öffne themoviedb.org in Safari auf diesem Gerät. Wenn die Seite nicht lädt, kann Cronica den Katalog in diesem Netzwerk nicht laden." } },
+        "en": { "stringUnit": { "state": "translated", "value": "Open themoviedb.org in Safari on this device. If the site does not load, Cronica cannot load the catalog on this network." } },
+        "ru": { "stringUnit": { "state": "translated", "value": "Откройте themoviedb.org в Safari на этом устройстве. Если сайт не открывается, Cronica не сможет загрузить каталог в этой сети." } },
+        "uk": { "stringUnit": { "state": "translated", "value": "Відкрийте themoviedb.org у Safari на цьому пристрої. Якщо сайт не відкривається, Cronica не зможе завантажити каталог у цій мережі." } }
+      }
+    },
+    "A VPN or a different DNS server (such as Quad9 or Google) sometimes restores access.": {
+      "localizations": {
+        "de": { "stringUnit": { "state": "translated", "value": "Ein VPN oder ein anderer DNS-Server (etwa Quad9 oder Google) stellt den Zugang manchmal wieder her." } },
+        "en": { "stringUnit": { "state": "translated", "value": "A VPN or a different DNS server (such as Quad9 or Google) sometimes restores access." } },
+        "ru": { "stringUnit": { "state": "translated", "value": "VPN или другой DNS (например Quad9 или Google) иногда восстанавливает доступ." } },
+        "uk": { "stringUnit": { "state": "translated", "value": "VPN або інший DNS (наприклад Quad9 чи Google) інколи відновлює доступ." } }
+      }
+    },
+    "Titles, notes, and lists already saved in Cronica stay on this device and in iCloud. Only the online catalog and TMDB account sync need TMDB.": {
+      "localizations": {
+        "de": { "stringUnit": { "state": "translated", "value": "Bereits in Cronica gespeicherte Titel, Notizen und Listen bleiben auf diesem Gerät und in iCloud. Nur der Online-Katalog und die TMDB-Kontosynchronisierung benötigen TMDB." } },
+        "en": { "stringUnit": { "state": "translated", "value": "Titles, notes, and lists already saved in Cronica stay on this device and in iCloud. Only the online catalog and TMDB account sync need TMDB." } },
+        "ru": { "stringUnit": { "state": "translated", "value": "Названия, заметки и списки, уже сохранённые в Cronica, остаются на устройстве и в iCloud. Онлайн-каталог и синхронизация аккаунта TMDB требуют доступа к TMDB." } },
+        "uk": { "stringUnit": { "state": "translated", "value": "Назви, нотатки та списки, уже збережені в Cronica, залишаються на пристрої та в iCloud. Онлайн-каталог і синхронізація облікового запису TMDB потребують доступу до TMDB." } }
+      }
+    },
+    "TMDB blocks access from some countries, including Russia and Belarus. Some internet providers also block TMDB.": {
+      "localizations": {
+        "de": { "stringUnit": { "state": "translated", "value": "TMDB sperrt den Zugang aus einigen Ländern, darunter Russland und Belarus. Manche Internetanbieter sperren TMDB ebenfalls." } },
+        "en": { "stringUnit": { "state": "translated", "value": "TMDB blocks access from some countries, including Russia and Belarus. Some internet providers also block TMDB." } },
+        "ru": { "stringUnit": { "state": "translated", "value": "TMDB блокирует доступ из некоторых стран, в том числе из России и Беларуси. Некоторые провайдеры также блокируют TMDB." } },
+        "uk": { "stringUnit": { "state": "translated", "value": "TMDB блокує доступ із деяких країн, зокрема з Росії та Білорусі. Деякі провайдери також блокують TMDB." } }
+      }
+    },
+    "TMDB blocked this request. The catalog service may be unavailable in your region.": {
+      "localizations": {
+        "de": { "stringUnit": { "state": "translated", "value": "TMDB hat diese Anfrage blockiert. Der Katalogdienst ist in deiner Region möglicherweise nicht verfügbar." } },
+        "en": { "stringUnit": { "state": "translated", "value": "TMDB blocked this request. The catalog service may be unavailable in your region." } },
+        "ru": { "stringUnit": { "state": "translated", "value": "TMDB отклонил этот запрос. Каталог может быть недоступен в вашем регионе." } },
+        "uk": { "stringUnit": { "state": "translated", "value": "TMDB відхилив цей запит. Каталог може бути недоступний у вашому регіоні." } }
+      }
+    },
+    "What you can try": {
+      "localizations": {
+        "de": { "stringUnit": { "state": "translated", "value": "Was du versuchen kannst" } },
+        "en": { "stringUnit": { "state": "translated", "value": "What you can try" } },
+        "ru": { "stringUnit": { "state": "translated", "value": "Что можно попробовать" } },
+        "uk": { "stringUnit": { "state": "translated", "value": "Що можна спробувати" } }
+      }
+    },
+    "Why this happens": {
+      "localizations": {
+        "de": { "stringUnit": { "state": "translated", "value": "Warum das passiert" } },
+        "en": { "stringUnit": { "state": "translated", "value": "Why this happens" } },
+        "ru": { "stringUnit": { "state": "translated", "value": "Почему так происходит" } },
+        "uk": { "stringUnit": { "state": "translated", "value": "Чому так відбувається" } }
+      }
+    },
     "Capabilities": {
       "localizations": {
         "ar": {

@@ -205,16 +205,12 @@ struct SearchView: View {
     
     @ViewBuilder
     private var failureView: some View {
-        ContentUnavailableView {
-            Label("Couldn't Load", systemImage: "wifi.exclamationmark")
-        } description: {
-            Text("Check your connection and try again.")
-        } actions: {
-            Button("Retry") {
+        TMDBCatalogUnavailableView(
+            failure: viewModel.catalogFailure,
+            retry: {
                 Task { await viewModel.search(viewModel.query) }
             }
-            .buttonStyle(.borderedProminent)
-        }
+        )
         .padding()
     }
     

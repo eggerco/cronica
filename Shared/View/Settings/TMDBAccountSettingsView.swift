@@ -52,6 +52,9 @@ struct TMDBAccountSettingsView: View {
                 Text("TMDB has no activity feed or watched-history API. Sync re-downloads your account lists. Titles removed on TMDB stay in Cronica. Live scrobbling is not available.")
                     .font(.caption)
                     .foregroundStyle(.secondary)
+                NavigationLink("Can't load titles from TMDB?") {
+                    TMDBUnavailableHelpView()
+                }
                 Link("TMDB Website", destination: URL(string: "https://www.themoviedb.org")!)
                 Link("TMDB API Terms", destination: URL(string: "https://www.themoviedb.org/documentation/api/terms-of-use")!)
             }
@@ -164,8 +167,13 @@ struct TMDBAccountSettingsView: View {
         do {
             try await TMDBAccountAuthService.shared.signIn()
             startSync()
+        } catch is CancellationError {
+            return
+        } catch let error as LibraryImportError {
+            if case .cancelled = error { return }
+            errorMessage = TMDBConnectionFailure.userFacingMessage(for: error)
         } catch {
-            errorMessage = error.localizedDescription
+            errorMessage = TMDBConnectionFailure.userFacingMessage(for: error)
         }
     }
 #endif
@@ -193,7 +201,7 @@ struct TMDBAccountSettingsView: View {
             } catch is CancellationError {
                 // ignored
             } catch {
-                errorMessage = error.localizedDescription
+                errorMessage = TMDBConnectionFailure.userFacingMessage(for: error)
             }
         }
     }

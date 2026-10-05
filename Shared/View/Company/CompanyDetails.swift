@@ -19,6 +19,7 @@ struct CompanyDetails: View {
     @State private var isLoaded = false
     @State private var isLoadingMore = false
     @State private var showError = false
+    @State private var catalogFailure: TMDBConnectionFailure?
     private let network = NetworkService.shared
     var body: some View {
         VStack {
@@ -43,20 +44,29 @@ struct CompanyDetails: View {
         .cronicaLoadingOverlay(!isLoaded)
         .overlay {
             if isLoaded && items.isEmpty {
-                ContentUnavailableView {
-                    Label(showError ? "Couldn't Load" : "Try again later",
-                          systemImage: showError ? "wifi.exclamationmark" : "popcorn")
-                } description: {
-                    Text(showError ? "Check your connection and try again." : "Nothing available for this company right now.")
-                } actions: {
-                    Button("Retry") {
+                if showError {
+                    TMDBCatalogUnavailableView(failure: catalogFailure) {
                         showError = false
+                        catalogFailure = nil
                         isLoaded = false
                         page = 1
                         endPagination = false
                         Task { await load() }
                     }
-                    .buttonStyle(.borderedProminent)
+                } else {
+                    ContentUnavailableView {
+                        Label("Try again later", systemImage: "popcorn")
+                    } description: {
+                        Text("Nothing available for this company right now.")
+                    } actions: {
+                        Button("Retry") {
+                            isLoaded = false
+                            page = 1
+                            endPagination = false
+                            Task { await load() }
+                        }
+                        .buttonStyle(.borderedProminent)
+                    }
                 }
             }
         }
@@ -197,10 +207,12 @@ private extension CompanyDetails {
             items.append(contentsOf: result.sorted { $0.itemPopularity > $1.itemPopularity })
             if !startPagination { startPagination = true }
             showError = false
+            catalogFailure = nil
             isLoaded = true
         } catch {
             if Task.isCancelled { return }
             showError = items.isEmpty
+            catalogFailure = TMDBConnectionFailure.classify(error)
             isLoaded = true
             let message = "Company ID: \(id), error: \(error.localizedDescription)"
             CronicaTelemetry.shared.handleMessage(message, for: "CompanyDetails.load()")

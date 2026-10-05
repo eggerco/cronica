@@ -18,6 +18,7 @@ struct PersonDetailsView: View {
     @State private var showPopup = false
     @State private var isLoaded: Bool = false
     @State private var showLoadError = false
+    @State private var catalogFailure: TMDBConnectionFailure?
     @State private var person: Person?
     @State private var credits = [ItemContent]()
     @State private var query: String = ""
@@ -70,14 +71,11 @@ struct PersonDetailsView: View {
         .actionPopup(isShowing: $showPopup, for: popupType)
         .overlay {
             if showLoadError {
-                ContentUnavailableView {
-                    Label("Couldn't Load Person", systemImage: "person.crop.circle.badge.exclamationmark")
-                } description: {
-                    Text("Check your connection and try again.")
-                } actions: {
-                    Button("Retry") { load() }
-                        .buttonStyle(.borderedProminent)
-                }
+                TMDBCatalogUnavailableView(
+                    title: String(localized: "Couldn't Load Person"),
+                    failure: catalogFailure,
+                    retry: { load() }
+                )
             }
         }
         .task { load() }
@@ -231,6 +229,7 @@ private extension PersonDetailsView {
             if Task.isCancelled { return }
             if person == nil {
                 showLoadError = false
+                catalogFailure = nil
                 isLoaded = false
                 do {
                     person = try await self.service.fetchPerson(id: self.id)
@@ -253,6 +252,7 @@ private extension PersonDetailsView {
                     if Task.isCancelled { return }
                     person = nil
                     await MainActor.run {
+                        catalogFailure = TMDBConnectionFailure.classify(error)
                         withAnimation {
                             self.isLoaded = true
                             self.showLoadError = true

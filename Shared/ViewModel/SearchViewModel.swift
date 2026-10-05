@@ -20,7 +20,8 @@ import SwiftUI
     @Published var endPagination: Bool = false
     private var isLoadingMore = false
     @Published var stage: SearchStage = .none
-    
+    @Published private(set) var catalogFailure: TMDBConnectionFailure?
+
     func search(_ query: String) async {
         if Task.isCancelled { return }
         if query.isEmpty {
@@ -28,9 +29,11 @@ import SwiftUI
             withAnimation {
                 items.removeAll()
                 stage = .none
+                catalogFailure = nil
             }
             return
         }
+        catalogFailure = nil
         withAnimation { stage = .searching }
         let trimmedQuery = query.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmedQuery.isEmpty else { return }
@@ -63,6 +66,7 @@ import SwiftUI
         } catch {
             if query.isEmpty, !items.isEmpty { items.removeAll() }
             if Task.isCancelled { return }
+            catalogFailure = TMDBConnectionFailure.classify(error)
             withAnimation { stage = .failure }
             CronicaTelemetry.shared.handleMessage(error.localizedDescription,
                                                   for: "SearchViewModel.search()")

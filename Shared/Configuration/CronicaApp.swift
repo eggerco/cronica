@@ -22,6 +22,7 @@ struct CronicaApp: App {
 #endif
     @State private var selectedItem: ItemContent?
     @State private var deepLinkLoadFailed = false
+    @State private var deepLinkFailureMessage = String(localized: "Check your connection and try again.")
     @State private var showFeedbackForm = false
     @State private var showAbout = false
     @State private var showNewListView = false
@@ -85,7 +86,7 @@ struct CronicaApp: App {
                 ) {
                     Button("OK", role: .cancel) {}
                 } message: {
-                    Text(String(localized: "Check your connection and try again."))
+                    Text(deepLinkFailureMessage)
                 }
                 .sheet(item: $selectedItem) { item in
                     NavigationStack {
@@ -254,6 +255,7 @@ struct CronicaApp: App {
             let item = try await NetworkService.shared.fetchItem(id: reference.id, type: reference.type)
             self.selectedItem = item
         } catch {
+            deepLinkFailureMessage = TMDBConnectionFailure.userFacingMessage(for: error)
             deepLinkLoadFailed = true
         }
     }
