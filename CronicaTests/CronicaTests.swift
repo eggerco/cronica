@@ -676,7 +676,7 @@ final class CronicaTests: XCTestCase {
         XCTAssertNil(TMDBAccountListCache.loadFingerprint())
     }
 
-        func testTMDBPushOperationRoundTrip() throws {
+    func testTMDBPushOperationRoundTrip() throws {
         let ops: [TMDBPushService.Operation] = [
             .watchlist(tmdb: 680, media: 0, onList: true),
             .favorite(tmdb: 1396, media: 1, isFavorite: true),

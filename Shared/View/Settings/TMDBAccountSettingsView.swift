@@ -9,10 +9,11 @@ import CronicaCore
 struct TMDBAccountSettingsView: View {
     @StateObject private var settings = SettingsStore.shared
     @State private var isConnecting = false
-    @State private var isSyncing = false
-    @State private var syncTask: Task<Void, Never>?
+    @State private var isWorking = false
+    @State private var workTask: Task<Void, Never>?
     @State private var errorMessage: String?
     @State private var summary: LibraryImportSummary?
+    @State private var uploadSummary: TMDBPushService.UploadSummary?
     @State private var progressPhase = ""
     @State private var progressProcessed = 0
     @State private var progressTotal = 0
@@ -23,7 +24,7 @@ struct TMDBAccountSettingsView: View {
     var body: some View {
         Form {
             Section {
-                Text("Connect an optional TMDB account to sync your watchlist, ratings, and favorites with Cronica. Cronica already uses TMDB for catalog data; CloudKit still syncs your Apple devices.")
+                Text("Connect an optional TMDB account to import watchlist, ratings, and favorites into Cronica. Uploading Cronica titles to TMDB is separate and off by default. CloudKit still syncs your Apple devices.")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             }
@@ -40,7 +41,7 @@ struct TMDBAccountSettingsView: View {
             }
 
             if let summary {
-                Section("Last Sync") {
+                Section("Last Import") {
                     LabeledContent("Added", value: "\(summary.inserted)")
                     LabeledContent("Updated", value: "\(summary.updated)")
                     LabeledContent("Skipped", value: "\(summary.skipped)")
@@ -48,8 +49,18 @@ struct TMDBAccountSettingsView: View {
                 }
             }
 
+            if let uploadSummary {
+                Section("Last Upload") {
+                    LabeledContent("Queued", value: "\(uploadSummary.queued)")
+                    LabeledContent("Sent", value: "\(uploadSummary.sent)")
+                    if uploadSummary.remaining > 0 {
+                        LabeledContent("Remaining", value: "\(uploadSummary.remaining)")
+                    }
+                }
+            }
+
             Section("About") {
-                Text("TMDB has no activity feed or watched-history API. Sync re-downloads your account lists. Titles removed on TMDB stay in Cronica. Live scrobbling is not available.")
+                Text("Import from TMDB never uploads your Cronica library. Push / Upload sends watchlist, favorites, and ratings only — TMDB has no watched-history API. Titles removed on TMDB stay in Cronica.")
                     .font(.caption)
                     .foregroundStyle(.secondary)
                 NavigationLink("Can't load titles from TMDB?") {
@@ -75,16 +86,16 @@ struct TMDBAccountSettingsView: View {
             Text(errorMessage ?? "")
         }
         .overlay {
-            if isSyncing {
+            if isWorking {
                 ProgressView {
                     VStack(spacing: 8) {
-                        Text(progressPhase.isEmpty ? String(localized: "Syncing…") : progressPhase)
+                        Text(progressPhase.isEmpty ? String(localized: "Working…") : progressPhase)
                         if progressTotal > 0 {
                             Text(String(format: String(localized: "%lld / %lld"), progressProcessed, progressTotal))
                                 .font(.caption)
                                 .foregroundStyle(.secondary)
                         }
-                        Button("Cancel") { syncTask?.cancel() }
+                        Button("Cancel") { workTask?.cancel() }
                             .buttonStyle(.bordered)
                     }
                 }
@@ -95,7 +106,7 @@ struct TMDBAccountSettingsView: View {
         .onAppear {
             settings.isUserConnectedWithTMDb = TMDBSessionStore.hasSession
         }
-        .onDisappear { syncTask?.cancel() }
+        .onDisappear { workTask?.cancel() }
     }
 
     @ViewBuilder
@@ -117,7 +128,7 @@ struct TMDBAccountSettingsView: View {
                 .foregroundStyle(.secondary)
 #endif
         } footer: {
-            Text("Sign-in opens TMDB in a secure browser session. Cronica stores a session token on this device only.")
+            Text("Sign-in opens TMDB in a secure browser session. Cronica stores a session token on this device only — connect again on each device. Connecting imports from TMDB; it does not upload your Cronica library.")
         }
     }
 
@@ -130,33 +141,40 @@ struct TMDBAccountSettingsView: View {
                 LabeledContent("Account", value: settings.tmdbAccountName)
             }
             if let date = settings.tmdbAccountLastImportDate {
-                LabeledContent("Last sync", value: date.formatted(date: .abbreviated, time: .shortened))
+                LabeledContent("Last import", value: date.formatted(date: .abbreviated, time: .shortened))
             }
             Button {
-                startSync()
+                startImport()
             } label: {
-                Text("Sync Now")
+                Text("Import from TMDB")
             }
-            .disabled(isSyncing)
+            .disabled(isWorking)
         } footer: {
-            Text("Downloads your TMDB watchlist, ratings, and favorites. Existing Cronica titles are updated; nothing is deleted.")
+            Text("Downloads your TMDB watchlist, ratings, and favorites into Cronica. Existing Cronica titles are updated; nothing is deleted. This does not upload Cronica titles to TMDB.")
         }
 
 #if !os(tvOS)
         Section {
             Toggle("Push changes to TMDB", isOn: $settings.tmdbPushEnabled)
+            Button {
+                startUpload()
+            } label: {
+                Text("Upload Library to TMDB")
+            }
+            .disabled(isWorking || !settings.tmdbPushEnabled)
         } footer: {
-            Text("When enabled, watchlist, favorites, and ratings in Cronica are queued and sent to TMDB. Marking watched removes the title from your TMDB watchlist (TMDB has no watched-history API). Off by default.")
+            Text("Push queues future watchlist, favorite, and rating changes. Upload Library sends your current Cronica library once. Marking watched removes the title from the TMDB watchlist (TMDB has no watched-history API). Off by default.")
         }
 #endif
 
         Section {
             Button("Disconnect", role: .destructive) {
-                syncTask?.cancel()
+                workTask?.cancel()
                 TMDBAccountAuthService.shared.disconnect()
                 summary = nil
+                uploadSummary = nil
             }
-            .disabled(isSyncing)
+            .disabled(isWorking)
         }
     }
 
@@ -166,7 +184,7 @@ struct TMDBAccountSettingsView: View {
         defer { isConnecting = false }
         do {
             try await TMDBAccountAuthService.shared.signIn()
-            startSync()
+            startImport()
         } catch is CancellationError {
             return
         } catch let error as LibraryImportError {
@@ -178,16 +196,16 @@ struct TMDBAccountSettingsView: View {
     }
 #endif
 
-    private func startSync() {
-        syncTask?.cancel()
-        isSyncing = true
+    private func startImport() {
+        workTask?.cancel()
+        isWorking = true
         progressPhase = ""
         progressProcessed = 0
         progressTotal = 0
-        syncTask = Task {
+        workTask = Task {
             defer {
-                isSyncing = false
-                syncTask = nil
+                isWorking = false
+                workTask = nil
             }
             do {
                 summary = try await TMDBSyncService.syncNow { value in
@@ -196,7 +214,32 @@ struct TMDBAccountSettingsView: View {
                     progressTotal = value.total
                 }
                 if settings.tmdbPushEnabled {
-                    await TMDBPushService.shared.flush()
+                    _ = await TMDBPushService.shared.flush()
+                }
+            } catch is CancellationError {
+                // ignored
+            } catch {
+                errorMessage = TMDBConnectionFailure.userFacingMessage(for: error)
+            }
+        }
+    }
+
+    private func startUpload() {
+        workTask?.cancel()
+        isWorking = true
+        progressPhase = ""
+        progressProcessed = 0
+        progressTotal = 0
+        workTask = Task {
+            defer {
+                isWorking = false
+                workTask = nil
+            }
+            do {
+                uploadSummary = try await TMDBPushService.shared.uploadCurrentLibrary { value in
+                    progressPhase = value.phase
+                    progressProcessed = value.processed
+                    progressTotal = value.total
                 }
             } catch is CancellationError {
                 // ignored

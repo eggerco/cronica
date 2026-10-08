@@ -29438,6 +29438,258 @@
             "state": "translated",
             "value": "Не вдається зв’язатися з TMDB"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Impossible de joindre TMDB"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Impossibile raggiungere TMDB"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Não foi possível alcançar TMDB"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Não foi possível alcançar TMDB"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nedá sa spojiť s TMDB"
+          }
+        },
+        "es-MX": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No se puede alcanzar TMDB"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لا يمكن الوصول إلى TMDB"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB এ পৌঁছানো যাচ্ছে না"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No puc arribar a TMDB"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nelze se spojit s TMDB"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kan ikke nå TMDB"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Δεν μπορώ να φτάσω TMDB"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No se puede alcanzar TMDB"
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ei tavoiteta TMDB:a"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB સુધી પહોંચી શકાતું નથી"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "לא ניתן להגיע ל-TMDB"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB तक नहीं पहुंचा जा सकता"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ne mogu dosegnuti TMDB"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nem tudom elérni TMDB-t"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tidak dapat menjangkau TMDB"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB に到達できません"
+          }
+        },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB ತಲುಪಲು ಸಾಧ್ಯವಿಲ್ಲ"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB에 연결할 수 없습니다"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB-ൽ എത്താൻ കഴിയുന്നില്ല"
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB पर्यंत पोहोचता येत नाही"
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tidak Dapat Mencapai TMDB"
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kan ikke nå TMDB"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kan TMDB niet bereiken"
+          }
+        },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB ପର୍ଯ୍ୟନ୍ତ ପହଞ୍ଚିପାରୁନାହିଁ"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB ਤੱਕ ਨਹੀਂ ਪਹੁੰਚ ਸਕਦਾ"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nie można dotrzeć do TMDB"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nu pot ajunge la TMDB"
+          }
+        },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ni mogoče doseči TMDB"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kan inte nå TMDB"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB ஐ அடைய முடியவில்லை"
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDBను చేరుకోలేకపోతున్నాను"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ไม่สามารถติดต่อ TMDB ได้"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB'a Ulaşılamıyor"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نہیں پہنچ سکتا TMDB"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Không thể truy cập TMDB"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法连接到TMDB"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "無法連接到TMDB"
+          }
         }
       }
     },
@@ -29465,6 +29717,258 @@
           "stringUnit": {
             "state": "translated",
             "value": "Не завантажуються назви з TMDB?"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Impossible de charger les titres depuis TMDB ?"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Impossibile caricare i titoli da TMDB?"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Não foi possível carregar os títulos de TMDB?"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Não foi possível carregar os títulos de TMDB?"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nedajú sa načítať názvy z TMDB?"
+          }
+        },
+        "es-MX": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "¿No se pueden cargar los títulos desde TMDB?"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لا يمكن تحميل العناوين من TMDB؟"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB থেকে শিরোনাম লোড করা যাচ্ছে না?"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No es poden carregar els títols de TMDB?"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nelze načíst názvy z TMDB?"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kan ikke indlæse titler fra TMDB?"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Δεν είναι δυνατή η φόρτωση τίτλων από το TMDB;"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "¿No se pueden cargar los títulos desde TMDB?"
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eikö nimikkeitä voi ladata kansiosta TMDB?"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB માંથી ટાઇટલ લોડ કરી શકતા નથી?"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "לא ניתן לטעון כותרות מ-TMDB?"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB से टाइटल लोड नहीं हो पा रहे हैं?"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ne mogu učitati naslove iz TMDB?"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nem tudom betölteni a címeket innen: TMDB?"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tidak dapat memuat judul dari TMDB?"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB からタイトルを読み込めません。"
+          }
+        },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB ನಿಂದ ಶೀರ್ಷಿಕೆಗಳನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಿಲ್ಲವೇ?"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB에서 제목을 불러올 수 없나요?"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB ൽ നിന്നുള്ള ടൈറ്റിലുകൾ ലോഡ് ചെയ്യാൻ കഴിയുന്നില്ലേ?"
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB मधून शीर्षके लोड करता येत नाहीत का?"
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tidak dapat memuatkan tajuk daripada TMDB?"
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kan ikke laste inn titler fra TMDB?"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kan geen titels laden vanuit TMDB?"
+          }
+        },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB ରୁ ଟାଇଟଲଗୁଡ଼ିକ ଲୋଡ୍ କରିହେବ ନାହିଁ କି?"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ਕੀ TMDB ਤੋਂ ਸਿਰਲੇਖ ਲੋਡ ਨਹੀਂ ਕੀਤੇ ਜਾ ਸਕਦੇ?"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nie można załadować tytułów z TMDB?"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nu pot încărca titlurile din TMDB?"
+          }
+        },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ne morem naložiti naslovov iz TMDB?"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kan inte ladda titlar från TMDB?"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB இலிருந்து தலைப்புகளை ஏற்ற முடியவில்லையா?"
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB నుండి శీర్షికలను లోడ్ చేయలేకపోతున్నారా?"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ไม่สามารถโหลดชื่อเรื่องจาก TMDB ได้ใช่ไหม?"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB adresinden başlıklar yüklenemiyor mu?"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB سے عنوانات لوڈ نہیں کر سکتے؟"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Không thể tải tiêu đề từ TMDB?"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法从TMDB加载标题？"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "無法從TMDB載入標題？"
           }
         }
       }
@@ -29494,6 +29998,258 @@
             "state": "translated",
             "value": "Cronica не вдалося підключитися до The Movie Database. TMDB може бути заблокований у вашій мережі або регіоні."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica n'a pas pu se connecter à The Movie Database. TMDB est peut-être bloqué sur votre réseau ou dans votre région."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica non è riuscito a connettersi a The Movie Database. TMDB potrebbe essere bloccato sulla tua rete o nella tua regione."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica não conseguiu se conectar a The Movie Database. TMDB pode estar bloqueado em sua rede ou em sua região."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica não conseguiu se conectar a The Movie Database. TMDB pode estar bloqueado em sua rede ou em sua região."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Používateľ Cronica sa nepodarilo pripojiť k sieti The Movie Database. Používateľ TMDB môže byť blokovaný vo vašej sieti alebo vo vašom regióne."
+          }
+        },
+        "es-MX": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica no pudo conectarse a The Movie Database. Es posible que TMDB esté bloqueado en su red o en su región."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لم يتمكن Cronica من الاتصال بـ The Movie Database. قد يكون TMDB محظورًا على شبكتك أو في منطقتك."
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica The Movie Database-এর সাথে সংযোগ করতে পারেনি। TMDB আপনার নেটওয়ার্কে বা আপনার অঞ্চলে ব্লক করা থাকতে পারে।"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica no s'ha pogut connectar a The Movie Database. És possible que TMDB estigui bloquejat a la teva xarxa o a la teva regió."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica se nemohl/a připojit k The Movie Database. TMDB může být blokován/a ve vaší síti nebo ve vašem regionu."
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica kunne ikke oprette forbindelse til The Movie Database. TMDB er muligvis blokeret på dit netværk eller i din region."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ο χρήστης Cronica δεν μπόρεσε να συνδεθεί με τον χρήστη The Movie Database. Ο χρήστης TMDB ενδέχεται να είναι αποκλεισμένος στο δίκτυό σας ή στην περιοχή σας."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica no pudo conectarse a The Movie Database. Es posible que TMDB esté bloqueado en su red o en su región."
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica ei voinut muodostaa yhteyttä kohteeseen The Movie Database. TMDB saattaa olla estetty verkossasi tai alueellasi."
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica, The Movie Database થી કનેક્ટ થઈ શક્યું નથી. TMDB તમારા નેટવર્ક પર અથવા તમારા પ્રદેશમાં અવરોધિત હોઈ શકે છે."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica לא הצליח להתחבר ל-The Movie Database. ייתכן ש-TMDB חסום ברשת שלך או באזור שלך."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica The Movie Database से कनेक्ट नहीं हो सका। TMDB आपके नेटवर्क या आपके क्षेत्र में अवरुद्ध हो सकता है।"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica se nije mogao povezati s The Movie Database. TMDB je možda blokiran na vašoj mreži ili u vašoj regiji."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A Cronica nem tudott csatlakozni a The Movie Database-hoz. Lehetséges, hogy a TMDB blokkolva van a hálózatodon vagy a régiódban."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica tidak dapat terhubung ke The Movie Database. TMDB mungkin diblokir di jaringan Anda atau di wilayah Anda."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica は The Movie Database に接続できませんでした。TMDB は、お使いのネットワークまたは地域でブロックされている可能性があります。"
+          }
+        },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica The Movie Database ಗೆ ಸಂಪರ್ಕಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ನಿಮ್ಮ ನೆಟ್‌ವರ್ಕ್ ಅಥವಾ ನಿಮ್ಮ ಪ್ರದೇಶದಲ್ಲಿ TMDB ಅನ್ನು ನಿರ್ಬಂಧಿಸಿರಬಹುದು."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica이 The Movie Database에 연결할 수 없습니다. TMDB이 네트워크 또는 지역에서 차단되었을 수 있습니다."
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica ന് The Movie Database ലേക്ക് കണക്റ്റ് ചെയ്യാൻ കഴിഞ്ഞില്ല. നിങ്ങളുടെ നെറ്റ്‌വർക്കിലോ നിങ്ങളുടെ മേഖലയിലോ TMDB ബ്ലോക്ക് ചെയ്‌തിരിക്കാം."
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica The Movie Database शी कनेक्ट होऊ शकले नाही. TMDB तुमच्या नेटवर्कवर किंवा तुमच्या प्रदेशात ब्लॉक केलेले असू शकते."
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica tidak dapat bersambung ke The Movie Database. TMDB mungkin disekat pada rangkaian anda atau di rantau anda."
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica kunne ikke koble til The Movie Database. TMDB kan være blokkert på nettverket ditt eller i din region."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica kon geen verbinding maken met The Movie Database. TMDB is mogelijk geblokkeerd op uw netwerk of in uw regio."
+          }
+        },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica, The Movie Database ସହିତ ସଂଯୋଗ କରିପାରିଲା ନାହିଁ। TMDB ଆପଣଙ୍କ ନେଟୱାର୍କରେ କିମ୍ବା ଆପଣଙ୍କ ଅଞ୍ଚଳରେ ଅବରୋଧିତ ହୋଇପାରେ।"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica, The Movie Database ਨਾਲ ਕਨੈਕਟ ਨਹੀਂ ਹੋ ਸਕਿਆ। TMDB ਤੁਹਾਡੇ ਨੈੱਟਵਰਕ 'ਤੇ ਜਾਂ ਤੁਹਾਡੇ ਖੇਤਰ ਵਿੱਚ ਬਲੌਕ ਹੋ ਸਕਦਾ ਹੈ।"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica nie mógł nawiązać połączenia z The Movie Database. TMDB może być zablokowany w Twojej sieci lub regionie."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica nu s-a putut conecta la The Movie Database. TMDB ar putea fi blocat în rețeaua sau în regiunea ta."
+          }
+        },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica se ni mogel povezati z The Movie Database. TMDB je morda blokiran v vašem omrežju ali v vaši regiji."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica kunde inte ansluta till The Movie Database. TMDB kan vara blockerad i ditt nätverk eller i din region."
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica ஆல் The Movie Database உடன் இணைக்க முடியவில்லை. TMDB உங்கள் வலையமைப்பிலோ அல்லது உங்கள் பிராந்தியத்திலோ தடுக்கப்பட்டிருக்கலாம்."
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica The Movie Databaseకు కనెక్ట్ కాలేకపోయింది. TMDB మీ నెట్‌వర్క్‌లో లేదా మీ ప్రాంతంలో బ్లాక్ చేయబడి ఉండవచ్చు."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica ไม่สามารถเชื่อมต่อกับ The Movie Database ได้ TMDB อาจถูกบล็อกในเครือข่ายของคุณหรือในภูมิภาคของคุณ"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica, The Movie Database'a bağlanamadı. TMDB, ağınızda veya bölgenizde engellenmiş olabilir."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica The Movie Database سے مربوط نہیں ہو سکا۔ TMDB آپ کے نیٹ ورک پر یا آپ کے علاقے میں بلاک ہو سکتا ہے۔"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica không thể kết nối với The Movie Database. TMDB có thể bị chặn trên mạng hoặc khu vực của bạn."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica 无法连接到 The Movie Database。TMDB 可能在您的网络或地区被阻止。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica 無法連接到 The Movie Database。 TMDB 可能在您的網路或地區被封鎖。"
+          }
         }
       }
     },
@@ -29522,71 +30278,2499 @@
             "state": "translated",
             "value": "Cronica завантажує фільми, серіали та постери з The Movie Database (TMDB). Якщо головна порожня або не вдається підключити обліковий запис TMDB, цей пристрій не може зв’язатися з TMDB — навіть коли інші програми працюють."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica charge les films, les séries et les illustrations depuis The Movie Database (TMDB). Si l'écran d'accueil est vide ou si la connexion à un compte TMDB échoue, cet appareil ne peut pas accéder à TMDB, même si d'autres applications fonctionnent."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica carica film, programmi TV e immagini da The Movie Database (TMDB). Se la schermata Home è vuota o la connessione a un account TMDB non riesce, questo dispositivo non può raggiungere TMDB, anche se altre app funzionano."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica carrega filmes, programas de TV e obras de arte de The Movie Database (TMDB). Se a tela inicial estiver vazia ou se a conexão com uma conta TMDB falhar, este dispositivo não poderá acessar TMDB — mesmo que outros aplicativos funcionem."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica carrega filmes, programas de TV e obras de arte de The Movie Database (TMDB). Se a tela inicial estiver vazia ou se a conexão com uma conta TMDB falhar, este dispositivo não poderá acessar TMDB — mesmo que outros aplicativos funcionem."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica načítava filmy, televízne programy a umelecké diela z The Movie Database (TMDB). Ak je Domovská stránka prázdna alebo pripojenie k účtu TMDB zlyhá, toto zariadenie sa nemôže pripojiť k TMDB – ani keď fungujú iné aplikácie."
+          }
+        },
+        "es-MX": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica carga películas, programas de televisión y obras de arte desde The Movie Database (TMDB). Si la pantalla de inicio está vacía o falla la conexión con una cuenta TMDB, este dispositivo no puede acceder a TMDB, incluso si otras aplicaciones funcionan."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يقوم التطبيق Cronica بتحميل الأفلام والبرامج التلفزيونية والأعمال الفنية من The Movie Database (TMDB). إذا كانت الشاشة الرئيسية فارغة أو فشل الاتصال بحساب TMDB، فلن يتمكن هذا الجهاز من الوصول إلى TMDB — حتى عندما تعمل التطبيقات الأخرى."
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica The Movie Database (TMDB) থেকে সিনেমা, টিভি শো এবং শিল্পকর্ম লোড করে। যদি Home খালি থাকে বা একটি TMDB অ্যাকাউন্ট সংযোগ করতে ব্যর্থ হয়, তাহলে এই ডিভাইসটি TMDB-এ পৌঁছাতে পারে না — এমনকি যখন অন্যান্য অ্যাপ কাজ করে তখনও।"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica carrega pel·lícules, programes de televisió i il·lustracions de The Movie Database (TMDB). Si la pantalla Inici està buida o falla la connexió d'un compte de TMDB, aquest dispositiu no pot accedir a TMDB, fins i tot quan altres aplicacions funcionen."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica načítá filmy, televizní pořady a grafiku z The Movie Database (TMDB). Pokud je Domů prázdná nebo se připojení k účtu TMDB nezdaří, toto zařízení se nemůže k TMDB připojit – a to ani v případě, že ostatní aplikace fungují."
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica indlæser film, tv-serier og grafik fra The Movie Database (TMDB). Hvis Hjem er tomt, eller det ikke lykkes at oprette forbindelse til en TMDB-konto, kan denne enhed ikke oprette forbindelse til TMDB — selv når andre apps fungerer."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Το Cronica φορτώνει ταινίες, τηλεοπτικές εκπομπές και έργα τέχνης από το The Movie Database (TMDB). Εάν η Αρχική σελίδα είναι κενή ή η σύνδεση ενός λογαριασμού TMDB αποτύχει, αυτή η συσκευή δεν μπορεί να επικοινωνήσει με το TMDB — ακόμα και όταν λειτουργούν άλλες εφαρμογές."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica carga películas, programas de televisión y obras de arte desde The Movie Database (TMDB). Si la pantalla de inicio está vacía o falla la conexión con una cuenta TMDB, este dispositivo no puede acceder a TMDB, incluso si otras aplicaciones funcionan."
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica lataa elokuvia, TV-ohjelmia ja taideteoksia kansiosta The Movie Database (TMDB). Jos Koti on tyhjä tai TMDB-tilin yhdistäminen epäonnistuu, tämä laite ei voi ottaa yhteyttä TMDB:een – vaikka muut sovellukset toimisivat."
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica The Movie Database (TMDB) માંથી મૂવીઝ, ટીવી શો અને આર્ટવર્ક લોડ કરે છે. જો હોમ ખાલી હોય અથવા TMDB એકાઉન્ટ કનેક્ટ કરવામાં નિષ્ફળ જાય, તો આ ઉપકરણ TMDB સુધી પહોંચી શકતું નથી — ભલે અન્ય એપ્લિકેશનો કામ કરતી હોય."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica טוען סרטים, תוכניות טלוויזיה וגרפיקה מ-The Movie Database (TMDB). אם דף הבית ריק או שחיבור חשבון TMDB נכשל, מכשיר זה לא יכול להגיע ל-TMDB - גם כאשר אפליקציות אחרות פועלות."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica The Movie Database (TMDB) से फिल्में, टीवी शो और कलाकृतियाँ लोड करता है। यदि होम पेज खाली है या TMDB खाते से कनेक्ट करने में विफलता होती है, तो यह डिवाइस TMDB तक नहीं पहुँच सकता — भले ही अन्य ऐप्स काम कर रहे हों।"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica učitava filmove, TV emisije i umjetnička djela s The Movie Database (TMDB). Ako je početna stranica prazna ili povezivanje s TMDB računom ne uspije, ovaj uređaj ne može dosegnuti TMDB - čak ni kada druge aplikacije rade."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A Cronica betölti a filmeket, tévéműsorokat és grafikákat a The Movie Database (TMDB) mappából. Ha a Kezdőlap üres, vagy a TMDB fiókhoz való csatlakozás sikertelen, ez az eszköz nem tudja elérni a TMDB-t – még akkor sem, ha más alkalmazások működnek."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica memuat film, acara TV, dan karya seni dari The Movie Database (TMDB). Jika Home kosong atau koneksi akun TMDB gagal, perangkat ini tidak dapat mencapai TMDB — meskipun aplikasi lain berfungsi."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica は The Movie Database (TMDB) から映画、テレビ番組、アートワークを読み込みます。ホーム画面が空の場合、または TMDB アカウントへの接続に失敗した場合、他のアプリが正常に動作していても、このデバイスは TMDB にアクセスできません。"
+          }
+        },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica The Movie Database (TMDB) ನಿಂದ ಚಲನಚಿತ್ರಗಳು, ಟಿವಿ ಕಾರ್ಯಕ್ರಮಗಳು ಮತ್ತು ಕಲಾಕೃತಿಗಳನ್ನು ಲೋಡ್ ಮಾಡುತ್ತದೆ. ಮುಖಪುಟ ಖಾಲಿಯಾಗಿದ್ದರೆ ಅಥವಾ TMDB ಖಾತೆಯನ್ನು ಸಂಪರ್ಕಿಸಲು ವಿಫಲವಾದರೆ, ಈ ಸಾಧನವು TMDB ಅನ್ನು ತಲುಪಲು ಸಾಧ್ಯವಿಲ್ಲ — ಇತರ ಅಪ್ಲಿಕೇಶನ್‌ಗಳು ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತಿದ್ದರೂ ಸಹ."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica은 The Movie Database(TMDB)에서 영화, TV 프로그램 및 아트워크를 불러옵니다. 홈 화면이 비어 있거나 TMDB 계정 연결에 실패하면 다른 앱은 정상적으로 작동하더라도 이 기기는 TMDB에 연결할 수 없습니다."
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica The Movie Database (TMDB) ൽ നിന്നുള്ള സിനിമകൾ, ടിവി ഷോകൾ, കലാസൃഷ്ടികൾ എന്നിവ ലോഡ് ചെയ്യുന്നു. ഹോം ശൂന്യമാണെങ്കിലോ TMDB അക്കൗണ്ട് കണക്റ്റ് ചെയ്യുന്നത് പരാജയപ്പെട്ടാലോ, മറ്റ് ആപ്പുകൾ പ്രവർത്തിക്കുമ്പോൾ പോലും ഈ ഉപകരണത്തിന് TMDB ൽ എത്താൻ കഴിയില്ല."
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica हे The Movie Database (TMDB) वरून चित्रपट, टीव्ही शो आणि कलाकृती लोड करते. जर होम रिकामे असेल किंवा TMDB खाते जोडण्यात अयशस्वी झाले, तर इतर ॲप्स काम करत असले तरीही हे डिव्हाइस TMDB पर्यंत पोहोचू शकत नाही."
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica memuatkan filem, rancangan TV dan karya seni daripada The Movie Database (TMDB). Jika Laman Utama kosong atau sambungan akaun TMDB gagal, peranti ini tidak dapat mencapai TMDB — walaupun aplikasi lain berfungsi."
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica laster inn filmer, TV-serier og kunstverk fra The Movie Database (TMDB). Hvis Hjem er tomt eller tilkobling av en TMDB-konto mislykkes, kan ikke denne enheten nå TMDB – selv når andre apper fungerer."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica laadt films, tv-programma's en afbeeldingen van The Movie Database (TMDB). Als het startscherm leeg is of als het verbinden met een TMDB-account mislukt, kan dit apparaat geen verbinding maken met TMDB — zelfs niet als andere apps wel werken."
+          }
+        },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica The Movie Database (TMDB) ରୁ ସିନେମା, ଟିଭି ଶୋ ଏବଂ କଳାକୃତି ଲୋଡ୍ କରେ। ଯଦି ହୋମ୍ ଖାଲି ଥାଏ କିମ୍ବା TMDB ଆକାଉଣ୍ଟ ସଂଯୋଗ କରିବାରେ ବିଫଳ ହୁଏ, ତେବେ ଏହି ଡିଭାଇସ୍ TMDB ରେ ପହଞ୍ଚିପାରିବ ନାହିଁ — ଅନ୍ୟ ଆପ୍ କାମ କଲେ ମଧ୍ୟ।"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica The Movie Database (TMDB) ਤੋਂ ਫ਼ਿਲਮਾਂ, ਟੀਵੀ ਸ਼ੋਅ ਅਤੇ ਆਰਟਵਰਕ ਲੋਡ ਕਰਦਾ ਹੈ। ਜੇਕਰ ਹੋਮ ਖਾਲੀ ਹੈ ਜਾਂ TMDB ਖਾਤਾ ਕਨੈਕਟ ਕਰਨਾ ਅਸਫਲ ਹੋ ਜਾਂਦਾ ਹੈ, ਤਾਂ ਇਹ ਡਿਵਾਈਸ TMDB ਤੱਕ ਨਹੀਂ ਪਹੁੰਚ ਸਕਦੀ — ਭਾਵੇਂ ਹੋਰ ਐਪਾਂ ਕੰਮ ਕਰਦੀਆਂ ਹੋਣ।"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica ładuje filmy, programy telewizyjne i grafiki z The Movie Database (TMDB). Jeśli ekran główny jest pusty lub połączenie z kontem TMDB nie powiedzie się, urządzenie nie będzie mogło połączyć się z TMDB — nawet gdy działają inne aplikacje."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica încarcă filme, emisiuni TV și lucrări de artă din The Movie Database (TMDB). Dacă meniul Acasă este gol sau conectarea unui cont TMDB eșuează, acest dispozitiv nu poate accesa TMDB — chiar și atunci când alte aplicații funcționează."
+          }
+        },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica naloži filme, TV-oddaje in umetniška dela iz The Movie Database (TMDB). Če je Domov prazen ali povezovanje z računom TMDB ne uspe, ta naprava ne more doseči TMDB – tudi če druge aplikacije delujejo."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica laddar filmer, TV-program och konstverk från The Movie Database (TMDB). Om startsidan är tom eller om det inte går att ansluta till ett TMDB-konto kan den här enheten inte nå TMDB – inte ens när andra appar fungerar."
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica ஆனது The Movie Database (TMDB) இலிருந்து திரைப்படங்கள், தொலைக்காட்சி நிகழ்ச்சிகள் மற்றும் கலைப்படைப்புகளை ஏற்றுகிறது. முகப்பு காலியாக இருந்தாலோ அல்லது TMDB கணக்கை இணைப்பதில் தோல்வி ஏற்பட்டாலோ, மற்ற செயலிகள் இயங்கும்போது கூட, இந்தச் சாதனத்தால் TMDB ஐ அணுக முடியாது."
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica అనేది The Movie Database (TMDB) నుండి సినిమాలు, టీవీ షోలు మరియు కళాకృతులను లోడ్ చేస్తుంది. ఒకవేళ హోమ్ ఖాళీగా ఉన్నా లేదా TMDB ఖాతాను కనెక్ట్ చేయడం విఫలమైనా, ఇతర యాప్‌లు పనిచేస్తున్నప్పటికీ ఈ పరికరం TMDBను చేరుకోలేదు."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica โหลดภาพยนตร์ รายการทีวี และภาพปกจาก The Movie Database (TMDB) หากหน้า Home ว่างเปล่า หรือการเชื่อมต่อบัญชี TMDB ล้มเหลว อุปกรณ์นี้จะไม่สามารถเข้าถึง TMDB ได้ แม้ว่าแอปอื่นๆ จะทำงานได้ปกติก็ตาม"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica, filmleri, dizileri ve görselleri The Movie Database'dan (TMDB) yükler. Eğer Home boşsa veya bir TMDB hesabına bağlanma başarısız olursa, diğer uygulamalar çalışsa bile bu cihaz TMDB'ye ulaşamaz."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica The Movie Database (TMDB) سے فلمیں، ٹی وی شوز، اور آرٹ ورک لوڈ کرتا ہے۔ اگر گھر خالی ہے یا TMDB اکاؤنٹ کو جوڑنے میں ناکام ہو جاتا ہے، تو یہ آلہ TMDB تک نہیں پہنچ سکتا — یہاں تک کہ جب دیگر ایپس کام کریں۔"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica tải phim, chương trình truyền hình và tác phẩm nghệ thuật từ The Movie Database (TMDB). Nếu thư mục Home trống hoặc việc kết nối tài khoản TMDB thất bại, thiết bị này không thể truy cập TMDB — ngay cả khi các ứng dụng khác hoạt động bình thường."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica 从 The Movie Database (TMDB) 加载电影、电视节目和图片。如果主屏幕为空或连接 TMDB 帐户失败，即使其他应用可以正常工作，此设备也无法访问 TMDB。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica 從 The Movie Database (TMDB) 載入電影、電視節目和圖片。如果主畫面為空或連線 TMDB 帳戶失敗，即使其他應用程式可以正常運作，此裝置也無法存取 TMDB。"
+          }
         }
       }
     },
     "Open TMDB Website": {
       "localizations": {
-        "de": { "stringUnit": { "state": "translated", "value": "TMDB-Website öffnen" } },
-        "en": { "stringUnit": { "state": "translated", "value": "Open TMDB Website" } },
-        "ru": { "stringUnit": { "state": "translated", "value": "Открыть сайт TMDB" } },
-        "uk": { "stringUnit": { "state": "translated", "value": "Відкрити сайт TMDB" } }
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB-Website öffnen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open TMDB Website"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Открыть сайт TMDB"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Відкрити сайт TMDB"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ouvrir le site web TMDB"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apri il sito web TMDB"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abra o site TMDB"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abra o site TMDB"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Otvoriť webovú stránku TMDB"
+          }
+        },
+        "es-MX": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abrir sitio web TMDB"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "افتح موقع TMDB الإلكتروني"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB ওয়েবসাইট খুলুন"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Obre el lloc web TMDB"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Otevřít webovou stránku TMDB"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Åbn TMDB hjemmeside"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Άνοιγμα ιστότοπου TMDB"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abrir sitio web TMDB"
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Avaa TMDB-verkkosivusto"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB વેબસાઇટ ખોલો"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "פתח את אתר TMDB"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB वेबसाइट खोलें"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Otvori TMDB web stranicu"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nyissa meg a TMDB weboldalt"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buka Situs Web TMDB"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB ウェブサイトを開く"
+          }
+        },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB ವೆಬ್‌ಸೈಟ್ ತೆರೆಯಿರಿ"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB 웹사이트 열기"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB വെബ്സൈറ്റ് തുറക്കുക"
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB वेबसाइट उघडा"
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buka Laman Web TMDB"
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Åpne TMDB nettsiden"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open de TMDB-website"
+          }
+        },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB ୱେବସାଇଟ୍ ଖୋଲନ୍ତୁ"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB ਵੈੱਬਸਾਈਟ ਖੋਲ੍ਹੋ"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Otwórz witrynę TMDB"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deschideți site-ul web TMDB"
+          }
+        },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Odpri spletno stran TMDB"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Öppna TMDB webbplats"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "B0 வலைத்தளத்தைத் திறக்கவும்"
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB వెబ్‌సైట్‌ను తెరవండి"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เปิดเว็บไซต์ TMDB"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB Web Sitesini Aç"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB ویب سائٹ کھولیں۔"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mở trang web TMDB"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打开TMDB网站"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "開啟TMDB網站"
+          }
+        }
       }
     },
     "Open themoviedb.org in Safari on this device. If the site does not load, Cronica cannot load the catalog on this network.": {
       "localizations": {
-        "de": { "stringUnit": { "state": "translated", "value": "Öffne themoviedb.org in Safari auf diesem Gerät. Wenn die Seite nicht lädt, kann Cronica den Katalog in diesem Netzwerk nicht laden." } },
-        "en": { "stringUnit": { "state": "translated", "value": "Open themoviedb.org in Safari on this device. If the site does not load, Cronica cannot load the catalog on this network." } },
-        "ru": { "stringUnit": { "state": "translated", "value": "Откройте themoviedb.org в Safari на этом устройстве. Если сайт не открывается, Cronica не сможет загрузить каталог в этой сети." } },
-        "uk": { "stringUnit": { "state": "translated", "value": "Відкрийте themoviedb.org у Safari на цьому пристрої. Якщо сайт не відкривається, Cronica не зможе завантажити каталог у цій мережі." } }
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Öffne themoviedb.org in Safari auf diesem Gerät. Wenn die Seite nicht lädt, kann Cronica den Katalog in diesem Netzwerk nicht laden."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open themoviedb.org in Safari on this device. If the site does not load, Cronica cannot load the catalog on this network."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Откройте themoviedb.org в Safari на этом устройстве. Если сайт не открывается, Cronica не сможет загрузить каталог в этой сети."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Відкрийте themoviedb.org у Safari на цьому пристрої. Якщо сайт не відкривається, Cronica не зможе завантажити каталог у цій мережі."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ouvrez themoviedb.org dans Safari sur cet appareil. Si le site ne se charge pas, Cronica ne peut pas charger le catalogue sur ce réseau."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apri themoviedb.org in Safari su questo dispositivo. Se il sito non si carica, Cronica non può caricare il catalogo su questa rete."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abra o site themoviedb.org em Safari neste dispositivo. Se o site não carregar, Cronica não poderá carregar o catálogo nesta rede."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abra o site themoviedb.org em Safari neste dispositivo. Se o site não carregar, Cronica não poderá carregar o catálogo nesta rede."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Otvorte stránku themoviedb.org v Safari na tomto zariadení. Ak sa stránka nenačíta, Cronica nemôže načítať katalóg v tejto sieti."
+          }
+        },
+        "es-MX": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abre themoviedb.org en Safari en este dispositivo. Si el sitio no carga, Cronica no puede cargar el catálogo en esta red."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "افتح موقع themoviedb.org في Safari على هذا الجهاز. إذا لم يتم تحميل الموقع، فلن يتمكن Cronica من تحميل الفهرس على هذه الشبكة."
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "এই ডিভাইসে Safari-এ themoviedb.org খুলুন। যদি সাইটটি লোড না হয়, Cronica এই নেটওয়ার্কে ক্যাটালগটি লোড করতে পারবে না।"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Obre themoviedb.org a Safari en aquest dispositiu. Si el lloc no es carrega, Cronica no pot carregar el catàleg en aquesta xarxa."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Otevřete web themoviedb.org v Safari na tomto zařízení. Pokud se web nenačte, Cronica nemůže načíst katalog v této síti."
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Åbn themoviedb.org i Safari på denne enhed. Hvis webstedet ikke indlæses, kan Cronica ikke indlæse kataloget på dette netværk."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ανοίξτε το themoviedb.org στο Safari σε αυτήν τη συσκευή. Εάν ο ιστότοπος δεν φορτώσει, το Cronica δεν μπορεί να φορτώσει τον κατάλογο σε αυτό το δίκτυο."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abre themoviedb.org en Safari en este dispositivo. Si el sitio no carga, Cronica no puede cargar el catálogo en esta red."
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Avaa themoviedb.org Safari-laitteella. Jos sivusto ei lataudu, Cronica ei voi ladata luetteloa tässä verkossa."
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "આ ઉપકરણ પર Safari માં themoviedb.org ખોલો. જો સાઇટ લોડ ન થાય, તો Cronica આ નેટવર્ક પર કેટલોગ લોડ કરી શકશે નહીં."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "פתח את themoviedb.org ב-Safari במכשיר זה. אם האתר לא נטען, Cronica לא יוכל לטעון את הקטלוג ברשת זו."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "इस डिवाइस पर Safari में themoviedb.org खोलें। यदि साइट लोड नहीं होती है, तो Cronica इस नेटवर्क पर कैटलॉग लोड नहीं कर सकता है।"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Otvorite themoviedb.org u Safari na ovom uređaju. Ako se stranica ne učita, Cronica ne može učitati katalog na ovoj mreži."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nyisd meg a themoviedb.org oldalt a Safari könyvtárban ezen az eszközön. Ha az oldal nem töltődik be, a Cronica nem tudja betölteni a katalógust ezen a hálózaton."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buka themoviedb.org di Safari pada perangkat ini. Jika situs tidak dimuat, Cronica tidak dapat memuat katalog di jaringan ini."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "このデバイスのSafariでthemoviedb.orgを開いてください。サイトが読み込まれない場合、Cronicaはこのネットワーク上でカタログを読み込むことができません。"
+          }
+        },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ಈ ಸಾಧನದಲ್ಲಿ Safari ನಲ್ಲಿ themoviedb.org ತೆರೆಯಿರಿ. ಸೈಟ್ ಲೋಡ್ ಆಗದಿದ್ದರೆ, Cronica ಈ ನೆಟ್‌ವರ್ಕ್‌ನಲ್ಲಿ ಕ್ಯಾಟಲಾಗ್ ಅನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗುವುದಿಲ್ಲ."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이 기기에서 Safari으로 themoviedb.org를 여세요. 사이트가 로드되지 않으면 Cronica에서 이 네트워크의 카탈로그를 로드할 수 없습니다."
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ഈ ഉപകരണത്തിൽ Safari ൽ themoviedb.org തുറക്കുക. സൈറ്റ് ലോഡ് ആയില്ലെങ്കിൽ, Cronica ന് ഈ നെറ്റ്‌വർക്കിലെ കാറ്റലോഗ് ലോഡ് ചെയ്യാൻ കഴിയില്ല."
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "या डिव्हाइसवर Safari मध्ये themoviedb.org उघडा. जर साइट लोड झाली नाही, तर Cronica या नेटवर्कवर कॅटलॉग लोड करू शकत नाही."
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buka themoviedb.org dalam Safari pada peranti ini. Jika tapak tidak dimuatkan, Cronica tidak boleh memuatkan katalog pada rangkaian ini."
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Åpne themoviedb.org i Safari på denne enheten. Hvis nettstedet ikke lastes inn, kan ikke Cronica laste inn katalogen på dette nettverket."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open themoviedb.org in Safari op dit apparaat. Als de site niet laadt, kan Cronica de catalogus niet laden op dit netwerk."
+          }
+        },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ଏହି ଡିଭାଇସରେ Safari ରେ themoviedb.org ଖୋଲନ୍ତୁ। ଯଦି ସାଇଟ୍ ଲୋଡ୍ ନହୁଏ, ତେବେ Cronica ଏହି ନେଟୱାର୍କରେ କ୍ୟାଟାଲଗ୍ ଲୋଡ୍ କରିପାରିବ ନାହିଁ।"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ਇਸ ਡਿਵਾਈਸ 'ਤੇ Safari ਵਿੱਚ themoviedb.org ਖੋਲ੍ਹੋ। ਜੇਕਰ ਸਾਈਟ ਲੋਡ ਨਹੀਂ ਹੁੰਦੀ ਹੈ, ਤਾਂ Cronica ਇਸ ਨੈੱਟਵਰਕ 'ਤੇ ਕੈਟਾਲਾਗ ਲੋਡ ਨਹੀਂ ਕਰ ਸਕਦਾ।"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Otwórz themoviedb.org w Safari na tym urządzeniu. Jeśli strona się nie załaduje, Cronica nie może załadować katalogu w tej sieci."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deschideți themoviedb.org în Safari pe acest dispozitiv. Dacă site-ul nu se încarcă, Cronica nu poate încărca catalogul pe această rețea."
+          }
+        },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Odprite themoviedb.org v Safari na tej napravi. Če se spletno mesto ne naloži, Cronica ne more naložiti kataloga v tem omrežju."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Öppna themoviedb.org i Safari på den här enheten. Om webbplatsen inte laddas kan Cronica inte ladda katalogen på det här nätverket."
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "இந்தச் சாதனத்தில் உள்ள Safari இல் themoviedb.org ஐத் திறக்கவும். தளம் ஏற்றப்படாவிட்டால், இந்த வலையமைப்பில் Cronica ஆல் பட்டியலை ஏற்ற முடியாது."
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ఈ పరికరంలో Safari లో themoviedb.org ను తెరవండి. ఒకవేళ సైట్ లోడ్ కాకపోతే, ఈ నెట్‌వర్క్‌లో Cronica కేటలాగ్‌ను లోడ్ చేయలేదు."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เปิดเว็บไซต์ themoviedb.org ใน Safari บนอุปกรณ์นี้ หากเว็บไซต์ไม่โหลด แสดงว่า Cronica ไม่สามารถโหลดแคตตาล็อกบนเครือข่ายนี้ได้"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu cihazda Safari üzerinde themoviedb.org adresini açın. Site yüklenmezse, Cronica bu ağda kataloğu yükleyemez."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اس ڈیوائس پر themoviedb.org کو Safari میں کھولیں۔ اگر سائٹ لوڈ نہیں ہوتی ہے، تو Cronica اس نیٹ ورک پر کیٹلاگ لوڈ نہیں کر سکتا۔"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mở themoviedb.org trong Safari trên thiết bị này. Nếu trang web không tải được, Cronica không thể tải danh mục trên mạng này."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请在此设备的Safari窗口中打开themoviedb.org。如果网站无法加载，则Cronica窗口无法在此网络上加载目录。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "請在此設備的Safari視窗中開啟themoviedb.org。如果網站無法載入，則Cronica視窗無法在此網路上載入目錄。"
+          }
+        }
       }
     },
     "A VPN or a different DNS server (such as Quad9 or Google) sometimes restores access.": {
       "localizations": {
-        "de": { "stringUnit": { "state": "translated", "value": "Ein VPN oder ein anderer DNS-Server (etwa Quad9 oder Google) stellt den Zugang manchmal wieder her." } },
-        "en": { "stringUnit": { "state": "translated", "value": "A VPN or a different DNS server (such as Quad9 or Google) sometimes restores access." } },
-        "ru": { "stringUnit": { "state": "translated", "value": "VPN или другой DNS (например Quad9 или Google) иногда восстанавливает доступ." } },
-        "uk": { "stringUnit": { "state": "translated", "value": "VPN або інший DNS (наприклад Quad9 чи Google) інколи відновлює доступ." } }
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ein VPN oder ein anderer DNS-Server (etwa Quad9 oder Google) stellt den Zugang manchmal wieder her."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A VPN or a different DNS server (such as Quad9 or Google) sometimes restores access."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "VPN или другой DNS (например Quad9 или Google) иногда восстанавливает доступ."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "VPN або інший DNS (наприклад Quad9 чи Google) інколи відновлює доступ."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un VPN ou un serveur DNS différent (tel que Quad9 ou Google) rétablit parfois l'accès."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A volte, una VPN o un server DNS diverso (come Quad9 o Google) ripristinano l'accesso."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uma VPN ou um servidor DNS diferente (como Quad9 ou Google) às vezes restaura o acesso."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uma VPN ou um servidor DNS diferente (como Quad9 ou Google) às vezes restaura o acesso."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "VPN alebo iný DNS server (napríklad Quad9 alebo Google) niekedy obnoví prístup."
+          }
+        },
+        "es-MX": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "En ocasiones, una VPN o un servidor DNS diferente (como Quad9 o Google) restablece el acceso."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "قد يؤدي استخدام VPN أو خادم DNS مختلف (مثل Quad9 أو Google) في بعض الأحيان إلى استعادة الوصول."
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "একটি ভিপিএন বা ভিন্ন ডিএনএস সার্ভার (যেমন Quad9 বা Google) কখনও কখনও অ্যাক্সেস পুনরুদ্ধার করে।"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Una VPN o un servidor DNS diferent (com ara Quad9 o Google) de vegades restaura l'accés."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "VPN nebo jiný DNS server (například Quad9 nebo Google) někdy obnoví přístup."
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "En VPN eller en anden DNS-server (såsom Quad9 eller Google) gendanner nogle gange adgangen."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ένα VPN ή ένας διαφορετικός διακομιστής DNS (όπως Quad9 ή Google) μερικές φορές επαναφέρει την πρόσβαση."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "En ocasiones, una VPN o un servidor DNS diferente (como Quad9 o Google) restablece el acceso."
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "VPN tai jokin toinen DNS-palvelin (kuten Quad9 tai Google) palauttaa joskus pääsyn."
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "VPN અથવા કોઈ અલગ DNS સર્વર (જેમ કે Quad9 અથવા Google) ક્યારેક ઍક્સેસ પુનઃસ્થાપિત કરે છે."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "לפעמים VPN או שרת DNS אחר (כגון Quad9 או Google) משחזרים את הגישה."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "वीपीएन या कोई भिन्न डीएनएस सर्वर (जैसे कि Quad9 या Google) कभी-कभी एक्सेस को बहाल कर देता है।"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "VPN ili drugi DNS poslužitelj (kao što je Quad9 ili Google) ponekad vraća pristup."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Egy VPN vagy egy másik DNS-kiszolgáló (például Quad9 vagy Google) időnként visszaállítja a hozzáférést."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "VPN atau server DNS yang berbeda (seperti Quad9 atau Google) terkadang dapat memulihkan akses."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "VPNや別のDNSサーバー（Quad9やGoogleなど）を使用すると、アクセスが回復する場合があります。"
+          }
+        },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "VPN ಅಥವಾ ಬೇರೆ DNS ಸರ್ವರ್ (Quad9 ಅಥವಾ Google ನಂತಹ) ಕೆಲವೊಮ್ಮೆ ಪ್ರವೇಶವನ್ನು ಮರುಸ್ಥಾಪಿಸುತ್ತದೆ."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "VPN이나 다른 DNS 서버(예: Quad9 또는 Google)를 사용하면 접속이 복구되는 경우가 있습니다."
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ഒരു VPN അല്ലെങ്കിൽ മറ്റൊരു DNS സെർവർ (Quad9 അല്ലെങ്കിൽ Google പോലുള്ളവ) ചിലപ്പോൾ ആക്‌സസ് പുനഃസ്ഥാപിക്കും."
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "व्हीपीएन किंवा वेगळा डीएनएस सर्व्हर (जसे की Quad9 किंवा Google) कधीकधी प्रवेश पूर्ववत करतो."
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "VPN atau pelayan DNS yang berbeza (seperti Quad9 atau Google) kadangkala memulihkan akses."
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Et VPN eller en annen DNS-server (som Quad9 eller Google) gjenoppretter noen ganger tilgang."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Een VPN of een andere DNS-server (zoals Quad9 of Google) kan soms de toegang herstellen."
+          }
+        },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ଏକ VPN କିମ୍ବା ଏକ ଭିନ୍ନ DNS ସର୍ଭର (ଯେପରିକି Quad9 କିମ୍ବା Google) କେତେକ ସମୟରେ ଆକ୍ସେସ୍ ପୁନଃସ୍ଥାପିତ କରିଥାଏ।"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ਇੱਕ VPN ਜਾਂ ਇੱਕ ਵੱਖਰਾ DNS ਸਰਵਰ (ਜਿਵੇਂ ਕਿ Quad9 ਜਾਂ Google) ਕਈ ਵਾਰ ਪਹੁੰਚ ਨੂੰ ਬਹਾਲ ਕਰਦਾ ਹੈ।"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Czasami dostęp można przywrócić za pomocą sieci VPN lub innego serwera DNS (takiego jak Quad9 lub Google)."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un VPN sau un alt server DNS (cum ar fi Quad9 sau Google) restabilește uneori accesul."
+          }
+        },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "VPN ali drug strežnik DNS (na primer Quad9 ali Google) včasih obnovi dostop."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "En VPN eller en annan DNS-server (som Quad9 eller Google) återställer ibland åtkomsten."
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ஒரு VPN அல்லது (Quad9 அல்லது Google போன்ற) வேறு ஒரு DNS சேவையகம் சில நேரங்களில் அணுகலை மீட்டெடுக்கிறது."
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ఒక VPN లేదా వేరొక DNS సర్వర్ (ఉదాహరణకు Quad9 లేదా Google) కొన్నిసార్లు యాక్సెస్‌ను పునరుద్ధరిస్తుంది."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "การใช้ VPN หรือเซิร์ฟเวอร์ DNS อื่น (เช่น Quad9 หรือ Google) บางครั้งอาจช่วยให้เข้าถึงได้อีกครั้ง"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "VPN veya farklı bir DNS sunucusu (örneğin Quad9 veya Google) bazen erişimi geri yükleyebilir."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "VPN یا ایک مختلف DNS سرور (جیسے Quad9 یا Google) کبھی کبھی رسائی کو بحال کرتا ہے۔"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Việc sử dụng VPN hoặc máy chủ DNS khác (chẳng hạn như Quad9 hoặc Google) đôi khi có thể khôi phục quyền truy cập."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "使用 VPN 或不同的 DNS 服务器（例如 Quad9 或 Google）有时可以恢复访问。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "使用 VPN 或不同的 DNS 伺服器（例如 Quad9 或 Google）有時可以恢復存取。"
+          }
+        }
       }
     },
     "Titles, notes, and lists already saved in Cronica stay on this device and in iCloud. Only the online catalog and TMDB account sync need TMDB.": {
       "localizations": {
-        "de": { "stringUnit": { "state": "translated", "value": "Bereits in Cronica gespeicherte Titel, Notizen und Listen bleiben auf diesem Gerät und in iCloud. Nur der Online-Katalog und die TMDB-Kontosynchronisierung benötigen TMDB." } },
-        "en": { "stringUnit": { "state": "translated", "value": "Titles, notes, and lists already saved in Cronica stay on this device and in iCloud. Only the online catalog and TMDB account sync need TMDB." } },
-        "ru": { "stringUnit": { "state": "translated", "value": "Названия, заметки и списки, уже сохранённые в Cronica, остаются на устройстве и в iCloud. Онлайн-каталог и синхронизация аккаунта TMDB требуют доступа к TMDB." } },
-        "uk": { "stringUnit": { "state": "translated", "value": "Назви, нотатки та списки, уже збережені в Cronica, залишаються на пристрої та в iCloud. Онлайн-каталог і синхронізація облікового запису TMDB потребують доступу до TMDB." } }
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bereits in Cronica gespeicherte Titel, Notizen und Listen bleiben auf diesem Gerät und in iCloud. Nur der Online-Katalog und die TMDB-Kontosynchronisierung benötigen TMDB."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Titles, notes, and lists already saved in Cronica stay on this device and in iCloud. Only the online catalog and TMDB account sync need TMDB."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Названия, заметки и списки, уже сохранённые в Cronica, остаются на устройстве и в iCloud. Онлайн-каталог и синхронизация аккаунта TMDB требуют доступа к TMDB."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Назви, нотатки та списки, уже збережені в Cronica, залишаються на пристрої та в iCloud. Онлайн-каталог і синхронізація облікового запису TMDB потребують доступу до TMDB."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les titres, notes et listes déjà enregistrés dans Cronica restent sur cet appareil et dans iCloud. Seuls le catalogue en ligne et la synchronisation du compte TMDB nécessitent TMDB."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Titoli, note ed elenchi già salvati in Cronica rimangono su questo dispositivo e in iCloud. Solo il catalogo online e la sincronizzazione dell'account TMDB necessitano di TMDB."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Títulos, notas e listas já salvos em Cronica permanecem neste dispositivo e em iCloud. Somente o catálogo online e a sincronização da conta TMDB precisam de TMDB."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Títulos, notas e listas já salvos em Cronica permanecem neste dispositivo e em iCloud. Somente o catálogo online e a sincronização da conta TMDB precisam de TMDB."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Názvy, poznámky a zoznamy, ktoré už boli uložené v Cronica, zostávajú na tomto zariadení a v iCloud. TMDB vyžaduje iba online katalóg a synchronizácia účtu TMDB."
+          }
+        },
+        "es-MX": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Los títulos, notas y listas ya guardados en Cronica permanecen en este dispositivo y en iCloud. Solo el catálogo en línea y la sincronización de la cuenta TMDB necesitan TMDB."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تبقى العناوين والملاحظات والقوائم المحفوظة مسبقًا في Cronica على هذا الجهاز وفي iCloud. يحتاج فقط الكتالوج الإلكتروني ومزامنة حساب TMDB إلى TMDB."
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica-তে ইতিমধ্যে সংরক্ষিত শিরোনাম, নোট এবং তালিকা এই ডিভাইসে এবং iCloud-তে থেকে যায়। শুধুমাত্র অনলাইন ক্যাটালগ এবং TMDB অ্যাকাউন্ট সিঙ্ক করার জন্য TMDB প্রয়োজন।"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Els títols, les notes i les llistes que ja s'han desat a Cronica es queden en aquest dispositiu i a iCloud. Només cal TMDB per al catàleg en línia i la sincronització del compte TMDB."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Názvy, poznámky a seznamy, které již byly uloženy v Cronica, zůstávají v tomto zařízení a v iCloud. TMDB potřebuje pouze online katalog a synchronizace účtu TMDB."
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Titler, noter og lister, der allerede er gemt i Cronica, forbliver på denne enhed og i iCloud. Kun onlinekataloget og synkroniseringen af TMDB-kontoen kræver TMDB."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Οι τίτλοι, οι σημειώσεις και οι λίστες που έχουν ήδη αποθηκευτεί στο Cronica παραμένουν σε αυτήν τη συσκευή και στο iCloud. Μόνο ο ηλεκτρονικός κατάλογος και ο συγχρονισμός του λογαριασμού TMDB χρειάζονται TMDB."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Los títulos, notas y listas ya guardados en Cronica permanecen en este dispositivo y en iCloud. Solo el catálogo en línea y la sincronización de la cuenta TMDB necesitan TMDB."
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica-kansioon jo tallennetut otsikot, muistiinpanot ja listat pysyvät tällä laitteella ja iCloud-kansiossa. Vain verkkoluettelo ja TMDB-tilin synkronointi tarvitsevat TMDB-kansion."
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica માં પહેલાથી જ સાચવેલા શીર્ષકો, નોંધો અને સૂચિઓ આ ઉપકરણ પર અને iCloud માં રહે છે. ફક્ત ઓનલાઈન કેટલોગ અને TMDB એકાઉન્ટ સિંક માટે TMDB ની જરૂર છે."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "כותרות, הערות ורשימות שכבר נשמרו ב-Cronica יישארו במכשיר זה וב-iCloud. רק הקטלוג המקוון וסנכרון חשבון TMDB זקוקים ל-TMDB."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica में पहले से सहेजे गए शीर्षक, नोट्स और सूचियाँ इसी डिवाइस और iCloud में रहती हैं। केवल ऑनलाइन कैटलॉग और TMDB खाता सिंक के लिए TMDB की आवश्यकता होती है।"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Naslovi, bilješke i popisi koji su već spremljeni u Cronica ostaju na ovom uređaju i u iCloud. Samo online katalog i sinkronizacija računa TMDB trebaju TMDB."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A Cronica mappába már mentett címek, jegyzetek és listák ezen az eszközön és a iCloud mappában is megmaradnak. Csak az online katalógushoz és a TMDB fiók szinkronizálásához van szükség a TMDB mappára."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Judul, catatan, dan daftar yang sudah tersimpan di Cronica tetap berada di perangkat ini dan di iCloud. Hanya katalog online dan sinkronisasi akun TMDB yang membutuhkan TMDB."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronicaに既に保存されているタイトル、メモ、リストは、このデバイスとiCloudに保持されます。オンラインカタログとTMDBアカウントの同期のみ、TMDBが必要です。"
+          }
+        },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica ನಲ್ಲಿ ಈಗಾಗಲೇ ಉಳಿಸಲಾದ ಶೀರ್ಷಿಕೆಗಳು, ಟಿಪ್ಪಣಿಗಳು ಮತ್ತು ಪಟ್ಟಿಗಳು ಈ ಸಾಧನದಲ್ಲಿ ಮತ್ತು iCloud ನಲ್ಲಿ ಉಳಿಯುತ್ತವೆ. ಆನ್‌ಲೈನ್ ಕ್ಯಾಟಲಾಗ್ ಮತ್ತು TMDB ಖಾತೆ ಸಿಂಕ್‌ಗೆ ಮಾತ್ರ TMDB ಅಗತ್ಯವಿದೆ."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica에 이미 저장된 제목, 메모 및 목록은 이 기기와 iCloud에 그대로 유지됩니다. 온라인 카탈로그 및 TMDB 계정 동기화에만 TMDB가 필요합니다."
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica-ൽ ഇതിനകം സംരക്ഷിച്ചിരിക്കുന്ന ശീർഷകങ്ങൾ, കുറിപ്പുകൾ, ലിസ്റ്റുകൾ എന്നിവ ഈ ഉപകരണത്തിലും iCloud-ലും നിലനിൽക്കും. ഓൺലൈൻ കാറ്റലോഗിനും TMDB അക്കൗണ്ട് സമന്വയത്തിനും മാത്രമേ TMDB ആവശ്യമുള്ളൂ."
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica मध्ये आधीच जतन केलेली शीर्षके, नोंदी आणि सूची या डिव्हाइसवर आणि iCloud मध्ये राहतात. फक्त ऑनलाइन कॅटलॉग आणि TMDB खाते सिंक करण्यासाठी TMDB ची आवश्यकता असते."
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tajuk, nota dan senarai yang telah disimpan dalam Cronica kekal pada peranti ini dan dalam iCloud. Hanya katalog dalam talian dan penyegerakan akaun TMDB memerlukan TMDB."
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Titler, notater og lister som allerede er lagret i Cronica forblir på denne enheten og i iCloud. Bare nettkatalogen og synkroniseringen av TMDB-kontoen trenger TMDB."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Titels, notities en lijsten die al in Cronica zijn opgeslagen, blijven op dit apparaat en in iCloud staan. Alleen de online catalogus en de synchronisatie van het TMDB-account hebben TMDB nodig."
+          }
+        },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica ରେ ପୂର୍ବରୁ ସେଭ୍ ହୋଇଥିବା ଶୀର୍ଷକ, ନୋଟ୍ସ ଏବଂ ତାଲିକାଗୁଡ଼ିକ ଏହି ଡିଭାଇସରେ ଏବଂ iCloud ରେ ରହିବ। କେବଳ ଅନଲାଇନ୍ କ୍ୟାଟାଲଗ୍ ଏବଂ TMDB ଆକାଉଣ୍ଟ ସିଙ୍କ ପାଇଁ TMDB ଆବଶ୍ୟକ।"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica ਵਿੱਚ ਪਹਿਲਾਂ ਹੀ ਸੇਵ ਕੀਤੇ ਗਏ ਸਿਰਲੇਖ, ਨੋਟਸ ਅਤੇ ਸੂਚੀਆਂ ਇਸ ਡਿਵਾਈਸ ਅਤੇ iCloud ਵਿੱਚ ਹੀ ਰਹਿਣਗੀਆਂ। ਸਿਰਫ਼ ਔਨਲਾਈਨ ਕੈਟਾਲਾਗ ਅਤੇ TMDB ਖਾਤੇ ਦੇ ਸਿੰਕ ਲਈ TMDB ਦੀ ਲੋੜ ਹੈ।"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tytuły, notatki i listy zapisane w Cronica pozostają na tym urządzeniu i w iCloud. Tylko katalog online i synchronizacja konta TMDB wymagają TMDB."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Titlurile, notele și listele deja salvate în Cronica rămân pe acest dispozitiv și în iCloud. Doar catalogul online și sincronizarea contului TMDB necesită TMDB."
+          }
+        },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Naslovi, opombe in seznami, ki so že shranjeni v Cronica, ostanejo v tej napravi in v iCloud. TMDB potrebujeta samo spletni katalog in sinhronizacija računa TMDB."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Titlar, anteckningar och listor som redan sparats i Cronica finns kvar på den här enheten och i iCloud. Endast onlinekatalogen och synkroniseringen av TMDB-kontot behöver TMDB."
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica இல் ஏற்கனவே சேமிக்கப்பட்டுள்ள தலைப்புகள், குறிப்புகள் மற்றும் பட்டியல்கள் இந்தச் சாதனத்திலும் iCloud இலும் அப்படியே இருக்கும். ஆன்லைன் பட்டியல் மற்றும் TMDB கணக்கு ஒத்திசைவுக்கு மட்டுமே TMDB தேவைப்படும்."
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronicaలో ఇప్పటికే సేవ్ చేయబడిన శీర్షికలు, గమనికలు మరియు జాబితాలు ఈ పరికరంలో మరియు iCloudలో ఉంటాయి. ఆన్‌లైన్ కేటలాగ్ మరియు TMDB ఖాతా సమకాలీకరణకు మాత్రమే TMDB అవసరం."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ชื่อเรื่อง บันทึก และรายการต่างๆ ที่บันทึกไว้แล้วใน Cronica จะยังคงอยู่ในอุปกรณ์นี้และใน iCloud เฉพาะแคตตาล็อกออนไลน์และการซิงค์บัญชี TMDB เท่านั้นที่ต้องการ TMDB"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica cihazına önceden kaydedilmiş başlıklar, notlar ve listeler bu cihazda ve iCloud cihazında kalır. Yalnızca çevrimiçi katalog ve TMDB hesap senkronizasyonu için TMDB cihazına ihtiyaç duyulur."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cronica میں پہلے سے محفوظ کردہ عنوانات، نوٹس اور فہرستیں اس ڈیوائس پر اور iCloud میں رہیں۔ صرف آن لائن کیٹلاگ اور TMDB اکاؤنٹ کی مطابقت پذیری کو TMDB کی ضرورت ہے۔"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Các tiêu đề, ghi chú và danh sách đã lưu trong Cronica sẽ vẫn còn trên thiết bị này và trong iCloud. Chỉ có danh mục trực tuyến và việc đồng bộ tài khoản TMDB mới cần TMDB."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已保存在 Cronica 中的标题、笔记和列表将保留在此设备和 iCloud 中。只有在线目录和 TMDB 帐户同步需要 TMDB。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已儲存在 Cronica 中的標題、筆記和清單將保留在此裝置和 iCloud 中。只有線上目錄和 TMDB 帳戶同步需要 TMDB。"
+          }
+        }
       }
     },
     "TMDB blocks access from some countries, including Russia and Belarus. Some internet providers also block TMDB.": {
       "localizations": {
-        "de": { "stringUnit": { "state": "translated", "value": "TMDB sperrt den Zugang aus einigen Ländern, darunter Russland und Belarus. Manche Internetanbieter sperren TMDB ebenfalls." } },
-        "en": { "stringUnit": { "state": "translated", "value": "TMDB blocks access from some countries, including Russia and Belarus. Some internet providers also block TMDB." } },
-        "ru": { "stringUnit": { "state": "translated", "value": "TMDB блокирует доступ из некоторых стран, в том числе из России и Беларуси. Некоторые провайдеры также блокируют TMDB." } },
-        "uk": { "stringUnit": { "state": "translated", "value": "TMDB блокує доступ із деяких країн, зокрема з Росії та Білорусі. Деякі провайдери також блокують TMDB." } }
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB sperrt den Zugang aus einigen Ländern, darunter Russland und Belarus. Manche Internetanbieter sperren TMDB ebenfalls."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB blocks access from some countries, including Russia and Belarus. Some internet providers also block TMDB."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB блокирует доступ из некоторых стран, в том числе из России и Беларуси. Некоторые провайдеры также блокируют TMDB."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB блокує доступ із деяких країн, зокрема з Росії та Білорусі. Деякі провайдери також блокують TMDB."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB bloque l'accès depuis certains pays, dont la Russie et le Bélarus. Certains fournisseurs d'accès à Internet bloquent également TMDB."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB blocca l'accesso da alcuni paesi, tra cui Russia e Bielorussia. Anche alcuni provider internet bloccano TMDB."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O domínio TMDB bloqueia o acesso de alguns países, incluindo a Rússia e a Bielorrússia. Alguns provedores de internet também bloqueiam o TMDB."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O domínio TMDB bloqueia o acesso de alguns países, incluindo a Rússia e a Bielorrússia. Alguns provedores de internet também bloqueiam o TMDB."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB blokuje prístup z niektorých krajín vrátane Ruska a Bieloruska. Niektorí poskytovatelia internetu tiež blokujú TMDB."
+          }
+        },
+        "es-MX": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB bloquea el acceso desde algunos países, incluidos Rusia y Bielorrusia. Algunos proveedores de internet también bloquean TMDB."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يحظر موقع TMDB الوصول إليه من بعض الدول، بما في ذلك روسيا وبيلاروسيا. كما يحظره بعض مزودي خدمة الإنترنت."
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB রাশিয়া ও বেলারুশ সহ কিছু দেশ থেকে প্রবেশাধিকার ব্লক করে। কিছু ইন্টারনেট সরবরাহকারীও TMDB ব্লক করে।"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB bloqueja l'accés des d'alguns països, com ara Rússia i Bielorússia. Alguns proveïdors d'Internet també bloquegen TMDB."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB blokuje přístup z některých zemí, včetně Ruska a Běloruska. Někteří poskytovatelé internetu také blokují TMDB."
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB blokerer adgang fra nogle lande, herunder Rusland og Hviderusland. Nogle internetudbydere blokerer også TMDB."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Το TMDB αποκλείει την πρόσβαση από ορισμένες χώρες, συμπεριλαμβανομένης της Ρωσίας και της Λευκορωσίας. Ορισμένοι πάροχοι διαδικτύου αποκλείουν επίσης το TMDB."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB bloquea el acceso desde algunos países, incluidos Rusia y Bielorrusia. Algunos proveedores de internet también bloquean TMDB."
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB estää pääsyn joistakin maista, mukaan lukien Venäjältä ja Valko-Venäjältä. Jotkin internet-palveluntarjoajat estävät myös TMDB:n."
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB રશિયા અને બેલારુસ સહિત કેટલાક દેશોમાંથી ઍક્સેસને અવરોધિત કરે છે. કેટલાક ઇન્ટરનેટ પ્રદાતાઓ TMDB ને પણ અવરોધિત કરે છે."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB חוסם גישה ממדינות מסוימות, כולל רוסיה ובלארוס. חלק מספקי האינטרנט חוסמים גם TMDB."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB रूस और बेलारूस सहित कुछ देशों से पहुँच को अवरुद्ध करता है। कुछ इंटरनेट प्रदाता भी TMDB को अवरुद्ध करते हैं।"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB blokira pristup iz nekih zemalja, uključujući Rusiju i Bjelorusiju. Neki davatelji internetskih usluga također blokiraju TMDB."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A TMDB blokkolja a hozzáférést egyes országokból, köztük Oroszországból és Fehéroroszországból. Néhány internetszolgáltató szintén blokkolja a TMDB-t."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB memblokir akses dari beberapa negara, termasuk Rusia dan Belarus. Beberapa penyedia internet juga memblokir TMDB."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDBは、ロシアやベラルーシを含む一部の国からのアクセスをブロックします。一部のインターネットプロバイダもTMDBをブロックしています。"
+          }
+        },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB ರಷ್ಯಾ ಮತ್ತು ಬೆಲಾರಸ್ ಸೇರಿದಂತೆ ಕೆಲವು ದೇಶಗಳಿಂದ ಪ್ರವೇಶವನ್ನು ನಿರ್ಬಂಧಿಸುತ್ತದೆ. ಕೆಲವು ಇಂಟರ್ನೆಟ್ ಪೂರೈಕೆದಾರರು TMDB ಅನ್ನು ಸಹ ನಿರ್ಬಂಧಿಸುತ್ತಾರೆ."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB는 러시아와 벨라루스를 포함한 일부 국가에서의 접속을 차단합니다. 일부 인터넷 서비스 제공업체 또한 TMDB를 차단합니다."
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "റഷ്യ, ബെലാറസ് എന്നിവയുൾപ്പെടെ ചില രാജ്യങ്ങളിൽ നിന്നുള്ള ആക്‌സസ് TMDB തടയുന്നു. ചില ഇന്റർനെറ്റ് ദാതാക്കളും TMDB തടയുന്നു."
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB रशिया आणि बेलारूससह काही देशांमधून प्रवेश अवरोधित करते. काही इंटरनेट प्रदाते देखील TMDB अवरोधित करतात."
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB menyekat akses dari beberapa negara, termasuk Rusia dan Belarus. Sesetengah penyedia internet juga menyekat TMDB."
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB blokkerer tilgang fra noen land, inkludert Russland og Hviterussland. Noen internettleverandører blokkerer også TMDB."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB blokkeert de toegang vanuit sommige landen, waaronder Rusland en Wit-Rusland. Sommige internetproviders blokkeren TMDB ook."
+          }
+        },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB ରୁଷ ଏବଂ ବେଲାରୁଷ ସମେତ କିଛି ଦେଶରୁ ପ୍ରବେଶକୁ ଅବରୋଧ କରେ। କିଛି ଇଣ୍ଟରନେଟ୍ ପ୍ରଦାନକାରୀ ମଧ୍ୟ TMDB କୁ ଅବରୋଧ କରନ୍ତି।"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB ਰੂਸ ਅਤੇ ਬੇਲਾਰੂਸ ਸਮੇਤ ਕੁਝ ਦੇਸ਼ਾਂ ਤੋਂ ਪਹੁੰਚ ਨੂੰ ਬਲੌਕ ਕਰਦਾ ਹੈ। ਕੁਝ ਇੰਟਰਨੈੱਟ ਪ੍ਰਦਾਤਾ TMDB ਨੂੰ ਵੀ ਬਲੌਕ ਕਰਦੇ ਹਨ।"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB blokuje dostęp z niektórych krajów, w tym z Rosji i Białorusi. Niektórzy dostawcy internetu również blokują TMDB."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB blochează accesul din anumite țări, inclusiv Rusia și Belarus. De asemenea, unii furnizori de internet blochează TMDB."
+          }
+        },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB blokira dostop iz nekaterih držav, vključno z Rusijo in Belorusijo. Nekateri ponudniki interneta prav tako blokirajo TMDB."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB blockerar åtkomst från vissa länder, inklusive Ryssland och Vitryssland. Vissa internetleverantörer blockerar också TMDB."
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB ரஷ்யா மற்றும் பெலாரஸ் உள்ளிட்ட சில நாடுகளில் இருந்து அணுகலைத் தடுக்கிறது. சில இணைய சேவை வழங்குநர்களும் TMDB-ஐத் தடுக்கின்றனர்."
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB రష్యా మరియు బెలారస్‌తో సహా కొన్ని దేశాల నుండి యాక్సెస్‌ను నిరోధిస్తుంది. కొన్ని ఇంటర్నెట్ ప్రొవైడర్లు కూడా TMDBను బ్లాక్ చేస్తాయి."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB บล็อกการเข้าถึงจากบางประเทศ รวมถึงรัสเซียและเบลารุส ผู้ให้บริการอินเทอร์เน็ตบางรายก็บล็อก TMDB เช่นกัน"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB, Rusya ve Belarus dahil olmak üzere bazı ülkelerden erişimi engelliyor. Bazı internet sağlayıcıları da TMDB'ı engelliyor."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB روس اور بیلاروس سمیت کچھ ممالک سے رسائی کو روکتا ہے۔ کچھ انٹرنیٹ فراہم کرنے والے بھی TMDB کو مسدود کرتے ہیں۔"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cổng TMDB chặn truy cập từ một số quốc gia, bao gồm Nga và Belarus. Một số nhà cung cấp dịch vụ internet cũng chặn cổng TMDB."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB 会屏蔽来自部分国家/地区的访问，包括俄罗斯和白俄罗斯。一些互联网服务提供商也会屏蔽 TMDB。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB 會封鎖來自部分國家的訪問，包括俄羅斯和白俄羅斯。有些網路服務供應商也會封鎖 TMDB。"
+          }
+        }
       }
     },
     "TMDB blocked this request. The catalog service may be unavailable in your region.": {
       "localizations": {
-        "de": { "stringUnit": { "state": "translated", "value": "TMDB hat diese Anfrage blockiert. Der Katalogdienst ist in deiner Region möglicherweise nicht verfügbar." } },
-        "en": { "stringUnit": { "state": "translated", "value": "TMDB blocked this request. The catalog service may be unavailable in your region." } },
-        "ru": { "stringUnit": { "state": "translated", "value": "TMDB отклонил этот запрос. Каталог может быть недоступен в вашем регионе." } },
-        "uk": { "stringUnit": { "state": "translated", "value": "TMDB відхилив цей запит. Каталог може бути недоступний у вашому регіоні." } }
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB hat diese Anfrage blockiert. Der Katalogdienst ist in deiner Region möglicherweise nicht verfügbar."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB blocked this request. The catalog service may be unavailable in your region."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB отклонил этот запрос. Каталог может быть недоступен в вашем регионе."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB відхилив цей запит. Каталог може бути недоступний у вашому регіоні."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB a bloqué cette requête. Le service de catalogue est peut-être indisponible dans votre région."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB ha bloccato questa richiesta. Il servizio di catalogo potrebbe non essere disponibile nella tua regione."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB bloqueou esta solicitação. O serviço de catálogo pode não estar disponível na sua região."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB bloqueou esta solicitação. O serviço de catálogo pode não estar disponível na sua região."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Používateľ TMDB zablokoval túto žiadosť. Katalógová služba nemusí byť vo vašom regióne dostupná."
+          }
+        },
+        "es-MX": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB bloqueó esta solicitud. Es posible que el servicio de catálogo no esté disponible en su región."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "قام TMDB بحظر هذا الطلب. قد لا تكون خدمة الكتالوج متاحة في منطقتك."
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB এই অনুরোধটি ব্লক করেছে। আপনার অঞ্চলে ক্যাটালগ পরিষেবাটি অনুপলব্ধ হতে পারে।"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB ha bloquejat aquesta sol·licitud. És possible que el servei de catàleg no estigui disponible a la teva regió."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB tento požadavek zablokoval/a. Katalogová služba nemusí být ve vaší oblasti dostupná."
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB blokerede denne anmodning. Katalogtjenesten er muligvis ikke tilgængelig i din region."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ο χρήστης TMDB απέκλεισε αυτό το αίτημα. Η υπηρεσία καταλόγου ενδέχεται να μην είναι διαθέσιμη στην περιοχή σας."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB bloqueó esta solicitud. Es posible que el servicio de catálogo no esté disponible en su región."
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB esti tämän pyynnön. Luettelopalvelu ei ehkä ole käytettävissä alueellasi."
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB એ આ વિનંતીને અવરોધિત કરી છે. તમારા પ્રદેશમાં કેટલોગ સેવા અનુપલબ્ધ હોઈ શકે છે."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB חסם בקשה זו. ייתכן ששירות הקטלוג אינו זמין באזור שלך."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB ने इस अनुरोध को अवरुद्ध कर दिया है। कैटलॉग सेवा आपके क्षेत्र में अनुपलब्ध हो सकती है।"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB je blokirao/la ovaj zahtjev. Usluga kataloga možda nije dostupna u vašoj regiji."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB blokkolta ezt a kérést. Lehetséges, hogy a katalógusszolgáltatás nem érhető el az Ön régiójában."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB memblokir permintaan ini. Layanan katalog mungkin tidak tersedia di wilayah Anda."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB がこのリクエストをブロックしました。お住まいの地域ではカタログサービスが利用できない可能性があります。"
+          }
+        },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB ಈ ವಿನಂತಿಯನ್ನು ನಿರ್ಬಂಧಿಸಿದೆ. ಕ್ಯಾಟಲಾಗ್ ಸೇವೆ ನಿಮ್ಮ ಪ್ರದೇಶದಲ್ಲಿ ಲಭ್ಯವಿಲ್ಲದಿರಬಹುದು."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB님이 이 요청을 차단했습니다. 해당 지역에서는 카탈로그 서비스를 이용할 수 없을 수 있습니다."
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB ഈ അഭ്യർത്ഥന തടഞ്ഞു. നിങ്ങളുടെ പ്രദേശത്ത് കാറ്റലോഗ് സേവനം ലഭ്യമായേക്കില്ല."
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB ने ही विनंती अवरोधित केली आहे. तुमच्या प्रदेशात कॅटलॉग सेवा अनुपलब्ध असू शकते."
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB menyekat permintaan ini. Perkhidmatan katalog mungkin tidak tersedia di rantau anda."
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB blokkerte denne forespørselen. Katalogtjenesten er kanskje ikke tilgjengelig i din region."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB heeft dit verzoek geblokkeerd. De catalogusservice is mogelijk niet beschikbaar in uw regio."
+          }
+        },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB ଏହି ଅନୁରୋଧକୁ ଅବରୋଧ କରିଛି। ଆପଣଙ୍କ ଅଞ୍ଚଳରେ କ୍ୟାଟାଲଗ୍ ସେବା ଉପଲବ୍ଧ ନଥାଇପାରେ।"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB ਨੇ ਇਸ ਬੇਨਤੀ ਨੂੰ ਬਲੌਕ ਕਰ ਦਿੱਤਾ ਹੈ। ਹੋ ਸਕਦਾ ਹੈ ਕਿ ਕੈਟਾਲਾਗ ਸੇਵਾ ਤੁਹਾਡੇ ਖੇਤਰ ਵਿੱਚ ਉਪਲਬਧ ਨਾ ਹੋਵੇ।"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB zablokował to żądanie. Usługa katalogowa może być niedostępna w Twoim regionie."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB a blocat această solicitare. Serviciul de catalog ar putea fi indisponibil în regiunea dvs."
+          }
+        },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB je blokiral/a to zahtevo. Storitev kataloga morda ni na voljo v vaši regiji."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB blockerade denna begäran. Katalogtjänsten kanske inte är tillgänglig i din region."
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB இந்தக் கோரிக்கையைத் தடுத்துவிட்டது. உங்கள் பிராந்தியத்தில் பட்டியல் சேவை கிடைக்காமல் இருக்கலாம்."
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB ఈ అభ్యర్థనను నిరోధించింది. మీ ప్రాంతంలో కేటలాగ్ సేవ అందుబాటులో ఉండకపోవచ్చు."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB บล็อกคำขอ1นี้ บริการแคตตาล็อกอาจไม่พร้อมใช้งานในภูมิภาคของคุณ"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB bu isteği engelledi. Katalog hizmeti bölgenizde kullanılamıyor olabilir."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB نے اس درخواست کو مسدود کردیا۔ ہو سکتا ہے کیٹلاگ سروس آپ کے علاقے میں دستیاب نہ ہو۔"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB đã chặn yêu cầu này. Dịch vụ danh mục có thể không khả dụng trong khu vực của bạn."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB 阻止了此请求。目录服务可能在您所在的地区不可用。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB 阻止了此請求。目錄服務可能在您所在的地區無法使用。"
+          }
+        }
       }
     },
     "What you can try": {
       "localizations": {
-        "de": { "stringUnit": { "state": "translated", "value": "Was du versuchen kannst" } },
-        "en": { "stringUnit": { "state": "translated", "value": "What you can try" } },
-        "ru": { "stringUnit": { "state": "translated", "value": "Что можно попробовать" } },
-        "uk": { "stringUnit": { "state": "translated", "value": "Що можна спробувати" } }
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Was du versuchen kannst"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "What you can try"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Что можно попробовать"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Що можна спробувати"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ce que vous pouvez essayer"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cosa puoi provare"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O que você pode tentar"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O que você pode tentar"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Čo môžete vyskúšať"
+          }
+        },
+        "es-MX": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lo que puedes intentar"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ما يمكنك تجربته"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আপনি যা চেষ্টা করতে পারেন"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Què pots provar"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Co můžete vyzkoušet"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hvad du kan prøve"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Τι μπορείτε να δοκιμάσετε"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lo que puedes intentar"
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mitä voit kokeilla"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "તમે શું અજમાવી શકો છો"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "מה אתה יכול לנסות"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "जिसकी आप कोशिश कर सकते हैं"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Što možete isprobati"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Amit kipróbálhatsz"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apa yang bisa Anda coba"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "試せること"
+          }
+        },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ನೀವು ಏನು ಪ್ರಯತ್ನಿಸಬಹುದು"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "시도해 볼 수 있는 것"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "നിങ്ങൾക്ക് എന്തൊക്കെ പരീക്ഷിക്കാം"
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "तुम्ही काय प्रयत्न करू शकता"
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apa yang anda boleh cuba"
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hva du kan prøve"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wat je kunt proberen"
+          }
+        },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ଆପଣ କଣ ଚେଷ୍ଟା କରିପାରିବେ"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ਤੁਸੀਂ ਕੀ ਅਜ਼ਮਾ ਸਕਦੇ ਹੋ"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Co możesz spróbować"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ce poți încerca"
+          }
+        },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kaj lahko poskusite"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vad du kan prova"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "நீங்கள் முயற்சித்துப் பார்க்கக்கூடியவை"
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "మీరు ప్రయత్నించగలది"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "สิ่งที่คุณสามารถลองทำได้"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deneyebileceğiniz şeyler"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "جو آپ آزما سکتے ہیں۔"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Những điều bạn có thể thử"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你可以尝试以下方法"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你可以嘗試以下方法"
+          }
+        }
       }
     },
     "Why this happens": {
       "localizations": {
-        "de": { "stringUnit": { "state": "translated", "value": "Warum das passiert" } },
-        "en": { "stringUnit": { "state": "translated", "value": "Why this happens" } },
-        "ru": { "stringUnit": { "state": "translated", "value": "Почему так происходит" } },
-        "uk": { "stringUnit": { "state": "translated", "value": "Чому так відбувається" } }
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Warum das passiert"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Why this happens"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Почему так происходит"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Чому так відбувається"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pourquoi cela se produit-il ?"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Perché succede questo"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Por que isso acontece?"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Por que isso acontece?"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prečo sa to deje"
+          }
+        },
+        "es-MX": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "¿Por qué sucede esto?"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لماذا يحدث هذا"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "কেন এমন হয়"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Per què passa això"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Proč se to děje"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hvorfor dette sker"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Γιατί συμβαίνει αυτό"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "¿Por qué sucede esto?"
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Miksi näin tapahtuu"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "આવું કેમ થાય છે?"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "למה זה קורה"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ऐसा क्यूँ होता है"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zašto se to događa"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Miért történik ez?"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mengapa ini terjadi?"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "なぜこのようなことが起こるのか"
+          }
+        },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ಇದು ಏಕೆ ಸಂಭವಿಸುತ್ತದೆ"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "왜 이런 일이 발생하는가?"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "എന്തുകൊണ്ടാണ് ഇത് സംഭവിക്കുന്നത്"
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "हे का घडते"
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mengapa ini berlaku"
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hvorfor dette skjer"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Waarom dit gebeurt"
+          }
+        },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ଏହା କାହିଁକି ଘଟେ?"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ਇਹ ਕਿਉਂ ਹੁੰਦਾ ਹੈ"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dlaczego tak się dzieje"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "De ce se întâmplă asta"
+          }
+        },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zakaj se to zgodi"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Varför detta händer"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "இது ஏன் நடக்கிறது"
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ఇది ఎందుకు జరుగుతుంది"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ทำไมจึงเกิดเหตุการณ์เช่นนี้"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu neden oluyor?"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ایسا کیوں ہوتا ہے۔"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tại sao điều này xảy ra?"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "为什么会发生这种情况"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "為什麼會發生這種情況"
+          }
+        }
       }
     },
     "Capabilities": {
@@ -184490,6 +187674,2806 @@
           "stringUnit": {
             "state": "translated",
             "value": "مووی ریلیز کو سنک کریں۔"
+          }
+        }
+      }
+    },
+    "Import from TMDB": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Von TMDB importieren"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import from TMDB"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Importer depuis TMDB"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Импорт из TMDB"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Importa da TMDB"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Importar de TMDB"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Importar de TMDB"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Importovať z TMDB"
+          }
+        },
+        "es-MX": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Importar desde TMDB"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "استيراد من TMDB"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB থেকে আমদানি করুন"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Importa des de TMDB"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Importovat z TMDB"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Importer fra TMDB"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Εισαγωγή από TMDB"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Importar desde TMDB"
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tuo osoitteesta TMDB"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB થી આયાત કરો"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ייבוא מ-TMDB"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB से आयात करें"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uvoz iz TMDB"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Importálás innen: TMDB"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Impor dari TMDB"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB からインポート"
+          }
+        },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB ನಿಂದ ಆಮದು ಮಾಡಿಕೊಳ್ಳಿ"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB에서 가져오기"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB ൽ നിന്ന് ഇറക്കുമതി ചെയ്യുക"
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB मधून आयात करा"
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import daripada TMDB"
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Importer fra TMDB"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Importeer vanuit TMDB"
+          }
+        },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB ରୁ ଆମଦାନି କରନ୍ତୁ"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB ਤੋਂ ਆਯਾਤ ਕਰੋ"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Importuj z TMDB"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import din TMDB"
+          }
+        },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uvozi iz TMDB"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Importera från TMDB"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB இலிருந்து இறக்குமதி செய்க"
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB నుండి దిగుమతి చేసుకోండి"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "นำเข้าจาก TMDB"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB'dan içe aktar"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Імпорт з TMDB"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB سے درآمد کریں"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nhập từ TMDB"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "从TMDB导入"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "從TMDB導入"
+          }
+        }
+      }
+    },
+    "Upload Library to TMDB": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bibliothek zu TMDB hochladen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Upload Library to TMDB"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Envoyer la bibliothèque vers TMDB"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Загрузить библиотеку в TMDB"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Carica la libreria su TMDB"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Carregar biblioteca para TMDB"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Carregar biblioteca para TMDB"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nahrať knižnicu do TMDB"
+          }
+        },
+        "es-MX": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cargar la biblioteca a TMDB"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "قم بتحميل المكتبة إلى TMDB"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "লাইব্রেরি TMDB তে আপলোড করুন"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Puja la biblioteca a TMDB"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nahrát knihovnu do TMDB"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Upload bibliotek til TMDB"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Μεταφόρτωση βιβλιοθήκης στο TMDB"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cargar la biblioteca a TMDB"
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lataa kirjasto kohteeseen TMDB"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "લાઇબ્રેરીને TMDB પર અપલોડ કરો"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "העלאת ספרייה אל TMDB"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "लाइब्रेरी को TMDB में अपलोड करें"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prenesi biblioteku u TMDB"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Könyvtár feltöltése ide: TMDB"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unggah Pustaka ke TMDB"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ライブラリをTMDBにアップロード"
+          }
+        },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ಲೈಬ್ರರಿಯನ್ನು TMDB ಗೆ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "라이브러리를 TMDB에 업로드하세요"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ലൈബ്രറി TMDB ലേക്ക് അപ്‌ലോഡ് ചെയ്യുക"
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "लायब्ररी TMDB वर अपलोड करा"
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Muat Naik Pustaka ke TMDB"
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Last opp bibliotek til TMDB"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Upload de bibliotheek naar TMDB"
+          }
+        },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ଲାଇବ୍ରେରୀକୁ TMDB ରେ ଅପଲୋଡ୍ କରନ୍ତୁ।"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ਲਾਇਬ੍ਰੇਰੀ ਨੂੰ TMDB ਤੇ ਅਪਲੋਡ ਕਰੋ"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prześlij bibliotekę do TMDB"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Încărcați biblioteca în TMDB"
+          }
+        },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Naloži knjižnico v TMDB"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ladda upp bibliotek till TMDB"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "நூலகத்தை TMDB-க்கு பதிவேற்றவும்"
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "లైబ్రరీని TMDBకు అప్‌లోడ్ చేయండి"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "อัปโหลดไลบรารีไปยัง TMDB"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kütüphaneyi TMDB konumuna yükle"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Завантажити бібліотеку до TMDB"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لائبریری کو TMDB پر اپ لوڈ کریں"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tải thư viện lên TMDB"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "上传库到TMDB"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "上傳庫到TMDB"
+          }
+        }
+      }
+    },
+    "iCloud Sync On": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud-Sync aktiv"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud Sync On"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sync iCloud activée"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Синхронизация iCloud включена"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sincronizzazione iCloud attiva"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud Sincronizar Ligado"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud Sincronizar Ligado"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud Synchronizácia zapnutá"
+          }
+        },
+        "es-MX": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud Sincronización activada"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud مزامنة قيد التشغيل"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud সিঙ্ক চালু"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud Sincronització activada"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud Synchronizace zapnuta"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud Synkronisering til"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud Συγχρονισμός ενεργοποιημένος"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud Sincronización activada"
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud Synkronointi päällä"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud સિંક ચાલુ"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud סנכרון מופעל"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud सिंक चालू"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud Sinkronizacija uključena"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud Szinkronizálás bekapcsolva"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sinkronisasi Aktif iCloud"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud 同期オン"
+          }
+        },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud ಸಿಂಕ್ ಆನ್ ಆಗಿದೆ"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud 동기화 켜짐"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud സമന്വയം ഓണാണ്"
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud सिंक चालू"
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud Segerak Dihidupkan"
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud Synkronisering på"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud Synchronisatie ingeschakeld"
+          }
+        },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud ସିଙ୍କ୍ ଅନ୍‌"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud ਸਿੰਕ ਚਾਲੂ ਹੈ"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud Synchronizacja włączona"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sincronizare activată"
+          }
+        },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud Sinhronizacija vklopljena"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud Synkronisering på"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud ஒத்திசைவு ஆன்"
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud సింక్ ఆన్"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud ซิงค์เปิด"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud Senkronizasyon Açık"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud Синхронізацію ввімкнено"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud مطابقت پذیری آن"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud Đồng bộ Bật"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud 同步开启"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud 同步開啟"
+          }
+        }
+      }
+    },
+    "Signed Out of iCloud": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nicht bei iCloud angemeldet"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Signed Out of iCloud"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Déconnecté d’iCloud"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Выход из iCloud"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uscita da iCloud"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saída de iCloud"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saída de iCloud"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Odhlásený/á z iCloud"
+          }
+        },
+        "es-MX": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sesión cerrada en iCloud"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تم تسجيل الخروج من iCloud"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud থেকে সাইন আউট করা হয়েছে"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sessió tancada de iCloud"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Odhlášen/a z iCloud"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Logget ud af iCloud"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Αποσύνδεση από iCloud"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sesión cerrada en iCloud"
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kirjauduttu ulos palvelusta iCloud"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud માંથી સાઇન આઉટ થયા"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "מנותק מ-iCloud"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud से लॉग आउट किया गया"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Odjavljen iz iCloud"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kijelentkezve innen: iCloud"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keluar dari iCloud"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud からサインアウトしました"
+          }
+        },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud ನಿಂದ ಸೈನ್ ಔಟ್ ಮಾಡಲಾಗಿದೆ"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud에서 로그아웃했습니다."
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud ൽ നിന്ന് സൈൻ ഔട്ട് ചെയ്‌തു"
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud मधून साइन आउट केले"
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Telah Daftar Keluar daripada iCloud"
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Logget ut av iCloud"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uitgelogd bij iCloud"
+          }
+        },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud ରୁ ସାଇନ୍ ଆଉଟ୍ ହୋଇଛି"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud ਤੋਂ ਸਾਈਨ ਆਊਟ ਕੀਤਾ ਗਿਆ"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wylogowano z iCloud"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deconectat de la iCloud"
+          }
+        },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Odjavljen iz iCloud"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Utloggad från iCloud"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud இலிருந்து வெளியேறினார்"
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud నుండి నిష్క్రమించడం జరిగింది"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ออกจากระบบ iCloud"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud'dan Çıkış Yapıldı"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вийшов з iCloud"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud سے سائن آؤٹ"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Đăng xuất khỏi iCloud"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已从iCloud注销"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已從iCloud註銷"
+          }
+        }
+      }
+    },
+    "Refresh Status": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Status aktualisieren"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Refresh Status"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Actualiser l’état"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Обновить статус"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stato aggiornato"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Atualizar status"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Atualizar status"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stav obnovenia"
+          }
+        },
+        "es-MX": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Actualizar estado"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تحديث الحالة"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "স্ট্যাটাস রিফ্রেশ করুন"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estat d'actualització"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stav aktualizace"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Opdater status"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Κατάσταση ανανέωσης"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Actualizar estado"
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Päivitä tila"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "સ્ટેટસ રિફ્રેશ કરો"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "רענון סטטוס"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "स्थिति रीफ़्रेश करें"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Osvježi status"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Frissítési állapot"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Perbarui Status"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更新ステータス"
+          }
+        },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ಸ್ಥಿತಿಯನ್ನು ರಿಫ್ರೆಶ್ ಮಾಡಿ"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "상태 새로 고침"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "സ്റ്റാറ്റസ് പുതുക്കുക"
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "स्थिती रिफ्रेश करा"
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Status Segar Semula"
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oppdater status"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vernieuw status"
+          }
+        },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ସ୍ଥିତି ସତେଜ କରନ୍ତୁ"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ਸਥਿਤੀ ਤਾਜ਼ਾ ਕਰੋ"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Odśwież status"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Starea de actualizare"
+          }
+        },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Osveži stanje"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uppdateringsstatus"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "நிலையைப் புதுப்பிக்கவும்"
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "స్థితిని రిఫ్రెష్ చేయండి"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "รีเฟรชสถานะ"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yenileme Durumu"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Оновити статус"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ریفریش اسٹیٹس"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Làm mới trạng thái"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "刷新状态"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "刷新狀態"
+          }
+        }
+      }
+    },
+    "Last Import": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Letzter Import"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Last Import"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dernier import"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Последний импорт"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ultimo valore"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Última importação"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Última importação"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Posledný import"
+          }
+        },
+        "es-MX": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Última importación"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آخر عملية استيراد"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "শেষ আমদানি"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Última importació"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Poslední import"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sidste import"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Τελευταία εισαγωγή"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Última importación"
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Viimeisin tuonti"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "છેલ્લું આયાત"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ייבוא אחרון"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "अंतिम आयात"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zadnji uvoz"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Utolsó importálás"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Impor Terakhir"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最終輸入"
+          }
+        },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ಕೊನೆಯ ಆಮದು"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "최근 수입"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "അവസാന ഇറക്കുമതി"
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "शेवटची आयात"
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import Terakhir"
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Siste import"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Laatste import"
+          }
+        },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ଶେଷ ଆମଦାନି"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ਆਖਰੀ ਆਯਾਤ"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ostatni import"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ultima importare"
+          }
+        },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zadnji uvoz"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Senaste importen"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "கடைசி இறக்குமதி"
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "చివరి దిగుమతి"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "นำเข้าครั้งสุดท้าย"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Son İçe Aktarma"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Останній імпорт"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آخری درآمد"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lần nhập khẩu cuối cùng"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最后导入"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最後導入"
+          }
+        }
+      }
+    },
+    "Last Upload": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Letzter Upload"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Last Upload"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dernier envoi"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Последняя загрузка"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Carica di nuovo"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Último upload"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Último upload"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Posledné nahranie"
+          }
+        },
+        "es-MX": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Última subida"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آخر تحميل"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "সর্বশেষ আপলোড"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Última càrrega"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Poslední nahrání"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sidste upload"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Τελευταία μεταφόρτωση"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Última subida"
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Viimeisin lataus"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "છેલ્લું અપલોડ"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "העלאה אחרונה"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "अंतिम अपलोड"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Posljednji prijenos"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Utolsó feltöltés"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unggahan Terakhir"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最終アップロード"
+          }
+        },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ಕೊನೆಯ ಅಪ್‌ಲೋಡ್"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "최근 업로드"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "അവസാന അപ്‌ലോഡ്"
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "शेवटचे अपलोड"
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Muat Naik Terakhir"
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Siste opplasting"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Laatste upload"
+          }
+        },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ଶେଷ ଅପଲୋଡ୍"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ਆਖਰੀ ਅਪਲੋਡ"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ostatnie przesłanie"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ultima încărcare"
+          }
+        },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zadnje nalaganje"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Senaste uppladdning"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "கடைசி பதிவேற்றம்"
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "చివరి అప్‌లోడ్"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "อัปโหลดล่าสุด"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Son Yükleme"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Останнє завантаження"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آخری اپ لوڈ"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lần tải lên cuối cùng"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最后上传"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最後上傳"
+          }
+        }
+      }
+    },
+    "Preparing upload…": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Upload wird vorbereitet…"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preparing upload…"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Préparation de l’envoi…"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Подготовка загрузки…"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Caricamento in corso…"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preparando o upload…"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preparando o upload…"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Príprava nahrávania…"
+          }
+        },
+        "es-MX": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preparando la carga…"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "جارٍ تجهيز التحميل…"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আপলোড প্রস্তুত করা হচ্ছে…"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preparant la càrrega…"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Příprava nahrávání…"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Forbereder upload…"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Προετοιμασία μεταφόρτωσης…"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preparando la carga…"
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Valmistellaan latausta…"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "અપલોડની તૈયારી કરી રહ્યું છે…"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "בהכנה להעלאה..."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "अपलोड की तैयारी हो रही है…"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Priprema prijenosa…"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Feltöltés előkészítése…"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mempersiapkan unggahan…"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "アップロード準備中…"
+          }
+        },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ಅಪ್‌ಲೋಡ್ ಸಿದ್ಧಪಡಿಸಲಾಗುತ್ತಿದೆ..."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "업로드 준비 중…"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "അപ്‌ലോഡ് തയ്യാറാക്കുന്നു..."
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "अपलोडची तयारी करत आहे…"
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Menyediakan muat naik…"
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Forbereder opplasting …"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Upload voorbereiden…"
+          }
+        },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ଅପଲୋଡ୍ ପାଇଁ ପ୍ରସ୍ତୁତ ହେଉଛି…"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ਅੱਪਲੋਡ ਦੀ ਤਿਆਰੀ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ…"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Przygotowywanie do przesłania…"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se pregătește încărcarea…"
+          }
+        },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Priprava nalaganja …"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Förbereder uppladdning…"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "பதிவேற்றத்திற்குத் தயாராகிறது…"
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "అప్‌లోడ్ చేయడానికి సిద్ధమవుతోంది…"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "กำลังเตรียมอัปโหลด…"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yükleme hazırlanıyor…"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Підготовка завантаження…"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اپ لوڈ کی تیاری ہو رہی ہے…"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Đang chuẩn bị tải lên…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在准备上传…"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在準備上傳…"
+          }
+        }
+      }
+    },
+    "Uploading to TMDB…": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wird zu TMDB hochgeladen…"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uploading to TMDB…"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Envoi vers TMDB…"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Загрузка в TMDB…"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Caricamento su TMDB…"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enviando para TMDB…"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enviando para TMDB…"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nahráva sa do TMDB…"
+          }
+        },
+        "es-MX": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Subiendo a TMDB…"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "جارٍ التحميل إلى TMDB…"
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB-তে আপলোড করা হচ্ছে…"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pujant a TMDB…"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nahrávání do TMDB…"
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uploader til TMDB…"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Μεταφόρτωση στο TMDB…"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Subiendo a TMDB…"
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ladataan kohteeseen TMDB…"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB પર અપલોડ કરી રહ્યું છે…"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "מעלה אל TMDB…"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB पर अपलोड किया जा रहा है…"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prijenos na TMDB…"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Feltöltés ide: TMDB…"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mengunggah ke TMDB…"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDBにアップロード中…"
+          }
+        },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB ಗೆ ಅಪ್‌ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ…"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB에 업로드 중…"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB… ലേക്ക് അപ്‌ലോഡ് ചെയ്യുന്നു"
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB वर अपलोड करत आहे…"
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Memuat naik ke TMDB…"
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Laster opp til TMDB…"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uploaden naar TMDB…"
+          }
+        },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB ରେ ଅପଲୋଡ୍ ହେଉଛି…"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB ਤੇ ਅਪਲੋਡ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ…"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Przesyłanie do TMDB…"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se încarcă pe TMDB…"
+          }
+        },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nalaganje v TMDB…"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Laddar upp till TMDB…"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB-க்கு பதிவேற்றப்படுகிறது…"
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB కు అప్‌లోడ్ అవుతోంది…"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "กำลังอัปโหลดไปยัง TMDB…"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB klasörüne yükleniyor…"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Завантаження до TMDB…"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TMDB پر اپ لوڈ ہو رہا ہے…"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Đang tải lên TMDB…"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在上传到TMDB…"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在上傳到TMDB…"
+          }
+        }
+      }
+    },
+    "Turn on Push changes to TMDB first.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aktiviere zuerst „Änderungen an TMDB senden“."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Turn on Push changes to TMDB first."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Activez d’abord « Envoyer les changements vers TMDB »."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сначала включите «Отправлять изменения в TMDB»."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Attiva prima l'opzione \"Invia modifiche a TMDB\"."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Primeiro, ative a opção \"Enviar alterações para TMDB\"."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Primeiro, ative a opção \"Enviar alterações para TMDB\"."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Najprv zapnite možnosť Odoslať zmeny do TMDB."
+          }
+        },
+        "es-MX": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Primero, active los cambios de Push en TMDB."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "قم بتشغيل خيار \"إرسال التغييرات إلى TMDB\" أولاً."
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "প্রথমে TMDB তে পরিবর্তনগুলি পুশ করা চালু করুন।"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Activa l'opció Push per canviar a TMDB primer."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zapněte volbu Nejprve odeslat změny do TMDB."
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Slå først Push-ændringer til TMDB til."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ενεργοποιήστε πρώτα την επιλογή \"Προώθηση αλλαγών στο TMDB\"."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Primero, active los cambios de Push en TMDB."
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ota käyttöön Push-muutokset ensin arvoon TMDB."
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "પહેલા TMDB માં પુશ ફેરફારો ચાલુ કરો."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "הפעל תחילה את Push changes to TMDB."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "'पुश परिवर्तन पहले TMDB पर भेजें' चालू करें।"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prvo uključite \"Push changes to TMDB\"."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Először kapcsold be a Push changes-t TMDB-ra."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aktifkan opsi \"Dorong perubahan ke TMDB terlebih dahulu\"."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "まず、プッシュ通知をオンにしてTMDBに変更してください。"
+          }
+        },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ಮೊದಲು TMDB ಗೆ ಪುಶ್ ಬದಲಾವಣೆಗಳನ್ನು ಆನ್ ಮಾಡಿ."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "먼저 TMDB에 대한 푸시 변경 사항을 활성화하세요."
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ആദ്യം TMDB ലേക്കുള്ള പുഷ് മാറ്റങ്ങൾ ഓണാക്കുക."
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "सर्वप्रथम TMDB मध्ये बदल पुश करा चालू करा."
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hidupkan Tolak perubahan kepada TMDB terlebih dahulu."
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Slå på Push-endringer til TMDB først."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schakel 'Wijzigingen eerst naar TMDB pushen' in."
+          }
+        },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ପ୍ରଥମେ TMDB ରେ Push ପରିବର୍ତ୍ତନକୁ ଚାଲୁ କରନ୍ତୁ।"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ਪਹਿਲਾਂ TMDB ਵਿੱਚ ਬਦਲਾਵਾਂ ਨੂੰ ਪੁਸ਼ ਕਰੋ ਚਾਲੂ ਕਰੋ।"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Najpierw włącz opcję Prześlij zmiany do TMDB."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Activează mai întâi modificarea funcției Push la TMDB."
+          }
+        },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Najprej vklopite možnost »Potisni spremembe v TMDB«."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Slå på Push-ändringar till TMDB först."
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "முதலில் TMDB-க்கு மாற்றங்களைத் தள்ளுவதை இயக்கவும்."
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ముందుగా TMDBకు మార్పులను పంపడాన్ని ఆన్ చేయండి."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เปิดใช้งานการส่งการเปลี่ยนแปลงไปยัง TMDB ก่อน"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Öncelikle değişiklikleri TMDB'a gönder seçeneğini etkinleştirin."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Спочатку увімкніть опцію «Надіслати зміни до TMDB»."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "پہلے پش تبدیلیوں کو TMDB میں آن کریں۔"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hãy bật tùy chọn \"Đẩy các thay đổi vào TMDB trước\"."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "首先启用向TMDB推送更改。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "首先啟用向TMDB推送變更。"
           }
         }
       }

@@ -283,6 +283,7 @@
 		C0COREIMPORTWATCH000000002 /* CronicaCoreImport.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0COREIMPORT000000000001 /* CronicaCoreImport.swift */; };
 		C0CRONCTRL0000000002 /* CronicaControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CRONCTRL0000000001 /* CronicaControls.swift */; };
 		C0DATAMGMT000000000002 /* DataManagementSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0DATAMGMT000000000001 /* DataManagementSettingsView.swift */; };
+		C0CLOUDKITSTAT00000002 /* CloudKitSyncStatusStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CLOUDKITSTAT00000001 /* CloudKitSyncStatusStore.swift */; };
 		C0ENTPOSTER0000000002 /* EntityPosterImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ENTPOSTER0000000001 /* EntityPosterImage.swift */; };
 		C0EXTINTENT0000000002 /* ExtensionAppIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EXTINTENT0000000001 /* ExtensionAppIntents.swift */; };
 		C0EXTINTENT0000000003 /* ExtensionAppIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EXTINTENT0000000001 /* ExtensionAppIntents.swift */; };
@@ -686,6 +687,7 @@
 		C0COREIMPORT000000000001 /* CronicaCoreImport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaCoreImport.swift; sourceTree = "<group>"; };
 		C0CRONCTRL0000000001 /* CronicaControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronicaControls.swift; sourceTree = "<group>"; };
 		C0DATAMGMT000000000001 /* DataManagementSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagementSettingsView.swift; sourceTree = "<group>"; };
+		C0CLOUDKITSTAT00000001 /* CloudKitSyncStatusStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitSyncStatusStore.swift; sourceTree = "<group>"; };
 		C0ENTPOSTER0000000001 /* EntityPosterImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityPosterImage.swift; sourceTree = "<group>"; };
 		C0EXTINTENT0000000001 /* ExtensionAppIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionAppIntents.swift; sourceTree = "<group>"; };
 		C0FEATHOME000000000001 /* FeaturedHomeSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedHomeSectionView.swift; sourceTree = "<group>"; };
@@ -1365,6 +1367,7 @@
 		B8B271A827A5A19100F6463F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C0CLOUDKITSTAT00000001 /* CloudKitSyncStatusStore.swift */,
 				B8B271A527A5A18C00F6463F /* PersistenceController.swift */,
 				C0HISTMERGEFILE0000001 /* PersistentHistoryMerger.swift */,
 				B82BE4D8299BF35D005F9990 /* PersistenceController-WatchlistItem.swift */,
@@ -2299,6 +2302,7 @@
 				C0TMDBCACHE0000000002 /* TMDBAccountListCache.swift in Sources */,
 				C0WLBACKUP000000000002 /* WatchlistItemBackup.swift in Sources */,
 				C0DATAMGMT000000000002 /* DataManagementSettingsView.swift in Sources */,
+				C0CLOUDKITSTAT00000002 /* CloudKitSyncStatusStore.swift in Sources */,
 				B883A1E32AEF1DB800793EE2 /* SearchItemContentContextMenu.swift in Sources */,
 				B89429CC297E076E0029646F /* SupportEmail.swift in Sources */,
 				C0PEOPLELISTDEST00002 /* PeopleListDestination.swift in Sources */,

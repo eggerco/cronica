@@ -81,14 +81,18 @@ struct PersistenceController {
 #elseif CRONICA_WIDGET_EXTENSION
             description.cloudKitContainerOptions = nil
 #else
-            if Self.isICloudAccountAvailable() {
-                description.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(
-                    containerIdentifier: Self.cloudKitContainerIdentifier
+            // Always attach CloudKit options for the main app / Watch.
+            // Gating on `ubiquityIdentityToken` at launch was a real sync bug: the token is often
+            // briefly nil on cold start even when the user is signed into iCloud, which left the
+            // store local-only for the whole process. With options attached, mirroring stays
+            // inactive until an account is available and starts automatically when it is.
+            description.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(
+                containerIdentifier: Self.cloudKitContainerIdentifier
+            )
+            if !Self.isICloudAccountAvailable() {
+                AppLogger.persistence.info(
+                    "iCloud account not ready at launch; CloudKit mirroring will start when available."
                 )
-            } else {
-                // Local-only when Simulator/device has no iCloud account — avoids CKAccountStatusNoAccount spam.
-                description.cloudKitContainerOptions = nil
-                AppLogger.persistence.info("iCloud account unavailable; loading watchlist store locally.")
             }
 #endif
         }

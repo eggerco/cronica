@@ -144,6 +144,7 @@ struct CronicaApp: App {
             }
 #if !os(watchOS)
             if phase == .active {
+                CloudKitSyncStatusStore.shared.startIfNeeded()
                 Task { await SimklSyncService.syncIfNeededOnForeground() }
                 Task { await TMDBSyncService.syncIfNeededOnForeground() }
 #if os(iOS)

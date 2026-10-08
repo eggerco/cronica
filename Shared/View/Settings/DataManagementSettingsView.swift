@@ -7,6 +7,7 @@ import SwiftUI
 
 struct DataManagementSettingsView: View {
     @Environment(\.openURL) private var openURL
+    @StateObject private var cloudKitStatus = CloudKitSyncStatusStore.shared
     @State private var showDeleteConfirmation = false
     @State private var isDeleting = false
     @State private var deletionError: String?
@@ -43,10 +44,18 @@ struct DataManagementSettingsView: View {
             }
 
             Section("iCloud Sync") {
-                Text("If iCloud sync is enabled, deletions sync to your other Apple devices signed into the same iCloud account. Sync can take a short time to finish. You can also remove Cronica data from Settings → Apple ID → iCloud on any device.")
+                LabeledContent("Status", value: cloudKitStatus.statusTitle)
+                Text(cloudKitStatus.statusDetail)
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
+                Button("Refresh Status") {
+                    Task { await cloudKitStatus.refreshAccountStatus() }
+                }
+                Text("Watchlist sync uses Apple iCloud automatically. Use the same Apple ID on each device, keep Cronica enabled under iCloud, and leave the app open on Wi‑Fi for a few minutes after adding titles. Refreshing Home only reloads the online catalog — it does not sync devices.")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
             }
+            .onAppear { cloudKitStatus.startIfNeeded() }
 
             Section("Third-Party Data") {
                 Text("Anonymous crash reports may be processed by our error monitoring provider. Email support@cronica.watch to request removal.")

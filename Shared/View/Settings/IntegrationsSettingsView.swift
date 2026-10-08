@@ -46,7 +46,7 @@ struct IntegrationsSettingsView: View {
             }
 
             Section("Capabilities") {
-                Text("SIMKL and TMDB can sync when connected. SIMKL supports incremental activity checks; TMDB re-downloads your account lists on Sync Now.")
+                Text("SIMKL and TMDB can sync when connected. SIMKL supports incremental activity checks. TMDB Import downloads account lists; Push / Upload sends Cronica changes to TMDB separately.")
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }

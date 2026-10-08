@@ -25,6 +25,12 @@ final class TMDBPushService {
         case removeRating(tmdb: Int, media: Int)
     }
 
+    struct UploadSummary: Equatable {
+        var queued = 0
+        var sent = 0
+        var remaining = 0
+    }
+
     func enqueueWatchlist(tmdb: Int, media: MediaType, onList: Bool) {
         guard shouldEnqueue else { return }
         append(.watchlist(tmdb: tmdb, media: Int(media.toInt), onList: onList))
@@ -55,41 +61,145 @@ final class TMDBPushService {
         Task { await flush() }
     }
 
+    /// Queues the current Cronica library for upload, then flushes.
+    ///
+    /// Unwatched titles go on the TMDB watchlist; watched titles are removed from it
+    /// (TMDB has no watched-history API). Favorites and ratings are also sent.
+    @discardableResult
+    func uploadCurrentLibrary(
+        progress: (@MainActor (LibraryImportService.Progress) -> Void)? = nil
+    ) async throws -> UploadSummary {
+        guard SettingsStore.shared.tmdbPushEnabled else {
+            throw LibraryImportError.message(String(localized: "Turn on Push changes to TMDB first."))
+        }
+        guard TMDBSessionStore.hasSession else {
+            throw LibraryImportError.message("Connect a TMDB account first.")
+        }
+
+        let items: [WatchlistItem]
+        do {
+            items = try PersistenceController.shared.container.viewContext.fetch(WatchlistItem.fetchRequest())
+        } catch {
+            throw LibraryImportError.message(error.localizedDescription)
+        }
+
+        progress?(
+            .init(
+                phase: String(localized: "Preparing upload…"),
+                processed: 0,
+                total: max(items.count, 1)
+            )
+        )
+
+        var queued = 0
+        for (index, item) in items.enumerated() {
+            try Task.checkCancellation()
+            let tmdb = item.itemId
+            guard tmdb > 0 else {
+                progress?(
+                    .init(
+                        phase: String(localized: "Preparing upload…"),
+                        processed: index + 1,
+                        total: max(items.count, 1)
+                    )
+                )
+                continue
+            }
+            let media = Int(item.itemMedia.toInt)
+
+            // Match live push semantics: watched → off watchlist; otherwise keep on watchlist.
+            append(.watchlist(tmdb: tmdb, media: media, onList: !item.isWatched))
+            queued += 1
+
+            if item.favorite {
+                append(.favorite(tmdb: tmdb, media: media, isFavorite: true))
+                queued += 1
+            }
+
+            let rating = Int(item.userRating)
+            if rating > 0 {
+                let value = LibraryImportService.tenPointRating(fromCronica: rating)
+                append(.rating(tmdb: tmdb, media: media, value: value))
+                queued += 1
+            }
+
+            progress?(
+                .init(
+                    phase: String(localized: "Preparing upload…"),
+                    processed: index + 1,
+                    total: max(items.count, 1)
+                )
+            )
+        }
+
+        let sent = await flush(progress: progress)
+        let remaining = loadQueue().count
+        return UploadSummary(queued: queued, sent: sent, remaining: remaining)
+    }
+
     func clearQueue() {
         UserDefaults.standard.removeObject(forKey: queueKey)
     }
 
-    func flush() async {
-        guard !isFlushing else { return }
-        guard SettingsStore.shared.tmdbPushEnabled, TMDBSessionStore.hasSession else { return }
+    @discardableResult
+    func flush(
+        progress: (@MainActor (LibraryImportService.Progress) -> Void)? = nil
+    ) async -> Int {
+        guard !isFlushing else { return 0 }
+        guard SettingsStore.shared.tmdbPushEnabled, TMDBSessionStore.hasSession else { return 0 }
         isFlushing = true
         defer { isFlushing = false }
 
         let queue = loadQueue()
-        guard !queue.isEmpty else { return }
+        guard !queue.isEmpty else { return 0 }
 
         var index = 0
         while index < queue.count {
             let op = queue[index]
             do {
+                try Task.checkCancellation()
+                progress?(
+                    .init(
+                        phase: String(localized: "Uploading to TMDB…"),
+                        processed: index,
+                        total: queue.count
+                    )
+                )
                 try await send(op)
                 index += 1
+                progress?(
+                    .init(
+                        phase: String(localized: "Uploading to TMDB…"),
+                        processed: index,
+                        total: queue.count
+                    )
+                )
                 // Soft pacing against TMDB write rate limits.
                 try await Task.sleep(nanoseconds: 350_000_000)
+            } catch is CancellationError {
+                saveQueue(Array(queue[index...]))
+                return index
             } catch {
                 if case LibraryImportError.message(let text) = error,
                    text.contains("(401)") || text.contains("(403)") {
                     clearQueue()
                     TMDBAccountAuthService.shared.disconnect()
                     AppLogger.network.error("TMDB push auth failed; disconnected.")
-                    return
+                    return index
+                }
+                if case TMDBConnectionFailure.accessDenied = error {
+                    clearQueue()
+                    TMDBAccountAuthService.shared.disconnect()
+                    AppLogger.network.error("TMDB push auth failed; disconnected.")
+                    return index
                 }
                 saveQueue(Array(queue[index...]))
                 AppLogger.network.error("TMDB push flush failed: \(error.localizedDescription, privacy: .public)")
-                return
+                return index
             }
         }
         saveQueue([])
+        return index
     }
 
     // MARK: - Private
