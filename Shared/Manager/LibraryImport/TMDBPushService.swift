@@ -73,7 +73,7 @@ final class TMDBPushService {
             throw LibraryImportError.message(String(localized: "Turn on Push changes to TMDB first."))
         }
         guard TMDBSessionStore.hasSession else {
-            throw LibraryImportError.message("Connect a TMDB account first.")
+            throw LibraryImportError.message(String(localized: "Connect a TMDB account first."))
         }
 
         let items: [WatchlistItem]
