@@ -333,6 +333,8 @@ end
 def archive_platform!(platform:)
   out_dir = File.join(ARCHIVE_OUTPUT_DIR, platform)
   FileUtils.mkdir_p(out_dir)
+  # Drop prior IPA/PKG so a failed export cannot reuse yesterday's binary.
+  FileUtils.rm_f(Dir[File.join(out_dir, "*.ipa")] + Dir[File.join(out_dir, "*.pkg")])
   UI.message("Archiving #{ARCHIVE_SCHEME} for platform=#{platform}")
 
   # Avoid leaking the previous platform's IPA/PKG into this upload.
@@ -340,9 +342,12 @@ def archive_platform!(platform:)
   lane_context.delete(SharedValues::PKG_OUTPUT_PATH) if defined?(SharedValues::PKG_OUTPUT_PATH)
 
   if platform == "osx"
+    # Multiplatform Xcode projects need sdk=macosx so gym takes the PKG path
+    # (otherwise it looks for an IPA after export and fails with "IPA invalid").
+    # build_mac_app also does not accept skip_package_ipa (iOS-only).
     build_mac_app(archive_common_options(platform: platform).merge(
       skip_package_pkg: false,
-      skip_package_ipa: true
+      sdk: "macosx"
     ))
   else
     build_app(archive_common_options(platform: platform))
@@ -514,12 +519,12 @@ platform :ios do
         archive_platform!(platform: platform)
       rescue => error
         UI.error("Archive failed for #{platform}: #{error.message}")
-        failures << platform
+        failures << "#{platform} (#{error.message})"
       end
     end
 
     unless failures.empty?
-      UI.user_error!("Archive incomplete for: #{failures.join(', ')}")
+      UI.user_error!("Archive incomplete for: #{failures.join('; ')}")
     end
   end
 
@@ -541,12 +546,12 @@ platform :ios do
         )
       rescue => error
         UI.error("Release failed for #{platform}: #{error.message}")
-        failures << platform
+        failures << "#{platform} (#{error.message})"
       end
     end
 
     unless failures.empty?
-      UI.user_error!("Binary release incomplete for: #{failures.join(', ')}")
+      UI.user_error!("Binary release incomplete for: #{failures.join('; ')}")
     end
 
     if upload_metadata_too
