@@ -101,6 +101,10 @@ struct PersistenceController {
         // model changes, add matching fields on CD_* record types in Development, then
         // Deploy Schema Changes → Production. Attribute names must match what
         // NSPersistentCloudKitContainer expects (typically CD_ prefixes).
+        // Model v5 (Date Added + manual list order) still needs Production deploy of:
+        //   CD_WatchlistItem: CD_dateAdded (Date/Time), CD_manualOrder (Int64)
+        //   CD_CustomList:    CD_itemOrder (String)
+        // Container: iCloud.dev.alexandremadeira.Story
         container.loadPersistentStores { _, error in
             if let error = error as NSError? {
 #if DEBUG
