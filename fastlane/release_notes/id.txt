@@ -1,1 +1,7 @@
-Dari perbaikan bug hingga penyempurnaan, rilis ini penuh pembaruan yang dirancang untuk mengoptimalkan performa dan membantu Anda tetap fokus pada yang paling penting.
+• Sinkronisasi yang lebih andal antara perangkat Apple Anda dengan iCloud.
+• Impor dan Unggah Clearer TMDB — unggahan pustaka opsional kapan pun Anda mau.
+• Status sinkronisasi iCloud di pengaturan Privacy & Data
+• Urutkan berdasarkan tanggal ditambahkan, pertahankan judul yang disematkan di bagian atas, dan susun ulang daftar secara manual.
+• Lihat nama sutradara di detail film dan saring daftar karya seseorang berdasarkan peran.
+• Pilih berapa banyak kartu atau poster yang muat per baris.
+• Pesan yang lebih jelas ketika TMDB tidak dapat dijangkau

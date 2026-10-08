@@ -86,13 +86,19 @@ struct PersistenceController {
             // briefly nil on cold start even when the user is signed into iCloud, which left the
             // store local-only for the whole process. With options attached, mirroring stays
             // inactive until an account is available and starts automatically when it is.
-            description.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(
-                containerIdentifier: Self.cloudKitContainerIdentifier
-            )
-            if !Self.isICloudAccountAvailable() {
-                AppLogger.persistence.info(
-                    "iCloud account not ready at launch; CloudKit mirroring will start when available."
+            // Skip under XCTest: CI runs with CODE_SIGNING_ALLOWED=NO (no iCloud entitlement),
+            // and CloudKit setup can trap the test host before XCTest connects.
+            if Self.isRunningUnderXCTest {
+                description.cloudKitContainerOptions = nil
+            } else {
+                description.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(
+                    containerIdentifier: Self.cloudKitContainerIdentifier
                 )
+                if !Self.isICloudAccountAvailable() {
+                    AppLogger.persistence.info(
+                        "iCloud account not ready at launch; CloudKit mirroring will start when available."
+                    )
+                }
             }
 #endif
         }
@@ -195,6 +201,11 @@ struct PersistenceController {
     private static func isICloudAccountAvailable() -> Bool {
         // Synchronous signal for whether an iCloud account is signed in on this device/simulator.
         FileManager.default.ubiquityIdentityToken != nil
+    }
+
+    /// True when this process is hosting XCTest (unit / UI test runner).
+    private static var isRunningUnderXCTest: Bool {
+        ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
     }
 
 #if os(iOS)

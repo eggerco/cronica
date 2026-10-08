@@ -1,1 +1,7 @@
-From bug fixes to polish, this release is full of updates designed to optimize performance and help you stay on top of what matters most.
+• More reliable sync between your Apple devices with iCloud
+• Clearer TMDB Import and Upload — optional library upload when you want it
+• iCloud sync status in Privacy & Data settings
+• Sort by date added, keep pinned titles on top, and reorder lists by hand
+• See the director on movie details and filter a person’s credits by role
+• Choose how many cards or posters fit per row
+• Clearer messages when TMDB cannot be reached

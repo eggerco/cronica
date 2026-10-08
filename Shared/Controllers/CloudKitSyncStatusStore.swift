@@ -29,6 +29,9 @@ final class CloudKitSyncStatusStore: ObservableObject {
     }
 
     func startIfNeeded() {
+        // Avoid CKContainer calls under XCTest (unsigned CI hosts lack iCloud entitlements).
+        guard ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] == nil else { return }
+
         guard !didStart else {
             Task { await refreshAccountStatus() }
             return

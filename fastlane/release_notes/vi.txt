@@ -1,1 +1,7 @@
-Từ sửa lỗi đến tinh chỉnh, bản phát hành này chứa đầy các cập nhật nhằm tối ưu hiệu suất và giúp bạn theo dõi những gì quan trọng nhất.
+• Đồng bộ hóa đáng tin cậy hơn giữa các thiết bị Apple của bạn với iCloud.
+• Nhập và tải lên TMDB rõ ràng hơn — tùy chọn tải lên thư viện khi bạn muốn.
+• Trạng thái đồng bộ iCloud trong cài đặt Privacy & Data
+• Sắp xếp theo ngày thêm, giữ các tiêu đề được ghim ở đầu và sắp xếp lại danh sách theo cách thủ công.
+• Xem thông tin đạo diễn trong chi tiết phim và lọc danh sách phim mà một người tham gia theo vai diễn.
+• Chọn số lượng thẻ hoặc áp phích phù hợp với mỗi hàng.
+• Thông báo rõ ràng hơn khi không thể liên lạc được với TMDB.

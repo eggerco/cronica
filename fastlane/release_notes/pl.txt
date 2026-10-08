@@ -1,1 +1,7 @@
-Od poprawek błędów po dopracowanie szczegółów – ta aktualizacja zawiera wiele ulepszeń, które optymalizują wydajność i pomagają śledzić to, co najważniejsze.
+• Bardziej niezawodna synchronizacja między urządzeniami Apple i iCloud
+• Clearer TMDB Import and Upload — opcjonalne przesyłanie bibliotek, kiedy tylko chcesz
+• Status synchronizacji iCloud w ustawieniach Privacy & Data
+• Sortuj według daty dodania, przypinaj tytuły na górze i zmieniaj kolejność list ręcznie
+• Zobacz szczegóły dotyczące reżysera w filmie i filtruj zasługi danej osoby według roli
+• Wybierz liczbę kart lub plakatów pasujących do każdego rzędu
+• Bardziej przejrzyste komunikaty, gdy nie można nawiązać połączenia z TMDB

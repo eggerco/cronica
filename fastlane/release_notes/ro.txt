@@ -1,1 +1,7 @@
-De la corecturi de erori la rafinamente, această versiune este plină de actualizări menite să optimizeze performanța și să te ajute să rămâi la curent cu ce contează cel mai mult.
+• Sincronizare mai fiabilă între dispozitivele Apple cu iCloud
+• Import și încărcare TMDB mai clare — încărcare opțională a bibliotecii atunci când doriți
+• Starea de sincronizare iCloud în setările Privacy & Data
+• Sortează după data adăugării, păstrează titlurile fixate în partea de sus și reordonează listele manual
+• Vedeți detaliile filmului despre regizor și filtrați creditele unei persoane după rol
+• Alegeți câte cărți sau postere încap pe rând
+• Mesaje mai clare atunci când TMDB nu poate fi contactat

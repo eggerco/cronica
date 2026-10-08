@@ -1,1 +1,7 @@
-Hata düzeltmelerinden ince ayarlara kadar bu sürüm, performansı optimize etmek ve en önem verdiklerinizi takip etmenize yardımcı olmak için tasarlanmış güncellemelerle dolu.
+• iCloud ile Apple cihazlarınız arasında daha güvenilir senkronizasyon.
+• Daha Net TMDB İçe Aktarma ve Yükleme — İstediğiniz zaman isteğe bağlı kütüphane yükleme
+• Privacy & Data ayarlarında iCloud senkronizasyon durumu
+• Eklenme tarihine göre sıralayın, sabitlenmiş başlıkları en üstte tutun ve listeleri elle yeniden sıralayın.
+• Film detaylarında yönetmeni görün ve bir kişinin filmografisini rolüne göre filtreleyin.
+• Her satıra kaç kart veya poster sığacağını seçin.
+• TMDB'e ulaşılamadığında daha net mesajlar

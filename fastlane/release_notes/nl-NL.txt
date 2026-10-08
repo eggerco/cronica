@@ -1,1 +1,7 @@
-Van bugfixes tot verfijning: deze release zit vol updates die de prestaties verbeteren en je helpen om te blijven bij wat er echt toe doet.
+• Betrouwbaardere synchronisatie tussen uw Apple-apparaten met iCloud.
+• Duidelijkere TMDB-import en -upload — optionele bibliotheekupload wanneer u dat wilt.
+• iCloud synchronisatiestatus in Privacy & Data instellingen
+• Sorteer op de datum waarop het is toegevoegd, houd vastgepinde titels bovenaan en herschik lijsten handmatig.
+• Bekijk de regisseur in de filmdetails en filter de filmcredits van een persoon op rol.
+• Kies hoeveel kaarten of posters er per rij passen.
+• Duidelijkere berichten wanneer TMDB niet bereikbaar is
