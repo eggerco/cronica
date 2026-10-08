@@ -1,7 +1,1 @@
-• Megbízhatóbb szinkronizáció az Apple eszközök között az iCloud segítségével
-• Átláthatóbb TMDB importálás és feltöltés — opcionális könyvtárfeltöltés, amikor csak szeretné
-• iCloud szinkronizálási állapot az Privacy & Data beállításaiban
-• Rendezés hozzáadás dátuma szerint, a rögzített címek megtartása felül, és a listák kézi átrendezése
-• Tekintse meg a rendező filmadatait, és szűrje a személyek stáblistáját szerep szerint
-• Válaszd ki, hogy hány kártya vagy poszter fér el egy soronként
-• Világosabb üzenetek, ha az TMDB nem érhető el
+A hibajavításoktól a finomhangolásig ez a kiadás tele van frissítésekkel, amelyek a teljesítményt javítják, és segítenek szem előtt tartani a legfontosabbakat.

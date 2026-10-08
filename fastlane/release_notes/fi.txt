@@ -1,7 +1,1 @@
-• Luotettavampi synkronointi Apple-laitteidesi välillä iCloud:n avulla
-• Selkeämpi TMDB-tuonti ja -lataus — valinnainen kirjaston lataus milloin tahansa
-• iCloud-synkronoinnin tila Privacy & Data-asetuksissa
-• Lajittele lisäyspäivämäärän mukaan, pidä kiinnitetyt otsikot päällimmäisenä ja järjestele listat manuaalisesti uudelleen
-• Katso ohjaajan elokuvan tiedot ja suodata henkilön tekijätiedot roolin mukaan
-• Valitse, kuinka monta korttia tai julistetta mahtuu riviä kohden
-• Selkeämmät viestit, kun TMDB:ään ei saada yhteyttä
+Virhekorjauksista viimeistelyyn – tämä julkaisu sisältää päivityksiä, jotka on suunniteltu parantamaan suorituskykyä ja auttamaan sinua pysymään ajan tasalla tärkeimmistä asioista.

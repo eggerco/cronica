@@ -1,7 +1,1 @@
-• Zanesljivejša sinhronizacija med napravami Apple z iCloud
-• Jasnejši uvoz in nalaganje TMDB – neobvezno nalaganje knjižnice, kadar koli ga želite
-• Stanje sinhronizacije iCloud v nastavitvah Privacy & Data
-• Razvrščanje po datumu dodajanja, ohranjanje pripetih naslovov na vrhu in ročno prerazporejanje seznamov
-• Oglejte si podrobnosti o filmu pri režiserju in filtrirajte zasluge osebe po vlogi
-• Izberite, koliko kartic ali plakatov se prilega v vrsto
-• Jasnejša sporočila, ko TMDB ni dosegljiv
+Od popravkov napak do izboljšav – ta različica je polna posodobitev, zasnovanih za boljšo zmogljivost in lažje spremljanje tistega, kar je najpomembnejše.

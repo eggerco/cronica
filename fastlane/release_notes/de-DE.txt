@@ -1,7 +1,1 @@
-• Zuverlässigere Synchronisierung zwischen Ihren Apple-Geräten mit iCloud
-• Vereinfachter TMDB-Import und -Upload – optionaler Bibliotheks-Upload nach Bedarf
-• iCloud-Synchronisierungsstatus in den Privacy & Data-Einstellungen
-• Sortieren Sie nach Hinzufügungsdatum, behalten Sie angeheftete Titel oben und ordnen Sie Listen manuell neu an.
-• Den Regisseur finden Sie in den Filmdetails und können die Filmcredits einer Person nach Rolle filtern.
-• Wählen Sie aus, wie viele Karten oder Poster pro Reihe passen.
-• Klarere Fehlermeldungen, wenn TMDB nicht erreichbar ist
+Von Fehlerbehebungen bis zu Verfeinerungen – dieses Update bringt zahlreiche Verbesserungen, die die Leistung optimieren und Ihnen helfen, das Wichtigste im Blick zu behalten.

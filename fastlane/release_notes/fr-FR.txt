@@ -1,7 +1,1 @@
-• Synchronisation plus fiable entre vos appareils Apple et iCloud
-• Importation et chargement simplifiés de TMDB — chargement de bibliothèque optionnel à votre convenance
-• État de synchronisation iCloud dans les paramètres Privacy & Data
-• Trier par date d'ajout, conserver les titres épinglés en haut et réorganiser les listes manuellement.
-• Consultez la fiche du réalisateur dans les détails du film et filtrez les crédits d'une personne par rôle.
-• Choisissez le nombre de cartes ou d'affiches par rangée.
-• Messages plus clairs lorsque TMDB est injoignable
+Des corrections de bugs aux finitions, cette version regorge de mises à jour conçues pour optimiser les performances et vous aider à garder le contrôle sur l'essentiel.

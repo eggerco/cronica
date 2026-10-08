@@ -1,7 +1,1 @@
-• Spoľahlivejšia synchronizácia medzi zariadeniami Apple s iCloud
-• Prehľadnejší import a nahrávanie do TMDB – voliteľné nahrávanie knižnice, kedykoľvek chcete
-• Stav synchronizácie iCloud v nastaveniach Privacy & Data
-• Zoradiť podľa dátumu pridania, ponechať pripnuté názvy navrchu a ručne meniť poradie zoznamov
-• Pozrite si podrobnosti o filme od režiséra a filtrujte titulky osoby podľa role
-• Vyberte si, koľko kariet alebo plagátov sa zmestí do jedného riadku
-• Jasnejšie správy, keď nie je možné dosiahnuť TMDB
+Od opráv chýb až po vylepšenia – táto verzia prináša množstvo aktualizácií navrhnutých na optimalizáciu výkonu a pomáha vám mať prehľad o tom, na čom záleží najviac.

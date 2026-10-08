@@ -1,7 +1,1 @@
-• Sincronizzazione più affidabile tra i tuoi dispositivi Apple e iCloud.
-• Importazione e caricamento di XBRANDOX più chiari: caricamento opzionale della libreria quando lo desideri
-• Stato di sincronizzazione di iCloud nelle impostazioni di Privacy & Data
-• Ordina per data di aggiunta, mantieni i titoli fissati in alto e riordina gli elenchi manualmente.
-• Visualizza il regista nei dettagli del film e filtra i crediti di una persona per ruolo
-• Scegli quanti biglietti o poster possono essere inseriti in ogni riga
-• Messaggi più chiari quando non è possibile raggiungere TMDB
+Dalle correzioni di bug ai perfezionamenti, questo aggiornamento è ricco di novità pensate per ottimizzare le prestazioni e aiutarti a restare al passo con ciò che conta di più.

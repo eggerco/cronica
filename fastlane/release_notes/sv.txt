@@ -1,7 +1,1 @@
-• Mer pålitlig synkronisering mellan dina Apple-enheter med iCloud
-• Tydligare TMDB-import och uppladdning — valfri biblioteksuppladdning när du vill
-• iCloud synkroniseringsstatus i Privacy & Data-inställningar
-• Sortera efter tilläggsdatum, behåll fästa titlar överst och ändra ordning på listor manuellt
-• Se regissörens filmdetaljer och filtrera en persons eftertexter efter roll
-• Välj hur många kort eller affischer som får plats per rad
-• Tydligare meddelanden när TMDB inte kan nås
+Från buggfixar till finputsning – den här utgåvan är full av uppdateringar som ska förbättra prestandan och hjälpa dig att hålla koll på det som betyder mest.
