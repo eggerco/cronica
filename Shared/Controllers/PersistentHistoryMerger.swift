@@ -11,12 +11,33 @@ import Foundation
 enum PersistentHistoryMerger {
     private static let lastTokenKey = "persistentHistory.lastToken"
     private static var observer: NSObjectProtocol?
-    private static var isMerging = false
+    @MainActor private static var isMerging = false
+    @MainActor private static var hasPendingMerge = false
 
-    private final class HistoryFetchScratch: @unchecked Sendable {
-        var mergePayloads: [[AnyHashable: Any]] = []
-        var lastToken: NSPersistentHistoryToken?
-        var error: Error?
+    private struct HistoryChanges: Sendable {
+        let inserted: [NSManagedObjectID]
+        let updated: [NSManagedObjectID]
+        let deleted: [NSManagedObjectID]
+
+        init(userInfo: [AnyHashable: Any]) {
+            inserted = Self.objectIDs(userInfo[NSInsertedObjectsKey] ?? userInfo[NSInsertedObjectIDsKey])
+            updated = Self.objectIDs(userInfo[NSUpdatedObjectsKey] ?? userInfo[NSUpdatedObjectIDsKey])
+            deleted = Self.objectIDs(userInfo[NSDeletedObjectsKey] ?? userInfo[NSDeletedObjectIDsKey])
+        }
+
+        var userInfo: [AnyHashable: Any] {
+            [NSInsertedObjectsKey: inserted, NSUpdatedObjectsKey: updated, NSDeletedObjectsKey: deleted]
+        }
+
+        private static func objectIDs(_ value: Any?) -> [NSManagedObjectID] {
+            if let ids = value as? [NSManagedObjectID] { return ids }
+            return Array(value as? Set<NSManagedObjectID> ?? [])
+        }
+    }
+
+    private struct HistoryFetchResult: Sendable {
+        let changes: [HistoryChanges]
+        let tokenData: Data?
     }
 
     static func startObserving(container: NSPersistentCloudKitContainer) {
@@ -27,59 +48,63 @@ enum PersistentHistoryMerger {
             queue: .main
         ) { _ in
             Task { @MainActor in
-                merge(into: container)
+                await merge(into: container)
             }
         }
         // Catch up on any writes that happened while the app was not running.
         Task { @MainActor in
-            merge(into: container)
+            await merge(into: container)
         }
     }
 
     @MainActor
-    static func merge(into container: NSPersistentCloudKitContainer) {
-        guard !isMerging else { return }
+    static func merge(into container: NSPersistentCloudKitContainer) async {
+        guard !isMerging else {
+            hasPendingMerge = true
+            return
+        }
         isMerging = true
         defer { isMerging = false }
 
-        let scratch = HistoryFetchScratch()
-        let background = container.newBackgroundContext()
-        background.performAndWait {
+        repeat {
+            hasPendingMerge = false
+            let background = container.newBackgroundContext()
             do {
-                let token = loadToken()
-                let request = NSPersistentHistoryChangeRequest.fetchHistory(after: token)
-                guard let result = try background.execute(request) as? NSPersistentHistoryResult,
-                      let transactions = result.result as? [NSPersistentHistoryTransaction],
-                      !transactions.isEmpty
-                else { return }
+                let result = try await background.perform {
+                    let request = NSPersistentHistoryChangeRequest.fetchHistory(after: loadToken())
+                    guard let result = try background.execute(request) as? NSPersistentHistoryResult,
+                          let transactions = result.result as? [NSPersistentHistoryTransaction],
+                          let lastTransaction = transactions.last
+                    else { return HistoryFetchResult(changes: [], tokenData: nil) }
 
-                scratch.mergePayloads = transactions.compactMap { $0.objectIDNotification().userInfo }
-                scratch.lastToken = transactions.last?.token
+                    let changes = transactions.compactMap { transaction in
+                        transaction.objectIDNotification().userInfo.map(HistoryChanges.init(userInfo:))
+                    }
+                    let tokenData = try? NSKeyedArchiver.archivedData(
+                        withRootObject: lastTransaction.token,
+                        requiringSecureCoding: true
+                    )
+                    return HistoryFetchResult(changes: changes, tokenData: tokenData)
+                }
+                if !result.changes.isEmpty {
+                    for changes in result.changes {
+                        NSManagedObjectContext.mergeChanges(
+                            fromRemoteContextSave: changes.userInfo,
+                            into: [container.viewContext]
+                        )
+                    }
+                    if let tokenData = result.tokenData {
+                        UserDefaults.standard.set(tokenData, forKey: lastTokenKey)
+                    }
+                    WidgetSnapshotPublisherBridge.scheduleRefreshIfAvailable()
+                }
             } catch {
-                scratch.error = error
+                AppLogger.persistence.error(
+                    "Persistent history merge failed: \(error.localizedDescription)"
+                )
             }
-        }
-
-        if let error = scratch.error {
-            AppLogger.persistence.error(
-                "Persistent history merge failed: \(error.localizedDescription)"
-            )
-            return
-        }
-        guard !scratch.mergePayloads.isEmpty else { return }
-
-        for userInfo in scratch.mergePayloads {
-            NSManagedObjectContext.mergeChanges(
-                fromRemoteContextSave: userInfo,
-                into: [container.viewContext]
-            )
-        }
-
-        if let lastToken = scratch.lastToken {
-            saveToken(lastToken)
-        }
-
-        WidgetSnapshotPublisherBridge.scheduleRefreshIfAvailable()
+            // Drain notifications received while the history fetch was suspended.
+        } while hasPendingMerge
     }
 
     private static func loadToken() -> NSPersistentHistoryToken? {
@@ -88,14 +113,6 @@ enum PersistentHistoryMerger {
             ofClass: NSPersistentHistoryToken.self,
             from: data
         )
-    }
-
-    private static func saveToken(_ token: NSPersistentHistoryToken) {
-        guard let data = try? NSKeyedArchiver.archivedData(
-            withRootObject: token,
-            requiringSecureCoding: true
-        ) else { return }
-        UserDefaults.standard.set(data, forKey: lastTokenKey)
     }
 }
 #endif
