@@ -84,7 +84,7 @@ import SwiftUI
             let result = try? await service.search(query: trimmedQuery, page: "\(page)")
             guard let result else { return }
             if result.isEmpty { endPagination.toggle() }
-            let filtered = await filter(for: result)
+            let filtered = SettingsStore.shared.disableSearchFilter ? result : await filter(for: result)
             withAnimation {
                 self.items.append(contentsOf: filtered.sorted(by: { $0.itemPopularity > $1.itemPopularity }))
             }
