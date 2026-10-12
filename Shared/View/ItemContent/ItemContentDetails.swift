@@ -15,6 +15,7 @@ struct ItemContentDetails: View {
     var title: String
     var id: Int
     var type: MediaType
+    var prefetchedContent: ItemContent? = nil
     @StateObject private var viewModel = ItemContentViewModel()
     @StateObject private var store = SettingsStore.shared
     @State private var showPopup = false
@@ -118,7 +119,7 @@ struct ItemContentDetails: View {
         }
 #endif
         .task {
-            await viewModel.load(id: id, type: type)
+            await viewModel.load(id: id, type: type, prefetchedContent: prefetchedContent)
             viewModel.registerNotification()
             viewModel.checkIfAdded()
         }

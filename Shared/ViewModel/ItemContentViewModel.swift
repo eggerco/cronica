@@ -39,12 +39,18 @@ class ItemContentViewModel: ObservableObject {
     private var isNotificationAvailable = false
     private var hasNotificationScheduled = false
     
-    func load(id: ItemContent.ID, type: MediaType) async {
+    func load(id: ItemContent.ID, type: MediaType, prefetchedContent: ItemContent? = nil) async {
         if Task.isCancelled { return }
         if content == nil {
             withAnimation { isLoading = true }
             do {
-                content = try await self.service.fetchItem(id: id, type: type)
+                if let prefetchedContent,
+                   prefetchedContent.id == id,
+                   prefetchedContent.itemContentMedia == type {
+                    content = prefetchedContent
+                } else {
+                    content = try await self.service.fetchItem(id: id, type: type)
+                }
                 guard let content else { return }
                 isInWatchlist = persistence.isItemSaved(id: content.itemContentID)
                 if content.backdropPath == nil && content.posterPath != nil { showPoster = true }
