@@ -170,9 +170,11 @@ struct ReleaseCalendarView: View {
     @ViewBuilder
     private var calendarPicker: some View {
 #if canImport(UIKit) && !os(tvOS)
+        let calendar = Calendar.current
         HStack {
             Spacer(minLength: 0)
-            NativeReleaseCalendarPicker(selectedDate: $selectedDate, releaseDays: releaseDays)
+            NativeReleaseCalendarPicker(selectedDate: $selectedDate, releaseDays: releaseDays, calendar: calendar)
+                .id(calendar)
                 .frame(width: ReleaseCalendarMetrics.maxWidth)
                 .frame(minHeight: ReleaseCalendarMetrics.minHeight)
                 // Do not `.clipped()` — visionOS selection rings / last week get cut off.
@@ -223,9 +225,10 @@ struct ReleaseCalendarView: View {
 private struct NativeReleaseCalendarPicker: UIViewRepresentable {
     @Binding var selectedDate: Date
     var releaseDays: Set<Date>
+    let calendar: Calendar
 
     func makeCoordinator() -> Coordinator {
-        Coordinator(selectedDate: $selectedDate, releaseDays: releaseDays)
+        Coordinator(selectedDate: $selectedDate, releaseDays: releaseDays, calendar: calendar)
     }
 
     func makeUIView(context: Context) -> UIView {
@@ -235,8 +238,9 @@ private struct NativeReleaseCalendarPicker: UIViewRepresentable {
         container.backgroundColor = .clear
 
         let calendarView = UICalendarView()
-        calendarView.calendar = Calendar.current
-        calendarView.locale = Locale.current
+        calendarView.calendar = calendar
+        calendarView.locale = calendar.locale ?? Locale.current
+        calendarView.timeZone = calendar.timeZone
         calendarView.delegate = context.coordinator
         calendarView.clipsToBounds = false
         calendarView.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
@@ -248,7 +252,7 @@ private struct NativeReleaseCalendarPicker: UIViewRepresentable {
         calendarView.selectionBehavior = selection
         context.coordinator.selection = selection
         context.coordinator.calendarView = calendarView
-        selection.selectedDate = Calendar.current.dateComponents([.year, .month, .day], from: selectedDate)
+        selection.selectedDate = calendar.dateComponents([.year, .month, .day], from: selectedDate)
 
         calendarView.translatesAutoresizingMaskIntoConstraints = false
         container.addSubview(calendarView)
@@ -264,18 +268,24 @@ private struct NativeReleaseCalendarPicker: UIViewRepresentable {
     }
 
     func updateUIView(_ container: UIView, context: Context) {
-        context.coordinator.releaseDays = releaseDays
-        guard let calendarView = context.coordinator.calendarView else { return }
+        let coordinator = context.coordinator
+        let previousDays = coordinator.appliedReleaseDays
+        coordinator.releaseDays = releaseDays
+        guard let calendarView = coordinator.calendarView else { return }
 
-        let selectedComponents = Calendar.current.dateComponents([.year, .month, .day], from: selectedDate)
+        let selectedComponents = calendar.dateComponents([.year, .month, .day], from: selectedDate)
         if context.coordinator.selection?.selectedDate != selectedComponents {
             context.coordinator.selection?.selectedDate = selectedComponents
         }
 
-        let decorationComponents = releaseDays.map {
-            Calendar.current.dateComponents([.year, .month, .day], from: $0)
+        let changedDays = previousDays.map { releaseDays.symmetricDifference($0) } ?? releaseDays
+        let decorationComponents = changedDays.map {
+            calendar.dateComponents([.year, .month, .day], from: $0)
         }
-        calendarView.reloadDecorations(forDateComponents: decorationComponents, animated: false)
+        coordinator.appliedReleaseDays = releaseDays
+        if previousDays == nil || !decorationComponents.isEmpty {
+            calendarView.reloadDecorations(forDateComponents: decorationComponents, animated: false)
+        }
     }
 
     func sizeThatFits(_ proposal: ProposedViewSize, uiView: UIView, context: Context) -> CGSize? {
@@ -296,12 +306,15 @@ private struct NativeReleaseCalendarPicker: UIViewRepresentable {
     final class Coordinator: NSObject, UICalendarViewDelegate, UICalendarSelectionSingleDateDelegate {
         @Binding var selectedDate: Date
         var releaseDays: Set<Date>
+        let calendar: Calendar
+        var appliedReleaseDays: Set<Date>?
         weak var selection: UICalendarSelectionSingleDate?
         weak var calendarView: UICalendarView?
 
-        init(selectedDate: Binding<Date>, releaseDays: Set<Date>) {
+        init(selectedDate: Binding<Date>, releaseDays: Set<Date>, calendar: Calendar) {
             _selectedDate = selectedDate
             self.releaseDays = releaseDays
+            self.calendar = calendar
         }
 
         func dateSelection(
@@ -309,16 +322,16 @@ private struct NativeReleaseCalendarPicker: UIViewRepresentable {
             didSelectDate dateComponents: DateComponents?
         ) {
             guard let dateComponents,
-                  let date = Calendar.current.date(from: dateComponents) else { return }
-            selectedDate = Calendar.current.startOfDay(for: date)
+                  let date = calendar.date(from: dateComponents) else { return }
+            selectedDate = calendar.startOfDay(for: date)
         }
 
         func calendarView(
             _ calendarView: UICalendarView,
             decorationFor dateComponents: DateComponents
         ) -> UICalendarView.Decoration? {
-            guard let date = Calendar.current.date(from: dateComponents) else { return nil }
-            let day = Calendar.current.startOfDay(for: date)
+            guard let date = calendar.date(from: dateComponents) else { return nil }
+            let day = calendar.startOfDay(for: date)
             guard releaseDays.contains(day) else { return nil }
             return .default(color: UIColor.tintColor, size: .small)
         }
