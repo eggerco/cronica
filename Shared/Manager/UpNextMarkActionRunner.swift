@@ -30,24 +30,26 @@ enum UpNextMarkActionRunner {
         let contentID: String
     }
 
+    private struct ResolvedEpisode {
+        let summary: Summary
+        let episode: Episode
+    }
+
     private static let persistence = PersistenceController.shared
     private static let network = NetworkService.shared
 
     static func markNextEpisodeWatched() async throws -> String {
-        guard let summary = try await firstUpNextSummary() else {
+        guard let resolved = try await resolveUpNextEpisodes(limit: 1).first else {
             throw RunnerError.noUpNext
         }
 
+        let summary = resolved.summary
         guard let item = persistence.fetch(for: summary.contentID) else {
             throw RunnerError.noUpNext
         }
 
         let showID = item.itemId
-        let episode = try await network.fetchEpisode(
-            tvID: Int64(showID),
-            season: Int64(summary.seasonNumber),
-            episodeNumber: Int64(summary.episodeNumber)
-        )
+        let episode = resolved.episode
 
         persistence.updateWatchedEpisodes(for: item, with: episode)
         let helper = EpisodeHelper()
@@ -70,19 +72,23 @@ enum UpNextMarkActionRunner {
     }
 
     static func upNextSummaries(limit: Int = 5) async throws -> [Summary] {
-        var summaries: [Summary] = []
-        let items = persistence.fetchUpNextWatchlistItems()
-        for item in items where summaries.count < limit {
-            guard let summary = await upNextSummary(for: item) else { continue }
-            summaries.append(summary)
-        }
-        if summaries.isEmpty {
-            throw RunnerError.noUpNext
-        }
-        return summaries
+        try await resolveUpNextEpisodes(limit: limit).map(\.summary)
     }
 
-    private static func upNextSummary(for item: WatchlistItem) async -> Summary? {
+    private static func resolveUpNextEpisodes(limit: Int) async throws -> [ResolvedEpisode] {
+        var episodes: [ResolvedEpisode] = []
+        let items = persistence.fetchUpNextWatchlistItems()
+        for item in items where episodes.count < limit {
+            guard let resolved = await resolveUpNextEpisode(for: item) else { continue }
+            episodes.append(resolved)
+        }
+        if episodes.isEmpty {
+            throw RunnerError.noUpNext
+        }
+        return episodes
+    }
+
+    private static func resolveUpNextEpisode(for item: WatchlistItem) async -> ResolvedEpisode? {
         let result = try? await network.fetchEpisode(
             tvID: Int64(item.itemId),
             season: item.itemNextUpNextSeason,
@@ -91,13 +97,14 @@ enum UpNextMarkActionRunner {
         guard let result else { return nil }
         let seasonNumber = result.seasonNumber ?? Int(item.itemNextUpNextSeason)
         let episodeNumber = result.episodeNumber ?? Int(item.itemNextUpNextEpisode)
-        return Summary(
+        let summary = Summary(
             showTitle: item.itemTitle,
             seasonNumber: seasonNumber,
             episodeNumber: episodeNumber,
             episodeName: result.name,
             contentID: item.itemContentID
         )
+        return ResolvedEpisode(summary: summary, episode: result)
     }
 
     private static func refreshSurfacesAfterMark() {
