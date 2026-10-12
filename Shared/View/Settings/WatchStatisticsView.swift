@@ -17,11 +17,8 @@ struct WatchStatisticsView: View {
         animation: .default
     ) private var hiddenItems: FetchedResults<WatchlistItem>
 
-    private var stats: WatchStatistics {
-        WatchStatistics.compute(from: Array(items))
-    }
-
     var body: some View {
+        let stats = WatchStatistics.compute(from: Array(items))
         Form {
             if !stats.mediaBreakdown.isEmpty {
                 Section {
