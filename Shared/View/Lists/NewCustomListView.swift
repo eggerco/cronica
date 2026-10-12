@@ -146,7 +146,12 @@ struct NewCustomListItemSelector: View {
     }
     
     private func search() async {
-        try? await Task.sleep(nanoseconds: 300_000_000)
+        do {
+            try await Task.sleep(nanoseconds: 300_000_000)
+            try Task.checkCancellation()
+        } catch {
+            return
+        }
         if query.isEmpty && !searchItems.isEmpty { searchItems = [] }
         if query.isEmpty { return }
         if !searchItems.isEmpty { searchItems.removeAll() }

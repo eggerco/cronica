@@ -247,7 +247,12 @@ struct CustomWatchlist: View {
         .disableAutocorrection(true)
         .task(id: query) {
             isSearching = true
-            try? await Task.sleep(nanoseconds: 300_000_000)
+            do {
+                try await Task.sleep(nanoseconds: 300_000_000)
+                try Task.checkCancellation()
+            } catch {
+                return
+            }
             if !filteredItems.isEmpty { filteredItems.removeAll() }
             if let items = selectedList?.itemsArray {
                 filteredItems.append(contentsOf: items.filter { $0.title?.localizedStandardContains(query) == true })
