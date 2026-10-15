@@ -13,6 +13,17 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 # Available Actions
 
+### upload_osx_pkg
+
+```sh
+[bundle exec] fastlane upload_osx_pkg
+```
+
+Upload an already-exported Mac PKG (path via PKG_PATH or fastlane/build/osx/Cronica-osx.pkg)
+
+----
+
+
 ## iOS
 
 ### ios sync_store_urls
