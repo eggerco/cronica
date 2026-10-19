@@ -20,6 +20,12 @@ export default {
         headers: {
           "content-type": "text/html; charset=utf-8",
           "cache-control": "no-store",
+          // Baseline hardening: the page reflects query parameters (escaped),
+          // so forbid framing, MIME sniffing and inline scripts as defense in depth.
+          "content-security-policy":
+            "default-src 'self'; img-src 'self' https://image.tmdb.org; script-src 'none'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'",
+          "x-content-type-options": "nosniff",
+          "referrer-policy": "strict-origin-when-cross-origin",
         },
       });
     }
