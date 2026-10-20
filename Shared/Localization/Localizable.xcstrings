@@ -247895,6 +247895,566 @@
           }
         }
       }
+    },
+    "Mark titles as watched to clear this list. Find them under Watched.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mark titles as watched to clear this list. Find them under Watched."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Markiere Titel als angesehen, um diese Liste zu leeren. Du findest sie unter „Angesehen“."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Marquez les titres comme vus pour vider cette liste. Vous les trouverez dans la section « Vu »."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Contrassegna i titoli come visti per cancellare questo elenco. Li trovi nella sezione \"Visti\"."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Marque os títulos como assistidos para limpar esta lista. Encontre-os em \"Assistidos\"."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Marque os títulos como assistidos para limpar esta lista. Encontre-os em \"Assistidos\"."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Označte tituly ako sledované, ak chcete tento zoznam vymazať. Nájdete ich v časti Sledované."
+          }
+        },
+        "es-MX": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Marca los títulos como vistos para vaciar esta lista. Los encontrarás en la sección \"Vistos\"."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ضع علامة \"تمت المشاهدة\" على العناوين لمسح هذه القائمة. يمكنك العثور عليها ضمن \"تمت المشاهدة\"."
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "এই তালিকাটি পরিষ্কার করতে শিরোনামগুলিকে 'দেখা হয়েছে' হিসেবে চিহ্নিত করুন। সেগুলিকে 'দেখা হয়েছে' বিভাগের অধীনে খুঁজুন।"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Marca els títols com a vigilats per esborrar aquesta llista. Cerca'ls a Vigilats."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Označte tituly jako sledované, chcete-li tento seznam vymazat. Najdete je v sekci Sledované."
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Markér titler som set for at rydde denne liste. Find dem under Set."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Επισημάνετε τους τίτλους ως προβολείς για να διαγράψετε αυτήν τη λίστα. Βρείτε τους στην ενότητα Προβολές."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Marca los títulos como vistos para vaciar esta lista. Los encontrarás en la sección \"Vistos\"."
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Merkitse nimikkeet katsotuiksi tyhjentääksesi tämän listan. Löydät ne Katsottujen alta."
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "આ યાદી સાફ કરવા માટે શીર્ષકોને જોયેલા તરીકે ચિહ્નિત કરો. તેમને \"જોયેલા\" હેઠળ શોધો."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "סמן כותרות כנצפות כדי לנקות רשימה זו. מצא אותן תחת נצפות."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "इस सूची को साफ़ करने के लिए टाइटल को 'देखा गया' के रूप में चिह्नित करें। इन्हें 'देखा गया' के अंतर्गत खोजें।"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Označite naslove kao gledane kako biste izbrisali ovaj popis. Pronađite ih pod Gledano."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jelöld meg a címeket nézettként a lista törléséhez. A Nézett címek alatt találod őket."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tandai judul sebagai sudah ditonton untuk menghapus daftar ini. Temukan judul-judul tersebut di bagian Ditonton."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "このリストをクリアするには、タイトルを視聴済みとしてマークしてください。「視聴済み」の項目から確認できます。"
+          }
+        },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ಈ ಪಟ್ಟಿಯನ್ನು ತೆರವುಗೊಳಿಸಲು ಶೀರ್ಷಿಕೆಗಳನ್ನು ವೀಕ್ಷಿಸಲಾಗಿದೆ ಎಂದು ಗುರುತಿಸಿ. ವೀಕ್ಷಿಸಲಾಗಿದೆ ಅಡಿಯಲ್ಲಿ ಅವುಗಳನ್ನು ಹುಡುಕಿ."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "시청한 작품을 표시하면 이 목록이 초기화됩니다. '시청함'에서 확인할 수 있습니다."
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ഈ ലിസ്റ്റ് മായ്‌ക്കാൻ ശീർഷകങ്ങൾ കണ്ടതായി അടയാളപ്പെടുത്തുക. കണ്ടവ എന്നതിന് കീഴിൽ അവ കണ്ടെത്തുക."
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ही यादी साफ करण्यासाठी शीर्षके 'पाहिली' म्हणून चिन्हांकित करा. ती 'पाहिले' या सदराखाली शोधा."
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tandakan tajuk sebagai ditonton untuk mengosongkan senarai ini. Cari tajuk tersebut di bawah Ditonton."
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Merk titler som sett for å tømme denne listen. Finn dem under Sett."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Markeer titels als bekeken om deze lijst leeg te maken. Je vindt ze onder 'Bekeken'."
+          }
+        },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ଏହି ତାଲିକାକୁ ଖାଲି କରିବା ପାଇଁ ଶୀର୍ଷକଗୁଡ଼ିକୁ ଦେଖାଯାଇଛି ଭାବରେ ଚିହ୍ନିତ କରନ୍ତୁ। ସେଗୁଡ଼ିକୁ ଦେଖାଯାଇଛି ଅନ୍ତର୍ଗତ ଖୋଜନ୍ତୁ।"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ਇਸ ਸੂਚੀ ਨੂੰ ਸਾਫ਼ ਕਰਨ ਲਈ ਸਿਰਲੇਖਾਂ ਨੂੰ ਦੇਖੇ ਹੋਏ ਵਜੋਂ ਚਿੰਨ੍ਹਿਤ ਕਰੋ। ਉਹਨਾਂ ਨੂੰ ਦੇਖੇ ਹੋਏ ਦੇ ਅਧੀਨ ਲੱਭੋ।"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oznacz tytuły jako obejrzane, aby wyczyścić tę listę. Znajdziesz je w sekcji Obejrzane."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Marcați titlurile ca urmărite pentru a șterge această listă. Găsiți-le în secțiunea Vizionate."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Чтобы очистить этот список, отметьте фильмы и сериалы как просмотренные. Найдите их в разделе «Просмотренные»."
+          }
+        },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Označite naslove kot gledane, da počistite ta seznam. Najdete jih v razdelku Gledano."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Markera titlar som sedda för att rensa listan. Hitta dem under Sedda."
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "இந்தப் பட்டியலை அழிக்க, தலைப்புகளைப் பார்த்ததாகக் குறியிடவும். அவற்றை 'பார்த்தவை' என்பதன் கீழ் காணலாம்."
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ఈ జాబితాను ఖాళీ చేయడానికి టైటిల్‌లను చూసినవిగా గుర్తించండి. వాటిని 'చూసినవి' కింద కనుగొనండి."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ทำเครื่องหมายว่ารับชมแล้วเพื่อล้างรายการนี้ ค้นหารายการเหล่านั้นได้ในส่วน \"รับชมแล้ว\""
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu listeyi temizlemek için başlıkları izlendi olarak işaretleyin. Bunları İzlenenler bölümünde bulabilirsiniz."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Позначте заголовки як переглянуті, щоб очистити цей список. Знайдіть їх у розділі \"Переглянуті\"."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اس فہرست کو صاف کرنے کے لیے عنوانات کو بطور دیکھے گئے نشان زد کریں۔ انہیں دیکھے گئے کے تحت تلاش کریں۔"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Đánh dấu các tựa phim đã xem để xóa danh sách này. Bạn có thể tìm thấy chúng trong mục Đã xem."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "将影片标记为已观看即可清空此列表。您可以在“已观看”下找到它们。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "將影片標記為已觀看即可清空此清單。您可以在“已觀看”下找到它們。"
+          }
+        }
+      }
+    },
+    "Titles you mark as watched show up here.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Titles you mark as watched show up here."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hier werden die Titel angezeigt, die Sie als angesehen markieren."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les titres que vous marquez comme vus apparaissent ici."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "I titoli che hai contrassegnato come visti vengono visualizzati qui."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Os títulos que você marcar como assistidos aparecerão aqui."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Os títulos que você marcar como assistidos aparecerão aqui."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tituly, ktoré označíte ako pozreté, sa zobrazia tu."
+          }
+        },
+        "es-MX": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Los títulos que marcas como vistos aparecen aquí."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تظهر العناوين التي قمت بتحديدها على أنها تمت مشاهدتها هنا."
+          }
+        },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "আপনি যে শিরোনামগুলো দেখা হয়েছে বলে চিহ্নিত করেন, সেগুলো এখানে দেখা যায়।"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Els títols que marqueu com a vistos apareixen aquí."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zde se zobrazují tituly, které označíte jako sledované."
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Titler, du markerer som set, vises her."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Οι τίτλοι που επισημαίνετε ως προβολείς εμφανίζονται εδώ."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Los títulos que marcas como vistos aparecen aquí."
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Katsotuiksi merkitsemäsi nimikkeet näkyvät tässä."
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "તમે જોયેલા તરીકે ચિહ્નિત કરેલા શીર્ષકો અહીં દેખાય છે."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "כותרים שסימנת כנצפים מופיעים כאן."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "जिन टाइटल्स को आप देखे गए के रूप में चिह्नित करते हैं, वे यहां दिखाई देते हैं।"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Naslovi koje označite kao gledane prikazuju se ovdje."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A megtekintettként megjelölt címek itt jelennek meg."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Judul yang Anda tandai sebagai sudah ditonton akan muncul di sini."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "視聴済みとしてマークしたタイトルがここに表示されます。"
+          }
+        },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ನೀವು ವೀಕ್ಷಿಸಲಾಗಿದೆ ಎಂದು ಗುರುತಿಸಿರುವ ಶೀರ್ಷಿಕೆಗಳು ಇಲ್ಲಿ ಕಾಣಿಸಿಕೊಳ್ಳುತ್ತವೆ."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "시청 완료로 표시한 작품이 여기에 표시됩니다."
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "നിങ്ങൾ കണ്ടതായി അടയാളപ്പെടുത്തിയ ശീർഷകങ്ങൾ ഇവിടെ കാണിക്കും."
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "तुम्ही पाहिलेले म्हणून चिन्हांकित केलेले चित्रपट येथे दिसतात."
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tajuk yang anda tandakan sebagai ditonton dipaparkan di sini."
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Titler du merker som sett vises her."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Titels die je als bekeken hebt gemarkeerd, worden hier weergegeven."
+          }
+        },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ଆପଣ ଦେଖିଥିବା ଭାବରେ ଚିହ୍ନଟ କରିଥିବା ଶୀର୍ଷକଗୁଡ଼ିକ ଏଠାରେ ଦେଖାଯିବ।"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ਤੁਹਾਡੇ ਵੱਲੋਂ ਦੇਖੇ ਗਏ ਵਜੋਂ ਚਿੰਨ੍ਹਿਤ ਕੀਤੇ ਗਏ ਸਿਰਲੇਖ ਇੱਥੇ ਦਿਖਾਈ ਦਿੰਦੇ ਹਨ।"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tutaj wyświetlają się tytuły, które oznaczysz jako obejrzane."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Titlurile pe care le marchezi ca vizionate apar aici."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Здесь отображаются фильмы и сериалы, которые вы отметили как просмотренные."
+          }
+        },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Naslovi, ki jih označite kot ogledane, se prikažejo tukaj."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Titlar som du markerar som sedda visas här."
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "நீங்கள் பார்த்ததாகக் குறிக்கும் தலைப்புகள் இங்கே காட்டப்படும்."
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "మీరు చూసినవిగా గుర్తించిన శీర్షికలు ఇక్కడ కనిపిస్తాయి."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "รายการที่คุณทำเครื่องหมายว่าดูแล้วจะปรากฏที่นี่"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İzlediğinizi işaretlediğiniz yapımlar burada görünecektir."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Тут відображаються заголовки, які ви позначаєте як переглянуті."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آپ جو عنوانات دیکھے گئے کے بطور نشان زد کرتے ہیں وہ یہاں ظاہر ہوتے ہیں۔"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Những tựa phim bạn đánh dấu là đã xem sẽ hiển thị ở đây."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "您标记为已观看的影片会显示在这里。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "您標記為已觀看的影片會顯示在這裡。"
+          }
+        }
+      }
     }
   },
   "version": "1.1"

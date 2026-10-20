@@ -33,4 +33,29 @@ enum SmartFiltersTypes: String, Identifiable, Hashable, CaseIterable {
             return String(localized: "To Watch")
         }
     }
+
+    /// Single source of truth for smart-filter membership (iOS, macOS, watchOS).
+    ///
+    /// Released is checklist-style: schedule-released and not finished. Marking Watched
+    /// moves a title out of Released / To Watch and into Watched.
+    func matches(_ item: WatchlistItem) -> Bool {
+        switch self {
+        case .released:
+            return item.isReleased && !item.isWatched
+        case .production:
+            return item.isInProduction || item.isUpcoming
+        case .watching:
+            return item.isCurrentlyWatching
+        case .watched:
+            return item.isWatched
+        case .favorites:
+            return item.isFavorite
+        case .pin:
+            return item.isPin
+        case .archive:
+            return item.isArchive
+        case .notWatched:
+            return !item.isCurrentlyWatching && !item.isWatched && item.isReleased
+        }
+    }
 }

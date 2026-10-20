@@ -20,7 +20,7 @@ struct CustomWatchlist: View {
     @State private var showFilter = false
     @AppStorage("customListShowAllItems") private var showAllItems = true
     @AppStorage("customListMediaTypeFilter") private var mediaTypeFilter: MediaTypeFilters = .showAll
-    @AppStorage("customListSmartFilter") private var selectedOrder: SmartFiltersTypes = .released
+    @AppStorage("customListSmartFilter") private var selectedOrder: SmartFiltersTypes = .notWatched
     @Binding var showPopup: Bool
     @Binding var popupType: ActionPopupItems?
     @AppStorage("customListSortOrder") private var sortOrder: WatchlistSortOrder = .titleAsc
@@ -37,25 +37,7 @@ struct CustomWatchlist: View {
     }
     private var smartFiltersItems: [WatchlistItem] {
         let visible = sortedItems.filter { !$0.hideFromWatchlist }
-        let base: [WatchlistItem]
-        switch selectedOrder {
-        case .released:
-            base = visible.filter { $0.isReleased }
-        case .production:
-            base = visible.filter { $0.isInProduction || $0.isUpcoming }
-        case .watching:
-            base = visible.filter { $0.isCurrentlyWatching }
-        case .watched:
-            base = visible.filter { $0.isWatched }
-        case .favorites:
-            base = visible.filter { $0.isFavorite }
-        case .pin:
-            base = visible.filter { $0.isPin }
-        case .archive:
-            base = visible.filter { $0.isArchive }
-        case .notWatched:
-            base = visible.filter { !$0.isCurrentlyWatching && !$0.isWatched && $0.isReleased }
-        }
+        let base = visible.filter { selectedOrder.matches($0) }
         return mediaTypeFilter.apply(to: base)
     }
     private var searchResultItems: [WatchlistItem] {

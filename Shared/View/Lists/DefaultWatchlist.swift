@@ -15,7 +15,7 @@ struct DefaultWatchlist: View {
         animation: .default) private var items: FetchedResults<WatchlistItem>
     @State private var filteredItems = [WatchlistItem]()
     @State private var query = ""
-    @AppStorage("selectedOrder") private var smartFilter: SmartFiltersTypes = .released
+    @AppStorage("selectedOrder") private var smartFilter: SmartFiltersTypes = .notWatched
     @State private var isSearching = false
     @StateObject private var settings = SettingsStore.shared
     @AppStorage("watchlistShowAllItems") private var showAllItems = false
@@ -30,25 +30,7 @@ struct DefaultWatchlist: View {
     }
     private var smartFiltersItems: [WatchlistItem] {
         let visible = sortedItems.filter { !$0.hideFromWatchlist }
-        let base: [WatchlistItem]
-        switch smartFilter {
-        case .released:
-            base = visible.filter { $0.isReleased }
-        case .production:
-            base = visible.filter { $0.isInProduction || $0.isUpcoming }
-        case .watching:
-            base = visible.filter { $0.isCurrentlyWatching }
-        case .watched:
-            base = visible.filter { $0.isWatched }
-        case .favorites:
-            base = visible.filter { $0.isFavorite }
-        case .pin:
-            base = visible.filter { $0.isPin }
-        case .archive:
-            base = visible.filter { $0.isArchive }
-        case .notWatched:
-            base = visible.filter { !$0.isCurrentlyWatching && !$0.isWatched && $0.isReleased }
-        }
+        let base = visible.filter { smartFilter.matches($0) }
         return mediaTypeFilter.apply(to: base)
     }
     private var searchResultItems: [WatchlistItem] {
