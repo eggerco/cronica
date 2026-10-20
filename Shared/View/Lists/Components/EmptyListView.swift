@@ -45,7 +45,8 @@ struct EmptyListView: View {
         if let filter {
             switch filter {
             case .notWatched, .released:
-                return String(localized: "Mark titles as watched to clear this list. Find them under Watched.")
+                // Interpolate the live Watched filter title so every locale matches the picker label.
+                return String(localized: "Mark titles as watched to clear this list. Find them under \(SmartFiltersTypes.watched.title).")
             case .watched:
                 return String(localized: "Titles you mark as watched show up here.")
             default:
