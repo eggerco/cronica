@@ -193,8 +193,32 @@ final class CronicaTests: XCTestCase {
         }
     }
     
-    func testKeyConfigurationDefaultsAreSafe() {
-        XCTAssertFalse(Key.tmdbApi.contains("YOUR_"))
+    func testKeyConfigurationDefaultsAreSafe() throws {
+        let key = Key.tmdbApi
+        // pull_request CI intentionally has no repository secrets; local clones may
+        // still use the Secrets.xcconfig.example placeholder.
+        try XCTSkipIf(
+            key.isEmpty || key.contains("YOUR_"),
+            "TMDB_API_KEY unset or still the example placeholder"
+        )
+        XCTAssertFalse(key.contains("YOUR_"))
+    }
+
+    func testSentryRedactsSensitiveQueryParameters() {
+        XCTAssertEqual(
+            SentryManager.redactedQueryString("session_id=abc&language=en"),
+            "session_id=[Filtered]&language=en"
+        )
+        XCTAssertEqual(
+            SentryManager.redactedQueryString("api_key=secret&page=1"),
+            "api_key=[Filtered]&page=1"
+        )
+        XCTAssertEqual(
+            SentryManager.redactedURLString(
+                "https://api.themoviedb.org/3/account?api_key=k&session_id=s"
+            ),
+            "https://api.themoviedb.org/3/account?api_key=[Filtered]&session_id=[Filtered]"
+        )
     }
     
     func testNetworkErrorDescriptionsAreNonEmpty() {
@@ -1082,6 +1106,20 @@ final class CronicaTests: XCTestCase {
             "1399@1"
         )
         XCTAssertNil(CronicaApp.contentID(from: URL(string: "cronica://tmdb/callback")!))
+        XCTAssertNil(CronicaApp.contentID(from: URL(string: "cronica://simkl/callback")!))
+    }
+
+    func testDownloadDataRejectsNonTMDBHosts() async {
+        do {
+            _ = try await NetworkService.shared.downloadData(
+                from: URL(string: "https://example.com/poster.jpg")!
+            )
+            XCTFail("Expected invalidRequest for non-TMDB host")
+        } catch let error as NetworkError {
+            XCTAssertEqual(error, .invalidRequest)
+        } catch {
+            XCTFail("Unexpected error: \(error)")
+        }
     }
 
     func testWatchStatisticsFallsBackToLastValuesUpdated() {

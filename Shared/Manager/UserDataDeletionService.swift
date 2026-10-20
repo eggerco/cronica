@@ -41,19 +41,37 @@ enum UserDataDeletionService {
             throw UserDataDeletionError.deletionFailed(error.localizedDescription)
         }
 
-        SimklTokenStore.delete()
         SimklKnownItemsStore.clear()
 #if !os(watchOS)
         SimklPushService.shared.clearQueue()
+        // Match Settings disconnect: revoke remote sessions before dropping Keychain copies.
+        let simklToken = SimklTokenStore.load()
+        let tmdbSessionID = TMDBSessionStore.loadSessionID()
+        SimklTokenStore.delete()
         TMDBSessionStore.delete()
         TMDBPushService.shared.clearQueue()
         TMDBAccountListCache.clear()
+        if let tmdbSessionID {
+            Task {
+                try? await TMDBAccountAPIClient.shared.deleteSession(sessionID: tmdbSessionID)
+            }
+        }
+        if let simklToken {
+            Task {
+                try? await SimklAPIClient.shared.revokeToken(simklToken)
+            }
+        }
+#else
+        SimklTokenStore.delete()
 #endif
 
         resetUserDefaults()
         clearCaches()
         WidgetSnapshotStore.removeAllSnapshots()
         LiveActivityPosterStore.removeAll()
+#if !os(watchOS)
+        SiriNavigationBridge.clearAllPending()
+#endif
 #if os(iOS)
         await WatchingSessionManager.shared.endSession()
 #endif

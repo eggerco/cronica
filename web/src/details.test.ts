@@ -44,6 +44,13 @@ test("posterImageUrl strips title accidentally appended by share targets", () =>
   );
 });
 
+test("posterImageUrl rejects absolute and non-image paths", () => {
+  assert.equal(posterImageUrl("https://evil.example/x.jpg"), null);
+  assert.equal(posterImageUrl("//image.tmdb.org/t/p/w780/x.jpg"), null);
+  assert.equal(posterImageUrl("javascript:alert(1)"), null);
+  assert.equal(posterImageUrl("../etc/passwd"), null);
+});
+
 test("parseDetailsSearchParams renders clean title and poster", () => {
   const params = new URLSearchParams(
     "id=969681@0&img=/bjiS5ipwxb9JFy3XRRN4OAilSeX.jpg&title=Spider-Man:%2520Brand%2520New%2520Day%20Spider-Man:%20Brand%20New%20Day"

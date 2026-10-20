@@ -32,6 +32,7 @@ final class SimklAuthService: NSObject {
     var isConnected: Bool { SimklTokenStore.hasToken }
 
     func disconnect() {
+        let token = SimklTokenStore.load()
         SimklTokenStore.delete()
         SimklKnownItemsStore.clear()
         SimklPushService.shared.clearQueue()
@@ -51,6 +52,11 @@ final class SimklAuthService: NSObject {
         settings.simklAccountID = 0
         settings.simklAccountName = ""
         settings.simklLastStatsFetchDate = nil
+        if let token {
+            Task {
+                try? await SimklAPIClient.shared.revokeToken(token)
+            }
+        }
     }
 
 #if os(iOS) || os(macOS) || os(visionOS)

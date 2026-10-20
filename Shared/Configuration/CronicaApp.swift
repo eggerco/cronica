@@ -226,9 +226,29 @@ struct CronicaApp: App {
     
     static func contentID(from url: URL) -> String? {
         if url.scheme?.lowercased() == "cronica" {
+            // Prefer URLComponents so encoding / path segments stay well-formed.
+            let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
+            let host = components?.host?.lowercased() ?? ""
+            let path = (components?.path ?? "").trimmingCharacters(in: CharacterSet(charactersIn: "/"))
+            // OAuth / account callbacks are not watchlist deep links.
+            // cronica://tmdb/callback → host "tmdb", path "callback"
+            // cronica://simkl/callback → host "simkl"
+            if host == "tmdb" || host == "simkl"
+                || path.lowercased().hasPrefix("tmdb/")
+                || path.lowercased().hasPrefix("simkl/") {
+                return nil
+            }
+            // Common form: cronica://550@0 (host holds the content id).
+            if !host.isEmpty, host.contains("@") {
+                return host
+            }
+            // Fallback: cronica:///550@0 or opaque absoluteString forms.
+            if !path.isEmpty, path.contains("@") {
+                return path
+            }
             let raw = url.absoluteString.dropFirst("cronica://".count)
             let id = String(raw.split(separator: "?").first ?? Substring(raw))
-            // OAuth / account callbacks are not watchlist deep links.
+                .trimmingCharacters(in: CharacterSet(charactersIn: "/"))
             let lower = id.lowercased()
             if lower.hasPrefix("simkl/") || lower.hasPrefix("tmdb/") {
                 return nil

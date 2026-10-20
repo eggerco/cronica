@@ -79,4 +79,12 @@ enum SiriNavigationBridge {
         defaults?.removeObject(forKey: openSearchKey)
         return true
     }
+
+    /// Clears App Group pending navigation / deep-link state (e.g. Delete My Data).
+    @MainActor
+    static func clearAllPending() {
+        defaults?.removeObject(forKey: pendingDeepLinkKey)
+        defaults?.removeObject(forKey: openSearchKey)
+        defaults?.removeObject(forKey: pendingNavigationKey)
+    }
 }

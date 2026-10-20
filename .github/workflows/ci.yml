@@ -14,9 +14,12 @@ jobs:
   build-and-test:
     # Icon Composer (.icon) needs Xcode 26.6; macos-15 only ships ≤26.3 whose actool crashes on .icon.
     runs-on: macos-26
+    # Do not inject repository secrets into pull_request jobs. PR checkouts (including
+    # same-repo contributor branches) run untrusted code that can read ProcessInfo env
+    # and Secrets.xcconfig via Key.swift. Push to main keeps TMDB_API_KEY for the
+    # configured-key smoke test. SENTRY_DSN is unused by Debug CI and is never set here.
     env:
-      TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
-      SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+      TMDB_API_KEY: ${{ github.event_name == 'push' && secrets.TMDB_API_KEY || '' }}
 
     steps:
       - name: Checkout

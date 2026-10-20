@@ -32,7 +32,7 @@ Static files live in `public/`. The Worker adds dynamic HTML for `/details` shar
 
 ## Universal links
 
-`/.well-known/apple-app-site-association` is served for iOS Universal Links to open `/details` in the app. The app needs the Associated Domains entitlement (`applinks:www.cronica.watch`) in `Shared/Configuration/Cronica.entitlements`.
+`/.well-known/apple-app-site-association` is served for iOS Universal Links to open `/details` in the app (path `/details` only, matching the app parser). The app needs the Associated Domains entitlement (`applinks:www.cronica.watch`) in `Shared/Configuration/Cronica.entitlements`.
 
 ## Pages
 
