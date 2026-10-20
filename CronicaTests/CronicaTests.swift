@@ -56,9 +56,9 @@ final class CronicaTests: XCTestCase {
         XCTAssertNil(item.watchedDate)
     }
 
-    /// Marking Watched auto-saves into the watchlist; default Released filter must still show it
-    /// (To Watch is the not-started queue). Regression: watched titles vanished from Released.
-    func testWatchedItemStaysVisibleInReleasedFilter() {
+    /// Checklist UX (#68): marking Watched leaves Released / To Watch and lands in Watched.
+    /// Schedule `isReleased` stays true; smart filters apply the watched check.
+    func testWatchedItemLeavesReleasedAndToWatchFilters() {
         let item = WatchlistItem(context: managedContext)
         item.title = "Released Movie"
         item.id = 4242
@@ -72,14 +72,20 @@ final class CronicaTests: XCTestCase {
 
         XCTAssertTrue(persistence.isItemSaved(id: "4242@0"))
         XCTAssertTrue(item.isReleased)
+        XCTAssertTrue(SmartFiltersTypes.released.matches(item))
+        XCTAssertTrue(SmartFiltersTypes.notWatched.matches(item))
+        XCTAssertFalse(SmartFiltersTypes.watched.matches(item))
 
         persistence.updateWatched(for: item)
 
         XCTAssertTrue(item.isWatched)
         XCTAssertTrue(persistence.isItemSaved(id: "4242@0"))
-        XCTAssertTrue(item.isReleased, "Released is schedule-based; watched titles must not leave the default filter")
-        XCTAssertFalse(!item.isCurrentlyWatching && !item.isWatched && item.isReleased,
-                       "To Watch filter should exclude newly watched titles")
+        XCTAssertTrue(item.isReleased, "Schedule released is independent of watched state")
+        XCTAssertFalse(SmartFiltersTypes.released.matches(item),
+                       "Released smart filter should hide finished titles")
+        XCTAssertFalse(SmartFiltersTypes.notWatched.matches(item),
+                       "To Watch should exclude newly watched titles")
+        XCTAssertTrue(SmartFiltersTypes.watched.matches(item))
     }
 
     func testMarkWatchedOnUnsavedTitlePersistsLikeManualAdd() {

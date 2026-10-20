@@ -42,8 +42,16 @@ struct EmptyListView: View {
         if let listTitle {
             return String(localized: "Add titles to \(listTitle) from Search or any title’s details screen.")
         }
-        if filter != nil {
-            return String(localized: "Try another filter, or add more titles from Search.")
+        if let filter {
+            switch filter {
+            case .notWatched, .released:
+                // Interpolate the live Watched filter title so every locale matches the picker label.
+                return String(localized: "Mark titles as watched to clear this list. Find them under \(SmartFiltersTypes.watched.title).")
+            case .watched:
+                return String(localized: "Titles you mark as watched show up here.")
+            default:
+                return String(localized: "Try another filter, or add more titles from Search.")
+            }
         }
         return String(localized: "Open Search, find a movie or show, then tap Add to start tracking.")
     }

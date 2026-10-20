@@ -13,7 +13,7 @@ struct WatchlistView: View {
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \WatchlistItem.title, ascending: true)],
         animation: .default) private var items: FetchedResults<WatchlistItem>
-    @AppStorage("selectedOrder") private var selectedOrder: SmartFiltersTypes = .released
+    @AppStorage("selectedOrder") private var selectedOrder: SmartFiltersTypes = .notWatched
 	@AppStorage("defaultWatchlistSortOrder") private var sortOrder: WatchlistSortOrder = .titleAsc
     @State private var selectedList: SmartFiltersTypes?
     @State private var selectedCustomList: CustomList?

@@ -18,26 +18,8 @@ struct DefaultListView: View {
 	}
 	private var smartFiltersItems: [WatchlistItem] {
 		let visible = sortedItems.filter { !$0.hideFromWatchlist }
-		switch selectedOrder {
-		case .released:
-			return visible.filter { $0.isReleased }
-		case .production:
-			return visible.filter { $0.isInProduction || $0.isUpcoming }
-		case .watching:
-			return visible.filter { $0.isCurrentlyWatching }
-		case .watched:
-			return visible.filter { $0.isWatched }
-		case .favorites:
-			return visible.filter { $0.isFavorite }
-		case .pin:
-			return visible.filter { $0.isPin }
-		case .archive:
-			return visible.filter { $0.isArchive }
-		case .notWatched:
-			return visible.filter { !$0.isCurrentlyWatching && !$0.isWatched && $0.isReleased }
-		case .none:
-			return visible.filter { $0.isReleased }
-		}
+		let filter = selectedOrder ?? .notWatched
+		return visible.filter { filter.matches($0) }
 	}
     var body: some View {
         if let selectedOrder {
@@ -52,5 +34,5 @@ struct DefaultListView: View {
 }
 
 #Preview {
-    DefaultListView(selectedOrder: .constant(.released), sortOrder: .constant(.titleAsc))
+    DefaultListView(selectedOrder: .constant(.notWatched), sortOrder: .constant(.titleAsc))
 }
