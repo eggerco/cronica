@@ -45,15 +45,26 @@ enum UserDataDeletionService {
         SimklKnownItemsStore.clear()
 #if !os(watchOS)
         SimklPushService.shared.clearQueue()
+        // Match Settings disconnect: revoke the remote TMDB session before dropping
+        // the Keychain copy so Delete My Data does not leave a live server session.
+        let tmdbSessionID = TMDBSessionStore.loadSessionID()
         TMDBSessionStore.delete()
         TMDBPushService.shared.clearQueue()
         TMDBAccountListCache.clear()
+        if let tmdbSessionID {
+            Task {
+                try? await TMDBAccountAPIClient.shared.deleteSession(sessionID: tmdbSessionID)
+            }
+        }
 #endif
 
         resetUserDefaults()
         clearCaches()
         WidgetSnapshotStore.removeAllSnapshots()
         LiveActivityPosterStore.removeAll()
+#if !os(watchOS)
+        SiriNavigationBridge.clearAllPending()
+#endif
 #if os(iOS)
         await WatchingSessionManager.shared.endSession()
 #endif
