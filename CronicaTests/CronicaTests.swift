@@ -1106,6 +1106,20 @@ final class CronicaTests: XCTestCase {
             "1399@1"
         )
         XCTAssertNil(CronicaApp.contentID(from: URL(string: "cronica://tmdb/callback")!))
+        XCTAssertNil(CronicaApp.contentID(from: URL(string: "cronica://simkl/callback")!))
+    }
+
+    func testDownloadDataRejectsNonTMDBHosts() async {
+        do {
+            _ = try await NetworkService.shared.downloadData(
+                from: URL(string: "https://example.com/poster.jpg")!
+            )
+            XCTFail("Expected invalidRequest for non-TMDB host")
+        } catch let error as NetworkError {
+            XCTAssertEqual(error, .invalidRequest)
+        } catch {
+            XCTFail("Unexpected error: \(error)")
+        }
     }
 
     func testWatchStatisticsFallsBackToLastValuesUpdated() {

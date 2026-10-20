@@ -61,13 +61,21 @@ export function normalizeTitle(raw: string | null): string {
 
 export function posterImageUrl(img: string | null | undefined): string | null {
   if (!img) return null;
-  let path = decodeQueryValue(img).replace(/^\/+/, "");
+  const decoded = decodeQueryValue(img).trim();
+  // Reject absolute or protocol-relative URLs before normalizing.
+  if (/^(?:[a-z][a-z0-9+.-]*:)?\/\//i.test(decoded) || decoded.includes("://")) {
+    return null;
+  }
+  let path = decoded.replace(/^\/+/, "");
   // Share targets sometimes append the title after the URL, so it lands in `img`.
   const fileMatch = path.match(/^([^\s?]+\.(?:jpe?g|png|webp|gif))/i);
   if (fileMatch) {
     path = fileMatch[1];
   }
-  if (!path) return null;
+  // Only TMDB-like relative poster paths (optional size segment + filename).
+  if (!path || !/^(?:[A-Za-z0-9._-]+\/)*[A-Za-z0-9._-]+\.(?:jpe?g|png|webp|gif)$/i.test(path)) {
+    return null;
+  }
   return `https://image.tmdb.org/t/p/w780/${path}`;
 }
 

@@ -59,6 +59,30 @@ actor SimklAPIClient {
         try await get(path: "/oauth/pin/\(userCode)", authorized: false)
     }
 
+    /// Best-effort AUTH V2 revoke (`POST /oauth2/revoke`). Mobile clients send `client_id` + token only.
+    /// Always safe to call on disconnect; failures are ignored by callers.
+    func revokeToken(_ token: String) async throws {
+        let id = try requireClientID()
+        try await waitForPOSTSlot()
+        let url = baseURL.appendingPathComponent("oauth2/revoke")
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("\(appName)/\(appVersion)", forHTTPHeaderField: "User-Agent")
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        var allowed = CharacterSet.urlQueryAllowed
+        allowed.remove(charactersIn: "&+=")
+        let body = [
+            "client_id=\(id.addingPercentEncoding(withAllowedCharacters: allowed) ?? id)",
+            "token=\(token.addingPercentEncoding(withAllowedCharacters: allowed) ?? token)"
+        ].joined(separator: "&")
+        request.httpBody = Data(body.utf8)
+        let (_, response) = try await session.data(for: request)
+        guard let http = response as? HTTPURLResponse,
+              (200..<300).contains(http.statusCode) else {
+            throw SimklError.invalidResponse
+        }
+    }
+
     func fetchActivities() async throws -> SimklActivitiesResponse {
         try await get(path: "/sync/activities", authorized: true)
     }

@@ -19,6 +19,7 @@ Behavior notes:
 - Titles removed on SIMKL are counted but **never auto-deleted** from Cronica.
 - Stats and paused playbacks load only when you tap the buttons (expensive SIMKL endpoints).
 - Live player scrobbling is not used (Cronica has no full media player).
+- Disconnect / Delete My Data best-effort calls SIMKL `POST /oauth2/revoke` with the stored access token before clearing Keychain (mobile client: `client_id` only).
 
 ## TMDB
 

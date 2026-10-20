@@ -41,13 +41,13 @@ enum UserDataDeletionService {
             throw UserDataDeletionError.deletionFailed(error.localizedDescription)
         }
 
-        SimklTokenStore.delete()
         SimklKnownItemsStore.clear()
 #if !os(watchOS)
         SimklPushService.shared.clearQueue()
-        // Match Settings disconnect: revoke the remote TMDB session before dropping
-        // the Keychain copy so Delete My Data does not leave a live server session.
+        // Match Settings disconnect: revoke remote sessions before dropping Keychain copies.
+        let simklToken = SimklTokenStore.load()
         let tmdbSessionID = TMDBSessionStore.loadSessionID()
+        SimklTokenStore.delete()
         TMDBSessionStore.delete()
         TMDBPushService.shared.clearQueue()
         TMDBAccountListCache.clear()
@@ -56,6 +56,13 @@ enum UserDataDeletionService {
                 try? await TMDBAccountAPIClient.shared.deleteSession(sessionID: tmdbSessionID)
             }
         }
+        if let simklToken {
+            Task {
+                try? await SimklAPIClient.shared.revokeToken(simklToken)
+            }
+        }
+#else
+        SimklTokenStore.delete()
 #endif
 
         resetUserDefaults()

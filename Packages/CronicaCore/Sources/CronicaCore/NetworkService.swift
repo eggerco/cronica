@@ -245,7 +245,15 @@ public final class NetworkService: Sendable {
         }
     }
 
+    /// Allowed hosts for `downloadData` (TMDb image CDN only).
+    public static let allowedDownloadHosts: Set<String> = ["image.tmdb.org"]
+
     public func downloadData(from url: URL) async throws -> Data {
+        guard let host = url.host?.lowercased(),
+              Self.allowedDownloadHosts.contains(host),
+              url.scheme?.lowercased() == "https" else {
+            throw NetworkError.invalidRequest
+        }
         let (data, response) = try await URLSession.shared.data(from: url)
         guard let httpResponse = response as? HTTPURLResponse,
               (200...299).contains(httpResponse.statusCode) else {

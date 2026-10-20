@@ -43,6 +43,16 @@ struct RemoveFromWatchlistIntent: AppIntent {
     }
 
     func perform() async throws -> some IntentResult & ProvidesDialog {
+        try await requestConfirmation(
+            result: .result(
+                dialog: IntentDialog(
+                    stringLiteral: String(
+                        format: String(localized: "Remove %@ from your watchlist?"),
+                        title.title
+                    )
+                )
+            )
+        )
         let name = try await SiriIntentService.removeFromWatchlist(title: title.title)
         return .result(dialog: IntentDialog(stringLiteral: String(format: String(localized: "Removed %@ from your watchlist."), name)))
     }
@@ -61,6 +71,16 @@ struct MarkTitleWatchedIntent: AppIntent {
     }
 
     func perform() async throws -> some IntentResult & ProvidesDialog {
+        try await requestConfirmation(
+            result: .result(
+                dialog: IntentDialog(
+                    stringLiteral: String(
+                        format: String(localized: "Mark %@ as watched?"),
+                        title.title
+                    )
+                )
+            )
+        )
         let name = try await SiriIntentService.markTitleWatched(title: title.title)
         return .result(dialog: IntentDialog(stringLiteral: String(format: String(localized: "Marked %@ as watched."), name)))
     }
@@ -76,6 +96,11 @@ struct MarkUpNextEpisodeWatchedIntent: AppIntent {
     }
 
     func perform() async throws -> some IntentResult & ProvidesDialog {
+        try await requestConfirmation(
+            result: .result(
+                dialog: IntentDialog(stringLiteral: String(localized: "Mark your next episode as watched?"))
+            )
+        )
         let label = try await SiriIntentService.markNextUpNextEpisodeWatched()
         return .result(dialog: IntentDialog(stringLiteral: String(format: String(localized: "Marked %@ as watched."), label)))
     }
