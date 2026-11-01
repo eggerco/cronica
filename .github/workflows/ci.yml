@@ -12,8 +12,9 @@ concurrency:
 
 jobs:
   build-and-test:
-    # Icon Composer (.icon) needs Xcode 26.6; macos-15 only ships ≤26.3 whose actool crashes on .icon.
-    runs-on: macos-26
+    # Xcode 27.1+ ships the iOS 27.1/27.2 SDKs required for full iPhone Duo layouts.
+    # Prefer the dedicated Xcode 27 runner image (macOS 27 + Duo simulator support).
+    runs-on: xcode-27
     # Do not inject repository secrets into pull_request jobs. PR checkouts (including
     # same-repo contributor branches) run untrusted code that can read ProcessInfo env
     # and Secrets.xcconfig via Key.swift. Push to main keeps TMDB_API_KEY for the
@@ -25,18 +26,33 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Select Xcode 26.6
+      - name: Select Xcode 27.2
         run: |
-          if [ ! -d "/Applications/Xcode_26.6.app" ]; then
-            echo "Xcode 26.6 is required to compile AppIcon.icon"
+          set -euo pipefail
+          candidates=(
+            /Applications/Xcode_27.2.app
+            /Applications/Xcode_27.2.0.app
+            /Applications/Xcode_27.2_Release_Candidate.app
+            /Applications/Xcode_27.1.app
+            /Applications/Xcode.app
+          )
+          selected=""
+          for app in "${candidates[@]}"; do
+            if [ -d "$app" ]; then
+              selected="$app"
+              break
+            fi
+          done
+          if [ -z "$selected" ]; then
+            echo "Xcode 27.1+ is required for iPhone Duo–ready SDK builds"
             ls /Applications/Xcode*.app || true
             exit 1
           fi
-          sudo xcode-select -s /Applications/Xcode_26.6.app/Contents/Developer
+          sudo xcode-select -s "$selected/Contents/Developer"
           xcodebuild -version
 
-      # Xcode 26.6 may advertise OS=latest as 26.6 even when that simulator runtime isn't installed.
-      # Prefer concrete UDIDs so paired Watch sims don't make name+OS destinations ambiguous.
+      # Prefer concrete UDIDs. Skip Duo-only runtimes (…-iPhone19-4 / iOS-27-1 Duo) when
+      # resolving a standard iPhone destination — those runtimes cannot host iPhone 17.
       - name: Resolve simulator destinations
         id: sims
         run: |
@@ -53,15 +69,21 @@ jobs:
           )["devices"]
 
           def version_key(runtime_key: str) -> tuple[int, ...]:
-              # com.apple.CoreSimulator.SimRuntime.iOS-26-5 → (26, 5)
+              # com.apple.CoreSimulator.SimRuntime.iOS-27-2 → (27, 2)
+              # Duo-only: …iOS-27-2-iPhone19-4 → still (27, 2) numerically; filtered below.
               suffix = runtime_key.rsplit(".", 1)[-1]
               parts = suffix.replace("iOS-", "").replace("watchOS-", "").split("-")
               return tuple(int(part) for part in parts if part.isdigit())
 
-          def pick(name: str, runtime_prefix: str) -> str:
+          def is_duo_only_runtime(runtime_key: str) -> bool:
+              return "iPhone19-4" in runtime_key or runtime_key.endswith(".iOS-27-1")
+
+          def pick(name: str, runtime_prefix: str, *, exclude_duo_only: bool = False) -> str:
               matches: list[tuple[tuple[int, ...], str]] = []
               for runtime, entries in devices.items():
                   if runtime_prefix not in runtime:
+                      continue
+                  if exclude_duo_only and is_duo_only_runtime(runtime):
                       continue
                   for device in entries:
                       if device.get("name") != name or device.get("isAvailable") is False:
@@ -72,12 +94,44 @@ jobs:
               matches.sort()
               return matches[-1][1]
 
-          ios_id = pick("iPhone 17", "SimRuntime.iOS-")
-          watch_id = pick("Apple Watch Series 11 (46mm)", "SimRuntime.watchOS-")
-          print(f"Resolved destinations → iOS={ios_id}, watchOS={watch_id}", file=sys.stderr)
+          def pick_first_available(names: list[str], runtime_prefix: str, **kwargs) -> tuple[str, str]:
+              errors: list[str] = []
+              for name in names:
+                  try:
+                      return name, pick(name, runtime_prefix, **kwargs)
+                  except SystemExit as exc:
+                      errors.append(str(exc))
+              raise SystemExit("; ".join(errors))
+
+          ios_name, ios_id = pick_first_available(
+              ["iPhone 17", "iPhone 18 Pro", "iPhone 16"],
+              "SimRuntime.iOS-",
+              exclude_duo_only=True,
+          )
+          duo_id = None
+          try:
+              duo_id = pick("iPhone Duo", "SimRuntime.iOS-")
+          except SystemExit as exc:
+              print(f"iPhone Duo simulator unavailable: {exc}", file=sys.stderr)
+
+          watch_name, watch_id = pick_first_available(
+              [
+                  "Apple Watch Series 12 (46mm)",
+                  "Apple Watch Series 11 (46mm)",
+                  "Apple Watch Series 10 (46mm)",
+              ],
+              "SimRuntime.watchOS-",
+          )
+          print(
+              f"Resolved destinations → iOS={ios_name}/{ios_id}, "
+              f"duo={duo_id or 'none'}, watchOS={watch_name}/{watch_id}",
+              file=sys.stderr,
+          )
           with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as output:
               output.write(f"ios=platform=iOS Simulator,id={ios_id}\n")
               output.write(f"watch=platform=watchOS Simulator,id={watch_id}\n")
+              if duo_id:
+                  output.write(f"duo=platform=iOS Simulator,id={duo_id}\n")
           PY
 
       # Cancelled/reused runners leave partial Sentry XCFramework downloads that make
@@ -109,6 +163,17 @@ jobs:
             -project Cronica.xcodeproj \
             -scheme "Cronica (EN-US)" \
             -destination '${{ steps.sims.outputs.ios }}' \
+            -configuration Debug \
+            CODE_SIGNING_ALLOWED=NO
+
+      - name: Build Cronica (iPhone Duo Simulator)
+        if: ${{ steps.sims.outputs.duo != '' }}
+        run: |
+          set -o pipefail
+          xcodebuild build \
+            -project Cronica.xcodeproj \
+            -scheme "Cronica (EN-US)" \
+            -destination '${{ steps.sims.outputs.duo }}' \
             -configuration Debug \
             CODE_SIGNING_ALLOWED=NO
 
