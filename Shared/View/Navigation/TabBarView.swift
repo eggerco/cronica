@@ -13,7 +13,7 @@ extension Notification.Name {
     static let cronicaTabDidReselect = Notification.Name("cronicaTabDidReselect")
 }
 
-/// A TabBar for switching views, only used on iPhone.
+/// Primary tab navigation for iPhone, iPad, and iPhone Duo (inner display uses regular width).
 struct TabBarView: View {
 #if os(iOS)
     @ObservedObject private var quickActions = QuickActionCoordinator.shared
@@ -48,8 +48,10 @@ struct TabBarView: View {
 
     var body: some View {
 #if os(iOS)
+        // Prefer sidebarAdaptable on all idioms (not `.pad` only). iPhone Duo’s inner
+        // display is regular-width with phone idiom; size-class–driven tabs/sidebar are required.
         Group {
-            if #available(iOS 18, *), UIDevice.current.userInterfaceIdiom == .pad {
+            if #available(iOS 18, *) {
                 newTabView
             } else {
                 details

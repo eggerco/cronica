@@ -225,6 +225,14 @@ final class CronicaTests: XCTestCase {
             ),
             "https://api.themoviedb.org/3/account?api_key=[Filtered]&session_id=[Filtered]"
         )
+        XCTAssertEqual(
+            SentryManager.redactedContextValue("movie#123", for: "contentID"),
+            "[Filtered]"
+        )
+        XCTAssertEqual(
+            SentryManager.redactedContextValue("en", for: "language"),
+            "en"
+        )
     }
     
     func testNetworkErrorDescriptionsAreNonEmpty() {

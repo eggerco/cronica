@@ -1,41 +1,42 @@
 {
-  "pins": [
+  "originHash" : "33c58311640588a3eca51f0ed233d9403f58120a31bff29a4b0006ca1cb920b5",
+  "pins" : [
     {
-      "identity": "nuke",
-      "kind": "remoteSourceControl",
-      "location": "https://github.com/kean/Nuke",
-      "state": {
-        "revision": "7395c7a9dcd390bbcfad17a731d8d529602702c6",
-        "version": "12.7.0"
+      "identity" : "nuke",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kean/Nuke",
+      "state" : {
+        "revision" : "7395c7a9dcd390bbcfad17a731d8d529602702c6",
+        "version" : "12.7.0"
       }
     },
     {
-      "identity": "pow",
-      "kind": "remoteSourceControl",
-      "location": "https://github.com/EmergeTools/Pow",
-      "state": {
-        "revision": "1b4b1dda28c50b95f0872927ee2226fe8b58950e",
-        "version": "1.0.6"
+      "identity" : "pow",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/EmergeTools/Pow",
+      "state" : {
+        "revision" : "1b4b1dda28c50b95f0872927ee2226fe8b58950e",
+        "version" : "1.0.6"
       }
     },
     {
-      "identity": "sentry-cocoa",
-      "kind": "remoteSourceControl",
-      "location": "https://github.com/getsentry/sentry-cocoa",
-      "state": {
-        "revision": "f196cbb98e0388381d57908f2f5a9bdc385cde68",
-        "version": "8.58.4"
+      "identity" : "sentry-cocoa",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/getsentry/sentry-cocoa",
+      "state" : {
+        "revision" : "4e1e4ba9ce329f91ad6bfb63bab6da576a3f348c",
+        "version" : "9.32.0"
       }
     },
     {
-      "identity": "youtubeplayerkit",
-      "kind": "remoteSourceControl",
-      "location": "https://github.com/SvenTiigi/YouTubePlayerKit",
-      "state": {
-        "revision": "fe1c1ec340f6d79866131432ecaa190fd6bbc4cb",
-        "version": "1.9.0"
+      "identity" : "youtubeplayerkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SvenTiigi/YouTubePlayerKit",
+      "state" : {
+        "revision" : "fe1c1ec340f6d79866131432ecaa190fd6bbc4cb",
+        "version" : "1.9.0"
       }
     }
   ],
-  "version": 3
+  "version" : 3
 }

@@ -44,23 +44,25 @@ enum UserDataDeletionService {
         SimklKnownItemsStore.clear()
 #if !os(watchOS)
         SimklPushService.shared.clearQueue()
-        // Match Settings disconnect: revoke remote sessions before dropping Keychain copies.
+        // Revoke remote sessions while tokens are still available, then drop Keychain copies.
         let simklToken = SimklTokenStore.load()
         let tmdbSessionID = TMDBSessionStore.loadSessionID()
-        SimklTokenStore.delete()
-        TMDBSessionStore.delete()
         TMDBPushService.shared.clearQueue()
         TMDBAccountListCache.clear()
-        if let tmdbSessionID {
-            Task {
-                try? await TMDBAccountAPIClient.shared.deleteSession(sessionID: tmdbSessionID)
+        await withTaskGroup(of: Void.self) { group in
+            if let tmdbSessionID {
+                group.addTask {
+                    try? await TMDBAccountAPIClient.shared.deleteSession(sessionID: tmdbSessionID)
+                }
+            }
+            if let simklToken {
+                group.addTask {
+                    try? await SimklAPIClient.shared.revokeToken(simklToken)
+                }
             }
         }
-        if let simklToken {
-            Task {
-                try? await SimklAPIClient.shared.revokeToken(simklToken)
-            }
-        }
+        SimklTokenStore.delete()
+        TMDBSessionStore.delete()
 #else
         SimklTokenStore.delete()
 #endif
