@@ -48,7 +48,7 @@ enum SentryManager {
         guard Key.sentryDSN != nil else { return }
         SentrySDK.capture(error: error) { scope in
             for (key, value) in context {
-                scope.setExtra(value: value, key: key)
+                scope.setExtra(value: redactedContextValue(value, for: key), key: key)
             }
         }
 #endif
@@ -88,6 +88,21 @@ enum SentryManager {
         let query = String(urlString[queryStart...])
         guard let redacted = redactedQueryString(query) else { return urlString }
         return "\(head)?\(redacted)"
+    }
+
+    /// Filters manual Sentry extras that may include content IDs or tokens.
+    static func redactedContextValue(_ value: String, for key: String) -> String {
+        let lowered = key.lowercased()
+        if lowered.contains("contentid")
+            || lowered.contains("content_id")
+            || lowered == "id"
+            || sensitiveQueryKeys.contains(lowered) {
+            return "[Filtered]"
+        }
+        if value.contains("?"), let redacted = redactedURLString(value) {
+            return redacted
+        }
+        return value
     }
 
 #if !DEBUG

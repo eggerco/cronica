@@ -183,13 +183,29 @@ private final class SimklAuthPresentationContext: NSObject, ASWebAuthenticationP
 #if os(macOS)
         return NSApplication.shared.windows.first ?? ASPresentationAnchor()
 #else
+        // Prefer the foreground-active scene so Duo / multi-display login stays on-screen.
         let scenes = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }
-        if let window = scenes.flatMap(\.windows).first(where: \.isKeyWindow) {
+        let ordered = scenes.sorted { lhs, rhs in
+            rank(lhs.activationState) < rank(rhs.activationState)
+        }
+        if let window = ordered.flatMap(\.windows).first(where: \.isKeyWindow) {
             return window
         }
-        return scenes.flatMap(\.windows).first ?? ASPresentationAnchor()
+        return ordered.flatMap(\.windows).first ?? ASPresentationAnchor()
 #endif
     }
+
+#if os(iOS) || os(visionOS)
+    private func rank(_ state: UIScene.ActivationState) -> Int {
+        switch state {
+        case .foregroundActive: return 0
+        case .foregroundInactive: return 1
+        case .background: return 2
+        case .unattached: return 3
+        @unknown default: return 4
+        }
+    }
+#endif
 }
 #endif
 

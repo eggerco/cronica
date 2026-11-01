@@ -16,11 +16,12 @@ struct CronicaTelemetry {
     func setup() { }
 
     /// Logs diagnostic messages in Debug / Simulator and reports warnings in Release (when Sentry is linked).
+    /// Release telemetry omits raw content IDs to avoid leaking viewing interests.
     func handleMessage(_ message: String, for id: String) {
 #if targetEnvironment(simulator) || DEBUG
         AppLogger.lifecycle.warning("\(message), for: \(id)")
 #elseif canImport(Sentry)
-        SentryManager.captureMessage("\(message) [\(id)]", level: .warning)
+        SentryManager.captureMessage(message, level: .warning)
 #else
         AppLogger.lifecycle.warning("\(message), for: \(id)")
 #endif
