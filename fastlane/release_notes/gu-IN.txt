@@ -1,1 +1,4 @@
-બગ ફિક્સથી લઈને પોલિશ સુધી, આ રિલીઝમાં પર્ફોર્મન્સ સુધારવા અને તમારા માટે સૌથી મહત્વની બાબતો પર નજર રાખવામાં મદદ કરતા અપડેટ્સ ભરપૂર છે.
+• Ready for iPhone Duo with adaptive tabs and landscape poses
+• Watchlist checklist: To Watch by default; Released hides watched titles
+• Faster, more reliable Up Next, search, backup, and calendar
+• Security and privacy hardening for sync and telemetry

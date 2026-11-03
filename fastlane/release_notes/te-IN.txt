@@ -1,1 +1,4 @@
-బగ్ పరిష్కారాల నుంచి పాలిష్ వరకు, ఈ రిలీజ్ పనితీరును మెరుగుపరచి మీకు అత్యంత ముఖ్యమైన వాటిని అనుసరించడానికి సహాయపడే అప్‌డేట్‌లతో నిండి ఉంది.
+• Ready for iPhone Duo with adaptive tabs and landscape poses
+• Watchlist checklist: To Watch by default; Released hides watched titles
+• Faster, more reliable Up Next, search, backup, and calendar
+• Security and privacy hardening for sync and telemetry

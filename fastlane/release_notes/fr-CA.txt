@@ -1,1 +1,4 @@
-Des corrections de bogues aux améliorations, cette mise à jour regorge de nouveautés conçues pour optimiser le rendement et vous aider à rester au courant de l'essentiel.
+• Ready for iPhone Duo with adaptive tabs and landscape poses
+• Watchlist checklist: To Watch by default; Released hides watched titles
+• Faster, more reliable Up Next, search, backup, and calendar
+• Security and privacy hardening for sync and telemetry

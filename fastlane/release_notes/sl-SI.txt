@@ -1,1 +1,4 @@
-Od popravkov napak do izboljšav – ta različica je polna posodobitev, zasnovanih za boljšo zmogljivost in lažje spremljanje tistega, kar je najpomembnejše.
+• Ready for iPhone Duo with adaptive tabs and landscape poses
+• Watchlist checklist: To Watch by default; Released hides watched titles
+• Faster, more reliable Up Next, search, backup, and calendar
+• Security and privacy hardening for sync and telemetry

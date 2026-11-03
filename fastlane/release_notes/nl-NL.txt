@@ -1,1 +1,4 @@
-Van bugfixes tot verfijning: deze release zit vol updates die de prestaties verbeteren en je helpen om te blijven bij wat er echt toe doet.
+• Ready for iPhone Duo with adaptive tabs and landscape poses
+• Watchlist checklist: To Watch by default; Released hides watched titles
+• Faster, more reliable Up Next, search, backup, and calendar
+• Security and privacy hardening for sync and telemetry
