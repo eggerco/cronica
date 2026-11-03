@@ -191,10 +191,31 @@ struct PersistenceController {
         return (inserted, updated)
     }
 
-    func exportWatchlistBackup() throws -> Data {
+    /// Snapshot of watchlist rows for backup. Always runs on the main-queue view context.
+    @MainActor
+    func makeWatchlistBackupSnapshot() throws -> [WatchlistItemBackup] {
         let items = try container.viewContext.fetch(WatchlistItem.fetchRequest())
-        let backups = items.map(WatchlistItemBackup.init(item:))
-        return try JSONEncoder().encode(backups)
+        return items.map(WatchlistItemBackup.init(item:))
+    }
+
+    /// Encodes an already-mapped backup snapshot (safe to call off the main actor).
+    nonisolated static func encodeWatchlistBackup(_ backups: [WatchlistItemBackup]) throws -> Data {
+        try JSONEncoder().encode(backups)
+    }
+
+    /// Synchronous helper for tests and callers that already own the main actor.
+    @MainActor
+    func exportWatchlistBackup() throws -> Data {
+        try Self.encodeWatchlistBackup(try makeWatchlistBackupSnapshot())
+    }
+
+    /// Fetch/map on the main actor, then encode on a background worker.
+    @MainActor
+    func exportWatchlistBackupAsync() async throws -> Data {
+        let backups = try makeWatchlistBackupSnapshot()
+        return try await Task.detached(priority: .userInitiated) {
+            try Self.encodeWatchlistBackup(backups)
+        }.value
     }
 #endif
 

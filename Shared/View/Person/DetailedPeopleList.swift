@@ -56,7 +56,12 @@ struct DetailedPeopleList: View {
 
 extension DetailedPeopleList {
     private func search() async {
-        try? await Task.sleep(nanoseconds: 200_000_000)
+        do {
+            try await Task.sleep(nanoseconds: 200_000_000)
+            try Task.checkCancellation()
+        } catch {
+            return
+        }
         if !filteredItems.isEmpty { filteredItems.removeAll() }
         filteredItems.append(contentsOf: items.filter {
             ($0.name.localizedStandardContains(query)) as Bool

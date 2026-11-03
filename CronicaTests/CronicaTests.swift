@@ -273,6 +273,7 @@ final class CronicaTests: XCTestCase {
         XCTAssertEqual(try managedContext.count(for: CustomList.fetchRequest()), 0)
     }
 
+    @MainActor
     func testWatchlistBackupImportUpdatesInsteadOfDuplicating() throws {
         guard let example = ItemContent.examples.first else {
             XCTFail("Expected preview content")
@@ -307,6 +308,15 @@ final class CronicaTests: XCTestCase {
 
         let restored = requireItem(for: example.itemContentID)
         XCTAssertEqual(restored.userNotes, "after restore")
+
+        // Encode path used by exportWatchlistBackupAsync must stay off-main-actor safe.
+        let snapshot = try persistence.makeWatchlistBackupSnapshot()
+        let encoded = try PersistenceController.encodeWatchlistBackup(snapshot)
+        XCTAssertFalse(encoded.isEmpty)
+        XCTAssertEqual(
+            try JSONDecoder().decode([WatchlistItemBackup].self, from: encoded),
+            snapshot
+        )
         XCTAssertTrue(restored.watched)
         XCTAssertEqual(try managedContext.count(for: request), 1)
     }

@@ -8,7 +8,7 @@ import CoreData
 
 /// Codable transfer model for watchlist backup/restore.
 /// Kept separate from `WatchlistItem` so restore can upsert by `contentID` without duplicating rows.
-struct WatchlistItemBackup: Codable, Equatable {
+struct WatchlistItemBackup: Codable, Equatable, Sendable {
     var id: Int64
     var title: String
     var contentID: String
