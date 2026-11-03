@@ -39,7 +39,9 @@ Authentication is **App Store Connect API key only** — no Apple ID, password, 
 
 ## Every release
 
-Edit the translated source files under `fastlane/release_notes/` (one file per App Store locale), then upload:
+**Do not rewrite What's New for each version.** Keep `fastlane/release_notes/` as evergreen general copy (performance / polish). Only change those files when intentionally updating the standing store text — never replace them with version-specific feature lists during a ship.
+
+To push the existing notes (unchanged) to App Store Connect:
 
 ```bash
 bundle exec fastlane ios upload_release_notes
