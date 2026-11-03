@@ -192,18 +192,25 @@ extension WatchlistSettingsView {
     
 #if os(iOS) || os(macOS)
     private func export() {
-        do {
-            isGeneratingExport = true
-            let jsonData = try PersistenceController.shared.exportWatchlistBackup()
-            if let tempUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-                let pathUrl = tempUrl.appending(component: "CronicaExport \(Date().formatted(date: .abbreviated, time: .omitted)).json")
-                try jsonData.write(to: pathUrl, options: .atomic)
+        guard !isGeneratingExport else { return }
+        isGeneratingExport = true
+        Task {
+            defer { isGeneratingExport = false }
+            do {
+                let jsonData = try await PersistenceController.shared.exportWatchlistBackupAsync()
+                guard let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+                    return
+                }
+                let pathUrl = documents.appending(
+                    component: "CronicaExport \(Date().formatted(date: .abbreviated, time: .omitted)).json"
+                )
+                try await Task.detached(priority: .utility) {
+                    try jsonData.write(to: pathUrl, options: .atomic)
+                }.value
                 exportUrl = pathUrl
+            } catch {
+                CronicaTelemetry.shared.handleMessage(error.localizedDescription, for: "SyncSettings.export.failed")
             }
-            isGeneratingExport = false
-        } catch {
-            isGeneratingExport = false
-            CronicaTelemetry.shared.handleMessage(error.localizedDescription, for: "SyncSettings.export.failed")
         }
     }
     

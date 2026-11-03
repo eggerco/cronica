@@ -59,7 +59,12 @@ class UpNextViewModel: ObservableObject {
             return
         }
         persistence.updateUpNext(show, episode: nextEpisode)
-        await handleWatched(item)
+        await MainActor.run {
+            withAnimation(.smooth) {
+                self.episodes.removeAll(where: { $0.episode.id == item.episode.id })
+            }
+        }
+        await appendNextEpisode(nextEpisode, after: item)
     }
 
     func hideFromUpNext(_ content: UpNextEpisode) async {
@@ -84,7 +89,10 @@ class UpNextViewModel: ObservableObject {
 
         let nextEpisode = await helper.fetchNextEpisode(for: content.episode, show: content.showID)
         guard let nextEpisode else { return }
+        await appendNextEpisode(nextEpisode, after: content)
+    }
 
+    private func appendNextEpisode(_ nextEpisode: Episode, after content: UpNextEpisode) async {
         var isReleased = nextEpisode.isItemReleased
         if nextEpisode.airDate == nil {
             let showContent = try? await network.fetchItem(id: content.showID, type: .tvShow)
@@ -154,20 +162,7 @@ class UpNextViewModel: ObservableObject {
         let nextEpisode = await EpisodeHelper().fetchNextEpisode(for: content.episode, show: content.showID)
         guard let nextEpisode else { return }
         persistence.updateUpNext(item, episode: nextEpisode)
-        var isReleased = nextEpisode.isItemReleased
-        if nextEpisode.airDate == nil {
-            let showContent = try? await network.fetchItem(id: content.showID, type: .tvShow)
-            if showContent?.itemStatus == .ended { isReleased = true }
-        }
-        if isReleased {
-            let episode = makeEpisode(from: item, episode: nextEpisode, sortedDate: Date())
-            await MainActor.run {
-                withAnimation(.easeInOut) {
-                    self.episodes.append(episode)
-                    self.episodes = sortEpisodes(self.episodes)
-                }
-            }
-        }
+        await appendNextEpisode(nextEpisode, after: content)
     }
 
     private func prepareItems(_ items: [WatchlistItem]) async -> [WatchlistItem] {

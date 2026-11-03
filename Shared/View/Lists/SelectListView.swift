@@ -204,7 +204,12 @@ struct SelectListView: View {
     
     private func search() async {
         isSearchingLists = true
-        try? await Task.sleep(nanoseconds: 300_000_000)
+        do {
+            try await Task.sleep(nanoseconds: 300_000_000)
+            try Task.checkCancellation()
+        } catch {
+            return
+        }
         if query.isEmpty && !queryResult.isEmpty { queryResult = [] }
         if query.isEmpty { return }
         if !queryResult.isEmpty { queryResult.removeAll() }

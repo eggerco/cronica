@@ -92,7 +92,9 @@ struct CronicaApp: App {
                     NavigationStack {
                         ItemContentDetails(title: item.itemTitle,
                                            id: item.id,
-                                           type: item.itemContentMedia, handleToolbar: true)
+                                           type: item.itemContentMedia,
+                                           prefetchedContent: item,
+                                           handleToolbar: true)
                         .nativeSheetDismissToolbar { selectedItem = nil }
                         .cronicaStandardNavigationDestinations(itemContentHandleToolbar: true)
                     }

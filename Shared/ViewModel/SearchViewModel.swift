@@ -79,12 +79,17 @@ import SwiftUI
         if endPagination { return }
         if isLoadingMore { return }
         isLoadingMore = true
+        let requestQuery = trimmedQuery
+        let requestPage = page
         Task {
             defer { isLoadingMore = false }
-            let result = try? await service.search(query: trimmedQuery, page: "\(page)")
+            let result = try? await service.search(query: requestQuery, page: "\(requestPage)")
             guard let result else { return }
+            // Drop stale pages if the user changed the query while this request was in flight.
+            guard self.trimmedQuery == requestQuery, self.page == requestPage else { return }
             if result.isEmpty { endPagination.toggle() }
-            let filtered = await filter(for: result)
+            let filtered = SettingsStore.shared.disableSearchFilter ? result : await filter(for: result)
+            guard self.trimmedQuery == requestQuery else { return }
             withAnimation {
                 self.items.append(contentsOf: filtered.sorted(by: { $0.itemPopularity > $1.itemPopularity }))
             }

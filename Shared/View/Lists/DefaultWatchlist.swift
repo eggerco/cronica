@@ -247,18 +247,19 @@ struct DefaultWatchlist: View {
     }
     
     private func search() async {
+        isSearching = true
         do {
-            isSearching = true
             try await Task.sleep(nanoseconds: 300_000_000)
-            if !filteredItems.isEmpty { filteredItems.removeAll() }
-            filteredItems.append(contentsOf: items.filter {
-                ($0.itemTitle.localizedStandardContains(query)) as Bool
-                || ($0.itemOriginalTitle.localizedStandardContains(query)) as Bool
-            })
-            isSearching = false
+            try Task.checkCancellation()
         } catch {
-            if Task.isCancelled { return }
+            return
         }
+        if !filteredItems.isEmpty { filteredItems.removeAll() }
+        filteredItems.append(contentsOf: items.filter {
+            ($0.itemTitle.localizedStandardContains(query)) as Bool
+            || ($0.itemOriginalTitle.localizedStandardContains(query)) as Bool
+        })
+        isSearching = false
     }
     
 #if !os(iOS)
