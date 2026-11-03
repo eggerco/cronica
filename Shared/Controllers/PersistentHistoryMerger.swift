@@ -14,30 +14,16 @@ enum PersistentHistoryMerger {
     @MainActor private static var isMerging = false
     @MainActor private static var hasPendingMerge = false
 
-    private struct HistoryChanges: Sendable {
-        let inserted: [NSManagedObjectID]
-        let updated: [NSManagedObjectID]
-        let deleted: [NSManagedObjectID]
-
-        init(userInfo: [AnyHashable: Any]) {
-            inserted = Self.objectIDs(userInfo[NSInsertedObjectsKey] ?? userInfo[NSInsertedObjectIDsKey])
-            updated = Self.objectIDs(userInfo[NSUpdatedObjectsKey] ?? userInfo[NSUpdatedObjectIDsKey])
-            deleted = Self.objectIDs(userInfo[NSDeletedObjectsKey] ?? userInfo[NSDeletedObjectIDsKey])
-        }
-
-        var userInfo: [AnyHashable: Any] {
-            [NSInsertedObjectsKey: inserted, NSUpdatedObjectsKey: updated, NSDeletedObjectsKey: deleted]
-        }
-
-        private static func objectIDs(_ value: Any?) -> [NSManagedObjectID] {
-            if let ids = value as? [NSManagedObjectID] { return ids }
-            return Array(value as? Set<NSManagedObjectID> ?? [])
-        }
-    }
-
-    private struct HistoryFetchResult: Sendable {
-        let changes: [HistoryChanges]
+    /// Carries the original `objectIDNotification().userInfo` dictionaries across the
+    /// background-context hop without reshaping keys (mergeChanges expects that payload).
+    private final class HistoryFetchResult: @unchecked Sendable {
+        let mergePayloads: [[AnyHashable: Any]]
         let tokenData: Data?
+
+        init(mergePayloads: [[AnyHashable: Any]], tokenData: Data?) {
+            self.mergePayloads = mergePayloads
+            self.tokenData = tokenData
+        }
     }
 
     static func startObserving(container: NSPersistentCloudKitContainer) {
@@ -72,24 +58,24 @@ enum PersistentHistoryMerger {
             do {
                 let result = try await background.perform {
                     let request = NSPersistentHistoryChangeRequest.fetchHistory(after: loadToken())
-                    guard let result = try background.execute(request) as? NSPersistentHistoryResult,
-                          let transactions = result.result as? [NSPersistentHistoryTransaction],
+                    guard let historyResult = try background.execute(request) as? NSPersistentHistoryResult,
+                          let transactions = historyResult.result as? [NSPersistentHistoryTransaction],
                           let lastTransaction = transactions.last
-                    else { return HistoryFetchResult(changes: [], tokenData: nil) }
-
-                    let changes = transactions.compactMap { transaction in
-                        transaction.objectIDNotification().userInfo.map(HistoryChanges.init(userInfo:))
+                    else {
+                        return HistoryFetchResult(mergePayloads: [], tokenData: nil)
                     }
+
+                    let payloads = transactions.compactMap { $0.objectIDNotification().userInfo }
                     let tokenData = try? NSKeyedArchiver.archivedData(
                         withRootObject: lastTransaction.token,
                         requiringSecureCoding: true
                     )
-                    return HistoryFetchResult(changes: changes, tokenData: tokenData)
+                    return HistoryFetchResult(mergePayloads: payloads, tokenData: tokenData)
                 }
-                if !result.changes.isEmpty {
-                    for changes in result.changes {
+                if !result.mergePayloads.isEmpty {
+                    for userInfo in result.mergePayloads {
                         NSManagedObjectContext.mergeChanges(
-                            fromRemoteContextSave: changes.userInfo,
+                            fromRemoteContextSave: userInfo,
                             into: [container.viewContext]
                         )
                     }
