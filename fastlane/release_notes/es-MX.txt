@@ -1,4 +1,1 @@
-• Ready for iPhone Duo with adaptive tabs and landscape poses
-• Watchlist checklist: To Watch by default; Released hides watched titles
-• Faster, more reliable Up Next, search, backup, and calendar
-• Security and privacy hardening for sync and telemetry
+Desde correcciones de errores hasta mejoras, esta versión incluye muchas actualizaciones diseñadas para optimizar el rendimiento y ayudarte a estar al día con lo que más importa.
