@@ -19,6 +19,12 @@ struct TrailerItemView: View {
     @FocusState var isFocused
 #endif
     @State private var isLoading = false
+#if os(iOS)
+    @State private var showPlayer = false
+    /// iPad plays web video inline instead of promoting it to the system fullscreen player,
+    /// so the hidden player that iPhone relies on would only produce audio there.
+    private var playsInline: Bool { UIDevice.current.userInterfaceIdiom == .pad }
+#endif
     @AppStorage("openInYouTube") private var openInYouTube = false
     @Environment(\.openURL) private var openURL
     init(trailer: VideoItem) {
@@ -81,10 +87,12 @@ struct TrailerItemView: View {
         } label: {
             ZStack {
 #if os(iOS)
-                YouTubePlayerView(player)
-                    .frame(width: DrawingConstants.imageWidth,
-                           height: DrawingConstants.imageHeight)
-                    .opacity(0)
+                if !playsInline {
+                    YouTubePlayerView(player)
+                        .frame(width: DrawingConstants.imageWidth,
+                               height: DrawingConstants.imageHeight)
+                        .opacity(0)
+                }
 #endif
                 VStack {
                     LazyImage(url: trailer.thumbnail) { state in
@@ -121,6 +129,11 @@ struct TrailerItemView: View {
         }
         .accessibilityLabel(trailer.title)
         .buttonStyle(.plain)
+#if os(iOS)
+        .fullScreenCover(isPresented: $showPlayer) {
+            TrailerPlayerView(trailer: trailer)
+        }
+#endif
 #endif
     }
     
@@ -128,6 +141,8 @@ struct TrailerItemView: View {
 #if os(iOS)
         if openInYouTube, let url = trailer.url {
             openURL(url)
+        } else if playsInline {
+            showPlayer = true
         } else {
             self.isLoading = true
             player.play()
@@ -207,6 +222,55 @@ struct TrailerItemView: View {
                                     style: .continuous))
     }
 }
+
+#if os(iOS)
+/// A visible trailer player, presented where the system won't take web video fullscreen on its own.
+private struct TrailerPlayerView: View {
+    private let title: String
+    @StateObject private var player: YouTubePlayer
+    @Environment(\.dismiss) private var dismiss
+    init(trailer: VideoItem) {
+        self.title = trailer.title
+        _player = StateObject(
+            wrappedValue: YouTubePlayer(
+                source: .video(id: trailer.videoID),
+                configuration: .init(
+                    fullscreenMode: .system,
+                    autoPlay: true,
+                    showControls: true,
+                    showFullscreenButton: true,
+                    useModestBranding: true,
+                    playInline: true,
+                    showRelatedVideos: false
+                )
+            )
+        )
+    }
+    var body: some View {
+        NavigationStack {
+            ZStack {
+                Color.black.ignoresSafeArea()
+                YouTubePlayerView(player) { state in
+                    switch state {
+                    case .idle:
+                        ProgressView().tint(.white)
+                    case .ready:
+                        EmptyView()
+                    case .error:
+                        ContentUnavailableView("Try again later",
+                                               systemImage: "play.slash")
+                    }
+                }
+                .aspectRatio(16 / 9, contentMode: .fit)
+            }
+            .navigationTitle(title)
+            .navigationBarTitleDisplayMode(.inline)
+            .nativeSheetDismissToolbar { dismiss() }
+        }
+        .preferredColorScheme(.dark)
+    }
+}
+#endif
 
 private struct DrawingConstants {
     static let imageRadius: CGFloat = 12
